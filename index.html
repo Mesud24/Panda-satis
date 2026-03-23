@@ -27,8 +27,19 @@ function logout(){currentStoreId=null;document.getElementById('gate-pw').value='
 function doLogin(){const sid=document.getElementById('gate-store').value;const pw=document.getElementById('gate-pw').value;if(!sid){alert('Zəhmət olmasa şöbəni seçin.');return;}const store=STORES.find(s=>s.id===sid);if(!store||pw!==store.pw){document.getElementById('gate-err').classList.add('show');document.getElementById('gate-pw').value='';return;}document.getElementById('gate-err').classList.remove('show');currentStoreId=sid;openStoreForm(sid);}
 function showAdminGate(){const pw=prompt('Admin şifrəsi:');if(pw===ADMIN_PW){openAdmin();}else if(pw!==null){alert('Şifrə yanlışdır.');}}
 function openStoreForm(storeId){const store=STORES.find(s=>s.id===storeId);const isSaxa=SAXA_IDS.includes(storeId);const periods=isSaxa?["gunluk","ay2026"]:PERIODS;document.getElementById('sf-title').textContent=store.name;document.getElementById('sf-date').textContent=formatDate();const body=document.getElementById('sf-body');const allSaved=periods.every(p=>getCached(storeId,p)!==null);let html='';periods.forEach((period,pi)=>{const saved=getCached(storeId,period);const dis=saved?'disabled':'';html+=`<div class="period-block"><div class="period-header" style="background:${PERIOD_COLORS[PERIODS.indexOf(period)]}">${getPeriodLabel(period)}</div><table class="period-table"><thead><tr><th style="text-align:left">Göstərici</th><th>Satış Məbləği (₼)</th><th>Mənfəət (₼)</th><th>Faiz (%)</th></tr></thead><tbody><tr><td class="pname">Ümumi satış</td><td><input class="num-inp" type="number" min="0" step="0.01" id="satis-${period}" value="${saved?.satis??''}" placeholder="0.00" ${dis}></td><td><input class="num-inp" type="number" min="0" step="0.01" id="menfeet-${period}" value="${saved?.menfeet??''}" placeholder="0.00" ${dis}></td><td><input class="num-inp" type="number" min="0" step="0.1" id="faiz-${period}" value="${saved?.faiz??''}" placeholder="0.0" ${dis}></td></tr></tbody></table></div>`;});html+=`<button class="sf-save-btn" id="sf-save-btn" onclick="submitStore()" ${allSaved?'disabled':''}>${allSaved?'✓ Saxlanıldı':'✓ Yadda Saxla'}</button><div class="loading-box" id="sf-loading">⏳ Göndərilir...</div><div class="success-box ${allSaved?'show':''}" id="sf-success">✅ Məlumatlar uğurla saxlandı!</div><div class="error-box" id="sf-error">❌ Xəta baş verdi. Yenidən cəhd edin.</div>`;body.innerHTML=html;goTo('store-form');}
-async function readBin(){const res=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY}});const json=await res.json();return json.record?.data||[];}
-async function writeBin(data){await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY},body:JSON.stringify({data})});}
+async function readBin(){
+  try{
+    const res=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'}});
+    if(!res.ok)return[];
+    const json=await res.json();
+    return json.data||[];
+  }catch(e){return[];}
+}
+async function writeBin(data){
+  try{
+    await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data})});
+  }catch(e){console.error(e);}
+}
 async function submitStore(){
   const storeId=currentStoreId;
   const store=STORES.find(s=>s.id===storeId);
