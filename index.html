@@ -3,8 +3,6 @@
 body{font-family:'IBM Plex Sans',sans-serif;background:#f2f2ee;color:#1a1a1a;min-height:100vh;}
 .screen{display:none;min-height:100vh;flex-direction:column;}
 .screen.active{display:flex;}
-
-/* GATE */
 #gate{background:#0f1f3d;align-items:center;justify-content:center;}
 .gate-wrap{width:100%;max-width:380px;padding:40px 28px;display:flex;flex-direction:column;gap:18px;align-items:center;}
 .gate-logo{width:110px;height:110px;object-fit:contain;border-radius:16px;background:#fff;padding:8px;box-shadow:0 4px 20px rgba(0,0,0,.4);}
@@ -22,50 +20,46 @@ select.gate-input option{color:#000;background:#fff;}
 .gate-err.show{display:block;}
 .gate-divider{width:100%;height:1px;background:rgba(255,255,255,.1);}
 .gate-admin-link{color:rgba(255,255,255,.35);font-size:12px;cursor:pointer;background:none;border:none;font-family:inherit;}
-
-/* STORE FORM */
 #store-form{background:#f2f2ee;}
 .sf-header{background:#0f1f3d;padding:16px 24px 22px;}
-.sf-header-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:14px;}
+.sf-header-inner{max-width:700px;margin:0 auto;display:flex;align-items:center;gap:14px;}
 .sf-header-logo{width:40px;height:40px;object-fit:contain;background:#fff;border-radius:8px;padding:3px;}
 .sf-header-text{flex:1;}
 .back-btn{background:none;border:none;color:rgba(255,255,255,.45);font-family:inherit;font-size:13px;cursor:pointer;padding:0;margin-bottom:6px;display:flex;align-items:center;gap:5px;}
 .sf-title{font-size:18px;font-weight:700;color:#fff;}
 .sf-date{font-size:12px;color:#c9963a;margin-top:2px;}
-.sf-body{max-width:680px;margin:0 auto;padding:20px 24px;flex:1;}
-
-/* PLAN CARD */
+.sf-body{max-width:700px;margin:0 auto;padding:20px 24px;flex:1;}
 .plan-card{background:linear-gradient(135deg,#0f1f3d,#1a2d4a);border-radius:14px;padding:16px;margin-bottom:16px;border:1px solid rgba(201,150,58,.3);}
 .plan-title{color:#c9963a;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px;}
 .plan-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;}
-.plan-item{background:rgba(255,255,255,.06);border-radius:10px;padding:10px;text-align:center;border:1px solid rgba(255,255,255,.1);}
-.plan-item.active-min{border-color:#f59e0b;background:rgba(245,158,11,.1);}
-.plan-item.active-mid{border-color:#10b981;background:rgba(16,185,129,.1);}
-.plan-item.active-max{border-color:#3b82f6;background:rgba(59,130,246,.1);}
+.plan-item{background:rgba(255,255,255,.06);border-radius:10px;padding:10px;text-align:center;border:2px solid transparent;transition:all .3s;}
+.plan-item.done{border-color:#10b981;background:rgba(16,185,129,.15);}
+.plan-item.current{border-color:#f59e0b;background:rgba(245,158,11,.12);}
 .plan-item-label{font-size:10px;color:rgba(255,255,255,.5);margin-bottom:4px;}
-.plan-item-val{font-size:14px;font-weight:700;color:#fff;font-family:'IBM Plex Mono',monospace;}
-.plan-item-sub{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px;}
+.plan-item-val{font-size:13px;font-weight:700;color:#fff;font-family:'IBM Plex Mono',monospace;}
+.plan-item-pct{font-size:12px;font-weight:700;margin-top:3px;}
+.plan-item-pct.done{color:#10b981;}
+.plan-item-pct.current{color:#f59e0b;}
+.plan-item-pct.pending{color:rgba(255,255,255,.3);}
 .plan-progress{margin-top:10px;}
 .plan-progress-label{display:flex;justify-content:space-between;margin-bottom:6px;}
 .plan-progress-label span{font-size:11px;color:rgba(255,255,255,.5);}
 .plan-progress-label strong{font-size:11px;color:#f0c060;}
-.plan-bar-wrap{background:rgba(255,255,255,.1);border-radius:20px;height:8px;overflow:hidden;}
-.plan-bar{height:8px;border-radius:20px;transition:width .3s;}
+.plan-bar-wrap{background:rgba(255,255,255,.1);border-radius:20px;height:10px;overflow:hidden;}
+.plan-bar{height:10px;border-radius:20px;transition:width .4s;}
 .plan-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
 .plan-stat{background:rgba(255,255,255,.05);border-radius:8px;padding:8px 10px;}
 .plan-stat-label{font-size:10px;color:rgba(255,255,255,.4);}
-.plan-stat-val{font-size:13px;font-weight:700;color:#f0c060;font-family:'IBM Plex Mono',monospace;margin-top:2px;}
-
-/* PERIOD BLOCKS */
+.plan-stat-val{font-size:14px;font-weight:700;color:#f0c060;font-family:'IBM Plex Mono',monospace;margin-top:2px;}
 .period-block{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:14px;}
 .period-header{padding:10px 16px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#fff;}
 .period-table{width:100%;border-collapse:collapse;}
 .period-table thead th{padding:8px 14px;font-size:11px;font-weight:600;text-transform:uppercase;color:#555;background:#f8f8f5;text-align:right;}
-.period-table thead th:first-child{text-align:left;}
+.period-table thead th:first-child{text-align:left;width:120px;}
 .period-table tbody tr{border-top:1px solid #e8e8e8;}
 .period-table tbody td{padding:10px 14px;}
-.period-table tbody td.pname{font-weight:600;font-size:14px;color:#0f1f3d;}
-.num-inp{width:100%;text-align:right;border:1.5px solid #e0dfd8;border-radius:8px;padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:14px;color:#1a1a1a;background:#fff;outline:none;}
+.period-table tbody td.pname{font-weight:600;font-size:14px;color:#0f1f3d;white-space:nowrap;}
+.num-inp{width:100%;min-width:120px;text-align:right;border:1.5px solid #e0dfd8;border-radius:8px;padding:9px 12px;font-family:'IBM Plex Mono',monospace;font-size:15px;color:#1a1a1a;background:#fff;outline:none;}
 .num-inp:focus{border-color:#c9963a;}
 .num-inp:disabled{background:#f8f8f5;color:#888;cursor:not-allowed;}
 .sf-save-btn{width:100%;padding:15px;background:#0f1f3d;border:none;border-radius:12px;color:#fff;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px;}
@@ -77,8 +71,6 @@ select.gate-input option{color:#000;background:#fff;}
 .loading-box.show{display:block;}
 .error-box{display:none;background:#fee2e2;border:1.5px solid #fca5a5;border-radius:12px;padding:14px;color:#dc2626;font-size:14px;margin-top:12px;}
 .error-box.show{display:block;}
-
-/* ADMIN */
 #admin{background:#1a1a2e;}
 .adm-header{background:linear-gradient(135deg,#0f1f3d,#1a2d4a);padding:18px 24px;border-bottom:1px solid rgba(201,150,58,.2);}
 .adm-header-inner{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
@@ -90,8 +82,6 @@ select.gate-input option{color:#000;background:#fff;}
 .refresh-btn{background:rgba(201,150,58,.2);border:1px solid rgba(201,150,58,.4);color:#c9963a;border-radius:9px;padding:8px 14px;font-family:inherit;font-size:13px;cursor:pointer;}
 .targets-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;border-radius:9px;padding:8px 14px;font-family:inherit;font-size:13px;cursor:pointer;}
 .adm-body{max-width:1300px;margin:20px auto;padding:0 16px 40px;}
-
-/* REPORT CARD */
 .report-card{background:linear-gradient(135deg,#0f1f3d 0%,#1a2d4a 100%);border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.6);border:1px solid rgba(201,150,58,.3);}
 .rpt-header{padding:18px 24px;display:flex;align-items:center;gap:16px;border-bottom:1px solid rgba(201,150,58,.2);background:rgba(0,0,0,.2);}
 .rpt-logo{width:52px;height:52px;object-fit:contain;background:#fff;border-radius:10px;padding:4px;}
@@ -130,8 +120,7 @@ table.rpt th,table.rpt td{border:1px solid rgba(255,255,255,.06);padding:4px 8px
 .rpt-footer span{color:rgba(255,255,255,.25);font-size:10px;}
 .rpt-footer .badge{background:rgba(201,150,58,.2);border:1px solid rgba(201,150,58,.3);color:#c9963a;padding:3px 12px;border-radius:20px;font-size:10px;font-weight:600;}
 .screenshot-btn{width:100%;padding:14px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:12px;color:#0f1f3d;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;margin-top:16px;}
-
-/* TARGETS MODAL */
+.adm-loading{text-align:center;padding:40px;color:rgba(255,255,255,.4);font-size:14px;}
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:100;align-items:center;justify-content:center;}
 .modal-overlay.show{display:flex;}
 .modal{background:#1a2d4a;border-radius:16px;padding:24px;width:90%;max-width:600px;max-height:80vh;overflow-y:auto;border:1px solid rgba(201,150,58,.3);}
@@ -144,7 +133,6 @@ table.rpt th,table.rpt td{border:1px solid rgba(255,255,255,.06);padding:4px 8px
 .modal-field input:focus{border-color:#c9963a;}
 .modal-save{width:100%;padding:13px;background:#c9963a;border:none;border-radius:10px;color:#0f1f3d;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px;}
 .modal-close{background:rgba(255,255,255,.08);border:none;color:#fff;border-radius:8px;padding:8px 16px;font-family:inherit;font-size:13px;cursor:pointer;margin-top:8px;width:100%;}
-.adm-loading{text-align:center;padding:40px;color:rgba(255,255,255,.4);font-size:14px;}
 </style></head><body>
 
 <div class="screen active" id="gate">
@@ -220,7 +208,6 @@ table.rpt th,table.rpt td{border:1px solid rgba(255,255,255,.06);padding:4px 8px
   </div>
 </div>
 
-<!-- TARGETS MODAL -->
 <div class="modal-overlay" id="targets-modal">
   <div class="modal">
     <h3>🎯 Aylıq Hədəfləri Dəyiş</h3>
@@ -251,7 +238,6 @@ const SUB_CLS=["sb","so","sg","sp"];
 let currentStoreId=null;
 let editMode=false;
 
-// Default targets
 const DEFAULT_TARGETS={
   panda2:{min:70000,mid:85000,max:100000},
   panda3:{min:80000,mid:95000,max:110000},
@@ -260,39 +246,22 @@ const DEFAULT_TARGETS={
   saxa2:{min:15000,mid:22000,max:30000}
 };
 
-function getTargets(){
-  try{return JSON.parse(localStorage.getItem('panda_targets')||'null')||DEFAULT_TARGETS;}
-  catch{return DEFAULT_TARGETS;}
-}
+function getTargets(){try{return JSON.parse(localStorage.getItem('panda_targets')||'null')||DEFAULT_TARGETS;}catch{return DEFAULT_TARGETS;}}
 function saveTargetsLocal(t){localStorage.setItem('panda_targets',JSON.stringify(t));}
 
 function getPeriodLabel(p){
-  const d=new Date();
-  if(d.getHours()<17)d.setDate(d.getDate()-1);
+  const d=new Date();if(d.getHours()<17)d.setDate(d.getDate()-1);
   const day=d.getDate();
   const labels={"gunluk":`${day} mart 2026`,"ay2026":`1-${day} mart 2026`,"ay2025":`1-${day} mart 2025`,"ay2024":`1-${day} mart 2024`};
   return labels[p]||p;
 }
-
-function todayKey(){
-  const d=new Date();
-  if(d.getHours()<17)d.setDate(d.getDate()-1);
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-}
-
-function daysLeftInMonth(){
-  const d=new Date();
-  const last=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();
-  return last-d.getDate();
-}
-
+function todayKey(){const d=new Date();if(d.getHours()<17)d.setDate(d.getDate()-1);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+function daysLeftInMonth(){const d=new Date();const last=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();return Math.max(1,last-d.getDate());}
 function fmt(n){if(!n||n==0)return '—';return Number(n).toLocaleString('az-AZ',{minimumFractionDigits:0,maximumFractionDigits:0});}
 function formatDate(){const d=new Date();if(d.getHours()<17)d.setDate(d.getDate()-1);return d.toLocaleDateString('az-AZ',{weekday:'long',year:'numeric',month:'long',day:'numeric'});}
-
-function cacheKey(s,p){return `panda4_${s}_${p}_${todayKey()}`;}
+function cacheKey(s,p){return `panda5_${s}_${p}_${todayKey()}`;}
 function getCached(s,p){try{return JSON.parse(localStorage.getItem(cacheKey(s,p))||'null');}catch{return null;}}
 function setCached(s,p,d){localStorage.setItem(cacheKey(s,p),JSON.stringify(d));}
-
 function goTo(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 function logout(){currentStoreId=null;editMode=false;document.getElementById('gate-pw').value='';document.getElementById('gate-err').classList.remove('show');document.getElementById('gate-store').value='';goTo('gate');}
 
@@ -311,8 +280,83 @@ function doLogin(){
 
 function showAdminGate(){
   const pw=prompt('Admin şifrəsi:');
-  if(pw===ADMIN_PW){openAdmin();}
-  else if(pw!==null){alert('Şifrə yanlışdır.');}
+  if(pw===ADMIN_PW){openAdmin();}else if(pw!==null){alert('Şifrə yanlışdır.');}
+}
+
+// ── PLAN CARD ─────────────────────────────────────────────────────────────────
+function calcPlan(storeId, currentSatis){
+  const targets=getTargets();
+  const t=targets[storeId];
+  if(!t) return null;
+  const daysLeft=daysLeftInMonth();
+  const todaySales=getCached(storeId,'gunluk');
+  const todayVal=todaySales?.satis||0;
+
+  // Faiz hesabı — hər hədəf üçün ayrı
+  const pctMin=Math.min(100,Math.round(currentSatis/t.min*100));
+  const pctMid=currentSatis>=t.min?Math.min(100,Math.round(currentSatis/t.mid*100)):0;
+  const pctMax=currentSatis>=t.mid?Math.min(100,Math.round(currentSatis/t.max*100)):0;
+
+  // Aktiv hədəf: hələ tamamlanmamış ən kiçik hədəf
+  let activeTarget, remaining;
+  if(currentSatis<t.min){activeTarget=t.min;remaining=t.min-currentSatis;}
+  else if(currentSatis<t.mid){activeTarget=t.mid;remaining=t.mid-currentSatis;}
+  else if(currentSatis<t.max){activeTarget=t.max;remaining=t.max-currentSatis;}
+  else{activeTarget=t.max;remaining=0;}
+
+  const dailyNeeded=daysLeft>0&&remaining>0?Math.ceil(remaining/daysLeft):0;
+  const activePct=Math.min(100,Math.round(currentSatis/activeTarget*100));
+  const barColor=currentSatis>=t.max?'#10b981':currentSatis>=t.mid?'#3b82f6':currentSatis>=t.min?'#f59e0b':'#ef4444';
+
+  return {t,pctMin,pctMid,pctMax,remaining,dailyNeeded,todayVal,activePct,activeTarget,barColor,daysLeft};
+}
+
+function renderPlanCard(storeId, currentSatis){
+  const p=calcPlan(storeId,currentSatis);
+  if(!p) return '';
+  const {t,pctMin,pctMid,pctMax,remaining,dailyNeeded,todayVal,activePct,activeTarget,barColor,daysLeft}=p;
+
+  const itemClass=(pct,prev)=>{
+    if(pct>=100) return 'done';
+    if(prev>=100||prev===undefined) return 'current';
+    return '';
+  };
+
+  return `<div class="plan-card" id="plan-card-${storeId}">
+    <div class="plan-title">📊 Bu Ay Hədəflər</div>
+    <div class="plan-grid">
+      <div class="plan-item ${itemClass(pctMin,undefined)}">
+        <div class="plan-item-label">🥉 Minimum</div>
+        <div class="plan-item-val">${fmt(t.min)}</div>
+        <div class="plan-item-pct ${pctMin>=100?'done':pctMin>0?'current':'pending'}">${pctMin}%</div>
+      </div>
+      <div class="plan-item ${itemClass(pctMid,pctMin)}">
+        <div class="plan-item-label">🥈 Orta</div>
+        <div class="plan-item-val">${fmt(t.mid)}</div>
+        <div class="plan-item-pct ${pctMid>=100?'done':pctMin>=100?'current':'pending'}">${pctMin>=100?pctMid+'%':'—'}</div>
+      </div>
+      <div class="plan-item ${itemClass(pctMax,pctMid)}">
+        <div class="plan-item-label">🥇 Maksimum</div>
+        <div class="plan-item-val">${fmt(t.max)}</div>
+        <div class="plan-item-pct ${pctMax>=100?'done':pctMid>=100?'current':'pending'}">${pctMid>=100?pctMax+'%':'—'}</div>
+      </div>
+    </div>
+    <div class="plan-progress">
+      <div class="plan-progress-label">
+        <span>Cari aylıq: ${fmt(currentSatis)} ₼</span>
+        <strong>Hədəf: ${fmt(activeTarget)} — ${activePct}%</strong>
+      </div>
+      <div class="plan-bar-wrap">
+        <div class="plan-bar" style="width:${activePct}%;background:${barColor}"></div>
+      </div>
+    </div>
+    <div class="plan-stats">
+      <div class="plan-stat"><div class="plan-stat-label">📅 Qalan gün</div><div class="plan-stat-val">${daysLeft}</div></div>
+      <div class="plan-stat"><div class="plan-stat-label">💰 Gündəlik lazım</div><div class="plan-stat-val">${remaining>0?fmt(dailyNeeded)+' ₼':'✅ Tamamlandı'}</div></div>
+      <div class="plan-stat"><div class="plan-stat-label">📈 Bu gün</div><div class="plan-stat-val">${fmt(todayVal)} ₼</div></div>
+      <div class="plan-stat"><div class="plan-stat-label">⬆️ Növbəti hədəfə qalan</div><div class="plan-stat-val">${remaining>0?fmt(remaining)+' ₼':'🏆 Hamısı tamamlandı'}</div></div>
+    </div>
+  </div>`;
 }
 
 function openStoreForm(storeId){
@@ -324,95 +368,26 @@ function openStoreForm(storeId){
   const body=document.getElementById('sf-body');
   const allSaved=!editMode&&periods.every(p=>getCached(storeId,p)!==null);
 
-  // Plan card
-  const targets=getTargets();
-  const t=targets[storeId];
   const monthlySales=getCached(storeId,'ay2026');
-  const current=monthlySales?.satis||0;
-  const daysLeft=daysLeftInMonth();
-  const todaySales=getCached(storeId,'gunluk');
-  const todayVal=todaySales?.satis||0;
+  const currentSatis=monthlySales?.satis||0;
 
-  let planHtml='';
-  if(t){
-    const pctMin=Math.min(100,Math.round(current/t.min*100));
-    const pctMid=Math.min(100,Math.round(current/t.mid*100));
-    const pctMax=Math.min(100,Math.round(current/t.max*100));
-    const activeClass=(v,min,mid,max)=>{
-      if(v>=max)return 'active-max';
-      if(v>=mid)return 'active-mid';
-      if(v>=min)return 'active-min';
-      return '';
-    };
-    const ac=activeClass(current,t.min,t.mid,t.max);
-    const remaining=Math.max(0,t.mid-current);
-    const dailyNeeded=daysLeft>0?Math.ceil(remaining/daysLeft):0;
-    const barColor=pctMid>=100?'#10b981':pctMin>=100?'#f59e0b':'#3b82f6';
+  let html=renderPlanCard(storeId,currentSatis);
 
-    planHtml=`<div class="plan-card">
-      <div class="plan-title">📊 Bu Ay Hədəflər — ${store.name}</div>
-      <div class="plan-grid">
-        <div class="plan-item ${ac==='active-min'||ac==='active-mid'||ac==='active-max'?'active-min':''}">
-          <div class="plan-item-label">🥉 Minimum</div>
-          <div class="plan-item-val">${fmt(t.min)}</div>
-          <div class="plan-item-sub">${pctMin}% tamamlandı</div>
-        </div>
-        <div class="plan-item ${ac==='active-mid'||ac==='active-max'?'active-mid':''}">
-          <div class="plan-item-label">🥈 Orta</div>
-          <div class="plan-item-val">${fmt(t.mid)}</div>
-          <div class="plan-item-sub">${pctMid}% tamamlandı</div>
-        </div>
-        <div class="plan-item ${ac==='active-max'?'active-max':''}">
-          <div class="plan-item-label">🥇 Maksimum</div>
-          <div class="plan-item-val">${fmt(t.max)}</div>
-          <div class="plan-item-sub">${pctMax}% tamamlandı</div>
-        </div>
-      </div>
-      <div class="plan-progress">
-        <div class="plan-progress-label">
-          <span>Cari: ${fmt(current)} ₼</span>
-          <strong>${pctMid}% (Orta hədəf)</strong>
-        </div>
-        <div class="plan-bar-wrap">
-          <div class="plan-bar" style="width:${pctMid}%;background:${barColor}"></div>
-        </div>
-      </div>
-      <div class="plan-stats">
-        <div class="plan-stat">
-          <div class="plan-stat-label">📅 Qalan gün</div>
-          <div class="plan-stat-val">${daysLeft} gün</div>
-        </div>
-        <div class="plan-stat">
-          <div class="plan-stat-label">💰 Gündəlik lazım</div>
-          <div class="plan-stat-val">${fmt(dailyNeeded)} ₼</div>
-        </div>
-        <div class="plan-stat">
-          <div class="plan-stat-label">📈 Bu gün edildi</div>
-          <div class="plan-stat-val">${fmt(todayVal)} ₼</div>
-        </div>
-        <div class="plan-stat">
-          <div class="plan-stat-label">⬆️ Orta hədəfə qalan</div>
-          <div class="plan-stat-val">${fmt(remaining)} ₼</div>
-        </div>
-      </div>
-    </div>`;
-  }
-
-  let html=planHtml;
-  periods.forEach((period,pi)=>{
+  periods.forEach((period)=>{
     const saved=editMode?null:getCached(storeId,period);
     const cachedVal=getCached(storeId,period);
     const dis=(!editMode&&saved)?'disabled':'';
     const sv=editMode&&cachedVal?cachedVal.satis:(saved?.satis??'');
     const mv=editMode&&cachedVal?cachedVal.menfeet:(saved?.menfeet??'');
     const fv=editMode&&cachedVal?cachedVal.faiz:(saved?.faiz??'');
+    const onInput=period==='ay2026'?`oninput="updatePlanLive(this.value)"`:'' ;
     html+=`<div class="period-block">
       <div class="period-header" style="background:${PERIOD_COLORS[PERIODS.indexOf(period)]}">${getPeriodLabel(period)}</div>
       <table class="period-table">
         <thead><tr><th style="text-align:left">Göstərici</th><th>Satış Məbləği (₼)</th><th>Mənfəət (₼)</th><th>Faiz (%)</th></tr></thead>
         <tbody><tr>
           <td class="pname">Ümumi satış</td>
-          <td><input class="num-inp" type="number" min="0" step="0.01" id="satis-${period}" value="${sv}" placeholder="0.00" ${dis}></td>
+          <td><input class="num-inp" type="number" min="0" step="0.01" id="satis-${period}" value="${sv}" placeholder="0.00" ${dis} ${onInput}></td>
           <td><input class="num-inp" type="number" min="0" step="0.01" id="menfeet-${period}" value="${mv}" placeholder="0.00" ${dis}></td>
           <td><input class="num-inp" type="number" min="0" step="0.1" id="faiz-${period}" value="${fv}" placeholder="0.0" ${dis}></td>
         </tr></tbody>
@@ -432,6 +407,19 @@ function openStoreForm(storeId){
   }
   body.innerHTML=html;
   goTo('store-form');
+}
+
+// Plan kartını real vaxtda yenilə
+function updatePlanLive(val){
+  const currentSatis=parseFloat(val)||0;
+  const storeId=currentStoreId;
+  const newPlanHtml=renderPlanCard(storeId,currentSatis);
+  const existing=document.getElementById(`plan-card-${storeId}`);
+  if(existing){
+    const tmp=document.createElement('div');
+    tmp.innerHTML=newPlanHtml;
+    existing.replaceWith(tmp.firstElementChild);
+  }
 }
 
 function enableEdit(){editMode=true;openStoreForm(currentStoreId);}
@@ -484,6 +472,9 @@ async function submitStore(){
     document.getElementById('sf-success').classList.add('show');
     document.getElementById('sf-save-btn').textContent='✓ Saxlanıldı';
     document.querySelectorAll('.num-inp').forEach(i=>i.disabled=true);
+    // Plan kartını saxlandıqdan sonra yenilə
+    const monthlySatis=parseFloat(document.getElementById('satis-ay2026')?.value)||0;
+    updatePlanLive(monthlySatis);
   }catch(err){
     document.getElementById('sf-loading').classList.remove('show');
     document.getElementById('sf-error').classList.add('show');
@@ -492,22 +483,18 @@ async function submitStore(){
 }
 
 function openAdmin(){
-  const d=new Date();
-  if(d.getHours()<17)d.setDate(d.getDate()-1);
+  const d=new Date();if(d.getHours()<17)d.setDate(d.getDate()-1);
   document.getElementById('adm-date').textContent=formatDate();
   document.getElementById('rpt-day').textContent=d.getDate();
   document.getElementById('rpt-month').textContent=d.toLocaleDateString('az-AZ',{month:'long',year:'numeric'}).toUpperCase();
-  goTo('admin');
-  loadAdminData();
+  goTo('admin');loadAdminData();
 }
 
 async function loadAdminData(){
   document.getElementById('adm-loading').style.display='block';
   document.getElementById('report-tbl').style.display='none';
-  try{
-    const allData=await readBin();
-    buildReport(allData);
-  }catch(e){document.getElementById('adm-loading').textContent='❌ Məlumatlar yüklənmədi.';}
+  try{const allData=await readBin();buildReport(allData);}
+  catch(e){document.getElementById('adm-loading').textContent='❌ Məlumatlar yüklənmədi.';}
 }
 
 function buildReport(allData){
@@ -554,7 +541,6 @@ function buildReport(allData){
   tbl.style.display='table';
 }
 
-// TARGETS MODAL
 function openTargetsModal(){
   const targets=getTargets();
   const wrap=document.getElementById('modal-stores');
@@ -564,9 +550,9 @@ function openTargetsModal(){
     wrap.innerHTML+=`<div class="modal-store">
       <div class="modal-store-name">${store.name}</div>
       <div class="modal-inputs">
-        <div class="modal-field"><label>🥉 Minimum</label><input type="number" id="t-min-${store.id}" value="${t.min}" placeholder="0"></div>
-        <div class="modal-field"><label>🥈 Orta</label><input type="number" id="t-mid-${store.id}" value="${t.mid}" placeholder="0"></div>
-        <div class="modal-field"><label>🥇 Maksimum</label><input type="number" id="t-max-${store.id}" value="${t.max}" placeholder="0"></div>
+        <div class="modal-field"><label>🥉 Minimum</label><input type="number" id="t-min-${store.id}" value="${t.min}"></div>
+        <div class="modal-field"><label>🥈 Orta</label><input type="number" id="t-mid-${store.id}" value="${t.mid}"></div>
+        <div class="modal-field"><label>🥇 Maksimum</label><input type="number" id="t-max-${store.id}" value="${t.max}"></div>
       </div>
     </div>`;
   });
@@ -592,7 +578,7 @@ function saveTargets(){
 async function takeScreenshot(){
   const card=document.getElementById('report-card');
   try{
-    const canvas=await html2canvas(card,{backgroundColor:'#0f1f3d',scale:2,useCORS:true});
+    const canvas=await html2canvas(card,{backgroundColor:'#0f1f3d',scale:2,useCORS:true,logging:false});
     const link=document.createElement('a');
     const d=new Date();
     link.download=`panda-hesabat-${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}.png`;
