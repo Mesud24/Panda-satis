@@ -1,50 +1,276 @@
-<!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Panda Kids Satış Sistemi</title><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>:root{--bg:#f2f2ee;--card:#fff;--navy:#1a2740;--gold:#c9963a;--border:#e0dfd8;--muted:#888880;--text:#1a1a1a;--blue:#2E75B6;--orange:#C55A11;--green:#375623;--purple:#7030A0;--blue-l:#d0e4f5;--orange-l:#fce0cc;--green-l:#d4edcc;--purple-l:#e8d4f5;--row-alt:#f8f8f5;--total-bg:#e4e4de;}*{box-sizing:border-box;margin:0;padding:0;}body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}.screen{display:none;min-height:100vh;flex-direction:column;}.screen.active{display:flex;}#gate{background:var(--navy);align-items:center;justify-content:center;}.gate-wrap{width:100%;max-width:380px;padding:40px 28px;display:flex;flex-direction:column;gap:18px;align-items:center;}.gate-logo{width:120px;height:120px;object-fit:contain;border-radius:16px;background:#fff;padding:8px;box-shadow:0 4px 20px rgba(0,0,0,.3);}.gate-title{font-size:20px;font-weight:700;color:#fff;text-align:center;margin-top:-6px;}.gate-sub{font-size:13px;color:rgba(255,255,255,.4);text-align:center;margin-top:-10px;}.gate-label{width:100%;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.4);margin-bottom:-10px;}.gate-input{width:100%;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:12px;padding:13px 18px;font-family:inherit;font-size:15px;color:#fff;outline:none;}.gate-input:focus{border-color:var(--gold);}.gate-input.pw{letter-spacing:5px;font-size:18px;}.gate-input.pw::placeholder{letter-spacing:1px;font-size:14px;}select.gate-input{appearance:none;cursor:pointer;}select.gate-input option{color:#000;background:#fff;}.gate-btn{width:100%;padding:14px;background:var(--gold);border:none;border-radius:12px;font-family:inherit;font-size:15px;font-weight:700;color:#fff;cursor:pointer;}.gate-err{color:#fca5a5;font-size:13px;display:none;text-align:center;}.gate-err.show{display:block;}.gate-divider{width:100%;height:1px;background:rgba(255,255,255,.1);}.gate-admin-link{color:rgba(255,255,255,.35);font-size:12px;cursor:pointer;background:none;border:none;font-family:inherit;}#store-form{background:var(--bg);}.sf-header{background:var(--navy);padding:16px 24px 22px;}.sf-header-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}.sf-header-logo{width:44px;height:44px;object-fit:contain;background:#fff;border-radius:10px;padding:4px;}.sf-header-text{flex:1;}.back-btn{background:none;border:none;color:rgba(255,255,255,.45);font-family:inherit;font-size:13px;cursor:pointer;padding:0;margin-bottom:6px;display:flex;align-items:center;gap:5px;}.sf-title{font-size:18px;font-weight:700;color:#fff;}.sf-date{font-size:12px;color:var(--gold);margin-top:2px;}.sf-body{max-width:680px;margin:0 auto;padding:24px;flex:1;}.period-block{background:var(--card);border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:16px;}.period-header{padding:11px 16px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#fff;}.period-table{width:100%;border-collapse:collapse;}.period-table thead th{padding:9px 14px;font-size:11px;font-weight:600;text-transform:uppercase;color:#555;background:#f8f8f5;text-align:right;}.period-table thead th:first-child{text-align:left;}.period-table tbody tr{border-top:1px solid var(--border);}.period-table tbody td{padding:10px 14px;}.period-table tbody td.pname{font-weight:600;font-size:14px;color:var(--navy);}.num-inp{width:100%;text-align:right;border:1.5px solid var(--border);border-radius:8px;padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);background:#fff;outline:none;}.num-inp:focus{border-color:var(--gold);}.num-inp:disabled{background:var(--row-alt);color:var(--muted);cursor:not-allowed;}.sf-save-btn{width:100%;padding:15px;background:var(--navy);border:none;border-radius:12px;color:#fff;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px;}.sf-save-btn:disabled{opacity:.5;cursor:not-allowed;}.edit-btn{width:100%;padding:12px;background:transparent;border:1.5px solid var(--navy);border-radius:12px;color:var(--navy);font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;margin-top:8px;}.success-box{display:none;background:#dcfce7;border:1.5px solid #86efac;border-radius:12px;padding:14px 18px;color:#15803d;font-size:14px;margin-top:12px;}.success-box.show{display:block;}.loading-box{display:none;background:#dbeafe;border:1.5px solid #93c5fd;border-radius:12px;padding:14px 18px;color:#1d4ed8;font-size:14px;margin-top:12px;}.loading-box.show{display:block;}.error-box{display:none;background:#fee2e2;border:1.5px solid #fca5a5;border-radius:12px;padding:14px 18px;color:#dc2626;font-size:14px;margin-top:12px;}.error-box.show{display:block;}#admin{background:#e8e8e8;}.adm-header{background:var(--navy);padding:16px 24px 22px;}.adm-header-inner{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}.adm-logo-wrap{display:flex;align-items:center;gap:14px;}.adm-logo{width:48px;height:48px;object-fit:contain;background:#fff;border-radius:10px;padding:4px;}.adm-title h2{font-size:18px;font-weight:700;color:#fff;}.adm-title p{font-size:12px;color:var(--gold);margin-top:3px;}.adm-actions{display:flex;gap:10px;align-items:center;}.refresh-btn{background:rgba(201,150,58,.2);border:1px solid rgba(201,150,58,.4);color:var(--gold);border-radius:9px;padding:8px 14px;font-family:inherit;font-size:13px;cursor:pointer;}.adm-body{max-width:1300px;margin:16px auto;padding:0 16px 40px;overflow-x:auto;}
-.excel-outer{background:#fff;border:2px solid #999;min-width:960px;}
-.excel-table{width:100%;border-collapse:collapse;font-size:11px;font-family:Arial,sans-serif;}
-.excel-table td,.excel-table th{border:1px solid #c0c0c0;padding:3px 6px;white-space:nowrap;}
-.excel-table .rh1 th{height:26px;font-weight:700;color:#fff;text-align:center;vertical-align:middle;font-size:11px;}
-.excel-table .rh1 .lbl{background:#2d3748;color:#fff;text-align:left;font-size:10px;border-right:2px solid #999;}
-.excel-table .rh2 th{height:20px;font-weight:600;text-align:center;vertical-align:middle;font-size:10px;}
-.excel-table .rh2 .lbl{background:#4a5568;color:#fff;text-align:left;font-size:10px;border-right:2px solid #999;}
-.excel-table .dr td{height:20px;vertical-align:middle;}
-.excel-table .dr .nm{font-weight:700;background:#f7f7f7;border-right:2px solid #999;}
-.excel-table .dr .nv{text-align:right;}
-.excel-table .dr .pv{text-align:right;color:#444;}
-.excel-table .dr .dsh{text-align:center;color:#bbb;}
-.excel-table .dr:nth-child(even) td{background:#f0f4f8;}
-.excel-table .dr:nth-child(even) .nm{background:#e8edf2;}
-.excel-table .tr td{height:24px;font-weight:700;background:#d0d8e4;border-top:2px solid #888;vertical-align:middle;}
-.excel-table .tr .nm{border-right:2px solid #999;}
-.excel-table .tr .nv{text-align:right;}
-.excel-table .tr .pv{text-align:right;}
-.hb{background:#2E75B6;}.ho{background:#C55A11;}.hg{background:#375623;}.hp{background:#7030A0;}
-.sb{background:#BDD7EE;color:#000!important;}.so{background:#F4B183;color:#000!important;}.sg{background:#A9D18E;color:#000!important;}.sp{background:#C5A3E0;color:#000!important;}
-.adm-loading{text-align:center;padding:40px;color:var(--muted);font-size:14px;}
+<!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Panda Kids Satış Sistemi</title><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'IBM Plex Sans',sans-serif;background:#f2f2ee;color:#1a1a1a;min-height:100vh;}
+.screen{display:none;min-height:100vh;flex-direction:column;}
+.screen.active{display:flex;}
+
+/* GATE */
+#gate{background:#0f1f3d;align-items:center;justify-content:center;}
+.gate-wrap{width:100%;max-width:380px;padding:40px 28px;display:flex;flex-direction:column;gap:18px;align-items:center;}
+.gate-logo{width:110px;height:110px;object-fit:contain;border-radius:16px;background:#fff;padding:8px;box-shadow:0 4px 20px rgba(0,0,0,.4);}
+.gate-title{font-size:20px;font-weight:700;color:#fff;text-align:center;}
+.gate-sub{font-size:13px;color:rgba(255,255,255,.4);text-align:center;margin-top:-10px;}
+.gate-label{width:100%;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.4);margin-bottom:-10px;}
+.gate-input{width:100%;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:12px;padding:13px 18px;font-family:inherit;font-size:15px;color:#fff;outline:none;}
+.gate-input:focus{border-color:#c9963a;}
+.gate-input.pw{letter-spacing:5px;font-size:18px;}
+.gate-input.pw::placeholder{letter-spacing:1px;font-size:14px;}
+select.gate-input{appearance:none;cursor:pointer;}
+select.gate-input option{color:#000;background:#fff;}
+.gate-btn{width:100%;padding:14px;background:#c9963a;border:none;border-radius:12px;font-family:inherit;font-size:15px;font-weight:700;color:#fff;cursor:pointer;}
+.gate-err{color:#fca5a5;font-size:13px;display:none;text-align:center;}
+.gate-err.show{display:block;}
+.gate-divider{width:100%;height:1px;background:rgba(255,255,255,.1);}
+.gate-admin-link{color:rgba(255,255,255,.35);font-size:12px;cursor:pointer;background:none;border:none;font-family:inherit;}
+
+/* STORE FORM */
+#store-form{background:#f2f2ee;}
+.sf-header{background:#0f1f3d;padding:16px 24px 22px;}
+.sf-header-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;gap:14px;}
+.sf-header-logo{width:40px;height:40px;object-fit:contain;background:#fff;border-radius:8px;padding:3px;}
+.sf-header-text{flex:1;}
+.back-btn{background:none;border:none;color:rgba(255,255,255,.45);font-family:inherit;font-size:13px;cursor:pointer;padding:0;margin-bottom:6px;display:flex;align-items:center;gap:5px;}
+.sf-title{font-size:18px;font-weight:700;color:#fff;}
+.sf-date{font-size:12px;color:#c9963a;margin-top:2px;}
+.sf-body{max-width:680px;margin:0 auto;padding:20px 24px;flex:1;}
+
+/* PLAN CARD */
+.plan-card{background:linear-gradient(135deg,#0f1f3d,#1a2d4a);border-radius:14px;padding:16px;margin-bottom:16px;border:1px solid rgba(201,150,58,.3);}
+.plan-title{color:#c9963a;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px;}
+.plan-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px;}
+.plan-item{background:rgba(255,255,255,.06);border-radius:10px;padding:10px;text-align:center;border:1px solid rgba(255,255,255,.1);}
+.plan-item.active-min{border-color:#f59e0b;background:rgba(245,158,11,.1);}
+.plan-item.active-mid{border-color:#10b981;background:rgba(16,185,129,.1);}
+.plan-item.active-max{border-color:#3b82f6;background:rgba(59,130,246,.1);}
+.plan-item-label{font-size:10px;color:rgba(255,255,255,.5);margin-bottom:4px;}
+.plan-item-val{font-size:14px;font-weight:700;color:#fff;font-family:'IBM Plex Mono',monospace;}
+.plan-item-sub{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px;}
+.plan-progress{margin-top:10px;}
+.plan-progress-label{display:flex;justify-content:space-between;margin-bottom:6px;}
+.plan-progress-label span{font-size:11px;color:rgba(255,255,255,.5);}
+.plan-progress-label strong{font-size:11px;color:#f0c060;}
+.plan-bar-wrap{background:rgba(255,255,255,.1);border-radius:20px;height:8px;overflow:hidden;}
+.plan-bar{height:8px;border-radius:20px;transition:width .3s;}
+.plan-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.plan-stat{background:rgba(255,255,255,.05);border-radius:8px;padding:8px 10px;}
+.plan-stat-label{font-size:10px;color:rgba(255,255,255,.4);}
+.plan-stat-val{font-size:13px;font-weight:700;color:#f0c060;font-family:'IBM Plex Mono',monospace;margin-top:2px;}
+
+/* PERIOD BLOCKS */
+.period-block{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);margin-bottom:14px;}
+.period-header{padding:10px 16px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#fff;}
+.period-table{width:100%;border-collapse:collapse;}
+.period-table thead th{padding:8px 14px;font-size:11px;font-weight:600;text-transform:uppercase;color:#555;background:#f8f8f5;text-align:right;}
+.period-table thead th:first-child{text-align:left;}
+.period-table tbody tr{border-top:1px solid #e8e8e8;}
+.period-table tbody td{padding:10px 14px;}
+.period-table tbody td.pname{font-weight:600;font-size:14px;color:#0f1f3d;}
+.num-inp{width:100%;text-align:right;border:1.5px solid #e0dfd8;border-radius:8px;padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:14px;color:#1a1a1a;background:#fff;outline:none;}
+.num-inp:focus{border-color:#c9963a;}
+.num-inp:disabled{background:#f8f8f5;color:#888;cursor:not-allowed;}
+.sf-save-btn{width:100%;padding:15px;background:#0f1f3d;border:none;border-radius:12px;color:#fff;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px;}
+.sf-save-btn:disabled{opacity:.5;cursor:not-allowed;}
+.edit-btn{width:100%;padding:12px;background:transparent;border:1.5px solid #0f1f3d;border-radius:12px;color:#0f1f3d;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;margin-top:8px;}
+.success-box{display:none;background:#dcfce7;border:1.5px solid #86efac;border-radius:12px;padding:14px;color:#15803d;font-size:14px;margin-top:12px;}
+.success-box.show{display:block;}
+.loading-box{display:none;background:#dbeafe;border:1.5px solid #93c5fd;border-radius:12px;padding:14px;color:#1d4ed8;font-size:14px;margin-top:12px;}
+.loading-box.show{display:block;}
+.error-box{display:none;background:#fee2e2;border:1.5px solid #fca5a5;border-radius:12px;padding:14px;color:#dc2626;font-size:14px;margin-top:12px;}
+.error-box.show{display:block;}
+
+/* ADMIN */
+#admin{background:#1a1a2e;}
+.adm-header{background:linear-gradient(135deg,#0f1f3d,#1a2d4a);padding:18px 24px;border-bottom:1px solid rgba(201,150,58,.2);}
+.adm-header-inner{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.adm-logo-wrap{display:flex;align-items:center;gap:14px;}
+.adm-logo{width:50px;height:50px;object-fit:contain;background:#fff;border-radius:10px;padding:4px;}
+.adm-title h2{font-size:18px;font-weight:700;color:#fff;}
+.adm-title p{font-size:12px;color:#c9963a;margin-top:3px;}
+.adm-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.refresh-btn{background:rgba(201,150,58,.2);border:1px solid rgba(201,150,58,.4);color:#c9963a;border-radius:9px;padding:8px 14px;font-family:inherit;font-size:13px;cursor:pointer;}
+.targets-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;border-radius:9px;padding:8px 14px;font-family:inherit;font-size:13px;cursor:pointer;}
+.adm-body{max-width:1300px;margin:20px auto;padding:0 16px 40px;}
+
+/* REPORT CARD */
+.report-card{background:linear-gradient(135deg,#0f1f3d 0%,#1a2d4a 100%);border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.6);border:1px solid rgba(201,150,58,.3);}
+.rpt-header{padding:18px 24px;display:flex;align-items:center;gap:16px;border-bottom:1px solid rgba(201,150,58,.2);background:rgba(0,0,0,.2);}
+.rpt-logo{width:52px;height:52px;object-fit:contain;background:#fff;border-radius:10px;padding:4px;}
+.rpt-title{flex:1;}
+.rpt-title h2{color:#fff;font-size:16px;font-weight:700;}
+.rpt-title p{color:#c9963a;font-size:12px;margin-top:3px;}
+.rpt-date-box{text-align:right;}
+.rpt-date-box .day{color:#f0c060;font-size:26px;font-weight:700;font-family:'IBM Plex Mono',monospace;line-height:1;}
+.rpt-date-box .month{color:rgba(255,255,255,.4);font-size:11px;margin-top:2px;}
+.rpt-table-wrap{overflow-x:auto;padding:16px;}
+table.rpt{width:100%;border-collapse:collapse;font-size:11px;white-space:nowrap;}
+table.rpt th,table.rpt td{border:1px solid rgba(255,255,255,.06);padding:4px 8px;}
+.rpt .gh th{height:28px;text-align:center;font-weight:700;color:#fff;vertical-align:middle;}
+.rpt .gh .lbl{background:rgba(255,255,255,.05);color:rgba(255,255,255,.35);text-align:left;padding:0 10px;font-size:10px;border-right:1px solid rgba(255,255,255,.1);}
+.rpt .gh .hb{background:linear-gradient(90deg,#1e5fa0,#2E75B6);}
+.rpt .gh .ho{background:linear-gradient(90deg,#9e3d00,#C55A11);}
+.rpt .gh .hg{background:linear-gradient(90deg,#1e3d10,#375623);}
+.rpt .gh .hp{background:linear-gradient(90deg,#4a1070,#7030A0);}
+.rpt .sh th{height:20px;text-align:right;font-size:10px;font-weight:600;padding:2px 8px;vertical-align:middle;}
+.rpt .sh .lbl{background:rgba(0,0,0,.2);border-right:1px solid rgba(255,255,255,.1);text-align:left;}
+.rpt .sh .sb{background:rgba(46,117,182,.2);color:#90c8f0;}
+.rpt .sh .so{background:rgba(197,90,17,.2);color:#f4b183;}
+.rpt .sh .sg{background:rgba(55,86,35,.2);color:#a9d18e;}
+.rpt .sh .sp{background:rgba(112,48,160,.2);color:#c5a3e0;}
+.rpt .dr td{height:22px;padding:3px 8px;vertical-align:middle;border-bottom:1px solid rgba(255,255,255,.04);}
+.rpt .dr .nm{font-weight:600;color:#e0e0e0;background:rgba(255,255,255,.04);border-right:1px solid rgba(255,255,255,.08);}
+.rpt .dr .nv{text-align:right;color:#fff;font-family:'IBM Plex Mono',monospace;}
+.rpt .dr .pv{text-align:right;color:#f0c060;font-family:'IBM Plex Mono',monospace;}
+.rpt .dr .dsh{text-align:center;color:rgba(255,255,255,.2);}
+.rpt .dr:nth-child(odd) td{background:rgba(255,255,255,.03);}
+.rpt .tr td{height:28px;padding:4px 8px;vertical-align:middle;background:rgba(201,150,58,.18)!important;border-top:1px solid rgba(201,150,58,.4);}
+.rpt .tr .nm{color:#f0c060;font-weight:700;font-size:12px;border-right:1px solid rgba(201,150,58,.3);}
+.rpt .tr .nv{text-align:right;color:#f0c060;font-family:'IBM Plex Mono',monospace;font-weight:700;}
+.rpt .tr .pv{text-align:right;color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:700;}
+.rpt-footer{padding:12px 24px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;}
+.rpt-footer span{color:rgba(255,255,255,.25);font-size:10px;}
+.rpt-footer .badge{background:rgba(201,150,58,.2);border:1px solid rgba(201,150,58,.3);color:#c9963a;padding:3px 12px;border-radius:20px;font-size:10px;font-weight:600;}
+.screenshot-btn{width:100%;padding:14px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:12px;color:#0f1f3d;font-family:inherit;font-size:15px;font-weight:700;cursor:pointer;margin-top:16px;}
+
+/* TARGETS MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:100;align-items:center;justify-content:center;}
+.modal-overlay.show{display:flex;}
+.modal{background:#1a2d4a;border-radius:16px;padding:24px;width:90%;max-width:600px;max-height:80vh;overflow-y:auto;border:1px solid rgba(201,150,58,.3);}
+.modal h3{color:#fff;font-size:16px;margin-bottom:16px;}
+.modal-store{background:rgba(255,255,255,.05);border-radius:12px;padding:14px;margin-bottom:12px;border:1px solid rgba(255,255,255,.08);}
+.modal-store-name{color:#c9963a;font-weight:700;font-size:13px;margin-bottom:10px;}
+.modal-inputs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.modal-field label{color:rgba(255,255,255,.5);font-size:10px;text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:4px;}
+.modal-field input{width:100%;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:8px;padding:8px 10px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#fff;outline:none;}
+.modal-field input:focus{border-color:#c9963a;}
+.modal-save{width:100%;padding:13px;background:#c9963a;border:none;border-radius:10px;color:#0f1f3d;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;margin-top:8px;}
+.modal-close{background:rgba(255,255,255,.08);border:none;color:#fff;border-radius:8px;padding:8px 16px;font-family:inherit;font-size:13px;cursor:pointer;margin-top:8px;width:100%;}
+.adm-loading{text-align:center;padding:40px;color:rgba(255,255,255,.4);font-size:14px;}
 </style></head><body>
-<div class="screen active" id="gate"><div class="gate-wrap"><img class="gate-logo" src="IMG_0510.png" alt="Panda Kids"><div class="gate-title">Panda Kids Satış Sistemi</div><div class="gate-sub">Daxil olmaq üçün şöbənizi seçin</div><div class="gate-label">Şöbə</div><select class="gate-input" id="gate-store"><option value="">— Seçin —</option></select><div class="gate-label">Şifrə</div><input class="gate-input pw" type="password" id="gate-pw" placeholder="••••" onkeydown="if(event.key==='Enter')doLogin()"><button class="gate-btn" onclick="doLogin()">Daxil ol →</button><div class="gate-err" id="gate-err">Şifrə yanlışdır</div><div class="gate-divider"></div><button class="gate-admin-link" onclick="showAdminGate()">Admin paneli →</button></div></div>
-<div class="screen" id="store-form"><div class="sf-header"><div class="sf-header-inner"><img class="sf-header-logo" src="IMG_0510.png" alt="Panda Kids"><div class="sf-header-text"><button class="back-btn" onclick="logout()">← Çıxış</button><div class="sf-title" id="sf-title"></div><div class="sf-date" id="sf-date"></div></div></div></div><div class="sf-body" id="sf-body"></div></div>
-<div class="screen" id="admin"><div class="adm-header"><div class="adm-header-inner"><div class="adm-logo-wrap"><img class="adm-logo" src="IMG_0510.png" alt="Panda Kids"><div class="adm-title"><h2>Panda Kids — Yekun Satış Hesabatı</h2><p id="adm-date"></p></div></div><div class="adm-actions"><button class="refresh-btn" onclick="loadAdminData()">↻ Yenilə</button><button class="back-btn" style="color:rgba(255,255,255,.45);margin:0" onclick="logout()">← Çıxış</button></div></div></div><div class="adm-body"><div class="excel-outer"><div class="adm-loading" id="adm-loading">Məlumatlar yüklənir...</div><table class="excel-table" id="report-tbl" style="display:none"></table></div></div></div>
+
+<div class="screen active" id="gate">
+  <div class="gate-wrap">
+    <img class="gate-logo" src="IMG_0510.png" alt="Panda Kids">
+    <div class="gate-title">Panda Kids Satış Sistemi</div>
+    <div class="gate-sub">Daxil olmaq üçün şöbənizi seçin</div>
+    <div class="gate-label">Şöbə</div>
+    <select class="gate-input" id="gate-store"><option value="">— Seçin —</option></select>
+    <div class="gate-label">Şifrə</div>
+    <input class="gate-input pw" type="password" id="gate-pw" placeholder="••••" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="gate-btn" onclick="doLogin()">Daxil ol →</button>
+    <div class="gate-err" id="gate-err">Şifrə yanlışdır</div>
+    <div class="gate-divider"></div>
+    <button class="gate-admin-link" onclick="showAdminGate()">Admin paneli →</button>
+  </div>
+</div>
+
+<div class="screen" id="store-form">
+  <div class="sf-header">
+    <div class="sf-header-inner">
+      <img class="sf-header-logo" src="IMG_0510.png" alt="Panda Kids">
+      <div class="sf-header-text">
+        <button class="back-btn" onclick="logout()">← Çıxış</button>
+        <div class="sf-title" id="sf-title"></div>
+        <div class="sf-date" id="sf-date"></div>
+      </div>
+    </div>
+  </div>
+  <div class="sf-body" id="sf-body"></div>
+</div>
+
+<div class="screen" id="admin">
+  <div class="adm-header">
+    <div class="adm-header-inner">
+      <div class="adm-logo-wrap">
+        <img class="adm-logo" src="IMG_0510.png" alt="Panda Kids">
+        <div class="adm-title">
+          <h2>Panda Kids — Yekun Satış Hesabatı</h2>
+          <p id="adm-date"></p>
+        </div>
+      </div>
+      <div class="adm-actions">
+        <button class="targets-btn" onclick="openTargetsModal()">🎯 Hədəfləri Dəyiş</button>
+        <button class="refresh-btn" onclick="loadAdminData()">↻ Yenilə</button>
+        <button class="back-btn" style="color:rgba(255,255,255,.45);margin:0" onclick="logout()">← Çıxış</button>
+      </div>
+    </div>
+  </div>
+  <div class="adm-body">
+    <div class="report-card" id="report-card">
+      <div class="rpt-header">
+        <img class="rpt-logo" src="IMG_0510.png" alt="Panda Kids">
+        <div class="rpt-title">
+          <h2>Panda Kids — Yekun Satış Hesabatı</h2>
+          <p>Günlük &amp; Aylıq Müqayisəli Hesabat</p>
+        </div>
+        <div class="rpt-date-box">
+          <div class="day" id="rpt-day"></div>
+          <div class="month" id="rpt-month"></div>
+        </div>
+      </div>
+      <div class="rpt-table-wrap">
+        <div class="adm-loading" id="adm-loading">Məlumatlar yüklənir...</div>
+        <table class="rpt" id="report-tbl" style="display:none"></table>
+      </div>
+      <div class="rpt-footer">
+        <span>Panda Kids © 2026 — Avtomatik Hesabat Sistemi</span>
+        <div class="badge">✓ Təsdiqləndi</div>
+      </div>
+    </div>
+    <button class="screenshot-btn" onclick="takeScreenshot()">📸 Hesabatı Şəkil Kimi Yüklə</button>
+  </div>
+</div>
+
+<!-- TARGETS MODAL -->
+<div class="modal-overlay" id="targets-modal">
+  <div class="modal">
+    <h3>🎯 Aylıq Hədəfləri Dəyiş</h3>
+    <div id="modal-stores"></div>
+    <button class="modal-save" onclick="saveTargets()">✓ Yadda Saxla</button>
+    <button class="modal-close" onclick="closeTargetsModal()">Bağla</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 const BIN_ID="69c115d4b7ec241ddc949a2c";
 const API_KEY="$2a$10$FKtiGhR30Uu6WoutSaNJne5SvTJFLM8mr2ZdCj50f1RLbD6tWAX7K";
 const BIN_URL=`https://api.jsonbin.io/v3/b/${BIN_ID}`;
 const ADMIN_PW="admin2026";
-const STORES=[{id:"panda2",name:"Panda 2",pw:"p2-2026"},{id:"panda3",name:"Panda 3",pw:"p3-2026"},{id:"pandaexp",name:"Panda Express",pw:"pe-2026"},{id:"saxa1",name:"Saxa 1 (Əcəmi)",pw:"s1-2026"},{id:"saxa2",name:"Saxa 2 (Xırdalan)",pw:"s2-2026"}];
+const STORES=[
+  {id:"panda2",name:"Panda 2",pw:"p2-2026"},
+  {id:"panda3",name:"Panda 3",pw:"p3-2026"},
+  {id:"pandaexp",name:"Panda Express",pw:"pe-2026"},
+  {id:"saxa1",name:"Saxa 1 (Əcəmi)",pw:"s1-2026"},
+  {id:"saxa2",name:"Saxa 2 (Xırdalan)",pw:"s2-2026"}
+];
 const SAXA_IDS=["saxa1","saxa2"];
 const PERIODS=["gunluk","ay2026","ay2025","ay2024"];
+const PERIOD_COLORS=["#2E75B6","#C55A11","#375623","#7030A0"];
 const HDR_CLS=["hb","ho","hg","hp"];
 const SUB_CLS=["sb","so","sg","sp"];
-const PERIOD_COLORS=["var(--blue)","var(--orange)","var(--green)","var(--purple)"];
 let currentStoreId=null;
 let editMode=false;
+
+// Default targets
+const DEFAULT_TARGETS={
+  panda2:{min:70000,mid:85000,max:100000},
+  panda3:{min:80000,mid:95000,max:110000},
+  pandaexp:{min:40000,mid:55000,max:70000},
+  saxa1:{min:20000,mid:28000,max:35000},
+  saxa2:{min:15000,mid:22000,max:30000}
+};
+
+function getTargets(){
+  try{return JSON.parse(localStorage.getItem('panda_targets')||'null')||DEFAULT_TARGETS;}
+  catch{return DEFAULT_TARGETS;}
+}
+function saveTargetsLocal(t){localStorage.setItem('panda_targets',JSON.stringify(t));}
 
 function getPeriodLabel(p){
   const d=new Date();
   if(d.getHours()<17)d.setDate(d.getDate()-1);
   const day=d.getDate();
-  const month="mart";
-  const year=d.getFullYear();
-  const labels={"gunluk":`${day} ${month} ${year}`,"ay2026":`1-${day} ${month} 2026`,"ay2025":`1-${day} ${month} 2025`,"ay2024":`1-${day} ${month} 2024`};
+  const labels={"gunluk":`${day} mart 2026`,"ay2026":`1-${day} mart 2026`,"ay2025":`1-${day} mart 2025`,"ay2024":`1-${day} mart 2024`};
   return labels[p]||p;
 }
 
@@ -54,21 +280,40 @@ function todayKey(){
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
 
-(function(){const sel=document.getElementById('gate-store');STORES.forEach(s=>{const o=document.createElement('option');o.value=s.id;o.textContent=s.name;sel.appendChild(o);});})();
-function fmt(n){if(!n||n==0)return '-';return Number(n).toLocaleString('az-AZ',{minimumFractionDigits:0,maximumFractionDigits:0});}
-function formatDate(){
+function daysLeftInMonth(){
   const d=new Date();
-  if(d.getHours()<17)d.setDate(d.getDate()-1);
-  return d.toLocaleDateString('az-AZ',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  const last=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();
+  return last-d.getDate();
 }
-function cacheKey(s,p){return `panda3_${s}_${p}_${todayKey()}`;}
+
+function fmt(n){if(!n||n==0)return '—';return Number(n).toLocaleString('az-AZ',{minimumFractionDigits:0,maximumFractionDigits:0});}
+function formatDate(){const d=new Date();if(d.getHours()<17)d.setDate(d.getDate()-1);return d.toLocaleDateString('az-AZ',{weekday:'long',year:'numeric',month:'long',day:'numeric'});}
+
+function cacheKey(s,p){return `panda4_${s}_${p}_${todayKey()}`;}
 function getCached(s,p){try{return JSON.parse(localStorage.getItem(cacheKey(s,p))||'null');}catch{return null;}}
 function setCached(s,p,d){localStorage.setItem(cacheKey(s,p),JSON.stringify(d));}
-function clearCache(s){PERIODS.forEach(p=>localStorage.removeItem(cacheKey(s,p)));}
+
 function goTo(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 function logout(){currentStoreId=null;editMode=false;document.getElementById('gate-pw').value='';document.getElementById('gate-err').classList.remove('show');document.getElementById('gate-store').value='';goTo('gate');}
-function doLogin(){const sid=document.getElementById('gate-store').value;const pw=document.getElementById('gate-pw').value;if(!sid){alert('Zəhmət olmasa şöbəni seçin.');return;}const store=STORES.find(s=>s.id===sid);if(!store||pw!==store.pw){document.getElementById('gate-err').classList.add('show');document.getElementById('gate-pw').value='';return;}document.getElementById('gate-err').classList.remove('show');currentStoreId=sid;editMode=false;openStoreForm(sid);}
-function showAdminGate(){const pw=prompt('Admin şifrəsi:');if(pw===ADMIN_PW){openAdmin();}else if(pw!==null){alert('Şifrə yanlışdır.');}}
+
+(function(){const sel=document.getElementById('gate-store');STORES.forEach(s=>{const o=document.createElement('option');o.value=s.id;o.textContent=s.name;sel.appendChild(o);});})();
+
+function doLogin(){
+  const sid=document.getElementById('gate-store').value;
+  const pw=document.getElementById('gate-pw').value;
+  if(!sid){alert('Zəhmət olmasa şöbəni seçin.');return;}
+  const store=STORES.find(s=>s.id===sid);
+  if(!store||pw!==store.pw){document.getElementById('gate-err').classList.add('show');document.getElementById('gate-pw').value='';return;}
+  document.getElementById('gate-err').classList.remove('show');
+  currentStoreId=sid;editMode=false;
+  openStoreForm(sid);
+}
+
+function showAdminGate(){
+  const pw=prompt('Admin şifrəsi:');
+  if(pw===ADMIN_PW){openAdmin();}
+  else if(pw!==null){alert('Şifrə yanlışdır.');}
+}
 
 function openStoreForm(storeId){
   const store=STORES.find(s=>s.id===storeId);
@@ -78,34 +323,118 @@ function openStoreForm(storeId){
   document.getElementById('sf-date').textContent=formatDate();
   const body=document.getElementById('sf-body');
   const allSaved=!editMode&&periods.every(p=>getCached(storeId,p)!==null);
-  let html='';
+
+  // Plan card
+  const targets=getTargets();
+  const t=targets[storeId];
+  const monthlySales=getCached(storeId,'ay2026');
+  const current=monthlySales?.satis||0;
+  const daysLeft=daysLeftInMonth();
+  const todaySales=getCached(storeId,'gunluk');
+  const todayVal=todaySales?.satis||0;
+
+  let planHtml='';
+  if(t){
+    const pctMin=Math.min(100,Math.round(current/t.min*100));
+    const pctMid=Math.min(100,Math.round(current/t.mid*100));
+    const pctMax=Math.min(100,Math.round(current/t.max*100));
+    const activeClass=(v,min,mid,max)=>{
+      if(v>=max)return 'active-max';
+      if(v>=mid)return 'active-mid';
+      if(v>=min)return 'active-min';
+      return '';
+    };
+    const ac=activeClass(current,t.min,t.mid,t.max);
+    const remaining=Math.max(0,t.mid-current);
+    const dailyNeeded=daysLeft>0?Math.ceil(remaining/daysLeft):0;
+    const barColor=pctMid>=100?'#10b981':pctMin>=100?'#f59e0b':'#3b82f6';
+
+    planHtml=`<div class="plan-card">
+      <div class="plan-title">📊 Bu Ay Hədəflər — ${store.name}</div>
+      <div class="plan-grid">
+        <div class="plan-item ${ac==='active-min'||ac==='active-mid'||ac==='active-max'?'active-min':''}">
+          <div class="plan-item-label">🥉 Minimum</div>
+          <div class="plan-item-val">${fmt(t.min)}</div>
+          <div class="plan-item-sub">${pctMin}% tamamlandı</div>
+        </div>
+        <div class="plan-item ${ac==='active-mid'||ac==='active-max'?'active-mid':''}">
+          <div class="plan-item-label">🥈 Orta</div>
+          <div class="plan-item-val">${fmt(t.mid)}</div>
+          <div class="plan-item-sub">${pctMid}% tamamlandı</div>
+        </div>
+        <div class="plan-item ${ac==='active-max'?'active-max':''}">
+          <div class="plan-item-label">🥇 Maksimum</div>
+          <div class="plan-item-val">${fmt(t.max)}</div>
+          <div class="plan-item-sub">${pctMax}% tamamlandı</div>
+        </div>
+      </div>
+      <div class="plan-progress">
+        <div class="plan-progress-label">
+          <span>Cari: ${fmt(current)} ₼</span>
+          <strong>${pctMid}% (Orta hədəf)</strong>
+        </div>
+        <div class="plan-bar-wrap">
+          <div class="plan-bar" style="width:${pctMid}%;background:${barColor}"></div>
+        </div>
+      </div>
+      <div class="plan-stats">
+        <div class="plan-stat">
+          <div class="plan-stat-label">📅 Qalan gün</div>
+          <div class="plan-stat-val">${daysLeft} gün</div>
+        </div>
+        <div class="plan-stat">
+          <div class="plan-stat-label">💰 Gündəlik lazım</div>
+          <div class="plan-stat-val">${fmt(dailyNeeded)} ₼</div>
+        </div>
+        <div class="plan-stat">
+          <div class="plan-stat-label">📈 Bu gün edildi</div>
+          <div class="plan-stat-val">${fmt(todayVal)} ₼</div>
+        </div>
+        <div class="plan-stat">
+          <div class="plan-stat-label">⬆️ Orta hədəfə qalan</div>
+          <div class="plan-stat-val">${fmt(remaining)} ₼</div>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  let html=planHtml;
   periods.forEach((period,pi)=>{
     const saved=editMode?null:getCached(storeId,period);
     const cachedVal=getCached(storeId,period);
     const dis=(!editMode&&saved)?'disabled':'';
-    const satisVal=editMode&&cachedVal?cachedVal.satis:(saved?.satis??'');
-    const menfeetVal=editMode&&cachedVal?cachedVal.menfeet:(saved?.menfeet??'');
-    const faizVal=editMode&&cachedVal?cachedVal.faiz:(saved?.faiz??'');
-    html+=`<div class="period-block"><div class="period-header" style="background:${PERIOD_COLORS[PERIODS.indexOf(period)]}">${getPeriodLabel(period)}</div><table class="period-table"><thead><tr><th style="text-align:left">Göstərici</th><th>Satış Məbləği (₼)</th><th>Mənfəət (₼)</th><th>Faiz (%)</th></tr></thead><tbody><tr><td class="pname">Ümumi satış</td><td><input class="num-inp" type="number" min="0" step="0.01" id="satis-${period}" value="${satisVal}" placeholder="0.00" ${dis}></td><td><input class="num-inp" type="number" min="0" step="0.01" id="menfeet-${period}" value="${menfeetVal}" placeholder="0.00" ${dis}></td><td><input class="num-inp" type="number" min="0" step="0.1" id="faiz-${period}" value="${faizVal}" placeholder="0.0" ${dis}></td></tr></tbody></table></div>`;
+    const sv=editMode&&cachedVal?cachedVal.satis:(saved?.satis??'');
+    const mv=editMode&&cachedVal?cachedVal.menfeet:(saved?.menfeet??'');
+    const fv=editMode&&cachedVal?cachedVal.faiz:(saved?.faiz??'');
+    html+=`<div class="period-block">
+      <div class="period-header" style="background:${PERIOD_COLORS[PERIODS.indexOf(period)]}">${getPeriodLabel(period)}</div>
+      <table class="period-table">
+        <thead><tr><th style="text-align:left">Göstərici</th><th>Satış Məbləği (₼)</th><th>Mənfəət (₼)</th><th>Faiz (%)</th></tr></thead>
+        <tbody><tr>
+          <td class="pname">Ümumi satış</td>
+          <td><input class="num-inp" type="number" min="0" step="0.01" id="satis-${period}" value="${sv}" placeholder="0.00" ${dis}></td>
+          <td><input class="num-inp" type="number" min="0" step="0.01" id="menfeet-${period}" value="${mv}" placeholder="0.00" ${dis}></td>
+          <td><input class="num-inp" type="number" min="0" step="0.1" id="faiz-${period}" value="${fv}" placeholder="0.0" ${dis}></td>
+        </tr></tbody>
+      </table>
+    </div>`;
   });
+
   if(allSaved){
     html+=`<button class="sf-save-btn" disabled>✓ Saxlanıldı</button>
     <button class="edit-btn" onclick="enableEdit()">✏️ Redakt et</button>
-    <div class="success-box show" id="sf-success">✅ Bu günün məlumatları saxlanıldı.</div>`;
-  } else {
+    <div class="success-box show">✅ Bu günün məlumatları saxlanıldı.</div>`;
+  }else{
     html+=`<button class="sf-save-btn" id="sf-save-btn" onclick="submitStore()">✓ Yadda Saxla</button>
     <div class="loading-box" id="sf-loading">⏳ Göndərilir...</div>
     <div class="success-box" id="sf-success">✅ Məlumatlar uğurla saxlandı!</div>
-    <div class="error-box" id="sf-error">❌ Xəta baş verdi. Yenidən cəhd edin.</div>`;
+    <div class="error-box" id="sf-error">❌ Xəta baş verdi.</div>`;
   }
   body.innerHTML=html;
   goTo('store-form');
 }
 
-function enableEdit(){
-  editMode=true;
-  openStoreForm(currentStoreId);
-}
+function enableEdit(){editMode=true;openStoreForm(currentStoreId);}
 
 async function readBin(){
   try{
@@ -117,9 +446,8 @@ async function readBin(){
 }
 
 async function writeBin(data){
-  try{
-    await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data})});
-  }catch(e){console.error(e);}
+  try{await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data})});}
+  catch(e){console.error(e);}
 }
 
 async function submitStore(){
@@ -141,7 +469,6 @@ async function submitStore(){
   document.getElementById('sf-error').classList.remove('show');
   try{
     const today=todayKey();
-    // Only keep today's data — old days removed
     const allData=await readBin();
     const filtered=allData.filter(r=>r.tarix===today);
     for(const p of periods){
@@ -164,7 +491,15 @@ async function submitStore(){
   }
 }
 
-function openAdmin(){document.getElementById('adm-date').textContent=formatDate();goTo('admin');loadAdminData();}
+function openAdmin(){
+  const d=new Date();
+  if(d.getHours()<17)d.setDate(d.getDate()-1);
+  document.getElementById('adm-date').textContent=formatDate();
+  document.getElementById('rpt-day').textContent=d.getDate();
+  document.getElementById('rpt-month').textContent=d.toLocaleDateString('az-AZ',{month:'long',year:'numeric'}).toUpperCase();
+  goTo('admin');
+  loadAdminData();
+}
 
 async function loadAdminData(){
   document.getElementById('adm-loading').style.display='block';
@@ -182,9 +517,9 @@ function buildReport(allData){
   STORES.forEach(s=>{data[s.name]={};PERIODS.forEach(p=>{data[s.name][p]=null;});});
   rows.forEach(r=>{if(data[r.sobe]!==undefined&&r.period){data[r.sobe][r.period]={satis:r.satis,menfeet:r.menfeet,faiz:r.faiz};}});
   const tbl=document.getElementById('report-tbl');
-  let html=`<tr class="rh1">`;
+  let html=`<tr class="gh">`;
   PERIODS.forEach((p,i)=>{html+=`<th class="lbl">Şöbələr</th><th colspan="3" class="${HDR_CLS[i]}">${getPeriodLabel(p)}</th>`;});
-  html+=`</tr><tr class="rh2">`;
+  html+=`</tr><tr class="sh">`;
   PERIODS.forEach((p,i)=>{html+=`<th class="lbl"></th><th class="${SUB_CLS[i]}">Satış məbləği</th><th class="${SUB_CLS[i]}">Mənfəət</th><th class="${SUB_CLS[i]}">Faiz</th>`;});
   html+=`</tr>`;
   const totals=PERIODS.map(()=>({s:0,m:0,count:0}));
@@ -217,5 +552,52 @@ function buildReport(allData){
   tbl.innerHTML=html;
   document.getElementById('adm-loading').style.display='none';
   tbl.style.display='table';
+}
+
+// TARGETS MODAL
+function openTargetsModal(){
+  const targets=getTargets();
+  const wrap=document.getElementById('modal-stores');
+  wrap.innerHTML='';
+  STORES.forEach(store=>{
+    const t=targets[store.id]||{min:0,mid:0,max:0};
+    wrap.innerHTML+=`<div class="modal-store">
+      <div class="modal-store-name">${store.name}</div>
+      <div class="modal-inputs">
+        <div class="modal-field"><label>🥉 Minimum</label><input type="number" id="t-min-${store.id}" value="${t.min}" placeholder="0"></div>
+        <div class="modal-field"><label>🥈 Orta</label><input type="number" id="t-mid-${store.id}" value="${t.mid}" placeholder="0"></div>
+        <div class="modal-field"><label>🥇 Maksimum</label><input type="number" id="t-max-${store.id}" value="${t.max}" placeholder="0"></div>
+      </div>
+    </div>`;
+  });
+  document.getElementById('targets-modal').classList.add('show');
+}
+
+function closeTargetsModal(){document.getElementById('targets-modal').classList.remove('show');}
+
+function saveTargets(){
+  const targets={};
+  STORES.forEach(store=>{
+    targets[store.id]={
+      min:parseFloat(document.getElementById(`t-min-${store.id}`)?.value)||0,
+      mid:parseFloat(document.getElementById(`t-mid-${store.id}`)?.value)||0,
+      max:parseFloat(document.getElementById(`t-max-${store.id}`)?.value)||0
+    };
+  });
+  saveTargetsLocal(targets);
+  closeTargetsModal();
+  alert('✅ Hədəflər saxlanıldı!');
+}
+
+async function takeScreenshot(){
+  const card=document.getElementById('report-card');
+  try{
+    const canvas=await html2canvas(card,{backgroundColor:'#0f1f3d',scale:2,useCORS:true});
+    const link=document.createElement('a');
+    const d=new Date();
+    link.download=`panda-hesabat-${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}.png`;
+    link.href=canvas.toDataURL('image/png');
+    link.click();
+  }catch(e){alert('Şəkil alınmadı. Yenidən cəhd edin.');}
 }
 </script></body></html>
