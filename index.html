@@ -79,7 +79,7 @@ select.gate-input option{color:#000;background:#fff;}
 .er-box.show{display:block;}
 #admin{background:#0a1628 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='92'%3E%3Cellipse cx='50' cy='38' rx='26' ry='24' fill='rgba(255,255,255,0.03)'/%3E%3Ccircle cx='30' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3Ccircle cx='70' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E") repeat;}
 .adm-hdr{background:rgba(0,0,0,.4);padding:12px 16px;border-bottom:1px solid rgba(201,150,58,.15);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px);}
-.adm-hdr-in{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
+.adm-hdr-in{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
 .adm-logo-w{display:flex;align-items:center;gap:10px;}
 .adm-logo{width:38px;height:38px;object-fit:contain;background:#fff;border-radius:7px;padding:3px;}
 .adm-title h2{font-size:14px;font-weight:700;color:#fff;}
@@ -87,7 +87,7 @@ select.gate-input option{color:#000;background:#fff;}
 .adm-acts{display:flex;gap:6px;flex-wrap:wrap;}
 .ab{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.75);border-radius:7px;padding:6px 10px;font-family:inherit;font-size:11px;cursor:pointer;white-space:nowrap;}
 .ab.gold{background:rgba(201,150,58,.18);border-color:rgba(201,150,58,.35);color:#c9963a;}
-.adm-body{max-width:1100px;margin:0 auto;padding:14px 14px 32px;width:100%;}
+.adm-body{max-width:1200px;margin:0 auto;padding:14px 14px 32px;width:100%;}
 .rc{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.2);}
 .rc-hdr{padding:14px 18px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;align-items:center;gap:12px;}
 .rc-logo{width:38px;height:38px;object-fit:contain;background:#fff;border-radius:7px;padding:3px;flex-shrink:0;}
@@ -98,41 +98,47 @@ select.gate-input option{color:#000;background:#fff;}
 .rday{color:#fff;font-size:24px;font-weight:700;font-family:'IBM Plex Mono',monospace;line-height:1;}
 .rmo{color:rgba(255,255,255,.6);font-size:9px;margin-top:2px;}
 .rc-tbl-w{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;}
-table.rt{border-collapse:collapse;font-size:12px;white-space:nowrap;width:100%;}
-table.rt th,table.rt td{border:1px solid #d0daea;padding:5px 10px;}
-.rt .gh th{text-align:center;font-weight:700;color:#fff;vertical-align:middle;font-size:12px;}
-.rt .gh .lb{background:#e8edf5;color:#2d3748;text-align:left;font-size:11px;border-right:2px solid #b8c5d6;vertical-align:middle;font-weight:700;}
+table.rt{border-collapse:collapse;font-size:11px;white-space:nowrap;}
+table.rt th,table.rt td{border:1px solid #d0daea;padding:4px 8px;}
+/* Başlıqlar */
+.rt .gh th{text-align:center;font-weight:700;color:#fff;vertical-align:middle;font-size:11px;}
+.rt .gh .lb{background:#e8edf5;color:#2d3748;text-align:left;font-size:10px;border-right:2px solid #b8c5d6;vertical-align:middle;font-weight:700;padding:4px 8px;}
 .rt .gh .hb{background:#1d4ed8;}
 .rt .gh .ho{background:#c2410c;}
 .rt .gh .hg{background:#15803d;}
 .rt .gh .hp{background:#6d28d9;}
-.rt .sh th{background:#f0f4f9;color:#2d3748;text-align:right;height:22px;font-size:10px;font-weight:700;padding:4px 10px;}
+.rt .sh th{background:#f0f4f9;color:#2d3748;text-align:right;height:20px;font-size:9px;font-weight:700;padding:3px 8px;}
 .rt .sh .lb{background:#e8edf5;border-right:2px solid #b8c5d6;text-align:left;}
 .rt .sh .sb{color:#1d4ed8;}
 .rt .sh .so{color:#b45309;}
 .rt .sh .sg{color:#15803d;}
 .rt .sh .sp{color:#6d28d9;}
-.rt .dr td{height:26px;padding:4px 10px;vertical-align:middle;border-bottom:1px solid #e8eef6;}
-.rt .dr .nm{font-weight:700;color:#0f1f3d;background:#f0f4f9;border-right:2px solid #dce4ee;font-size:12px;}
-.rt .dr .nv{text-align:right;color:#0f1f3d;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;}
-.rt .dr .pv{text-align:right;color:#2d3748;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;}
-.rt .dr .dsh{text-align:center;color:#b0bec5;font-size:13px;}
+/* Normal şöbə sətri */
+.rt .dr td{height:24px;padding:3px 8px;vertical-align:middle;border-bottom:1px solid #e8eef6;}
+.rt .dr .nm{font-weight:600;color:#0f1f3d;background:#f7fafc;border-right:2px solid #dce4ee;font-size:11px;white-space:nowrap;}
+.rt .dr .nv{text-align:right;color:#0f1f3d;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;}
+.rt .dr .pv{text-align:right;color:#374151;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;}
+.rt .dr .dsh{text-align:center;color:#b0bec5;}
 .rt .dr:nth-child(even) td{background:#f7fafc;}
 .rt .dr:nth-child(even) .nm{background:#eaf0f8;}
-.rt .sr td{height:26px;padding:4px 10px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;}
-.rt .sr .nm{font-weight:700;color:#7c3000;background:#fef6e0!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;font-size:12px;}
-.rt .sr .nv{text-align:right;color:#6b3500;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;}
-.rt .sr .pv{text-align:right;color:#92580a;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;}
-.rt .sr .dsh{text-align:center;color:#f0b429;font-size:13px;}
-.rt .saxa-sep td{background:#fff3cd!important;border-top:3px solid #f59e0b;height:8px;padding:0;}
-.rt .tr td{height:28px;padding:4px 10px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;}
-.rt .tr .nm{color:#bfdbfe;font-weight:700;border-right:2px solid #2d5aa0;font-size:12px;}
-.rt .tr .nv{text-align:right;color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:12px;}
-.rt .tr .pv{text-align:right;color:#93c5fd;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:12px;}
-/* Ox — rəqəmin solunda inline */
-.arr-up{color:#15803d;font-size:12px;font-weight:900;margin-right:3px;}
-.arr-mid{color:#b45309;font-size:12px;font-weight:900;margin-right:3px;}
-.arr-dn{color:#dc2626;font-size:12px;font-weight:900;margin-right:3px;}
+/* Saxa şöbə */
+.rt .sr td{height:24px;padding:3px 8px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;}
+.rt .sr .nm{font-weight:600;color:#7c3000;background:#fef6e0!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;font-size:11px;white-space:nowrap;}
+.rt .sr .nv{text-align:right;color:#6b3500;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;}
+.rt .sr .pv{text-align:right;color:#92580a;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;}
+.rt .sr .dsh{text-align:center;color:#f0b429;}
+/* Saxa ayırıcı */
+.rt .saxa-sep td{background:#fff3cd!important;border-top:2px solid #f59e0b;height:6px;padding:0;}
+/* Ümumi cəm sətri */
+.rt .tr td{height:26px;padding:3px 8px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;}
+.rt .tr .nm{color:#bfdbfe;font-weight:700;border-right:2px solid #2d5aa0;font-size:11px;}
+.rt .tr .nv{text-align:right;color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:11px;}
+.rt .tr .pv{text-align:right;color:#93c5fd;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:11px;}
+/* Oxlar */
+.arr-up{color:#15803d;font-size:11px;font-weight:900;margin-right:2px;}
+.arr-mid{color:#b45309;font-size:11px;font-weight:900;margin-right:2px;}
+.arr-dn{color:#dc2626;font-size:11px;font-weight:900;margin-right:2px;}
+/* Plan faiz rəngləri */
 .pct-done{color:#15803d;font-weight:700;}
 .pct-mid{color:#b45309;font-weight:700;}
 .pct-low{color:#dc2626;font-weight:700;}
@@ -298,50 +304,29 @@ const svS=(v)=>localStorage.setItem('pk_stores',JSON.stringify(v));
 const gT=()=>{try{return JSON.parse(localStorage.getItem('pk_targets')||'null')||DT;}catch{return DT;}};
 const svT=(v)=>localStorage.setItem('pk_targets',JSON.stringify(v));
 
-// ── TARİX MƏNTİQİ ─────────────────────────────────────────────────────────────
-// Saat 17:00-dan SONRA yeni gün başlayır (işçilər artıq satış edəcək yeni gün üçün)
-// Saat 17:00-dan ƏVVƏL hələ əvvəlki günün hesabatı davam edir
 function getWorkDay(){
   const now=new Date();
   const d=new Date(now);
-  // 17:00-dan əvvəlsə, bu günün işi əvvəlki günə aiddir
-  if(now.getHours()<17){
-    d.setDate(d.getDate()-1);
-  }
+  if(now.getHours()<17) d.setDate(d.getDate()-1);
   return d;
 }
-
 function tKey(){
   const d=getWorkDay();
   return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 }
-
-// Qalan iş günü sayı: bu gündən (iş günü) ayın sonuna qədər
-// DÜZGÜN: əgər bu gün 28-dirsə və ay 31-dir, qalan = 31-28 = 3
 function dLeft(){
   const d=getWorkDay();
   const lastDay=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();
-  // Bu günü də sayırıq çünki bu gün hələ satış edilə bilər
   return Math.max(0,lastDay-d.getDate());
 }
-
-// Keçən gün sayı (aylıq ortalama üçün)
 function daysPassed(){
-  const d=getWorkDay();
-  return Math.max(1,d.getDate());
+  return Math.max(1,getWorkDay().getDate());
 }
-
 function getPL(p){
   const d=getWorkDay();
   const day=d.getDate(),yr=d.getFullYear();
-  return {
-    "gunluk":`${day} mart ${yr}`,
-    "ay2026":`1-${day} mart 2026`,
-    "ay2025":`1-${day} mart 2025`,
-    "ay2024":`1-${day} mart 2024`
-  }[p]||p;
+  return {"gunluk":`${day} mart ${yr}`,"ay2026":`1-${day} mart 2026`,"ay2025":`1-${day} mart 2025`,"ay2024":`1-${day} mart 2024`}[p]||p;
 }
-
 function fmt(n){
   if(n===null||n===undefined||n===''||n==0)return '—';
   return Number(n).toLocaleString('az-AZ',{minimumFractionDigits:0,maximumFractionDigits:0}).replace(/\./g,',');
@@ -350,18 +335,15 @@ function fmtDate(){
   const d=getWorkDay();
   return d.toLocaleDateString('az-AZ',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 }
-
-// Dəqiq faiz — heç vaxt 100% göstərmir əgər tam çatmayıbsa
+// Dəqiq faiz — 99.8% kimi
 function exactPct(val,target){
   if(!val||!target||target===0)return null;
   const raw=(val/target)*100;
-  if(raw>=100) return 100.0;
-  // 1 onluq dəqiqliklə, amma 100-ə yuvarlaqlaşdırma yoxdur
+  if(raw>=100)return 100.0;
   return Math.floor(raw*10)/10;
 }
-
 function pctStr(p){
-  if(p===null||p===undefined)return '';
+  if(p===null||p===undefined)return '—';
   if(p===100)return '100%';
   return p.toFixed(1)+'%';
 }
@@ -372,7 +354,26 @@ function pctCls(p){
   return 'pct-low';
 }
 
-function ck(s,p){return `pk13_${s}_${p}_${tKey()}`;}
+// ── AĞIRLIQLI ORTALAMA FAİZ ──────────────────────────────────────────────────
+// Formula: (s1*f1 + s2*f2 + ... ) / (s1+s2+...) — satış həcminə görə ağırlıqlı
+function weightedAvgPct(entries){
+  // entries = [{satis, faiz}, ...]
+  let totalS=0, totalMenfeet=0;
+  entries.forEach(e=>{
+    if(e.satis>0&&e.faiz>0){
+      totalS+=e.satis;
+      totalMenfeet+=e.satis*(e.faiz/100);
+    }
+  });
+  if(totalS===0)return null;
+  return (totalMenfeet/totalS*100);
+}
+function fmtPct(p){
+  if(p===null||p===undefined)return '—';
+  return p.toFixed(1)+'%';
+}
+
+function ck(s,p){return `pk14_${s}_${p}_${tKey()}`;}
 function gc(s,p){try{return JSON.parse(localStorage.getItem(ck(s,p))||'null');}catch{return null;}}
 function sc(s,p,d){localStorage.setItem(ck(s,p),JSON.stringify(d));}
 function goTo(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
@@ -403,39 +404,25 @@ function planHtml(sid,cur){
   const t=gT()[sid];if(!t)return '';
   const dl=dLeft();
   const tv=gc(sid,'gunluk')?.satis||0;
-
-  // Dəqiq faizlər — növbəti hədəfə doğru
   const pm=exactPct(cur,t.min);
   const pd=cur>=t.min?exactPct(cur,t.mid):null;
   const px=cur>=t.mid?exactPct(cur,t.max):null;
-
-  // Aktiv hədəf
   let at,rm;
   if(cur<t.min){at=t.min;rm=t.min-cur;}
   else if(cur<t.mid){at=t.mid;rm=t.mid-cur;}
   else if(cur<t.max){at=t.max;rm=t.max-cur;}
   else{at=t.max;rm=0;}
-
   const ap=exactPct(cur,at)||0;
   const dn=dl>0&&rm>0?Math.ceil(rm/dl):0;
   const bc=cur>=t.max?'#10b981':cur>=t.mid?'#3b82f6':cur>=t.min?'#f59e0b':'#ef4444';
-
-  const pItem=(val,pct,active)=>{
-    const cls=pct===null?'':(pct>=100?'done':active?'current':'');
-    const pctDisplay=pct===null?`<div class="plan-item-pct pen">—</div>`:
-      `<div class="plan-item-pct ${pct>=100?'done':'cur'}">${pctStr(pct)}</div>`;
-    return `<div class="plan-item ${cls}">${pctDisplay}`;
-  };
-
   const apStr=ap===100?'100':ap.toFixed(1);
-
   return `<div class="plan-card" id="pc-${sid}">
     <div class="plan-title">📊 Bu Ay Hədəflər</div>
     <div class="plan-grid">
       <div class="plan-item ${pm!==null&&pm>=100?'done':'current'}">
         <div class="plan-item-label">🥉 Min</div>
         <div class="plan-item-val">${fmt(t.min)}</div>
-        <div class="plan-item-pct ${pm!==null&&pm>=100?'done':'cur'}">${pm!==null?pctStr(pm):'—'}</div>
+        <div class="plan-item-pct ${pm!==null&&pm>=100?'done':'cur'}">${pctStr(pm)}</div>
       </div>
       <div class="plan-item ${pd!==null&&pd>=100?'done':pm!==null&&pm>=100?'current':''}">
         <div class="plan-item-label">🥈 Orta</div>
@@ -490,22 +477,11 @@ function renderForm(sid){
     h+=`<div class="period-block">
       <div class="period-header" style="background:${PC[PERIODS.indexOf(period)]}">${getPL(period)}</div>
       <table class="pt">
-        <thead><tr>
-          <th style="text-align:left">Göstərici</th>
-          <th>Satış (₼)</th>
-          <th>Mənfəət (₼)</th>
-          <th>Faiz (%)</th>
-        </tr></thead>
+        <thead><tr><th style="text-align:left">Göstərici</th><th>Satış (₼)</th><th>Mənfəət (₼)</th><th>Faiz (%)</th></tr></thead>
         <tbody><tr>
           <td class="pn">Ümumi satış</td>
-          <td>
-            <input class="ni" type="number" min="0" step="0.01" id="s-${period}" value="${sv}" placeholder="0" ${dis} ${luS}>
-            ${sv?`<div class="ni-display">${fmt(sv)}</div>`:''}
-          </td>
-          <td>
-            <input class="ni" type="number" min="0" step="0.01" id="m-${period}" value="${mv}" placeholder="0" ${dis} oninput="showFmt('m-${period}')">
-            ${mv?`<div class="ni-display">${fmt(mv)}</div>`:''}
-          </td>
+          <td><input class="ni" type="number" min="0" step="0.01" id="s-${period}" value="${sv}" placeholder="0" ${dis} ${luS}>${sv?`<div class="ni-display">${fmt(sv)}</div>`:''}</td>
+          <td><input class="ni" type="number" min="0" step="0.01" id="m-${period}" value="${mv}" placeholder="0" ${dis} oninput="showFmt('m-${period}')">${mv?`<div class="ni-display">${fmt(mv)}</div>`:''}</td>
           <td><input class="ni-faiz" type="number" min="0" step="0.1" id="f-${period}" value="${fv}" placeholder="0" ${dis}></td>
         </tr></tbody>
       </table>
@@ -545,17 +521,10 @@ function enableEdit(){
 }
 
 async function rBin(){
-  try{
-    const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'}});
-    if(!r.ok)return[];
-    const j=await r.json();
-    return j.data||[];
-  }catch{return[];}
+  try{const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'}});if(!r.ok)return[];const j=await r.json();return j.data||[];}catch{return[];}
 }
 async function wBin(data){
-  try{
-    await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data})});
-  }catch(e){console.error(e);}
+  try{await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data})});}catch(e){console.error(e);}
 }
 
 async function doSave(){
@@ -593,12 +562,7 @@ async function doSave(){
     document.getElementById('sbtn').textContent='✓ Saxlanıldı';
     document.querySelectorAll('.ni,.ni-faiz').forEach(i=>i.disabled=true);
     const sb=document.getElementById('sbtn');
-    if(sb){
-      const eb=document.createElement('button');
-      eb.className='edit-btn';eb.id='edit-btn';
-      eb.textContent='✏️ Düzəliş et';eb.onclick=enableEdit;
-      sb.parentNode.insertBefore(eb,sb.nextSibling);
-    }
+    if(sb){const eb=document.createElement('button');eb.className='edit-btn';eb.id='edit-btn';eb.textContent='✏️ Düzəliş et';eb.onclick=enableEdit;sb.parentNode.insertBefore(eb,sb.nextSibling);}
     upPlan(res['ay2026']?.satis||0);
   }catch{
     document.getElementById('ldb').classList.remove('show');
@@ -607,7 +571,6 @@ async function doSave(){
   }
 }
 
-// ── OX ANALİZİ ────────────────────────────────────────────────────────────────
 function arrowDaily(dailySatis,monthlySatis,minTarget,dl){
   if(!dailySatis||dailySatis===0)return '';
   const remaining=Math.max(0,minTarget-monthlySatis);
@@ -618,7 +581,6 @@ function arrowDaily(dailySatis,monthlySatis,minTarget,dl){
   if(pct>=70)return '<span class="arr-mid">→</span>';
   return '<span class="arr-dn">↓</span>';
 }
-
 function arrowMonthly(monthlySatis,minTarget,dl){
   if(!monthlySatis||monthlySatis===0)return '';
   if(monthlySatis>=minTarget)return '<span class="arr-up">↑</span>';
@@ -636,7 +598,6 @@ function openAdmin(){
   document.getElementById('rpt-mo').textContent=d.toLocaleDateString('az-AZ',{month:'long',year:'numeric'}).toUpperCase();
   goTo('admin');loadAdmin();
 }
-
 async function loadAdmin(){
   document.getElementById('adm-ld').style.display='block';
   document.getElementById('rt').style.display='none';
@@ -650,59 +611,65 @@ function buildReport(all){
   const stores=gS();
   const data={};
   stores.forEach(s=>{data[s.name]={};PERIODS.forEach(p=>{data[s.name][p]=null;});});
-  rows.forEach(r=>{
-    if(data[r.sobe]!==undefined&&r.period){
-      data[r.sobe][r.period]={satis:r.satis,menfeet:r.menfeet,faiz:r.faiz};
-    }
-  });
+  rows.forEach(r=>{if(data[r.sobe]!==undefined&&r.period)data[r.sobe][r.period]={satis:r.satis,menfeet:r.menfeet,faiz:r.faiz};});
 
   const tbl=document.getElementById('rt');
   const targets=gT();
   const dl=dLeft();
+  const pandaStores=stores.filter(s=>s.inTotal);
+  const saxaStores=stores.filter(s=>!s.inTotal);
+  const allDisplayStores=[...pandaStores,...saxaStores];
+  const nPanda=pandaStores.length;
+  const nAll=allDisplayStores.length;
 
-  // ── BAŞLIQ — düzgün rowspan ──
-  // Struktur: [Şöbələr rowspan=2] [günlük colspan=3] [ay2026 colspan=3] [ay2025 colspan=3] [ay2024 colspan=3]
-  let h=`<tr class="gh">
-    <th class="lb" rowspan="2" style="vertical-align:middle;min-width:120px">Şöbələr</th>`;
+  // ── YENİ CƏDVƏL STRUKTURU ──
+  // Sütunlar: [Şöbələr] [günlük: Satış | Mənfəət | Faiz] [ay2026: ...] [ay2025: ...] [ay2024: ...]
+  // Hər dövr altında şöbələrin sətirləri var
+  // Başlıq: period adları colspan=3 hər biri üçün
+
+  let h='';
+
+  // Row 1: period başlıqları
+  h+=`<tr class="gh">
+    <th class="lb" rowspan="2" style="vertical-align:middle;min-width:110px">Şöbələr</th>`;
   PERIODS.forEach((p,i)=>{
     h+=`<th colspan="3" class="${HC[i]}">${getPL(p)}</th>`;
   });
-  h+=`</tr><tr class="sh">`;
+  h+=`</tr>`;
+
+  // Row 2: Satış | Mənfəət | Faiz for each period
+  h+=`<tr class="sh">`;
   PERIODS.forEach((p,i)=>{
     h+=`<th class="${SC[i]}">Satış</th><th class="${SC[i]}">Mənfəət</th><th class="${SC[i]}">Faiz</th>`;
   });
   h+=`</tr>`;
 
-  const tots=PERIODS.map(()=>({s:0,m:0,c:0}));
+  // Totals akkumulyatoru
+  const tots=PERIODS.map(()=>({s:0,m:0,entries:[]}));
 
   // ── PANDA ŞÖBƏLƏRİ ──
-  stores.filter(s=>s.inTotal).forEach(store=>{
+  pandaStores.forEach(store=>{
     const t=targets[store.id];
     const dailySatis=data[store.name]?.['gunluk']?.satis||0;
     const monthlySatis=data[store.name]?.['ay2026']?.satis||0;
-
     h+=`<tr class="dr"><td class="nm">${store.name}</td>`;
     PERIODS.forEach((period,pi)=>{
       const e=data[store.name]?.[period];
       if(e&&(e.satis>0||e.menfeet>0)){
-        // Ox — rəqəmin solunda
         let arrow='';
         if(period==='gunluk'&&t) arrow=arrowDaily(dailySatis,monthlySatis,t.min,dl);
         else if(period==='ay2026'&&t) arrow=arrowMonthly(monthlySatis,t.min,dl);
-
-        // Faiz sütunu: ay2026 üçün min plana dəqiq faiz, digərləri mağaza daxil etdiyi
+        // Faiz sütunu: ay2026 üçün min plana dəqiq faiz, digərləri rentabel
         let faizTd;
         if(period==='ay2026'&&t){
           const p=exactPct(e.satis,t.min);
           faizTd=`<td class="pv ${pctCls(p)}">${pctStr(p)}</td>`;
         }else{
-          faizTd=`<td class="pv">${e.faiz&&e.faiz>0?e.faiz+'%':'—'}</td>`;
+          faizTd=`<td class="pv">${e.faiz&&e.faiz>0?e.faiz.toFixed(1)+'%':'—'}</td>`;
         }
-
-        h+=`<td class="nv">${arrow}${fmt(e.satis)}</td>`;
-        h+=`<td class="nv">${fmt(e.menfeet)}</td>`;
-        h+=faizTd;
-        tots[pi].s+=e.satis;tots[pi].m+=e.menfeet;tots[pi].c++;
+        h+=`<td class="nv">${arrow}${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td>${faizTd}`;
+        tots[pi].s+=e.satis;tots[pi].m+=e.menfeet;
+        if(e.satis>0&&e.faiz>0) tots[pi].entries.push({satis:e.satis,faiz:e.faiz});
       }else{
         h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;
       }
@@ -712,16 +679,16 @@ function buildReport(all){
 
   // ── ÜMUMİ PANDA ──
   h+=`<tr class="tr"><td class="nm">Ümumi Panda</td>`;
-  tots.forEach(t=>{
-    const rentabel=t.s>0?((t.m/t.s)*100).toFixed(1)+'%':'—';
-    h+=`<td class="nv">${t.c?fmt(t.s):'—'}</td>`;
-    h+=`<td class="nv">${t.c?fmt(t.m):'—'}</td>`;
-    h+=`<td class="pv">${t.c?rentabel:'—'}</td>`;
+  tots.forEach((t,pi)=>{
+    // Ağırlıqlı ortalama faiz
+    const avgF=weightedAvgPct(t.entries);
+    h+=`<td class="nv">${t.s>0?fmt(t.s):'—'}</td>`;
+    h+=`<td class="nv">${t.m>0?fmt(t.m):'—'}</td>`;
+    h+=`<td class="pv">${avgF!==null?fmtPct(avgF):'—'}</td>`;
   });
   h+=`</tr>`;
 
   // ── SAXA ŞÖBƏLƏRİ ──
-  const saxaStores=stores.filter(s=>!s.inTotal);
   if(saxaStores.length>0){
     const colCount=1+PERIODS.length*3;
     h+=`<tr class="saxa-sep"><td colspan="${colCount}"></td></tr>`;
@@ -729,7 +696,6 @@ function buildReport(all){
       const t=targets[store.id];
       const dailySatis=data[store.name]?.['gunluk']?.satis||0;
       const monthlySatis=data[store.name]?.['ay2026']?.satis||0;
-
       h+=`<tr class="sr"><td class="nm">${store.name}</td>`;
       PERIODS.forEach((period,pi)=>{
         if(pi>=2){
@@ -740,18 +706,14 @@ function buildReport(all){
             let arrow='';
             if(period==='gunluk'&&t) arrow=arrowDaily(dailySatis,monthlySatis,t.min,dl);
             else if(period==='ay2026'&&t) arrow=arrowMonthly(monthlySatis,t.min,dl);
-
             let faizTd;
             if(period==='ay2026'&&t){
               const p=exactPct(e.satis,t.min);
               faizTd=`<td class="pv ${pctCls(p)}">${pctStr(p)}</td>`;
             }else{
-              faizTd=`<td class="pv">${e.faiz&&e.faiz>0?e.faiz+'%':'—'}</td>`;
+              faizTd=`<td class="pv">${e.faiz&&e.faiz>0?e.faiz.toFixed(1)+'%':'—'}</td>`;
             }
-
-            h+=`<td class="nv">${arrow}${fmt(e.satis)}</td>`;
-            h+=`<td class="nv">${fmt(e.menfeet)}</td>`;
-            h+=faizTd;
+            h+=`<td class="nv">${arrow}${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td>${faizTd}`;
           }else{
             h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;
           }
@@ -789,9 +751,7 @@ function saveTargets(){
       max:parseFloat(document.getElementById(`tx-${store.id}`)?.value)||0
     };
   });
-  svT(tgts);
-  document.getElementById('mo-t').classList.remove('show');
-  alert('✅ Hədəflər saxlanıldı!');
+  svT(tgts);document.getElementById('mo-t').classList.remove('show');alert('✅ Hədəflər saxlanıldı!');
 }
 
 function openStoresMo(){
@@ -816,18 +776,9 @@ function renderStoresMo(){
   });
   document.getElementById('mo-s-body').innerHTML=h;
 }
-function addStore(){
-  tmpStores.push({id:'s'+Date.now(),name:'Yeni Şöbə',pw:'sifre123',inTotal:true});
-  renderStoresMo();
-}
-function delStore(i){
-  if(confirm('Bu şöbəni silmək istəyirsiniz?')){tmpStores.splice(i,1);renderStoresMo();}
-}
-function saveStores(){
-  svS(tmpStores);buildSel();
-  document.getElementById('mo-s').classList.remove('show');
-  alert('✅ Şöbələr yeniləndi!');
-}
+function addStore(){tmpStores.push({id:'s'+Date.now(),name:'Yeni Şöbə',pw:'sifre123',inTotal:true});renderStoresMo();}
+function delStore(i){if(confirm('Bu şöbəni silmək istəyirsiniz?')){tmpStores.splice(i,1);renderStoresMo();}}
+function saveStores(){svS(tmpStores);buildSel();document.getElementById('mo-s').classList.remove('show');alert('✅ Şöbələr yeniləndi!');}
 
 async function takeScreenshot(){
   const card=document.getElementById('rc');
@@ -836,11 +787,7 @@ async function takeScreenshot(){
   tblW.style.overflow='visible';
   tblW.style.width=tblW.scrollWidth+'px';
   try{
-    const canvas=await html2canvas(card,{
-      backgroundColor:'#ffffff',scale:3,useCORS:true,logging:false,
-      width:card.scrollWidth,windowWidth:card.scrollWidth+40,
-      imageTimeout:0,allowTaint:false
-    });
+    const canvas=await html2canvas(card,{backgroundColor:'#ffffff',scale:3,useCORS:true,logging:false,width:card.scrollWidth,windowWidth:card.scrollWidth+40,imageTimeout:0,allowTaint:false});
     prevUrl=canvas.toDataURL('image/png',1.0);
     document.getElementById('prev-img').src=prevUrl;
     document.getElementById('img-ov').classList.add('show');
