@@ -68,6 +68,8 @@ select.gate-input option{color:#000;background:#fff;}
 .ni-faiz:focus{border-color:#c9963a;}
 .ni-faiz:disabled{color:rgba(255,255,255,.25);cursor:not-allowed;background:rgba(255,255,255,.02);}
 .ni-faiz::placeholder{color:rgba(255,255,255,.15);font-size:11px;}
+/* Formatted display under input */
+.ni-display{font-size:10px;color:rgba(255,255,255,.35);text-align:right;margin-top:2px;font-family:'IBM Plex Mono',monospace;}
 .save-btn{width:100%;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:11px;color:#0a1628;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;margin-top:6px;}
 .save-btn:disabled{opacity:.45;cursor:not-allowed;}
 .edit-btn{width:100%;padding:10px;background:transparent;border:1.5px solid rgba(255,255,255,.15);border-radius:11px;color:rgba(255,255,255,.6);font-family:inherit;font-size:12px;cursor:pointer;margin-top:7px;display:block;}
@@ -98,52 +100,49 @@ select.gate-input option{color:#000;background:#fff;}
 .rday{color:#fff;font-size:24px;font-weight:700;font-family:'IBM Plex Mono',monospace;line-height:1;}
 .rmo{color:rgba(255,255,255,.6);font-size:9px;margin-top:2px;}
 .rc-tbl-w{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;}
-table.rt{border-collapse:collapse;font-size:10px;white-space:nowrap;width:100%;}
-table.rt th,table.rt td{border:1px solid #e8ecf0;padding:3px 7px;}
-.rt .gh th{text-align:center;font-weight:700;color:#fff;vertical-align:middle;font-size:10px;}
-.rt .gh .lb{background:#f0f4f8;color:#6b7280;text-align:left;font-size:9px;border-right:2px solid #e0e7ef;vertical-align:middle;min-width:100px;}
+table.rt{border-collapse:collapse;font-size:11px;white-space:nowrap;width:100%;}
+table.rt th,table.rt td{border:1px solid #d8e0ea;padding:4px 9px;}
+.rt .gh th{text-align:center;font-weight:700;color:#fff;vertical-align:middle;font-size:11px;}
+.rt .gh .lb{background:#edf2f7;color:#4a5568;text-align:left;font-size:10px;border-right:2px solid #cbd5e0;vertical-align:middle;min-width:110px;font-weight:700;}
 .rt .gh .hb{background:#2563eb;}
 .rt .gh .ho{background:#ea580c;}
 .rt .gh .hg{background:#16a34a;}
 .rt .gh .hp{background:#7c3aed;}
-.rt .sh th{background:#f8fafc;color:#6b7280;text-align:right;height:18px;font-size:8px;font-weight:600;}
-.rt .sh .lb{background:#eef2f7;border-right:2px solid #e0e7ef;text-align:left;}
-.rt .sh .sb{color:#2563eb;}
-.rt .sh .so{color:#ea580c;}
-.rt .sh .sg{color:#16a34a;}
-.rt .sh .sp{color:#7c3aed;}
-/* Panda rows */
-.rt .dr td{height:21px;padding:2px 7px;vertical-align:middle;border-bottom:1px solid #f1f5f9;}
-.rt .dr .nm{font-weight:600;color:#1e293b;background:#f8fafc;border-right:2px solid #e8ecf0;}
-.rt .dr .nv{text-align:right;color:#1e293b;font-family:'IBM Plex Mono',monospace;}
-.rt .dr .pv{text-align:right;color:#6b7280;font-family:'IBM Plex Mono',monospace;}
-.rt .dr .dsh{text-align:center;color:#d1d5db;}
-.rt .dr .icn{text-align:center;width:20px;padding:2px 3px;font-size:11px;font-weight:700;font-family:'IBM Plex Mono',monospace;}
-.rt .dr:nth-child(even) td{background:#f8fafc;}
-.rt .dr:nth-child(even) .nm{background:#f0f4f8;}
+.rt .sh th{background:#f7fafc;color:#4a5568;text-align:right;height:20px;font-size:9px;font-weight:700;padding:3px 9px;}
+.rt .sh .lb{background:#edf2f7;border-right:2px solid #cbd5e0;text-align:left;}
+.rt .sh .sb{color:#1d4ed8;}
+.rt .sh .so{color:#c2410c;}
+.rt .sh .sg{color:#15803d;}
+.rt .sh .sp{color:#6d28d9;}
+.rt .dr td{height:23px;padding:3px 9px;vertical-align:middle;border-bottom:1px solid #edf2f7;}
+.rt .dr .nm{font-weight:700;color:#1e293b;background:#f7fafc;border-right:2px solid #e2e8f0;font-size:11px;}
+.rt .dr .nv{text-align:right;color:#1e293b;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;}
+.rt .dr .pv{text-align:right;color:#475569;font-family:'IBM Plex Mono',monospace;font-size:11px;}
+.rt .dr .dsh{text-align:center;color:#cbd5e0;font-size:11px;}
+.rt .dr .icn{text-align:center;width:22px;padding:3px 4px;font-size:12px;font-weight:900;}
+.rt .dr:nth-child(even) td{background:#f7fafc;}
+.rt .dr:nth-child(even) .nm{background:#edf2f7;}
 /* Saxa rows */
-.rt .sr td{height:21px;padding:2px 7px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffdf0!important;}
-.rt .sr .nm{font-weight:600;color:#92400e;background:#fef9e7!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;}
-.rt .sr .nv{text-align:right;color:#78350f;font-family:'IBM Plex Mono',monospace;}
-.rt .sr .pv{text-align:right;color:#a16207;font-family:'IBM Plex Mono',monospace;}
+.rt .sr td{height:23px;padding:3px 9px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffdf0!important;}
+.rt .sr .nm{font-weight:700;color:#92400e;background:#fef9e7!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;font-size:11px;}
+.rt .sr .nv{text-align:right;color:#78350f;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;}
+.rt .sr .pv{text-align:right;color:#a16207;font-family:'IBM Plex Mono',monospace;font-size:11px;}
 .rt .sr .dsh{text-align:center;color:#fbbf24;}
-.rt .sr .icn{text-align:center;width:20px;padding:2px 3px;font-size:11px;font-weight:700;font-family:'IBM Plex Mono',monospace;}
-/* Saxa separator */
-.rt .saxa-sep td{background:#fef3c7!important;border-top:2px solid #f59e0b;border-bottom:1px solid #fde68a;padding:4px 8px;}
-.rt .saxa-sep .sxt{color:#92400e;font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;}
+.rt .sr .icn{text-align:center;width:22px;padding:3px 4px;font-size:12px;font-weight:900;}
+/* Saxa separator — sadəcə boş sətir kimi */
+.rt .saxa-sep td{background:#fef3c7!important;border-top:2px solid #f59e0b;padding:3px 9px;height:6px;}
 /* Ümumi Panda */
-.rt .tr td{height:22px;padding:3px 7px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #1e3a6e;}
-.rt .tr .nm{color:#93c5fd;font-weight:700;border-right:2px solid #2d5aa0;}
-.rt .tr .nv{text-align:right;color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:700;}
-.rt .tr .pv{text-align:right;color:#93c5fd;font-family:'IBM Plex Mono',monospace;font-weight:700;}
-.rt .tr .icn{text-align:center;width:20px;font-size:11px;font-weight:700;}
+.rt .tr td{height:24px;padding:3px 9px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #1e3a6e;}
+.rt .tr .nm{color:#93c5fd;font-weight:700;border-right:2px solid #2d5aa0;font-size:11px;}
+.rt .tr .nv{text-align:right;color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:11px;}
+.rt .tr .pv{text-align:right;color:#93c5fd;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:11px;}
+.rt .tr .icn{text-align:center;width:22px;font-size:12px;}
 /* Arrow colors */
-.arr-up{color:#16a34a;}
-.arr-mid{color:#d97706;}
-.arr-dn{color:#dc2626;}
-.rc-ftr{padding:9px 18px;background:#f8fafc;border-top:1px solid #e8ecf0;display:flex;justify-content:space-between;align-items:center;}
-.rc-ftr span{color:#9ca3af;font-size:9px;}
-.rc-ftr .badge{background:#1e3a6e;color:#fff;padding:2px 9px;border-radius:10px;font-size:8px;font-weight:700;}
+.arr-up{color:#16a34a;font-size:13px;}
+.arr-mid{color:#d97706;font-size:13px;}
+.arr-dn{color:#dc2626;font-size:13px;}
+.rc-ftr{padding:8px 18px;background:#f7fafc;border-top:1px solid #e2e8f0;display:flex;justify-content:flex-end;align-items:center;}
+.rc-ftr span{color:#94a3b8;font-size:9px;}
 .scr-btn{width:100%;padding:12px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:11px;color:#0a1628;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;margin-top:10px;}
 .adm-ld{text-align:center;padding:28px;color:#94a3b8;font-size:12px;}
 .img-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;flex-direction:column;align-items:center;justify-content:center;padding:16px;}
@@ -240,7 +239,6 @@ table.rt th,table.rt td{border:1px solid #e8ecf0;padding:3px 7px;}
       </div>
       <div class="rc-ftr">
         <span>Panda Kids © 2026</span>
-        <div class="badge">✓ Təsdiqləndi</div>
       </div>
     </div>
     <button class="scr-btn" onclick="takeScreenshot()">📸 Hesabatı Şəkil Kimi Saxla</button>
@@ -314,9 +312,21 @@ function getPL(p){
   return {"gunluk":`${day} mart ${yr}`,"ay2026":`1-${day} mart 2026`,"ay2025":`1-${day} mart 2025`,"ay2024":`1-${day} mart 2024`}[p]||p;
 }
 function dLeft(){const d=getDay();return Math.max(1,new Date(d.getFullYear(),d.getMonth()+1,0).getDate()-d.getDate());}
-function fmt(n){if(!n||n==0)return '—';return Number(n).toLocaleString('az-AZ',{minimumFractionDigits:0,maximumFractionDigits:0});}
+
+// 10,000 formatı
+function fmt(n){
+  if(!n||n==0)return '—';
+  return Number(n).toLocaleString('az-AZ',{minimumFractionDigits:0,maximumFractionDigits:0}).replace(/\./g,',');
+}
+// Input üzərindəki göstərici
+function fmtDisplay(v){
+  const n=parseFloat(v);
+  if(!n||n===0)return '';
+  return Number(n).toLocaleString('az-AZ',{minimumFractionDigits:0,maximumFractionDigits:0}).replace(/\./g,',');
+}
+
 function fmtDate(){const d=getDay();return d.toLocaleDateString('az-AZ',{weekday:'long',year:'numeric',month:'long',day:'numeric'});}
-function ck(s,p){return `pk11_${s}_${p}_${tKey()}`;}
+function ck(s,p){return `pk12_${s}_${p}_${tKey()}`;}
 function gc(s,p){try{return JSON.parse(localStorage.getItem(ck(s,p))||'null');}catch{return null;}}
 function sc(s,p,d){localStorage.setItem(ck(s,p),JSON.stringify(d));}
 function goTo(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
@@ -394,6 +404,15 @@ function planHtml(sid,cur){
   </div>`;
 }
 
+function showFmt(id){
+  const inp=document.getElementById(id);
+  if(!inp)return;
+  const v=parseFloat(inp.value)||0;
+  let disp=document.getElementById('disp-'+id);
+  if(!disp){disp=document.createElement('div');disp.id='disp-'+id;disp.className='ni-display';inp.parentNode.appendChild(disp);}
+  disp.textContent=v>0?fmt(v):'';
+}
+
 function renderForm(sid){
   const store=gS().find(s=>s.id===sid);
   const isSaxa=!store.inTotal;
@@ -411,15 +430,22 @@ function renderForm(sid){
     const sv=editMode&&cv?cv.satis:(saved?.satis??'');
     const mv=editMode&&cv?cv.menfeet:(saved?.menfeet??'');
     const fv=editMode&&cv?cv.faiz:(saved?.faiz??'');
-    const lu=period==='ay2026'?`oninput="upPlan(this.value)"`:period==='gunluk'?`oninput="upToday()"`:'' ;
+    const luS=period==='ay2026'?`oninput="upPlan(this.value);showFmt('s-${period}')"`:period==='gunluk'?`oninput="upToday();showFmt('s-${period}')"`:
+      `oninput="showFmt('s-${period}')"`;
     h+=`<div class="period-block">
       <div class="period-header" style="background:${PC[PERIODS.indexOf(period)]}">${getPL(period)}</div>
       <table class="pt">
         <thead><tr><th style="text-align:left">Göstərici</th><th>Satış (₼)</th><th>Mənfəət (₼)</th><th>Faiz (%)</th></tr></thead>
         <tbody><tr>
           <td class="pn">Ümumi satış</td>
-          <td><input class="ni" type="number" min="0" step="0.01" id="s-${period}" value="${sv}" placeholder="0" ${dis} ${lu}></td>
-          <td><input class="ni" type="number" min="0" step="0.01" id="m-${period}" value="${mv}" placeholder="0" ${dis}></td>
+          <td>
+            <input class="ni" type="number" min="0" step="0.01" id="s-${period}" value="${sv}" placeholder="0" ${dis} ${luS}>
+            ${sv?`<div class="ni-display">${fmt(sv)}</div>`:''}
+          </td>
+          <td>
+            <input class="ni" type="number" min="0" step="0.01" id="m-${period}" value="${mv}" placeholder="0" ${dis} oninput="showFmt('m-${period}')">
+            ${mv?`<div class="ni-display">${fmt(mv)}</div>`:''}
+          </td>
           <td><input class="ni-faiz" type="number" min="0" step="0.1" id="f-${period}" value="${fv}" placeholder="0" ${dis}></td>
         </tr></tbody>
       </table>
@@ -509,19 +535,30 @@ async function doSave(){
   }
 }
 
-// Excel tipli oxlar — rəngli ▲ ▶ ▼
-function dailyArrow(actual, needed){
-  if(!actual||!needed||needed<=0) return '';
-  const pct=actual/needed*100;
+// ── OX ANALİZİ ────────────────────────────────────────────────────────────────
+// Günlük: Bu günkü satış gündəlik lazım olan məbləğə çatıbmı?
+// Aylıq: Aylıq satış min hədəfə çatıbmı? Çatmasa — qalan günlərə görə çata bilərmi?
+function analyzeDaily(dailySatis, monthlySatis, minTarget, dl){
+  if(!dailySatis||dailySatis===0) return '';
+  const remaining=Math.max(0,minTarget-monthlySatis);
+  const needed=dl>0&&remaining>0?Math.ceil(remaining/dl):0;
+  if(needed===0) return '<span class="arr-up">▲</span>'; // plan artıq tamamlanıb
+  const pct=dailySatis/needed*100;
   if(pct>=100) return '<span class="arr-up">▲</span>';
   if(pct>=70)  return '<span class="arr-mid">▶</span>';
   return '<span class="arr-dn">▼</span>';
 }
-function monthArrow(actual, minTarget){
-  if(!actual||!minTarget||minTarget<=0) return '';
-  const pct=actual/minTarget*100;
-  if(pct>=100) return '<span class="arr-up">▲</span>';
-  if(pct>=70)  return '<span class="arr-mid">▶</span>';
+
+function analyzeMonthly(monthlySatis, minTarget, dl){
+  if(!monthlySatis||monthlySatis===0) return '';
+  if(monthlySatis>=minTarget) return '<span class="arr-up">▲</span>';
+  // Qalan günlərə görə çata bilərmi?
+  const remaining=minTarget-monthlySatis;
+  // Orta gündəlik lazım — əgər bu günkü satış tempi ilə davam etsə
+  // Sadə: remaining/dl — mümkün görünürmü?
+  const dailyAvg=monthlySatis/(30-dl||1); // indiyə qədər orta günlük
+  const projectedEnd=monthlySatis+dailyAvg*dl;
+  if(projectedEnd>=minTarget) return '<span class="arr-mid">▶</span>';
   return '<span class="arr-dn">▼</span>';
 }
 
@@ -550,8 +587,9 @@ function buildReport(all){
   const tbl=document.getElementById('rt');
   const targets=gT();
   const dl=dLeft();
+  const daysPassed=Math.max(1,getDay().getDate()-1);
 
-  // HEADER — Şöbələr rowspan=2
+  // HEADER
   let h=`<tr class="gh">`;
   PERIODS.forEach((p,i)=>{
     h+=`<th class="lb" rowspan="2" style="vertical-align:middle">Şöbələr</th>`;
@@ -559,7 +597,7 @@ function buildReport(all){
   });
   h+=`</tr><tr class="sh">`;
   PERIODS.forEach((p,i)=>{
-    h+=`<th class="${SC[i]}">Satış</th><th class="${SC[i]}">Mənfəət</th><th class="${SC[i]}">Faiz</th><th class="${SC[i]}" style="width:18px"></th>`;
+    h+=`<th class="${SC[i]}">Satış</th><th class="${SC[i]}">Mənfəət</th><th class="${SC[i]}">Faiz</th><th class="${SC[i]}" style="width:20px"></th>`;
   });
   h+=`</tr>`;
 
@@ -568,10 +606,10 @@ function buildReport(all){
   // Panda şöbələri
   stores.filter(s=>s.inTotal).forEach(store=>{
     const t=targets[store.id];
-    const monthlySatis=data[store.name]?.['ay2026']?.satis||0;
-    const dailySatis=data[store.name]?.['gunluk']?.satis||0;
-    const remaining=t?Math.max(0,t.min-monthlySatis):0;
-    const dailyNeeded=dl>0&&remaining>0?Math.ceil(remaining/dl):0;
+    const dailyE=data[store.name]?.['gunluk'];
+    const monthlyE=data[store.name]?.['ay2026'];
+    const dailySatis=dailyE?.satis||0;
+    const monthlySatis=monthlyE?.satis||0;
 
     h+=`<tr class="dr">`;
     PERIODS.forEach((period,pi)=>{
@@ -579,10 +617,10 @@ function buildReport(all){
       const e=data[store.name]?.[period];
       if(e&&(e.satis>0||e.menfeet>0||e.faiz>0)){
         h+=`<td class="nv">${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${e.faiz?e.faiz+'%':'—'}</td>`;
-        if(period==='gunluk'){
-          h+=`<td class="icn">${dailyArrow(e.satis,dailyNeeded)}</td>`;
-        }else if(period==='ay2026'){
-          h+=`<td class="icn">${monthArrow(e.satis,t?.min)}</td>`;
+        if(period==='gunluk'&&t){
+          h+=`<td class="icn">${analyzeDaily(dailySatis,monthlySatis,t.min,dl)}</td>`;
+        }else if(period==='ay2026'&&t){
+          h+=`<td class="icn">${analyzeMonthly(monthlySatis,t.min,dl)}</td>`;
         }else{
           h+=`<td class="icn"></td>`;
         }
@@ -602,16 +640,14 @@ function buildReport(all){
   });
   h+=`</tr>`;
 
-  // Saxa şöbələri
+  // Saxa şöbələri — ayırıcı sətir (yazısız)
   const saxaStores=stores.filter(s=>!s.inTotal);
   if(saxaStores.length>0){
-    const colCount=PERIODS.length*5;
-    h+=`<tr class="saxa-sep"><td class="sxt" colspan="${colCount}">🔶 Filial Şöbələr — Ümumiyə daxil deyil</td></tr>`;
+    h+=`<tr class="saxa-sep"><td colspan="${PERIODS.length*5}"></td></tr>`;
     saxaStores.forEach(store=>{
       const t=targets[store.id];
+      const dailySatis=data[store.name]?.['gunluk']?.satis||0;
       const monthlySatis=data[store.name]?.['ay2026']?.satis||0;
-      const remaining=t?Math.max(0,t.min-monthlySatis):0;
-      const dailyNeeded=dl>0&&remaining>0?Math.ceil(remaining/dl):0;
 
       h+=`<tr class="sr">`;
       PERIODS.forEach((period,pi)=>{
@@ -622,10 +658,10 @@ function buildReport(all){
           const e=data[store.name]?.[period];
           if(e&&(e.satis>0||e.menfeet>0||e.faiz>0)){
             h+=`<td class="nv">${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${e.faiz?e.faiz+'%':'—'}</td>`;
-            if(period==='gunluk'){
-              h+=`<td class="icn">${dailyArrow(e.satis,dailyNeeded)}</td>`;
-            }else if(period==='ay2026'){
-              h+=`<td class="icn">${monthArrow(e.satis,t?.min)}</td>`;
+            if(period==='gunluk'&&t){
+              h+=`<td class="icn">${analyzeDaily(dailySatis,monthlySatis,t.min,dl)}</td>`;
+            }else if(period==='ay2026'&&t){
+              h+=`<td class="icn">${analyzeMonthly(monthlySatis,t.min,dl)}</td>`;
             }else{
               h+=`<td class="icn"></td>`;
             }
@@ -708,8 +744,17 @@ async function takeScreenshot(){
   tblW.style.overflow='visible';
   tblW.style.width=tblW.scrollWidth+'px';
   try{
-    const canvas=await html2canvas(card,{backgroundColor:'#ffffff',scale:2,useCORS:true,logging:false,width:card.scrollWidth,windowWidth:card.scrollWidth+40});
-    prevUrl=canvas.toDataURL('image/png');
+    const canvas=await html2canvas(card,{
+      backgroundColor:'#ffffff',
+      scale:3,
+      useCORS:true,
+      logging:false,
+      width:card.scrollWidth,
+      windowWidth:card.scrollWidth+40,
+      imageTimeout:0,
+      allowTaint:false
+    });
+    prevUrl=canvas.toDataURL('image/png',1.0);
     document.getElementById('prev-img').src=prevUrl;
     document.getElementById('img-ov').classList.add('show');
   }catch(e){alert('Şəkil alınmadı.');}
