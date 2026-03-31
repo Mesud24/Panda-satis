@@ -68,7 +68,6 @@ select.gate-input option{color:#000;background:#fff;}
 .ni-faiz:focus{border-color:#c9963a;}
 .ni-faiz:disabled{color:rgba(255,255,255,.25);cursor:not-allowed;background:rgba(255,255,255,.02);}
 .ni-faiz::placeholder{color:rgba(255,255,255,.15);font-size:11px;}
-/* Formatted display under input */
 .ni-display{font-size:10px;color:rgba(255,255,255,.35);text-align:right;margin-top:2px;font-family:'IBM Plex Mono',monospace;}
 .save-btn{width:100%;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:11px;color:#0a1628;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;margin-top:6px;}
 .save-btn:disabled{opacity:.45;cursor:not-allowed;}
@@ -119,28 +118,27 @@ table.rt th,table.rt td{border:1px solid #d8e0ea;padding:4px 9px;}
 .rt .dr .nv{text-align:right;color:#1e293b;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;}
 .rt .dr .pv{text-align:right;color:#475569;font-family:'IBM Plex Mono',monospace;font-size:11px;}
 .rt .dr .dsh{text-align:center;color:#cbd5e0;font-size:11px;}
-.rt .dr .icn{text-align:center;width:22px;padding:3px 4px;font-size:12px;font-weight:900;}
 .rt .dr:nth-child(even) td{background:#f7fafc;}
 .rt .dr:nth-child(even) .nm{background:#edf2f7;}
-/* Saxa rows */
 .rt .sr td{height:23px;padding:3px 9px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffdf0!important;}
 .rt .sr .nm{font-weight:700;color:#92400e;background:#fef9e7!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;font-size:11px;}
 .rt .sr .nv{text-align:right;color:#78350f;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;}
 .rt .sr .pv{text-align:right;color:#a16207;font-family:'IBM Plex Mono',monospace;font-size:11px;}
 .rt .sr .dsh{text-align:center;color:#fbbf24;}
-.rt .sr .icn{text-align:center;width:22px;padding:3px 4px;font-size:12px;font-weight:900;}
-/* Saxa separator — sadəcə boş sətir kimi */
 .rt .saxa-sep td{background:#fef3c7!important;border-top:2px solid #f59e0b;padding:3px 9px;height:6px;}
-/* Ümumi Panda */
 .rt .tr td{height:24px;padding:3px 9px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #1e3a6e;}
 .rt .tr .nm{color:#93c5fd;font-weight:700;border-right:2px solid #2d5aa0;font-size:11px;}
 .rt .tr .nv{text-align:right;color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:11px;}
 .rt .tr .pv{text-align:right;color:#93c5fd;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:11px;}
-.rt .tr .icn{text-align:center;width:22px;font-size:12px;}
-/* Arrow colors */
-.arr-up{color:#16a34a;font-size:13px;}
-.arr-mid{color:#d97706;font-size:13px;}
-.arr-dn{color:#dc2626;font-size:13px;}
+.arr-up{color:#16a34a;font-size:12px;font-weight:900;margin-left:4px;}
+.arr-mid{color:#d97706;font-size:12px;font-weight:900;margin-left:4px;}
+.arr-dn{color:#dc2626;font-size:12px;font-weight:900;margin-left:4px;}
+.rt .dr .pfz{text-align:right;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;white-space:nowrap;}
+.rt .sr .pfz{text-align:right;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;white-space:nowrap;}
+.rt .tr .pfz{text-align:right;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:#93c5fd;white-space:nowrap;}
+.pct-done{color:#16a34a;}
+.pct-mid{color:#d97706;}
+.pct-low{color:#dc2626;}
 .rc-ftr{padding:8px 18px;background:#f7fafc;border-top:1px solid #e2e8f0;display:flex;justify-content:flex-end;align-items:center;}
 .rc-ftr span{color:#94a3b8;font-size:9px;}
 .scr-btn{width:100%;padding:12px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:11px;color:#0a1628;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;margin-top:10px;}
@@ -313,16 +311,33 @@ function getPL(p){
 }
 function dLeft(){const d=getDay();return Math.max(1,new Date(d.getFullYear(),d.getMonth()+1,0).getDate()-d.getDate());}
 
-// 10,000 formatı
 function fmt(n){
   if(!n||n==0)return '—';
   return Number(n).toLocaleString('az-AZ',{minimumFractionDigits:0,maximumFractionDigits:0}).replace(/\./g,',');
 }
-// Input üzərindəki göstərici
 function fmtDisplay(v){
   const n=parseFloat(v);
   if(!n||n===0)return '';
   return Number(n).toLocaleString('az-AZ',{minimumFractionDigits:0,maximumFractionDigits:0}).replace(/\./g,',');
+}
+
+function calcPct(val,target){
+  if(!target||target===0)return 0;
+  const raw=val/target*100;
+  return Math.floor(raw*10)/10;
+}
+function pctStr(val,target){
+  if(!val||val===0)return '';
+  const p=calcPct(val,target);
+  const s=p%1===0?p.toFixed(0):p.toFixed(1);
+  return s+'%';
+}
+function pctClass(val,target){
+  if(!target)return '';
+  const p=val/target*100;
+  if(p>=100)return 'pct-done';
+  if(p>=70)return 'pct-mid';
+  return 'pct-low';
 }
 
 function fmtDate(){const d=getDay();return d.toLocaleDateString('az-AZ',{weekday:'long',year:'numeric',month:'long',day:'numeric'});}
@@ -356,44 +371,50 @@ function showAdminGate(){
 function calcPlan(sid,cur){
   const t=gT()[sid];if(!t)return null;
   const dl=dLeft(),tv=gc(sid,'gunluk')?.satis||0;
-  const pm=Math.min(100,Math.round(cur/t.min*100));
-  const pd=cur>=t.min?Math.min(100,Math.round(cur/t.mid*100)):0;
-  const px=cur>=t.mid?Math.min(100,Math.round(cur/t.max*100)):0;
+  const pm=calcPct(cur,t.min);
+  const pd=cur>=t.min?calcPct(cur,t.mid):0;
+  const px=cur>=t.mid?calcPct(cur,t.max):0;
   let at,rm;
   if(cur<t.min){at=t.min;rm=t.min-cur;}
   else if(cur<t.mid){at=t.mid;rm=t.mid-cur;}
   else if(cur<t.max){at=t.max;rm=t.max-cur;}
   else{at=t.max;rm=0;}
   const dn=dl>0&&rm>0?Math.ceil(rm/dl):0;
-  const ap=Math.min(100,Math.round(cur/at*100));
+  const ap=Math.min(100,calcPct(cur,at));
   const bc=cur>=t.max?'#10b981':cur>=t.mid?'#3b82f6':cur>=t.min?'#f59e0b':'#ef4444';
-  return{t,pm,pd,px,rm,dn,tv,ap,at,bc,dl};
+  return{t,pm,pd,px,rm,dn,tv,ap,at,bc,dl,cur};
 }
 
 function planHtml(sid,cur){
   const p=calcPlan(sid,cur);if(!p)return '';
   const{t,pm,pd,px,rm,dn,tv,ap,at,bc,dl}=p;
-  const pc=(v,show)=>show?`<div class="plan-item-pct ${v>=100?'done':'cur'}">${v}%</div>`:`<div class="plan-item-pct pen">—</div>`;
+  const pStr=(v,show)=>{
+    if(!show)return `<div class="plan-item-pct pen">—</div>`;
+    const cls=v>=100?'done':'cur';
+    const s=v%1===0?v.toFixed(0):v.toFixed(1);
+    return `<div class="plan-item-pct ${cls}">${s}%</div>`;
+  };
+  const apStr=ap%1===0?ap.toFixed(0):ap.toFixed(1);
   return `<div class="plan-card" id="pc-${sid}">
     <div class="plan-title">📊 Bu Ay Hədəflər</div>
     <div class="plan-grid">
       <div class="plan-item ${pm>=100?'done':'current'}">
         <div class="plan-item-label">🥉 Min</div>
         <div class="plan-item-val">${fmt(t.min)}</div>
-        ${pc(pm,true)}
+        ${pStr(pm,true)}
       </div>
       <div class="plan-item ${pd>=100?'done':pm>=100?'current':''}">
         <div class="plan-item-label">🥈 Orta</div>
         <div class="plan-item-val">${fmt(t.mid)}</div>
-        ${pc(pd,pm>=100)}
+        ${pStr(pd,pm>=100)}
       </div>
       <div class="plan-item ${px>=100?'done':pd>=100?'current':''}">
         <div class="plan-item-label">🥇 Maks</div>
         <div class="plan-item-val">${fmt(t.max)}</div>
-        ${pc(px,pd>=100)}
+        ${pStr(px,pd>=100)}
       </div>
     </div>
-    <div class="plan-prog-lbl"><span>Cari: ${fmt(cur)} ₼</span><strong>${fmt(at)} — ${ap}%</strong></div>
+    <div class="plan-prog-lbl"><span>Cari: ${fmt(cur)} ₼</span><strong>${fmt(at)} — ${apStr}%</strong></div>
     <div class="plan-bar-wrap"><div class="plan-bar" style="width:${ap}%;background:${bc}"></div></div>
     <div class="plan-stats">
       <div class="plan-stat"><div class="plan-stat-lbl">📅 Qalan gün</div><div class="plan-stat-val">${dl}</div></div>
@@ -535,31 +556,33 @@ async function doSave(){
   }
 }
 
-// ── OX ANALİZİ ────────────────────────────────────────────────────────────────
-// Günlük: Bu günkü satış gündəlik lazım olan məbləğə çatıbmı?
-// Aylıq: Aylıq satış min hədəfə çatıbmı? Çatmasa — qalan günlərə görə çata bilərmi?
-function analyzeDaily(dailySatis, monthlySatis, minTarget, dl){
-  if(!dailySatis||dailySatis===0) return '';
+function arrowDaily(dailySatis,monthlySatis,minTarget,dl){
+  if(!dailySatis||dailySatis===0)return '';
   const remaining=Math.max(0,minTarget-monthlySatis);
-  const needed=dl>0&&remaining>0?Math.ceil(remaining/dl):0;
-  if(needed===0) return '<span class="arr-up">▲</span>'; // plan artıq tamamlanıb
+  if(remaining<=0)return '<span class="arr-up">↑</span>';
+  const needed=dl>0?Math.ceil(remaining/dl):remaining;
   const pct=dailySatis/needed*100;
-  if(pct>=100) return '<span class="arr-up">▲</span>';
-  if(pct>=70)  return '<span class="arr-mid">▶</span>';
-  return '<span class="arr-dn">▼</span>';
+  if(pct>=100)return '<span class="arr-up">↑</span>';
+  if(pct>=70)return '<span class="arr-mid">→</span>';
+  return '<span class="arr-dn">↓</span>';
 }
 
-function analyzeMonthly(monthlySatis, minTarget, dl){
-  if(!monthlySatis||monthlySatis===0) return '';
-  if(monthlySatis>=minTarget) return '<span class="arr-up">▲</span>';
-  // Qalan günlərə görə çata bilərmi?
-  const remaining=minTarget-monthlySatis;
-  // Orta gündəlik lazım — əgər bu günkü satış tempi ilə davam etsə
-  // Sadə: remaining/dl — mümkün görünürmü?
-  const dailyAvg=monthlySatis/(30-dl||1); // indiyə qədər orta günlük
+function arrowMonthly(monthlySatis,minTarget,dl){
+  if(!monthlySatis||monthlySatis===0)return '';
+  if(monthlySatis>=minTarget)return '<span class="arr-up">↑</span>';
+  const daysPassed=Math.max(1,getDay().getDate()-1);
+  const dailyAvg=monthlySatis/daysPassed;
   const projectedEnd=monthlySatis+dailyAvg*dl;
-  if(projectedEnd>=minTarget) return '<span class="arr-mid">▶</span>';
-  return '<span class="arr-dn">▼</span>';
+  if(projectedEnd>=minTarget)return '<span class="arr-mid">→</span>';
+  return '<span class="arr-dn">↓</span>';
+}
+
+function pfzCell(val,target){
+  if(!val||val===0||!target)return `<td class="dsh">—</td>`;
+  const p=calcPct(val,target);
+  const s=p%1===0?p.toFixed(0):p.toFixed(1);
+  const c=pctClass(val,target);
+  return `<td class="pfz ${c}">${s}%</td>`;
 }
 
 function openAdmin(){
@@ -587,86 +610,95 @@ function buildReport(all){
   const tbl=document.getElementById('rt');
   const targets=gT();
   const dl=dLeft();
-  const daysPassed=Math.max(1,getDay().getDate()-1);
 
-  // HEADER
-  let h=`<tr class="gh">`;
+  let h=`<tr class="gh">
+    <th class="lb" rowspan="2" style="vertical-align:middle">Şöbələr</th>`;
   PERIODS.forEach((p,i)=>{
-    h+=`<th class="lb" rowspan="2" style="vertical-align:middle">Şöbələr</th>`;
     h+=`<th colspan="4" class="${HC[i]}">${getPL(p)}</th>`;
   });
-  h+=`</tr><tr class="sh">`;
+  h+=`</tr><tr class="sh">
+    <th class="lb" style="background:#edf2f7;border-right:2px solid #cbd5e0;"></th>`;
   PERIODS.forEach((p,i)=>{
-    h+=`<th class="${SC[i]}">Satış</th><th class="${SC[i]}">Mənfəət</th><th class="${SC[i]}">Faiz</th><th class="${SC[i]}" style="width:20px"></th>`;
+    h+=`<th class="${SC[i]}">Satış</th><th class="${SC[i]}">Mənfəət</th><th class="${SC[i]}">Faiz%</th><th class="${SC[i]}">Plan%</th>`;
   });
   h+=`</tr>`;
 
   const tots=PERIODS.map(()=>({s:0,m:0,c:0}));
 
-  // Panda şöbələri
   stores.filter(s=>s.inTotal).forEach(store=>{
     const t=targets[store.id];
-    const dailyE=data[store.name]?.['gunluk'];
-    const monthlyE=data[store.name]?.['ay2026'];
-    const dailySatis=dailyE?.satis||0;
-    const monthlySatis=monthlyE?.satis||0;
+    const dailySatis=data[store.name]?.['gunluk']?.satis||0;
+    const monthlySatis=data[store.name]?.['ay2026']?.satis||0;
 
-    h+=`<tr class="dr">`;
+    h+=`<tr class="dr"><td class="nm">${store.name}</td>`;
     PERIODS.forEach((period,pi)=>{
-      h+=`<td class="nm">${store.name}</td>`;
       const e=data[store.name]?.[period];
       if(e&&(e.satis>0||e.menfeet>0||e.faiz>0)){
-        h+=`<td class="nv">${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${e.faiz?e.faiz+'%':'—'}</td>`;
-        if(period==='gunluk'&&t){
-          h+=`<td class="icn">${analyzeDaily(dailySatis,monthlySatis,t.min,dl)}</td>`;
-        }else if(period==='ay2026'&&t){
-          h+=`<td class="icn">${analyzeMonthly(monthlySatis,t.min,dl)}</td>`;
+        let arrow='';
+        if(period==='gunluk'&&t)arrow=arrowDaily(dailySatis,monthlySatis,t.min,dl);
+        else if(period==='ay2026'&&t)arrow=arrowMonthly(monthlySatis,t.min,dl);
+        h+=`<td class="nv">${fmt(e.satis)}${arrow}</td>`;
+        h+=`<td class="nv">${fmt(e.menfeet)}</td>`;
+        h+=`<td class="pv">${e.faiz?e.faiz+'%':'—'}</td>`;
+        if(period==='ay2026'&&t){
+          h+=pfzCell(e.satis,t.min);
+        }else if(period==='gunluk'&&t){
+          const remaining=Math.max(0,t.min-monthlySatis);
+          const needed=dl>0&&remaining>0?Math.ceil(remaining/dl):0;
+          if(needed>0){h+=pfzCell(e.satis,needed);}
+          else{h+=`<td class="pfz pct-done">✅</td>`;}
         }else{
-          h+=`<td class="icn"></td>`;
+          h+=`<td class="dsh">—</td>`;
         }
         tots[pi].s+=e.satis;tots[pi].m+=e.menfeet;tots[pi].c++;
       }else{
-        h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td><td class="icn"></td>`;
+        h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;
       }
     });
     h+=`</tr>`;
   });
 
-  // Ümumi Panda
-  h+=`<tr class="tr">`;
+  h+=`<tr class="tr"><td class="nm">Ümumi Panda</td>`;
   tots.forEach(t=>{
     const pct=t.s>0?Math.round(t.m/t.s*100)+'%':'—';
-    h+=`<td class="nm">Ümumi Panda</td><td class="nv">${t.c?fmt(t.s):'—'}</td><td class="nv">${t.c?fmt(t.m):'—'}</td><td class="pv">${t.c?pct:'—'}</td><td class="icn"></td>`;
+    h+=`<td class="nv">${t.c?fmt(t.s):'—'}</td><td class="nv">${t.c?fmt(t.m):'—'}</td><td class="pv">${t.c?pct:'—'}</td><td class="dsh">—</td>`;
   });
   h+=`</tr>`;
 
-  // Saxa şöbələri — ayırıcı sətir (yazısız)
   const saxaStores=stores.filter(s=>!s.inTotal);
   if(saxaStores.length>0){
-    h+=`<tr class="saxa-sep"><td colspan="${PERIODS.length*5}"></td></tr>`;
+    const colCount=1+PERIODS.length*4;
+    h+=`<tr class="saxa-sep"><td colspan="${colCount}"></td></tr>`;
     saxaStores.forEach(store=>{
       const t=targets[store.id];
       const dailySatis=data[store.name]?.['gunluk']?.satis||0;
       const monthlySatis=data[store.name]?.['ay2026']?.satis||0;
 
-      h+=`<tr class="sr">`;
+      h+=`<tr class="sr"><td class="nm">${store.name}</td>`;
       PERIODS.forEach((period,pi)=>{
-        h+=`<td class="nm">${store.name}</td>`;
         if(pi>=2){
-          h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td><td class="icn"></td>`;
+          h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;
         }else{
           const e=data[store.name]?.[period];
           if(e&&(e.satis>0||e.menfeet>0||e.faiz>0)){
-            h+=`<td class="nv">${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${e.faiz?e.faiz+'%':'—'}</td>`;
-            if(period==='gunluk'&&t){
-              h+=`<td class="icn">${analyzeDaily(dailySatis,monthlySatis,t.min,dl)}</td>`;
-            }else if(period==='ay2026'&&t){
-              h+=`<td class="icn">${analyzeMonthly(monthlySatis,t.min,dl)}</td>`;
+            let arrow='';
+            if(period==='gunluk'&&t)arrow=arrowDaily(dailySatis,monthlySatis,t.min,dl);
+            else if(period==='ay2026'&&t)arrow=arrowMonthly(monthlySatis,t.min,dl);
+            h+=`<td class="nv">${fmt(e.satis)}${arrow}</td>`;
+            h+=`<td class="nv">${fmt(e.menfeet)}</td>`;
+            h+=`<td class="pv">${e.faiz?e.faiz+'%':'—'}</td>`;
+            if(period==='ay2026'&&t){
+              h+=pfzCell(e.satis,t.min);
+            }else if(period==='gunluk'&&t){
+              const remaining=Math.max(0,t.min-monthlySatis);
+              const needed=dl>0&&remaining>0?Math.ceil(remaining/dl):0;
+              if(needed>0){h+=pfzCell(e.satis,needed);}
+              else{h+=`<td class="pfz pct-done">✅</td>`;}
             }else{
-              h+=`<td class="icn"></td>`;
+              h+=`<td class="dsh">—</td>`;
             }
           }else{
-            h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td><td class="icn"></td>`;
+            h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;
           }
         }
       });
