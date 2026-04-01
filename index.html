@@ -1,13 +1,14 @@
-<!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Panda Kids Satış Sistemi</title><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Panda</title><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{width:100%;overflow-x:hidden;}
 body{font-family:'IBM Plex Sans',sans-serif;color:#fff;min-height:100vh;background:#0a1628 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='92'%3E%3Cellipse cx='50' cy='38' rx='26' ry='24' fill='rgba(255,255,255,0.03)'/%3E%3Ccircle cx='30' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3Ccircle cx='70' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E") repeat;}
 .screen{display:none;min-height:100vh;flex-direction:column;}
 .screen.active{display:flex;}
+/* GATE */
 #gate{align-items:center;justify-content:center;}
 .gate-wrap{width:100%;max-width:340px;padding:32px 20px;display:flex;flex-direction:column;gap:13px;align-items:center;}
 .gate-logo{width:90px;height:90px;object-fit:contain;border-radius:18px;background:#fff;padding:7px;box-shadow:0 6px 24px rgba(0,0,0,.5);}
-.gate-title{font-size:17px;font-weight:700;color:#fff;text-align:center;}
+.gate-title{font-size:20px;font-weight:700;color:#fff;text-align:center;}
 .gate-sub{font-size:11px;color:rgba(255,255,255,.35);text-align:center;margin-top:-6px;}
 .gate-label{width:100%;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:rgba(255,255,255,.3);margin-bottom:-8px;}
 .gate-input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.1);border-radius:11px;padding:11px 14px;font-family:inherit;font-size:14px;color:#fff;outline:none;}
@@ -20,7 +21,12 @@ select.gate-input option{color:#000;background:#fff;}
 .gate-err{color:#fca5a5;font-size:11px;display:none;text-align:center;}
 .gate-err.show{display:block;}
 .gate-divider{width:100%;height:1px;background:rgba(255,255,255,.07);}
-.gate-admin-link{color:rgba(255,255,255,.28);font-size:11px;cursor:pointer;background:none;border:none;font-family:inherit;}
+.gate-links{display:flex;gap:16px;}
+.gate-link{color:rgba(255,255,255,.28);font-size:11px;cursor:pointer;background:none;border:none;font-family:inherit;}
+.remember-row{display:flex;align-items:center;gap:8px;width:100%;}
+.remember-row label{color:rgba(255,255,255,.5);font-size:12px;cursor:pointer;}
+.remember-row input[type=checkbox]{cursor:pointer;transform:scale(1.2);}
+/* STORE FORM */
 #store-form{background:#0a1628 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='92'%3E%3Cellipse cx='50' cy='38' rx='26' ry='24' fill='rgba(255,255,255,0.03)'/%3E%3Ccircle cx='30' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3Ccircle cx='70' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E") repeat;}
 .sf-header{background:rgba(0,0,0,.35);padding:12px 16px 16px;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px);}
 .sf-header-inner{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:10px;}
@@ -30,6 +36,7 @@ select.gate-input option{color:#000;background:#fff;}
 .sf-title{font-size:15px;font-weight:700;color:#fff;}
 .sf-date{font-size:10px;color:#c9963a;margin-top:1px;}
 .sf-body{max-width:560px;margin:0 auto;padding:12px 14px 24px;flex:1;width:100%;}
+/* PLAN CARD */
 .plan-card{background:rgba(255,255,255,.055);border-radius:12px;padding:12px;margin-bottom:12px;border:1px solid rgba(201,150,58,.2);}
 .plan-title{color:#c9963a;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:9px;}
 .plan-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:9px;}
@@ -51,6 +58,7 @@ select.gate-input option{color:#000;background:#fff;}
 .plan-stat{background:rgba(255,255,255,.04);border-radius:7px;padding:6px 8px;}
 .plan-stat-lbl{font-size:9px;color:rgba(255,255,255,.3);}
 .plan-stat-val{font-size:12px;font-weight:700;color:#f0c060;font-family:'IBM Plex Mono',monospace;margin-top:1px;}
+/* PERIOD BLOCKS */
 .period-block{background:rgba(255,255,255,.055);border-radius:11px;overflow:hidden;margin-bottom:9px;border:1px solid rgba(255,255,255,.07);}
 .period-header{padding:8px 12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#fff;}
 .pt{width:100%;border-collapse:collapse;table-layout:fixed;}
@@ -77,7 +85,8 @@ select.gate-input option{color:#000;background:#fff;}
 .ld-box.show{display:block;}
 .er-box{display:none;background:rgba(239,68,68,.12);border:1.5px solid rgba(239,68,68,.25);border-radius:11px;padding:11px;color:#fca5a5;font-size:12px;margin-top:9px;}
 .er-box.show{display:block;}
-#admin{background:#0a1628 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='92'%3E%3Cellipse cx='50' cy='38' rx='26' ry='24' fill='rgba(255,255,255,0.03)'/%3E%3Ccircle cx='30' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3Ccircle cx='70' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E") repeat;}
+/* ADMIN / VIEW */
+#admin,#viewer{background:#0a1628 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='92'%3E%3Cellipse cx='50' cy='38' rx='26' ry='24' fill='rgba(255,255,255,0.03)'/%3E%3Ccircle cx='30' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3Ccircle cx='70' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E") repeat;}
 .adm-hdr{background:rgba(0,0,0,.4);padding:12px 16px;border-bottom:1px solid rgba(201,150,58,.15);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px);}
 .adm-hdr-in{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
 .adm-logo-w{display:flex;align-items:center;gap:10px;}
@@ -87,7 +96,9 @@ select.gate-input option{color:#000;background:#fff;}
 .adm-acts{display:flex;gap:6px;flex-wrap:wrap;}
 .ab{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.75);border-radius:7px;padding:6px 10px;font-family:inherit;font-size:11px;cursor:pointer;white-space:nowrap;}
 .ab.gold{background:rgba(201,150,58,.18);border-color:rgba(201,150,58,.35);color:#c9963a;}
+.ab.view-badge{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.3);color:#6ee7b7;cursor:default;}
 .adm-body{max-width:1200px;margin:0 auto;padding:14px 14px 32px;width:100%;}
+/* REPORT CARD */
 .rc{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.2);}
 .rc-hdr{padding:14px 18px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;align-items:center;gap:12px;}
 .rc-logo{width:38px;height:38px;object-fit:contain;background:#fff;border-radius:7px;padding:3px;flex-shrink:0;}
@@ -98,39 +109,44 @@ select.gate-input option{color:#000;background:#fff;}
 .rday{color:#fff;font-size:24px;font-weight:700;font-family:'IBM Plex Mono',monospace;line-height:1;}
 .rmo{color:rgba(255,255,255,.6);font-size:9px;margin-top:2px;}
 .rc-tbl-w{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;}
+/* CƏDVƏL */
 table.rt{border-collapse:collapse;font-size:11px;white-space:nowrap;}
-table.rt th,table.rt td{border:1px solid #d0daea;padding:4px 8px;}
-/* Başlıqlar */
-.rt .gh th{text-align:center;font-weight:700;color:#fff;vertical-align:middle;font-size:11px;}
-.rt .gh .lb{background:#e8edf5;color:#2d3748;text-align:left;font-size:10px;border-right:2px solid #b8c5d6;vertical-align:middle;font-weight:700;padding:4px 8px;}
-.rt .gh .hb{background:#1d4ed8;}
-.rt .gh .ho{background:#c2410c;}
-.rt .gh .hg{background:#15803d;}
-.rt .gh .hp{background:#6d28d9;}
-.rt .sh th{background:#f0f4f9;color:#2d3748;text-align:right;height:20px;font-size:9px;font-weight:700;padding:3px 8px;}
-.rt .sh .lb{background:#e8edf5;border-right:2px solid #b8c5d6;text-align:left;}
-.rt .sh .sb{color:#1d4ed8;}
-.rt .sh .so{color:#b45309;}
-.rt .sh .sg{color:#15803d;}
-.rt .sh .sp{color:#6d28d9;}
-/* Normal şöbə sətri */
-.rt .dr td{height:24px;padding:3px 8px;vertical-align:middle;border-bottom:1px solid #e8eef6;}
-.rt .dr .nm{font-weight:600;color:#0f1f3d;background:#f7fafc;border-right:2px solid #dce4ee;font-size:11px;white-space:nowrap;}
+table.rt th,table.rt td{border:1px solid #cdd5e0;padding:3px 8px;}
+/* Period başlıq sətri */
+.rt .gh0 th{text-align:center;font-weight:700;color:#fff;vertical-align:middle;font-size:11px;height:26px;}
+.rt .gh0 .lb0{background:#1e3a6e;color:#93c5fd;font-size:10px;font-weight:700;text-align:left;border-right:2px solid #2d5aa0;}
+.rt .gh0 .hb{background:#1d4ed8;}
+.rt .gh0 .ho{background:#c2410c;}
+.rt .gh0 .hg{background:#15803d;}
+.rt .gh0 .hp{background:#6d28d9;}
+/* Alt başlıq */
+.rt .sh0 th{background:#f0f4f9;color:#374151;text-align:right;height:19px;font-size:9px;font-weight:700;padding:2px 8px;}
+.rt .sh0 .lb0{background:#e2e8f2;border-right:2px solid #b8c5d6;text-align:left;color:#1e3a6e;font-weight:700;}
+.rt .sh0 .sb{color:#1d4ed8;}
+.rt .sh0 .so{color:#b45309;}
+.rt .sh0 .sg{color:#15803d;}
+.rt .sh0 .sp{color:#6d28d9;}
+/* Şöbə adı sətri (period altında) */
+.rt .sn-row td{background:#e8edf5!important;height:18px;padding:2px 8px;font-size:9px;font-weight:700;color:#1e3a6e;border-bottom:1px solid #c8d5e8;}
+.rt .sn-row .sn-lbl{border-right:2px solid #b8c5d6;white-space:nowrap;}
+/* Normal məlumat sətri */
+.rt .dr td{height:23px;padding:3px 8px;vertical-align:middle;border-bottom:1px solid #edf2f7;}
+.rt .dr .nm{font-weight:700;color:#0f1f3d;background:#f7fafc;border-right:2px solid #dce4ee;font-size:11px;white-space:nowrap;}
 .rt .dr .nv{text-align:right;color:#0f1f3d;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;}
 .rt .dr .pv{text-align:right;color:#374151;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;}
 .rt .dr .dsh{text-align:center;color:#b0bec5;}
 .rt .dr:nth-child(even) td{background:#f7fafc;}
 .rt .dr:nth-child(even) .nm{background:#eaf0f8;}
-/* Saxa şöbə */
-.rt .sr td{height:24px;padding:3px 8px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;}
-.rt .sr .nm{font-weight:600;color:#7c3000;background:#fef6e0!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;font-size:11px;white-space:nowrap;}
+/* Saxa sətri */
+.rt .sr td{height:23px;padding:3px 8px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;}
+.rt .sr .nm{font-weight:700;color:#7c3000;background:#fef6e0!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;font-size:11px;white-space:nowrap;}
 .rt .sr .nv{text-align:right;color:#6b3500;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;}
 .rt .sr .pv{text-align:right;color:#92580a;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;}
 .rt .sr .dsh{text-align:center;color:#f0b429;}
-/* Saxa ayırıcı */
-.rt .saxa-sep td{background:#fff3cd!important;border-top:2px solid #f59e0b;height:6px;padding:0;}
-/* Ümumi cəm sətri */
-.rt .tr td{height:26px;padding:3px 8px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;}
+/* Saxa ayırıcı — daha böyük boşluq */
+.rt .saxa-gap td{height:14px;background:#fff3cd!important;border-top:3px solid #f59e0b;padding:0;}
+/* Ümumi sətir */
+.rt .tr td{height:25px;padding:3px 8px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;}
 .rt .tr .nm{color:#bfdbfe;font-weight:700;border-right:2px solid #2d5aa0;font-size:11px;}
 .rt .tr .nv{text-align:right;color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:11px;}
 .rt .tr .pv{text-align:right;color:#93c5fd;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:11px;}
@@ -138,7 +154,6 @@ table.rt th,table.rt td{border:1px solid #d0daea;padding:4px 8px;}
 .arr-up{color:#15803d;font-size:11px;font-weight:900;margin-right:2px;}
 .arr-mid{color:#b45309;font-size:11px;font-weight:900;margin-right:2px;}
 .arr-dn{color:#dc2626;font-size:11px;font-weight:900;margin-right:2px;}
-/* Plan faiz rəngləri */
 .pct-done{color:#15803d;font-weight:700;}
 .pct-mid{color:#b45309;font-weight:700;}
 .pct-low{color:#dc2626;font-weight:700;}
@@ -146,6 +161,20 @@ table.rt th,table.rt td{border:1px solid #d0daea;padding:4px 8px;}
 .rc-ftr span{color:#94a3b8;font-size:9px;}
 .scr-btn{width:100%;padding:12px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:11px;color:#0a1628;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;margin-top:10px;}
 .adm-ld{text-align:center;padding:28px;color:#94a3b8;font-size:12px;}
+/* PLAN PANELİ (viewer üçün) */
+.plan-panel{background:rgba(255,255,255,.04);border-radius:12px;padding:14px;margin-bottom:16px;border:1px solid rgba(255,255,255,.08);}
+.plan-panel-title{color:#c9963a;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px;}
+.plan-store-grid{display:flex;flex-direction:column;gap:8px;}
+.plan-store-item{background:rgba(255,255,255,.05);border-radius:9px;padding:10px 12px;border:1px solid rgba(255,255,255,.07);}
+.psi-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.psi-name{font-size:12px;font-weight:700;color:#fff;}
+.psi-pct{font-size:12px;font-weight:700;font-family:'IBM Plex Mono',monospace;}
+.psi-bar-wrap{background:rgba(255,255,255,.08);border-radius:20px;height:6px;overflow:hidden;margin-bottom:5px;}
+.psi-bar{height:6px;border-radius:20px;}
+.psi-stats{display:flex;gap:12px;flex-wrap:wrap;}
+.psi-stat{font-size:10px;color:rgba(255,255,255,.5);}
+.psi-stat span{color:#f0c060;font-weight:700;}
+/* IMAGE PREVIEW */
 .img-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;flex-direction:column;align-items:center;justify-content:center;padding:16px;}
 .img-ov.show{display:flex;}
 .img-ov img{max-width:100%;max-height:65vh;border-radius:8px;}
@@ -153,6 +182,7 @@ table.rt th,table.rt td{border:1px solid #d0daea;padding:4px 8px;}
 .img-save{flex:1;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:11px;color:#0a1628;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;}
 .img-cls{padding:13px 18px;background:rgba(255,255,255,.1);border:none;border-radius:11px;color:#fff;font-family:inherit;font-size:14px;cursor:pointer;}
 .img-hint{color:rgba(255,255,255,.35);font-size:10px;margin-top:8px;text-align:center;}
+/* MODAL */
 .mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:100;align-items:center;justify-content:center;padding:14px;}
 .mo.show{display:flex;}
 .mo-box{background:#0f1f3d;border-radius:14px;padding:18px;width:100%;max-width:520px;max-height:88vh;overflow-y:auto;border:1px solid rgba(201,150,58,.2);}
@@ -173,22 +203,31 @@ table.rt th,table.rt td{border:1px solid #d0daea;padding:4px 8px;}
 .check-row input[type=checkbox]{cursor:pointer;transform:scale(1.2);}
 </style></head><body>
 
+<!-- GATE -->
 <div class="screen active" id="gate">
   <div class="gate-wrap">
-    <img class="gate-logo" src="IMG_0510.png" alt="Panda Kids">
-    <div class="gate-title">Panda Kids Satış Sistemi</div>
-    <div class="gate-sub">Şöbənizi seçib daxil olun</div>
+    <img class="gate-logo" src="IMG_0510.png" alt="Panda">
+    <div class="gate-title">Panda</div>
+    <div class="gate-sub">Satış İdarəetmə Sistemi</div>
     <div class="gate-label">Şöbə</div>
     <select class="gate-input" id="gate-store"><option value="">— Seçin —</option></select>
     <div class="gate-label">Şifrə</div>
     <input class="gate-input pw" type="password" id="gate-pw" placeholder="••••" onkeydown="if(event.key==='Enter')doLogin()">
+    <div class="remember-row">
+      <input type="checkbox" id="remember-me">
+      <label for="remember-me">Məni xatırla</label>
+    </div>
     <button class="gate-btn" onclick="doLogin()">Daxil ol →</button>
     <div class="gate-err" id="gate-err">Şifrə yanlışdır</div>
     <div class="gate-divider"></div>
-    <button class="gate-admin-link" onclick="showAdminGate()">Admin paneli →</button>
+    <div class="gate-links">
+      <button class="gate-link" onclick="showAdminGate()">Admin →</button>
+      <button class="gate-link" onclick="showViewerGate()">Baxış →</button>
+    </div>
   </div>
 </div>
 
+<!-- STORE FORM -->
 <div class="screen" id="store-form">
   <div class="sf-header">
     <div class="sf-header-inner">
@@ -203,15 +242,13 @@ table.rt th,table.rt td{border:1px solid #d0daea;padding:4px 8px;}
   <div class="sf-body" id="sf-body"></div>
 </div>
 
+<!-- ADMIN -->
 <div class="screen" id="admin">
   <div class="adm-hdr">
     <div class="adm-hdr-in">
       <div class="adm-logo-w">
         <img class="adm-logo" src="IMG_0510.png" alt="">
-        <div class="adm-title">
-          <h2>Panda Kids — Yekun Hesabat</h2>
-          <p id="adm-date"></p>
-        </div>
+        <div class="adm-title"><h2>Panda — Yekun Hesabat</h2><p id="adm-date"></p></div>
       </div>
       <div class="adm-acts">
         <button class="ab" onclick="openStoresMo()">👥 Şöbələr</button>
@@ -225,14 +262,8 @@ table.rt th,table.rt td{border:1px solid #d0daea;padding:4px 8px;}
     <div class="rc" id="rc">
       <div class="rc-hdr">
         <img class="rc-logo" src="IMG_0510.png" alt="">
-        <div class="rc-title">
-          <h2>Panda Kids — Yekun Satış Hesabatı</h2>
-          <p>Günlük &amp; Aylıq Müqayisəli Hesabat</p>
-        </div>
-        <div class="rc-date">
-          <div class="rday" id="rpt-day"></div>
-          <div class="rmo" id="rpt-mo"></div>
-        </div>
+        <div class="rc-title"><h2>Panda — Yekun Satış Hesabatı</h2><p>Günlük &amp; Aylıq Müqayisəli Hesabat</p></div>
+        <div class="rc-date"><div class="rday" id="rpt-day"></div><div class="rmo" id="rpt-mo"></div></div>
       </div>
       <div class="rc-tbl-w">
         <div class="adm-ld" id="adm-ld">Məlumatlar yüklənir...</div>
@@ -244,6 +275,46 @@ table.rt th,table.rt td{border:1px solid #d0daea;padding:4px 8px;}
   </div>
 </div>
 
+<!-- VIEWER -->
+<div class="screen" id="viewer">
+  <div class="adm-hdr">
+    <div class="adm-hdr-in">
+      <div class="adm-logo-w">
+        <img class="adm-logo" src="IMG_0510.png" alt="">
+        <div class="adm-title"><h2>Panda — Baxış Paneli</h2><p id="view-date"></p></div>
+      </div>
+      <div class="adm-acts">
+        <div class="ab view-badge">👁 Baxış rejimi</div>
+        <button class="ab gold" onclick="loadViewer()">↻ Yenilə</button>
+        <button class="ab" onclick="logout()">← Çıx</button>
+      </div>
+    </div>
+  </div>
+  <div class="adm-body">
+    <!-- Plan paneli -->
+    <div class="plan-panel" id="view-plans">
+      <div class="plan-panel-title">📊 Şöbələrin Plan Vəziyyəti</div>
+      <div class="plan-store-grid" id="view-plan-grid">
+        <div style="color:rgba(255,255,255,.4);font-size:12px">Yüklənir...</div>
+      </div>
+    </div>
+    <!-- Hesabat cədvəli -->
+    <div class="rc" id="rc-view">
+      <div class="rc-hdr">
+        <img class="rc-logo" src="IMG_0510.png" alt="">
+        <div class="rc-title"><h2>Panda — Yekun Satış Hesabatı</h2><p>Günlük &amp; Aylıq Müqayisəli Hesabat</p></div>
+        <div class="rc-date"><div class="rday" id="view-day"></div><div class="rmo" id="view-mo"></div></div>
+      </div>
+      <div class="rc-tbl-w">
+        <div class="adm-ld" id="view-ld">Məlumatlar yüklənir...</div>
+        <table class="rt" id="rt-view" style="display:none"></table>
+      </div>
+      <div class="rc-ftr"><span>Panda Kids © 2026</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- IMAGE PREVIEW -->
 <div class="img-ov" id="img-ov">
   <img id="prev-img" src="" alt="Hesabat">
   <div class="img-btns">
@@ -253,6 +324,7 @@ table.rt th,table.rt td{border:1px solid #d0daea;padding:4px 8px;}
   <div class="img-hint">iPhone: Şəkilə uzun basın → "Fotoya saxla"</div>
 </div>
 
+<!-- TARGETS MODAL -->
 <div class="mo" id="mo-t">
   <div class="mo-box">
     <h3>🎯 Aylıq Hədəflər</h3>
@@ -262,9 +334,10 @@ table.rt th,table.rt td{border:1px solid #d0daea;padding:4px 8px;}
   </div>
 </div>
 
+<!-- STORES MODAL -->
 <div class="mo" id="mo-s">
   <div class="mo-box">
-    <h3>👥 Şöbələr və Şifrələr</h3>
+    <h3>👥 Şöbələr, Şifrələr və Baxış Parolu</h3>
     <div id="mo-s-body"></div>
     <button class="add-store-btn" onclick="addStore()">+ Yeni Şöbə Əlavə Et</button>
     <button class="mo-save" onclick="saveStores()">✓ Saxla</button>
@@ -298,16 +371,19 @@ const DT={
   saxa1:{min:20000,mid:28000,max:35000},
   saxa2:{min:15000,mid:22000,max:30000}
 };
+const DEFAULT_VIEW_PW="view2026";
 
 const gS=()=>{try{return JSON.parse(localStorage.getItem('pk_stores')||'null')||DS;}catch{return DS;}};
 const svS=(v)=>localStorage.setItem('pk_stores',JSON.stringify(v));
 const gT=()=>{try{return JSON.parse(localStorage.getItem('pk_targets')||'null')||DT;}catch{return DT;}};
 const svT=(v)=>localStorage.setItem('pk_targets',JSON.stringify(v));
+const gViewPw=()=>localStorage.getItem('pk_view_pw')||DEFAULT_VIEW_PW;
+const svViewPw=(v)=>localStorage.setItem('pk_view_pw',v);
 
+// ── TARİX ─────────────────────────────────────────────────────────────────────
 function getWorkDay(){
-  const now=new Date();
-  const d=new Date(now);
-  if(now.getHours()<17) d.setDate(d.getDate()-1);
+  const now=new Date(),d=new Date(now);
+  if(now.getHours()<17)d.setDate(d.getDate()-1);
   return d;
 }
 function tKey(){
@@ -316,15 +392,11 @@ function tKey(){
 }
 function dLeft(){
   const d=getWorkDay();
-  const lastDay=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();
-  return Math.max(0,lastDay-d.getDate());
+  return Math.max(0,new Date(d.getFullYear(),d.getMonth()+1,0).getDate()-d.getDate());
 }
-function daysPassed(){
-  return Math.max(1,getWorkDay().getDate());
-}
+function daysPassed(){return Math.max(1,getWorkDay().getDate());}
 function getPL(p){
-  const d=getWorkDay();
-  const day=d.getDate(),yr=d.getFullYear();
+  const d=getWorkDay(),day=d.getDate(),yr=d.getFullYear();
   return {"gunluk":`${day} mart ${yr}`,"ay2026":`1-${day} mart 2026`,"ay2025":`1-${day} mart 2025`,"ay2024":`1-${day} mart 2024`}[p]||p;
 }
 function fmt(n){
@@ -335,17 +407,14 @@ function fmtDate(){
   const d=getWorkDay();
   return d.toLocaleDateString('az-AZ',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 }
-// Dəqiq faiz — 99.8% kimi
 function exactPct(val,target){
   if(!val||!target||target===0)return null;
   const raw=(val/target)*100;
-  if(raw>=100)return 100.0;
-  return Math.floor(raw*10)/10;
+  return raw>=100?100.0:Math.floor(raw*10)/10;
 }
 function pctStr(p){
   if(p===null||p===undefined)return '—';
-  if(p===100)return '100%';
-  return p.toFixed(1)+'%';
+  return p===100?'100%':p.toFixed(1)+'%';
 }
 function pctCls(p){
   if(p===null)return '';
@@ -353,53 +422,64 @@ function pctCls(p){
   if(p>=70)return 'pct-mid';
   return 'pct-low';
 }
-
-// ── AĞIRLIQLI ORTALAMA FAİZ ──────────────────────────────────────────────────
-// Formula: (s1*f1 + s2*f2 + ... ) / (s1+s2+...) — satış həcminə görə ağırlıqlı
 function weightedAvgPct(entries){
-  // entries = [{satis, faiz}, ...]
-  let totalS=0, totalMenfeet=0;
-  entries.forEach(e=>{
-    if(e.satis>0&&e.faiz>0){
-      totalS+=e.satis;
-      totalMenfeet+=e.satis*(e.faiz/100);
-    }
-  });
-  if(totalS===0)return null;
-  return (totalMenfeet/totalS*100);
+  let ts=0,tm=0;
+  entries.forEach(e=>{if(e.satis>0&&e.faiz>0){ts+=e.satis;tm+=e.satis*(e.faiz/100);}});
+  return ts===0?null:(tm/ts*100);
 }
-function fmtPct(p){
-  if(p===null||p===undefined)return '—';
-  return p.toFixed(1)+'%';
-}
+function fmtPct(p){return p===null?'—':p.toFixed(1)+'%';}
 
-function ck(s,p){return `pk14_${s}_${p}_${tKey()}`;}
+function ck(s,p){return `pk15_${s}_${p}_${tKey()}`;}
 function gc(s,p){try{return JSON.parse(localStorage.getItem(ck(s,p))||'null');}catch{return null;}}
 function sc(s,p,d){localStorage.setItem(ck(s,p),JSON.stringify(d));}
 function goTo(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 function logout(){curStore=null;editMode=false;document.getElementById('gate-pw').value='';document.getElementById('gate-err').classList.remove('show');document.getElementById('gate-store').value='';goTo('gate');}
 
+// ── PAROL YADDA SAXLA ─────────────────────────────────────────────────────────
 function buildSel(){
   const sel=document.getElementById('gate-store');
   sel.innerHTML='<option value="">— Seçin —</option>';
   gS().forEach(s=>{const o=document.createElement('option');o.value=s.id;o.textContent=s.name;sel.appendChild(o);});
+  // Yadda saxlanmış şöbəni seç
+  const saved=localStorage.getItem('pk_remember');
+  if(saved){
+    try{
+      const r=JSON.parse(saved);
+      sel.value=r.sid||'';
+      document.getElementById('gate-pw').value=r.pw||'';
+      document.getElementById('remember-me').checked=true;
+    }catch{}
+  }
 }
 buildSel();
 
 function doLogin(){
   const sid=document.getElementById('gate-store').value;
   const pw=document.getElementById('gate-pw').value;
+  const remember=document.getElementById('remember-me').checked;
   if(!sid){alert('Şöbəni seçin.');return;}
   const store=gS().find(s=>s.id===sid);
   if(!store||pw!==store.pw){document.getElementById('gate-err').classList.add('show');document.getElementById('gate-pw').value='';return;}
   document.getElementById('gate-err').classList.remove('show');
+  if(remember){
+    localStorage.setItem('pk_remember',JSON.stringify({sid,pw}));
+  }else{
+    localStorage.removeItem('pk_remember');
+  }
   curStore=sid;editMode=false;renderForm(sid);
 }
+
 function showAdminGate(){
   const pw=prompt('Admin şifrəsi:');
   if(pw===ADMIN_PW){openAdmin();}else if(pw!==null){alert('Şifrə yanlışdır.');}
 }
 
+function showViewerGate(){
+  const pw=prompt('Baxış şifrəsi:');
+  if(pw===gViewPw()){openViewer();}else if(pw!==null){alert('Şifrə yanlışdır.');}
+}
+
+// ── PLAN HTML ─────────────────────────────────────────────────────────────────
 function planHtml(sid,cur){
   const t=gT()[sid];if(!t)return '';
   const dl=dLeft();
@@ -471,20 +551,19 @@ function renderForm(sid){
     const sv=editMode&&cv?cv.satis:(saved?.satis??'');
     const mv=editMode&&cv?cv.menfeet:(saved?.menfeet??'');
     const fv=editMode&&cv?cv.faiz:(saved?.faiz??'');
-    const luS=period==='ay2026'?`oninput="upPlan(this.value);showFmt('s-${period}')"`:
-      period==='gunluk'?`oninput="upToday();showFmt('s-${period}')"`:
-      `oninput="showFmt('s-${period}')"`;
+    const luS=period==='ay2026'?`oninput="upPlan(this.value);showFmt('s-${period}')"`
+      :period==='gunluk'?`oninput="upToday();showFmt('s-${period}')"`
+      :`oninput="showFmt('s-${period}')"`;
     h+=`<div class="period-block">
       <div class="period-header" style="background:${PC[PERIODS.indexOf(period)]}">${getPL(period)}</div>
-      <table class="pt">
-        <thead><tr><th style="text-align:left">Göstərici</th><th>Satış (₼)</th><th>Mənfəət (₼)</th><th>Faiz (%)</th></tr></thead>
-        <tbody><tr>
-          <td class="pn">Ümumi satış</td>
-          <td><input class="ni" type="number" min="0" step="0.01" id="s-${period}" value="${sv}" placeholder="0" ${dis} ${luS}>${sv?`<div class="ni-display">${fmt(sv)}</div>`:''}</td>
-          <td><input class="ni" type="number" min="0" step="0.01" id="m-${period}" value="${mv}" placeholder="0" ${dis} oninput="showFmt('m-${period}')">${mv?`<div class="ni-display">${fmt(mv)}</div>`:''}</td>
-          <td><input class="ni-faiz" type="number" min="0" step="0.1" id="f-${period}" value="${fv}" placeholder="0" ${dis}></td>
-        </tr></tbody>
-      </table>
+      <table class="pt"><thead><tr>
+        <th style="text-align:left">Göstərici</th><th>Satış (₼)</th><th>Mənfəət (₼)</th><th>Faiz (%)</th>
+      </tr></thead><tbody><tr>
+        <td class="pn">Ümumi satış</td>
+        <td><input class="ni" type="number" min="0" step="0.01" id="s-${period}" value="${sv}" placeholder="0" ${dis} ${luS}>${sv?`<div class="ni-display">${fmt(sv)}</div>`:''}</td>
+        <td><input class="ni" type="number" min="0" step="0.01" id="m-${period}" value="${mv}" placeholder="0" ${dis} oninput="showFmt('m-${period}')">${mv?`<div class="ni-display">${fmt(mv)}</div>`:''}</td>
+        <td><input class="ni-faiz" type="number" min="0" step="0.1" id="f-${period}" value="${fv}" placeholder="0" ${dis}></td>
+      </tr></tbody></table>
     </div>`;
   });
   if(allSaved){
@@ -571,41 +650,28 @@ async function doSave(){
   }
 }
 
-function arrowDaily(dailySatis,monthlySatis,minTarget,dl){
-  if(!dailySatis||dailySatis===0)return '';
-  const remaining=Math.max(0,minTarget-monthlySatis);
-  if(remaining<=0)return '<span class="arr-up">↑</span>';
-  const needed=dl>0?Math.ceil(remaining/dl):remaining;
-  const pct=dailySatis/needed*100;
+// ── OX ANALİZİ ────────────────────────────────────────────────────────────────
+function arrowDaily(ds,ms,minT,dl){
+  if(!ds||ds===0)return '';
+  const rem=Math.max(0,minT-ms);
+  if(rem<=0)return '<span class="arr-up">↑</span>';
+  const need=dl>0?Math.ceil(rem/dl):rem;
+  const pct=ds/need*100;
   if(pct>=100)return '<span class="arr-up">↑</span>';
   if(pct>=70)return '<span class="arr-mid">→</span>';
   return '<span class="arr-dn">↓</span>';
 }
-function arrowMonthly(monthlySatis,minTarget,dl){
-  if(!monthlySatis||monthlySatis===0)return '';
-  if(monthlySatis>=minTarget)return '<span class="arr-up">↑</span>';
-  const dp=daysPassed();
-  const dailyAvg=monthlySatis/dp;
-  const projected=monthlySatis+dailyAvg*dl;
-  if(projected>=minTarget)return '<span class="arr-mid">→</span>';
+function arrowMonthly(ms,minT,dl){
+  if(!ms||ms===0)return '';
+  if(ms>=minT)return '<span class="arr-up">↑</span>';
+  const avg=ms/daysPassed();
+  if(ms+avg*dl>=minT)return '<span class="arr-mid">→</span>';
   return '<span class="arr-dn">↓</span>';
 }
 
-function openAdmin(){
-  const d=getWorkDay();
-  document.getElementById('adm-date').textContent=fmtDate();
-  document.getElementById('rpt-day').textContent=d.getDate();
-  document.getElementById('rpt-mo').textContent=d.toLocaleDateString('az-AZ',{month:'long',year:'numeric'}).toUpperCase();
-  goTo('admin');loadAdmin();
-}
-async function loadAdmin(){
-  document.getElementById('adm-ld').style.display='block';
-  document.getElementById('rt').style.display='none';
-  try{buildReport(await rBin());}
-  catch{document.getElementById('adm-ld').textContent='❌ Məlumatlar yüklənmədi.';}
-}
-
-function buildReport(all){
+// ── HESABAT CƏDVƏL QURUCusu ───────────────────────────────────────────────────
+// YENİ FORMAT: Şaquli — hər period bir sütun bloku, şöbə adları hər blokun altında
+function buildTable(all, tblId, ldId){
   const today=tKey();
   const rows=all.filter(r=>r.tarix===today);
   const stores=gS();
@@ -613,53 +679,49 @@ function buildReport(all){
   stores.forEach(s=>{data[s.name]={};PERIODS.forEach(p=>{data[s.name][p]=null;});});
   rows.forEach(r=>{if(data[r.sobe]!==undefined&&r.period)data[r.sobe][r.period]={satis:r.satis,menfeet:r.menfeet,faiz:r.faiz};});
 
-  const tbl=document.getElementById('rt');
+  const tbl=document.getElementById(tblId);
   const targets=gT();
   const dl=dLeft();
   const pandaStores=stores.filter(s=>s.inTotal);
   const saxaStores=stores.filter(s=>!s.inTotal);
-  const allDisplayStores=[...pandaStores,...saxaStores];
-  const nPanda=pandaStores.length;
-  const nAll=allDisplayStores.length;
 
-  // ── YENİ CƏDVƏL STRUKTURU ──
-  // Sütunlar: [Şöbələr] [günlük: Satış | Mənfəət | Faiz] [ay2026: ...] [ay2025: ...] [ay2024: ...]
-  // Hər dövr altında şöbələrin sətirləri var
-  // Başlıq: period adları colspan=3 hər biri üçün
+  // Sütun sayı: 1 (şöbə adı) + 4*3 (hər period 3 sütun)
+  // LAKIN bu dəfə format fərqlidir:
+  // [Period başlığı colspan=3] × 4
+  // altında [Satış | Mənfəət | Faiz] × 4
+  // Sonra hər şöbə üçün bir sətir — sol tərəfdə şöbə adı, sağda 4 period × 3 sütun
 
   let h='';
 
-  // Row 1: period başlıqları
-  h+=`<tr class="gh">
-    <th class="lb" rowspan="2" style="vertical-align:middle;min-width:110px">Şöbələr</th>`;
+  // ── BAŞLİQ SƏTİRİ 1: Period adları ──
+  h+=`<tr class="gh0">
+    <th class="lb0" rowspan="2" style="vertical-align:middle;min-width:115px">Şöbələr</th>`;
   PERIODS.forEach((p,i)=>{
     h+=`<th colspan="3" class="${HC[i]}">${getPL(p)}</th>`;
   });
   h+=`</tr>`;
 
-  // Row 2: Satış | Mənfəət | Faiz for each period
-  h+=`<tr class="sh">`;
+  // ── BAŞLİQ SƏTİRİ 2: Satış | Mənfəət | Faiz ──
+  h+=`<tr class="sh0">`;
   PERIODS.forEach((p,i)=>{
     h+=`<th class="${SC[i]}">Satış</th><th class="${SC[i]}">Mənfəət</th><th class="${SC[i]}">Faiz</th>`;
   });
   h+=`</tr>`;
 
-  // Totals akkumulyatoru
   const tots=PERIODS.map(()=>({s:0,m:0,entries:[]}));
 
   // ── PANDA ŞÖBƏLƏRİ ──
   pandaStores.forEach(store=>{
     const t=targets[store.id];
-    const dailySatis=data[store.name]?.['gunluk']?.satis||0;
-    const monthlySatis=data[store.name]?.['ay2026']?.satis||0;
+    const ds=data[store.name]?.['gunluk']?.satis||0;
+    const ms=data[store.name]?.['ay2026']?.satis||0;
     h+=`<tr class="dr"><td class="nm">${store.name}</td>`;
     PERIODS.forEach((period,pi)=>{
       const e=data[store.name]?.[period];
       if(e&&(e.satis>0||e.menfeet>0)){
         let arrow='';
-        if(period==='gunluk'&&t) arrow=arrowDaily(dailySatis,monthlySatis,t.min,dl);
-        else if(period==='ay2026'&&t) arrow=arrowMonthly(monthlySatis,t.min,dl);
-        // Faiz sütunu: ay2026 üçün min plana dəqiq faiz, digərləri rentabel
+        if(period==='gunluk'&&t) arrow=arrowDaily(ds,ms,t.min,dl);
+        else if(period==='ay2026'&&t) arrow=arrowMonthly(ms,t.min,dl);
         let faizTd;
         if(period==='ay2026'&&t){
           const p=exactPct(e.satis,t.min);
@@ -669,7 +731,7 @@ function buildReport(all){
         }
         h+=`<td class="nv">${arrow}${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td>${faizTd}`;
         tots[pi].s+=e.satis;tots[pi].m+=e.menfeet;
-        if(e.satis>0&&e.faiz>0) tots[pi].entries.push({satis:e.satis,faiz:e.faiz});
+        if(e.satis>0&&e.faiz>0)tots[pi].entries.push({satis:e.satis,faiz:e.faiz});
       }else{
         h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;
       }
@@ -679,23 +741,20 @@ function buildReport(all){
 
   // ── ÜMUMİ PANDA ──
   h+=`<tr class="tr"><td class="nm">Ümumi Panda</td>`;
-  tots.forEach((t,pi)=>{
-    // Ağırlıqlı ortalama faiz
+  tots.forEach(t=>{
     const avgF=weightedAvgPct(t.entries);
-    h+=`<td class="nv">${t.s>0?fmt(t.s):'—'}</td>`;
-    h+=`<td class="nv">${t.m>0?fmt(t.m):'—'}</td>`;
-    h+=`<td class="pv">${avgF!==null?fmtPct(avgF):'—'}</td>`;
+    h+=`<td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fmtPct(avgF)}</td>`;
   });
   h+=`</tr>`;
 
-  // ── SAXA ŞÖBƏLƏRİ ──
+  // ── SAXA — böyük boşluq ──
   if(saxaStores.length>0){
     const colCount=1+PERIODS.length*3;
-    h+=`<tr class="saxa-sep"><td colspan="${colCount}"></td></tr>`;
+    h+=`<tr class="saxa-gap"><td colspan="${colCount}"></td></tr>`;
     saxaStores.forEach(store=>{
       const t=targets[store.id];
-      const dailySatis=data[store.name]?.['gunluk']?.satis||0;
-      const monthlySatis=data[store.name]?.['ay2026']?.satis||0;
+      const ds=data[store.name]?.['gunluk']?.satis||0;
+      const ms=data[store.name]?.['ay2026']?.satis||0;
       h+=`<tr class="sr"><td class="nm">${store.name}</td>`;
       PERIODS.forEach((period,pi)=>{
         if(pi>=2){
@@ -704,8 +763,8 @@ function buildReport(all){
           const e=data[store.name]?.[period];
           if(e&&(e.satis>0||e.menfeet>0)){
             let arrow='';
-            if(period==='gunluk'&&t) arrow=arrowDaily(dailySatis,monthlySatis,t.min,dl);
-            else if(period==='ay2026'&&t) arrow=arrowMonthly(monthlySatis,t.min,dl);
+            if(period==='gunluk'&&t) arrow=arrowDaily(ds,ms,t.min,dl);
+            else if(period==='ay2026'&&t) arrow=arrowMonthly(ms,t.min,dl);
             let faizTd;
             if(period==='ay2026'&&t){
               const p=exactPct(e.satis,t.min);
@@ -724,10 +783,87 @@ function buildReport(all){
   }
 
   tbl.innerHTML=h;
-  document.getElementById('adm-ld').style.display='none';
+  document.getElementById(ldId).style.display='none';
   tbl.style.display='table';
 }
 
+// ── ADMIN ─────────────────────────────────────────────────────────────────────
+function openAdmin(){
+  const d=getWorkDay();
+  document.getElementById('adm-date').textContent=fmtDate();
+  document.getElementById('rpt-day').textContent=d.getDate();
+  document.getElementById('rpt-mo').textContent=d.toLocaleDateString('az-AZ',{month:'long',year:'numeric'}).toUpperCase();
+  goTo('admin');loadAdmin();
+}
+async function loadAdmin(){
+  document.getElementById('adm-ld').style.display='block';
+  document.getElementById('rt').style.display='none';
+  try{buildTable(await rBin(),'rt','adm-ld');}
+  catch{document.getElementById('adm-ld').textContent='❌ Məlumatlar yüklənmədi.';}
+}
+
+// ── VIEWER ────────────────────────────────────────────────────────────────────
+function openViewer(){
+  const d=getWorkDay();
+  document.getElementById('view-date').textContent=fmtDate();
+  document.getElementById('view-day').textContent=d.getDate();
+  document.getElementById('view-mo').textContent=d.toLocaleDateString('az-AZ',{month:'long',year:'numeric'}).toUpperCase();
+  goTo('viewer');loadViewer();
+}
+async function loadViewer(){
+  document.getElementById('view-ld').style.display='block';
+  document.getElementById('rt-view').style.display='none';
+  try{
+    const all=await rBin();
+    buildTable(all,'rt-view','view-ld');
+    buildViewerPlans(all);
+  }catch{document.getElementById('view-ld').textContent='❌ Məlumatlar yüklənmədi.';}
+}
+
+function buildViewerPlans(all){
+  const today=tKey();
+  const rows=all.filter(r=>r.tarix===today);
+  const stores=gS();
+  const data={};
+  stores.forEach(s=>{data[s.name]={};PERIODS.forEach(p=>{data[s.name][p]=null;});});
+  rows.forEach(r=>{if(data[r.sobe]!==undefined&&r.period)data[r.sobe][r.period]={satis:r.satis,menfeet:r.menfeet,faiz:r.faiz};});
+  const targets=gT();
+  const dl=dLeft();
+  const grid=document.getElementById('view-plan-grid');
+  let h='';
+  stores.forEach(store=>{
+    const t=targets[store.id];
+    if(!t)return;
+    const ms=data[store.name]?.['ay2026']?.satis||0;
+    const tv=data[store.name]?.['gunluk']?.satis||0;
+    let at,rm;
+    if(ms<t.min){at=t.min;rm=t.min-ms;}
+    else if(ms<t.mid){at=t.mid;rm=t.mid-ms;}
+    else if(ms<t.max){at=t.max;rm=t.max-ms;}
+    else{at=t.max;rm=0;}
+    const ap=exactPct(ms,at)||0;
+    const dn=dl>0&&rm>0?Math.ceil(rm/dl):0;
+    const bc=ms>=t.max?'#10b981':ms>=t.mid?'#3b82f6':ms>=t.min?'#f59e0b':'#ef4444';
+    const apStr=ap===100?'100%':ap.toFixed(1)+'%';
+    const isSaxa=!store.inTotal;
+    h+=`<div class="plan-store-item" style="${isSaxa?'border-left:3px solid #f59e0b;':''}" >
+      <div class="psi-header">
+        <div class="psi-name">${store.name}${isSaxa?' <span style="font-size:9px;color:#f59e0b;font-weight:500">(filial)</span>':''}</div>
+        <div class="psi-pct" style="color:${bc}">${apStr}</div>
+      </div>
+      <div class="psi-bar-wrap"><div class="psi-bar" style="width:${Math.min(100,ap)}%;background:${bc}"></div></div>
+      <div class="psi-stats">
+        <div class="psi-stat">Cari: <span>${fmt(ms)} ₼</span></div>
+        <div class="psi-stat">Hədəf: <span>${fmt(at)} ₼</span></div>
+        ${rm>0?`<div class="psi-stat">Gündəlik lazım: <span>${fmt(dn)} ₼</span></div>`:'<div class="psi-stat" style="color:#10b981">✅ Hədəfə çatıb</div>'}
+        <div class="psi-stat">Bu gün: <span>${fmt(tv)} ₼</span></div>
+      </div>
+    </div>`;
+  });
+  grid.innerHTML=h||'<div style="color:rgba(255,255,255,.4);font-size:12px">Məlumat yoxdur</div>';
+}
+
+// ── TARGETS MODAL ─────────────────────────────────────────────────────────────
 function openTargetsMo(){
   const tgts=gT();let h='';
   gS().forEach(store=>{
@@ -754,13 +890,21 @@ function saveTargets(){
   svT(tgts);document.getElementById('mo-t').classList.remove('show');alert('✅ Hədəflər saxlanıldı!');
 }
 
+// ── STORES MODAL (baxış parolu da burada) ─────────────────────────────────────
 function openStoresMo(){
   tmpStores=JSON.parse(JSON.stringify(gS()));
   renderStoresMo();
   document.getElementById('mo-s').classList.add('show');
 }
 function renderStoresMo(){
-  let h='';
+  const viewPw=gViewPw();
+  let h=`<div class="mo-store" style="border-color:rgba(16,185,129,.25)">
+    <div class="mo-sname" style="color:#6ee7b7">👁 Baxış İstifadəçisi</div>
+    <div class="mo-row2">
+      <div class="mo-f"><label>Ad</label><input type="text" value="Baxış" disabled style="opacity:.4"></div>
+      <div class="mo-f"><label>Parol</label><input type="text" id="view-pw-inp" value="${viewPw}"></div>
+    </div>
+  </div>`;
   tmpStores.forEach((store,i)=>{
     h+=`<div class="mo-store">
       <div class="mo-sname"><span>${store.name}</span><button class="del-btn" onclick="delStore(${i})">🗑 Sil</button></div>
@@ -778,11 +922,18 @@ function renderStoresMo(){
 }
 function addStore(){tmpStores.push({id:'s'+Date.now(),name:'Yeni Şöbə',pw:'sifre123',inTotal:true});renderStoresMo();}
 function delStore(i){if(confirm('Bu şöbəni silmək istəyirsiniz?')){tmpStores.splice(i,1);renderStoresMo();}}
-function saveStores(){svS(tmpStores);buildSel();document.getElementById('mo-s').classList.remove('show');alert('✅ Şöbələr yeniləndi!');}
+function saveStores(){
+  const newViewPw=document.getElementById('view-pw-inp')?.value||DEFAULT_VIEW_PW;
+  svViewPw(newViewPw);
+  svS(tmpStores);buildSel();
+  document.getElementById('mo-s').classList.remove('show');
+  alert('✅ Saxlanıldı!');
+}
 
+// ── SCREENSHOT ────────────────────────────────────────────────────────────────
 async function takeScreenshot(){
   const card=document.getElementById('rc');
-  const tblW=document.querySelector('.rc-tbl-w');
+  const tblW=document.querySelector('#rc .rc-tbl-w');
   const origOF=tblW.style.overflow;
   tblW.style.overflow='visible';
   tblW.style.width=tblW.scrollWidth+'px';
