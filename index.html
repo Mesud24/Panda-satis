@@ -1,296 +1,329 @@
-<!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Panda</title><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Panda</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet"><style>
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{width:100%;overflow-x:hidden;}
-body{font-family:'IBM Plex Sans',sans-serif;color:#fff;min-height:100vh;background:#0a1628 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='92'%3E%3Cellipse cx='50' cy='38' rx='26' ry='24' fill='rgba(255,255,255,0.03)'/%3E%3Ccircle cx='30' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3Ccircle cx='70' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E") repeat;}
+body{font-family:'Inter',sans-serif;color:#fff;min-height:100vh;background:#0a1628 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='92'%3E%3Cellipse cx='50' cy='38' rx='26' ry='24' fill='rgba(255,255,255,0.03)'/%3E%3Ccircle cx='30' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3Ccircle cx='70' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E") repeat;}
 .screen{display:none;min-height:100vh;flex-direction:column;}
 .screen.active{display:flex;}
+/* GATE */
 #gate{align-items:center;justify-content:center;}
-.gate-wrap{width:100%;max-width:340px;padding:32px 20px;display:flex;flex-direction:column;gap:13px;align-items:center;}
-.gate-logo{width:90px;height:90px;object-fit:contain;border-radius:18px;background:#fff;padding:7px;box-shadow:0 6px 24px rgba(0,0,0,.5);}
-.gate-title{font-size:20px;font-weight:700;color:#fff;text-align:center;}
-.gate-sub{font-size:11px;color:rgba(255,255,255,.35);text-align:center;margin-top:-6px;}
-.gate-label{width:100%;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.7px;color:rgba(255,255,255,.3);margin-bottom:-8px;}
-.gate-input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.1);border-radius:11px;padding:11px 14px;font-family:inherit;font-size:14px;color:#fff;outline:none;}
-.gate-input:focus{border-color:#c9963a;}
-.gate-input.pw{letter-spacing:4px;font-size:17px;}
-.gate-input.pw::placeholder{letter-spacing:1px;font-size:13px;}
-select.gate-input{appearance:none;cursor:pointer;}
-select.gate-input option{color:#000;background:#fff;}
-.gate-btn{width:100%;padding:12px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:11px;font-family:inherit;font-size:14px;font-weight:700;color:#0a1628;cursor:pointer;}
-.gate-err{color:#fca5a5;font-size:11px;display:none;text-align:center;}
-.gate-err.show{display:block;}
-.gate-divider{width:100%;height:1px;background:rgba(255,255,255,.07);}
-.gate-link{color:rgba(255,255,255,.28);font-size:11px;cursor:pointer;background:none;border:none;font-family:inherit;}
-.remember-row{display:flex;align-items:center;gap:8px;width:100%;}
-.remember-row label{color:rgba(255,255,255,.5);font-size:12px;cursor:pointer;}
-.remember-row input[type=checkbox]{cursor:pointer;transform:scale(1.2);}
-#store-form{background:#0a1628 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='92'%3E%3Cellipse cx='50' cy='38' rx='26' ry='24' fill='rgba(255,255,255,0.03)'/%3E%3Ccircle cx='30' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E") repeat;}
-.sf-header{background:rgba(0,0,0,.35);padding:12px 16px 16px;border-bottom:1px solid rgba(255,255,255,.07);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px);}
-.sf-header-inner{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:10px;}
-.sf-logo{width:34px;height:34px;object-fit:contain;background:#fff;border-radius:7px;padding:2px;flex-shrink:0;}
-.sf-text{flex:1;min-width:0;}
-.back-btn{background:none;border:none;color:rgba(255,255,255,.35);font-family:inherit;font-size:11px;cursor:pointer;padding:0;margin-bottom:3px;}
-.sf-title{font-size:15px;font-weight:700;color:#fff;}
-.sf-date{font-size:10px;color:#c9963a;margin-top:1px;}
-.sf-body{max-width:560px;margin:0 auto;padding:12px 14px 24px;flex:1;width:100%;}
-.plan-card{background:rgba(255,255,255,.055);border-radius:12px;padding:12px;margin-bottom:12px;border:1px solid rgba(201,150,58,.2);}
-.plan-title{color:#c9963a;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:9px;}
-.plan-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-bottom:9px;}
-.plan-item{background:rgba(255,255,255,.04);border-radius:7px;padding:7px 5px;text-align:center;border:2px solid transparent;transition:all .25s;}
-.plan-item.done{border-color:#10b981;background:rgba(16,185,129,.1);}
-.plan-item.active{border-color:#f59e0b;background:rgba(245,158,11,.09);}
-.pil{font-size:9px;color:rgba(255,255,255,.4);margin-bottom:2px;}
-.piv{font-size:11px;font-weight:700;color:#fff;font-family:'IBM Plex Mono',monospace;}
-.pip{font-size:10px;font-weight:700;margin-top:2px;}
+.gw{width:100%;max-width:340px;padding:32px 20px;display:flex;flex-direction:column;gap:14px;align-items:center;}
+.glogo{width:90px;height:90px;object-fit:contain;border-radius:18px;background:#fff;padding:7px;box-shadow:0 6px 24px rgba(0,0,0,.5);}
+.gtitle{font-size:22px;font-weight:800;color:#fff;text-align:center;letter-spacing:-.3px;}
+.gsub{font-size:12px;color:rgba(255,255,255,.4);text-align:center;margin-top:-8px;}
+.glbl{width:100%;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.35);margin-bottom:-8px;}
+.ginp{width:100%;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 16px;font-family:inherit;font-size:15px;font-weight:500;color:#fff;outline:none;}
+.ginp:focus{border-color:#c9963a;background:rgba(255,255,255,.1);}
+.ginp.pw{letter-spacing:5px;font-size:18px;}
+.ginp.pw::placeholder{letter-spacing:1px;font-size:14px;}
+select.ginp{appearance:none;cursor:pointer;}
+select.ginp option{color:#000;background:#fff;}
+.gbtn{width:100%;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:12px;font-family:inherit;font-size:15px;font-weight:800;color:#0a1628;cursor:pointer;letter-spacing:.3px;}
+.gerr{color:#fca5a5;font-size:12px;display:none;text-align:center;font-weight:600;}
+.gerr.show{display:block;}
+.gdiv{width:100%;height:1px;background:rgba(255,255,255,.08);}
+.glink{color:rgba(255,255,255,.3);font-size:12px;cursor:pointer;background:none;border:none;font-family:inherit;font-weight:600;}
+.remrow{display:flex;align-items:center;gap:8px;width:100%;}
+.remrow label{color:rgba(255,255,255,.55);font-size:12px;cursor:pointer;font-weight:500;}
+.remrow input[type=checkbox]{cursor:pointer;transform:scale(1.2);}
+/* STORE FORM */
+#store-form{background:#0a1628 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='92'%3E%3Cellipse cx='50' cy='38' rx='26' ry='24' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E") repeat;}
+.sfhdr{background:rgba(0,0,0,.4);padding:13px 16px 17px;border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);}
+.sfhi{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:11px;}
+.sflogo{width:36px;height:36px;object-fit:contain;background:#fff;border-radius:8px;padding:2px;flex-shrink:0;}
+.sftxt{flex:1;min-width:0;}
+.backbtn{background:none;border:none;color:rgba(255,255,255,.4);font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;padding:0;margin-bottom:3px;}
+.sftitle{font-size:16px;font-weight:800;color:#fff;letter-spacing:-.2px;}
+.sfdate{font-size:11px;color:#c9963a;margin-top:2px;font-weight:600;}
+.sfbody{max-width:560px;margin:0 auto;padding:14px 14px 28px;flex:1;width:100%;}
+/* PLAN CARD */
+.plancard{background:rgba(255,255,255,.06);border-radius:14px;padding:14px;margin-bottom:14px;border:1px solid rgba(201,150,58,.25);}
+.plantitle{color:#c9963a;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;}
+.plangrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px;}
+.planitem{background:rgba(255,255,255,.05);border-radius:9px;padding:8px 5px;text-align:center;border:2px solid transparent;transition:all .25s;}
+.planitem.done{border-color:#10b981;background:rgba(16,185,129,.12);}
+.planitem.active{border-color:#f59e0b;background:rgba(245,158,11,.1);}
+.pil{font-size:9px;color:rgba(255,255,255,.45);margin-bottom:3px;font-weight:600;}
+.piv{font-size:12px;font-weight:800;color:#fff;font-family:'IBM Plex Mono',monospace;}
+.pip{font-size:11px;font-weight:700;margin-top:3px;}
 .pip.done{color:#10b981;}.pip.cur{color:#f59e0b;}.pip.pen{color:rgba(255,255,255,.2);}
-.ppl{display:flex;justify-content:space-between;margin-bottom:4px;}
-.ppl span{font-size:9px;color:rgba(255,255,255,.4);}
-.ppl strong{font-size:9px;color:#f0c060;}
-.pbw{background:rgba(255,255,255,.08);border-radius:20px;height:7px;overflow:hidden;}
-.pb{height:7px;border-radius:20px;transition:width .35s;}
-.psg{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:7px;}
-.ps{background:rgba(255,255,255,.04);border-radius:7px;padding:6px 8px;}
-.psl{font-size:9px;color:rgba(255,255,255,.3);}
-.psv{font-size:12px;font-weight:700;color:#f0c060;font-family:'IBM Plex Mono',monospace;margin-top:1px;}
-.period-block{background:rgba(255,255,255,.055);border-radius:11px;overflow:hidden;margin-bottom:9px;border:1px solid rgba(255,255,255,.07);}
-.period-hdr{padding:8px 12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#fff;}
+.ppl{display:flex;justify-content:space-between;margin-bottom:5px;}
+.ppl span{font-size:10px;color:rgba(255,255,255,.45);font-weight:500;}
+.ppl strong{font-size:10px;color:#f0c060;font-weight:700;}
+.pbw{background:rgba(255,255,255,.1);border-radius:20px;height:8px;overflow:hidden;}
+.pb{height:8px;border-radius:20px;transition:width .35s;}
+.psg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px;}
+.ps{background:rgba(255,255,255,.05);border-radius:8px;padding:7px 10px;}
+.psl{font-size:9px;color:rgba(255,255,255,.35);font-weight:600;}
+.psv{font-size:13px;font-weight:700;color:#f0c060;font-family:'IBM Plex Mono',monospace;margin-top:2px;}
+/* PERIOD BLOCK */
+.perblock{background:rgba(255,255,255,.06);border-radius:12px;overflow:hidden;margin-bottom:10px;border:1px solid rgba(255,255,255,.08);}
+.perhdr{padding:9px 13px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:#fff;}
 .pt{width:100%;border-collapse:collapse;table-layout:fixed;}
-.pt thead th{padding:6px;font-size:9px;font-weight:600;text-transform:uppercase;color:rgba(255,255,255,.4);background:rgba(0,0,0,.18);text-align:right;}
+.pt thead th{padding:7px 7px;font-size:10px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.45);background:rgba(0,0,0,.2);text-align:right;}
 .pt thead th:first-child{text-align:left;width:90px;}
-.pt tbody tr{border-top:1px solid rgba(255,255,255,.05);}
-.pt tbody td{padding:6px;}
-.pt tbody td.pn{font-weight:600;font-size:12px;color:#fff;}
-.ni{width:100%;text-align:right;border:1.5px solid rgba(255,255,255,.1);border-radius:7px;padding:8px 5px;font-family:'IBM Plex Mono',monospace;font-size:16px;color:#fff;background:rgba(255,255,255,.05);outline:none;min-width:0;}
-.ni:focus{border-color:#c9963a;background:rgba(255,255,255,.09);}
-.ni:disabled{color:rgba(255,255,255,.3);cursor:not-allowed;background:rgba(255,255,255,.02);}
-.ni::placeholder{color:rgba(255,255,255,.18);font-size:12px;}
-.ni-f{width:100%;text-align:right;border:1.5px solid rgba(255,255,255,.1);border-radius:7px;padding:8px 4px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f0c060;background:rgba(255,255,255,.04);outline:none;min-width:0;}
+.pt tbody tr{border-top:1px solid rgba(255,255,255,.06);}
+.pt tbody td{padding:7px 7px;}
+.pt tbody td.pn{font-weight:700;font-size:13px;color:#fff;}
+.ni{width:100%;text-align:right;border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:9px 7px;font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#fff;background:rgba(255,255,255,.06);outline:none;min-width:0;}
+.ni:focus{border-color:#c9963a;background:rgba(255,255,255,.1);}
+.ni:disabled{color:rgba(255,255,255,.3);cursor:not-allowed;background:rgba(255,255,255,.03);}
+.ni::placeholder{color:rgba(255,255,255,.2);font-size:13px;}
+.ni-f{width:100%;text-align:right;border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:9px 5px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#f0c060;background:rgba(255,255,255,.05);outline:none;min-width:0;}
 .ni-f:focus{border-color:#c9963a;}
 .ni-f:disabled{color:rgba(255,255,255,.25);cursor:not-allowed;}
-.ni-f::placeholder{color:rgba(255,255,255,.15);font-size:11px;}
-.nid{font-size:10px;color:rgba(255,255,255,.45);text-align:right;margin-top:2px;font-family:'IBM Plex Mono',monospace;}
-.save-btn{width:100%;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:11px;color:#0a1628;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;margin-top:6px;}
-.save-btn:disabled{opacity:.45;cursor:not-allowed;}
-.edit-btn{width:100%;padding:10px;background:transparent;border:1.5px solid rgba(255,255,255,.15);border-radius:11px;color:rgba(255,255,255,.7);font-family:inherit;font-size:12px;cursor:pointer;margin-top:7px;display:block;}
-.ok-box,.ld-box,.er-box{display:none;border-radius:11px;padding:11px;font-size:12px;margin-top:9px;}
-.ok-box{background:rgba(16,185,129,.12);border:1.5px solid rgba(16,185,129,.35);color:#6ee7b7;}
-.ld-box{background:rgba(59,130,246,.12);border:1.5px solid rgba(59,130,246,.25);color:#93c5fd;}
-.er-box{background:rgba(239,68,68,.12);border:1.5px solid rgba(239,68,68,.25);color:#fca5a5;}
-.ok-box.show,.ld-box.show,.er-box.show{display:block;}
-#admin,#viewer{background:#0a1628 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='92'%3E%3Cellipse cx='50' cy='38' rx='26' ry='24' fill='rgba(255,255,255,0.03)'/%3E%3Ccircle cx='30' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E") repeat;}
-.adm-hdr{background:rgba(0,0,0,.4);padding:12px 16px;border-bottom:1px solid rgba(201,150,58,.15);position:sticky;top:0;z-index:10;backdrop-filter:blur(8px);}
-.adm-hdr-in{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
-.adm-logo-w{display:flex;align-items:center;gap:10px;}
-.adm-logo{width:38px;height:38px;object-fit:contain;background:#fff;border-radius:7px;padding:3px;}
-.adm-title h2{font-size:14px;font-weight:700;color:#fff;}
-.adm-title p{font-size:10px;color:#c9963a;margin-top:1px;}
-.adm-acts{display:flex;gap:6px;flex-wrap:wrap;}
-.ab{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.75);border-radius:7px;padding:6px 10px;font-family:inherit;font-size:11px;cursor:pointer;white-space:nowrap;}
-.ab.gold{background:rgba(201,150,58,.18);border-color:rgba(201,150,58,.35);color:#c9963a;}
+.ni-f::placeholder{color:rgba(255,255,255,.18);}
+.nid{font-size:10px;color:rgba(255,255,255,.4);text-align:right;margin-top:3px;font-family:'IBM Plex Mono',monospace;font-weight:600;}
+.savebtn{width:100%;padding:14px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:12px;color:#0a1628;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;margin-top:7px;letter-spacing:.2px;}
+.savebtn:disabled{opacity:.45;cursor:not-allowed;}
+.editbtn{width:100%;padding:11px;background:transparent;border:1.5px solid rgba(255,255,255,.18);border-radius:12px;color:rgba(255,255,255,.75);font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;margin-top:8px;display:block;}
+.okbox,.ldbox,.erbox{display:none;border-radius:12px;padding:12px 14px;font-size:13px;font-weight:600;margin-top:10px;}
+.okbox{background:rgba(16,185,129,.13);border:1.5px solid rgba(16,185,129,.4);color:#6ee7b7;}
+.ldbox{background:rgba(59,130,246,.13);border:1.5px solid rgba(59,130,246,.3);color:#93c5fd;}
+.erbox{background:rgba(239,68,68,.13);border:1.5px solid rgba(239,68,68,.3);color:#fca5a5;}
+.okbox.show,.ldbox.show,.erbox.show{display:block;}
+/* ADMIN / VIEWER */
+#admin,#viewer{background:#0a1628 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='92'%3E%3Cellipse cx='50' cy='38' rx='26' ry='24' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E") repeat;}
+.admhdr{background:rgba(0,0,0,.45);padding:12px 16px;border-bottom:1px solid rgba(201,150,58,.15);position:sticky;top:0;z-index:10;backdrop-filter:blur(10px);}
+.admhdri{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
+.admlogow{display:flex;align-items:center;gap:10px;}
+.admlogo{width:38px;height:38px;object-fit:contain;background:#fff;border-radius:8px;padding:3px;}
+.admtitle h2{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.2px;}
+.admtitle p{font-size:11px;color:#c9963a;margin-top:2px;font-weight:600;}
+.admacts{display:flex;gap:6px;flex-wrap:wrap;}
+.ab{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.8);border-radius:8px;padding:7px 11px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;}
+.ab.gold{background:rgba(201,150,58,.2);border-color:rgba(201,150,58,.4);color:#c9963a;}
 .ab.view{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.3);color:#6ee7b7;cursor:default;}
-.adm-body{max-width:1300px;margin:0 auto;padding:14px 14px 32px;width:100%;}
-.rc{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.2);margin-bottom:14px;}
-.rc-hdr{padding:14px 18px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;align-items:center;gap:12px;}
-.rc-logo{width:38px;height:38px;object-fit:contain;background:#fff;border-radius:7px;padding:3px;flex-shrink:0;}
-.rc-t{flex:1;min-width:0;}
-.rc-t h2{color:#fff;font-size:13px;font-weight:700;}
-.rc-t p{color:rgba(255,255,255,.6);font-size:10px;margin-top:1px;}
-.rc-d{text-align:right;flex-shrink:0;}
-.rday{color:#fff;font-size:24px;font-weight:700;font-family:'IBM Plex Mono',monospace;line-height:1;}
-.rmo{color:rgba(255,255,255,.6);font-size:9px;margin-top:2px;}
-.rc-tw{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;}
-table.rt{border-collapse:collapse;font-size:11px;white-space:nowrap;}
-table.rt th,table.rt td{border:1px solid #cdd5e0;padding:3px 8px;}
-.rt .gh th{text-align:center;font-weight:700;color:#fff;vertical-align:middle;height:26px;}
-.rt .gh .lb{background:#e2e8f2;color:#1e3a6e;text-align:left;font-size:10px;border-right:2px solid #b8c5d6;vertical-align:middle;font-weight:700;min-width:105px;}
-.rt .gh .hb{background:#1d4ed8;}
-.rt .gh .ho{background:#c2410c;}
-.rt .gh .hg{background:#15803d;}
-.rt .gh .hp{background:#6d28d9;}
-.rt .sh th{background:#f0f4f9;color:#374151;text-align:right;height:19px;font-size:9px;font-weight:700;padding:2px 8px;}
-.rt .sh .lb{background:#e2e8f2;border-right:2px solid #b8c5d6;text-align:left;color:#1e3a6e;}
+.admbody{max-width:1300px;margin:0 auto;padding:14px 14px 32px;width:100%;}
+/* REPORT */
+.rc{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 28px rgba(0,0,0,.25);margin-bottom:14px;}
+.rchdr{padding:15px 20px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;align-items:center;gap:12px;}
+.rclogo{width:40px;height:40px;object-fit:contain;background:#fff;border-radius:8px;padding:3px;flex-shrink:0;}
+.rct{flex:1;min-width:0;}
+.rct h2{color:#fff;font-size:14px;font-weight:800;letter-spacing:-.2px;}
+.rct p{color:rgba(255,255,255,.65);font-size:11px;margin-top:2px;font-weight:500;}
+.rcd{text-align:right;flex-shrink:0;}
+.rday{color:#fff;font-size:26px;font-weight:800;font-family:'IBM Plex Mono',monospace;line-height:1;}
+.rmo{color:rgba(255,255,255,.6);font-size:10px;margin-top:2px;font-weight:600;}
+.rctw{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;}
+table.rt{border-collapse:collapse;font-size:11.5px;white-space:nowrap;}
+table.rt th,table.rt td{border:1px solid #cdd5e0;padding:4px 9px;}
+.rt .gh th{text-align:center;font-weight:800;color:#fff;vertical-align:middle;height:27px;}
+.rt .gh .lb{background:#dce6f2;color:#1e3a6e;text-align:left;font-size:11px;border-right:2px solid #b0c4de;vertical-align:middle;font-weight:800;min-width:108px;}
+.rt .gh .hb{background:#1d4ed8;}.rt .gh .ho{background:#c2410c;}.rt .gh .hg{background:#15803d;}.rt .gh .hp{background:#6d28d9;}
+.rt .sh th{background:#edf2f9;color:#2d3748;text-align:right;height:20px;font-size:10px;font-weight:700;padding:3px 9px;}
+.rt .sh .lb{background:#dce6f2;border-right:2px solid #b0c4de;text-align:left;color:#1e3a6e;font-weight:800;}
 .rt .sh .sb{color:#1d4ed8;}.rt .sh .so{color:#b45309;}.rt .sh .sg{color:#15803d;}.rt .sh .sp{color:#6d28d9;}
-.rt .dr td{height:24px;padding:3px 8px;vertical-align:middle;border-bottom:1px solid #edf2f7;}
-.rt .dr .nm{font-weight:700;color:#0f1f3d;background:#f7fafc;border-right:2px solid #dce4ee;white-space:nowrap;}
-.rt .dr .nv{text-align:right;color:#0f1f3d;font-family:'IBM Plex Mono',monospace;font-weight:700;}
-.rt .dr .pv{text-align:right;color:#374151;font-family:'IBM Plex Mono',monospace;font-weight:600;}
-.rt .dr .dsh{text-align:center;color:#b0bec5;}
+.rt .dr td{height:25px;padding:3px 9px;vertical-align:middle;border-bottom:1px solid #edf2f7;}
+.rt .dr .nm{font-weight:800;color:#0f1f3d;background:#f4f8fc;border-right:2px solid #dce4ee;white-space:nowrap;font-size:12px;}
+.rt .dr .nv{text-align:right;color:#0f1f3d;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:12px;}
+.rt .dr .pv{text-align:right;color:#374151;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;}
+.rt .dr .dsh{text-align:center;color:#b0bec5;font-size:13px;}
 .rt .dr:nth-child(even) td{background:#f7fafc;}
-.rt .dr:nth-child(even) .nm{background:#eaf0f8;}
-.rt .sr td{height:24px;padding:3px 8px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;}
-.rt .sr .nm{font-weight:700;color:#7c3000;background:#fef6e0!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;white-space:nowrap;}
-.rt .sr .nv{text-align:right;color:#6b3500;font-family:'IBM Plex Mono',monospace;font-weight:700;}
-.rt .sr .pv{text-align:right;color:#92580a;font-family:'IBM Plex Mono',monospace;font-weight:600;}
+.rt .dr:nth-child(even) .nm{background:#e8f0f8;}
+.rt .sr td{height:25px;padding:3px 9px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;}
+.rt .sr .nm{font-weight:800;color:#7c3000;background:#fef3d0!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;white-space:nowrap;font-size:12px;}
+.rt .sr .nv{text-align:right;color:#6b3500;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:12px;}
+.rt .sr .pv{text-align:right;color:#92580a;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;}
 .rt .sr .dsh{text-align:center;color:#f0b429;}
-.rt .saxa-gap td{height:12px;background:#fff3cd!important;border-top:3px solid #f59e0b;padding:0;}
-.rt .tr td{height:26px;padding:3px 8px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;}
-.rt .tr .nm{color:#bfdbfe;font-weight:700;border-right:2px solid #2d5aa0;}
-.rt .tr .nv{text-align:right;color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:700;}
-.rt .tr .pv{text-align:right;color:#93c5fd;font-family:'IBM Plex Mono',monospace;font-weight:700;}
-.arr-up{color:#15803d;font-size:11px;font-weight:900;margin-right:2px;}
-.arr-mid{color:#b45309;font-size:11px;font-weight:900;margin-right:2px;}
-.arr-dn{color:#dc2626;font-size:11px;font-weight:900;margin-right:2px;}
-.pct-done{color:#15803d;font-weight:700;}.pct-mid{color:#b45309;font-weight:700;}.pct-low{color:#dc2626;font-weight:700;}
-.rc-ftr{padding:8px 18px;background:#f0f4f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
-.rc-ftr span{color:#94a3b8;font-size:9px;}
-.scr-btn{width:100%;padding:12px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:11px;color:#0a1628;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;margin-top:4px;}
-.adm-ld{text-align:center;padding:28px;color:#94a3b8;font-size:12px;}
-.plan-panel{background:rgba(255,255,255,.04);border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,.08);margin-top:14px;}
-.plan-panel-title{color:#c9963a;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:10px;}
-.psg2{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;}
-.psi{background:rgba(255,255,255,.05);border-radius:9px;padding:10px 12px;border:1px solid rgba(255,255,255,.07);}
-.psi-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
-.psi-n{font-size:11px;font-weight:700;color:#fff;}
-.psi-p{font-size:12px;font-weight:700;font-family:'IBM Plex Mono',monospace;}
-.psi-bw{background:rgba(255,255,255,.08);border-radius:20px;height:5px;overflow:hidden;margin-bottom:5px;}
-.psi-b{height:5px;border-radius:20px;}
-.psi-s{display:flex;gap:8px;flex-wrap:wrap;}
-.psi-st{font-size:9px;color:rgba(255,255,255,.5);}
-.psi-st span{color:#f0c060;font-weight:700;}
-.img-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;flex-direction:column;align-items:center;justify-content:center;padding:16px;}
-.img-ov.show{display:flex;}
-.img-ov img{max-width:100%;max-height:65vh;border-radius:8px;}
-.img-btns{display:flex;gap:10px;margin-top:14px;width:100%;max-width:360px;}
-.img-save{flex:1;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:11px;color:#0a1628;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;}
-.img-cls{padding:13px 18px;background:rgba(255,255,255,.1);border:none;border-radius:11px;color:#fff;font-family:inherit;font-size:14px;cursor:pointer;}
-.img-hint{color:rgba(255,255,255,.35);font-size:10px;margin-top:8px;text-align:center;}
-.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);z-index:100;align-items:center;justify-content:center;padding:14px;}
+.rt .saxagap td{height:12px;background:#fff3cd!important;border-top:3px solid #f59e0b;padding:0;}
+.rt .tr td{height:27px;padding:3px 9px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;}
+.rt .tr .nm{color:#bfdbfe;font-weight:800;border-right:2px solid #2d5aa0;font-size:12px;}
+.rt .tr .nv{text-align:right;color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:800;font-size:12px;}
+.rt .tr .pv{text-align:right;color:#93c5fd;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:12px;}
+.arr-up{color:#15803d;font-size:12px;font-weight:900;margin-right:2px;}
+.arr-mid{color:#b45309;font-size:12px;font-weight:900;margin-right:2px;}
+.arr-dn{color:#dc2626;font-size:12px;font-weight:900;margin-right:2px;}
+.pct-done{color:#15803d;font-weight:800;}.pct-mid{color:#b45309;font-weight:800;}.pct-low{color:#dc2626;font-weight:800;}
+.rcftr{padding:8px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
+.rcftr span{color:#94a3b8;font-size:9px;font-weight:600;}
+.scrbtn{width:100%;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:12px;color:#0a1628;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer;margin-top:4px;letter-spacing:.2px;}
+.admld{text-align:center;padding:32px;color:#94a3b8;font-size:13px;font-weight:600;}
+/* PLAN PANEL */
+.planpanel{background:rgba(255,255,255,.05);border-radius:13px;padding:14px;border:1px solid rgba(255,255,255,.09);margin-top:14px;}
+.planpaneltitle{color:#c9963a;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:11px;}
+.ppgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:9px;}
+.ppi{background:rgba(255,255,255,.055);border-radius:10px;padding:11px 13px;border:1px solid rgba(255,255,255,.08);}
+.ppih{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
+.ppin{font-size:12px;font-weight:800;color:#fff;}
+.ppip{font-size:13px;font-weight:700;font-family:'IBM Plex Mono',monospace;}
+.ppibw{background:rgba(255,255,255,.09);border-radius:20px;height:6px;overflow:hidden;margin-bottom:6px;}
+.ppib{height:6px;border-radius:20px;}
+.ppis{display:flex;gap:9px;flex-wrap:wrap;}
+.ppist{font-size:10px;color:rgba(255,255,255,.5);font-weight:500;}
+.ppist span{color:#f0c060;font-weight:700;}
+/* ADMIN FILL MODAL */
+.admfill-store{background:rgba(255,255,255,.05);border-radius:10px;padding:12px;margin-bottom:10px;border:1px solid rgba(255,255,255,.08);}
+.admfill-name{color:#c9963a;font-size:12px;font-weight:800;margin-bottom:8px;}
+.admfill-periods{display:flex;flex-direction:column;gap:6px;}
+.admfill-period{background:rgba(0,0,0,.2);border-radius:8px;padding:8px 10px;}
+.admfill-plbl{font-size:10px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;margin-bottom:6px;}
+.afrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
+.afrow input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
+.afrow input:focus{border-color:#c9963a;}
+.afrow input::placeholder{color:rgba(255,255,255,.2);}
+/* IMAGE */
+.imgov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;flex-direction:column;align-items:center;justify-content:center;padding:16px;}
+.imgov.show{display:flex;}
+.imgov img{max-width:100%;max-height:65vh;border-radius:8px;}
+.imgbtns{display:flex;gap:10px;margin-top:14px;width:100%;max-width:360px;}
+.imgsave{flex:1;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:12px;color:#0a1628;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer;}
+.imgcls{padding:13px 18px;background:rgba(255,255,255,.1);border:none;border-radius:12px;color:#fff;font-family:inherit;font-size:14px;cursor:pointer;}
+.imghint{color:rgba(255,255,255,.35);font-size:10px;margin-top:8px;text-align:center;font-weight:500;}
+/* MODAL */
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:100;align-items:center;justify-content:center;padding:14px;}
 .mo.show{display:flex;}
-.mo-box{background:#0f1f3d;border-radius:14px;padding:18px;width:100%;max-width:540px;max-height:88vh;overflow-y:auto;border:1px solid rgba(201,150,58,.2);}
-.mo-box h3{color:#fff;font-size:14px;margin-bottom:12px;}
-.mo-s{background:rgba(255,255,255,.04);border-radius:9px;padding:11px;margin-bottom:8px;border:1px solid rgba(255,255,255,.06);}
-.mo-sn{color:#c9963a;font-weight:700;font-size:11px;margin-bottom:7px;display:flex;justify-content:space-between;align-items:center;}
-.mo-r2{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
-.mo-r3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
-.mo-f label{color:rgba(255,255,255,.35);font-size:9px;text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:2px;}
-.mo-f input{width:100%;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.1);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#fff;outline:none;}
-.mo-f input:focus{border-color:#c9963a;}
-.mo-save{width:100%;padding:11px;background:#c9963a;border:none;border-radius:9px;color:#0a1628;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;margin-top:7px;}
-.mo-close{background:rgba(255,255,255,.06);border:none;color:rgba(255,255,255,.5);border-radius:7px;padding:7px 14px;font-family:inherit;font-size:11px;cursor:pointer;margin-top:5px;width:100%;}
-.add-btn{width:100%;padding:10px;background:rgba(255,255,255,.05);border:1.5px dashed rgba(255,255,255,.15);border-radius:9px;color:rgba(255,255,255,.45);font-family:inherit;font-size:12px;cursor:pointer;margin-bottom:8px;}
-.del-btn{background:rgba(239,68,68,.15);border:none;color:#fca5a5;border-radius:5px;padding:3px 7px;font-size:9px;cursor:pointer;font-family:inherit;}
-.cr{display:flex;align-items:center;gap:8px;margin-top:5px;padding:5px 8px;background:rgba(255,255,255,.03);border-radius:6px;}
-.cr label{color:rgba(255,255,255,.55);font-size:10px;cursor:pointer;flex:1;}
+.mobox{background:#0f1f3d;border-radius:15px;padding:18px;width:100%;max-width:560px;max-height:88vh;overflow-y:auto;border:1px solid rgba(201,150,58,.2);}
+.mobox h3{color:#fff;font-size:15px;font-weight:800;margin-bottom:13px;letter-spacing:-.2px;}
+.mos{background:rgba(255,255,255,.05);border-radius:10px;padding:12px;margin-bottom:9px;border:1px solid rgba(255,255,255,.07);}
+.mosn{color:#c9963a;font-weight:800;font-size:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
+.mor2{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.mor3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
+.mof label{color:rgba(255,255,255,.4);font-size:9px;text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:3px;font-weight:700;}
+.mof input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 9px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#fff;outline:none;}
+.mof input:focus{border-color:#c9963a;}
+.mosave{width:100%;padding:12px;background:#c9963a;border:none;border-radius:10px;color:#0a1628;font-family:inherit;font-size:13px;font-weight:800;cursor:pointer;margin-top:8px;}
+.moclose{background:rgba(255,255,255,.07);border:none;color:rgba(255,255,255,.55);border-radius:8px;padding:8px 16px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;margin-top:6px;width:100%;}
+.addbtn{width:100%;padding:11px;background:rgba(255,255,255,.06);border:1.5px dashed rgba(255,255,255,.18);border-radius:10px;color:rgba(255,255,255,.5);font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;margin-bottom:9px;}
+.delbtn{background:rgba(239,68,68,.15);border:none;color:#fca5a5;border-radius:6px;padding:3px 8px;font-size:9px;cursor:pointer;font-family:inherit;font-weight:700;}
+.cr{display:flex;align-items:center;gap:8px;margin-top:6px;padding:6px 9px;background:rgba(255,255,255,.04);border-radius:7px;}
+.cr label{color:rgba(255,255,255,.6);font-size:10px;cursor:pointer;flex:1;font-weight:600;}
 .cr input[type=checkbox]{cursor:pointer;transform:scale(1.15);}
-.mo-sect{color:rgba(255,255,255,.4);font-size:9px;text-transform:uppercase;letter-spacing:.6px;margin:12px 0 6px;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,.07);}
+.mosect{color:rgba(255,255,255,.4);font-size:9px;text-transform:uppercase;letter-spacing:.7px;margin:13px 0 7px;padding-bottom:5px;border-bottom:1px solid rgba(255,255,255,.08);font-weight:700;}
 </style></head><body>
 
 <div class="screen active" id="gate">
-  <div class="gate-wrap">
-    <img class="gate-logo" src="IMG_0510.png" alt="Panda">
-    <div class="gate-title">Panda</div>
-    <div class="gate-sub">Satış İdarəetmə Sistemi</div>
-    <div class="gate-label">İstifadəçi</div>
-    <select class="gate-input" id="gate-store"><option value="">— Seçin —</option></select>
-    <div class="gate-label">Şifrə</div>
-    <input class="gate-input pw" type="password" id="gate-pw" placeholder="••••" onkeydown="if(event.key==='Enter')doLogin()">
-    <div class="remember-row"><input type="checkbox" id="rem"><label for="rem">Məni xatırla</label></div>
-    <button class="gate-btn" onclick="doLogin()">Daxil ol →</button>
-    <div class="gate-err" id="gate-err">Şifrə yanlışdır</div>
-    <div class="gate-divider"></div>
-    <button class="gate-link" onclick="showAdminGate()">Admin →</button>
+  <div class="gw">
+    <img class="glogo" src="IMG_0510.png" alt="Panda">
+    <div class="gtitle">Panda</div>
+    <div class="gsub">Satış İdarəetmə Sistemi</div>
+    <div class="glbl">İstifadəçi</div>
+    <select class="ginp" id="gsel"><option value="">— Seçin —</option></select>
+    <div class="glbl">Şifrə</div>
+    <input class="ginp pw" type="password" id="gpw" placeholder="••••" onkeydown="if(event.key==='Enter')doLogin()">
+    <div class="remrow"><input type="checkbox" id="rem"><label for="rem">Məni xatırla</label></div>
+    <button class="gbtn" onclick="doLogin()">Daxil ol →</button>
+    <div class="gerr" id="gerr">Şifrə yanlışdır</div>
+    <div class="gdiv"></div>
+    <button class="glink" onclick="showAdminGate()">Admin →</button>
   </div>
 </div>
 
 <div class="screen" id="store-form">
-  <div class="sf-header">
-    <div class="sf-header-inner">
-      <img class="sf-logo" src="IMG_0510.png" alt="">
-      <div class="sf-text">
-        <button class="back-btn" onclick="logout()">← Çıxış</button>
-        <div class="sf-title" id="sf-title"></div>
-        <div class="sf-date" id="sf-date"></div>
+  <div class="sfhdr">
+    <div class="sfhi">
+      <img class="sflogo" src="IMG_0510.png" alt="">
+      <div class="sftxt">
+        <button class="backbtn" onclick="logout()">← Çıxış</button>
+        <div class="sftitle" id="sftitle"></div>
+        <div class="sfdate" id="sfdate"></div>
       </div>
     </div>
   </div>
-  <div class="sf-body" id="sf-body"></div>
+  <div class="sfbody" id="sfbody"></div>
 </div>
 
 <div class="screen" id="admin">
-  <div class="adm-hdr">
-    <div class="adm-hdr-in">
-      <div class="adm-logo-w">
-        <img class="adm-logo" src="IMG_0510.png" alt="">
-        <div class="adm-title"><h2>Panda — Admin</h2><p id="adm-date"></p></div>
+  <div class="admhdr">
+    <div class="admhdri">
+      <div class="admlogow">
+        <img class="admlogo" src="IMG_0510.png" alt="">
+        <div class="admtitle"><h2>Panda — Admin</h2><p id="admdate"></p></div>
       </div>
-      <div class="adm-acts">
+      <div class="admacts">
         <button class="ab" onclick="openUsersMo()">👥 İstifadəçilər</button>
         <button class="ab" onclick="openTargetsMo()">🎯 Hədəflər</button>
+        <button class="ab" onclick="openFillMo()">✏️ Doldur</button>
         <button class="ab" onclick="openSettingsMo()">⚙️ Parametrlər</button>
         <button class="ab gold" onclick="loadAdmin()">↻ Yenilə</button>
         <button class="ab" onclick="logout()">← Çıx</button>
       </div>
     </div>
   </div>
-  <div class="adm-body" id="adm-body"></div>
+  <div class="admbody" id="admbody"></div>
 </div>
 
 <div class="screen" id="viewer">
-  <div class="adm-hdr">
-    <div class="adm-hdr-in">
-      <div class="adm-logo-w">
-        <img class="adm-logo" src="IMG_0510.png" alt="">
-        <div class="adm-title"><h2 id="view-title">Panda — Baxış</h2><p id="view-date"></p></div>
+  <div class="admhdr">
+    <div class="admhdri">
+      <div class="admlogow">
+        <img class="admlogo" src="IMG_0510.png" alt="">
+        <div class="admtitle"><h2 id="viewtitle">Panda — Baxış</h2><p id="viewdate"></p></div>
       </div>
-      <div class="adm-acts">
+      <div class="admacts">
         <div class="ab view">👁 Baxış</div>
         <button class="ab gold" onclick="loadViewer()">↻ Yenilə</button>
         <button class="ab" onclick="logout()">← Çıx</button>
       </div>
     </div>
   </div>
-  <div class="adm-body" id="view-body"></div>
+  <div class="admbody" id="viewbody"></div>
 </div>
 
-<div class="img-ov" id="img-ov">
-  <img id="prev-img" src="" alt="">
-  <div class="img-btns">
-    <button class="img-save" onclick="saveImg()">⬇️ Qalereyaya Saxla</button>
-    <button class="img-cls" onclick="document.getElementById('img-ov').classList.remove('show')">Bağla</button>
+<div class="imgov" id="imgov">
+  <img id="previmg" src="" alt="">
+  <div class="imgbtns">
+    <button class="imgsave" onclick="saveImg()">⬇️ Qalereyaya Saxla</button>
+    <button class="imgcls" onclick="document.getElementById('imgov').classList.remove('show')">Bağla</button>
   </div>
-  <div class="img-hint">iPhone: Şəkilə uzun basın → "Fotoya saxla"</div>
+  <div class="imghint">iPhone: Şəkilə uzun basın → "Fotoya saxla"</div>
 </div>
 
-<div class="mo" id="mo-t"><div class="mo-box">
+<div class="mo" id="mo-t"><div class="mobox">
   <h3>🎯 Aylıq Hədəflər</h3>
-  <div id="mo-t-body"></div>
-  <button class="mo-save" onclick="saveTargets()">✓ Saxla</button>
-  <button class="mo-close" onclick="closeMo('mo-t')">Bağla</button>
+  <div id="mot-body"></div>
+  <button class="mosave" onclick="saveTargets()">✓ Saxla</button>
+  <button class="moclose" onclick="closeMo('mo-t')">Bağla</button>
 </div></div>
 
-<div class="mo" id="mo-u"><div class="mo-box">
+<div class="mo" id="mo-u"><div class="mobox">
   <h3>👥 İstifadəçilər</h3>
-  <div id="mo-u-body"></div>
-  <button class="add-btn" onclick="addStore()">+ Yeni Şöbə</button>
-  <button class="mo-save" onclick="saveUsers()">✓ Saxla</button>
-  <button class="mo-close" onclick="closeMo('mo-u')">Bağla</button>
+  <div id="mou-body"></div>
+  <button class="addbtn" onclick="addStore()">+ Yeni Şöbə</button>
+  <button class="mosave" onclick="saveUsers()">✓ Saxla</button>
+  <button class="moclose" onclick="closeMo('mo-u')">Bağla</button>
 </div></div>
 
-<div class="mo" id="mo-set"><div class="mo-box">
+<div class="mo" id="mo-set"><div class="mobox">
   <h3>⚙️ Parametrlər</h3>
-  <div class="mo-sect">Admin Parolu Dəyiş</div>
-  <div class="mo-r2" style="margin-bottom:8px">
-    <div class="mo-f"><label>Köhnə parol</label><input type="password" id="old-pw" placeholder="••••"></div>
-    <div class="mo-f"><label>Yeni parol</label><input type="password" id="new-pw" placeholder="••••"></div>
+  <div class="mosect">Admin Parolu Dəyiş</div>
+  <div class="mor2" style="margin-bottom:9px">
+    <div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••"></div>
+    <div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••"></div>
   </div>
-  <button class="mo-save" style="background:rgba(255,255,255,.1);color:#fff;margin-bottom:8px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button>
-  <button class="mo-close" onclick="closeMo('mo-set')">Bağla</button>
+  <button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button>
+  <button class="moclose" onclick="closeMo('mo-set')">Bağla</button>
+</div></div>
+
+<div class="mo" id="mo-fill"><div class="mobox">
+  <h3>✏️ Admin Doldurma</h3>
+  <div style="margin-bottom:10px">
+    <div class="mof"><label>Şöbə seç</label>
+      <select id="fill-store-sel" style="width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 9px;font-family:inherit;font-size:13px;font-weight:600;color:#fff;outline:none;" onchange="renderFillForm()">
+        <option value="">— Seçin —</option>
+      </select>
+    </div>
+  </div>
+  <div id="fill-form-body"></div>
+  <button class="mosave" id="fill-save-btn" onclick="doAdminFill()" style="display:none">✓ Saxla</button>
+  <div class="ldbox" id="fill-ld">⏳ Göndərilir...</div>
+  <div class="okbox" id="fill-ok">✅ Uğurla saxlandı!</div>
+  <div class="erbox" id="fill-er">❌ Xəta baş verdi.</div>
+  <button class="moclose" onclick="closeMo('mo-fill')">Bağla</button>
 </div></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-// ── SABİTLƏR ──────────────────────────────────────────────────────────────────
 const BIN_ID="69c115d4b7ec241ddc949a2c";
 const API_KEY="$2a$10$FKtiGhR30Uu6WoutSaNJne5SvTJFLM8mr2ZdCj50f1RLbD6tWAX7K";
 const BIN_URL=`https://api.jsonbin.io/v3/b/${BIN_ID}`;
 const AY=['yanvar','fevral','mart','aprel','may','iyun','iyul','avqust','sentyabr','oktyabr','noyabr','dekabr'];
+const GUNS=['Bazar ertəsi','Çərşənbə axşamı','Çərşənbə','Cümə axşamı','Cümə','Şənbə','Bazar'];
 const HC=['hb','ho','hg','hp'];
 const SC=['sb','so','sg','sp'];
 
 let ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
-let curSid=null, editMode=false, prevUrl=null, tmpUsers=[];
+let curSid=null,editMode=false,prevUrl=null,tmpUsers=[];
 
-// Default məlumatlar
 const DEF_USERS=[
   {id:'p2',name:'Panda 2',pw:'p2-2026',inTotal:true,showPlan:true,type:'store'},
   {id:'p3',name:'Panda 3',pw:'p3-2026',inTotal:true,showPlan:true,type:'store'},
@@ -299,89 +332,72 @@ const DEF_USERS=[
   {id:'s2',name:'Saxa 2 (Xırdalan)',pw:'s2-2026',inTotal:false,showPlan:true,type:'store'},
   {id:'v1',name:'Baxış',pw:'view2026',inTotal:false,showPlan:false,type:'viewer'}
 ];
-const DEF_TARGETS={
-  p2:{min:70000,mid:85000,max:100000},
-  p3:{min:80000,mid:95000,max:110000},
-  pe:{min:40000,mid:55000,max:70000},
-  s1:{min:20000,mid:28000,max:35000},
-  s2:{min:15000,mid:22000,max:30000}
+const DEF_TGTS={
+  p2:{min:70000,mid:85000,max:100000},p3:{min:80000,mid:95000,max:110000},
+  pe:{min:40000,mid:55000,max:70000},s1:{min:20000,mid:28000,max:35000},s2:{min:15000,mid:22000,max:30000}
 };
 
 const gU=()=>{try{return JSON.parse(localStorage.getItem('pk_users')||'null')||DEF_USERS;}catch{return DEF_USERS;}};
 const svU=v=>localStorage.setItem('pk_users',JSON.stringify(v));
-const gT=()=>{try{return JSON.parse(localStorage.getItem('pk_tgts')||'null')||DEF_TARGETS;}catch{return DEF_TARGETS;}};
+const gT=()=>{try{return JSON.parse(localStorage.getItem('pk_tgts')||'null')||DEF_TGTS;}catch{return DEF_TGTS;}};
 const svT=v=>localStorage.setItem('pk_tgts',JSON.stringify(v));
 
 // ── TARİX ─────────────────────────────────────────────────────────────────────
-function getWD(){
+// Plan kartı üçün: gecə 12-dən sonra yeni gün
+function getPlanDay(){return new Date();}
+
+// Cədvəl/form üçün: saat 17:00-dan sonra yeni gün
+function getFormDay(){
   const n=new Date(),d=new Date(n);
   if(n.getHours()<17)d.setDate(d.getDate()-1);
   return d;
 }
-// 4 period: günlük, cari ay, keçən ilin eyni ayı, 2 il əvvəl eyni ay
-// Hər period üçün: {label, storeKey, cacheKey}
+
 function getPeriods(){
-  const d=getWD();
-  const yr=d.getFullYear(), mo=d.getMonth(), day=d.getDate();
-  const ayAd=AY[mo];
+  const d=getFormDay();
+  const yr=d.getFullYear(),mo=d.getMonth(),day=d.getDate();
+  const moPad=String(mo+1).padStart(2,'0'),dayPad=String(day).padStart(2,'0');
+  const ay=AY[mo];
   return [
-    {
-      id:'gun',
-      label:`${day} ${ayAd} ${yr}`,
-      sk:`G_${yr}_${String(mo+1).padStart(2,'0')}_${String(day).padStart(2,'0')}`,
-      ck:`G_${yr}_${String(mo+1).padStart(2,'0')}_${String(day).padStart(2,'0')}`
-    },
-    {
-      id:'ay0',
-      label:`1-${day} ${ayAd} ${yr}`,
-      sk:`A_${yr}_${String(mo+1).padStart(2,'0')}`,
-      ck:`A_${yr}_${String(mo+1).padStart(2,'0')}`
-    },
-    {
-      id:'ay1',
-      label:`1-${day} ${AY[mo]} ${yr-1}`,
-      sk:`A_${yr-1}_${String(mo+1).padStart(2,'0')}`,
-      ck:`A_${yr-1}_${String(mo+1).padStart(2,'0')}`
-    },
-    {
-      id:'ay2',
-      label:`1-${day} ${AY[mo]} ${yr-2}`,
-      sk:`A_${yr-2}_${String(mo+1).padStart(2,'0')}`,
-      ck:`A_${yr-2}_${String(mo+1).padStart(2,'0')}`
-    }
+    {id:'gun', label:`${day} ${ay} ${yr}`,           sk:`G_${yr}_${moPad}_${dayPad}`, ck:`G_${yr}_${moPad}_${dayPad}`},
+    {id:'ay0', label:`1-${day} ${ay} ${yr}`,          sk:`A_${yr}_${moPad}`,           ck:`A_${yr}_${moPad}`},
+    {id:'ay1', label:`1-${day} ${ay} ${yr-1}`,        sk:`A_${yr-1}_${moPad}`,         ck:`A_${yr-1}_${moPad}`},
+    {id:'ay2', label:`1-${day} ${ay} ${yr-2}`,        sk:`A_${yr-2}_${moPad}`,         ck:`A_${yr-2}_${moPad}`}
   ];
 }
-function dLeft(){const d=getWD();return Math.max(0,new Date(d.getFullYear(),d.getMonth()+1,0).getDate()-d.getDate());}
-function daysPassed(){return Math.max(1,getWD().getDate());}
-function fmtDate(){const d=getWD();return d.toLocaleDateString('az-AZ',{weekday:'long',year:'numeric',month:'long',day:'numeric'});}
 
-// ── FORMAT ────────────────────────────────────────────────────────────────────
-function fmt(n){
-  if(!n||n==0)return '—';
-  return Number(n).toLocaleString('az-AZ',{minimumFractionDigits:0,maximumFractionDigits:0}).replace(/\./g,',');
+function dLeft(){const d=getFormDay();return Math.max(0,new Date(d.getFullYear(),d.getMonth()+1,0).getDate()-d.getDate());}
+function daysPassed(){return Math.max(1,getFormDay().getDate());}
+
+function fmtFormDate(){
+  // Forma üçün saat 17:00 məntiqi
+  const d=getFormDay();
+  const gun=GUNS[(d.getDay()+6)%7];
+  return `${gun}, ${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;
 }
-function xPct(v,t){
-  if(!v||!t)return null;
-  const r=v/t*100;
-  return r>=100?100:Math.floor(r*10)/10;
+function fmtPlanDate(){
+  // Plan kartı üçün gecə 12 məntiqi — daha böyük format
+  const d=getPlanDay();
+  const gun=GUNS[(d.getDay()+6)%7];
+  return `${gun}, ${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;
 }
+
+function fmt(n){if(!n||n==0)return '—';return Number(n).toLocaleString('az-AZ',{minimumFractionDigits:0,maximumFractionDigits:0}).replace(/\./g,',');}
+function xPct(v,t){if(!v||!t)return null;const r=v/t*100;return r>=100?100:Math.floor(r*10)/10;}
 function pStr(p){if(p===null)return '—';return p===100?'100%':p.toFixed(1)+'%';}
 function pCls(p){if(p===null)return '';if(p>=100)return 'pct-done';if(p>=70)return 'pct-mid';return 'pct-low';}
 function avgPct(arr){const v=arr.filter(x=>x>0);return v.length?v.reduce((a,b)=>a+b)/v.length:null;}
-function fmtP(p){return p===null?'—':p.toFixed(1)+'%';}
+function fP(p){return p===null?'—':p.toFixed(1)+'%';}
 
-// ── CACHE ─────────────────────────────────────────────────────────────────────
-function ckGet(sid,pck){try{return JSON.parse(localStorage.getItem(`panda_${sid}_${pck}`)||'null');}catch{return null;}}
-function ckSet(sid,pck,d){localStorage.setItem(`panda_${sid}_${pck}`,JSON.stringify(d));}
+function ckGet(sid,pck){try{return JSON.parse(localStorage.getItem(`pd_${sid}_${pck}`)||'null');}catch{return null;}}
+function ckSet(sid,pck,d){localStorage.setItem(`pd_${sid}_${pck}`,JSON.stringify(d));}
 
-// ── NAVİGASİYA ────────────────────────────────────────────────────────────────
 function goTo(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 function closeMo(id){document.getElementById(id).classList.remove('show');}
-function logout(){curSid=null;editMode=false;document.getElementById('gate-pw').value='';document.getElementById('gate-err').classList.remove('show');document.getElementById('gate-store').value='';goTo('gate');}
+function logout(){curSid=null;editMode=false;document.getElementById('gpw').value='';document.getElementById('gerr').classList.remove('show');document.getElementById('gsel').value='';goTo('gate');}
 
-// ── GİRİŞ ─────────────────────────────────────────────────────────────────────
 function buildSel(){
-  const sel=document.getElementById('gate-store');
+  const sel=document.getElementById('gsel');
   sel.innerHTML='<option value="">— Seçin —</option>';
   const stores=gU().filter(u=>u.type==='store');
   const viewers=gU().filter(u=>u.type==='viewer');
@@ -391,28 +407,27 @@ function buildSel(){
     viewers.forEach(u=>{const o=document.createElement('option');o.value=u.id;o.textContent=u.name;og.appendChild(o);});
     sel.appendChild(og);
   }
-  try{const r=JSON.parse(localStorage.getItem('pk_rem')||'null');if(r){sel.value=r.sid;document.getElementById('gate-pw').value=r.pw;document.getElementById('rem').checked=true;}}catch{}
+  try{const r=JSON.parse(localStorage.getItem('pk_rem')||'null');if(r){sel.value=r.sid;document.getElementById('gpw').value=r.pw;document.getElementById('rem').checked=true;}}catch{}
 }
 buildSel();
 
 function doLogin(){
-  const sid=document.getElementById('gate-store').value;
-  const pw=document.getElementById('gate-pw').value;
+  const sid=document.getElementById('gsel').value;
+  const pw=document.getElementById('gpw').value;
   const rem=document.getElementById('rem').checked;
   if(!sid){alert('İstifadəçini seçin.');return;}
   const u=gU().find(u=>u.id===sid);
-  if(!u||pw!==u.pw){document.getElementById('gate-err').classList.add('show');document.getElementById('gate-pw').value='';return;}
-  document.getElementById('gate-err').classList.remove('show');
+  if(!u||pw!==u.pw){document.getElementById('gerr').classList.add('show');document.getElementById('gpw').value='';return;}
+  document.getElementById('gerr').classList.remove('show');
   if(rem)localStorage.setItem('pk_rem',JSON.stringify({sid,pw}));else localStorage.removeItem('pk_rem');
-  if(u.type==='viewer'){openViewer(u);}
-  else{curSid=sid;editMode=false;renderForm(sid);}
+  if(u.type==='viewer'){openViewer(u);}else{curSid=sid;editMode=false;renderForm(sid);}
 }
 function showAdminGate(){
   const pw=prompt('Admin şifrəsi:');
   if(pw===ADMIN_PW)openAdmin();else if(pw!==null)alert('Şifrə yanlışdır.');
 }
 
-// ── MAĞAZA FORMU ──────────────────────────────────────────────────────────────
+// ── PLAN KARTI ────────────────────────────────────────────────────────────────
 function planCard(sid,curMs){
   const t=gT()[sid];if(!t)return '';
   const dl=dLeft();
@@ -429,18 +444,18 @@ function planCard(sid,curMs){
   const ap=xPct(curMs,at)||0;
   const dn=dl>0&&rm>0?Math.ceil(rm/dl):0;
   const bc=curMs>=t.max?'#10b981':curMs>=t.mid?'#3b82f6':curMs>=t.min?'#f59e0b':'#ef4444';
-  return `<div class="plan-card" id="pc-${sid}">
-    <div class="plan-title">📊 Bu Ay Hədəflər</div>
-    <div class="plan-grid">
-      <div class="plan-item ${pm!==null&&pm>=100?'done':'active'}">
+  return `<div class="plancard" id="pc-${sid}">
+    <div class="plantitle">📊 Bu Ay Hədəflər</div>
+    <div class="plangrid">
+      <div class="planitem ${pm!==null&&pm>=100?'done':'active'}">
         <div class="pil">🥉 Min</div><div class="piv">${fmt(t.min)}</div>
         <div class="pip ${pm!==null&&pm>=100?'done':'cur'}">${pStr(pm)}</div>
       </div>
-      <div class="plan-item ${pd!==null&&pd>=100?'done':pm!==null&&pm>=100?'active':''}">
+      <div class="planitem ${pd!==null&&pd>=100?'done':pm!==null&&pm>=100?'active':''}">
         <div class="pil">🥈 Orta</div><div class="piv">${fmt(t.mid)}</div>
         <div class="pip ${pd!==null&&pd>=100?'done':'cur'}">${pd!==null?pStr(pd):'—'}</div>
       </div>
-      <div class="plan-item ${px!==null&&px>=100?'done':pd!==null&&pd>=100?'active':''}">
+      <div class="planitem ${px!==null&&px>=100?'done':pd!==null&&pd>=100?'active':''}">
         <div class="pil">🥇 Maks</div><div class="piv">${fmt(t.max)}</div>
         <div class="pip ${px!==null&&px>=100?'done':'cur'}">${px!==null?pStr(px):'—'}</div>
       </div>
@@ -454,56 +469,6 @@ function planCard(sid,curMs){
       <div class="ps"><div class="psl">⬆️ Növbəti hədəfə</div><div class="psv">${rm>0?fmt(rm)+' ₼':'🏆'}</div></div>
     </div>
   </div>`;
-}
-
-function renderForm(sid){
-  const u=gU().find(u=>u.id===sid);
-  const isSaxa=!u.inTotal;
-  const periods=getPeriods();
-  const activePeriods=isSaxa?periods.slice(0,2):periods;
-  document.getElementById('sf-title').textContent=u.name;
-  document.getElementById('sf-date').textContent=fmtDate();
-  const body=document.getElementById('sf-body');
-  const allSaved=!editMode&&activePeriods.every(p=>ckGet(sid,p.ck)!==null);
-  const msData=ckGet(sid,periods[1].ck);
-  const ms=msData?.satis||0;
-  const t=gT()[sid];
-  const PCOL=['#2E75B6','#C55A11','#375623','#7030A0'];
-  let h=t?planCard(sid,ms):'';
-  activePeriods.forEach((period,pi)=>{
-    const saved=editMode?null:ckGet(sid,period.ck);
-    const cv=ckGet(sid,period.ck);
-    const dis=(!editMode&&saved)?'disabled':'';
-    const sv=editMode&&cv?cv.satis:(saved?.satis??'');
-    const mv=editMode&&cv?cv.menfeet:(saved?.menfeet??'');
-    const fv=editMode&&cv?cv.faiz:(saved?.faiz??'');
-    const isAy=period.id==='ay0',isGun=period.id==='gun';
-    const lu=isAy?`oninput="upPlan(this.value);sF('s-${period.id}')"`
-      :isGun?`oninput="upToday();sF('s-${period.id}')"`
-      :`oninput="sF('s-${period.id}')"`;
-    h+=`<div class="period-block">
-      <div class="period-hdr" style="background:${PCOL[pi]}">${period.label}</div>
-      <table class="pt"><thead><tr>
-        <th style="text-align:left">Göstərici</th><th>Satış (₼)</th><th>Mənfəət (₼)</th><th>Faiz (%)</th>
-      </tr></thead><tbody><tr>
-        <td class="pn">Ümumi satış</td>
-        <td><input class="ni" type="number" min="0" id="s-${period.id}" value="${sv}" placeholder="0" ${dis} ${lu}>${sv?`<div class="nid">${fmt(sv)}</div>`:''}</td>
-        <td><input class="ni" type="number" min="0" id="m-${period.id}" value="${mv}" placeholder="0" ${dis} oninput="sF('m-${period.id}')">${mv?`<div class="nid">${fmt(mv)}</div>`:''}</td>
-        <td><input class="ni-f" type="number" min="0" step="0.1" id="f-${period.id}" value="${fv}" placeholder="0" ${dis}></td>
-      </tr></tbody></table>
-    </div>`;
-  });
-  if(allSaved){
-    h+=`<button class="save-btn" disabled>✓ Saxlanıldı</button>
-    <button class="edit-btn" id="ebt" onclick="enableEdit()">✏️ Düzəliş et</button>
-    <div class="ok-box show">✅ Bu günün məlumatları saxlanıldı.</div>`;
-  }else{
-    h+=`<button class="save-btn" id="sbt" onclick="doSave()">✓ Yadda Saxla</button>
-    <div class="ld-box" id="ldb">⏳ Göndərilir...</div>
-    <div class="ok-box" id="okb">✅ Uğurla saxlandı!</div>
-    <div class="er-box" id="erb">❌ Xəta baş verdi.</div>`;
-  }
-  body.innerHTML=h;goTo('store-form');
 }
 
 function sF(id){
@@ -529,8 +494,59 @@ function enableEdit(){
     document.querySelectorAll('.ni,.ni-f').forEach(i=>i.disabled=false);
     const sb=document.getElementById('sbt');if(sb){sb.disabled=false;sb.textContent='✓ Yadda Saxla';}
     const eb=document.getElementById('ebt');if(eb)eb.style.display='none';
-    document.querySelectorAll('.ok-box').forEach(b=>b.classList.remove('show'));
+    document.querySelectorAll('.okbox').forEach(b=>b.classList.remove('show'));
   },50);
+}
+
+function renderForm(sid){
+  const u=gU().find(u=>u.id===sid);
+  const isSaxa=!u.inTotal;
+  const periods=getPeriods();
+  const activePeriods=isSaxa?periods.slice(0,2):periods;
+  // Plan tarix — gecə 12 məntiqi
+  document.getElementById('sftitle').textContent=u.name;
+  document.getElementById('sfdate').textContent=fmtPlanDate();
+  const body=document.getElementById('sfbody');
+  // Cədvəl tarix — saat 17 məntiqi (form üçün)
+  const allSaved=!editMode&&activePeriods.every(p=>ckGet(sid,p.ck)!==null);
+  const ms=ckGet(sid,periods[1].ck)?.satis||0;
+  const t_=gT()[sid];
+  const PCOL=['#2E75B6','#C55A11','#375623','#7030A0'];
+  let h=t_?planCard(sid,ms):'';
+  activePeriods.forEach((period,pi)=>{
+    const saved=editMode?null:ckGet(sid,period.ck);
+    const cv=ckGet(sid,period.ck);
+    const dis=(!editMode&&saved)?'disabled':'';
+    const sv=editMode&&cv?cv.satis:(saved?.satis??'');
+    const mv=editMode&&cv?cv.menfeet:(saved?.menfeet??'');
+    const fv=editMode&&cv?cv.faiz:(saved?.faiz??'');
+    const isAy=period.id==='ay0',isGun=period.id==='gun';
+    const lu=isAy?`oninput="upPlan(this.value);sF('s-ay0')"`
+      :isGun?`oninput="upToday();sF('s-gun')"`
+      :`oninput="sF('s-${period.id}')"`;
+    h+=`<div class="perblock">
+      <div class="perhdr" style="background:${PCOL[pi]}">${period.label}</div>
+      <table class="pt"><thead><tr>
+        <th style="text-align:left">Göstərici</th><th>Satış (₼)</th><th>Mənfəət (₼)</th><th>Faiz (%)</th>
+      </tr></thead><tbody><tr>
+        <td class="pn">Ümumi satış</td>
+        <td><input class="ni" type="number" min="0" id="s-${period.id}" value="${sv}" placeholder="0" ${dis} ${lu}>${sv?`<div class="nid">${fmt(sv)}</div>`:''}</td>
+        <td><input class="ni" type="number" min="0" id="m-${period.id}" value="${mv}" placeholder="0" ${dis} oninput="sF('m-${period.id}')">${mv?`<div class="nid">${fmt(mv)}</div>`:''}</td>
+        <td><input class="ni-f" type="number" min="0" step="0.1" id="f-${period.id}" value="${fv}" placeholder="0" ${dis}></td>
+      </tr></tbody></table>
+    </div>`;
+  });
+  if(allSaved){
+    h+=`<button class="savebtn" disabled>✓ Saxlanıldı</button>
+    <button class="editbtn" id="ebt" onclick="enableEdit()">✏️ Düzəliş et</button>
+    <div class="okbox show">✅ Bu günün məlumatları saxlanıldı.</div>`;
+  }else{
+    h+=`<button class="savebtn" id="sbt" onclick="doSave()">✓ Yadda Saxla</button>
+    <div class="ldbox" id="ldb">⏳ Göndərilir...</div>
+    <div class="okbox" id="okb">✅ Uğurla saxlandı!</div>
+    <div class="erbox" id="erb">❌ Xəta baş verdi.</div>`;
+  }
+  body.innerHTML=h;goTo('store-form');
 }
 
 // ── BİN ───────────────────────────────────────────────────────────────────────
@@ -543,6 +559,8 @@ async function wBin(data){
   catch(e){console.error(e);}
 }
 
+// ── SÜRƏTLI SAXLA ─────────────────────────────────────────────────────────────
+// Əvvəl cache-ə yaz, UI-ni yenilə, BIN-ə arxa planda göndər
 async function doSave(){
   const sid=curSid;
   const u=gU().find(u=>u.id===sid);
@@ -554,36 +572,43 @@ async function doSave(){
     const s=parseFloat(document.getElementById(`s-${p.id}`)?.value)||0;
     const m=parseFloat(document.getElementById(`m-${p.id}`)?.value)||0;
     const f=parseFloat(document.getElementById(`f-${p.id}`)?.value)||0;
+    // İstənilən sahə doldurulsa kifayətdir
     if(s>0||m>0||f>0)any=true;
     res[p.id]={satis:s,menfeet:m,faiz:f,_sk:p.sk,_ck:p.ck};
   }
-  if(!any){alert('Ən azı bir rəqəm daxil edin.');return;}
-  document.getElementById('sbt').disabled=true;
+  if(!any){alert('Ən azı bir sahəni doldurun.');return;}
+  const sbt=document.getElementById('sbt');
+  if(sbt)sbt.disabled=true;
   document.getElementById('ldb').classList.add('show');
   document.getElementById('erb').classList.remove('show');
-  try{
-    const all=await rBin();
-    for(const pid of Object.keys(res)){
-      const d=res[pid];
-      const idx=all.findIndex(r=>r.sobe===u.name&&r.period===d._sk);
-      const e={sobe:u.name,period:d._sk,satis:d.satis,menfeet:d.menfeet,faiz:d.faiz};
-      if(idx>=0)all[idx]=e;else all.push(e);
-      ckSet(sid,d._ck,{satis:d.satis,menfeet:d.menfeet,faiz:d.faiz});
-    }
-    await wBin(all);
-    editMode=false;
-    document.getElementById('ldb').classList.remove('show');
-    document.getElementById('okb').classList.add('show');
-    document.getElementById('sbt').textContent='✓ Saxlanıldı';
-    document.querySelectorAll('.ni,.ni-f').forEach(i=>i.disabled=true);
-    const sb=document.getElementById('sbt');
-    if(sb){const eb=document.createElement('button');eb.className='edit-btn';eb.textContent='✏️ Düzəliş et';eb.onclick=enableEdit;sb.parentNode.insertBefore(eb,sb.nextSibling);}
-    const ms=res['ay0']?.satis||0;upPlan(ms);
-  }catch{
-    document.getElementById('ldb').classList.remove('show');
-    document.getElementById('erb').classList.add('show');
-    document.getElementById('sbt').disabled=false;
+
+  // 1. Əvvəl cache-ə yaz (ani)
+  for(const pid of Object.keys(res)){
+    const d=res[pid];
+    ckSet(sid,d._ck,{satis:d.satis,menfeet:d.menfeet,faiz:d.faiz});
   }
+  // 2. UI-ni dərhal yenilə
+  document.getElementById('ldb').classList.remove('show');
+  document.getElementById('okb').classList.add('show');
+  if(sbt)sbt.textContent='✓ Saxlanıldı';
+  document.querySelectorAll('.ni,.ni-f').forEach(i=>i.disabled=true);
+  if(sbt){const eb=document.createElement('button');eb.className='editbtn';eb.textContent='✏️ Düzəliş et';eb.onclick=enableEdit;sbt.parentNode.insertBefore(eb,sbt.nextSibling);}
+  editMode=false;
+  const ms=res['ay0']?.satis||0;upPlan(ms);
+
+  // 3. Arxa planda BIN-ə göndər
+  (async()=>{
+    try{
+      const all=await rBin();
+      for(const pid of Object.keys(res)){
+        const d=res[pid];
+        const idx=all.findIndex(r=>r.sobe===u.name&&r.period===d._sk);
+        const e={sobe:u.name,period:d._sk,satis:d.satis,menfeet:d.menfeet,faiz:d.faiz};
+        if(idx>=0)all[idx]=e;else all.push(e);
+      }
+      await wBin(all);
+    }catch(e){console.error('BIN yazma xətası:',e);}
+  })();
 }
 
 // ── OX ────────────────────────────────────────────────────────────────────────
@@ -602,23 +627,19 @@ function arrM(ms,minT,dl){
   return ms+avg*dl>=minT?'<span class="arr-mid">→</span>':'<span class="arr-dn">↓</span>';
 }
 
-// ── CƏDVƏL ────────────────────────────────────────────────────────────────────
+// ── HESABAT CƏDVƏLİ ───────────────────────────────────────────────────────────
 function buildTable(all,tblId,ldId){
   const users=gU().filter(u=>u.type==='store');
   const targets=gT();
   const dl=dLeft();
   const periods=getPeriods();
-
-  // Hər şöbə + hər period üçün məlumat tap
   const D={};
   users.forEach(u=>{
     D[u.name]={};
     periods.forEach(p=>{
-      const found=all.find(r=>r.sobe===u.name&&r.period===p.sk);
-      D[u.name][p.id]=found||null;
+      D[u.name][p.id]=all.find(r=>r.sobe===u.name&&r.period===p.sk)||null;
     });
   });
-
   let h='<tr class="gh">';
   periods.forEach((p,i)=>{
     h+=`<th class="lb" rowspan="2" style="vertical-align:middle">Şöbələr</th>`;
@@ -629,11 +650,9 @@ function buildTable(all,tblId,ldId){
     h+=`<th class="${SC[i]}">Satış</th><th class="${SC[i]}">Mənfəət</th><th class="${SC[i]}">Faiz</th>`;
   });
   h+='</tr>';
-
-  const tots=periods.map(()=>({s:0,m:0,faizler:[]}));
+  const tots=periods.map(()=>({s:0,m:0,fl:[]}));
   const panda=users.filter(u=>u.inTotal);
   const saxa=users.filter(u=>!u.inTotal);
-
   panda.forEach(u=>{
     const t=targets[u.id];
     const ds=D[u.name]?.['gun']?.satis||0;
@@ -642,7 +661,7 @@ function buildTable(all,tblId,ldId){
     periods.forEach((p,pi)=>{
       h+=`<td class="nm">${u.name}</td>`;
       const e=D[u.name]?.[p.id];
-      if(e&&(e.satis>0||e.menfeet>0)){
+      if(e&&(e.satis>0||e.menfeet>0||e.faiz>0)){
         let arr='';
         if(p.id==='gun'&&t)arr=arrD(ds,ms,t.min,dl);
         else if(p.id==='ay0'&&t)arr=arrM(ms,t.min,dl);
@@ -651,23 +670,19 @@ function buildTable(all,tblId,ldId){
         else{fTd=`<td class="pv">${e.faiz>0?e.faiz.toFixed(1)+'%':'—'}</td>`;}
         h+=`<td class="nv">${arr}${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td>${fTd}`;
         tots[pi].s+=e.satis;tots[pi].m+=e.menfeet;
-        if(e.faiz>0)tots[pi].faizler.push(e.faiz);
+        if(e.faiz>0)tots[pi].fl.push(e.faiz);
       }else{h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;}
     });
     h+='</tr>';
   });
-
-  // Ümumi
   h+='<tr class="tr">';
   tots.forEach(t=>{
-    const af=avgPct(t.faizler);
-    h+=`<td class="nm">Ümumi Panda</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fmtP(af)}</td>`;
+    const af=avgPct(t.fl);
+    h+=`<td class="nm">Ümumi Panda</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fP(af)}</td>`;
   });
   h+='</tr>';
-
-  // Saxa
   if(saxa.length){
-    h+=`<tr class="saxa-gap"><td colspan="${periods.length*4}"></td></tr>`;
+    h+=`<tr class="saxagap"><td colspan="${periods.length*4}"></td></tr>`;
     saxa.forEach(u=>{
       const t=targets[u.id];
       const ds=D[u.name]?.['gun']?.satis||0;
@@ -678,7 +693,7 @@ function buildTable(all,tblId,ldId){
         if(pi>=2){h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;}
         else{
           const e=D[u.name]?.[p.id];
-          if(e&&(e.satis>0||e.menfeet>0)){
+          if(e&&(e.satis>0||e.menfeet>0||e.faiz>0)){
             let arr='';
             if(p.id==='gun'&&t)arr=arrD(ds,ms,t.min,dl);
             else if(p.id==='ay0'&&t)arr=arrM(ms,t.min,dl);
@@ -692,7 +707,6 @@ function buildTable(all,tblId,ldId){
       h+='</tr>';
     });
   }
-
   const tbl=document.getElementById(tblId);
   tbl.innerHTML=h;
   document.getElementById(ldId).style.display='none';
@@ -705,7 +719,7 @@ function planPanelHtml(all){
   const dl=dLeft();
   const periods=getPeriods();
   if(!users.length)return '<div style="color:rgba(255,255,255,.4);font-size:12px">Plan yoxdur</div>';
-  let h='<div class="psg2">';
+  let h='<div class="ppgrid">';
   users.forEach(u=>{
     const t=targets[u.id];if(!t)return;
     const mE=all.find(r=>r.sobe===u.name&&r.period===periods[1].sk);
@@ -719,62 +733,148 @@ function planPanelHtml(all){
     const ap=xPct(ms,at)||0;
     const dn=dl>0&&rm>0?Math.ceil(rm/dl):0;
     const bc=ms>=t.max?'#10b981':ms>=t.mid?'#3b82f6':ms>=t.min?'#f59e0b':'#ef4444';
-    h+=`<div class="psi" style="${!u.inTotal?'border-left:3px solid #f59e0b':''}">
-      <div class="psi-h">
-        <div class="psi-n">${u.name}</div>
-        <div class="psi-p" style="color:${bc}">${ap===100?'100%':ap.toFixed(1)+'%'}</div>
-      </div>
-      <div class="psi-bw"><div class="psi-b" style="width:${Math.min(100,ap)}%;background:${bc}"></div></div>
-      <div class="psi-s">
-        <div class="psi-st">Cari: <span>${fmt(ms)} ₼</span></div>
-        <div class="psi-st">Hədəf: <span>${fmt(at)} ₼</span></div>
-        ${rm>0?`<div class="psi-st">Gündəlik: <span>${fmt(dn)} ₼</span></div>`:'<div class="psi-st" style="color:#10b981">✅</div>'}
-        <div class="psi-st">Bu gün: <span>${fmt(tv)} ₼</span></div>
+    h+=`<div class="ppi" style="${!u.inTotal?'border-left:3px solid #f59e0b':''}">
+      <div class="ppih"><div class="ppin">${u.name}</div><div class="ppip" style="color:${bc}">${ap===100?'100%':ap.toFixed(1)+'%'}</div></div>
+      <div class="ppibw"><div class="ppib" style="width:${Math.min(100,ap)}%;background:${bc}"></div></div>
+      <div class="ppis">
+        <div class="ppist">Cari: <span>${fmt(ms)} ₼</span></div>
+        <div class="ppist">Hədəf: <span>${fmt(at)} ₼</span></div>
+        ${rm>0?`<div class="ppist">Gündəlik: <span>${fmt(dn)} ₼</span></div>`:'<div class="ppist" style="color:#10b981">✅</div>'}
+        <div class="ppist">Bu gün: <span>${fmt(tv)} ₼</span></div>
       </div>
     </div>`;
   });
   return h+'</div>';
 }
 
-function renderPanel(bodyId,rcId,ldId,tblId,showScr){
-  const d=getWD();
-  return `<div class="rc" id="${rcId}">
-    <div class="rc-hdr">
-      <img class="rc-logo" src="IMG_0510.png" alt="">
-      <div class="rc-t"><h2>Panda — Yekun Satış Hesabatı</h2><p>Günlük &amp; Aylıq Müqayisəli</p></div>
-      <div class="rc-d"><div class="rday">${d.getDate()}</div><div class="rmo">${d.toLocaleDateString('az-AZ',{month:'long',year:'numeric'}).toUpperCase()}</div></div>
+function mkPanel(day,rday,rmo){
+  return `<div class="rc" id="rc-${day}">
+    <div class="rchdr">
+      <img class="rclogo" src="IMG_0510.png" alt="">
+      <div class="rct"><h2>Panda — Yekun Satış Hesabatı</h2><p>Günlük &amp; Aylıq Müqayisəli</p></div>
+      <div class="rcd"><div class="rday">${rday}</div><div class="rmo">${rmo}</div></div>
     </div>
-    <div class="rc-tw"><div class="adm-ld" id="${ldId}">Yüklənir...</div><table class="rt" id="${tblId}" style="display:none"></table></div>
-    <div class="rc-ftr"><span>Panda Kids © ${d.getFullYear()}</span></div>
-  </div>
-  ${showScr?`<button class="scr-btn" onclick="takeScr('${rcId}')">📸 Hesabatı Şəkil Kimi Saxla</button>`:''}
-  <div class="plan-panel" style="margin-top:14px">
-    <div class="plan-panel-title">📊 Şöbələrin Plan Vəziyyəti</div>
-    <div id="${bodyId}-plans">Yüklənir...</div>
+    <div class="rctw"><div class="admld" id="ld-${day}">Yüklənir...</div><table class="rt" id="tbl-${day}" style="display:none"></table></div>
+    <div class="rcftr"><span>Panda Kids © ${new Date().getFullYear()}</span></div>
   </div>`;
 }
 
 // ── ADMIN ─────────────────────────────────────────────────────────────────────
 function openAdmin(){
-  document.getElementById('adm-date').textContent=fmtDate();
+  document.getElementById('admdate').textContent=fmtFormDate();
   goTo('admin');loadAdmin();
 }
 async function loadAdmin(){
-  document.getElementById('adm-body').innerHTML=renderPanel('adm','adm-rc','adm-ld','adm-tbl',true);
-  try{const all=await rBin();buildTable(all,'adm-tbl','adm-ld');document.getElementById('adm-plans').innerHTML=planPanelHtml(all);}
-  catch{document.getElementById('adm-ld').textContent='❌ Yüklənmədi.';}
+  const d=getFormDay();
+  const rday=d.getDate();
+  const rmo=d.toLocaleDateString('az-AZ',{month:'long',year:'numeric'}).toUpperCase();
+  document.getElementById('admbody').innerHTML=
+    mkPanel('adm',rday,rmo)+
+    `<button class="scrbtn" onclick="takeScr('rc-adm')">📸 Hesabatı Şəkil Kimi Saxla</button>
+    <div class="planpanel" style="margin-top:14px">
+      <div class="planpaneltitle">📊 Şöbələrin Plan Vəziyyəti</div>
+      <div id="adm-plans">Yüklənir...</div>
+    </div>`;
+  try{const all=await rBin();buildTable(all,'tbl-adm','ld-adm');document.getElementById('adm-plans').innerHTML=planPanelHtml(all);}
+  catch{document.getElementById('ld-adm').textContent='❌ Yüklənmədi.';}
 }
 
-// ── VİEWER ────────────────────────────────────────────────────────────────────
+// ── VIEWER ────────────────────────────────────────────────────────────────────
 function openViewer(u){
-  document.getElementById('view-date').textContent=fmtDate();
-  if(u)document.getElementById('view-title').textContent=`Panda — ${u.name}`;
+  document.getElementById('viewdate').textContent=fmtFormDate();
+  if(u)document.getElementById('viewtitle').textContent=`Panda — ${u.name}`;
   goTo('viewer');loadViewer();
 }
 async function loadViewer(){
-  document.getElementById('view-body').innerHTML=renderPanel('view','view-rc','view-ld','view-tbl',false);
-  try{const all=await rBin();buildTable(all,'view-tbl','view-ld');document.getElementById('view-plans').innerHTML=planPanelHtml(all);}
-  catch{document.getElementById('view-ld').textContent='❌ Yüklənmədi.';}
+  const d=getFormDay();
+  const rday=d.getDate();
+  const rmo=d.toLocaleDateString('az-AZ',{month:'long',year:'numeric'}).toUpperCase();
+  document.getElementById('viewbody').innerHTML=
+    mkPanel('view',rday,rmo)+
+    `<div class="planpanel" style="margin-top:14px">
+      <div class="planpaneltitle">📊 Şöbələrin Plan Vəziyyəti</div>
+      <div id="view-plans">Yüklənir...</div>
+    </div>`;
+  try{const all=await rBin();buildTable(all,'tbl-view','ld-view');document.getElementById('view-plans').innerHTML=planPanelHtml(all);}
+  catch{document.getElementById('ld-view').textContent='❌ Yüklənmədi.';}
+}
+
+// ── ADMİN DOLDURMA MODALI ─────────────────────────────────────────────────────
+function openFillMo(){
+  const sel=document.getElementById('fill-store-sel');
+  sel.innerHTML='<option value="">— Seçin —</option>';
+  gU().filter(u=>u.type==='store').forEach(u=>{
+    const o=document.createElement('option');o.value=u.id;o.textContent=u.name;sel.appendChild(o);
+  });
+  document.getElementById('fill-form-body').innerHTML='';
+  document.getElementById('fill-save-btn').style.display='none';
+  ['fill-ld','fill-ok','fill-er'].forEach(id=>document.getElementById(id).classList.remove('show'));
+  document.getElementById('mo-fill').classList.add('show');
+}
+
+function renderFillForm(){
+  const sid=document.getElementById('fill-store-sel').value;
+  if(!sid){document.getElementById('fill-form-body').innerHTML='';document.getElementById('fill-save-btn').style.display='none';return;}
+  const u=gU().find(u=>u.id===sid);
+  const isSaxa=!u.inTotal;
+  const periods=getPeriods();
+  const activePeriods=isSaxa?periods.slice(0,2):periods;
+  const PCOL=['#2E75B6','#C55A11','#375623','#7030A0'];
+  let h='';
+  activePeriods.forEach((p,pi)=>{
+    const cv=ckGet(sid,p.ck);
+    const sv=cv?.satis||'',mv=cv?.menfeet||'',fv=cv?.faiz||'';
+    h+=`<div class="admfill-store">
+      <div class="admfill-name" style="background:${PCOL[pi]};color:#fff;padding:5px 8px;border-radius:6px;margin-bottom:8px">${p.label}</div>
+      <div class="afrow">
+        <div><div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:3px;font-weight:700;">SATIŞ (₼)</div><input type="number" min="0" id="af-s-${p.id}" value="${sv}" placeholder="0"></div>
+        <div><div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:3px;font-weight:700;">MƏNFƏƏT (₼)</div><input type="number" min="0" id="af-m-${p.id}" value="${mv}" placeholder="0"></div>
+        <div><div style="font-size:9px;color:rgba(255,255,255,.4);margin-bottom:3px;font-weight:700;">FAİZ (%)</div><input type="number" min="0" step="0.1" id="af-f-${p.id}" value="${fv}" placeholder="0"></div>
+      </div>
+    </div>`;
+  });
+  document.getElementById('fill-form-body').innerHTML=h;
+  document.getElementById('fill-save-btn').style.display='block';
+  ['fill-ok','fill-er'].forEach(id=>document.getElementById(id).classList.remove('show'));
+}
+
+async function doAdminFill(){
+  const sid=document.getElementById('fill-store-sel').value;
+  if(!sid)return;
+  const u=gU().find(u=>u.id===sid);
+  const isSaxa=!u.inTotal;
+  const periods=getPeriods();
+  const activePeriods=isSaxa?periods.slice(0,2):periods;
+  const res={};let any=false;
+  for(const p of activePeriods){
+    const s=parseFloat(document.getElementById(`af-s-${p.id}`)?.value)||0;
+    const m=parseFloat(document.getElementById(`af-m-${p.id}`)?.value)||0;
+    const f=parseFloat(document.getElementById(`af-f-${p.id}`)?.value)||0;
+    if(s>0||m>0||f>0)any=true;
+    res[p.id]={satis:s,menfeet:m,faiz:f,_sk:p.sk,_ck:p.ck};
+  }
+  if(!any){alert('Ən azı bir sahəni doldurun.');return;}
+  document.getElementById('fill-save-btn').disabled=true;
+  document.getElementById('fill-ld').classList.add('show');
+  document.getElementById('fill-er').classList.remove('show');
+  // Cache-ə yaz
+  for(const pid of Object.keys(res)){const d=res[pid];ckSet(sid,d._ck,{satis:d.satis,menfeet:d.menfeet,faiz:d.faiz});}
+  document.getElementById('fill-ld').classList.remove('show');
+  document.getElementById('fill-ok').classList.add('show');
+  document.getElementById('fill-save-btn').disabled=false;
+  // BIN arxa planda
+  (async()=>{
+    try{
+      const all=await rBin();
+      for(const pid of Object.keys(res)){
+        const d=res[pid];
+        const idx=all.findIndex(r=>r.sobe===u.name&&r.period===d._sk);
+        const e={sobe:u.name,period:d._sk,satis:d.satis,menfeet:d.menfeet,faiz:d.faiz};
+        if(idx>=0)all[idx]=e;else all.push(e);
+      }
+      await wBin(all);
+    }catch(e){console.error(e);}
+  })();
 }
 
 // ── TARGETS ───────────────────────────────────────────────────────────────────
@@ -782,14 +882,14 @@ function openTargetsMo(){
   const tgts=gT();let h='';
   gU().filter(u=>u.type==='store').forEach(u=>{
     const t=tgts[u.id]||{min:0,mid:0,max:0};
-    h+=`<div class="mo-s"><div class="mo-sn">${u.name}</div>
-    <div class="mo-r3">
-      <div class="mo-f"><label>🥉 Min</label><input type="number" id="tm-${u.id}" value="${t.min}"></div>
-      <div class="mo-f"><label>🥈 Orta</label><input type="number" id="td-${u.id}" value="${t.mid}"></div>
-      <div class="mo-f"><label>🥇 Maks</label><input type="number" id="tx-${u.id}" value="${t.max}"></div>
+    h+=`<div class="mos"><div class="mosn">${u.name}</div>
+    <div class="mor3">
+      <div class="mof"><label>🥉 Min</label><input type="number" id="tm-${u.id}" value="${t.min}"></div>
+      <div class="mof"><label>🥈 Orta</label><input type="number" id="td-${u.id}" value="${t.mid}"></div>
+      <div class="mof"><label>🥇 Maks</label><input type="number" id="tx-${u.id}" value="${t.max}"></div>
     </div></div>`;
   });
-  document.getElementById('mo-t-body').innerHTML=h;
+  document.getElementById('mot-body').innerHTML=h;
   document.getElementById('mo-t').classList.add('show');
 }
 function saveTargets(){
@@ -804,34 +904,34 @@ function saveTargets(){
   svT(tgts);closeMo('mo-t');alert('✅ Hədəflər saxlanıldı!');
 }
 
-// ── USERS MODAL ───────────────────────────────────────────────────────────────
+// ── USERS ─────────────────────────────────────────────────────────────────────
 function openUsersMo(){tmpUsers=JSON.parse(JSON.stringify(gU()));renderUsersMo();document.getElementById('mo-u').classList.add('show');}
 function renderUsersMo(){
-  let h='<div class="mo-sect">Şöbələr</div>';
-  tmpUsers.filter(u=>u.type==='store').forEach((u,_)=>{
+  let h='<div class="mosect">Şöbələr</div>';
+  tmpUsers.filter(u=>u.type==='store').forEach(u=>{
     const ri=tmpUsers.indexOf(u);
-    h+=`<div class="mo-s">
-      <div class="mo-sn"><span>${u.name}</span><button class="del-btn" onclick="delUser(${ri})">🗑</button></div>
-      <div class="mo-r2">
-        <div class="mo-f"><label>Ad</label><input type="text" id="un-${ri}" value="${u.name}" oninput="tmpUsers[${ri}].name=this.value"></div>
-        <div class="mo-f"><label>Şifrə</label><input type="text" id="up-${ri}" value="${u.pw}" oninput="tmpUsers[${ri}].pw=this.value"></div>
+    h+=`<div class="mos">
+      <div class="mosn"><span>${u.name}</span><button class="delbtn" onclick="delUser(${ri})">🗑</button></div>
+      <div class="mor2">
+        <div class="mof"><label>Ad</label><input type="text" id="un-${ri}" value="${u.name}" oninput="tmpUsers[${ri}].name=this.value"></div>
+        <div class="mof"><label>Şifrə</label><input type="text" id="up-${ri}" value="${u.pw}" oninput="tmpUsers[${ri}].pw=this.value"></div>
       </div>
       <div class="cr"><input type="checkbox" id="ut-${ri}" ${u.inTotal?'checked':''} onchange="tmpUsers[${ri}].inTotal=this.checked"><label for="ut-${ri}">Ümumi hesabata daxil</label></div>
       <div class="cr"><input type="checkbox" id="upl-${ri}" ${u.showPlan!==false?'checked':''} onchange="tmpUsers[${ri}].showPlan=this.checked"><label for="upl-${ri}">Plan panelində göstər</label></div>
     </div>`;
   });
-  h+='<div class="mo-sect">Baxış İstifadəçiləri</div>';
-  tmpUsers.filter(u=>u.type==='viewer').forEach((u,_)=>{
+  h+='<div class="mosect">Baxış İstifadəçiləri</div>';
+  tmpUsers.filter(u=>u.type==='viewer').forEach(u=>{
     const ri=tmpUsers.indexOf(u);
-    h+=`<div class="mo-s" style="border-color:rgba(16,185,129,.2)">
-      <div class="mo-sn" style="color:#6ee7b7"><span>${u.name}</span><button class="del-btn" onclick="delUser(${ri})">🗑</button></div>
-      <div class="mo-r2">
-        <div class="mo-f"><label>Ad</label><input type="text" id="un-${ri}" value="${u.name}" oninput="tmpUsers[${ri}].name=this.value"></div>
-        <div class="mo-f"><label>Şifrə</label><input type="text" id="up-${ri}" value="${u.pw}" oninput="tmpUsers[${ri}].pw=this.value"></div>
+    h+=`<div class="mos" style="border-color:rgba(16,185,129,.2)">
+      <div class="mosn" style="color:#6ee7b7"><span>${u.name}</span><button class="delbtn" onclick="delUser(${ri})">🗑</button></div>
+      <div class="mor2">
+        <div class="mof"><label>Ad</label><input type="text" id="un-${ri}" value="${u.name}" oninput="tmpUsers[${ri}].name=this.value"></div>
+        <div class="mof"><label>Şifrə</label><input type="text" id="up-${ri}" value="${u.pw}" oninput="tmpUsers[${ri}].pw=this.value"></div>
       </div>
     </div>`;
   });
-  document.getElementById('mo-u-body').innerHTML=h;
+  document.getElementById('mou-body').innerHTML=h;
 }
 function addStore(){
   const vi=tmpUsers.findIndex(u=>u.type==='viewer');
@@ -845,33 +945,33 @@ function saveUsers(){svU(tmpUsers);buildSel();closeMo('mo-u');alert('✅ Saxlan�
 // ── PARAMETRLƏr ───────────────────────────────────────────────────────────────
 function openSettingsMo(){document.getElementById('mo-set').classList.add('show');}
 function changeAdminPw(){
-  const o=document.getElementById('old-pw').value;
-  const n=document.getElementById('new-pw').value;
+  const o=document.getElementById('oldpw').value;
+  const n=document.getElementById('newpw').value;
   if(o!==ADMIN_PW){alert('Köhnə parol yanlışdır.');return;}
   if(!n||n.length<4){alert('Yeni parol ən azı 4 simvol.');return;}
   ADMIN_PW=n;localStorage.setItem('pk_apw',n);
-  document.getElementById('old-pw').value='';document.getElementById('new-pw').value='';
+  document.getElementById('oldpw').value='';document.getElementById('newpw').value='';
   alert('✅ Admin parolu dəyişdirildi!');
 }
 
 // ── SCREENSHOT ────────────────────────────────────────────────────────────────
 async function takeScr(id){
   const card=document.getElementById(id);
-  const tw=card.querySelector('.rc-tw');
-  const of=tw.style.overflow,ow=tw.style.width;
+  const tw=card.querySelector('.rctw');
+  const of_=tw.style.overflow,ow_=tw.style.width;
   tw.style.overflow='visible';tw.style.width=tw.scrollWidth+'px';
   try{
     const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:3,useCORS:true,logging:false,width:card.scrollWidth,windowWidth:card.scrollWidth+40,imageTimeout:0});
     prevUrl=c.toDataURL('image/png',1.0);
-    document.getElementById('prev-img').src=prevUrl;
-    document.getElementById('img-ov').classList.add('show');
+    document.getElementById('previmg').src=prevUrl;
+    document.getElementById('imgov').classList.add('show');
   }catch{alert('Şəkil alınmadı.');}
-  finally{tw.style.overflow=of;tw.style.width=ow;}
+  finally{tw.style.overflow=of_;tw.style.width=ow_;}
 }
 function saveImg(){
   if(!prevUrl)return;
   const a=document.createElement('a');
-  const d=getWD();
+  const d=getFormDay();
   a.download=`panda-${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}.png`;
   a.href=prevUrl;document.body.appendChild(a);a.click();document.body.removeChild(a);
 }
