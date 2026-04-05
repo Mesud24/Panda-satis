@@ -53,7 +53,7 @@ select.ginp option{color:#000;background:#fff;}
 .psl{font-size:9px;color:rgba(255,255,255,.35);font-weight:600;}
 .psv{font-size:13px;font-weight:700;color:#f0c060;font-family:'IBM Plex Mono',monospace;margin-top:2px;}
 .perblock{background:rgba(255,255,255,.06);border-radius:12px;overflow:hidden;margin-bottom:10px;border:1px solid rgba(255,255,255,.08);}
-.perhdr{padding:9px 13px;font-size:12px;font-weight:800;letter-spacing:.3px;color:#fff;}
+.perhdr{padding:9px 13px;font-size:13px;font-weight:800;color:#fff;letter-spacing:-.1px;}
 .pt{width:100%;border-collapse:collapse;table-layout:fixed;}
 .pt thead th{padding:7px;font-size:10px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.45);background:rgba(0,0,0,.2);text-align:right;}
 .pt thead th:first-child{text-align:left;width:90px;}
@@ -78,7 +78,7 @@ select.ginp option{color:#000;background:#fff;}
 .erbox{background:rgba(239,68,68,.13);border:1.5px solid rgba(239,68,68,.3);color:#fca5a5;}
 .okbox.show,.ldbox.show,.erbox.show{display:block;}
 .saxa-firma-block{background:rgba(245,158,11,.07);border-radius:12px;overflow:hidden;margin-bottom:10px;border:1px solid rgba(245,158,11,.2);}
-.saxa-firma-hdr{padding:9px 13px;font-size:12px;font-weight:800;color:#fde68a;background:rgba(120,53,15,.4);}
+.saxa-firma-hdr{padding:9px 13px;font-size:13px;font-weight:800;color:#fde68a;background:rgba(120,53,15,.4);}
 .saxa-firma-inp{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(245,158,11,.25);border-radius:8px;padding:10px 12px;font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#fff;outline:none;text-align:right;}
 .saxa-firma-inp:focus{border-color:#f59e0b;}
 .saxa-firma-inp:disabled{color:rgba(255,255,255,.3);cursor:not-allowed;}
@@ -94,6 +94,7 @@ select.ginp option{color:#000;background:#fff;}
 .ab.gold{background:rgba(201,150,58,.2);border-color:rgba(201,150,58,.4);color:#c9963a;}
 .ab.view{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.3);color:#6ee7b7;cursor:default;}
 .admbody{max-width:1400px;margin:0 auto;padding:14px 16px 32px;width:100%;}
+/* HESABAT CƏDVƏLİ — SABİT ÖLÇÜ */
 .rc{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 28px rgba(0,0,0,.25);margin-bottom:14px;}
 .rchdr{padding:15px 20px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;align-items:center;gap:12px;}
 .rclogo{width:40px;height:40px;object-fit:contain;background:#fff;border-radius:8px;padding:3px;flex-shrink:0;}
@@ -104,41 +105,46 @@ select.ginp option{color:#000;background:#fff;}
 .rday{color:#fff;font-size:26px;font-weight:800;font-family:'IBM Plex Mono',monospace;line-height:1;}
 .rmo{color:rgba(255,255,255,.6);font-size:10px;margin-top:2px;font-weight:600;}
 .rctw{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;}
-table.rt{border-collapse:collapse;white-space:nowrap;}
-table.rt th,table.rt td{border:1px solid #cdd5e0;padding:4px 10px;}
-@media(min-width:768px){table.rt th,table.rt td{padding:5px 13px;}}
-.rt .gh th{font-weight:800;color:#fff;vertical-align:middle;height:30px;font-size:13px;text-align:center;}
-.rt .gh .lb{background:#dce6f2;color:#1e3a6e;text-align:left;border-right:2px solid #b0c4de;font-weight:800;min-width:120px;font-size:12px;}
+/* Sabit ölçülü cədvəl — font-size sabit, sütun genişliyi sabit */
+table.rt{border-collapse:collapse;white-space:nowrap;table-layout:fixed;}
+table.rt th,table.rt td{border:1px solid #cdd5e0;padding:4px 8px;}
+/* Sabit sütun genişlikləri */
+table.rt .col-name{width:115px;}
+table.rt .col-num{width:88px;}
+table.rt .col-pct{width:68px;}
+.rt .gh th{font-weight:800;color:#fff;vertical-align:middle;height:30px;font-size:12px;text-align:center;}
+.rt .gh .lb{background:#dce6f2;color:#1e3a6e;text-align:left;border-right:2px solid #b0c4de;font-weight:800;font-size:12px;}
 .rt .gh .hb{background:#1d4ed8;}.rt .gh .ho{background:#c2410c;}.rt .gh .hg{background:#15803d;}.rt .gh .hp{background:#6d28d9;}
-.rt .sh th{background:#edf2f9;color:#2d3748;text-align:center;height:21px;font-size:10px;font-weight:700;padding:3px 10px;}
+.rt .sh th{background:#edf2f9;color:#2d3748;text-align:center;height:20px;font-size:10px;font-weight:700;padding:3px 8px;}
 .rt .sh .lb{background:#dce6f2;border-right:2px solid #b0c4de;text-align:left;color:#1e3a6e;font-weight:800;}
 .rt .sh .sb{color:#1d4ed8;}.rt .sh .so{color:#b45309;}.rt .sh .sg{color:#15803d;}.rt .sh .sp{color:#6d28d9;}
-.rt .dr td{height:26px;padding:4px 10px;vertical-align:middle;border-bottom:1px solid #edf2f7;}
-.rt .dr .nm{font-weight:800;color:#0f1f3d;background:#f4f8fc;border-right:2px solid #dce4ee;white-space:nowrap;font-size:12px;text-align:left;}
+/* Sabit hündürlük və font */
+.rt .dr td{height:26px;padding:3px 8px;vertical-align:middle;border-bottom:1px solid #edf2f7;font-size:12px;}
+.rt .dr .nm{font-weight:800;color:#0f1f3d;background:#f4f8fc;border-right:2px solid #dce4ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .rt .dr .nv{text-align:right;color:#0f1f3d;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:12px;}
 .rt .dr .pv{text-align:right;color:#374151;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;}
-.rt .dr .dsh{text-align:center;color:#b0bec5;}
+.rt .dr .dsh{text-align:center;color:#b0bec5;font-size:13px;}
 .rt .dr:nth-child(even) td{background:#f7fafc;}
 .rt .dr:nth-child(even) .nm{background:#e8f0f8;}
-.rt .sr td{height:26px;padding:4px 10px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;}
-.rt .sr .nm{font-weight:800;color:#7c3000;background:#fef3d0!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;white-space:nowrap;font-size:12px;text-align:left;}
+.rt .sr td{height:26px;padding:3px 8px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;font-size:12px;}
+.rt .sr .nm{font-weight:800;color:#7c3000;background:#fef3d0!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .rt .sr .nv{text-align:right;color:#6b3500;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:12px;}
 .rt .sr .pv{text-align:right;color:#92580a;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;}
 .rt .sr .dsh{text-align:center;color:#f0b429;}
-.rt .saxagap td{height:12px;background:#fff3cd!important;border-top:3px solid #f59e0b;padding:0;}
-.rt .tr td{height:28px;padding:4px 10px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;}
-.rt .tr .nm{color:#bfdbfe;font-weight:800;border-right:2px solid #2d5aa0;font-size:12px;text-align:left;}
+.rt .saxagap td{height:10px;background:#fff3cd!important;border-top:3px solid #f59e0b;padding:0;}
+.rt .tr td{height:27px;padding:3px 8px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;font-size:12px;}
+.rt .tr .nm{color:#bfdbfe;font-weight:800;border-right:2px solid #2d5aa0;}
 .rt .tr .nv{text-align:right;color:#fff;font-family:'IBM Plex Mono',monospace;font-weight:800;font-size:12px;}
 .rt .tr .pv{text-align:right;color:#93c5fd;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:12px;}
-.rt .str td{height:28px;padding:4px 10px;vertical-align:middle;background:#78350f!important;border-top:2px solid #92400e;}
-.rt .str .nm{color:#fde68a;font-weight:800;border-right:2px solid #92400e;font-size:12px;text-align:left;}
+.rt .str td{height:27px;padding:3px 8px;vertical-align:middle;background:#78350f!important;border-top:2px solid #92400e;font-size:12px;}
+.rt .str .nm{color:#fde68a;font-weight:800;border-right:2px solid #92400e;}
 .rt .str .nv{text-align:right;color:#fef3c7;font-family:'IBM Plex Mono',monospace;font-weight:800;font-size:12px;}
 .rt .str .pv{text-align:right;color:#fde68a;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:12px;}
-.arr-up{color:#15803d;font-size:12px;font-weight:900;margin-right:2px;}
-.arr-mid{color:#b45309;font-size:12px;font-weight:900;margin-right:2px;}
-.arr-dn{color:#dc2626;font-size:12px;font-weight:900;margin-right:2px;}
+.arr-up{color:#15803d;font-size:11px;font-weight:900;margin-right:1px;}
+.arr-mid{color:#b45309;font-size:11px;font-weight:900;margin-right:1px;}
+.arr-dn{color:#dc2626;font-size:11px;font-weight:900;margin-right:1px;}
 .pct-done{color:#15803d;font-weight:800;}.pct-mid{color:#b45309;font-weight:800;}.pct-low{color:#dc2626;font-weight:800;}
-.rcftr{padding:8px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
+.rcftr{padding:7px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
 .rcftr span{color:#94a3b8;font-size:9px;font-weight:600;}
 .scrbtn{width:100%;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:12px;color:#0a1628;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer;margin-top:4px;}
 .admld{text-align:center;padding:32px;color:#94a3b8;font-size:13px;font-weight:600;}
@@ -160,30 +166,31 @@ table.rt th,table.rt td{border:1px solid #cdd5e0;padding:4px 10px;}
 .ppis{display:flex;gap:8px;flex-wrap:wrap;}
 .ppist{font-size:10px;color:rgba(255,255,255,.5);}
 .ppist span{color:#f0c060;font-weight:700;}
-/* Saxa Firma ayrıca hesabat kartı */
+/* Saxa Firma ayrıca hesabat */
 .sf-rc{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 28px rgba(0,0,0,.25);margin-top:14px;}
-.sf-rc-hdr{padding:12px 18px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;justify-content:space-between;align-items:center;}
+.sf-rc-hdr{padding:13px 18px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;justify-content:space-between;align-items:center;}
 .sf-rc-title{color:#fff;font-size:14px;font-weight:800;}
-.sf-rc-date{color:rgba(255,255,255,.8);font-size:13px;font-weight:700;font-family:'IBM Plex Mono',monospace;}
-table.sf-tbl{width:100%;border-collapse:collapse;}
-.sf-tbl th{background:#2d5aa0;color:#fff;font-size:12px;font-weight:800;padding:9px 14px;text-align:left;}
-.sf-tbl th:last-child{text-align:right;}
-.sf-tbl td{padding:9px 14px;font-size:13px;border-bottom:1px solid #e8eef6;color:#1e3a6e;font-weight:600;}
-.sf-tbl td:last-child{text-align:right;font-family:'IBM Plex Mono',monospace;font-weight:700;color:#0f1f3d;}
+.sf-rc-date{color:rgba(255,255,255,.85);font-size:14px;font-weight:700;}
+table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
+.sf-tbl th{background:#2d5aa0;color:#fff;font-size:12px;font-weight:800;padding:9px 16px;text-align:left;}
+.sf-tbl th:last-child{text-align:right;width:140px;}
+.sf-tbl td{padding:9px 16px;font-size:13px;border-bottom:1px solid #e8eef6;color:#1e3a6e;font-weight:600;}
+.sf-tbl td:last-child{text-align:right;font-family:'IBM Plex Mono',monospace;font-weight:700;color:#0f1f3d;width:140px;}
 .sf-tbl tr:nth-child(even) td{background:#f4f8fc;}
 .sf-tbl .sf-total td{background:#1e3a6e!important;color:#fff!important;font-weight:800;font-size:14px;}
-.sf-tbl .sf-total td:last-child{color:#fff!important;font-size:15px;}
-.sf-rc-ftr{padding:8px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
+.sf-tbl .sf-total td:last-child{color:#f0c060!important;font-size:15px;}
+.sf-rc-ftr{padding:7px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
 .sf-rc-ftr span{color:#94a3b8;font-size:9px;font-weight:600;}
 .sf-scrbtn{width:100%;padding:11px;background:rgba(120,53,15,.7);border:none;border-radius:10px;color:#fde68a;font-family:inherit;font-size:13px;font-weight:800;cursor:pointer;margin-top:8px;}
 /* Jurnal */
-.jurnal-panel{background:rgba(255,255,255,.04);border-radius:13px;padding:14px;border:1px solid rgba(255,255,255,.08);margin-top:14px;}
-.jurnal-title{color:#c9963a;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;}
-.jurnal-list{display:flex;flex-direction:column;gap:5px;max-height:200px;overflow-y:auto;}
-.jurnal-item{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.04);border-radius:8px;padding:7px 11px;gap:8px;flex-wrap:wrap;}
+.jurnal-filter{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+.jf-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);border-radius:7px;padding:5px 10px;font-family:inherit;font-size:11px;font-weight:700;cursor:pointer;}
+.jf-btn.active{background:rgba(201,150,58,.25);border-color:rgba(201,150,58,.5);color:#f0c060;}
+.jurnal-list{display:flex;flex-direction:column;gap:5px;max-height:340px;overflow-y:auto;}
+.jurnal-item{display:flex;justify-content:space-between;align-items:flex-start;background:rgba(255,255,255,.04);border-radius:8px;padding:8px 11px;gap:8px;}
 .jurnal-name{font-size:12px;font-weight:700;color:#fff;}
-.jurnal-device{font-size:10px;color:rgba(255,255,255,.4);font-weight:600;}
-.jurnal-time{font-size:11px;color:#c9963a;font-family:'IBM Plex Mono',monospace;font-weight:600;}
+.jurnal-device{font-size:10px;color:rgba(255,255,255,.4);font-weight:600;margin-top:2px;}
+.jurnal-time{font-size:11px;color:#c9963a;font-family:'IBM Plex Mono',monospace;font-weight:600;text-align:right;white-space:nowrap;}
 .jurnal-empty{font-size:12px;color:rgba(255,255,255,.3);padding:8px 0;}
 .imgov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;flex-direction:column;align-items:center;justify-content:center;padding:16px;}
 .imgov.show{display:flex;}
@@ -213,7 +220,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;}
 .cr input[type=checkbox]{cursor:pointer;transform:scale(1.15);}
 .mosect{color:rgba(255,255,255,.4);font-size:9px;text-transform:uppercase;letter-spacing:.7px;margin:13px 0 7px;padding-bottom:5px;border-bottom:1px solid rgba(255,255,255,.08);font-weight:700;}
 .fillperiod{background:rgba(0,0,0,.2);border-radius:9px;padding:10px 12px;margin-bottom:8px;}
-.fillplbl{display:inline-block;font-size:11px;font-weight:800;color:#fff;padding:4px 10px;border-radius:5px;margin-bottom:8px;}
+.fillplbl{display:inline-block;font-size:12px;font-weight:800;color:#fff;padding:4px 10px;border-radius:5px;margin-bottom:8px;}
 .afrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
 .afrow .afl{font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px;}
 .afrow input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
@@ -290,20 +297,16 @@ table.sf-tbl{width:100%;border-collapse:collapse;}
   <div class="admbody" id="viewbody"></div>
 </div>
 
-<div class="imgov" id="imgov">
-  <img id="previmg" src="" alt="">
+<div class="imgov" id="imgov"><img id="previmg" src="" alt="">
   <div class="imgbtns">
-    <button class="imgsave" onclick="saveImg()">⬇️ Qalereyaya Saxla</button>
+    <button class="imgsave" onclick="saveImg()">⬇️ Saxla</button>
     <button class="imgcls" onclick="document.getElementById('imgov').classList.remove('show')">Bağla</button>
   </div>
   <div class="imghint">iPhone: Şəkilə uzun basın → "Fotoya saxla"</div>
 </div>
-
-<!-- Saxa Firma şəkil preview -->
-<div class="imgov" id="sf-imgov">
-  <img id="sf-previmg" src="" alt="">
+<div class="imgov" id="sf-imgov"><img id="sf-previmg" src="" alt="">
   <div class="imgbtns">
-    <button class="imgsave" onclick="saveSfImg()">⬇️ Qalereyaya Saxla</button>
+    <button class="imgsave" onclick="saveSfImg()">⬇️ Saxla</button>
     <button class="imgcls" onclick="document.getElementById('sf-imgov').classList.remove('show')">Bağla</button>
   </div>
   <div class="imghint">iPhone: Şəkilə uzun basın → "Fotoya saxla"</div>
@@ -330,7 +333,9 @@ table.sf-tbl{width:100%;border-collapse:collapse;}
     <div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••"></div>
   </div>
   <button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button>
-  <button class="moclose" onclick="closeMo('mo-set')">Bağla</button>
+  <div class="mosect">Jurnal Parametrləri</div>
+  <div class="cr"><input type="checkbox" id="param-admin-jurnal" onchange="saveJurnalParam()"><label for="param-admin-jurnal">Admin girişini jurnalda göstər</label></div>
+  <button class="moclose" onclick="closeMo('mo-set')" style="margin-top:12px">Bağla</button>
 </div></div>
 
 <div class="mo" id="mo-fill"><div class="mobox">
@@ -356,6 +361,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;}
 
 <div class="mo" id="mo-jurnal"><div class="mobox">
   <h3>🔐 Giriş Jurnalı</h3>
+  <div class="jurnal-filter" id="jurnal-filter"></div>
   <div class="jurnal-list" id="jurnal-modal-list"></div>
   <button class="moclose" onclick="closeMo('mo-jurnal')">Bağla</button>
 </div></div>
@@ -370,6 +376,7 @@ const GUNS=['Bazar','Bazar ertəsi','Çərşənbə axşamı','Çərşənbə','C�
 const HC=['hb','ho','hg','hp'],SC=['sb','so','sg','sp'];
 let ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
 let curSid=null,editMode=false,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
+let jurnalFilter='all';
 
 const DEF_USERS=[
   {id:'p2',name:'Panda 2',pw:'p2-2026',inTotal:true,showPlan:true,type:'store'},
@@ -391,20 +398,27 @@ const gT=()=>{try{return JSON.parse(localStorage.getItem('pk_tgts')||'null')||DE
 const svT=v=>localStorage.setItem('pk_tgts',JSON.stringify(v));
 const gSS=()=>{try{return JSON.parse(localStorage.getItem('pk_saxa_s')||'null')||DEF_SAXA;}catch{return DEF_SAXA;}};
 const svSS=v=>localStorage.setItem('pk_saxa_s',JSON.stringify(v));
+const gJP=()=>{try{return JSON.parse(localStorage.getItem('pk_jurnal_params')||'null')||{showAdmin:true};}catch{return {showAdmin:true};}};
+const svJP=v=>localStorage.setItem('pk_jurnal_params',JSON.stringify(v));
 
 // ── TARİX ─────────────────────────────────────────────────────────────────────
 function getRealDay(){return new Date();}
+
+// ƏSAS DÜZƏLTMƏ: getFormDay() — saat 17-dən sonra yeni gün
+// Bu funksiya bütün 4 period cache açarları üçün istifadə olunur
+// Beləliklə saat 17-dən sonra HƏR 4 period yeni açarla yazılır → köhnə açarlar avtomatik "sıfırlanmış" sayılır
 function getFormDay(){
   const n=new Date(),d=new Date(n);
   if(n.getHours()<17)d.setDate(d.getDate()-1);
   return d;
 }
 
-// BÜTÜN 4 PERIOD CACHE AÇARLARI — saat 17-dən sıfırlanır (getFormDay istifadə edir)
 function getPeriods(){
   const d=getFormDay();
   const yr=d.getFullYear(),mo=d.getMonth(),day=d.getDate();
   const moPad=String(mo+1).padStart(2,'0'),dayPad=String(day).padStart(2,'0');
+  // BÜTÜN 4 PERIOD AÇARI getFormDay ilə hesablanır
+  // Saat 17-dən sonra gün dəyişir → bütün açarlar yenilənir → effektiv sıfırlanma
   return [
     {id:'gun', label:`${day} ${AY[mo]} ${yr}`,    sk:`G_${yr}_${moPad}_${dayPad}`, ck:`G_${yr}_${moPad}_${dayPad}`},
     {id:'ay0', label:`1-${day} ${AY[mo]} ${yr}`,   sk:`A_${yr}_${moPad}`,           ck:`A_${yr}_${moPad}`},
@@ -413,14 +427,15 @@ function getPeriods(){
   ];
 }
 
-// Saxa Firma — GÜNLÜK (saat 17-dən sıfırlanır)
+// Saxa Firma günlük — saat 17-dən sıfırlanır
 function getSfKey(uid){
   const d=getFormDay();
   return `SF_${d.getFullYear()}_${String(d.getMonth()+1).padStart(2,'0')}_${String(d.getDate()).padStart(2,'0')}_${uid}`;
 }
+// Saxa Firma tarixi: "5 aprel 2026"
 function getSfDateLabel(){
   const d=getFormDay();
-  return `${String(d.getDate()).padStart(2,'0')}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getFullYear()).slice(2)}`;
+  return `${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;
 }
 
 function dLeft(){const d=getRealDay();return Math.max(0,new Date(d.getFullYear(),d.getMonth()+1,0).getDate()-d.getDate());}
@@ -428,19 +443,9 @@ function daysPassed(){return Math.max(1,getRealDay().getDate());}
 function fmtDate(){const d=getRealDay();return `${GUNS[d.getDay()]}, ${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;}
 function fmtFDate(){const d=getFormDay();return `${GUNS[d.getDay()]}, ${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;}
 
-// ── SAYI FORMATLAMA — Excel kimi ──────────────────────────────────────────────
-// 98700 → "98,700" (minlik ayırıcı vergül, kəsr nöqtə)
 function fmt(n){
   if(n===null||n===undefined||n===''||n==0)return '—';
-  const num=Number(n);
-  if(isNaN(num))return '—';
-  // Tam ədəd: 98,700 | Kəsr: 98,700.50
-  return num.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});
-}
-function fmtD(n){
-  // Tam ədədi virgüllə format: 98,700
-  if(!n||n==0)return '—';
-  return Number(n).toLocaleString('en-US');
+  return Number(n).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});
 }
 
 function xPct(v,t){if(!v||!t)return null;const r=v/t*100;return r>=100?100:Math.floor(r*10)/10;}
@@ -449,45 +454,46 @@ function pCls(p){if(p===null)return '';if(p>=100)return 'pct-done';if(p>=70)retu
 function avgF(arr){const v=arr.filter(x=>x>0);return v.length?v.reduce((a,b)=>a+b)/v.length:null;}
 function fP(p){return p===null?'—':p.toFixed(1)+'%';}
 
-// ── PLAN RƏNGİ ANALİTİK ──────────────────────────────────────────────────────
 function planColor(ms,target,dl){
   if(!ms||!target)return 'red';
   if(ms>=target)return 'green';
-  const dp=daysPassed(),avg=ms/dp,projected=ms+avg*dl;
-  const pct=projected/target*100;
-  if(pct>=100)return 'green';
-  if(pct>=70)return 'orange';
-  return 'red';
+  const avg=ms/daysPassed(),proj=ms+avg*dl,pct=proj/target*100;
+  if(pct>=100)return 'green';if(pct>=70)return 'orange';return 'red';
 }
 function planBgColor(ms,target,dl){
   const c=planColor(ms,target,dl);
   return c==='green'?'#10b981':c==='orange'?'#f59e0b':'#ef4444';
 }
 
-// ── CİHAZ TƏYİN ──────────────────────────────────────────────────────────────
 function getDeviceType(){
   const ua=navigator.userAgent;
   if(/iPad|iPhone|iPod/.test(ua))return '📱 iPhone';
   if(/Android/.test(ua)&&/Mobile/.test(ua))return '📱 Android';
   if(/Android/.test(ua))return '📟 Android Tablet';
-  if(/iPad/.test(ua)||/Tablet/.test(ua))return '📟 Tablet';
   return '💻 Kompüter';
 }
 
+function lcGet(k){try{return JSON.parse(localStorage.getItem(k)||'null');}catch{return null;}}
+function lcSet(k,v){localStorage.setItem(k,JSON.stringify(v));}
+
 // ── GİRİŞ JURNALI ─────────────────────────────────────────────────────────────
-function logLogin(name){
+function logLogin(name,isAdmin){
+  const jp=gJP();
+  if(isAdmin&&!jp.showAdmin)return;
   const logs=lcGet('pk_jurnal')||[];
   const now=new Date();
   const t=`${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
   const dt=`${now.getDate()} ${AY[now.getMonth()]} ${now.getFullYear()}`;
   logs.unshift({name,time:t,date:dt,device:getDeviceType(),ts:now.getTime()});
-  if(logs.length>50)logs.length=50;
+  if(logs.length>100)logs.length=100;
   lcSet('pk_jurnal',logs);
 }
-function renderJurnal(){
+
+function renderJurnalList(filter){
   const logs=lcGet('pk_jurnal')||[];
-  if(!logs.length)return '<div class="jurnal-empty">Hələ giriş yoxdur</div>';
-  return logs.slice(0,30).map(l=>`
+  const filtered=filter==='all'?logs:logs.filter(l=>l.name===filter);
+  if(!filtered.length)return '<div class="jurnal-empty">Giriş yoxdur</div>';
+  return filtered.slice(0,50).map(l=>`
     <div class="jurnal-item">
       <div>
         <div class="jurnal-name">${l.name}</div>
@@ -497,8 +503,27 @@ function renderJurnal(){
     </div>`).join('');
 }
 
-function lcGet(k){try{return JSON.parse(localStorage.getItem(k)||'null');}catch{return null;}}
-function lcSet(k,v){localStorage.setItem(k,JSON.stringify(v));}
+function openJurnalMo(){
+  jurnalFilter='all';
+  // Filter düymələri
+  const names=['all',...new Set((lcGet('pk_jurnal')||[]).map(l=>l.name))];
+  let fb='<button class="jf-btn active" onclick="setJurnalFilter(\'all\',this)">Hamısı</button>';
+  names.slice(1).forEach(n=>{fb+=`<button class="jf-btn" onclick="setJurnalFilter('${n}',this)">${n}</button>`;});
+  document.getElementById('jurnal-filter').innerHTML=fb;
+  document.getElementById('jurnal-modal-list').innerHTML=renderJurnalList('all');
+  document.getElementById('mo-jurnal').classList.add('show');
+}
+function setJurnalFilter(name,btn){
+  jurnalFilter=name;
+  document.querySelectorAll('.jf-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('jurnal-modal-list').innerHTML=renderJurnalList(name);
+}
+
+function saveJurnalParam(){
+  const showAdmin=document.getElementById('param-admin-jurnal')?.checked||false;
+  svJP({showAdmin});
+}
 
 function goTo(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 function closeMo(id){document.getElementById(id).classList.remove('show');}
@@ -521,15 +546,15 @@ function doLogin(){
   if(!u||pw!==u.pw){document.getElementById('gerr').classList.add('show');document.getElementById('gpw').value='';return;}
   document.getElementById('gerr').classList.remove('show');
   if(rem)localStorage.setItem('pk_rem',JSON.stringify({sid,pw}));else localStorage.removeItem('pk_rem');
-  logLogin(u.name);
+  logLogin(u.name,false);
   if(u.type==='viewer')openViewer(u);else{curSid=sid;editMode=false;renderForm(sid);}
 }
 function showAdminGate(){
   const pw=prompt('Admin şifrəsi:');
-  if(pw===ADMIN_PW){logLogin('Admin');openAdmin();}else if(pw!==null)alert('Şifrə yanlışdır.');
+  if(pw===ADMIN_PW){logLogin('Admin',true);openAdmin();}else if(pw!==null)alert('Şifrə yanlışdır.');
 }
 
-// ── PLAN KARTI — DƏQİQ HESABLAMA ─────────────────────────────────────────────
+// ── PLAN KARTI ────────────────────────────────────────────────────────────────
 function planCard(sid,curMs){
   const t=gT()[sid];if(!t)return '';
   const dl=dLeft();
@@ -542,7 +567,6 @@ function planCard(sid,curMs){
   else if(curMs<t.max){at=t.max;rm=t.max-curMs;}
   else{at=t.max;rm=0;}
   const ap=xPct(curMs,at)||0;
-  // DƏQİQ gündəlik lazım: tam ədəd, yuxarı yuvarlama
   const dn=dl>0&&rm>0?Math.ceil(rm/dl):0;
   const bc=planBgColor(curMs,t.min,dl);
   return `<div class="plancard" id="pc-${sid}">
@@ -615,7 +639,6 @@ function renderForm(sid){
       </tr></tbody></table>
     </div>`;
   });
-  // Saxa Firma günlük bölməsi
   const ss=gSS();
   if(ss.fillers.includes(sid)){
     const sfKey=getSfKey(sid);
@@ -623,7 +646,7 @@ function renderForm(sid){
     const sfSaved=!editMode&&sfVal!==null;
     const sfDis=sfSaved?'disabled':'';
     h+=`<div class="saxa-firma-block">
-      <div class="saxa-firma-hdr">🏪 ${ss.firmName} — ${getSfDateLabel()} günlük satış</div>
+      <div class="saxa-firma-hdr">🏪 ${ss.firmName} — ${getSfDateLabel()}</div>
       <div style="padding:10px 12px">
         <div style="font-size:10px;color:rgba(255,255,255,.45);margin-bottom:6px;font-weight:600">Bu günün satışı (₼)</div>
         <input class="saxa-firma-inp" type="number" min="0" id="sf-inp" value="${sfVal?.satis||''}" placeholder="0" ${sfDis}>
@@ -683,7 +706,6 @@ async function doSave(){
     const f=parseFloat(document.getElementById(`f-${p.id}`)?.value)||0;
     if(s>0||m>0||f>0){any=true;res.push({lk:p.ck+'_'+sid,sk:p.sk,d:{satis:s,menfeet:m,faiz:f}});}
   }
-  // Saxa Firma — yalnız cache, BIN-ə getmir
   const ss=gSS();
   if(ss.fillers.includes(sid)){
     const sfv=parseFloat(document.getElementById('sf-inp')?.value)||0;
@@ -722,6 +744,17 @@ function arrM(ms,minT,dl){
   const avg=ms/daysPassed();return ms+avg*dl>=minT?'<span class="arr-mid">→</span>':'<span class="arr-dn">↓</span>';
 }
 
+// ── CƏDVƏLİN COL TAGI ────────────────────────────────────────────────────────
+function buildColGroup(){
+  // Hər period üçün: şöbə adı + satış + mənfəət + faiz
+  let cg='<colgroup>';
+  for(let i=0;i<4;i++){
+    cg+=`<col class="col-name"><col class="col-num"><col class="col-num"><col class="col-pct">`;
+  }
+  cg+='</colgroup>';
+  return cg;
+}
+
 function buildTable(all,tblId,ldId){
   const users=gU().filter(u=>u.type==='store');
   const targets=gT(),dl=dLeft();
@@ -736,17 +769,21 @@ function buildTable(all,tblId,ldId){
       D[u.name][p.id]=e?{satis:e.satis||0,menfeet:e.menfeet||0,faiz:e.faiz||0}:{satis:0,menfeet:0,faiz:0};
     });
   });
-  let h='<tr class="gh">';
+
+  let h=buildColGroup();
+  h+='<tr class="gh">';
   periods.forEach((p,i)=>{
-    h+=`<th class="lb" rowspan="2" style="vertical-align:middle">Şöbələr</th>`;
-    h+=`<th colspan="3" class="${HC[i]}" style="font-size:13px;font-weight:800">${p.label}</th>`;
+    h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle">${i===0?'Şöbələr':''}</th>`;
+    h+=`<th colspan="3" class="${HC[i]}" style="font-size:13px;font-weight:800;letter-spacing:-.2px">${p.label}</th>`;
   });
   h+='</tr><tr class="sh">';
-  periods.forEach((p,i)=>{h+=`<th class="${SC[i]}">Satış</th><th class="${SC[i]}">Mənfəət</th><th class="${SC[i]}">Faiz</th>`;});
+  periods.forEach((p,i)=>{h+=`<th class="${SC[i]} col-num">Satış</th><th class="${SC[i]} col-num">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;});
   h+='</tr>';
+
   const pTots=periods.map(()=>({s:0,m:0,fl:[]}));
   const sTots=periods.map(()=>({s:0,m:0,fl:[]}));
   const panda=users.filter(u=>u.inTotal),saxa=users.filter(u=>!u.inTotal);
+
   panda.forEach(u=>{
     const t=targets[u.id];
     h+=`<tr class="dr">`;
@@ -758,7 +795,7 @@ function buildTable(all,tblId,ldId){
         if(p.id==='gun'&&t)arr=arrD(e.satis,D[u.name]['ay0'].satis,t.min,dl);
         else if(p.id==='ay0'&&t)arr=arrM(e.satis,t.min,dl);
         let fTd;
-        if(p.id==='ay0'&&t){const pp=xPct(e.satis,t.min);fTd=`<td class="pv ${pCls(pp)}">${pStr(pp)}</td>`;}
+        if(p.id==='ay0'&&t){const pp=xPct(e.satis,t.min);fTd=`<td class="pv">${arr?'':''}<span class="${pCls(pp)}">${pStr(pp)}</span></td>`;}
         else{fTd=`<td class="pv">${e.faiz>0?e.faiz.toFixed(1)+'%':'—'}</td>`;}
         h+=`<td class="nv">${arr}${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td>${fTd}`;
         pTots[pi].s+=e.satis;pTots[pi].m+=e.menfeet;if(e.faiz>0)pTots[pi].fl.push(e.faiz);
@@ -769,6 +806,7 @@ function buildTable(all,tblId,ldId){
   h+='<tr class="tr">';
   pTots.forEach(t=>{const af=avgF(t.fl);h+=`<td class="nm">Ümumi Panda</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fP(af)}</td>`;});
   h+='</tr>';
+
   if(saxa.length){
     h+=`<tr class="saxagap"><td colspan="${periods.length*4}"></td></tr>`;
     saxa.forEach(u=>{
@@ -783,7 +821,7 @@ function buildTable(all,tblId,ldId){
           if(p.id==='gun'&&t)arr=arrD(e.satis,D[u.name]['ay0'].satis,t.min,dl);
           else if(p.id==='ay0'&&t)arr=arrM(e.satis,t.min,dl);
           let fTd;
-          if(p.id==='ay0'&&t){const pp=xPct(e.satis,t.min);fTd=`<td class="pv ${pCls(pp)}">${pStr(pp)}</td>`;}
+          if(p.id==='ay0'&&t){const pp=xPct(e.satis,t.min);fTd=`<td class="pv"><span class="${pCls(pp)}">${pStr(pp)}</span></td>`;}
           else{fTd=`<td class="pv">${e.faiz>0?e.faiz.toFixed(1)+'%':'—'}</td>`;}
           h+=`<td class="nv">${arr}${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td>${fTd}`;
           sTots[pi].s+=e.satis;sTots[pi].m+=e.menfeet;if(e.faiz>0)sTots[pi].fl.push(e.faiz);
@@ -799,18 +837,18 @@ function buildTable(all,tblId,ldId){
     });
     h+='</tr>';
   }
+
   const tbl=document.getElementById(tblId);
   tbl.innerHTML=h;document.getElementById(ldId).style.display='none';tbl.style.display='table';
 }
 
-// ── SAXA FİRMA AYRICA HESABAT ─────────────────────────────────────────────────
+// ── SAXA FİRMA HESABAT ────────────────────────────────────────────────────────
 function buildSaxaFirmaReport(containerId){
   const ss=gSS();
   if(!ss.showInAdmin)return;
   const fillers=gU().filter(u=>ss.fillers.includes(u.id));
   const dateLabel=getSfDateLabel();
-  let total=0;
-  let rows='';
+  let total=0,rows='';
   fillers.forEach(u=>{
     const v=lcGet(getSfKey(u.id))?.satis||0;
     total+=v;
@@ -850,22 +888,16 @@ function planPanelHtml(forSaxa){
     else if(ms<t.mid){at=t.mid;rm=t.mid-ms;}
     else if(ms<t.max){at=t.max;rm=t.max-ms;}
     else{at=t.max;rm=0;}
-    const ap=xPct(ms,at)||0;
-    // DƏQİQ gündəlik: Math.ceil(rm/dl)
-    const dn=dl>0&&rm>0?Math.ceil(rm/dl):0;
+    const ap=xPct(ms,at)||0,dn=dl>0&&rm>0?Math.ceil(rm/dl):0;
     const bc=planBgColor(ms,t.min,dl);
-    function lvlColor(tgt){
-      if(ms>=tgt)return 'green';
-      return planColor(ms,tgt,dl);
-    }
-    const pmn=xPct(ms,t.min)||0,pmd=ms>=t.min?xPct(ms,t.mid)||0:0,pmx=ms>=t.mid?xPct(ms,t.max)||0:0;
+    function lvlColor(tgt){return ms>=tgt?'green':planColor(ms,tgt,dl);}
     h+=`<div class="ppi" style="border-color:${bc}33">
       <div class="ppih"><div class="ppin">${u.name}</div><div class="ppip" style="color:${bc}">${ap===100?'100%':ap.toFixed(1)+'%'}</div></div>
       <div class="ppibw"><div class="ppib" style="width:${Math.min(100,ap)}%;background:${bc}"></div></div>
       <div class="ppilevels">
         <div class="ppilvl ${ms>=t.min?'green':lvlColor(t.min)}">🥉 ${ms>=t.min?'✓':pStr(xPct(ms,t.min))}</div>
-        <div class="ppilvl ${ms>=t.mid?'green':ms>=t.min?lvlColor(t.mid):'grey'}">🥈 ${ms>=t.mid?'✓':pmd>0?pStr(xPct(ms,t.mid)):'—'}</div>
-        <div class="ppilvl ${ms>=t.max?'green':ms>=t.mid?lvlColor(t.max):'grey'}">🥇 ${ms>=t.max?'✓':pmx>0?pStr(xPct(ms,t.max)):'—'}</div>
+        <div class="ppilvl ${ms>=t.mid?'green':ms>=t.min?lvlColor(t.mid):'grey'}">🥈 ${ms>=t.mid?'✓':ms>=t.min?pStr(xPct(ms,t.mid)):'—'}</div>
+        <div class="ppilvl ${ms>=t.max?'green':ms>=t.mid?lvlColor(t.max):'grey'}">🥇 ${ms>=t.max?'✓':ms>=t.mid?pStr(xPct(ms,t.max)):'—'}</div>
       </div>
       <div class="ppis">
         <div class="ppist">Cari: <span>${fmt(ms)} ₼</span></div>
@@ -891,7 +923,14 @@ function mkPanel(id){
   </div>`;
 }
 
-function openAdmin(){document.getElementById('admdate').textContent=fmtFDate();goTo('admin');loadAdmin();}
+function openAdmin(){
+  document.getElementById('admdate').textContent=fmtFDate();
+  // Parametr checkbox-unu yenilə
+  const jp=gJP();
+  const cb=document.getElementById('param-admin-jurnal');
+  if(cb)cb.checked=jp.showAdmin;
+  goTo('admin');loadAdmin();
+}
 async function loadAdmin(){
   document.getElementById('admbody').innerHTML=mkPanel('adm')+
     `<button class="scrbtn" onclick="takeScr('rc-adm')">📸 Hesabatı Şəkil Kimi Saxla</button>
@@ -936,7 +975,6 @@ async function loadViewer(){
   }catch{document.getElementById('ld-view').textContent='❌ Yüklənmədi.';}
 }
 
-// ── SCREENSHOT ────────────────────────────────────────────────────────────────
 async function takeScr(id){
   const card=document.getElementById(id);
   const tw=card.querySelector('.rctw');
@@ -954,24 +992,20 @@ function saveImg(){
   a.download=`pandakids-${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}.png`;
   a.href=prevUrl;document.body.appendChild(a);a.click();document.body.removeChild(a);
 }
-
 async function takeSfScr(){
   const card=document.getElementById('sf-rc');if(!card){alert('Hesabat yoxdur.');return;}
   try{
     const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:3,useCORS:true,logging:false,imageTimeout:0});
-    sfPrevUrl=c.toDataURL('image/png',1.0);
-    document.getElementById('sf-previmg').src=sfPrevUrl;
-    document.getElementById('sf-imgov').classList.add('show');
+    sfPrevUrl=c.toDataURL('image/png',1.0);document.getElementById('sf-previmg').src=sfPrevUrl;document.getElementById('sf-imgov').classList.add('show');
   }catch{alert('Şəkil alınmadı.');}
 }
 function saveSfImg(){
   if(!sfPrevUrl)return;
   const a=document.createElement('a');const d=getFormDay();
-  a.download=`saxa-firma-${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}.png`;
+  a.download=`saxa-${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}.png`;
   a.href=sfPrevUrl;document.body.appendChild(a);a.click();document.body.removeChild(a);
 }
 
-// ── ADMİN DOLDURMA ────────────────────────────────────────────────────────────
 function openFillMo(){
   const sel=document.getElementById('fill-sel');
   sel.innerHTML='<option value="">— Seçin —</option>';
@@ -1054,11 +1088,6 @@ function saveSaxaAdminSettings(){
   closeMo('mo-saxa-admin');alert('✅ Saxlandı!');
 }
 
-function openJurnalMo(){
-  document.getElementById('jurnal-modal-list').innerHTML=renderJurnal();
-  document.getElementById('mo-jurnal').classList.add('show');
-}
-
 function openTargetsMo(){
   const tgts=gT();let h='';
   gU().filter(u=>u.type==='store').forEach(u=>{
@@ -1111,7 +1140,12 @@ function addStore(){
 function delUser(i){if(confirm('Silinsin?')){tmpUsers.splice(i,1);renderUsersMo();}}
 function saveUsers(){svU(tmpUsers);buildSel();closeMo('mo-u');alert('✅ Saxlanıldı!');}
 
-function openSettingsMo(){document.getElementById('mo-set').classList.add('show');}
+function openSettingsMo(){
+  const jp=gJP();
+  const cb=document.getElementById('param-admin-jurnal');
+  if(cb)cb.checked=jp.showAdmin;
+  document.getElementById('mo-set').classList.add('show');
+}
 function changeAdminPw(){
   const o=document.getElementById('oldpw').value,n=document.getElementById('newpw').value;
   if(o!==ADMIN_PW){alert('Köhnə parol yanlışdır.');return;}
