@@ -117,7 +117,7 @@ table.rt .col-pct{width:65px;}
 .rt .dr td{height:26px;padding:3px 8px;vertical-align:middle;border-bottom:1px solid #edf2f7;font-size:12px;}
 .rt .dr .nm{font-weight:800;color:#0f1f3d;background:#f4f8fc;border-right:2px solid #dce4ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .rt .dr .nv{text-align:right;color:#0f1f3d;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:12px;}
-/* Faiz sütunu — həmişə qara, plan faizi deyil */
+/* Faiz sütunu — həmişə sabit qara, heç bir rəng sinfi yoxdur */
 .rt .dr .pv{text-align:right;color:#374151;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;}
 .rt .dr .dsh{text-align:center;color:#b0bec5;}
 .rt .dr:nth-child(even) td{background:#f7fafc;}
@@ -136,11 +136,10 @@ table.rt .col-pct{width:65px;}
 .rt .str .nm{color:#fde68a;font-weight:800;border-right:2px solid #92400e;}
 .rt .str .nv{text-align:right;color:#fef3c7;font-family:'IBM Plex Mono',monospace;font-weight:800;font-size:12px;}
 .rt .str .pv{text-align:right;color:#fde68a;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:12px;}
-/* Oxlar */
 .arr-up{color:#15803d;font-size:13px;font-weight:900;margin-right:2px;}
 .arr-mid{color:#f59e0b;font-size:13px;font-weight:900;margin-right:2px;}
 .arr-dn{color:#dc2626;font-size:13px;font-weight:900;margin-right:2px;}
-/* Plan faizi rəngləri — yalnız plan paneli üçün */
+/* Plan paneli rəngləri — yalnız plan paneli üçün */
 .pct-g{color:#15803d;font-weight:800;}
 .pct-o{color:#f59e0b;font-weight:800;}
 .pct-r{color:#dc2626;font-weight:800;}
@@ -223,7 +222,6 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .afrow .afl{font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px;}
 .afrow input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
 .afrow input:focus{border-color:#c9963a;}
-.af1row{display:grid;grid-template-columns:1fr;gap:6px;}
 .af1row .afl{font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px;}
 .af1row input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
 .af1row input:focus{border-color:#c9963a;}
@@ -235,7 +233,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
     <div class="gtitle">Panda Kids</div>
     <div class="gsub">Satış İdarəetmə Sistemi</div>
     <div class="glbl">İstifadəçi</div>
-    <select class="ginp" id="gsel"><option value="">— Seçin —</option></select>
+    <select class="ginp" id="gsel"><option value="">Yüklənir...</option></select>
     <div class="glbl">Şifrə</div>
     <input class="ginp pw" type="password" id="gpw" placeholder="••••" onkeydown="if(event.key==='Enter')doLogin()">
     <div class="remrow"><input type="checkbox" id="rem"><label for="rem">Məni xatırla</label></div>
@@ -247,55 +245,49 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 </div>
 
 <div class="screen" id="store-form">
-  <div class="sfhdr">
-    <div class="sfhi">
-      <img class="sflogo" src="IMG_0510.png" alt="">
-      <div class="sftxt">
-        <button class="backbtn" onclick="logout()">← Çıxış</button>
-        <div class="sftitle" id="sftitle"></div>
-        <div class="sfdate" id="sfdate"></div>
-      </div>
+  <div class="sfhdr"><div class="sfhi">
+    <img class="sflogo" src="IMG_0510.png" alt="">
+    <div class="sftxt">
+      <button class="backbtn" onclick="logout()">← Çıxış</button>
+      <div class="sftitle" id="sftitle"></div>
+      <div class="sfdate" id="sfdate"></div>
     </div>
-  </div>
+  </div></div>
   <div class="sfbody" id="sfbody"></div>
 </div>
 
 <div class="screen" id="admin">
-  <div class="admhdr">
-    <div class="admhdri">
-      <div class="admlogow">
-        <img class="admlogo" src="IMG_0510.png" alt="">
-        <div class="admtitle"><h2>Panda Kids — Admin</h2><p id="admdate"></p></div>
-      </div>
-      <div class="admacts">
-        <button class="ab" onclick="openUsersMo()">👥 İstifadəçilər</button>
-        <button class="ab" onclick="openTargetsMo()">🎯 Hədəflər</button>
-        <button class="ab" onclick="openFillMo()">✏️ Doldur</button>
-        <button class="ab" onclick="openSaxaAdminMo()">🏪 Saxa Firma</button>
-        <button class="ab" onclick="openJurnalMo()">🔐 Jurnal</button>
-        <button class="ab" onclick="openSettingsMo()">⚙️ Parametrlər</button>
-        <button class="ab gold" onclick="loadAdmin()">↻ Yenilə</button>
-        <button class="ab" onclick="logout()">← Çıx</button>
-      </div>
+  <div class="admhdr"><div class="admhdri">
+    <div class="admlogow">
+      <img class="admlogo" src="IMG_0510.png" alt="">
+      <div class="admtitle"><h2>Panda Kids — Admin</h2><p id="admdate"></p></div>
     </div>
-  </div>
+    <div class="admacts">
+      <button class="ab" onclick="openUsersMo()">👥 İstifadəçilər</button>
+      <button class="ab" onclick="openTargetsMo()">🎯 Hədəflər</button>
+      <button class="ab" onclick="openFillMo()">✏️ Doldur</button>
+      <button class="ab" onclick="openSaxaAdminMo()">🏪 Saxa Firma</button>
+      <button class="ab" onclick="openJurnalMo()">🔐 Jurnal</button>
+      <button class="ab" onclick="openSettingsMo()">⚙️ Parametrlər</button>
+      <button class="ab gold" onclick="loadAdmin()">↻ Yenilə</button>
+      <button class="ab" onclick="logout()">← Çıx</button>
+    </div>
+  </div></div>
   <div class="admbody" id="admbody"></div>
 </div>
 
 <div class="screen" id="viewer">
-  <div class="admhdr">
-    <div class="admhdri">
-      <div class="admlogow">
-        <img class="admlogo" src="IMG_0510.png" alt="">
-        <div class="admtitle"><h2 id="viewtitle">Panda Kids — Baxış</h2><p id="viewdate"></p></div>
-      </div>
-      <div class="admacts">
-        <div class="ab view">👁 Baxış</div>
-        <button class="ab gold" onclick="loadViewer()">↻ Yenilə</button>
-        <button class="ab" onclick="logout()">← Çıx</button>
-      </div>
+  <div class="admhdr"><div class="admhdri">
+    <div class="admlogow">
+      <img class="admlogo" src="IMG_0510.png" alt="">
+      <div class="admtitle"><h2 id="viewtitle">Panda Kids — Baxış</h2><p id="viewdate"></p></div>
     </div>
-  </div>
+    <div class="admacts">
+      <div class="ab view">👁 Baxış</div>
+      <button class="ab gold" onclick="loadViewer()">↻ Yenilə</button>
+      <button class="ab" onclick="logout()">← Çıx</button>
+    </div>
+  </div></div>
   <div class="admbody" id="viewbody"></div>
 </div>
 
@@ -337,7 +329,6 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
-// ── SABİTLƏR ──────────────────────────────────────────────────────────────────
 const BIN_ID="69c115d4b7ec241ddc949a2c";
 const API_KEY="$2a$10$FKtiGhR30Uu6WoutSaNJne5SvTJFLM8mr2ZdCj50f1RLbD6tWAX7K";
 const BIN_URL=`https://api.jsonbin.io/v3/b/${BIN_ID}`;
@@ -349,9 +340,6 @@ const PCOL=['#2E75B6','#C55A11','#375623','#7030A0'];
 let ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
 let curSid=null,editMode=false,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
 
-// ── DEFOLT VERİLƏR ─────────────────────────────────────────────────────────────
-// BIN-dəki config açarı — istifadəçilər, hədəflər, parametrlər BIN-də saxlanılır
-// Beləliklə bütün cihazlar eyni görür
 const DEF_USERS=[
   {id:'p2',name:'Panda 2',pw:'p2-2026',inTotal:true,showPlan:true,type:'store'},
   {id:'p3',name:'Panda 3',pw:'p3-2026',inTotal:true,showPlan:true,type:'store'},
@@ -365,19 +353,16 @@ const DEF_TGTS={
   pe:{min:40000,mid:55000,max:70000},s1:{min:20000,mid:28000,max:35000},s2:{min:15000,mid:22000,max:30000}
 };
 const DEF_SAXA={fillers:['p2','p3','pe'],showInAdmin:true,firmName:'Saxa Outlet'};
-const DEF_CFG={users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true}};
 
-// Qlobal config — BIN-dən yüklənir
 let CFG=null;
 
 // ── BİN ───────────────────────────────────────────────────────────────────────
 async function rBin(){
   try{
     const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'}});
-    if(!r.ok)return getDefBin();
-    const j=await r.json();
-    const d=j.data||{};
-    return {
+    if(!r.ok)return defBin();
+    const j=await r.json(),d=j.data||{};
+    return{
       records:d.records||[],
       sf:d.sf||{},
       cfg:{
@@ -388,9 +373,9 @@ async function rBin(){
         jp:d.cfg?.jp||{showAdmin:true}
       }
     };
-  }catch{return getDefBin();}
+  }catch{return defBin();}
 }
-function getDefBin(){return{records:[],sf:{},cfg:{...DEF_CFG}};}
+function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true}}};}
 
 async function wBin(records,sf,cfg){
   try{
@@ -398,26 +383,14 @@ async function wBin(records,sf,cfg){
       headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},
       body:JSON.stringify({data:{records,sf,cfg}})
     });
-  }catch(e){console.error('BIN yazma xətası:',e);}
+  }catch(e){console.error(e);}
 }
 
-// CFG-ni BIN-dən yükle
-async function loadCFG(){
-  const bin=await rBin();
-  CFG=bin.cfg;
-  return bin;
-}
-
-// Config qısa yollar
 function gU(){return CFG?.users||DEF_USERS;}
 function gT(){return CFG?.targets||DEF_TGTS;}
 function gSS(){return CFG?.saxa||DEF_SAXA;}
 function gJP(){return CFG?.jp||{showAdmin:true};}
-function gJurnal(){return CFG?.jurnal||[];}
-
-function findRecord(records,sobeName,sk){
-  return records.find(r=>r.sobe===sobeName&&r.period===sk)||null;
-}
+function findRec(records,name,sk){return records.find(r=>r.sobe===name&&r.period===sk)||null;}
 
 // ── TARİX ─────────────────────────────────────────────────────────────────────
 function getRD(){return new Date();}
@@ -432,25 +405,25 @@ function fmtDate(){const d=getRD();return `${GUNS[d.getDay()]}, ${d.getDate()} $
 function fmtFDate(){const d=getFD();return `${GUNS[d.getDay()]}, ${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;}
 
 // ── PERIOD AÇARLARI ───────────────────────────────────────────────────────────
-// Saxa şöbələri: cari il eyni ay + keçən il eyni ay + keçəndən əvvəlki il eyni ay
-// Panda şöbələri: günlük + cari il ay + keçən il eyni ay + 2 il əvvəl eyni ay
-function getPeriods(isSaxaStore){
+// ƏSAS DÜZƏLTMƏsi: Bütün açarlara gün əlavə edildi (dp)
+// getFD() saat 17-dən yeni gün qaytarır
+// → bütün açarlar dəyişir → hamısı avtomatik sıfırlanır
+function getPeriods(isSaxa){
   const d=getFD();
   const yr=d.getFullYear(),mo=d.getMonth(),day=d.getDate();
   const mp=String(mo+1).padStart(2,'0'),dp=String(day).padStart(2,'0');
-  if(isSaxaStore){
-    // Saxa: 3 period (günlük yox, yalnız aylıq cari+2 keçən il)
+  if(isSaxa){
     return [
-      {id:'ay0', label:`1-${day} ${AY[mo]} ${yr}`,   sk:`A_${yr}${mp}`},
-      {id:'ay1', label:`1-${day} ${AY[mo]} ${yr-1}`, sk:`A_${yr-1}${mp}`},
-      {id:'ay2', label:`1-${day} ${AY[mo]} ${yr-2}`, sk:`A_${yr-2}${mp}`}
+      {id:'ay0',label:`1-${day} ${AY[mo]} ${yr}`,   sk:`A_${yr}${mp}${dp}`},
+      {id:'ay1',label:`1-${day} ${AY[mo]} ${yr-1}`, sk:`A_${yr-1}${mp}${dp}`},
+      {id:'ay2',label:`1-${day} ${AY[mo]} ${yr-2}`, sk:`A_${yr-2}${mp}${dp}`}
     ];
   }
   return [
-    {id:'gun', label:`${day} ${AY[mo]} ${yr}`,    sk:`G_${yr}${mp}${dp}`},
-    {id:'ay0', label:`1-${day} ${AY[mo]} ${yr}`,   sk:`A_${yr}${mp}`},
-    {id:'ay1', label:`1-${day} ${AY[mo]} ${yr-1}`, sk:`A_${yr-1}${mp}`},
-    {id:'ay2', label:`1-${day} ${AY[mo]} ${yr-2}`, sk:`A_${yr-2}${mp}`}
+    {id:'gun',label:`${day} ${AY[mo]} ${yr}`,    sk:`G_${yr}${mp}${dp}`},
+    {id:'ay0',label:`1-${day} ${AY[mo]} ${yr}`,   sk:`A_${yr}${mp}${dp}`},
+    {id:'ay1',label:`1-${day} ${AY[mo]} ${yr-1}`, sk:`A_${yr-1}${mp}${dp}`},
+    {id:'ay2',label:`1-${day} ${AY[mo]} ${yr-2}`, sk:`A_${yr-2}${mp}${dp}`}
   ];
 }
 
@@ -458,93 +431,76 @@ function getSFKey(){
   const d=getFD();
   return `SF_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
 }
-function getSFDateLabel(){const d=getFD();return `${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;}
+function getSFDate(){const d=getFD();return `${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;}
 
 // ── FORMAT ────────────────────────────────────────────────────────────────────
-// Rəqəm: nöqtə minlik ayırıcı (38.259)
 function fmt(n){
   if(n===null||n===undefined||n===''||n==0)return '—';
   const num=Number(n);if(isNaN(num))return '—';
-  // Azərbaycan lokalizasiyası nöqtə ilə minlik ayırıcı
+  // Nöqtə minlik ayırıcı: 38.259
   return num.toLocaleString('de-DE',{minimumFractionDigits:0,maximumFractionDigits:0});
 }
 function xPct(v,t){if(!v||!t)return null;const r=v/t*100;return r>=100?100:Math.floor(r*10)/10;}
 function pStr(p){if(p===null)return '—';return p===100?'100%':p.toFixed(1)+'%';}
-// Faiz — cədvəldə həmişə qara (rəngsiz) — plan faizi deyil
+// Faiz cədvəldə — həmişə qara, sadə format
 function fmtFaiz(f){return f>0?f.toFixed(1)+'%':'—';}
-// Faiz ümumi (plan üçün) — rəngli
+// Plan paneli üçün rəng
 function pCls(p){if(p===null)return '';if(p>=100)return 'pct-g';if(p>=70)return 'pct-o';return 'pct-r';}
 function avgF(arr){const v=arr.filter(x=>x>0);return v.length?v.reduce((a,b)=>a+b)/v.length:null;}
 function fP(p){return p===null?'—':p.toFixed(1)+'%';}
 
-function planColor(ms,target,dl){
-  if(!ms||!target)return 'red';
-  if(ms>=target)return 'green';
-  const avg=ms/daysPassed(),proj=ms+avg*dl,pct=proj/target*100;
+function planColor(ms,tgt,dl){
+  if(!ms||!tgt)return 'red';if(ms>=tgt)return 'green';
+  const avg=ms/daysPassed(),proj=ms+avg*dl,pct=proj/tgt*100;
   if(pct>=100)return 'green';if(pct>=70)return 'orange';return 'red';
 }
-function planBgColor(ms,target,dl){
-  const c=planColor(ms,target,dl);
+function planBg(ms,tgt,dl){
+  const c=planColor(ms,tgt,dl);
   return c==='green'?'#10b981':c==='orange'?'#f59e0b':'#ef4444';
 }
 
-// ── CİHAZ ADI ─────────────────────────────────────────────────────────────────
-function getDeviceName(){
+// ── CİHAZ ─────────────────────────────────────────────────────────────────────
+function getDevice(){
   const ua=navigator.userAgent;
-  // iPhone model — OS versiyasına görə
   if(/iPhone/.test(ua)){
-    const m=ua.match(/iPhone OS (\d+)/);
-    const v=m?parseInt(m[1]):0;
-    if(v>=18)return '📱 iPhone 16';
-    if(v>=17)return '📱 iPhone 15';
-    if(v>=16)return '📱 iPhone 14';
-    if(v>=15)return '📱 iPhone 13';
-    if(v>=14)return '📱 iPhone 12';
-    if(v>=13)return '📱 iPhone 11';
+    const m=ua.match(/iPhone OS (\d+)/),v=m?parseInt(m[1]):0;
+    if(v>=18)return '📱 iPhone 16';if(v>=17)return '📱 iPhone 15';
+    if(v>=16)return '📱 iPhone 14';if(v>=15)return '📱 iPhone 13';
+    if(v>=14)return '📱 iPhone 12';if(v>=13)return '📱 iPhone 11';
     return '📱 iPhone';
   }
   if(/iPad/.test(ua))return '📟 iPad';
   if(/Android/.test(ua)&&/Mobile/.test(ua)){
     if(/SM-/.test(ua)){const m=ua.match(/SM-[A-Z0-9]+/);return `📱 Samsung ${m?m[0]:''}`.trim();}
-    if(/Redmi/.test(ua)){const m=ua.match(/Redmi [^\s;)]+/);return `📱 ${m?m[0]:'Xiaomi Redmi'}`;}
+    if(/Redmi/.test(ua)){const m=ua.match(/Redmi [^\s;)]+/);return `📱 ${m?m[0]:'Xiaomi'}`;}
     if(/MIUI|Mi /.test(ua))return '📱 Xiaomi';
-    if(/HW|Huawei|HUAWEI/.test(ua))return '📱 Huawei';
+    if(/Huawei|HUAWEI/.test(ua))return '📱 Huawei';
     return '📱 Android';
   }
-  if(/Android/.test(ua))return '📟 Android Tablet';
-  if(/Windows NT/.test(ua)){
-    const m=ua.match(/Windows NT ([\d.]+)/);
-    if(m){const v=parseFloat(m[1]);if(v>=10)return '💻 Windows 10/11';if(v>=6.3)return '💻 Windows 8.1';}
-    return '💻 Windows';
-  }
+  if(/Android/.test(ua))return '📟 Tablet';
+  if(/Windows NT/.test(ua)){const m=ua.match(/Windows NT ([\d.]+)/),v=m?parseFloat(m[1]):0;return v>=10?'💻 Windows 10/11':'💻 Windows';}
   if(/Macintosh|Mac OS/.test(ua))return '💻 Mac/MacBook';
   if(/Linux/.test(ua))return '💻 Linux';
   return '💻 Kompüter';
 }
 
-// ── GİRİŞ JURNALI — BIN-DƏ ────────────────────────────────────────────────────
+// ── JURNAL ────────────────────────────────────────────────────────────────────
 async function logLogin(name,isAdmin,records,sf,cfg){
   if(isAdmin&&!cfg.jp?.showAdmin)return;
   const now=new Date();
   const t=`${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
   const dt=`${now.getDate()} ${AY[now.getMonth()]} ${now.getFullYear()}`;
   const logs=cfg.jurnal||[];
-  logs.unshift({name,time:t,date:dt,device:getDeviceName(),ts:now.getTime()});
+  logs.unshift({name,time:t,date:dt,device:getDevice(),ts:now.getTime()});
   if(logs.length>100)logs.length=100;
-  cfg.jurnal=logs;
-  // BIN-ə arxa planda yaz
+  cfg.jurnal=logs;CFG=cfg;
   wBin(records,sf,cfg);
 }
-
-function renderJurnalList(filter){
+function renderJList(filter){
   const logs=CFG?.jurnal||[];
-  const filtered=filter==='all'?logs:logs.filter(l=>l.name===filter);
-  if(!filtered.length)return '<div class="jurnal-empty">Giriş yoxdur</div>';
-  return filtered.slice(0,50).map(l=>`
-    <div class="jurnal-item">
-      <div><div class="jurnal-name">${l.name}</div><div class="jurnal-device">${l.device||'—'}</div></div>
-      <div class="jurnal-time">${l.date}<br>${l.time}</div>
-    </div>`).join('');
+  const fl=filter==='all'?logs:logs.filter(l=>l.name===filter);
+  if(!fl.length)return '<div class="jurnal-empty">Giriş yoxdur</div>';
+  return fl.slice(0,50).map(l=>`<div class="jurnal-item"><div><div class="jurnal-name">${l.name}</div><div class="jurnal-device">${l.device||'—'}</div></div><div class="jurnal-time">${l.date}<br>${l.time}</div></div>`).join('');
 }
 function openJurnalMo(){
   const logs=CFG?.jurnal||[];
@@ -552,36 +508,30 @@ function openJurnalMo(){
   let fb='<button class="jf-btn active" onclick="setJF(\'all\',this)">Hamısı</button>';
   names.slice(1).forEach(n=>{fb+=`<button class="jf-btn" onclick="setJF('${n}',this)">${n}</button>`;});
   document.getElementById('jurnal-filter').innerHTML=fb;
-  document.getElementById('jurnal-modal-list').innerHTML=renderJurnalList('all');
+  document.getElementById('jurnal-modal-list').innerHTML=renderJList('all');
   document.getElementById('mo-jurnal').classList.add('show');
 }
 function setJF(name,btn){
   document.querySelectorAll('.jf-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.getElementById('jurnal-modal-list').innerHTML=renderJurnalList(name);
+  document.getElementById('jurnal-modal-list').innerHTML=renderJList(name);
 }
 
 function goTo(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 function closeMo(id){document.getElementById(id).classList.remove('show');}
 function logout(){curSid=null;editMode=false;document.getElementById('gpw').value='';document.getElementById('gerr').classList.remove('show');document.getElementById('gsel').value='';goTo('gate');}
 
-// ── GİRİŞ EKRANINDAKİ SEÇİM ─────────────────────────────────────────────────
+// ── GİRİŞ SEÇİMİ ─────────────────────────────────────────────────────────────
 async function buildSel(){
-  // BIN-dən istifadəçiləri yüklə
-  const bin=await rBin();
-  CFG=bin.cfg;
+  const bin=await rBin();CFG=bin.cfg;
   const sel=document.getElementById('gsel');
   sel.innerHTML='<option value="">— Seçin —</option>';
-  const users=gU();
-  users.filter(u=>u.type==='store').forEach(u=>{const o=document.createElement('option');o.value=u.id;o.textContent=u.name;sel.appendChild(o);});
-  const vv=users.filter(u=>u.type==='viewer');
+  gU().filter(u=>u.type==='store').forEach(u=>{const o=document.createElement('option');o.value=u.id;o.textContent=u.name;sel.appendChild(o);});
+  const vv=gU().filter(u=>u.type==='viewer');
   if(vv.length){const og=document.createElement('optgroup');og.label='── Baxış ──';vv.forEach(u=>{const o=document.createElement('option');o.value=u.id;o.textContent=u.name;og.appendChild(o);});sel.appendChild(og);}
   try{const r=JSON.parse(localStorage.getItem('pk_rem')||'null');if(r){sel.value=r.sid;document.getElementById('gpw').value=r.pw;document.getElementById('rem').checked=true;}}catch{}
-  // Admin parolu
   ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
 }
-// Yüklənmə zamanı spinner göstər
-document.getElementById('gsel').innerHTML='<option value="">Yüklənir...</option>';
 buildSel();
 
 async function doLogin(){
@@ -591,64 +541,49 @@ async function doLogin(){
   if(!u||pw!==u.pw){document.getElementById('gerr').classList.add('show');document.getElementById('gpw').value='';return;}
   document.getElementById('gerr').classList.remove('show');
   if(rem)localStorage.setItem('pk_rem',JSON.stringify({sid,pw}));else localStorage.removeItem('pk_rem');
-  // Giriş jurnalı — BIN-ə
-  const bin=await rBin();
+  const bin=await rBin();CFG=bin.cfg;
   await logLogin(u.name,false,bin.records,bin.sf,bin.cfg);
-  CFG=bin.cfg;
   if(u.type==='viewer')openViewer(u);else{curSid=sid;editMode=false;openStoreForm(sid);}
 }
 async function showAdminGate(){
   const pw=prompt('Admin şifrəsi:');
   if(pw===ADMIN_PW){
-    const bin=await rBin();
+    const bin=await rBin();CFG=bin.cfg;
     await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
-    CFG=bin.cfg;
     openAdmin();
   }else if(pw!==null)alert('Şifrə yanlışdır.');
 }
 
 // ── PLAN KARTI ────────────────────────────────────────────────────────────────
-function planCard(sid,curMs,records){
+function planCard(sid,ms,records){
   const t=gT()[sid];if(!t)return '';
   const dl=dLeft();
   const u=gU().find(u=>u.id===sid);
   const isSaxa=!u.inTotal;
   const periods=getPeriods(isSaxa);
-  // Saxa: ay0 birinci period, Panda: ay0 ikinci
-  const ay0idx=isSaxa?0:1;
-  const gunSk=isSaxa?null:periods[0].sk;
-  const gunRec=gunSk?findRecord(records||[],u.name,gunSk):null;
-  const tv=gunRec?.satis||0;
-  const pm=xPct(curMs,t.min),pd=curMs>=t.min?xPct(curMs,t.mid):null,px=curMs>=t.mid?xPct(curMs,t.max):null;
+  const gunP=isSaxa?null:periods[0];
+  const tv=gunP?findRec(records,u.name,gunP.sk)?.satis||0:0;
+  const pm=xPct(ms,t.min),pd=ms>=t.min?xPct(ms,t.mid):null,px=ms>=t.mid?xPct(ms,t.max):null;
   let at,rm;
-  if(curMs<t.min){at=t.min;rm=t.min-curMs;}
-  else if(curMs<t.mid){at=t.mid;rm=t.mid-curMs;}
-  else if(curMs<t.max){at=t.max;rm=t.max-curMs;}
+  if(ms<t.min){at=t.min;rm=t.min-ms;}
+  else if(ms<t.mid){at=t.mid;rm=t.mid-ms;}
+  else if(ms<t.max){at=t.max;rm=t.max-ms;}
   else{at=t.max;rm=0;}
-  const ap=xPct(curMs,at)||0,dn=dl>0&&rm>0?Math.ceil(rm/dl):0;
-  const bc=planBgColor(curMs,t.min,dl);
+  const ap=xPct(ms,at)||0,dn=dl>0&&rm>0?Math.ceil(rm/dl):0;
+  const bc=planBg(ms,t.min,dl);
   return `<div class="plancard" id="pc-${sid}">
     <div class="plantitle">📊 Bu Ay Hədəflər</div>
     <div class="plangrid">
-      <div class="planitem ${pm!==null&&pm>=100?'done':'active'}">
-        <div class="pil">🥉 Min</div><div class="piv">${fmt(t.min)}</div>
-        <div class="pip ${pm!==null&&pm>=100?'done':'cur'}">${pStr(pm)}</div>
-      </div>
-      <div class="planitem ${pd!==null&&pd>=100?'done':pm!==null&&pm>=100?'active':''}">
-        <div class="pil">🥈 Orta</div><div class="piv">${fmt(t.mid)}</div>
-        <div class="pip ${pd!==null&&pd>=100?'done':'cur'}">${pd!==null?pStr(pd):'—'}</div>
-      </div>
-      <div class="planitem ${px!==null&&px>=100?'done':pd!==null&&pd>=100?'active':''}">
-        <div class="pil">🥇 Maks</div><div class="piv">${fmt(t.max)}</div>
-        <div class="pip ${px!==null&&px>=100?'done':'cur'}">${px!==null?pStr(px):'—'}</div>
-      </div>
+      <div class="planitem ${pm!==null&&pm>=100?'done':'active'}"><div class="pil">🥉 Min</div><div class="piv">${fmt(t.min)}</div><div class="pip ${pm!==null&&pm>=100?'done':'cur'}">${pStr(pm)}</div></div>
+      <div class="planitem ${pd!==null&&pd>=100?'done':pm!==null&&pm>=100?'active':''}"><div class="pil">🥈 Orta</div><div class="piv">${fmt(t.mid)}</div><div class="pip ${pd!==null&&pd>=100?'done':'cur'}">${pd!==null?pStr(pd):'—'}</div></div>
+      <div class="planitem ${px!==null&&px>=100?'done':pd!==null&&pd>=100?'active':''}"><div class="pil">🥇 Maks</div><div class="piv">${fmt(t.max)}</div><div class="pip ${px!==null&&px>=100?'done':'cur'}">${px!==null?pStr(px):'—'}</div></div>
     </div>
-    <div class="ppl"><span>Cari: ${fmt(curMs)} ₼</span><strong>${fmt(at)} — ${ap===100?'100':ap.toFixed(1)}%</strong></div>
+    <div class="ppl"><span>Cari: ${fmt(ms)} ₼</span><strong>${fmt(at)} — ${ap===100?'100':ap.toFixed(1)}%</strong></div>
     <div class="pbw"><div class="pb" style="width:${Math.min(100,ap)}%;background:${bc}"></div></div>
     <div class="psg">
       <div class="ps"><div class="psl">📅 Qalan gün</div><div class="psv">${dl}</div></div>
       <div class="ps"><div class="psl">💰 Gündəlik lazım</div><div class="psv">${rm>0?fmt(dn)+' ₼':'✅'}</div></div>
-      ${!isSaxa?`<div class="ps"><div class="psl">📈 Bu gün</div><div class="psv">${fmt(tv)} ₼</div></div>`:'<div class="ps"><div class="psl">📅 Ay</div><div class="psv">${fmt(curMs)} ₼</div></div>'}
+      ${!isSaxa?`<div class="ps"><div class="psl">📈 Bu gün</div><div class="psv">${fmt(tv)} ₼</div></div>`:`<div class="ps"><div class="psl">📊 Cari ay</div><div class="psv">${fmt(ms)} ₼</div></div>`}
       <div class="ps"><div class="psl">⬆️ Növbəti hədəfə</div><div class="psv">${rm>0?fmt(rm)+' ₼':'🏆'}</div></div>
     </div>
   </div>`;
@@ -671,7 +606,7 @@ function upToday(){
   const isSaxa=!u.inTotal;
   const periods=getPeriods(isSaxa);
   const ay0=isSaxa?periods[0]:periods[1];
-  const rec=findRecord(window._cr||[],u.name,ay0.sk);
+  const rec=findRec(window._cr||[],u.name,ay0.sk);
   const ms=parseFloat(document.getElementById(`s-${ay0.id}`)?.value)||rec?.satis||0;
   upPlan(ms);
 }
@@ -685,8 +620,7 @@ async function openStoreForm(sid){
   document.getElementById('sfbody').innerHTML='<div class="admld">Yüklənir...</div>';
   goTo('store-form');
   const {records,sf,cfg}=await rBin();
-  CFG=cfg;
-  window._cr=records;window._csf=sf;
+  CFG=cfg;window._cr=records;window._csf=sf;
   renderFormData(sid,records,sf);
 }
 
@@ -695,18 +629,15 @@ function renderFormData(sid,records,sf){
   const isSaxa=!u.inTotal;
   const periods=getPeriods(isSaxa);
   const ay0=isSaxa?periods[0]:periods[1];
-  const ay0rec=findRecord(records,u.name,ay0.sk);
+  const ay0rec=findRec(records,u.name,ay0.sk);
   const ms=ay0rec?.satis||0;
   const t_=gT()[sid];
   let h=t_?planCard(sid,ms,records):'';
 
   periods.forEach((period,pi)=>{
-    const rec=editMode?null:findRecord(records,u.name,period.sk);
-    const hasSaved=!editMode&&rec!==null;
-    const dis=hasSaved?'disabled':'';
-    const sv=rec?.satis||'',mv=rec?.menfeet||'';
-    // FAİZ: mağaza tam ədəd yazır (15), BIN-də tam ədəd saxlanır
-    const fv=rec?.faiz||'';
+    const rec=editMode?null:findRec(records,u.name,period.sk);
+    const dis=(!editMode&&rec)?'disabled':'';
+    const sv=rec?.satis||'',mv=rec?.menfeet||'',fv=rec?.faiz||'';
     const isAy=period.id==='ay0',isGun=period.id==='gun';
     const lu=isAy?`oninput="upPlan(this.value);sF('s-ay0')"`
       :isGun?`oninput="upToday();sF('s-gun')"`:`oninput="sF('s-${period.id}')"`;
@@ -723,23 +654,21 @@ function renderFormData(sid,records,sf){
     </div>`;
   });
 
-  // Saxa Firma
   const ss=gSS();
   if(ss.fillers.includes(sid)){
-    const sfKey=getSFKey();
-    const sfRec=sf[sfKey+'_'+sid]||null;
-    const sfSaved=!editMode&&sfRec!==null;
+    const sfKey=getSFKey(),sfRec=sf[sfKey+'_'+sid]||null;
+    const sfDis=(!editMode&&sfRec)?'disabled':'';
     h+=`<div class="saxa-firma-block">
-      <div class="saxa-firma-hdr">🏪 ${ss.firmName} — ${getSFDateLabel()}</div>
+      <div class="saxa-firma-hdr">🏪 ${ss.firmName} — ${getSFDate()}</div>
       <div style="padding:10px 12px">
         <div style="font-size:10px;color:rgba(255,255,255,.45);margin-bottom:6px;font-weight:600">Bu günün satışı (₼)</div>
-        <input class="saxa-firma-inp" type="number" min="0" id="sf-inp" value="${sfRec?.satis||''}" placeholder="0" ${sfSaved&&!editMode?'disabled':''}>
+        <input class="saxa-firma-inp" type="number" min="0" id="sf-inp" value="${sfRec?.satis||''}" placeholder="0" ${sfDis}>
         ${sfRec?.satis?`<div class="nid" style="text-align:right;margin-top:4px">${fmt(sfRec.satis)}</div>`:''}
       </div>
     </div>`;
   }
 
-  const allSaved=!editMode&&periods.every(p=>findRecord(records,u.name,p.sk)!==null);
+  const allSaved=!editMode&&periods.every(p=>findRec(records,u.name,p.sk)!==null);
   if(allSaved){
     h+=`<button class="savebtn" disabled>✓ Saxlanıldı</button>
     <button class="editbtn" id="ebt" onclick="enableEdit()">✏️ Düzəliş et</button>
@@ -764,12 +693,10 @@ async function doSave(){
   document.getElementById('erb').classList.remove('show');
   try{
     const {records,sf,cfg}=await rBin();
-    CFG=cfg;
-    let any=false;
+    CFG=cfg;let any=false;
     for(const p of periods){
       const s=parseFloat(document.getElementById(`s-${p.id}`)?.value)||0;
       const m=parseFloat(document.getElementById(`m-${p.id}`)?.value)||0;
-      // Faiz tam ədəd saxlanır (mağaza tam ədəd yazır)
       const f=parseInt(document.getElementById(`f-${p.id}`)?.value)||0;
       if(s>0||m>0||f>0){
         any=true;
@@ -785,8 +712,7 @@ async function doSave(){
     }
     if(!any){alert('Ən azı bir sahəni doldurun.');if(sbt)sbt.disabled=false;document.getElementById('ldb').classList.remove('show');return;}
     await wBin(records,sf,cfg);
-    editMode=false;
-    window._cr=records;window._csf=sf;
+    editMode=false;window._cr=records;window._csf=sf;
     document.getElementById('ldb').classList.remove('show');
     document.getElementById('okb').classList.add('show');
     if(sbt)sbt.textContent='✓ Saxlanıldı';
@@ -795,9 +721,8 @@ async function doSave(){
       const eb=document.createElement('button');eb.className='editbtn';eb.textContent='✏️ Düzəliş et';eb.onclick=enableEdit;sbt.parentNode.insertBefore(eb,sbt.nextSibling);
       const db=document.createElement('button');db.className='delbtn2';db.textContent='🗑 Bu günün məlumatını sil';db.onclick=deleteToday;eb.after(db);
     }
-    const ay0=isSaxa?getPeriods(true)[0]:getPeriods(false)[1];
-    const ay0rec=findRecord(records,u.name,ay0.sk);
-    upPlan(ay0rec?.satis||0);
+    const ay0=isSaxa?periods[0]:periods[1];
+    upPlan(findRec(records,u.name,ay0.sk)?.satis||0);
   }catch(e){
     document.getElementById('ldb').classList.remove('show');
     document.getElementById('erb').classList.add('show');
@@ -815,16 +740,15 @@ async function deleteToday(){
     periods.forEach(p=>{const i=records.findIndex(r=>r.sobe===u.name&&r.period===p.sk);if(i>=0)records.splice(i,1);});
     delete sf[getSFKey()+'_'+curSid];
     await wBin(records,sf,cfg);
-    editMode=false;
-    await openStoreForm(curSid);
+    editMode=false;await openStoreForm(curSid);
   }catch{alert('Silinmə xətası.');}
 }
 
-// ── OX ────────────────────────────────────────────────────────────────────────
+// ── OX — SAXA ŞÖBƏLƏRİNDƏ OX YOX ─────────────────────────────────────────────
 function arrD(ds,ms,minT,dl){
   if(!ds)return '';
   const rem=Math.max(0,minT-ms);if(rem<=0)return '<span class="arr-up">↑</span>';
-  const need=dl>0?Math.ceil(rem/dl):rem,p=ds/need*100;
+  const p=ds/(dl>0?Math.ceil(rem/dl):rem)*100;
   return p>=100?'<span class="arr-up">↑</span>':p>=70?'<span class="arr-mid">→</span>':'<span class="arr-dn">↓</span>';
 }
 function arrM(ms,minT,dl){
@@ -836,92 +760,85 @@ function arrM(ms,minT,dl){
 function buildTable(records,sf,tblId,ldId){
   const users=gU().filter(u=>u.type==='store');
   const targets=gT(),dl=dLeft();
-  // Panda periodu (4 period)
-  const pandaPeriods=getPeriods(false);
-  // Saxa periodu (3 period, ox yox)
-  const saxaPeriods=getPeriods(true);
-
-  // Sütun sayı: Panda 4 period × 4 sütun
-  const colCount=pandaPeriods.length*4;
+  const pandaP=getPeriods(false);  // 4 period
+  const saxaP=getPeriods(true);    // 3 period (gun yox)
 
   const D={};
   users.forEach(u=>{
     const isSaxa=!u.inTotal;
-    const periods=isSaxa?saxaPeriods:pandaPeriods;
+    const periods=isSaxa?saxaP:pandaP;
     D[u.name]={};
     periods.forEach(p=>{
-      const e=findRecord(records,u.name,p.sk);
+      const e=findRec(records,u.name,p.sk);
       D[u.name][p.id]=e?{satis:e.satis||0,menfeet:e.menfeet||0,faiz:e.faiz||0}:{satis:0,menfeet:0,faiz:0};
     });
   });
 
   let h='<colgroup>';
-  for(let i=0;i<pandaPeriods.length;i++)h+='<col class="col-name"><col class="col-num"><col class="col-num"><col class="col-pct">';
+  for(let i=0;i<pandaP.length;i++)h+='<col class="col-name"><col class="col-num"><col class="col-num"><col class="col-pct">';
   h+='</colgroup>';
   h+='<tr class="gh">';
-  pandaPeriods.forEach((p,i)=>{
+  pandaP.forEach((p,i)=>{
     h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle">${i===0?'Şöbələr':''}</th>`;
     h+=`<th colspan="3" class="${HC[i]}" style="font-size:13px;font-weight:800">${p.label}</th>`;
   });
   h+='</tr><tr class="sh">';
-  pandaPeriods.forEach((p,i)=>{h+=`<th class="${SC[i]} col-num">Satış</th><th class="${SC[i]} col-num">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;});
+  pandaP.forEach((p,i)=>{h+=`<th class="${SC[i]} col-num">Satış</th><th class="${SC[i]} col-num">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;});
   h+='</tr>';
 
-  const pTots=pandaPeriods.map(()=>({s:0,m:0,fl:[]}));
-  const sTots=pandaPeriods.map(()=>({s:0,m:0,fl:[]}));
+  const pTots=pandaP.map(()=>({s:0,m:0,fl:[]}));
+  const sTots=pandaP.map(()=>({s:0,m:0,fl:[]}));
   const panda=users.filter(u=>u.inTotal),saxa=users.filter(u=>!u.inTotal);
 
   panda.forEach(u=>{
     const t=targets[u.id];
     h+=`<tr class="dr">`;
-    pandaPeriods.forEach((p,pi)=>{
+    pandaP.forEach((p,pi)=>{
       const e=D[u.name][p.id];
       h+=`<td class="nm">${u.name}</td>`;
       if(e&&(e.satis>0||e.menfeet>0)){
         let arr='';
         if(p.id==='gun'&&t)arr=arrD(e.satis,D[u.name]['ay0']?.satis||0,t.min,dl);
         else if(p.id==='ay0'&&t)arr=arrM(e.satis,t.min,dl);
-        // Faiz — həmişə qara, yalnız daxil edilmiş faiz (1 kəsr)
-        // Mağaza tam ədəd yazır, cədvəldə .0 əlavə edilir
-        const faizStr=e.faiz>0?e.faiz.toFixed(1)+'%':'—';
-        h+=`<td class="nv">${arr}${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${faizStr}</td>`;
+        // Faiz — həmişə qara, sadəcə daxil edilmiş faiz
+        const fz=fmtFaiz(e.faiz);
+        h+=`<td class="nv">${arr}${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fz}</td>`;
         pTots[pi].s+=e.satis;pTots[pi].m+=e.menfeet;if(e.faiz>0)pTots[pi].fl.push(e.faiz);
       }else{h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;}
     });
     h+='</tr>';
   });
 
-  // Ümumi Panda
+  // Ümumi Panda — faiz ümumi ortalama (kəsrli)
   h+='<tr class="tr">';
   pTots.forEach(t=>{
     const af=avgF(t.fl);
-    // Ümumi faiz 1 kəsr (15.7 kimi)
     h+=`<td class="nm">Ümumi Panda</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fP(af)}</td>`;
   });
   h+='</tr>';
 
-  // Saxa
   if(saxa.length){
-    h+=`<tr class="saxagap"><td colspan="${colCount}"></td></tr>`;
+    h+=`<tr class="saxagap"><td colspan="${pandaP.length*4}"></td></tr>`;
     saxa.forEach(u=>{
       const t=targets[u.id];
       h+=`<tr class="sr">`;
-      pandaPeriods.forEach((p,pi)=>{
+      pandaP.forEach((p,pi)=>{
         h+=`<td class="nm">${u.name}</td>`;
-        // Saxa: yalnız ay0, ay1, ay2 var (gun yox) — pi=0 gun sütunu (boş), pi=1 ay0, pi=2 ay1, pi=3 ay2
-        const saxaMap={'gun':null,'ay0':'ay0','ay1':'ay1','ay2':'ay2'};
-        const saxaId=saxaMap[p.id];
-        if(!saxaId){h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;return;}
-        const e=D[u.name][saxaId];
+        // Saxa: gun sütunu (pi=0) boş, qalan periodlar saxaP-a uyğun
+        const saxaMap={gun:null,ay0:'ay0',ay1:'ay1',ay2:'ay2'};
+        const sid=saxaMap[p.id];
+        if(!sid){h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;return;}
+        const e=D[u.name][sid];
         if(e&&(e.satis>0||e.menfeet>0)){
-          const faizStr=e.faiz>0?e.faiz.toFixed(1)+'%':'—';
-          // Saxa: ox yox
-          h+=`<td class="nv">${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${faizStr}</td>`;
+          // Saxa: ox yox, faiz qara
+          const fz=fmtFaiz(e.faiz);
+          h+=`<td class="nv">${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fz}</td>`;
           sTots[pi].s+=e.satis;sTots[pi].m+=e.menfeet;if(e.faiz>0)sTots[pi].fl.push(e.faiz);
         }else{h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;}
       });
       h+='</tr>';
     });
+    // Yekun Saxa
     h+='<tr class="str">';
     sTots.forEach((t,pi)=>{
       const af=avgF(t.fl);
@@ -939,16 +856,14 @@ function buildTable(records,sf,tblId,ldId){
 function buildSFReport(sf,cid){
   const ss=gSS();if(!ss.showInAdmin)return;
   const fillers=gU().filter(u=>ss.fillers.includes(u.id));
-  const sfKey=getSFKey();
-  let total=0,rows='';
+  const sfKey=getSFKey();let total=0,rows='';
   fillers.forEach(u=>{
-    const v=sf[sfKey+'_'+u.id]?.satis||0;
-    total+=v;
+    const v=sf[sfKey+'_'+u.id]?.satis||0;total+=v;
     rows+=`<tr><td>${u.name}</td><td>${v>0?fmt(v)+' ₼':'—'}</td></tr>`;
   });
   const c=document.getElementById(cid);if(!c)return;
   c.innerHTML=`<div class="sf-rc" id="sf-rc">
-    <div class="sf-rc-hdr"><div class="sf-rc-title">🏪 ${ss.firmName}</div><div class="sf-rc-date">${getSFDateLabel()}</div></div>
+    <div class="sf-rc-hdr"><div class="sf-rc-title">🏪 ${ss.firmName}</div><div class="sf-rc-date">${getSFDate()}</div></div>
     <table class="sf-tbl"><tr><th>${ss.firmName}</th><th>Satış Məbləğ</th></tr>${rows}<tr class="sf-total"><td>Cəmi</td><td>${total>0?fmt(total)+' ₼':'—'}</td></tr></table>
     <div class="sf-rc-ftr"><span>Panda Kids © ${new Date().getFullYear()}</span></div>
   </div>
@@ -967,16 +882,15 @@ function planPanelHtml(records,forSaxa){
     const periods=getPeriods(isSaxa);
     const ay0=isSaxa?periods[0]:periods[1];
     const gunP=isSaxa?null:periods[0];
-    const ay0rec=findRecord(records,u.name,ay0.sk);
-    const gunRec=gunP?findRecord(records,u.name,gunP.sk):null;
-    const ms=ay0rec?.satis||0,tv=gunRec?.satis||0;
+    const ms=findRec(records,u.name,ay0.sk)?.satis||0;
+    const tv=gunP?findRec(records,u.name,gunP.sk)?.satis||0:0;
     let at,rm;
     if(ms<t.min){at=t.min;rm=t.min-ms;}
     else if(ms<t.mid){at=t.mid;rm=t.mid-ms;}
     else if(ms<t.max){at=t.max;rm=t.max-ms;}
     else{at=t.max;rm=0;}
     const ap=xPct(ms,at)||0,dn=dl>0&&rm>0?Math.ceil(rm/dl):0;
-    const bc=planBgColor(ms,t.min,dl);
+    const bc=planBg(ms,t.min,dl);
     function lc(tgt){return ms>=tgt?'green':planColor(ms,tgt,dl);}
     h+=`<div class="ppi" style="border-color:${bc}33">
       <div class="ppih"><div class="ppin">${u.name}</div><div class="ppip" style="color:${bc}">${ap===100?'100%':ap.toFixed(1)+'%'}</div></div>
@@ -1064,13 +978,13 @@ async function renderFillForm(){
   window._fr=records;window._fsf=sf;
   let h='';
   periods.forEach((p,pi)=>{
-    const rec=findRecord(records,u.name,p.sk);
+    const rec=findRec(records,u.name,p.sk);
     h+=`<div class="fillperiod">
       <div class="fillplbl" style="background:${PCOL[isSaxa?pi+1:pi]}">${p.label}</div>
       <div class="afrow">
-        <div><div class="afl">Satış (₼)</div><input type="number" min="0" id="af-s-${p.id}" value="${rec?.satis||''}" placeholder="0"></div>
-        <div><div class="afl">Mənfəət (₼)</div><input type="number" min="0" id="af-m-${p.id}" value="${rec?.menfeet||''}" placeholder="0"></div>
-        <div><div class="afl">Faiz (%)</div><input type="number" min="0" step="1" id="af-f-${p.id}" value="${rec?.faiz||''}" placeholder="0"></div>
+        <div><div class="afrow afl" style="font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px">Satış (₼)</div><input type="number" min="0" id="af-s-${p.id}" value="${rec?.satis||''}" placeholder="0" style="width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;"></div>
+        <div><div class="afrow afl" style="font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px">Mənfəət (₼)</div><input type="number" min="0" id="af-m-${p.id}" value="${rec?.menfeet||''}" placeholder="0" style="width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;"></div>
+        <div><div class="afrow afl" style="font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px">Faiz (%)</div><input type="number" min="0" step="1" id="af-f-${p.id}" value="${rec?.faiz||''}" placeholder="0" style="width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;"></div>
       </div>
     </div>`;
   });
@@ -1078,8 +992,9 @@ async function renderFillForm(){
   if(ss.fillers.includes(sid)){
     const sfv=sf[getSFKey()+'_'+sid]?.satis||'';
     h+=`<div class="fillperiod" style="background:rgba(120,53,15,.2);border:1px solid rgba(245,158,11,.2)">
-      <div class="fillplbl" style="background:#92400e">${ss.firmName} — ${getSFDateLabel()}</div>
-      <div class="af1row"><div><div class="afl">Günlük Satış (₼)</div><input type="number" min="0" id="af-sf" value="${sfv}" placeholder="0"></div></div>
+      <div class="fillplbl" style="background:#92400e">${ss.firmName} — ${getSFDate()}</div>
+      <div><div style="font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px">Günlük Satış (₼)</div>
+      <input type="number" min="0" id="af-sf" value="${sfv}" placeholder="0" style="width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;"></div>
     </div>`;
   }
   document.getElementById('fill-body').innerHTML=h;
@@ -1094,7 +1009,7 @@ async function doAdminFill(){
   document.getElementById('fill-btn').disabled=true;
   document.getElementById('fill-ld').classList.add('show');
   try{
-    const records=window._fr||[];const sf=window._fsf||{};
+    const records=window._fr||[],sf=window._fsf||{};
     let any=false;
     for(const p of periods){
       const s=parseFloat(document.getElementById(`af-s-${p.id}`)?.value)||0;
@@ -1122,7 +1037,6 @@ async function doAdminFill(){
 }
 
 // ── İSTİFADƏÇİLƏR ────────────────────────────────────────────────────────────
-// Bütün istifadəçi dəyişiklikləri BIN-ə yazılır
 async function openUsersMo(){
   const {cfg}=await rBin();CFG=cfg;
   tmpUsers=JSON.parse(JSON.stringify(gU()));renderUsersMo();document.getElementById('mo-u').classList.add('show');
@@ -1160,11 +1074,9 @@ function addStore(){
 function delUser(i){if(confirm('Silinsin?')){tmpUsers.splice(i,1);renderUsersMo();}}
 async function saveUsers(){
   const {records,sf,cfg}=await rBin();
-  cfg.users=tmpUsers;
-  CFG=cfg;
+  cfg.users=tmpUsers;CFG=cfg;
   await wBin(records,sf,cfg);
-  await buildSel();
-  closeMo('mo-u');alert('✅ Saxlanıldı!');
+  await buildSel();closeMo('mo-u');alert('✅ Saxlanıldı!');
 }
 
 // ── HƏDƏFLƏr ─────────────────────────────────────────────────────────────────
@@ -1193,22 +1105,19 @@ async function saveTargets(){
 // ── SAXA FİRMA ────────────────────────────────────────────────────────────────
 async function openSaxaAdminMo(){
   const {cfg}=await rBin();CFG=cfg;
-  const ss=gSS();const users=gU().filter(u=>u.type==='store');
+  const ss=gSS(),users=gU().filter(u=>u.type==='store');
   let h=`<div class="mos"><div class="mosn">Firma Adı</div><div class="mof"><input type="text" id="sf-name" value="${ss.firmName||'Saxa Outlet'}"></div></div>
   <div class="mosect">Hansı şöbələr doldurur</div>`;
   users.forEach(u=>{h+=`<div class="cr"><input type="checkbox" id="sff-${u.id}" ${(ss.fillers||[]).includes(u.id)?'checked':''}><label for="sff-${u.id}">${u.name}</label></div>`;});
   h+=`<div class="mosect">Göstər</div><div class="cr"><input type="checkbox" id="sf-show" ${ss.showInAdmin?'checked':''}><label for="sf-show">Admin paneldə göstərilsin</label></div>`;
-  document.getElementById('saxa-admin-body').innerHTML=h;
-  document.getElementById('mo-saxa-admin').classList.add('show');
+  document.getElementById('saxa-admin-body').innerHTML=h;document.getElementById('mo-saxa-admin').classList.add('show');
 }
 async function saveSaxaSettings(){
   const users=gU().filter(u=>u.type==='store');
   const fillers=users.filter(u=>document.getElementById(`sff-${u.id}`)?.checked).map(u=>u.id);
   const {records,sf,cfg}=await rBin();
   cfg.saxa={fillers,firmName:document.getElementById('sf-name')?.value||'Saxa Outlet',showInAdmin:document.getElementById('sf-show')?.checked||false};
-  CFG=cfg;
-  await wBin(records,sf,cfg);
-  closeMo('mo-saxa-admin');alert('✅ Saxlandı!');
+  CFG=cfg;await wBin(records,sf,cfg);closeMo('mo-saxa-admin');alert('✅ Saxlandı!');
 }
 
 // ── PARAMETRLƏr ───────────────────────────────────────────────────────────────
@@ -1221,8 +1130,7 @@ async function openSettingsMo(){
 async function saveJP(){
   const showAdmin=document.getElementById('param-admin-jurnal')?.checked||false;
   const {records,sf,cfg}=await rBin();
-  cfg.jp={showAdmin};CFG=cfg;
-  await wBin(records,sf,cfg);
+  cfg.jp={showAdmin};CFG=cfg;await wBin(records,sf,cfg);
 }
 function changeAdminPw(){
   const o=document.getElementById('oldpw').value,n=document.getElementById('newpw').value;
@@ -1235,8 +1143,7 @@ function changeAdminPw(){
 
 // ── SCREENSHOT ────────────────────────────────────────────────────────────────
 async function takeScr(id){
-  const card=document.getElementById(id);
-  const tw=card.querySelector('.rctw');
+  const card=document.getElementById(id),tw=card.querySelector('.rctw');
   const of_=tw.style.overflow,ow_=tw.style.width;
   tw.style.overflow='visible';tw.style.width=tw.scrollWidth+'px';
   try{
