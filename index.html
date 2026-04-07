@@ -40,7 +40,7 @@ select.ginp option{color:#000;background:#fff;}
 .pil{font-size:9px;color:rgba(255,255,255,.45);margin-bottom:3px;font-weight:600;}
 .piv{font-size:12px;font-weight:800;color:#fff;font-family:'IBM Plex Mono',monospace;}
 .pip{font-size:11px;font-weight:700;margin-top:3px;}
-.pip.done{color:#10b981;}.pip.cur{color:#f59e0b;}.pip.pen{color:rgba(255,255,255,.2);}
+.pip.done{color:#10b981;}.pip.cur{color:#f59e0b;}
 .ppl{display:flex;justify-content:space-between;margin-bottom:5px;}
 .ppl span{font-size:10px;color:rgba(255,255,255,.45);}
 .ppl strong{font-size:10px;color:#f0c060;font-weight:700;}
@@ -117,7 +117,6 @@ table.rt .col-pct{width:65px;}
 .rt .dr td{height:26px;padding:3px 8px;vertical-align:middle;border-bottom:1px solid #edf2f7;font-size:12px;}
 .rt .dr .nm{font-weight:800;color:#0f1f3d;background:#f4f8fc;border-right:2px solid #dce4ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .rt .dr .nv{text-align:right;color:#0f1f3d;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:12px;}
-/* Faiz sütunu — həmişə sabit qara, heç bir rəng sinfi yoxdur */
 .rt .dr .pv{text-align:right;color:#374151;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;}
 .rt .dr .dsh{text-align:center;color:#b0bec5;}
 .rt .dr:nth-child(even) td{background:#f7fafc;}
@@ -139,7 +138,6 @@ table.rt .col-pct{width:65px;}
 .arr-up{color:#15803d;font-size:13px;font-weight:900;margin-right:2px;}
 .arr-mid{color:#f59e0b;font-size:13px;font-weight:900;margin-right:2px;}
 .arr-dn{color:#dc2626;font-size:13px;font-weight:900;margin-right:2px;}
-/* Plan paneli rəngləri — yalnız plan paneli üçün */
 .pct-g{color:#15803d;font-weight:800;}
 .pct-o{color:#f59e0b;font-weight:800;}
 .pct-r{color:#dc2626;font-weight:800;}
@@ -222,9 +220,9 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .afrow .afl{font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px;}
 .afrow input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
 .afrow input:focus{border-color:#c9963a;}
-.af1row .afl{font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px;}
-.af1row input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
-.af1row input:focus{border-color:#c9963a;}
+.af1inp{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
+.af1inp:focus{border-color:#c9963a;}
+.aflbl{font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px;}
 </style></head><body>
 
 <div class="screen active" id="gate">
@@ -235,7 +233,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
     <div class="glbl">İstifadəçi</div>
     <select class="ginp" id="gsel"><option value="">Yüklənir...</option></select>
     <div class="glbl">Şifrə</div>
-    <input class="ginp pw" type="password" id="gpw" placeholder="••••" onkeydown="if(event.key==='Enter')doLogin()">
+    <input class="ginp pw" type="password" id="gpw" placeholder="••••" inputmode="numeric" onkeydown="if(event.key==='Enter')doLogin()">
     <div class="remrow"><input type="checkbox" id="rem"><label for="rem">Məni xatırla</label></div>
     <button class="gbtn" onclick="doLogin()">Daxil ol →</button>
     <div class="gerr" id="gerr">Şifrə yanlışdır</div>
@@ -306,8 +304,8 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
   <h3>⚙️ Parametrlər</h3>
   <div class="mosect">Admin Parolu</div>
   <div class="mor2" style="margin-bottom:9px">
-    <div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••"></div>
-    <div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••"></div>
+    <div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••" inputmode="numeric"></div>
+    <div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••" inputmode="numeric"></div>
   </div>
   <button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button>
   <div class="mosect">Jurnal</div>
@@ -353,16 +351,22 @@ const DEF_TGTS={
   pe:{min:40000,mid:55000,max:70000},s1:{min:20000,mid:28000,max:35000},s2:{min:15000,mid:22000,max:30000}
 };
 const DEF_SAXA={fillers:['p2','p3','pe'],showInAdmin:true,firmName:'Saxa Outlet'};
-
 let CFG=null;
 
-// ── BİN ───────────────────────────────────────────────────────────────────────
-async function rBin(){
+// ── BİN — OPTİMAL YÜKLƏMƏ ─────────────────────────────────────────────────────
+// Cache: son yüklənmiş BIN məlumatı saxlanılır
+// Beləliklə hər dəfə yenidən sorğu göndərilmir — sürət artır
+let _binCache=null,_binCacheTs=0;
+const BIN_CACHE_MS=8000; // 8 saniyə cache
+
+async function rBin(force=false){
+  const now=Date.now();
+  if(!force&&_binCache&&(now-_binCacheTs)<BIN_CACHE_MS)return _binCache;
   try{
     const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'}});
-    if(!r.ok)return defBin();
+    if(!r.ok)return _binCache||defBin();
     const j=await r.json(),d=j.data||{};
-    return{
+    _binCache={
       records:d.records||[],
       sf:d.sf||{},
       cfg:{
@@ -373,11 +377,14 @@ async function rBin(){
         jp:d.cfg?.jp||{showAdmin:true}
       }
     };
-  }catch{return defBin();}
+    _binCacheTs=now;
+    return _binCache;
+  }catch{return _binCache||defBin();}
 }
 function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true}}};}
 
 async function wBin(records,sf,cfg){
+  _binCache={records,sf,cfg};_binCacheTs=Date.now();
   try{
     await fetch(BIN_URL,{method:'PUT',
       headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},
@@ -389,7 +396,6 @@ async function wBin(records,sf,cfg){
 function gU(){return CFG?.users||DEF_USERS;}
 function gT(){return CFG?.targets||DEF_TGTS;}
 function gSS(){return CFG?.saxa||DEF_SAXA;}
-function gJP(){return CFG?.jp||{showAdmin:true};}
 function findRec(records,name,sk){return records.find(r=>r.sobe===name&&r.period===sk)||null;}
 
 // ── TARİX ─────────────────────────────────────────────────────────────────────
@@ -404,10 +410,7 @@ function daysPassed(){return Math.max(1,getRD().getDate());}
 function fmtDate(){const d=getRD();return `${GUNS[d.getDay()]}, ${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;}
 function fmtFDate(){const d=getFD();return `${GUNS[d.getDay()]}, ${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;}
 
-// ── PERIOD AÇARLARI ───────────────────────────────────────────────────────────
-// ƏSAS DÜZƏLTMƏsi: Bütün açarlara gün əlavə edildi (dp)
-// getFD() saat 17-dən yeni gün qaytarır
-// → bütün açarlar dəyişir → hamısı avtomatik sıfırlanır
+// ── PERIOD AÇARLARI — bütün açarlarda gün var, saat 17-dən hamısı sıfırlanır ──
 function getPeriods(isSaxa){
   const d=getFD();
   const yr=d.getFullYear(),mo=d.getMonth(),day=d.getDate();
@@ -426,7 +429,6 @@ function getPeriods(isSaxa){
     {id:'ay2',label:`1-${day} ${AY[mo]} ${yr-2}`, sk:`A_${yr-2}${mp}${dp}`}
   ];
 }
-
 function getSFKey(){
   const d=getFD();
   return `SF_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
@@ -437,14 +439,11 @@ function getSFDate(){const d=getFD();return `${d.getDate()} ${AY[d.getMonth()]} 
 function fmt(n){
   if(n===null||n===undefined||n===''||n==0)return '—';
   const num=Number(n);if(isNaN(num))return '—';
-  // Nöqtə minlik ayırıcı: 38.259
   return num.toLocaleString('de-DE',{minimumFractionDigits:0,maximumFractionDigits:0});
 }
 function xPct(v,t){if(!v||!t)return null;const r=v/t*100;return r>=100?100:Math.floor(r*10)/10;}
 function pStr(p){if(p===null)return '—';return p===100?'100%':p.toFixed(1)+'%';}
-// Faiz cədvəldə — həmişə qara, sadə format
 function fmtFaiz(f){return f>0?f.toFixed(1)+'%':'—';}
-// Plan paneli üçün rəng
 function pCls(p){if(p===null)return '';if(p>=100)return 'pct-g';if(p>=70)return 'pct-o';return 'pct-r';}
 function avgF(arr){const v=arr.filter(x=>x>0);return v.length?v.reduce((a,b)=>a+b)/v.length:null;}
 function fP(p){return p===null?'—':p.toFixed(1)+'%';}
@@ -459,27 +458,31 @@ function planBg(ms,tgt,dl){
   return c==='green'?'#10b981':c==='orange'?'#f59e0b':'#ef4444';
 }
 
-// ── CİHAZ ─────────────────────────────────────────────────────────────────────
+// ── DƏQİQ GÜNDƏLIK HESABLAMA ──────────────────────────────────────────────────
+// ms=cari satış, tgt=hədəf, dl=qalan gün
+// Düzgün: Math.ceil(rm / dl) — bu hər zaman hədəfi keçir
+// Yoxlama: dn * dl >= rm (həmişə doğru olmalıdır)
+function calcDaily(ms,tgt,dl){
+  if(!tgt||ms>=tgt||dl<=0)return 0;
+  const rm=tgt-ms;
+  return Math.ceil(rm/dl); // Tam ədəd yuxarıya yuvarlama
+}
+
+// ── CİHAZ — sadə, dəqiq ───────────────────────────────────────────────────────
+// Dəqiq model yerinə etibarlı kateqoriya göstər
 function getDevice(){
   const ua=navigator.userAgent;
-  if(/iPhone/.test(ua)){
-    const m=ua.match(/iPhone OS (\d+)/),v=m?parseInt(m[1]):0;
-    if(v>=18)return '📱 iPhone 16';if(v>=17)return '📱 iPhone 15';
-    if(v>=16)return '📱 iPhone 14';if(v>=15)return '📱 iPhone 13';
-    if(v>=14)return '📱 iPhone 12';if(v>=13)return '📱 iPhone 11';
-    return '📱 iPhone';
-  }
+  if(/iPhone/.test(ua))return '📱 iPhone';
   if(/iPad/.test(ua))return '📟 iPad';
   if(/Android/.test(ua)&&/Mobile/.test(ua)){
-    if(/SM-/.test(ua)){const m=ua.match(/SM-[A-Z0-9]+/);return `📱 Samsung ${m?m[0]:''}`.trim();}
-    if(/Redmi/.test(ua)){const m=ua.match(/Redmi [^\s;)]+/);return `📱 ${m?m[0]:'Xiaomi'}`;}
-    if(/MIUI|Mi /.test(ua))return '📱 Xiaomi';
+    if(/SM-[A-Z]/.test(ua))return '📱 Samsung';
+    if(/Redmi|MIUI|Xiaomi/.test(ua))return '📱 Xiaomi';
     if(/Huawei|HUAWEI/.test(ua))return '📱 Huawei';
-    return '📱 Android';
+    return '📱 Android Telefon';
   }
-  if(/Android/.test(ua))return '📟 Tablet';
-  if(/Windows NT/.test(ua)){const m=ua.match(/Windows NT ([\d.]+)/),v=m?parseFloat(m[1]):0;return v>=10?'💻 Windows 10/11':'💻 Windows';}
-  if(/Macintosh|Mac OS/.test(ua))return '💻 Mac/MacBook';
+  if(/Android/.test(ua))return '📟 Android Tablet';
+  if(/Windows/.test(ua))return '💻 Windows';
+  if(/Macintosh|Mac OS/.test(ua))return '💻 Mac';
   if(/Linux/.test(ua))return '💻 Linux';
   return '💻 Kompüter';
 }
@@ -519,11 +522,11 @@ function setJF(name,btn){
 
 function goTo(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 function closeMo(id){document.getElementById(id).classList.remove('show');}
-function logout(){curSid=null;editMode=false;document.getElementById('gpw').value='';document.getElementById('gerr').classList.remove('show');document.getElementById('gsel').value='';goTo('gate');}
+function logout(){curSid=null;editMode=false;_binCache=null;document.getElementById('gpw').value='';document.getElementById('gerr').classList.remove('show');document.getElementById('gsel').value='';goTo('gate');}
 
-// ── GİRİŞ SEÇİMİ ─────────────────────────────────────────────────────────────
+// ── GİRİŞ ─────────────────────────────────────────────────────────────────────
 async function buildSel(){
-  const bin=await rBin();CFG=bin.cfg;
+  const bin=await rBin(true);CFG=bin.cfg;
   const sel=document.getElementById('gsel');
   sel.innerHTML='<option value="">— Seçin —</option>';
   gU().filter(u=>u.type==='store').forEach(u=>{const o=document.createElement('option');o.value=u.id;o.textContent=u.name;sel.appendChild(o);});
@@ -554,7 +557,7 @@ async function showAdminGate(){
   }else if(pw!==null)alert('Şifrə yanlışdır.');
 }
 
-// ── PLAN KARTI ────────────────────────────────────────────────────────────────
+// ── PLAN KARTI — DƏQİQ HESABLAMA ─────────────────────────────────────────────
 function planCard(sid,ms,records){
   const t=gT()[sid];if(!t)return '';
   const dl=dLeft();
@@ -563,14 +566,22 @@ function planCard(sid,ms,records){
   const periods=getPeriods(isSaxa);
   const gunP=isSaxa?null:periods[0];
   const tv=gunP?findRec(records,u.name,gunP.sk)?.satis||0:0;
-  const pm=xPct(ms,t.min),pd=ms>=t.min?xPct(ms,t.mid):null,px=ms>=t.mid?xPct(ms,t.max):null;
+
+  // Hansı hədəfə doğru gedirik
   let at,rm;
   if(ms<t.min){at=t.min;rm=t.min-ms;}
   else if(ms<t.mid){at=t.mid;rm=t.mid-ms;}
   else if(ms<t.max){at=t.max;rm=t.max-ms;}
   else{at=t.max;rm=0;}
-  const ap=xPct(ms,at)||0,dn=dl>0&&rm>0?Math.ceil(rm/dl):0;
+
+  const ap=xPct(ms,at)||0;
+  // DƏQİQ HESABLAMA: Math.ceil(rm/dl)
+  // Yoxlama: dn*dl >= rm həmişə doğrudur
+  const dn=calcDaily(ms,at,dl);
   const bc=planBg(ms,t.min,dl);
+
+  const pm=xPct(ms,t.min),pd=ms>=t.min?xPct(ms,t.mid):null,px=ms>=t.mid?xPct(ms,t.max):null;
+
   return `<div class="plancard" id="pc-${sid}">
     <div class="plantitle">📊 Bu Ay Hədəflər</div>
     <div class="plangrid">
@@ -583,7 +594,7 @@ function planCard(sid,ms,records){
     <div class="psg">
       <div class="ps"><div class="psl">📅 Qalan gün</div><div class="psv">${dl}</div></div>
       <div class="ps"><div class="psl">💰 Gündəlik lazım</div><div class="psv">${rm>0?fmt(dn)+' ₼':'✅'}</div></div>
-      ${!isSaxa?`<div class="ps"><div class="psl">📈 Bu gün</div><div class="psv">${fmt(tv)} ₼</div></div>`:`<div class="ps"><div class="psl">📊 Cari ay</div><div class="psv">${fmt(ms)} ₼</div></div>`}
+      ${!isSaxa?`<div class="ps"><div class="psl">📈 Bu gün</div><div class="psv">${fmt(tv)} ₼</div></div>`:`<div class="ps"><div class="psl">📊 Ay cəmi</div><div class="psv">${fmt(ms)} ₼</div></div>`}
       <div class="ps"><div class="psl">⬆️ Növbəti hədəfə</div><div class="psv">${rm>0?fmt(rm)+' ₼':'🏆'}</div></div>
     </div>
   </div>`;
@@ -619,7 +630,7 @@ async function openStoreForm(sid){
   document.getElementById('sfdate').textContent=fmtDate();
   document.getElementById('sfbody').innerHTML='<div class="admld">Yüklənir...</div>';
   goTo('store-form');
-  const {records,sf,cfg}=await rBin();
+  const {records,sf,cfg}=await rBin(true);
   CFG=cfg;window._cr=records;window._csf=sf;
   renderFormData(sid,records,sf);
 }
@@ -629,8 +640,7 @@ function renderFormData(sid,records,sf){
   const isSaxa=!u.inTotal;
   const periods=getPeriods(isSaxa);
   const ay0=isSaxa?periods[0]:periods[1];
-  const ay0rec=findRec(records,u.name,ay0.sk);
-  const ms=ay0rec?.satis||0;
+  const ms=findRec(records,u.name,ay0.sk)?.satis||0;
   const t_=gT()[sid];
   let h=t_?planCard(sid,ms,records):'';
 
@@ -647,9 +657,9 @@ function renderFormData(sid,records,sf){
         <th style="text-align:left">Göstərici</th><th>Satış (₼)</th><th>Mənfəət (₼)</th><th>Faiz (%)</th>
       </tr></thead><tbody><tr>
         <td class="pn">Ümumi satış</td>
-        <td><input class="ni" type="number" min="0" id="s-${period.id}" value="${sv}" placeholder="0" ${dis} ${lu}>${sv?`<div class="nid">${fmt(sv)}</div>`:''}</td>
-        <td><input class="ni" type="number" min="0" id="m-${period.id}" value="${mv}" placeholder="0" ${dis} oninput="sF('m-${period.id}')">${mv?`<div class="nid">${fmt(mv)}</div>`:''}</td>
-        <td><input class="ni-f" type="number" min="0" step="1" id="f-${period.id}" value="${fv}" placeholder="0" ${dis}></td>
+        <td><input class="ni" type="number" min="0" inputmode="numeric" id="s-${period.id}" value="${sv}" placeholder="0" ${dis} ${lu}>${sv?`<div class="nid">${fmt(sv)}</div>`:''}</td>
+        <td><input class="ni" type="number" min="0" inputmode="numeric" id="m-${period.id}" value="${mv}" placeholder="0" ${dis} oninput="sF('m-${period.id}')">${mv?`<div class="nid">${fmt(mv)}</div>`:''}</td>
+        <td><input class="ni-f" type="number" min="0" step="1" inputmode="numeric" id="f-${period.id}" value="${fv}" placeholder="0" ${dis}></td>
       </tr></tbody></table>
     </div>`;
   });
@@ -662,7 +672,7 @@ function renderFormData(sid,records,sf){
       <div class="saxa-firma-hdr">🏪 ${ss.firmName} — ${getSFDate()}</div>
       <div style="padding:10px 12px">
         <div style="font-size:10px;color:rgba(255,255,255,.45);margin-bottom:6px;font-weight:600">Bu günün satışı (₼)</div>
-        <input class="saxa-firma-inp" type="number" min="0" id="sf-inp" value="${sfRec?.satis||''}" placeholder="0" ${sfDis}>
+        <input class="saxa-firma-inp" type="number" min="0" inputmode="numeric" id="sf-inp" value="${sfRec?.satis||''}" placeholder="0" ${sfDis}>
         ${sfRec?.satis?`<div class="nid" style="text-align:right;margin-top:4px">${fmt(sfRec.satis)}</div>`:''}
       </div>
     </div>`;
@@ -692,7 +702,7 @@ async function doSave(){
   document.getElementById('ldb').classList.add('show');
   document.getElementById('erb').classList.remove('show');
   try{
-    const {records,sf,cfg}=await rBin();
+    const {records,sf,cfg}=await rBin(true);
     CFG=cfg;let any=false;
     for(const p of periods){
       const s=parseFloat(document.getElementById(`s-${p.id}`)?.value)||0;
@@ -736,7 +746,7 @@ async function deleteToday(){
   const isSaxa=!u.inTotal;
   const periods=getPeriods(isSaxa);
   try{
-    const {records,sf,cfg}=await rBin();
+    const {records,sf,cfg}=await rBin(true);
     periods.forEach(p=>{const i=records.findIndex(r=>r.sobe===u.name&&r.period===p.sk);if(i>=0)records.splice(i,1);});
     delete sf[getSFKey()+'_'+curSid];
     await wBin(records,sf,cfg);
@@ -744,11 +754,13 @@ async function deleteToday(){
   }catch{alert('Silinmə xətası.');}
 }
 
-// ── OX — SAXA ŞÖBƏLƏRİNDƏ OX YOX ─────────────────────────────────────────────
+// ── OX — SAXA YOX ─────────────────────────────────────────────────────────────
 function arrD(ds,ms,minT,dl){
   if(!ds)return '';
-  const rem=Math.max(0,minT-ms);if(rem<=0)return '<span class="arr-up">↑</span>';
-  const p=ds/(dl>0?Math.ceil(rem/dl):rem)*100;
+  const rm=Math.max(0,minT-ms);if(rm<=0)return '<span class="arr-up">↑</span>';
+  const dn=calcDaily(ms,minT,dl);
+  if(!dn)return '';
+  const p=ds/dn*100;
   return p>=100?'<span class="arr-up">↑</span>':p>=70?'<span class="arr-mid">→</span>':'<span class="arr-dn">↓</span>';
 }
 function arrM(ms,minT,dl){
@@ -760,8 +772,8 @@ function arrM(ms,minT,dl){
 function buildTable(records,sf,tblId,ldId){
   const users=gU().filter(u=>u.type==='store');
   const targets=gT(),dl=dLeft();
-  const pandaP=getPeriods(false);  // 4 period
-  const saxaP=getPeriods(true);    // 3 period (gun yox)
+  const pandaP=getPeriods(false);
+  const saxaP=getPeriods(true);
 
   const D={};
   users.forEach(u=>{
@@ -777,9 +789,11 @@ function buildTable(records,sf,tblId,ldId){
   let h='<colgroup>';
   for(let i=0;i<pandaP.length;i++)h+='<col class="col-name"><col class="col-num"><col class="col-num"><col class="col-pct">';
   h+='</colgroup>';
+
+  // Başlıq — HƏR 4 PERIOD ÜÇÜN "Şöbələr" yazısı
   h+='<tr class="gh">';
   pandaP.forEach((p,i)=>{
-    h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle">${i===0?'Şöbələr':''}</th>`;
+    h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th>`;
     h+=`<th colspan="3" class="${HC[i]}" style="font-size:13px;font-weight:800">${p.label}</th>`;
   });
   h+='</tr><tr class="sh">';
@@ -800,7 +814,6 @@ function buildTable(records,sf,tblId,ldId){
         let arr='';
         if(p.id==='gun'&&t)arr=arrD(e.satis,D[u.name]['ay0']?.satis||0,t.min,dl);
         else if(p.id==='ay0'&&t)arr=arrM(e.satis,t.min,dl);
-        // Faiz — həmişə qara, sadəcə daxil edilmiş faiz
         const fz=fmtFaiz(e.faiz);
         h+=`<td class="nv">${arr}${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fz}</td>`;
         pTots[pi].s+=e.satis;pTots[pi].m+=e.menfeet;if(e.faiz>0)pTots[pi].fl.push(e.faiz);
@@ -809,12 +822,8 @@ function buildTable(records,sf,tblId,ldId){
     h+='</tr>';
   });
 
-  // Ümumi Panda — faiz ümumi ortalama (kəsrli)
   h+='<tr class="tr">';
-  pTots.forEach(t=>{
-    const af=avgF(t.fl);
-    h+=`<td class="nm">Ümumi Panda</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fP(af)}</td>`;
-  });
+  pTots.forEach(t=>{const af=avgF(t.fl);h+=`<td class="nm">Ümumi Panda</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fP(af)}</td>`;});
   h+='</tr>';
 
   if(saxa.length){
@@ -824,13 +833,11 @@ function buildTable(records,sf,tblId,ldId){
       h+=`<tr class="sr">`;
       pandaP.forEach((p,pi)=>{
         h+=`<td class="nm">${u.name}</td>`;
-        // Saxa: gun sütunu (pi=0) boş, qalan periodlar saxaP-a uyğun
         const saxaMap={gun:null,ay0:'ay0',ay1:'ay1',ay2:'ay2'};
-        const sid=saxaMap[p.id];
-        if(!sid){h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;return;}
-        const e=D[u.name][sid];
+        const sid2=saxaMap[p.id];
+        if(!sid2){h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;return;}
+        const e=D[u.name][sid2];
         if(e&&(e.satis>0||e.menfeet>0)){
-          // Saxa: ox yox, faiz qara
           const fz=fmtFaiz(e.faiz);
           h+=`<td class="nv">${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fz}</td>`;
           sTots[pi].s+=e.satis;sTots[pi].m+=e.menfeet;if(e.faiz>0)sTots[pi].fl.push(e.faiz);
@@ -838,7 +845,6 @@ function buildTable(records,sf,tblId,ldId){
       });
       h+='</tr>';
     });
-    // Yekun Saxa
     h+='<tr class="str">';
     sTots.forEach((t,pi)=>{
       const af=avgF(t.fl);
@@ -852,7 +858,7 @@ function buildTable(records,sf,tblId,ldId){
   tbl.innerHTML=h;document.getElementById(ldId).style.display='none';tbl.style.display='table';
 }
 
-// ── SAXA FİRMA HESABAT ────────────────────────────────────────────────────────
+// ── SAXA FİRMA ────────────────────────────────────────────────────────────────
 function buildSFReport(sf,cid){
   const ss=gSS();if(!ss.showInAdmin)return;
   const fillers=gU().filter(u=>ss.fillers.includes(u.id));
@@ -870,7 +876,7 @@ function buildSFReport(sf,cid){
   <button class="sf-scrbtn" onclick="takeSfScr()">📸 Saxa Firma Hesabatını Saxla</button>`;
 }
 
-// ── PLAN PANELİ ───────────────────────────────────────────────────────────────
+// ── PLAN PANELİ — "Qalan gün" + "Gündəlik lazım" ─────────────────────────────
 function planPanelHtml(records,forSaxa){
   const users=gU().filter(u=>u.type==='store'&&u.showPlan&&(forSaxa?!u.inTotal:u.inTotal));
   const targets=gT(),dl=dLeft();
@@ -881,15 +887,15 @@ function planPanelHtml(records,forSaxa){
     const isSaxa=!u.inTotal;
     const periods=getPeriods(isSaxa);
     const ay0=isSaxa?periods[0]:periods[1];
-    const gunP=isSaxa?null:periods[0];
     const ms=findRec(records,u.name,ay0.sk)?.satis||0;
-    const tv=gunP?findRec(records,u.name,gunP.sk)?.satis||0:0;
     let at,rm;
     if(ms<t.min){at=t.min;rm=t.min-ms;}
     else if(ms<t.mid){at=t.mid;rm=t.mid-ms;}
     else if(ms<t.max){at=t.max;rm=t.max-ms;}
     else{at=t.max;rm=0;}
-    const ap=xPct(ms,at)||0,dn=dl>0&&rm>0?Math.ceil(rm/dl):0;
+    const ap=xPct(ms,at)||0;
+    // DƏQİQ gündəlik
+    const dn=calcDaily(ms,at,dl);
     const bc=planBg(ms,t.min,dl);
     function lc(tgt){return ms>=tgt?'green':planColor(ms,tgt,dl);}
     h+=`<div class="ppi" style="border-color:${bc}33">
@@ -903,8 +909,8 @@ function planPanelHtml(records,forSaxa){
       <div class="ppis">
         <div class="ppist">Cari: <span>${fmt(ms)} ₼</span></div>
         <div class="ppist">Hədəf: <span>${fmt(at)} ₼</span></div>
-        ${rm>0?`<div class="ppist">Gündəlik: <span>${fmt(dn)} ₼</span></div>`:'<div class="ppist" style="color:#10b981">✅</div>'}
-        ${!isSaxa?`<div class="ppist">Bu gün: <span>${fmt(tv)} ₼</span></div>`:''}
+        <div class="ppist">Qalan gün: <span>${dl}</span></div>
+        ${rm>0?`<div class="ppist">Gündəlik: <span>${fmt(dn)} ₼</span></div>`:'<div class="ppist" style="color:#10b981">✅ Hədəfə çatıldı</div>'}
       </div>
     </div>`;
   });
@@ -932,7 +938,7 @@ async function loadAdmin(){
     <div class="planpanel" style="margin-top:14px"><div class="ppaneltitle">🐼 Panda — Plan Vəziyyəti</div><div id="adm-pp"></div></div>
     <div class="planpanel"><div class="ppaneltitle">🔶 Saxa — Plan Vəziyyəti</div><div id="adm-sp"></div></div>`;
   try{
-    const {records,sf,cfg}=await rBin();CFG=cfg;
+    const {records,sf,cfg}=await rBin(true);CFG=cfg;
     buildTable(records,sf,'tbl-adm','ld-adm');
     buildSFReport(sf,'sf-container');
     document.getElementById('adm-pp').innerHTML=planPanelHtml(records,false);
@@ -950,7 +956,7 @@ async function loadViewer(){
     `<div class="planpanel" style="margin-top:14px"><div class="ppaneltitle">🐼 Panda — Plan Vəziyyəti</div><div id="view-pp"></div></div>
     <div class="planpanel"><div class="ppaneltitle">🔶 Saxa — Plan Vəziyyəti</div><div id="view-sp"></div></div>`;
   try{
-    const {records,sf,cfg}=await rBin();CFG=cfg;
+    const {records,sf,cfg}=await rBin(true);CFG=cfg;
     buildTable(records,sf,'tbl-view','ld-view');
     document.getElementById('view-pp').innerHTML=planPanelHtml(records,false);
     document.getElementById('view-sp').innerHTML=planPanelHtml(records,true);
@@ -976,15 +982,16 @@ async function renderFillForm(){
   document.getElementById('fill-body').innerHTML='<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">Yüklənir...</div>';
   const {records,sf}=await rBin();
   window._fr=records;window._fsf=sf;
+  const inpStyle='width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:\'IBM Plex Mono\',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;';
   let h='';
   periods.forEach((p,pi)=>{
     const rec=findRec(records,u.name,p.sk);
     h+=`<div class="fillperiod">
       <div class="fillplbl" style="background:${PCOL[isSaxa?pi+1:pi]}">${p.label}</div>
       <div class="afrow">
-        <div><div class="afrow afl" style="font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px">Satış (₼)</div><input type="number" min="0" id="af-s-${p.id}" value="${rec?.satis||''}" placeholder="0" style="width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;"></div>
-        <div><div class="afrow afl" style="font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px">Mənfəət (₼)</div><input type="number" min="0" id="af-m-${p.id}" value="${rec?.menfeet||''}" placeholder="0" style="width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;"></div>
-        <div><div class="afrow afl" style="font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px">Faiz (%)</div><input type="number" min="0" step="1" id="af-f-${p.id}" value="${rec?.faiz||''}" placeholder="0" style="width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;"></div>
+        <div><div class="afrow afl">Satış (₼)</div><input type="number" min="0" inputmode="numeric" id="af-s-${p.id}" value="${rec?.satis||''}" placeholder="0" style="${inpStyle}"></div>
+        <div><div class="afrow afl">Mənfəət (₼)</div><input type="number" min="0" inputmode="numeric" id="af-m-${p.id}" value="${rec?.menfeet||''}" placeholder="0" style="${inpStyle}"></div>
+        <div><div class="afrow afl">Faiz (%)</div><input type="number" min="0" step="1" inputmode="numeric" id="af-f-${p.id}" value="${rec?.faiz||''}" placeholder="0" style="${inpStyle}"></div>
       </div>
     </div>`;
   });
@@ -993,8 +1000,7 @@ async function renderFillForm(){
     const sfv=sf[getSFKey()+'_'+sid]?.satis||'';
     h+=`<div class="fillperiod" style="background:rgba(120,53,15,.2);border:1px solid rgba(245,158,11,.2)">
       <div class="fillplbl" style="background:#92400e">${ss.firmName} — ${getSFDate()}</div>
-      <div><div style="font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px">Günlük Satış (₼)</div>
-      <input type="number" min="0" id="af-sf" value="${sfv}" placeholder="0" style="width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;"></div>
+      <div><div class="aflbl">Günlük Satış (₼)</div><input type="number" min="0" inputmode="numeric" id="af-sf" value="${sfv}" placeholder="0" class="af1inp"></div>
     </div>`;
   }
   document.getElementById('fill-body').innerHTML=h;
@@ -1048,7 +1054,7 @@ function renderUsersMo(){
     h+=`<div class="mos"><div class="mosn"><span>${u.name}</span><button class="delbtn" onclick="delUser(${ri})">🗑</button></div>
       <div class="mor2">
         <div class="mof"><label>Ad</label><input type="text" id="un-${ri}" value="${u.name}" oninput="tmpUsers[${ri}].name=this.value"></div>
-        <div class="mof"><label>Şifrə</label><input type="text" id="up-${ri}" value="${u.pw}" oninput="tmpUsers[${ri}].pw=this.value"></div>
+        <div class="mof"><label>Şifrə</label><input type="text" inputmode="numeric" id="up-${ri}" value="${u.pw}" oninput="tmpUsers[${ri}].pw=this.value"></div>
       </div>
       <div class="cr"><input type="checkbox" id="ut-${ri}" ${u.inTotal?'checked':''} onchange="tmpUsers[${ri}].inTotal=this.checked"><label for="ut-${ri}">Ümumi hesabata daxil</label></div>
       <div class="cr"><input type="checkbox" id="upl-${ri}" ${u.showPlan!==false?'checked':''} onchange="tmpUsers[${ri}].showPlan=this.checked"><label for="upl-${ri}">Plan panelində göstər</label></div>
@@ -1060,7 +1066,7 @@ function renderUsersMo(){
     h+=`<div class="mos" style="border-color:rgba(16,185,129,.2)"><div class="mosn" style="color:#6ee7b7"><span>${u.name}</span><button class="delbtn" onclick="delUser(${ri})">🗑</button></div>
       <div class="mor2">
         <div class="mof"><label>Ad</label><input type="text" id="un-${ri}" value="${u.name}" oninput="tmpUsers[${ri}].name=this.value"></div>
-        <div class="mof"><label>Şifrə</label><input type="text" id="up-${ri}" value="${u.pw}" oninput="tmpUsers[${ri}].pw=this.value"></div>
+        <div class="mof"><label>Şifrə</label><input type="text" inputmode="numeric" id="up-${ri}" value="${u.pw}" oninput="tmpUsers[${ri}].pw=this.value"></div>
       </div>
     </div>`;
   });
@@ -1086,9 +1092,9 @@ async function openTargetsMo(){
   gU().filter(u=>u.type==='store').forEach(u=>{
     const t=tgts[u.id]||{min:0,mid:0,max:0};
     h+=`<div class="mos"><div class="mosn">${u.name}</div><div class="mor3">
-      <div class="mof"><label>🥉 Min</label><input type="number" id="tm-${u.id}" value="${t.min}"></div>
-      <div class="mof"><label>🥈 Orta</label><input type="number" id="td-${u.id}" value="${t.mid}"></div>
-      <div class="mof"><label>🥇 Maks</label><input type="number" id="tx-${u.id}" value="${t.max}"></div>
+      <div class="mof"><label>🥉 Min</label><input type="number" inputmode="numeric" id="tm-${u.id}" value="${t.min}"></div>
+      <div class="mof"><label>🥈 Orta</label><input type="number" inputmode="numeric" id="td-${u.id}" value="${t.mid}"></div>
+      <div class="mof"><label>🥇 Maks</label><input type="number" inputmode="numeric" id="tx-${u.id}" value="${t.max}"></div>
     </div></div>`;
   });
   document.getElementById('mot-body').innerHTML=h;document.getElementById('mo-t').classList.add('show');
@@ -1102,7 +1108,7 @@ async function saveTargets(){
   closeMo('mo-t');alert('✅ Hədəflər saxlanıldı!');
 }
 
-// ── SAXA FİRMA ────────────────────────────────────────────────────────────────
+// ── SAXA FİRMA TƏNZİMLƏMƏ ────────────────────────────────────────────────────
 async function openSaxaAdminMo(){
   const {cfg}=await rBin();CFG=cfg;
   const ss=gSS(),users=gU().filter(u=>u.type==='store');
