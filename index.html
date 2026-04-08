@@ -11,7 +11,7 @@ body{font-family:'Inter',sans-serif;color:#fff;min-height:100vh;background:#0a16
 .glbl{width:100%;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.35);margin-bottom:-8px;}
 .ginp{width:100%;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 16px;font-family:inherit;font-size:15px;font-weight:500;color:#fff;outline:none;}
 .ginp:focus{border-color:#c9963a;}
-.ginp.pw{letter-spacing:5px;font-size:18px;}
+.ginp.pw{letter-spacing:3px;font-size:16px;}
 .ginp.pw::placeholder{letter-spacing:1px;font-size:14px;}
 select.ginp{appearance:none;cursor:pointer;}
 select.ginp option{color:#000;background:#fff;}
@@ -223,6 +223,11 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .af1inp{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
 .af1inp:focus{border-color:#c9963a;}
 .aflbl{font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px;}
+/* Period seçim checkboxları */
+.period-sel{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;}
+.period-sel label{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:5px 10px;font-size:11px;font-weight:700;color:rgba(255,255,255,.7);cursor:pointer;}
+.period-sel input[type=checkbox]{cursor:pointer;}
+.period-sel label.active-p{background:rgba(201,150,58,.2);border-color:rgba(201,150,58,.4);color:#f0c060;}
 </style></head><body>
 
 <div class="screen active" id="gate">
@@ -233,6 +238,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
     <div class="glbl">İstifadəçi</div>
     <select class="ginp" id="gsel"><option value="">Yüklənir...</option></select>
     <div class="glbl">Şifrə</div>
+    <!-- Şifrə: inputmode=numeric — rəqəmli klaviatura -->
     <input class="ginp pw" type="password" id="gpw" placeholder="••••" inputmode="numeric" onkeydown="if(event.key==='Enter')doLogin()">
     <div class="remrow"><input type="checkbox" id="rem"><label for="rem">Məni xatırla</label></div>
     <button class="gbtn" onclick="doLogin()">Daxil ol →</button>
@@ -336,15 +342,15 @@ const HC=['hb','ho','hg','hp'],SC=['sb','so','sg','sp'];
 const PCOL=['#2E75B6','#C55A11','#375623','#7030A0'];
 
 let ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
-let curSid=null,editMode=false,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
+let curSid=null,editMode=false,editPeriodId=null,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
 
 const DEF_USERS=[
-  {id:'p2',name:'Panda 2',pw:'p2-2026',inTotal:true,showPlan:true,type:'store'},
-  {id:'p3',name:'Panda 3',pw:'p3-2026',inTotal:true,showPlan:true,type:'store'},
-  {id:'pe',name:'Panda Express',pw:'pe-2026',inTotal:true,showPlan:true,type:'store'},
-  {id:'s1',name:'Saxa 1 (Əcəmi)',pw:'s1-2026',inTotal:false,showPlan:true,type:'store'},
-  {id:'s2',name:'Saxa 2 (Xırdalan)',pw:'s2-2026',inTotal:false,showPlan:true,type:'store'},
-  {id:'v1',name:'Baxış',pw:'view2026',inTotal:false,showPlan:false,type:'viewer'}
+  {id:'p2',name:'Panda 2',pw:'p2-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
+  {id:'p3',name:'Panda 3',pw:'p3-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
+  {id:'pe',name:'Panda Express',pw:'pe-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
+  {id:'s1',name:'Saxa 1 (Əcəmi)',pw:'s1-2026',inTotal:false,showPlan:true,type:'store',periods:[1,1,0,0]},
+  {id:'s2',name:'Saxa 2 (Xırdalan)',pw:'s2-2026',inTotal:false,showPlan:true,type:'store',periods:[1,1,0,0]},
+  {id:'v1',name:'Baxış',pw:'view2026',inTotal:false,showPlan:false,type:'viewer',periods:[1,1,1,1]}
 ];
 const DEF_TGTS={
   p2:{min:70000,mid:85000,max:100000},p3:{min:80000,mid:95000,max:110000},
@@ -353,20 +359,17 @@ const DEF_TGTS={
 const DEF_SAXA={fillers:['p2','p3','pe'],showInAdmin:true,firmName:'Saxa Outlet'};
 let CFG=null;
 
-// ── BİN — OPTİMAL YÜKLƏMƏ ─────────────────────────────────────────────────────
-// Cache: son yüklənmiş BIN məlumatı saxlanılır
-// Beləliklə hər dəfə yenidən sorğu göndərilmir — sürət artır
-let _binCache=null,_binCacheTs=0;
-const BIN_CACHE_MS=8000; // 8 saniyə cache
-
+// ── BİN CACHE ─────────────────────────────────────────────────────────────────
+let _bc=null,_bcts=0;
+const BC_MS=8000;
 async function rBin(force=false){
   const now=Date.now();
-  if(!force&&_binCache&&(now-_binCacheTs)<BIN_CACHE_MS)return _binCache;
+  if(!force&&_bc&&(now-_bcts)<BC_MS)return _bc;
   try{
     const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'}});
-    if(!r.ok)return _binCache||defBin();
+    if(!r.ok)return _bc||defBin();
     const j=await r.json(),d=j.data||{};
-    _binCache={
+    _bc={
       records:d.records||[],
       sf:d.sf||{},
       cfg:{
@@ -377,20 +380,14 @@ async function rBin(force=false){
         jp:d.cfg?.jp||{showAdmin:true}
       }
     };
-    _binCacheTs=now;
-    return _binCache;
-  }catch{return _binCache||defBin();}
+    _bcts=now;return _bc;
+  }catch{return _bc||defBin();}
 }
 function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true}}};}
-
 async function wBin(records,sf,cfg){
-  _binCache={records,sf,cfg};_binCacheTs=Date.now();
-  try{
-    await fetch(BIN_URL,{method:'PUT',
-      headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},
-      body:JSON.stringify({data:{records,sf,cfg}})
-    });
-  }catch(e){console.error(e);}
+  _bc={records,sf,cfg};_bcts=Date.now();
+  try{await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data:{records,sf,cfg}})});}
+  catch(e){console.error(e);}
 }
 
 function gU(){return CFG?.users||DEF_USERS;}
@@ -400,35 +397,43 @@ function findRec(records,name,sk){return records.find(r=>r.sobe===name&&r.period
 
 // ── TARİX ─────────────────────────────────────────────────────────────────────
 function getRD(){return new Date();}
-function getFD(){
-  const n=new Date(),d=new Date(n);
-  if(n.getHours()<17)d.setDate(d.getDate()-1);
-  return d;
-}
+function getFD(){const n=new Date(),d=new Date(n);if(n.getHours()<17)d.setDate(d.getDate()-1);return d;}
 function dLeft(){const d=getRD();return Math.max(0,new Date(d.getFullYear(),d.getMonth()+1,0).getDate()-d.getDate());}
 function daysPassed(){return Math.max(1,getRD().getDate());}
 function fmtDate(){const d=getRD();return `${GUNS[d.getDay()]}, ${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;}
 function fmtFDate(){const d=getFD();return `${GUNS[d.getDay()]}, ${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;}
 
-// ── PERIOD AÇARLARI — bütün açarlarda gün var, saat 17-dən hamısı sıfırlanır ──
-function getPeriods(isSaxa){
+// ── PERIOD SİSTEMİ ─────────────────────────────────────────────────────────────
+// 4 period: [gun(0), ay0(1), ay1(2), ay2(3)]
+// User.periods = [1,1,0,0] → yalnız gun və ay0 aktiv
+// Saxa şöbələri default: [1,1,0,0] — gunluk var, 2 il əvvəl yox
+// Panda şöbələri default: [1,1,1,1] — hamısı var
+function getAllPeriods(){
   const d=getFD();
   const yr=d.getFullYear(),mo=d.getMonth(),day=d.getDate();
   const mp=String(mo+1).padStart(2,'0'),dp=String(day).padStart(2,'0');
-  if(isSaxa){
-    return [
-      {id:'ay0',label:`1-${day} ${AY[mo]} ${yr}`,   sk:`A_${yr}${mp}${dp}`},
-      {id:'ay1',label:`1-${day} ${AY[mo]} ${yr-1}`, sk:`A_${yr-1}${mp}${dp}`},
-      {id:'ay2',label:`1-${day} ${AY[mo]} ${yr-2}`, sk:`A_${yr-2}${mp}${dp}`}
-    ];
-  }
   return [
-    {id:'gun',label:`${day} ${AY[mo]} ${yr}`,    sk:`G_${yr}${mp}${dp}`},
-    {id:'ay0',label:`1-${day} ${AY[mo]} ${yr}`,   sk:`A_${yr}${mp}${dp}`},
-    {id:'ay1',label:`1-${day} ${AY[mo]} ${yr-1}`, sk:`A_${yr-1}${mp}${dp}`},
-    {id:'ay2',label:`1-${day} ${AY[mo]} ${yr-2}`, sk:`A_${yr-2}${mp}${dp}`}
+    {id:'gun', idx:0, label:`${day} ${AY[mo]} ${yr}`,    sk:`G_${yr}${mp}${dp}`},
+    {id:'ay0', idx:1, label:`1-${day} ${AY[mo]} ${yr}`,   sk:`A_${yr}${mp}${dp}`},
+    {id:'ay1', idx:2, label:`1-${day} ${AY[mo]} ${yr-1}`, sk:`A_${yr-1}${mp}${dp}`},
+    {id:'ay2', idx:3, label:`1-${day} ${AY[mo]} ${yr-2}`, sk:`A_${yr-2}${mp}${dp}`}
   ];
 }
+
+// İstifadəçinin aktiv periodlarını al
+function getUserPeriods(uid){
+  const u=gU().find(u=>u.id===uid);
+  const allP=getAllPeriods();
+  const pFlags=u?.periods||[1,1,1,1];
+  return allP.filter((_,i)=>pFlags[i]===1);
+}
+
+// Saxa şöbəsi günlük doldura bilsin → gunluk periodu saxanın aktivliyinə görə
+function isSaxaUser(uid){
+  const u=gU().find(u=>u.id===uid);
+  return u?!u.inTotal:false;
+}
+
 function getSFKey(){
   const d=getFD();
   return `SF_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
@@ -441,35 +446,37 @@ function fmt(n){
   const num=Number(n);if(isNaN(num))return '—';
   return num.toLocaleString('de-DE',{minimumFractionDigits:0,maximumFractionDigits:0});
 }
+
+// Faiz formatı:
+// - Mağaza yazanda: tam ədəd (15 → saxlanır 15)
+// - Cədvəldə şöbə satırı: tam ədəd (15%), sıfır yox (72% not 72.0%)
+// - Ümumi/yekun sətri: 1 kəsr (15.7%)
+function fmtFaizStore(f){
+  // Mağaza daxil etdiyi faiz — tam ədəd göstər (72%)
+  if(!f||f===0)return '—';
+  const n=Number(f);
+  // Əgər tam ədəddirsə .0 göstərmə
+  return Number.isInteger(n)?n+'%':n.toFixed(1)+'%';
+}
+function fmtFaizAvg(f){
+  // Ortalama faiz — həmişə 1 kəsr (72.3%)
+  if(f===null||f===undefined)return '—';
+  return Number(f).toFixed(1)+'%';
+}
+
 function xPct(v,t){if(!v||!t)return null;const r=v/t*100;return r>=100?100:Math.floor(r*10)/10;}
 function pStr(p){if(p===null)return '—';return p===100?'100%':p.toFixed(1)+'%';}
-function fmtFaiz(f){return f>0?f.toFixed(1)+'%':'—';}
 function pCls(p){if(p===null)return '';if(p>=100)return 'pct-g';if(p>=70)return 'pct-o';return 'pct-r';}
 function avgF(arr){const v=arr.filter(x=>x>0);return v.length?v.reduce((a,b)=>a+b)/v.length:null;}
-function fP(p){return p===null?'—':p.toFixed(1)+'%';}
-
 function planColor(ms,tgt,dl){
   if(!ms||!tgt)return 'red';if(ms>=tgt)return 'green';
   const avg=ms/daysPassed(),proj=ms+avg*dl,pct=proj/tgt*100;
   if(pct>=100)return 'green';if(pct>=70)return 'orange';return 'red';
 }
-function planBg(ms,tgt,dl){
-  const c=planColor(ms,tgt,dl);
-  return c==='green'?'#10b981':c==='orange'?'#f59e0b':'#ef4444';
-}
+function planBg(ms,tgt,dl){const c=planColor(ms,tgt,dl);return c==='green'?'#10b981':c==='orange'?'#f59e0b':'#ef4444';}
+function calcDaily(ms,tgt,dl){if(!tgt||ms>=tgt||dl<=0)return 0;return Math.ceil((tgt-ms)/dl);}
 
-// ── DƏQİQ GÜNDƏLIK HESABLAMA ──────────────────────────────────────────────────
-// ms=cari satış, tgt=hədəf, dl=qalan gün
-// Düzgün: Math.ceil(rm / dl) — bu hər zaman hədəfi keçir
-// Yoxlama: dn * dl >= rm (həmişə doğru olmalıdır)
-function calcDaily(ms,tgt,dl){
-  if(!tgt||ms>=tgt||dl<=0)return 0;
-  const rm=tgt-ms;
-  return Math.ceil(rm/dl); // Tam ədəd yuxarıya yuvarlama
-}
-
-// ── CİHAZ — sadə, dəqiq ───────────────────────────────────────────────────────
-// Dəqiq model yerinə etibarlı kateqoriya göstər
+// ── CİHAZ ─────────────────────────────────────────────────────────────────────
 function getDevice(){
   const ua=navigator.userAgent;
   if(/iPhone/.test(ua))return '📱 iPhone';
@@ -483,7 +490,6 @@ function getDevice(){
   if(/Android/.test(ua))return '📟 Android Tablet';
   if(/Windows/.test(ua))return '💻 Windows';
   if(/Macintosh|Mac OS/.test(ua))return '💻 Mac';
-  if(/Linux/.test(ua))return '💻 Linux';
   return '💻 Kompüter';
 }
 
@@ -522,7 +528,7 @@ function setJF(name,btn){
 
 function goTo(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 function closeMo(id){document.getElementById(id).classList.remove('show');}
-function logout(){curSid=null;editMode=false;_binCache=null;document.getElementById('gpw').value='';document.getElementById('gerr').classList.remove('show');document.getElementById('gsel').value='';goTo('gate');}
+function logout(){curSid=null;editMode=false;editPeriodId=null;_bc=null;document.getElementById('gpw').value='';document.getElementById('gerr').classList.remove('show');document.getElementById('gsel').value='';goTo('gate');}
 
 // ── GİRİŞ ─────────────────────────────────────────────────────────────────────
 async function buildSel(){
@@ -546,7 +552,7 @@ async function doLogin(){
   if(rem)localStorage.setItem('pk_rem',JSON.stringify({sid,pw}));else localStorage.removeItem('pk_rem');
   const bin=await rBin();CFG=bin.cfg;
   await logLogin(u.name,false,bin.records,bin.sf,bin.cfg);
-  if(u.type==='viewer')openViewer(u);else{curSid=sid;editMode=false;openStoreForm(sid);}
+  if(u.type==='viewer')openViewer(u);else{curSid=sid;editMode=false;editPeriodId=null;openStoreForm(sid);}
 }
 async function showAdminGate(){
   const pw=prompt('Admin şifrəsi:');
@@ -557,31 +563,21 @@ async function showAdminGate(){
   }else if(pw!==null)alert('Şifrə yanlışdır.');
 }
 
-// ── PLAN KARTI — DƏQİQ HESABLAMA ─────────────────────────────────────────────
+// ── PLAN KARTI ────────────────────────────────────────────────────────────────
 function planCard(sid,ms,records){
   const t=gT()[sid];if(!t)return '';
   const dl=dLeft();
   const u=gU().find(u=>u.id===sid);
-  const isSaxa=!u.inTotal;
-  const periods=getPeriods(isSaxa);
-  const gunP=isSaxa?null:periods[0];
+  const periods=getUserPeriods(sid);
+  const gunP=periods.find(p=>p.id==='gun');
   const tv=gunP?findRec(records,u.name,gunP.sk)?.satis||0:0;
-
-  // Hansı hədəfə doğru gedirik
   let at,rm;
   if(ms<t.min){at=t.min;rm=t.min-ms;}
   else if(ms<t.mid){at=t.mid;rm=t.mid-ms;}
   else if(ms<t.max){at=t.max;rm=t.max-ms;}
   else{at=t.max;rm=0;}
-
-  const ap=xPct(ms,at)||0;
-  // DƏQİQ HESABLAMA: Math.ceil(rm/dl)
-  // Yoxlama: dn*dl >= rm həmişə doğrudur
-  const dn=calcDaily(ms,at,dl);
-  const bc=planBg(ms,t.min,dl);
-
+  const ap=xPct(ms,at)||0,dn=calcDaily(ms,at,dl),bc=planBg(ms,t.min,dl);
   const pm=xPct(ms,t.min),pd=ms>=t.min?xPct(ms,t.mid):null,px=ms>=t.mid?xPct(ms,t.max):null;
-
   return `<div class="plancard" id="pc-${sid}">
     <div class="plantitle">📊 Bu Ay Hədəflər</div>
     <div class="plangrid">
@@ -594,7 +590,7 @@ function planCard(sid,ms,records){
     <div class="psg">
       <div class="ps"><div class="psl">📅 Qalan gün</div><div class="psv">${dl}</div></div>
       <div class="ps"><div class="psl">💰 Gündəlik lazım</div><div class="psv">${rm>0?fmt(dn)+' ₼':'✅'}</div></div>
-      ${!isSaxa?`<div class="ps"><div class="psl">📈 Bu gün</div><div class="psv">${fmt(tv)} ₼</div></div>`:`<div class="ps"><div class="psl">📊 Ay cəmi</div><div class="psv">${fmt(ms)} ₼</div></div>`}
+      ${gunP?`<div class="ps"><div class="psl">📈 Bu gün</div><div class="psv">${fmt(tv)} ₼</div></div>`:`<div class="ps"><div class="psl">📊 Ay cəmi</div><div class="psv">${fmt(ms)} ₼</div></div>`}
       <div class="ps"><div class="psl">⬆️ Növbəti hədəfə</div><div class="psv">${rm>0?fmt(rm)+' ₼':'🏆'}</div></div>
     </div>
   </div>`;
@@ -602,26 +598,39 @@ function planCard(sid,ms,records){
 
 function sF(id){
   const inp=document.getElementById(id);if(!inp)return;
-  const v=parseFloat(inp.value)||0;
+  const v=parseFloat(inp.value.replace(',','.'))||0;
   let d=document.getElementById('d_'+id);
   if(!d){d=document.createElement('div');d.id='d_'+id;d.className='nid';inp.parentNode.appendChild(d);}
   d.textContent=v>0?fmt(v):'';
 }
 function upPlan(v){
-  const h=planCard(curSid,parseFloat(v)||0,window._cr||[]);
+  const h=planCard(curSid,parseFloat(String(v).replace(',','.'))||0,window._cr||[]);
   const el=document.getElementById(`pc-${curSid}`);
   if(el){const t=document.createElement('div');t.innerHTML=h;el.replaceWith(t.firstElementChild);}
 }
 function upToday(){
+  const periods=getUserPeriods(curSid);
+  const ay0=periods.find(p=>p.id==='ay0');if(!ay0)return;
   const u=gU().find(u=>u.id===curSid);
-  const isSaxa=!u.inTotal;
-  const periods=getPeriods(isSaxa);
-  const ay0=isSaxa?periods[0]:periods[1];
   const rec=findRec(window._cr||[],u.name,ay0.sk);
-  const ms=parseFloat(document.getElementById(`s-${ay0.id}`)?.value)||rec?.satis||0;
+  const ms=parseFloat(String(document.getElementById('s-ay0')?.value||'0').replace(',','.'))||rec?.satis||0;
   upPlan(ms);
 }
-function enableEdit(){editMode=true;openStoreForm(curSid);}
+
+// Yalnız tək period redaktə rejimi — editPeriodId saxlanılır
+function enableEditPeriod(periodId){
+  editMode=true;editPeriodId=periodId;
+  // Yalnız həmin period inputlarını aktiv et
+  const ids=['s-'+periodId,'m-'+periodId,'f-'+periodId];
+  ids.forEach(id=>{const el=document.getElementById(id);if(el)el.disabled=false;});
+  // Saxa firma da
+  if(periodId==='gun'){const sf=document.getElementById('sf-inp');if(sf)sf.disabled=false;}
+  // Düzəliş et düyməsini gizlət
+  const ebt=document.getElementById('ebt-'+periodId);if(ebt)ebt.style.display='none';
+  // Yadda saxla düyməsi
+  const sbt=document.getElementById('sbt-'+periodId);
+  if(sbt){sbt.style.display='block';}
+}
 
 // ── MAĞAZA FORMU ──────────────────────────────────────────────────────────────
 async function openStoreForm(sid){
@@ -632,107 +641,114 @@ async function openStoreForm(sid){
   goTo('store-form');
   const {records,sf,cfg}=await rBin(true);
   CFG=cfg;window._cr=records;window._csf=sf;
+  editMode=false;editPeriodId=null;
   renderFormData(sid,records,sf);
 }
 
 function renderFormData(sid,records,sf){
   const u=gU().find(u=>u.id===sid);
-  const isSaxa=!u.inTotal;
-  const periods=getPeriods(isSaxa);
-  const ay0=isSaxa?periods[0]:periods[1];
-  const ms=findRec(records,u.name,ay0.sk)?.satis||0;
+  const periods=getUserPeriods(sid);
+  const ay0=periods.find(p=>p.id==='ay0');
+  const ms=ay0?findRec(records,u.name,ay0.sk)?.satis||0:0;
   const t_=gT()[sid];
   let h=t_?planCard(sid,ms,records):'';
 
   periods.forEach((period,pi)=>{
-    const rec=editMode?null:findRec(records,u.name,period.sk);
-    const dis=(!editMode&&rec)?'disabled':'';
+    const rec=findRec(records,u.name,period.sk);
+    const hasSaved=rec!==null;
+    // Əgər bu period düzəliş rejimindədirsə — aktiv
+    const isEditing=editMode&&editPeriodId===period.id;
+    const dis=(!isEditing&&hasSaved)?'disabled':'';
     const sv=rec?.satis||'',mv=rec?.menfeet||'',fv=rec?.faiz||'';
     const isAy=period.id==='ay0',isGun=period.id==='gun';
     const lu=isAy?`oninput="upPlan(this.value);sF('s-ay0')"`
       :isGun?`oninput="upToday();sF('s-gun')"`:`oninput="sF('s-${period.id}')"`;
+    // Satış/mənfəət: decimal qəbul edir (qəpik üçün)
+    // Faiz: tam ədəd (step=1)
     h+=`<div class="perblock">
-      <div class="perhdr" style="background:${PCOL[isSaxa?pi+1:pi]}">${period.label}</div>
+      <div class="perhdr" style="background:${PCOL[pi]}">${period.label}</div>
       <table class="pt"><thead><tr>
         <th style="text-align:left">Göstərici</th><th>Satış (₼)</th><th>Mənfəət (₼)</th><th>Faiz (%)</th>
       </tr></thead><tbody><tr>
         <td class="pn">Ümumi satış</td>
-        <td><input class="ni" type="number" min="0" inputmode="numeric" id="s-${period.id}" value="${sv}" placeholder="0" ${dis} ${lu}>${sv?`<div class="nid">${fmt(sv)}</div>`:''}</td>
-        <td><input class="ni" type="number" min="0" inputmode="numeric" id="m-${period.id}" value="${mv}" placeholder="0" ${dis} oninput="sF('m-${period.id}')">${mv?`<div class="nid">${fmt(mv)}</div>`:''}</td>
-        <td><input class="ni-f" type="number" min="0" step="1" inputmode="numeric" id="f-${period.id}" value="${fv}" placeholder="0" ${dis}></td>
+        <td><input class="ni" type="text" inputmode="decimal" id="s-${period.id}" value="${sv}" placeholder="0" ${dis} ${lu}>${sv?`<div class="nid">${fmt(sv)}</div>`:''}</td>
+        <td><input class="ni" type="text" inputmode="decimal" id="m-${period.id}" value="${mv}" placeholder="0" ${dis} oninput="sF('m-${period.id}')">${mv?`<div class="nid">${fmt(mv)}</div>`:''}</td>
+        <td><input class="ni-f" type="text" inputmode="decimal" id="f-${period.id}" value="${fv}" placeholder="0" ${dis}></td>
       </tr></tbody></table>
+      ${hasSaved&&!isEditing?`
+        <div style="display:flex;gap:7px;padding:8px 10px;background:rgba(0,0,0,.15)">
+          <button id="ebt-${period.id}" class="editbtn" style="margin-top:0;flex:1;padding:8px" onclick="enableEditPeriod('${period.id}')">✏️ Düzəliş</button>
+          <button id="sbt-${period.id}" class="savebtn" style="display:none;flex:1;padding:8px;margin-top:0;font-size:12px" onclick="savePeriod('${period.id}')">✓ Saxla</button>
+        </div>`:
+        !hasSaved?`<div style="padding:6px 10px 8px"><button id="sbt-${period.id}" class="savebtn" style="margin-top:0;padding:10px;font-size:13px" onclick="savePeriod('${period.id}')">✓ Saxla</button></div>`:''}
     </div>`;
   });
 
+  // Saxa Firma
   const ss=gSS();
   if(ss.fillers.includes(sid)){
     const sfKey=getSFKey(),sfRec=sf[sfKey+'_'+sid]||null;
-    const sfDis=(!editMode&&sfRec)?'disabled':'';
+    const sfEditing=editMode&&editPeriodId==='gun';
+    const sfDis=(!sfEditing&&sfRec)?'disabled':'';
     h+=`<div class="saxa-firma-block">
       <div class="saxa-firma-hdr">🏪 ${ss.firmName} — ${getSFDate()}</div>
       <div style="padding:10px 12px">
         <div style="font-size:10px;color:rgba(255,255,255,.45);margin-bottom:6px;font-weight:600">Bu günün satışı (₼)</div>
-        <input class="saxa-firma-inp" type="number" min="0" inputmode="numeric" id="sf-inp" value="${sfRec?.satis||''}" placeholder="0" ${sfDis}>
+        <input class="saxa-firma-inp" type="text" inputmode="decimal" id="sf-inp" value="${sfRec?.satis||''}" placeholder="0" ${sfDis}>
         ${sfRec?.satis?`<div class="nid" style="text-align:right;margin-top:4px">${fmt(sfRec.satis)}</div>`:''}
       </div>
     </div>`;
   }
-
-  const allSaved=!editMode&&periods.every(p=>findRec(records,u.name,p.sk)!==null);
-  if(allSaved){
-    h+=`<button class="savebtn" disabled>✓ Saxlanıldı</button>
-    <button class="editbtn" id="ebt" onclick="enableEdit()">✏️ Düzəliş et</button>
-    <button class="delbtn2" onclick="deleteToday()">🗑 Bu günün məlumatını sil</button>
-    <div class="okbox show">✅ Bu günün məlumatları saxlanıldı.</div>`;
-  }else{
-    h+=`<button class="savebtn" id="sbt" onclick="doSave()">✓ Yadda Saxla</button>
-    <div class="ldbox" id="ldb">⏳ Göndərilir...</div>
-    <div class="okbox" id="okb">✅ Uğurla saxlandı!</div>
-    <div class="erbox" id="erb">❌ Xəta baş verdi.</div>`;
-  }
+  h+=`<div class="ldbox" id="ldb">⏳ Göndərilir...</div>
+  <div class="okbox" id="okb"></div>
+  <div class="erbox" id="erb">❌ Xəta baş verdi.</div>`;
   document.getElementById('sfbody').innerHTML=h;
 }
 
-async function doSave(){
+// Tək period saxla
+async function savePeriod(periodId){
   const sid=curSid,u=gU().find(u=>u.id===sid);
-  const isSaxa=!u.inTotal;
-  const periods=getPeriods(isSaxa);
-  const sbt=document.getElementById('sbt');
+  const periods=getUserPeriods(sid);
+  const period=periods.find(p=>p.id===periodId);if(!period)return;
+
+  const sRaw=document.getElementById(`s-${periodId}`)?.value||'';
+  const mRaw=document.getElementById(`m-${periodId}`)?.value||'';
+  const fRaw=document.getElementById(`f-${periodId}`)?.value||'';
+  // Vergül → nöqtə (qəpik dəstəyi)
+  const s=parseFloat(sRaw.replace(',','.'))||0;
+  const m=parseFloat(mRaw.replace(',','.'))||0;
+  const f=parseFloat(fRaw.replace(',','.'))||0;
+
+  if(s===0&&m===0&&f===0){alert('Ən azı bir sahəni doldurun.');return;}
+
+  const sbt=document.getElementById('sbt-'+periodId);
   if(sbt)sbt.disabled=true;
   document.getElementById('ldb').classList.add('show');
+  document.getElementById('okb').classList.remove('show');
   document.getElementById('erb').classList.remove('show');
+
   try{
     const {records,sf,cfg}=await rBin(true);
-    CFG=cfg;let any=false;
-    for(const p of periods){
-      const s=parseFloat(document.getElementById(`s-${p.id}`)?.value)||0;
-      const m=parseFloat(document.getElementById(`m-${p.id}`)?.value)||0;
-      const f=parseInt(document.getElementById(`f-${p.id}`)?.value)||0;
-      if(s>0||m>0||f>0){
-        any=true;
-        const idx=records.findIndex(r=>r.sobe===u.name&&r.period===p.sk);
-        const e={sobe:u.name,period:p.sk,satis:s,menfeet:m,faiz:f};
-        if(idx>=0)records[idx]=e;else records.push(e);
-      }
-    }
+    CFG=cfg;
+    const idx=records.findIndex(r=>r.sobe===u.name&&r.period===period.sk);
+    const e={sobe:u.name,period:period.sk,satis:s,menfeet:m,faiz:f};
+    if(idx>=0)records[idx]=e;else records.push(e);
+
+    // Saxa Firma — yalnız gun periodunda
     const ss=gSS();
-    if(ss.fillers.includes(sid)){
-      const sfv=parseFloat(document.getElementById('sf-inp')?.value)||0;
-      if(sfv>0){any=true;sf[getSFKey()+'_'+sid]={satis:sfv};}
+    if(periodId==='gun'&&ss.fillers.includes(sid)){
+      const sfv=parseFloat(String(document.getElementById('sf-inp')?.value||'0').replace(',','.'))||0;
+      if(sfv>0)sf[getSFKey()+'_'+sid]={satis:sfv};
     }
-    if(!any){alert('Ən azı bir sahəni doldurun.');if(sbt)sbt.disabled=false;document.getElementById('ldb').classList.remove('show');return;}
+
     await wBin(records,sf,cfg);
-    editMode=false;window._cr=records;window._csf=sf;
+    editMode=false;editPeriodId=null;
+    window._cr=records;window._csf=sf;
     document.getElementById('ldb').classList.remove('show');
     document.getElementById('okb').classList.add('show');
-    if(sbt)sbt.textContent='✓ Saxlanıldı';
-    document.querySelectorAll('.ni,.ni-f,.saxa-firma-inp').forEach(i=>i.disabled=true);
-    if(sbt){
-      const eb=document.createElement('button');eb.className='editbtn';eb.textContent='✏️ Düzəliş et';eb.onclick=enableEdit;sbt.parentNode.insertBefore(eb,sbt.nextSibling);
-      const db=document.createElement('button');db.className='delbtn2';db.textContent='🗑 Bu günün məlumatını sil';db.onclick=deleteToday;eb.after(db);
-    }
-    const ay0=isSaxa?periods[0]:periods[1];
-    upPlan(findRec(records,u.name,ay0.sk)?.satis||0);
+    document.getElementById('okb').textContent='✅ Saxlandı!';
+    // Formu yenilə
+    setTimeout(()=>renderFormData(sid,records,sf),800);
   }catch(e){
     document.getElementById('ldb').classList.remove('show');
     document.getElementById('erb').classList.add('show');
@@ -741,25 +757,23 @@ async function doSave(){
 }
 
 async function deleteToday(){
-  if(!confirm('Bu günün məlumatları silinsin?'))return;
+  if(!confirm('Bu günün bütün məlumatları silinsin?'))return;
   const u=gU().find(u=>u.id===curSid);
-  const isSaxa=!u.inTotal;
-  const periods=getPeriods(isSaxa);
+  const periods=getUserPeriods(curSid);
   try{
     const {records,sf,cfg}=await rBin(true);
     periods.forEach(p=>{const i=records.findIndex(r=>r.sobe===u.name&&r.period===p.sk);if(i>=0)records.splice(i,1);});
     delete sf[getSFKey()+'_'+curSid];
     await wBin(records,sf,cfg);
-    editMode=false;await openStoreForm(curSid);
+    editMode=false;editPeriodId=null;await openStoreForm(curSid);
   }catch{alert('Silinmə xətası.');}
 }
 
-// ── OX — SAXA YOX ─────────────────────────────────────────────────────────────
+// ── OX ────────────────────────────────────────────────────────────────────────
 function arrD(ds,ms,minT,dl){
   if(!ds)return '';
   const rm=Math.max(0,minT-ms);if(rm<=0)return '<span class="arr-up">↑</span>';
-  const dn=calcDaily(ms,minT,dl);
-  if(!dn)return '';
+  const dn=calcDaily(ms,minT,dl);if(!dn)return '';
   const p=ds/dn*100;
   return p>=100?'<span class="arr-up">↑</span>':p>=70?'<span class="arr-mid">→</span>':'<span class="arr-dn">↓</span>';
 }
@@ -772,50 +786,51 @@ function arrM(ms,minT,dl){
 function buildTable(records,sf,tblId,ldId){
   const users=gU().filter(u=>u.type==='store');
   const targets=gT(),dl=dLeft();
-  const pandaP=getPeriods(false);
-  const saxaP=getPeriods(true);
+  // Cədvəl həmişə 4 period göstərir (standart)
+  const allP=getAllPeriods();
 
   const D={};
   users.forEach(u=>{
-    const isSaxa=!u.inTotal;
-    const periods=isSaxa?saxaP:pandaP;
+    const uPeriods=getUserPeriods(u.id);
     D[u.name]={};
-    periods.forEach(p=>{
-      const e=findRec(records,u.name,p.sk);
-      D[u.name][p.id]=e?{satis:e.satis||0,menfeet:e.menfeet||0,faiz:e.faiz||0}:{satis:0,menfeet:0,faiz:0};
+    allP.forEach(p=>{
+      const uP=uPeriods.find(up=>up.id===p.id);
+      if(uP){
+        const e=findRec(records,u.name,uP.sk);
+        D[u.name][p.id]=e?{satis:e.satis||0,menfeet:e.menfeet||0,faiz:e.faiz||0}:null;
+      }else{
+        D[u.name][p.id]=null; // Bu period bu şöbə üçün aktiv deyil
+      }
     });
   });
 
   let h='<colgroup>';
-  for(let i=0;i<pandaP.length;i++)h+='<col class="col-name"><col class="col-num"><col class="col-num"><col class="col-pct">';
+  for(let i=0;i<allP.length;i++)h+='<col class="col-name"><col class="col-num"><col class="col-num"><col class="col-pct">';
   h+='</colgroup>';
-
-  // Başlıq — HƏR 4 PERIOD ÜÇÜN "Şöbələr" yazısı
   h+='<tr class="gh">';
-  pandaP.forEach((p,i)=>{
+  allP.forEach((p,i)=>{
     h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th>`;
     h+=`<th colspan="3" class="${HC[i]}" style="font-size:13px;font-weight:800">${p.label}</th>`;
   });
   h+='</tr><tr class="sh">';
-  pandaP.forEach((p,i)=>{h+=`<th class="${SC[i]} col-num">Satış</th><th class="${SC[i]} col-num">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;});
+  allP.forEach((p,i)=>{h+=`<th class="${SC[i]} col-num">Satış</th><th class="${SC[i]} col-num">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;});
   h+='</tr>';
 
-  const pTots=pandaP.map(()=>({s:0,m:0,fl:[]}));
-  const sTots=pandaP.map(()=>({s:0,m:0,fl:[]}));
+  const pTots=allP.map(()=>({s:0,m:0,fl:[]}));
+  const sTots=allP.map(()=>({s:0,m:0,fl:[]}));
   const panda=users.filter(u=>u.inTotal),saxa=users.filter(u=>!u.inTotal);
 
   panda.forEach(u=>{
     const t=targets[u.id];
     h+=`<tr class="dr">`;
-    pandaP.forEach((p,pi)=>{
-      const e=D[u.name][p.id];
+    allP.forEach((p,pi)=>{
       h+=`<td class="nm">${u.name}</td>`;
+      const e=D[u.name][p.id];
       if(e&&(e.satis>0||e.menfeet>0)){
         let arr='';
         if(p.id==='gun'&&t)arr=arrD(e.satis,D[u.name]['ay0']?.satis||0,t.min,dl);
         else if(p.id==='ay0'&&t)arr=arrM(e.satis,t.min,dl);
-        const fz=fmtFaiz(e.faiz);
-        h+=`<td class="nv">${arr}${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fz}</td>`;
+        h+=`<td class="nv">${arr}${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fmtFaizStore(e.faiz)}</td>`;
         pTots[pi].s+=e.satis;pTots[pi].m+=e.menfeet;if(e.faiz>0)pTots[pi].fl.push(e.faiz);
       }else{h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;}
     });
@@ -823,33 +838,28 @@ function buildTable(records,sf,tblId,ldId){
   });
 
   h+='<tr class="tr">';
-  pTots.forEach(t=>{const af=avgF(t.fl);h+=`<td class="nm">Ümumi Panda</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fP(af)}</td>`;});
+  pTots.forEach(t=>{h+=`<td class="nm">Ümumi Panda</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fmtFaizAvg(avgF(t.fl))}</td>`;});
   h+='</tr>';
 
   if(saxa.length){
-    h+=`<tr class="saxagap"><td colspan="${pandaP.length*4}"></td></tr>`;
+    h+=`<tr class="saxagap"><td colspan="${allP.length*4}"></td></tr>`;
     saxa.forEach(u=>{
-      const t=targets[u.id];
       h+=`<tr class="sr">`;
-      pandaP.forEach((p,pi)=>{
+      allP.forEach((p,pi)=>{
         h+=`<td class="nm">${u.name}</td>`;
-        const saxaMap={gun:null,ay0:'ay0',ay1:'ay1',ay2:'ay2'};
-        const sid2=saxaMap[p.id];
-        if(!sid2){h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;return;}
-        const e=D[u.name][sid2];
+        const e=D[u.name][p.id];
         if(e&&(e.satis>0||e.menfeet>0)){
-          const fz=fmtFaiz(e.faiz);
-          h+=`<td class="nv">${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fz}</td>`;
+          // Saxa: ox yox
+          h+=`<td class="nv">${fmt(e.satis)}</td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fmtFaizStore(e.faiz)}</td>`;
           sTots[pi].s+=e.satis;sTots[pi].m+=e.menfeet;if(e.faiz>0)sTots[pi].fl.push(e.faiz);
         }else{h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;}
       });
       h+='</tr>';
     });
+    // "Ümumi Saxa" (əvvəl "Yekun Saxa" idi)
     h+='<tr class="str">';
     sTots.forEach((t,pi)=>{
-      const af=avgF(t.fl);
-      if(pi===0){h+=`<td class="nm">Yekun Saxa</td><td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;return;}
-      h+=`<td class="nm">Yekun Saxa</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fP(af)}</td>`;
+      h+=`<td class="nm">Ümumi Saxa</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fmtFaizAvg(avgF(t.fl))}</td>`;
     });
     h+='</tr>';
   }
@@ -876,7 +886,7 @@ function buildSFReport(sf,cid){
   <button class="sf-scrbtn" onclick="takeSfScr()">📸 Saxa Firma Hesabatını Saxla</button>`;
 }
 
-// ── PLAN PANELİ — "Qalan gün" + "Gündəlik lazım" ─────────────────────────────
+// ── PLAN PANELİ ───────────────────────────────────────────────────────────────
 function planPanelHtml(records,forSaxa){
   const users=gU().filter(u=>u.type==='store'&&u.showPlan&&(forSaxa?!u.inTotal:u.inTotal));
   const targets=gT(),dl=dLeft();
@@ -884,19 +894,17 @@ function planPanelHtml(records,forSaxa){
   let h='<div class="ppgrid">';
   users.forEach(u=>{
     const t=targets[u.id];if(!t)return;
-    const isSaxa=!u.inTotal;
-    const periods=getPeriods(isSaxa);
-    const ay0=isSaxa?periods[0]:periods[1];
-    const ms=findRec(records,u.name,ay0.sk)?.satis||0;
+    const periods=getUserPeriods(u.id);
+    const ay0=periods.find(p=>p.id==='ay0');
+    const gunP=periods.find(p=>p.id==='gun');
+    const ms=ay0?findRec(records,u.name,ay0.sk)?.satis||0:0;
+    const tv=gunP?findRec(records,u.name,gunP.sk)?.satis||0:0;
     let at,rm;
     if(ms<t.min){at=t.min;rm=t.min-ms;}
     else if(ms<t.mid){at=t.mid;rm=t.mid-ms;}
     else if(ms<t.max){at=t.max;rm=t.max-ms;}
     else{at=t.max;rm=0;}
-    const ap=xPct(ms,at)||0;
-    // DƏQİQ gündəlik
-    const dn=calcDaily(ms,at,dl);
-    const bc=planBg(ms,t.min,dl);
+    const ap=xPct(ms,at)||0,dn=calcDaily(ms,at,dl),bc=planBg(ms,t.min,dl);
     function lc(tgt){return ms>=tgt?'green':planColor(ms,tgt,dl);}
     h+=`<div class="ppi" style="border-color:${bc}33">
       <div class="ppih"><div class="ppin">${u.name}</div><div class="ppip" style="color:${bc}">${ap===100?'100%':ap.toFixed(1)+'%'}</div></div>
@@ -911,6 +919,7 @@ function planPanelHtml(records,forSaxa){
         <div class="ppist">Hədəf: <span>${fmt(at)} ₼</span></div>
         <div class="ppist">Qalan gün: <span>${dl}</span></div>
         ${rm>0?`<div class="ppist">Gündəlik: <span>${fmt(dn)} ₼</span></div>`:'<div class="ppist" style="color:#10b981">✅ Hədəfə çatıldı</div>'}
+        ${gunP?`<div class="ppist">Bu gün: <span>${fmt(tv)} ₼</span></div>`:''}
       </div>
     </div>`;
   });
@@ -977,21 +986,20 @@ async function renderFillForm(){
   const sid=document.getElementById('fill-sel').value;
   if(!sid){document.getElementById('fill-body').innerHTML='';document.getElementById('fill-btn').style.display='none';return;}
   const u=gU().find(u=>u.id===sid);
-  const isSaxa=!u.inTotal;
-  const periods=getPeriods(isSaxa);
+  const periods=getUserPeriods(sid);
   document.getElementById('fill-body').innerHTML='<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">Yüklənir...</div>';
   const {records,sf}=await rBin();
   window._fr=records;window._fsf=sf;
-  const inpStyle='width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:\'IBM Plex Mono\',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;';
+  const inpSt='width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:\'IBM Plex Mono\',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;';
   let h='';
   periods.forEach((p,pi)=>{
     const rec=findRec(records,u.name,p.sk);
     h+=`<div class="fillperiod">
-      <div class="fillplbl" style="background:${PCOL[isSaxa?pi+1:pi]}">${p.label}</div>
+      <div class="fillplbl" style="background:${PCOL[pi]}">${p.label}</div>
       <div class="afrow">
-        <div><div class="afrow afl">Satış (₼)</div><input type="number" min="0" inputmode="numeric" id="af-s-${p.id}" value="${rec?.satis||''}" placeholder="0" style="${inpStyle}"></div>
-        <div><div class="afrow afl">Mənfəət (₼)</div><input type="number" min="0" inputmode="numeric" id="af-m-${p.id}" value="${rec?.menfeet||''}" placeholder="0" style="${inpStyle}"></div>
-        <div><div class="afrow afl">Faiz (%)</div><input type="number" min="0" step="1" inputmode="numeric" id="af-f-${p.id}" value="${rec?.faiz||''}" placeholder="0" style="${inpStyle}"></div>
+        <div><div class="afrow afl">Satış (₼)</div><input type="text" inputmode="decimal" id="af-s-${p.id}" value="${rec?.satis||''}" placeholder="0" style="${inpSt}"></div>
+        <div><div class="afrow afl">Mənfəət (₼)</div><input type="text" inputmode="decimal" id="af-m-${p.id}" value="${rec?.menfeet||''}" placeholder="0" style="${inpSt}"></div>
+        <div><div class="afrow afl">Faiz (%)</div><input type="text" inputmode="decimal" id="af-f-${p.id}" value="${rec?.faiz||''}" placeholder="0" style="${inpSt}"></div>
       </div>
     </div>`;
   });
@@ -1000,7 +1008,7 @@ async function renderFillForm(){
     const sfv=sf[getSFKey()+'_'+sid]?.satis||'';
     h+=`<div class="fillperiod" style="background:rgba(120,53,15,.2);border:1px solid rgba(245,158,11,.2)">
       <div class="fillplbl" style="background:#92400e">${ss.firmName} — ${getSFDate()}</div>
-      <div><div class="aflbl">Günlük Satış (₼)</div><input type="number" min="0" inputmode="numeric" id="af-sf" value="${sfv}" placeholder="0" class="af1inp"></div>
+      <div><div class="aflbl">Günlük Satış (₼)</div><input type="text" inputmode="decimal" id="af-sf" value="${sfv}" placeholder="0" class="af1inp"></div>
     </div>`;
   }
   document.getElementById('fill-body').innerHTML=h;
@@ -1010,17 +1018,16 @@ async function renderFillForm(){
 async function doAdminFill(){
   const sid=document.getElementById('fill-sel').value;if(!sid)return;
   const u=gU().find(u=>u.id===sid);
-  const isSaxa=!u.inTotal;
-  const periods=getPeriods(isSaxa);
+  const periods=getUserPeriods(sid);
   document.getElementById('fill-btn').disabled=true;
   document.getElementById('fill-ld').classList.add('show');
   try{
     const records=window._fr||[],sf=window._fsf||{};
     let any=false;
     for(const p of periods){
-      const s=parseFloat(document.getElementById(`af-s-${p.id}`)?.value)||0;
-      const m=parseFloat(document.getElementById(`af-m-${p.id}`)?.value)||0;
-      const f=parseInt(document.getElementById(`af-f-${p.id}`)?.value)||0;
+      const s=parseFloat(String(document.getElementById(`af-s-${p.id}`)?.value||'0').replace(',','.'))||0;
+      const m=parseFloat(String(document.getElementById(`af-m-${p.id}`)?.value||'0').replace(',','.'))||0;
+      const f=parseFloat(String(document.getElementById(`af-f-${p.id}`)?.value||'0').replace(',','.'))||0;
       if(s>0||m>0||f>0){
         any=true;
         const idx=records.findIndex(r=>r.sobe===u.name&&r.period===p.sk);
@@ -1030,7 +1037,7 @@ async function doAdminFill(){
     }
     const ss=gSS();
     if(ss.fillers.includes(sid)){
-      const sfv=parseFloat(document.getElementById('af-sf')?.value)||0;
+      const sfv=parseFloat(String(document.getElementById('af-sf')?.value||'0').replace(',','.'))||0;
       if(sfv>0){any=true;sf[getSFKey()+'_'+sid]={satis:sfv};}
     }
     if(!any){alert('Ən azı bir sahəni doldurun.');document.getElementById('fill-btn').disabled=false;document.getElementById('fill-ld').classList.remove('show');return;}
@@ -1042,20 +1049,30 @@ async function doAdminFill(){
   document.getElementById('fill-btn').disabled=false;
 }
 
-// ── İSTİFADƏÇİLƏR ────────────────────────────────────────────────────────────
+// ── İSTİFADƏÇİLƏR — period seçimi ilə ──────────────────────────────────────────
 async function openUsersMo(){
   const {cfg}=await rBin();CFG=cfg;
   tmpUsers=JSON.parse(JSON.stringify(gU()));renderUsersMo();document.getElementById('mo-u').classList.add('show');
 }
 function renderUsersMo(){
+  const allP=getAllPeriods();
+  const pLabels=['Günlük','Cari ay','Keçən il','2 il əvvəl'];
   let h='<div class="mosect">Şöbələr</div>';
   tmpUsers.filter(u=>u.type==='store').forEach(u=>{
     const ri=tmpUsers.indexOf(u);
+    const pFlags=u.periods||[1,1,1,1];
+    let pSelHtml='<div style="margin-top:6px"><div style="font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:5px">Aktiv Periodlar</div><div class="period-sel">';
+    allP.forEach((p,i)=>{
+      const checked=pFlags[i]===1;
+      pSelHtml+=`<label class="${checked?'active-p':''}"><input type="checkbox" ${checked?'checked':''} onchange="togglePeriod(${ri},${i},this)">${pLabels[i]}</label>`;
+    });
+    pSelHtml+='</div></div>';
     h+=`<div class="mos"><div class="mosn"><span>${u.name}</span><button class="delbtn" onclick="delUser(${ri})">🗑</button></div>
       <div class="mor2">
         <div class="mof"><label>Ad</label><input type="text" id="un-${ri}" value="${u.name}" oninput="tmpUsers[${ri}].name=this.value"></div>
-        <div class="mof"><label>Şifrə</label><input type="text" inputmode="numeric" id="up-${ri}" value="${u.pw}" oninput="tmpUsers[${ri}].pw=this.value"></div>
+        <div class="mof"><label>Şifrə</label><input type="text" id="up-${ri}" value="${u.pw}" oninput="tmpUsers[${ri}].pw=this.value"></div>
       </div>
+      ${pSelHtml}
       <div class="cr"><input type="checkbox" id="ut-${ri}" ${u.inTotal?'checked':''} onchange="tmpUsers[${ri}].inTotal=this.checked"><label for="ut-${ri}">Ümumi hesabata daxil</label></div>
       <div class="cr"><input type="checkbox" id="upl-${ri}" ${u.showPlan!==false?'checked':''} onchange="tmpUsers[${ri}].showPlan=this.checked"><label for="upl-${ri}">Plan panelində göstər</label></div>
     </div>`;
@@ -1066,15 +1083,22 @@ function renderUsersMo(){
     h+=`<div class="mos" style="border-color:rgba(16,185,129,.2)"><div class="mosn" style="color:#6ee7b7"><span>${u.name}</span><button class="delbtn" onclick="delUser(${ri})">🗑</button></div>
       <div class="mor2">
         <div class="mof"><label>Ad</label><input type="text" id="un-${ri}" value="${u.name}" oninput="tmpUsers[${ri}].name=this.value"></div>
-        <div class="mof"><label>Şifrə</label><input type="text" inputmode="numeric" id="up-${ri}" value="${u.pw}" oninput="tmpUsers[${ri}].pw=this.value"></div>
+        <div class="mof"><label>Şifrə</label><input type="text" id="up-${ri}" value="${u.pw}" oninput="tmpUsers[${ri}].pw=this.value"></div>
       </div>
     </div>`;
   });
   document.getElementById('mou-body').innerHTML=h;
 }
+function togglePeriod(ri,pi,cb){
+  if(!tmpUsers[ri].periods)tmpUsers[ri].periods=[1,1,1,1];
+  tmpUsers[ri].periods[pi]=cb.checked?1:0;
+  // Label rəngini yenilə
+  cb.parentElement.className=cb.checked?'active-p':'';
+}
 function addStore(){
   const vi=tmpUsers.findIndex(u=>u.type==='viewer');
-  const ns={id:'s'+Date.now(),name:'Yeni Şöbə',pw:'sifre123',inTotal:true,showPlan:true,type:'store'};
+  // Yeni şöbə: default periods [1,1,1,1]
+  const ns={id:'s'+Date.now(),name:'Yeni Şöbə',pw:'sifre123',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]};
   if(vi>=0)tmpUsers.splice(vi,0,ns);else tmpUsers.push(ns);renderUsersMo();
 }
 function delUser(i){if(confirm('Silinsin?')){tmpUsers.splice(i,1);renderUsersMo();}}
