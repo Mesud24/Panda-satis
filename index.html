@@ -1,9 +1,7 @@
-<!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Panda Kids</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@500;600;700&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Panda Kids</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Mono:wght@500;600&display=swap" rel="stylesheet"><style>
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{width:100%;overflow-x:hidden;}
 body{font-family:'Inter',sans-serif;color:#fff;min-height:100vh;background:#0a1628 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='92'%3E%3Cellipse cx='50' cy='38' rx='26' ry='24' fill='rgba(255,255,255,0.03)'/%3E%3Ccircle cx='30' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E") repeat;}
-/* Rəqəm şrifti — Roboto Mono-da sıfır ortasında nöqtə yoxdur */
-.mono{font-family:'Roboto Mono',monospace;}
 .screen{display:none;min-height:100vh;flex-direction:column;}.screen.active{display:flex;}
 #gate{align-items:center;justify-content:center;}
 .gw{width:100%;max-width:340px;padding:32px 20px;display:flex;flex-direction:column;gap:14px;align-items:center;}
@@ -26,7 +24,7 @@ select.ginp option{color:#000;background:#fff;}
 .prog-overlay.show{display:flex;}
 .prog-logo{width:70px;height:70px;object-fit:contain;border-radius:16px;background:#fff;padding:6px;}
 .prog-title{font-size:18px;font-weight:800;color:#fff;}
-.prog-pct{font-size:22px;font-weight:800;color:#f0c060;font-family:'Roboto Mono',monospace;}
+.prog-pct{font-size:22px;font-weight:800;color:#f0c060;font-family:'DM Mono',monospace;}
 .prog-bar-wrap{width:260px;background:rgba(255,255,255,.12);border-radius:20px;height:10px;overflow:hidden;}
 .prog-bar{height:10px;border-radius:20px;background:linear-gradient(90deg,#c9963a,#f0c060);transition:width .15s ease;width:0%;}
 .prog-msg{font-size:12px;color:rgba(255,255,255,.5);font-weight:600;}
@@ -46,18 +44,18 @@ select.ginp option{color:#000;background:#fff;}
 .planitem.done{border-color:#10b981;background:rgba(16,185,129,.12);}
 .planitem.active{border-color:#f59e0b;background:rgba(245,158,11,.1);}
 .pil{font-size:9px;color:rgba(255,255,255,.45);margin-bottom:3px;font-weight:600;}
-.piv{font-size:12px;font-weight:700;color:#fff;font-family:'Roboto Mono',monospace;}
+.piv{font-size:12px;font-weight:700;color:#fff;font-family:'DM Mono',monospace;}
 .pip{font-size:11px;font-weight:700;margin-top:3px;}
 .pip.done{color:#10b981;}.pip.cur{color:#f59e0b;}
 .ppl{display:flex;justify-content:space-between;margin-bottom:5px;}
 .ppl span{font-size:10px;color:rgba(255,255,255,.45);}
-.ppl strong{font-size:10px;color:#f0c060;font-weight:700;font-family:'Roboto Mono',monospace;}
+.ppl strong{font-size:10px;color:#f0c060;font-weight:700;font-family:'DM Mono',monospace;}
 .pbw{background:rgba(255,255,255,.1);border-radius:20px;height:8px;overflow:hidden;}
 .pb{height:8px;border-radius:20px;transition:width .35s;}
 .psg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px;}
 .ps{background:rgba(255,255,255,.05);border-radius:8px;padding:7px 10px;}
 .psl{font-size:9px;color:rgba(255,255,255,.35);font-weight:600;}
-.psv{font-size:13px;font-weight:700;color:#f0c060;font-family:'Roboto Mono',monospace;margin-top:2px;}
+.psv{font-size:13px;font-weight:700;color:#f0c060;font-family:'DM Mono',monospace;margin-top:2px;}
 .perblock{background:rgba(255,255,255,.06);border-radius:12px;overflow:hidden;margin-bottom:10px;border:1px solid rgba(255,255,255,.08);}
 .perhdr{padding:9px 13px;font-size:13px;font-weight:800;color:#fff;}
 .pt{width:100%;border-collapse:collapse;table-layout:fixed;}
@@ -70,15 +68,15 @@ select.ginp option{color:#000;background:#fff;}
 .pt tbody td{padding:6px 7px;vertical-align:top;}
 .pt tbody td.pn{font-weight:700;font-size:13px;color:#fff;vertical-align:middle;padding-top:14px;}
 .inp-wrap{position:relative;min-height:52px;}
-.ni{width:100%;text-align:right;border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:9px 7px;font-family:'Roboto Mono',monospace;font-size:15px;font-weight:600;color:#fff;background:rgba(255,255,255,.06);outline:none;display:block;}
+.ni{width:100%;text-align:right;border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:9px 7px;font-family:'DM Mono',monospace;font-size:15px;font-weight:600;color:#fff;background:rgba(255,255,255,.06);outline:none;display:block;}
 .ni:focus{border-color:#c9963a;background:rgba(255,255,255,.1);}
 .ni:disabled{color:rgba(255,255,255,.3);cursor:not-allowed;background:rgba(255,255,255,.03);}
 .ni::placeholder{color:rgba(255,255,255,.2);font-size:13px;}
-.ni-f{width:100%;text-align:right;border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:9px 5px;font-family:'Roboto Mono',monospace;font-size:15px;font-weight:600;color:#f0c060;background:rgba(255,255,255,.05);outline:none;display:block;}
+.ni-f{width:100%;text-align:right;border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:9px 5px;font-family:'DM Mono',monospace;font-size:15px;font-weight:600;color:#f0c060;background:rgba(255,255,255,.05);outline:none;display:block;}
 .ni-f:focus{border-color:#c9963a;}
 .ni-f:disabled{color:rgba(255,255,255,.25);cursor:not-allowed;}
 .ni-f::placeholder{color:rgba(255,255,255,.18);}
-.nid{font-size:10px;color:rgba(255,255,255,.4);text-align:right;height:14px;line-height:14px;margin-top:2px;font-family:'Roboto Mono',monospace;font-weight:600;overflow:hidden;}
+.nid{font-size:10px;color:rgba(255,255,255,.4);text-align:right;height:14px;line-height:14px;margin-top:2px;font-family:'DM Mono',monospace;font-weight:600;overflow:hidden;}
 .savebtn{width:100%;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:12px;color:#0a1628;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer;margin-top:7px;}
 .savebtn:disabled{opacity:.45;cursor:not-allowed;}
 .editbtn{width:100%;padding:9px;background:transparent;border:1.5px solid rgba(255,255,255,.18);border-radius:10px;color:rgba(255,255,255,.7);font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;margin-top:6px;display:block;}
@@ -88,14 +86,13 @@ select.ginp option{color:#000;background:#fff;}
 .ldbox{background:rgba(59,130,246,.13);border:1.5px solid rgba(59,130,246,.3);color:#93c5fd;}
 .erbox{background:rgba(239,68,68,.13);border:1.5px solid rgba(239,68,68,.3);color:#fca5a5;}
 .okbox.show,.ldbox.show,.erbox.show{display:block;}
-/* Saxla progress mini bar */
 .save-prog-wrap{display:none;background:rgba(255,255,255,.1);border-radius:20px;height:6px;overflow:hidden;margin-top:8px;}
 .save-prog-wrap.show{display:block;}
 .save-prog-bar{height:6px;border-radius:20px;background:linear-gradient(90deg,#c9963a,#f0c060);width:0%;transition:width .2s;}
-.save-prog-pct{font-size:11px;color:#f0c060;font-weight:700;text-align:center;margin-top:3px;font-family:'Roboto Mono',monospace;}
+.save-prog-pct{font-size:11px;color:#f0c060;font-weight:700;text-align:center;margin-top:3px;font-family:'DM Mono',monospace;}
 .saxa-firma-block{background:rgba(245,158,11,.07);border-radius:12px;overflow:hidden;margin-bottom:10px;border:1px solid rgba(245,158,11,.2);}
 .saxa-firma-hdr{padding:9px 13px;font-size:13px;font-weight:800;color:#fde68a;background:rgba(120,53,15,.4);}
-.saxa-firma-inp{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(245,158,11,.25);border-radius:8px;padding:10px 12px;font-family:'Roboto Mono',monospace;font-size:16px;font-weight:600;color:#fff;outline:none;text-align:right;}
+.saxa-firma-inp{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(245,158,11,.25);border-radius:8px;padding:10px 12px;font-family:'DM Mono',monospace;font-size:16px;font-weight:600;color:#fff;outline:none;text-align:right;}
 .saxa-firma-inp:focus{border-color:#f59e0b;}
 .saxa-firma-inp:disabled{color:rgba(255,255,255,.3);cursor:not-allowed;}
 #admin,#viewer{background:#0a1628 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='92'%3E%3Cellipse cx='50' cy='38' rx='26' ry='24' fill='rgba(255,255,255,0.03)'/%3E%3C/svg%3E") repeat;}
@@ -117,7 +114,7 @@ select.ginp option{color:#000;background:#fff;}
 .rct h2{color:#fff;font-size:14px;font-weight:800;}
 .rct p{color:rgba(255,255,255,.65);font-size:11px;margin-top:2px;}
 .rcd{text-align:right;flex-shrink:0;}
-.rday{color:#fff;font-size:26px;font-weight:800;font-family:'Roboto Mono',monospace;line-height:1;}
+.rday{color:#fff;font-size:26px;font-weight:800;font-family:'DM Mono',monospace;line-height:1;}
 .rmo{color:rgba(255,255,255,.6);font-size:10px;margin-top:2px;font-weight:600;}
 .rctw{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;}
 table.rt{border-collapse:collapse;white-space:nowrap;table-layout:fixed;}
@@ -125,38 +122,38 @@ table.rt th,table.rt td{border:1px solid #cdd5e0;padding:4px 8px;}
 table.rt .col-name{width:var(--rt-name-w,115px);}
 table.rt .col-num{width:var(--rt-num-w,90px);}
 table.rt .col-pct{width:var(--rt-pct-w,62px);}
-.rt .gh th{font-weight:800;color:#fff;vertical-align:middle;height:30px;font-size:var(--rt-hdr-fs,12px);text-align:center;}
-.rt .gh .lb{background:#dce6f2;color:#1e3a6e;text-align:left;border-right:2px solid #b0c4de;font-weight:800;}
+.rt .gh th{font-weight:800;color:#fff;vertical-align:middle;height:30px;font-size:13px;text-align:center;}
+.rt .gh .lb{background:#dce6f2;color:#1e3a6e;text-align:left;border-right:2px solid #b0c4de;font-weight:800;font-size:12px;}
 .rt .gh .hb{background:#1d4ed8;}.rt .gh .ho{background:#c2410c;}.rt .gh .hg{background:#15803d;}.rt .gh .hp{background:#6d28d9;}
 .rt .sh th{background:#edf2f9;color:#2d3748;text-align:center;height:20px;font-size:10px;font-weight:700;padding:3px 8px;}
 .rt .sh .lb{background:#dce6f2;border-right:2px solid #b0c4de;text-align:left;color:#1e3a6e;font-weight:800;}
 .rt .sh .sb{color:#1d4ed8;}.rt .sh .so{color:#b45309;}.rt .sh .sg{color:#15803d;}.rt .sh .sp{color:#6d28d9;}
 .rt .dr td{height:var(--rt-row-h,27px);padding:3px 8px;vertical-align:middle;border-bottom:1px solid #edf2f7;font-size:var(--rt-fs,12px);}
 .rt .dr .nm{font-weight:800;color:#0f1f3d;background:#f4f8fc;border-right:2px solid #dce4ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.rt .dr .nv{text-align:right;color:var(--rt-num-col,#0f1f3d);font-family:'Roboto Mono',monospace;font-weight:var(--rt-fw,800);font-size:var(--rt-fs,12px);}
-.rt .dr .pv{text-align:right;color:#374151;font-family:'Roboto Mono',monospace;font-weight:600;font-size:var(--rt-fs,12px);}
+.rt .dr .nv{text-align:right;color:var(--rt-num-col,#0f1f3d);font-family:'DM Mono',monospace;font-weight:var(--rt-fw,800);font-size:var(--rt-fs,12px);}
+.rt .dr .pv{text-align:right;color:#374151;font-family:'DM Mono',monospace;font-weight:600;font-size:var(--rt-fs,12px);}
 .rt .dr .dsh{text-align:center;color:#b0bec5;}
 .rt .dr:nth-child(even) td{background:#f7fafc;}
 .rt .dr:nth-child(even) .nm{background:#e8f0f8;}
 .rt .sr td{height:var(--rt-row-h,27px);padding:3px 8px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;font-size:var(--rt-fs,12px);}
 .rt .sr .nm{font-weight:800;color:#7c3000;background:#fef3d0!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.rt .sr .nv{text-align:right;color:#6b3500;font-family:'Roboto Mono',monospace;font-weight:var(--rt-fw,800);font-size:var(--rt-fs,12px);}
-.rt .sr .pv{text-align:right;color:#92580a;font-family:'Roboto Mono',monospace;font-weight:600;font-size:var(--rt-fs,12px);}
+.rt .sr .nv{text-align:right;color:#6b3500;font-family:'DM Mono',monospace;font-weight:var(--rt-fw,800);font-size:var(--rt-fs,12px);}
+.rt .sr .pv{text-align:right;color:#92580a;font-family:'DM Mono',monospace;font-weight:600;font-size:var(--rt-fs,12px);}
 .rt .sr .dsh{text-align:center;color:#f0b429;}
 .rt .saxagap td{height:10px;background:#fff3cd!important;border-top:3px solid #f59e0b;padding:0;}
 .rt .tr td{height:var(--rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;font-size:var(--rt-fs,12px);}
 .rt .tr .nm{color:#bfdbfe;font-weight:800;border-right:2px solid #2d5aa0;}
-.rt .tr .nv{text-align:right;color:#fff;font-family:'Roboto Mono',monospace;font-weight:800;font-size:var(--rt-fs,12px);}
-.rt .tr .pv{text-align:right;color:#93c5fd;font-family:'Roboto Mono',monospace;font-weight:700;font-size:var(--rt-fs,12px);}
+.rt .tr .nv{text-align:right;color:#fff;font-family:'DM Mono',monospace;font-weight:800;font-size:var(--rt-fs,12px);}
+.rt .tr .pv{text-align:right;color:#93c5fd;font-family:'DM Mono',monospace;font-weight:700;font-size:var(--rt-fs,12px);}
 .rt .str td{height:var(--rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:#78350f!important;border-top:2px solid #92400e;font-size:var(--rt-fs,12px);}
 .rt .str .nm{color:#fde68a;font-weight:800;border-right:2px solid #92400e;}
-.rt .str .nv{text-align:right;color:#fef3c7;font-family:'Roboto Mono',monospace;font-weight:800;font-size:var(--rt-fs,12px);}
-.rt .str .pv{text-align:right;color:#fde68a;font-family:'Roboto Mono',monospace;font-weight:700;font-size:var(--rt-fs,12px);}
+.rt .str .nv{text-align:right;color:#fef3c7;font-family:'DM Mono',monospace;font-weight:800;font-size:var(--rt-fs,12px);}
+.rt .str .pv{text-align:right;color:#fde68a;font-family:'DM Mono',monospace;font-weight:700;font-size:var(--rt-fs,12px);}
 /* Oxlar — hamısı eyni ölçü, eyni qalınlıq */
-.arr-up{display:inline-block;min-width:13px;font-size:14px;font-weight:900;color:#16a34a;vertical-align:middle;line-height:1;}
-.arr-mid{display:inline-block;min-width:13px;font-size:14px;font-weight:900;color:#ea8c07;vertical-align:middle;line-height:1;}
-.arr-dn{display:inline-block;min-width:13px;font-size:14px;font-weight:900;color:#dc2626;vertical-align:middle;line-height:1;}
-.arr-none{display:inline-block;min-width:13px;vertical-align:middle;line-height:1;}
+.arr-up{display:inline-block;min-width:14px;font-size:14px;font-weight:900;color:#16a34a;vertical-align:middle;line-height:1;}
+.arr-mid{display:inline-block;min-width:14px;font-size:14px;font-weight:900;color:#f59e0b;vertical-align:middle;line-height:1;}
+.arr-dn{display:inline-block;min-width:14px;font-size:14px;font-weight:900;color:#dc2626;vertical-align:middle;line-height:1;}
+.arr-none{display:inline-block;min-width:14px;vertical-align:middle;line-height:1;}
 .nv-inner{display:flex;align-items:center;justify-content:flex-end;gap:3px;width:100%;}
 .nv-val{text-align:right;}
 .rcftr{padding:7px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
@@ -169,7 +166,7 @@ table.rt .col-pct{width:var(--rt-pct-w,62px);}
 .ppi{background:rgba(255,255,255,.055);border-radius:10px;padding:11px 13px;border:1px solid rgba(255,255,255,.08);}
 .ppih{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
 .ppin{font-size:12px;font-weight:800;color:#fff;}
-.ppip{font-size:13px;font-weight:700;font-family:'Roboto Mono',monospace;}
+.ppip{font-size:13px;font-weight:700;font-family:'DM Mono',monospace;}
 .ppibw{background:rgba(255,255,255,.09);border-radius:20px;height:6px;overflow:hidden;margin-bottom:6px;}
 .ppib{height:6px;border-radius:20px;}
 .ppilevels{display:flex;gap:5px;margin-bottom:6px;}
@@ -180,7 +177,7 @@ table.rt .col-pct{width:var(--rt-pct-w,62px);}
 .ppilvl.grey{background:rgba(255,255,255,.05);color:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.08);}
 .ppis{display:flex;gap:8px;flex-wrap:wrap;}
 .ppist{font-size:10px;color:rgba(255,255,255,.5);}
-.ppist span{color:#f0c060;font-weight:700;font-family:'Roboto Mono',monospace;}
+.ppist span{color:#f0c060;font-weight:700;font-family:'DM Mono',monospace;}
 .sf-rc{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 28px rgba(0,0,0,.25);margin-top:14px;}
 .sf-rc-hdr{padding:13px 18px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;justify-content:space-between;align-items:center;}
 .sf-rc-title{color:#fff;font-size:14px;font-weight:800;}
@@ -189,7 +186,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .sf-tbl th{background:#2d5aa0;color:#fff;font-size:12px;font-weight:800;padding:9px 16px;text-align:left;}
 .sf-tbl th:last-child{text-align:right;width:150px;}
 .sf-tbl td{padding:9px 16px;font-size:13px;border-bottom:1px solid #e8eef6;color:#1e3a6e;font-weight:600;}
-.sf-tbl td:last-child{text-align:right;font-family:'Roboto Mono',monospace;font-weight:700;color:#0f1f3d;width:150px;}
+.sf-tbl td:last-child{text-align:right;font-family:'DM Mono',monospace;font-weight:700;color:#0f1f3d;width:150px;}
 .sf-tbl tr:nth-child(even) td{background:#f4f8fc;}
 .sf-tbl .sf-total td{background:#1e3a6e!important;color:#fff!important;font-weight:800;font-size:14px;}
 .sf-tbl .sf-total td:last-child{color:#f0c060!important;font-size:15px;}
@@ -203,7 +200,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .jurnal-item{display:flex;justify-content:space-between;align-items:flex-start;background:rgba(255,255,255,.04);border-radius:8px;padding:8px 11px;gap:8px;}
 .jurnal-name{font-size:12px;font-weight:700;color:#fff;}
 .jurnal-device{font-size:10px;color:rgba(255,255,255,.4);font-weight:600;margin-top:2px;}
-.jurnal-time{font-size:11px;color:#c9963a;font-family:'Roboto Mono',monospace;font-weight:600;text-align:right;white-space:nowrap;}
+.jurnal-time{font-size:11px;color:#c9963a;font-family:'DM Mono',monospace;font-weight:600;text-align:right;white-space:nowrap;}
 .jurnal-empty{font-size:12px;color:rgba(255,255,255,.3);padding:8px 0;}
 .imgov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;flex-direction:column;align-items:center;justify-content:center;padding:16px;}
 .imgov.show{display:flex;}
@@ -221,7 +218,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .mor2{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
 .mor3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
 .mof label{color:rgba(255,255,255,.4);font-size:9px;text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:3px;font-weight:700;}
-.mof input,.mof select{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 9px;font-family:'Roboto Mono',monospace;font-size:12px;font-weight:600;color:#fff;outline:none;}
+.mof input,.mof select{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 9px;font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:#fff;outline:none;}
 .mof input:focus,.mof select:focus{border-color:#c9963a;}
 .mof select option{background:#0f1f3d;}
 .mosave{width:100%;padding:12px;background:#c9963a;border:none;border-radius:10px;color:#0a1628;font-family:inherit;font-size:13px;font-weight:800;cursor:pointer;margin-top:8px;}
@@ -236,9 +233,9 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .fillplbl{display:inline-block;font-size:12px;font-weight:800;color:#fff;padding:4px 10px;border-radius:5px;margin-bottom:8px;}
 .afrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
 .afrow .afl{font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px;}
-.afrow input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'Roboto Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
+.afrow input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'DM Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
 .afrow input:focus{border-color:#c9963a;}
-.af1inp{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'Roboto Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
+.af1inp{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:'DM Mono',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
 .af1inp:focus{border-color:#c9963a;}
 .aflbl{font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px;}
 .period-sel{display:flex;gap:8px;flex-wrap:wrap;margin-top:7px;}
@@ -359,34 +356,43 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 <div class="mo" id="mo-saxa-admin"><div class="mobox"><h3>Saxa Firma</h3><div id="saxa-admin-body"></div><button class="mosave" onclick="saveSaxaSettings()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-saxa-admin')">Bağla</button></div></div>
 <div class="mo" id="mo-jurnal"><div class="mobox"><h3>🔐 Giriş Jurnalı</h3><div class="jurnal-filter" id="jurnal-filter"></div><div class="jurnal-list" id="jurnal-modal-list"></div><button class="moclose" onclick="closeMo('mo-jurnal')">Bağla</button></div></div>
 
-<!-- Görünüş Redaktoru -->
 <div class="mo" id="mo-style"><div class="mobox">
   <h3>🎨 Cədvəl Görünüşü</h3>
   <div class="mosect">Şrift</div>
   <div class="mor2">
-    <div class="mof"><label>Şrift</label>
+    <div class="mof"><label>Şrift ailə</label>
       <select id="st-font" onchange="applyStyle()">
-        <option value="'Roboto Mono',monospace">Roboto Mono</option>
+        <option value="'DM Mono',monospace">DM Mono (standart)</option>
         <option value="'Inter',sans-serif">Inter</option>
         <option value="Arial,sans-serif">Arial</option>
+        <option value="'Courier New',monospace">Courier New</option>
       </select>
     </div>
-    <div class="mof"><label>Ölçü</label>
+    <div class="mof"><label>Rəqəm ölçüsü</label>
       <select id="st-fs" onchange="applyStyle()">
-        <option value="10px">10px</option><option value="11px">11px</option>
-        <option value="12px" selected>12px</option><option value="13px">13px</option><option value="14px">14px</option>
+        <option value="10px">10px — kiçik</option>
+        <option value="11px">11px</option>
+        <option value="12px" selected>12px — standart</option>
+        <option value="13px">13px</option>
+        <option value="14px">14px — böyük</option>
       </select>
     </div>
   </div>
   <div class="mor2" style="margin-top:8px">
-    <div class="mof"><label>Qalınlıq</label>
+    <div class="mof"><label>Rəqəm qalınlığı</label>
       <select id="st-fw" onchange="applyStyle()">
-        <option value="600">600</option><option value="700">700</option><option value="800" selected>800</option><option value="900">900</option>
+        <option value="600">600 — normal</option>
+        <option value="700">700 — qalın</option>
+        <option value="800" selected>800 — çox qalın</option>
+        <option value="900">900 — ən qalın</option>
       </select>
     </div>
     <div class="mof"><label>Sətir hündürlüyü</label>
       <select id="st-rh" onchange="applyStyle()">
-        <option value="24px">24px</option><option value="27px" selected>27px</option><option value="30px">30px</option><option value="34px">34px</option>
+        <option value="24px">24px — sıx</option>
+        <option value="27px" selected>27px — standart</option>
+        <option value="30px">30px — geniş</option>
+        <option value="34px">34px — çox geniş</option>
       </select>
     </div>
   </div>
@@ -394,7 +400,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
   <div class="mor3">
     <div class="mof"><label>Panda rəqəm</label><input type="color" id="st-panda-col" value="#0f1f3d" onchange="applyStyle()"></div>
     <div class="mof"><label>↑ Yaşıl ox</label><input type="color" id="st-arr-up" value="#16a34a" onchange="applyStyle()"></div>
-    <div class="mof"><label>→ Narıncı ox</label><input type="color" id="st-arr-mid" value="#ea8c07" onchange="applyStyle()"></div>
+    <div class="mof"><label>→ Narıncı ox</label><input type="color" id="st-arr-mid" value="#f59e0b" onchange="applyStyle()"></div>
   </div>
   <div class="mosect">Sütun eni</div>
   <div class="mor3">
@@ -403,12 +409,12 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
         <option value="100px">100px</option><option value="115px" selected>115px</option><option value="130px">130px</option>
       </select>
     </div>
-    <div class="mof"><label>Rəqəm</label>
+    <div class="mof"><label>Rəqəm sütunu</label>
       <select id="st-numw" onchange="applyStyle()">
         <option value="75px">75px</option><option value="90px" selected>90px</option><option value="105px">105px</option>
       </select>
     </div>
-    <div class="mof"><label>Faiz</label>
+    <div class="mof"><label>Faiz sütunu</label>
       <select id="st-pctw" onchange="applyStyle()">
         <option value="54px">54px</option><option value="62px" selected>62px</option><option value="72px">72px</option>
       </select>
@@ -441,7 +447,7 @@ let ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
 let curSid=null,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
 
 // ── GÖRÜNÜŞ STİLİ ─────────────────────────────────────────────────────────────
-const DEF_STYLE={font:"'Roboto Mono',monospace",fs:'12px',fw:'800',rh:'27px',pandaCol:'#0f1f3d',arrUp:'#16a34a',arrMid:'#ea8c07',nameW:'115px',numW:'90px',pctW:'62px'};
+const DEF_STYLE={font:"'DM Mono',monospace",fs:'12px',fw:'800',rh:'27px',pandaCol:'#0f1f3d',arrUp:'#16a34a',arrMid:'#f59e0b',nameW:'115px',numW:'90px',pctW:'62px'};
 function gStyle(){try{return JSON.parse(localStorage.getItem('pk_style')||'null')||{...DEF_STYLE};}catch{return{...DEF_STYLE};}}
 function svStyle(v){localStorage.setItem('pk_style',JSON.stringify(v));}
 function applyStyleToDOM(st){
@@ -454,9 +460,7 @@ function applyStyleToDOM(st){
   document.querySelectorAll('.arr-up').forEach(e=>e.style.color=st.arrUp);
   document.querySelectorAll('.arr-mid').forEach(e=>e.style.color=st.arrMid);
 }
-function applyStyle(){
-  const st=readStyleInputs();applyStyleToDOM(st);
-}
+function applyStyle(){applyStyleToDOM(readStyleInputs());}
 function readStyleInputs(){
   const s=id=>document.getElementById(id);
   return{font:s('st-font')?.value||DEF_STYLE.font,fs:s('st-fs')?.value||DEF_STYLE.fs,fw:s('st-fw')?.value||DEF_STYLE.fw,rh:s('st-rh')?.value||DEF_STYLE.rh,pandaCol:s('st-panda-col')?.value||DEF_STYLE.pandaCol,arrUp:s('st-arr-up')?.value||DEF_STYLE.arrUp,arrMid:s('st-arr-mid')?.value||DEF_STYLE.arrMid,nameW:s('st-namew')?.value||DEF_STYLE.nameW,numW:s('st-numw')?.value||DEF_STYLE.numW,pctW:s('st-pctw')?.value||DEF_STYLE.pctW};
@@ -482,24 +486,14 @@ const DEF_TGTS={p2:{min:70000,mid:85000,max:100000},p3:{min:80000,mid:95000,max:
 const DEF_SAXA={fillers:['p2','p3','pe'],showInAdmin:true,firmName:'Saxa Outlet'};
 let CFG=null,_bc=null,_bcts=0;const BC_MS=10000;
 
-// Progress
 function progShow(msg='Yüklənir...'){document.getElementById('prog-overlay').classList.add('show');setProg(5,msg);}
 function setProg(pct,msg){document.getElementById('prog-bar').style.width=pct+'%';document.getElementById('prog-pct').textContent=pct+'%';if(msg)document.getElementById('prog-msg').textContent=msg;}
 function progAnimate(from,to,msg,ms){return new Promise(res=>{const step=(to-from)/20;let cur=from;const t=setInterval(()=>{cur=Math.min(cur+step,to);setProg(Math.round(cur),msg);if(cur>=to){clearInterval(t);res();}},ms/20);});}
 async function progDone(){await progAnimate(parseInt(document.getElementById('prog-bar').style.width)||90,100,'Hazır!',300);await new Promise(r=>setTimeout(r,200));document.getElementById('prog-overlay').classList.remove('show');setProg(0,'');}
 
-// Saxla mini progress
-function saveProgShow(sid){
-  const w=document.getElementById('sp-wrap-'+sid),b=document.getElementById('sp-bar-'+sid),p=document.getElementById('sp-pct-'+sid);
-  if(w)w.classList.add('show');if(b)b.style.width='5%';if(p)p.textContent='5%';
-}
-function saveProgSet(sid,pct,msg){
-  const b=document.getElementById('sp-bar-'+sid),p=document.getElementById('sp-pct-'+sid);
-  if(b)b.style.width=pct+'%';if(p)p.textContent=pct+'%'+(msg?' — '+msg:'');
-}
-function saveProgAnimate(sid,from,to,msg,ms){
-  return new Promise(res=>{const step=(to-from)/15;let cur=from;const t=setInterval(()=>{cur=Math.min(cur+step,to);saveProgSet(sid,Math.round(cur),msg);if(cur>=to){clearInterval(t);res();}},ms/15);});
-}
+function saveProgShow(sid){const w=document.getElementById('sp-wrap-'+sid),b=document.getElementById('sp-bar-'+sid),p=document.getElementById('sp-pct-'+sid);if(w)w.classList.add('show');if(b)b.style.width='5%';if(p)p.textContent='5%';}
+function saveProgSet(sid,pct,msg){const b=document.getElementById('sp-bar-'+sid),p=document.getElementById('sp-pct-'+sid);if(b)b.style.width=pct+'%';if(p)p.textContent=pct+'%'+(msg?' — '+msg:'');}
+function saveProgAnimate(sid,from,to,msg,ms){return new Promise(res=>{const step=(to-from)/15;let cur=from;const t=setInterval(()=>{cur=Math.min(cur+step,to);saveProgSet(sid,Math.round(cur),msg);if(cur>=to){clearInterval(t);res();}},ms/15);});}
 function saveProgHide(sid){const w=document.getElementById('sp-wrap-'+sid);if(w)w.classList.remove('show');}
 
 async function rBin(force=false){
@@ -546,22 +540,15 @@ function getSFKey(){const d=getFD();return `SF_${d.getFullYear()}${String(d.getM
 function getSFDate(){const d=getFD();return `${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;}
 
 function parseNum(s){return parseFloat(String(s||'').replace(',','.'))||0;}
-// Tam ədəd, nöqtə minlik ayırıcı, sıfır nöqtəsi yox
-function fmt(n){
-  if(!n||Number(n)===0)return '—';
-  return Math.round(Number(n)).toLocaleString('de-DE');
-}
+function fmt(n){if(!n||Number(n)===0)return '—';return Math.round(Number(n)).toLocaleString('de-DE');}
 function fmtFull(n){
-  if(!n||Number(n)===0)return '';
-  const num=Number(n),s=String(n);
+  if(!n||Number(n)===0)return '';const num=Number(n),s=String(n);
   if(s.includes('.')||s.includes(','))return num.toLocaleString('de-DE',{minimumFractionDigits:0,maximumFractionDigits:2});
   return Math.round(num).toLocaleString('de-DE');
 }
 function fmtFaizStore(f){
-  if(!f||f===0)return '—';
-  const n=Number(f);
-  if(Number.isInteger(n))return n+'%';
-  const s=n.toFixed(1);return s.endsWith('.0')?Math.round(n)+'%':s+'%';
+  if(!f||f===0)return '—';const n=Number(f);
+  if(Number.isInteger(n))return n+'%';const s=n.toFixed(1);return s.endsWith('.0')?Math.round(n)+'%':s+'%';
 }
 function fmtFaizAvg(f){if(!f||f===null)return '—';return Number(f).toFixed(1)+'%';}
 function xPct(v,t){if(!v||!t)return null;const r=v/t*100;return r>=100?100:Math.floor(r*10)/10;}
@@ -577,7 +564,7 @@ function calcDaily(ms,tgt,dl){if(!tgt||ms>=tgt||dl<=0)return 0;return Math.ceil(
 
 // Ox — satışın solunda, eyni td
 function nvCell(arrType,val,st){
-  const up=st?.arrUp||'#16a34a',mid=st?.arrMid||'#ea8c07';
+  const up=st?.arrUp||'#16a34a',mid=st?.arrMid||'#f59e0b';
   let aHtml='';
   if(arrType==='up')aHtml=`<span class="arr-up" style="color:${up}">↑</span>`;
   else if(arrType==='mid')aHtml=`<span class="arr-mid" style="color:${mid}">→</span>`;
@@ -625,8 +612,7 @@ function logout(){curSid=null;_bc=null;document.getElementById('gpw').value='';d
 
 async function buildSel(){
   progShow('İstifadəçilər yüklənir...');await progAnimate(5,40,'İstifadəçilər yüklənir...',400);
-  const bin=await rBin(true);await progAnimate(40,80,'Konfiqurasiya...',300);
-  CFG=bin.cfg;
+  const bin=await rBin(true);await progAnimate(40,80,'Konfiqurasiya...',300);CFG=bin.cfg;
   const sel=document.getElementById('gsel');
   sel.innerHTML='<option value="">— Seçin —</option>';
   gU().filter(u=>u.type==='store').forEach(u=>{const o=document.createElement('option');o.value=u.id;o.textContent=u.name;sel.appendChild(o);});
@@ -714,7 +700,6 @@ function renderFormData(sid,records,sf){
   const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
   const ay0=periods.find(p=>p.id==='ay0');const ms=ay0?findRec(records,u.name,ay0.sk)?.satis||0:0;
   const t_=gT()[sid];let h=t_?planCard(sid,ms,records):'';
-
   periods.forEach((period,pi)=>{
     const rec=findRec(records,u.name,period.sk);const hasSaved=rec!==null;
     const sv=rec?.satis??'',mv=rec?.menfeet??'',fv=rec?.faiz??'';
@@ -732,8 +717,6 @@ function renderFormData(sid,records,sf){
       ${hasSaved?`<div style="padding:6px 10px 8px"><button class="editbtn" id="ebt-${period.id}" style="margin-top:0;padding:8px" onclick="editPeriod('${period.id}')">✏️ Düzəliş</button></div>`:''}
     </div>`;
   });
-
-  // Saxa Firma — "Maya Məbləği" adı ilə
   const ss=gSS();
   if(ss.fillers.includes(sid)){
     const sfKey=getSFKey(),sfRec=sf[sfKey+'_'+sid]||null;
@@ -747,15 +730,12 @@ function renderFormData(sid,records,sf){
       ${sfRec?`<div style="padding:0 10px 8px"><button class="editbtn" style="margin-top:0;padding:8px" onclick="editSF()">✏️ Düzəliş</button></div>`:''}
     </div>`;
   }
-
-  // Saxla düyməsi + mini progress
   h+=`<button class="saveallbtn" id="saveallbtn" onclick="saveAll('${sid}')">💾 Hamısını Yadda Saxla</button>
   <div class="save-prog-wrap" id="sp-wrap-${sid}"><div class="save-prog-bar" id="sp-bar-${sid}"></div><div class="save-prog-pct" id="sp-pct-${sid}"></div></div>
   <div class="ldbox" id="ldb">⏳ Göndərilir...</div>
   <div class="okbox" id="okb"></div>
   <div class="erbox" id="erb">❌ Xəta baş verdi.</div>
   <button class="delbtn2" onclick="deleteToday('${sid}')">🗑 Bütün Məlumatı Sil</button>`;
-
   document.getElementById('sfbody').innerHTML=h;
 }
 
@@ -765,28 +745,22 @@ function editSF(){const inp=document.getElementById('sf-inp');if(inp){inp.disabl
 async function saveAll(sid){
   const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
   const sab=document.getElementById('saveallbtn');if(sab)sab.disabled=true;
-  document.getElementById('okb').classList.remove('show');document.getElementById('erb').classList.remove('show');
-  document.getElementById('ldb').classList.add('show');
+  document.getElementById('okb').classList.remove('show');document.getElementById('erb').classList.remove('show');document.getElementById('ldb').classList.add('show');
   saveProgShow(sid);
   try{
     await saveProgAnimate(sid,5,30,'Yüklənir...',300);
     const {records,sf,cfg}=await rBin(true);CFG=cfg;let any=false;
     await saveProgAnimate(sid,30,55,'Hazırlanır...',200);
     for(const p of periods){
-      const s=parseNum(document.getElementById(`s-${p.id}`)?.value);
-      const m=parseNum(document.getElementById(`m-${p.id}`)?.value);
-      const f=parseNum(document.getElementById(`f-${p.id}`)?.value);
+      const s=parseNum(document.getElementById(`s-${p.id}`)?.value);const m=parseNum(document.getElementById(`m-${p.id}`)?.value);const f=parseNum(document.getElementById(`f-${p.id}`)?.value);
       if(s>0||m>0||f>0){any=true;const idx=records.findIndex(r=>r.sobe===u.name&&r.period===p.sk);const e={sobe:u.name,period:p.sk,satis:s,menfeet:m,faiz:f};if(idx>=0)records[idx]=e;else records.push(e);}
     }
-    const ss=gSS();
-    if(ss.fillers.includes(sid)){const sfv=parseNum(document.getElementById('sf-inp')?.value);if(sfv>0){any=true;sf[getSFKey()+'_'+sid]={satis:sfv};}}
+    const ss=gSS();if(ss.fillers.includes(sid)){const sfv=parseNum(document.getElementById('sf-inp')?.value);if(sfv>0){any=true;sf[getSFKey()+'_'+sid]={satis:sfv};}}
     if(!any){document.getElementById('ldb').classList.remove('show');if(sab)sab.disabled=false;saveProgHide(sid);alert('Ən azı bir sahəni doldurun.');return;}
     await saveProgAnimate(sid,55,85,'BIN-ə yazılır...',400);
-    await wBin(records,sf,cfg);
-    window._cr=records;window._csf=sf;
+    await wBin(records,sf,cfg);window._cr=records;window._csf=sf;
     await saveProgAnimate(sid,85,100,'Saxlanıldı!',200);
-    document.getElementById('ldb').classList.remove('show');
-    document.getElementById('okb').classList.add('show');document.getElementById('okb').textContent='✅ Məlumatlar yadda saxlandı!';
+    document.getElementById('ldb').classList.remove('show');document.getElementById('okb').classList.add('show');document.getElementById('okb').textContent='✅ Məlumatlar yadda saxlandı!';
     if(sab)sab.textContent='✅ Saxlanıldı';
     periods.forEach(p=>{['s-','m-','f-'].forEach(pref=>{const el=document.getElementById(pref+p.id);if(el){el.disabled=true;el.style.border='';}});});
     const sfInp=document.getElementById('sf-inp');if(sfInp){sfInp.disabled=true;sfInp.style.border='';}
@@ -808,20 +782,13 @@ async function deleteToday(sid){
   }catch{await progDone();alert('Silinmə xətası.');}
 }
 
-// Hesabat cədvəli
 function buildTable(records,sf,tblId,ldId){
   const users=gU().filter(u=>u.type==='store');const targets=gT(),dl=dLeft();const allP=getAllPeriods();const st=gStyle();
-  const D={};
-  users.forEach(u=>{const uP=getUserPeriods(u.id);D[u.name]={};allP.forEach(p=>{const up=uP.find(x=>x.id===p.id);D[u.name][p.id]=up?findRec(records,u.name,up.sk):null;});});
-
+  const D={};users.forEach(u=>{const uP=getUserPeriods(u.id);D[u.name]={};allP.forEach(p=>{const up=uP.find(x=>x.id===p.id);D[u.name][p.id]=up?findRec(records,u.name,up.sk):null;});});
   let h='<colgroup>';allP.forEach(()=>h+='<col class="col-name"><col class="col-num"><col class="col-num"><col class="col-pct">');h+='</colgroup>';
-  h+='<tr class="gh">';
-  allP.forEach((p,i)=>{h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th><th colspan="3" class="${HC[i]}" style="font-size:13px;font-weight:800">${p.label}</th>`;});
-  h+='</tr><tr class="sh">';allP.forEach((p,i)=>{h+=`<th class="${SC[i]} col-num">Satış</th><th class="${SC[i]} col-num">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;});h+='</tr>';
-
+  h+='<tr class="gh">';allP.forEach((p,i)=>{h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th><th colspan="3" class="${HC[i]}" style="font-size:13px;font-weight:800">${p.label}</th>`;});h+='</tr><tr class="sh">';allP.forEach((p,i)=>{h+=`<th class="${SC[i]} col-num">Satış</th><th class="${SC[i]} col-num">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;});h+='</tr>';
   const pTots=allP.map(()=>({s:0,m:0,fl:[]})),sTots=allP.map(()=>({s:0,m:0,fl:[]}));
   const panda=users.filter(u=>u.inTotal),saxa=users.filter(u=>!u.inTotal);
-
   panda.forEach(u=>{
     const t=targets[u.id];h+=`<tr class="dr">`;
     allP.forEach((p,pi)=>{
@@ -839,7 +806,6 @@ function buildTable(records,sf,tblId,ldId){
     h+='</tr>';
   });
   h+='<tr class="tr">';pTots.forEach(t=>{h+=`<td class="nm">Ümumi Panda</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fmtFaizAvg(avgF(t.fl))}</td>`;});h+='</tr>';
-
   if(saxa.length){
     h+=`<tr class="saxagap"><td colspan="${allP.length*4}"></td></tr>`;
     saxa.forEach(u=>{
@@ -858,7 +824,6 @@ function buildTable(records,sf,tblId,ldId){
   const tbl=document.getElementById(tblId);tbl.innerHTML=h;applyStyleToDOM(st);document.getElementById(ldId).style.display='none';tbl.style.display='table';
 }
 
-// Saxa Firma — "Maya Məbləği" başlığı
 function buildSFReport(sf,cid){
   const ss=gSS();if(!ss.showInAdmin)return;
   const fillers=gU().filter(u=>ss.fillers.includes(u.id));const sfKey=getSFKey();let total=0,rows='';
@@ -866,11 +831,7 @@ function buildSFReport(sf,cid){
   const c=document.getElementById(cid);if(!c)return;
   c.innerHTML=`<div class="sf-rc" id="sf-rc">
     <div class="sf-rc-hdr"><div class="sf-rc-title">${ss.firmName}</div><div class="sf-rc-date">${getSFDate()}</div></div>
-    <table class="sf-tbl">
-      <tr><th>${ss.firmName}</th><th>Maya Məbləği</th></tr>
-      ${rows}
-      <tr class="sf-total"><td>Cəmi</td><td>${total>0?fmt(total)+' ₼':'—'}</td></tr>
-    </table>
+    <table class="sf-tbl"><tr><th>${ss.firmName}</th><th>Maya Məbləği</th></tr>${rows}<tr class="sf-total"><td>Cəmi</td><td>${total>0?fmt(total)+' ₼':'—'}</td></tr></table>
     <div class="sf-rc-ftr"><span>Panda Kids © ${new Date().getFullYear()}</span></div>
   </div>
   <button class="sf-scrbtn" onclick="takeSfScr()">📸 Saxa Firma Hesabatını Saxla</button>`;
@@ -960,7 +921,7 @@ async function renderFillForm(){
   const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
   document.getElementById('fill-body').innerHTML='<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">Yüklənir...</div>';
   const {records,sf}=await rBin();window._fr=records;window._fsf=sf;
-  const inpSt='width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:\'Roboto Mono\',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;';
+  const inpSt='width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 8px;font-family:\'DM Mono\',monospace;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;';
   let h='';
   periods.forEach((p,pi)=>{
     const rec=findRec(records,u.name,p.sk);
