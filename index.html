@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Panda Kids</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=Roboto+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Fira+Code:wght@400;500;600&family=Source+Code+Pro:wght@400;500;600&family=Space+Mono:wght@400;700&family=Inconsolata:wght@400;500;600&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Panda Kids</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=Roboto+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inconsolata:wght@400;500;600;700&display=swap" rel="stylesheet"><style>
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{width:100%;overflow-x:hidden;}
 body{font-family:'Inter',sans-serif;color:#fff;min-height:100vh;background:#0a1628 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='92'%3E%3Cellipse cx='50' cy='38' rx='26' ry='24' fill='rgba(255,255,255,0.03)'/%3E%3Ccircle cx='30' cy='15' r='8' fill='rgba(255,255,255,0.035)'/%3E%3C/svg%3E") repeat;}
@@ -34,7 +34,7 @@ select.ginp option{color:#000;background:#fff;}
 .hol-banner-text{font-size:13px;font-weight:700;}
 .hol-popup{display:none;position:fixed;inset:0;z-index:998;align-items:center;justify-content:center;background:rgba(0,0,0,.75);backdrop-filter:blur(5px);}
 .hol-popup.show{display:flex;}
-.hol-popup-box{background:linear-gradient(135deg,#0f1f3d,#1a3060);border-radius:22px;padding:36px 24px 28px;width:90%;max-width:340px;text-align:center;border:2px solid rgba(255,255,255,.12);position:relative;}
+.hol-popup-box{background:linear-gradient(135deg,#0f1f3d,#1a3060);border-radius:22px;padding:36px 24px 28px;width:90%;max-width:340px;text-align:center;border:2px solid rgba(255,255,255,.12);}
 .hol-emoji{font-size:56px;margin-bottom:12px;display:block;line-height:1;}
 .hol-title{font-size:22px;font-weight:800;color:#fff;margin-bottom:8px;}
 .hol-msg{font-size:14px;color:rgba(255,255,255,.7);line-height:1.55;margin-bottom:22px;}
@@ -127,46 +127,21 @@ select.ginp option{color:#000;background:#fff;}
 .rday{color:#fff;font-size:26px;font-weight:800;font-family:'IBM Plex Mono',monospace;line-height:1;}
 .rmo{color:rgba(255,255,255,.6);font-size:10px;margin-top:2px;font-weight:600;}
 .rctw{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;}
+/* Hesabat cədvəli — bütün stillər inline JS ilə tətbiq olunur */
 table.rt{border-collapse:collapse;white-space:nowrap;table-layout:fixed;}
-table.rt th,table.rt td{border:1px solid #cdd5e0;padding:4px 8px;}
-table.rt .col-name{width:var(--rt-name-w,115px);}
-table.rt .col-num{width:var(--rt-num-w,90px);}
-table.rt .col-pct{width:var(--rt-pct-w,62px);}
-.rt .gh th{font-weight:800;color:#fff;vertical-align:middle;height:var(--rt-hdr-h,30px);font-size:var(--rt-hdr-fs,13px);text-align:center;}
-.rt .gh .lb{background:var(--rt-hdr-name-bg,#dce6f2);color:var(--rt-hdr-name-col,#1e3a6e);text-align:left;border-right:2px solid #b0c4de;font-weight:800;}
-.rt .gh .hb{background:var(--rt-h1-bg,#1d4ed8);}
-.rt .gh .ho{background:var(--rt-h2-bg,#c2410c);}
-.rt .gh .hg{background:var(--rt-h3-bg,#15803d);}
-.rt .gh .hp{background:var(--rt-h4-bg,#6d28d9);}
-.rt .sh th{background:#edf2f9;color:#2d3748;text-align:center;height:var(--rt-sh-h,20px);font-size:var(--rt-sh-fs,10px);font-weight:700;padding:3px 8px;}
-.rt .sh .lb{background:#dce6f2;border-right:2px solid #b0c4de;text-align:left;color:#1e3a6e;font-weight:800;}
-.rt .sh .sb{color:#1d4ed8;}.rt .sh .so{color:#b45309;}.rt .sh .sg{color:#15803d;}.rt .sh .sp{color:#6d28d9;}
-.rt .dr td{height:var(--rt-row-h,27px);padding:var(--rt-cell-pad,3px 8px);vertical-align:middle;border-bottom:1px solid var(--rt-border,#edf2f7);font-size:var(--rt-fs,12px);}
-.rt .dr .nm{font-weight:var(--rt-name-fw,800);color:var(--rt-name-col,#0f1f3d);background:var(--rt-name-bg,#f4f8fc);border-right:2px solid #dce4ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--rt-name-font,'Inter',sans-serif);}
-.rt .dr .nv{text-align:right;color:var(--rt-num-col,#0f1f3d);font-family:var(--rt-font,'IBM Plex Mono',monospace);font-weight:var(--rt-fw,800);font-size:var(--rt-fs,12px);background:var(--rt-num-bg,transparent);}
-.rt .dr .pv{text-align:right;color:var(--rt-pct-col,#374151);font-family:var(--rt-font,'IBM Plex Mono',monospace);font-weight:600;font-size:var(--rt-fs,12px);background:var(--rt-pct-bg,transparent);}
-.rt .dr .dsh{text-align:center;color:#b0bec5;}
-.rt .dr:nth-child(even) td{background:var(--rt-even-bg,#f7fafc);}
-.rt .dr:nth-child(even) .nm{background:var(--rt-even-name-bg,#e8f0f8);}
-.rt .sr td{height:var(--rt-row-h,27px);padding:var(--rt-cell-pad,3px 8px);vertical-align:middle;border-bottom:1px solid #fde68a;background:var(--rt-saxa-bg,#fffcf0)!important;font-size:var(--rt-fs,12px);}
-.rt .sr .nm{font-weight:800;color:var(--rt-saxa-name-col,#7c3000);background:var(--rt-saxa-name-bg,#fef3d0)!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.rt .sr .nv{text-align:right;color:var(--rt-saxa-num-col,#6b3500);font-family:var(--rt-font,'IBM Plex Mono',monospace);font-weight:var(--rt-fw,800);font-size:var(--rt-fs,12px);}
-.rt .sr .pv{text-align:right;color:#92580a;font-family:var(--rt-font,'IBM Plex Mono',monospace);font-weight:600;font-size:var(--rt-fs,12px);}
-.rt .sr .dsh{text-align:center;color:#f0b429;}
-.rt .saxagap td{height:10px;background:#fff3cd!important;border-top:3px solid #f59e0b;padding:0;}
-.rt .tr td{height:var(--rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:var(--rt-panda-tot-bg,#1e3a6e)!important;border-top:2px solid #162d58;font-size:var(--rt-fs,12px);}
-.rt .tr .nm{color:var(--rt-panda-tot-name-col,#bfdbfe);font-weight:800;border-right:2px solid #2d5aa0;}
-.rt .tr .nv{text-align:right;color:var(--rt-panda-tot-num-col,#ffffff);font-family:var(--rt-font,'IBM Plex Mono',monospace);font-weight:800;font-size:var(--rt-fs,12px);}
-.rt .tr .pv{text-align:right;color:var(--rt-panda-tot-pct-col,#93c5fd);font-family:var(--rt-font,'IBM Plex Mono',monospace);font-weight:700;font-size:var(--rt-fs,12px);}
-.rt .str td{height:var(--rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:var(--rt-saxa-tot-bg,#78350f)!important;border-top:2px solid #92400e;font-size:var(--rt-fs,12px);}
-.rt .str .nm{color:var(--rt-saxa-tot-name-col,#fde68a);font-weight:800;border-right:2px solid #92400e;}
-.rt .str .nv{text-align:right;color:var(--rt-saxa-tot-num-col,#fef3c7);font-family:var(--rt-font,'IBM Plex Mono',monospace);font-weight:800;font-size:var(--rt-fs,12px);}
-.rt .str .pv{text-align:right;color:var(--rt-saxa-tot-pct-col,#fde68a);font-family:var(--rt-font,'IBM Plex Mono',monospace);font-weight:700;font-size:var(--rt-fs,12px);}
-.arr-up{display:inline-block;width:14px;font-size:14px;font-weight:900;color:#16a34a;vertical-align:middle;flex-shrink:0;}
-.arr-mid{display:inline-block;width:14px;font-size:14px;font-weight:900;color:#f59e0b;vertical-align:middle;flex-shrink:0;}
-.arr-dn{display:inline-block;width:14px;font-size:14px;font-weight:900;color:#dc2626;vertical-align:middle;flex-shrink:0;}
-.nv-inner{display:flex;align-items:center;justify-content:flex-end;gap:2px;width:100%;}
-.nv-val{flex:1;text-align:right;}
+table.rt th,table.rt td{padding:4px 8px;}
+.rt .gh th{font-weight:800;color:#fff;vertical-align:middle;text-align:center;}
+.rt .gh .lb{text-align:left;border-right:2px solid rgba(255,255,255,.3);}
+.rt .sh th{text-align:center;font-weight:700;padding:3px 8px;}
+.rt .sh .lb{text-align:left;border-right:2px solid rgba(0,0,0,.1);}
+.rt .dr .nm,.rt .sr .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.rt .dr .nv,.rt .sr .nv,.rt .tr .nv,.rt .str .nv{text-align:right;}
+.rt .dr .pv,.rt .sr .pv,.rt .tr .pv,.rt .str .pv{text-align:right;}
+.rt .dr .dsh,.rt .sr .dsh{text-align:center;color:#b0bec5;}
+.rt .saxagap td{height:10px;padding:0;}
+/* Nv inner — ox solda rəqəm sağda */
+.nv-inner{display:flex;align-items:center;justify-content:flex-end;gap:3px;width:100%;}
+.nv-val{text-align:right;}
 .rcftr{padding:7px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
 .rcftr span{color:#94a3b8;font-size:9px;font-weight:600;}
 .scrbtn{width:100%;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:12px;color:#0a1628;font-family:inherit;font-size:14px;font-weight:800;cursor:pointer;margin-top:4px;}
@@ -222,13 +197,12 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .imghint{color:rgba(255,255,255,.35);font-size:10px;margin-top:8px;text-align:center;}
 .mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:100;align-items:center;justify-content:center;padding:14px;}
 .mo.show{display:flex;}
-.mobox{background:#0f1f3d;border-radius:15px;padding:18px;width:100%;max-width:620px;max-height:90vh;overflow-y:auto;border:1px solid rgba(201,150,58,.2);}
+.mobox{background:#0f1f3d;border-radius:15px;padding:18px;width:100%;max-width:640px;max-height:90vh;overflow-y:auto;border:1px solid rgba(201,150,58,.2);}
 .mobox h3{color:#fff;font-size:15px;font-weight:800;margin-bottom:13px;}
 .mos{background:rgba(255,255,255,.05);border-radius:10px;padding:12px;margin-bottom:9px;border:1px solid rgba(255,255,255,.07);}
 .mosn{color:#c9963a;font-weight:800;font-size:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
 .mor2{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
 .mor3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
-.mor4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:7px;}
 .mof label{color:rgba(255,255,255,.4);font-size:9px;text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:3px;font-weight:700;}
 .mof input,.mof select{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 9px;font-family:inherit;font-size:12px;font-weight:600;color:#fff;outline:none;}
 .mof input[type=color]{padding:3px;height:36px;cursor:pointer;}
@@ -256,19 +230,22 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .period-sel label.on{background:rgba(201,150,58,.2);border-color:rgba(201,150,58,.4);color:#f0c060;}
 .saveallbtn{width:100%;padding:14px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);border:none;border-radius:12px;color:#fff;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;margin-top:10px;}
 .saveallbtn:disabled{opacity:.45;cursor:not-allowed;}
-/* Cədvəl görünüş redaktoru - Excel stilindəki preview */
-.xl-preview-wrap{overflow-x:auto;border-radius:8px;margin-top:10px;}
-.xl-section{background:rgba(255,255,255,.04);border-radius:10px;padding:12px;margin-bottom:10px;border:1px solid rgba(255,255,255,.07);}
-.xl-section-title{color:#c9963a;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px;}
-.xl-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04);}
+/* Görünüş redaktoru */
+.xl-wrap{overflow-x:auto;border-radius:8px;margin-top:8px;}
+.xl-sec{background:rgba(255,255,255,.04);border-radius:10px;padding:11px;margin-bottom:8px;border:1px solid rgba(255,255,255,.07);}
+.xl-sec-title{color:#c9963a;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;margin-bottom:9px;}
+.xl-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);flex-wrap:wrap;}
 .xl-row:last-child{border-bottom:none;}
-.xl-row-label{font-size:11px;color:rgba(255,255,255,.6);font-weight:600;min-width:100px;}
-.xl-row-controls{display:flex;gap:6px;flex:1;flex-wrap:wrap;align-items:center;}
-.xl-ctrl{display:flex;flex-direction:column;gap:2px;}
-.xl-ctrl label{font-size:8px;color:rgba(255,255,255,.35);font-weight:700;text-transform:uppercase;}
-.xl-ctrl input[type=color]{width:32px;height:28px;padding:2px;border:1.5px solid rgba(255,255,255,.12);border-radius:6px;background:rgba(255,255,255,.07);cursor:pointer;}
-.xl-ctrl select{background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:6px;padding:4px 6px;font-size:10px;font-weight:600;color:#fff;outline:none;font-family:inherit;}
-.xl-ctrl select option{background:#0f1f3d;}
+.xl-lbl{font-size:11px;color:rgba(255,255,255,.65);font-weight:600;min-width:110px;flex-shrink:0;}
+.xl-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;}
+.xl-ctrl{display:flex;flex-direction:column;gap:3px;}
+.xl-ctrl label{font-size:8px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;letter-spacing:.3px;}
+.xl-ctrl input[type=color]{width:36px;height:30px;padding:2px;border:1.5px solid rgba(255,255,255,.15);border-radius:6px;background:rgba(255,255,255,.07);cursor:pointer;outline:none;}
+.xl-ctrl input[type=color]:focus{border-color:#c9963a;}
+.xl-ctrl select{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:6px;padding:5px 7px;font-size:11px;font-weight:600;color:#fff;outline:none;cursor:pointer;font-family:inherit;}
+.xl-ctrl select:focus{border-color:#c9963a;}
+.xl-ctrl select option{background:#0f1f3d;color:#fff;}
+/* Bayram */
 .hday-item{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border-radius:9px;padding:9px 11px;margin-bottom:7px;border:1px solid rgba(255,255,255,.06);}
 .hday-emoji{font-size:20px;flex-shrink:0;}
 .hday-info{flex:1;min-width:0;}
@@ -395,12 +372,12 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 <!-- Bayram Modal -->
 <div class="mo" id="mo-hol"><div class="mobox">
   <h3>🎉 Bayram İdarəetməsi</h3>
-  <div class="mosect">Azərbaycan Milli Bayramları — tarixi dəyiş</div>
+  <div class="mosect">Azərbaycan Milli Bayramları — ✏️ tarix dəyiş · checkbox aç/bağla</div>
   <div id="hol-preset-list"></div>
   <div class="mosect">Xüsusi Bayram Əlavə Et</div>
   <div class="mos">
     <div class="mor2" style="margin-bottom:8px">
-      <div class="mof"><label>Bayram adı</label><input type="text" id="hd-name" placeholder="Məsələn: Şirkət ili" style="font-family:inherit"></div>
+      <div class="mof"><label>Bayram adı</label><input type="text" id="hd-name" placeholder="Şirkət ili" style="font-family:inherit"></div>
       <div class="mof"><label>Emoji</label><input type="text" id="hd-emoji" placeholder="🎊" style="font-family:inherit;font-size:20px;text-align:center"></div>
     </div>
     <div class="mor3" style="margin-bottom:8px">
@@ -416,16 +393,15 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
   <button class="moclose" onclick="closeMo('mo-hol')">Bağla</button>
 </div></div>
 
-<!-- Görünüş Redaktoru — Excel üslubu -->
+<!-- Görünüş Redaktoru -->
 <div class="mo" id="mo-style"><div class="mobox">
-  <h3>🎨 Cədvəl Görünüşü — Excel Redaktoru</h3>
+  <h3>🎨 Cədvəl Görünüşü</h3>
 
-  <!-- Ümumi parametrlər -->
-  <div class="xl-section">
-    <div class="xl-section-title">Ümumi</div>
+  <div class="xl-sec">
+    <div class="xl-sec-title">Şrift və Ölçü</div>
     <div class="xl-row">
-      <div class="xl-row-label">Rəqəm şrifti</div>
-      <div class="xl-row-controls">
+      <div class="xl-lbl">Rəqəm şrifti</div>
+      <div class="xl-controls">
         <div class="xl-ctrl"><label>Şrift</label>
           <select id="st-font" onchange="liveStyle()">
             <option value="'IBM Plex Mono',monospace">IBM Plex Mono</option>
@@ -450,8 +426,8 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
         </div>
         <div class="xl-ctrl"><label>Qalınlıq</label>
           <select id="st-fw" onchange="liveStyle()">
-            <option value="400">400</option><option value="500">500</option><option value="600">600</option>
-            <option value="700">700</option><option value="800" selected>800</option><option value="900">900</option>
+            <option value="400">400 — nazik</option><option value="500">500</option><option value="600">600</option>
+            <option value="700">700 — qalın</option><option value="800" selected>800</option><option value="900">900 — ən qalın</option>
           </select>
         </div>
         <div class="xl-ctrl"><label>Sətir hünd.</label>
@@ -463,55 +439,18 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
       </div>
     </div>
     <div class="xl-row">
-      <div class="xl-row-label">Kənar xətti</div>
-      <div class="xl-row-controls">
-        <div class="xl-ctrl"><label>Rəng</label><input type="color" id="st-border" value="#cdd5e0" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Cərgə yüksəkliyi</label>
-          <select id="st-tot-h" onchange="liveStyle()">
-            <option value="24px">24px</option><option value="27px">27px</option><option value="28px" selected>28px</option><option value="32px">32px</option>
+      <div class="xl-lbl">Şöbə adı şrifti</div>
+      <div class="xl-controls">
+        <div class="xl-ctrl"><label>Şrift</label>
+          <select id="st-name-font" onchange="liveStyle()">
+            <option value="'Inter',sans-serif" selected>Inter</option>
+            <option value="Arial,sans-serif">Arial</option>
+            <option value="'IBM Plex Mono',monospace">IBM Plex Mono</option>
+            <option value="'Roboto Mono',monospace">Roboto Mono</option>
+            <option value="'Fira Code',monospace">Fira Code</option>
+            <option value="Georgia,serif">Georgia</option>
           </select>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Başlıq sütunları -->
-  <div class="xl-section">
-    <div class="xl-section-title">Başlıq Rəngləri (Tarix sütunları)</div>
-    <div class="xl-row">
-      <div class="xl-row-label">Günlük (1-ci)</div>
-      <div class="xl-row-controls">
-        <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h1-bg" value="#1d4ed8" onchange="liveStyle()"></div>
-      </div>
-    </div>
-    <div class="xl-row">
-      <div class="xl-row-label">Cari ay (2-ci)</div>
-      <div class="xl-row-controls">
-        <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h2-bg" value="#c2410c" onchange="liveStyle()"></div>
-      </div>
-    </div>
-    <div class="xl-row">
-      <div class="xl-row-label">Keçən il (3-cü)</div>
-      <div class="xl-row-controls">
-        <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h3-bg" value="#15803d" onchange="liveStyle()"></div>
-      </div>
-    </div>
-    <div class="xl-row">
-      <div class="xl-row-label">2 il əvvəl (4-cü)</div>
-      <div class="xl-row-controls">
-        <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h4-bg" value="#6d28d9" onchange="liveStyle()"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Panda sətirləri -->
-  <div class="xl-section">
-    <div class="xl-section-title">Panda Sətirləri</div>
-    <div class="xl-row">
-      <div class="xl-row-label">Şöbə adı sütunu</div>
-      <div class="xl-row-controls">
-        <div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-name-col" value="#0f1f3d" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-name-bg" value="#f4f8fc" onchange="liveStyle()"></div>
         <div class="xl-ctrl"><label>Qalınlıq</label>
           <select id="st-name-fw" onchange="liveStyle()">
             <option value="600">600</option><option value="700">700</option><option value="800" selected>800</option><option value="900">900</option>
@@ -519,80 +458,109 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="xl-sec">
+    <div class="xl-sec-title">Başlıq Rəngləri</div>
     <div class="xl-row">
-      <div class="xl-row-label">Satış/Mənfəət</div>
-      <div class="xl-row-controls">
+      <div class="xl-lbl">Günlük (1-ci)</div>
+      <div class="xl-controls"><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h1-bg" value="#1d4ed8" onchange="liveStyle()"></div></div>
+    </div>
+    <div class="xl-row">
+      <div class="xl-lbl">Cari ay (2-ci)</div>
+      <div class="xl-controls"><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h2-bg" value="#c2410c" onchange="liveStyle()"></div></div>
+    </div>
+    <div class="xl-row">
+      <div class="xl-lbl">Keçən il (3-cü)</div>
+      <div class="xl-controls"><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h3-bg" value="#15803d" onchange="liveStyle()"></div></div>
+    </div>
+    <div class="xl-row">
+      <div class="xl-lbl">2 il əvvəl (4-cü)</div>
+      <div class="xl-controls"><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h4-bg" value="#6d28d9" onchange="liveStyle()"></div></div>
+    </div>
+  </div>
+
+  <div class="xl-sec">
+    <div class="xl-sec-title">Panda Sətirləri</div>
+    <div class="xl-row">
+      <div class="xl-lbl">Şöbə adı</div>
+      <div class="xl-controls">
+        <div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-name-col" value="#0f1f3d" onchange="liveStyle()"></div>
+        <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-name-bg" value="#f4f8fc" onchange="liveStyle()"></div>
+      </div>
+    </div>
+    <div class="xl-row">
+      <div class="xl-lbl">Satış/Mənfəət</div>
+      <div class="xl-controls">
         <div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-num-col" value="#0f1f3d" onchange="liveStyle()"></div>
         <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-num-bg" value="#ffffff" onchange="liveStyle()"></div>
       </div>
     </div>
     <div class="xl-row">
-      <div class="xl-row-label">Faiz sütunu</div>
-      <div class="xl-row-controls">
+      <div class="xl-lbl">Faiz sütunu</div>
+      <div class="xl-controls">
         <div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-pct-col" value="#374151" onchange="liveStyle()"></div>
         <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-pct-bg" value="#ffffff" onchange="liveStyle()"></div>
       </div>
     </div>
     <div class="xl-row">
-      <div class="xl-row-label">Cüt cərgə fonu</div>
-      <div class="xl-row-controls">
-        <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-even-bg" value="#f7fafc" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Ad fonu</label><input type="color" id="st-even-name-bg" value="#e8f0f8" onchange="liveStyle()"></div>
+      <div class="xl-lbl">Cüt cərgə</div>
+      <div class="xl-controls">
+        <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-even-bg" value="#f0f7ff" onchange="liveStyle()"></div>
+        <div class="xl-ctrl"><label>Ad fonu</label><input type="color" id="st-even-name-bg" value="#e0edf8" onchange="liveStyle()"></div>
       </div>
     </div>
     <div class="xl-row">
-      <div class="xl-row-label">Ümumi Panda sətri</div>
-      <div class="xl-row-controls">
+      <div class="xl-lbl">Ümumi Panda</div>
+      <div class="xl-controls">
         <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-ptot-bg" value="#1e3a6e" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Ad mətn</label><input type="color" id="st-ptot-ncol" value="#bfdbfe" onchange="liveStyle()"></div>
+        <div class="xl-ctrl"><label>Ad</label><input type="color" id="st-ptot-ncol" value="#bfdbfe" onchange="liveStyle()"></div>
         <div class="xl-ctrl"><label>Rəqəm</label><input type="color" id="st-ptot-vcol" value="#ffffff" onchange="liveStyle()"></div>
         <div class="xl-ctrl"><label>Faiz</label><input type="color" id="st-ptot-pcol" value="#93c5fd" onchange="liveStyle()"></div>
       </div>
     </div>
   </div>
 
-  <!-- Saxa sətirləri -->
-  <div class="xl-section">
-    <div class="xl-section-title">Saxa Sətirləri</div>
+  <div class="xl-sec">
+    <div class="xl-sec-title">Saxa Sətirləri</div>
     <div class="xl-row">
-      <div class="xl-row-label">Saxa şöbə adı</div>
-      <div class="xl-row-controls">
+      <div class="xl-lbl">Saxa şöbə adı</div>
+      <div class="xl-controls">
         <div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-saxa-ncol" value="#7c3000" onchange="liveStyle()"></div>
         <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-saxa-nbg" value="#fef3d0" onchange="liveStyle()"></div>
       </div>
     </div>
     <div class="xl-row">
-      <div class="xl-row-label">Saxa rəqəmlər</div>
-      <div class="xl-row-controls">
+      <div class="xl-lbl">Saxa rəqəmlər</div>
+      <div class="xl-controls">
         <div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-saxa-vcol" value="#6b3500" onchange="liveStyle()"></div>
         <div class="xl-ctrl"><label>Sətir fonu</label><input type="color" id="st-saxa-bg" value="#fffcf0" onchange="liveStyle()"></div>
       </div>
     </div>
     <div class="xl-row">
-      <div class="xl-row-label">Ümumi Saxa sətri</div>
-      <div class="xl-row-controls">
+      <div class="xl-lbl">Ümumi Saxa</div>
+      <div class="xl-controls">
         <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-stot-bg" value="#78350f" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Ad mətn</label><input type="color" id="st-stot-ncol" value="#fde68a" onchange="liveStyle()"></div>
+        <div class="xl-ctrl"><label>Ad</label><input type="color" id="st-stot-ncol" value="#fde68a" onchange="liveStyle()"></div>
         <div class="xl-ctrl"><label>Rəqəm</label><input type="color" id="st-stot-vcol" value="#fef3c7" onchange="liveStyle()"></div>
         <div class="xl-ctrl"><label>Faiz</label><input type="color" id="st-stot-pcol" value="#fde68a" onchange="liveStyle()"></div>
       </div>
     </div>
   </div>
 
-  <!-- Oxlar -->
-  <div class="xl-section">
-    <div class="xl-section-title">Oxlar və Sütun Eni</div>
+  <div class="xl-sec">
+    <div class="xl-sec-title">Oxlar və Sütun Eni</div>
     <div class="xl-row">
-      <div class="xl-row-label">Oxlar</div>
-      <div class="xl-row-controls">
-        <div class="xl-ctrl"><label>↑ Yaşıl</label><input type="color" id="st-arr-up" value="#16a34a" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>→ Narıncı</label><input type="color" id="st-arr-mid" value="#f59e0b" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>↓ Qırmızı</label><input type="color" id="st-arr-dn" value="#dc2626" onchange="liveStyle()"></div>
+      <div class="xl-lbl">Ox rəngləri</div>
+      <div class="xl-controls">
+        <div class="xl-ctrl"><label>↑ Yuxarı</label><input type="color" id="st-arr-up" value="#16a34a" onchange="liveStyle()"></div>
+        <div class="xl-ctrl"><label>→ Orta</label><input type="color" id="st-arr-mid" value="#f59e0b" onchange="liveStyle()"></div>
+        <div class="xl-ctrl"><label>↓ Aşağı</label><input type="color" id="st-arr-dn" value="#dc2626" onchange="liveStyle()"></div>
       </div>
     </div>
     <div class="xl-row">
-      <div class="xl-row-label">Sütun eni</div>
-      <div class="xl-row-controls">
+      <div class="xl-lbl">Sütun eni</div>
+      <div class="xl-controls">
         <div class="xl-ctrl"><label>Şöbə adı</label>
           <select id="st-namew" onchange="liveStyle()">
             <option value="90px">90px</option><option value="100px">100px</option><option value="115px" selected>115px</option><option value="130px">130px</option><option value="145px">145px</option>
@@ -612,22 +580,12 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
     </div>
   </div>
 
-  <!-- Önizləmə -->
-  <div class="xl-section-title" style="margin-top:4px">Canlı Önizləmə</div>
-  <div class="xl-preview-wrap">
-    <table class="rt" id="style-prev-tbl" style="table-layout:fixed;white-space:nowrap;border-collapse:collapse;">
-      <tr class="gh"><th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th><th colspan="3" class="hb">8 aprel 2026</th><th colspan="3" class="ho">1-8 aprel 2026</th></tr>
-      <tr class="sh"><th class="sb col-num">Satış</th><th class="sb col-num">Mənfəət</th><th class="sb col-pct">Faiz</th><th class="so col-num">Satış</th><th class="so col-num">Mənfəət</th><th class="so col-pct">Faiz</th></tr>
-      <tr class="dr"><td class="nm">Panda 2</td><td class="nv"><div class="nv-inner"><span class="arr-up">↑</span><span class="nv-val">38.259</span></div></td><td class="nv">15.420</td><td class="pv">66%</td><td class="nv"><div class="nv-inner"><span class="arr-mid">→</span><span class="nv-val">54.500</span></div></td><td class="nv">22.000</td><td class="pv">67.3%</td></tr>
-      <tr class="dr"><td class="nm">Panda 3</td><td class="nv"><div class="nv-inner"><span class="arr-up">↑</span><span class="nv-val">42.100</span></div></td><td class="nv">18.200</td><td class="pv">72%</td><td class="nv"><div class="nv-inner"><span class="arr-dn">↓</span><span class="nv-val">61.800</span></div></td><td class="nv">26.100</td><td class="pv">69.1%</td></tr>
-      <tr class="tr"><td class="nm">Ümumi Panda</td><td class="nv">80.359</td><td class="nv">33.620</td><td class="pv">68.2%</td><td class="nv">116.300</td><td class="nv">48.100</td><td class="pv">68.2%</td></tr>
-      <tr class="saxagap"><td colspan="8"></td></tr>
-      <tr class="sr"><td class="nm">Saxa 1 (Əcəmi)</td><td class="nv">12.400</td><td class="nv">4.800</td><td class="pv">58%</td><td class="nv">18.500</td><td class="nv">7.200</td><td class="pv">60%</td></tr>
-      <tr class="str"><td class="nm">Ümumi Saxa</td><td class="nv">12.400</td><td class="nv">4.800</td><td class="pv">58%</td><td class="nv">18.500</td><td class="nv">7.200</td><td class="pv">60%</td></tr>
-    </table>
+  <div class="xl-sec-title" style="margin-bottom:8px">Canlı Önizləmə</div>
+  <div class="xl-wrap">
+    <table id="style-prev-tbl" style="border-collapse:collapse;white-space:nowrap;table-layout:fixed;"></table>
   </div>
-  <button class="mosave" style="margin-top:12px" onclick="saveStyle()">✓ Saxla</button>
-  <button class="moclose" style="margin-top:4px;background:rgba(239,68,68,.15);color:#fca5a5" onclick="resetStyle()">↺ Sıfırla</button>
+  <button class="mosave" style="margin-top:12px" onclick="saveStyle()">✓ Görünüşü Saxla</button>
+  <button class="moclose" style="margin-top:4px;background:rgba(239,68,68,.15);color:#fca5a5" onclick="resetStyle()">↺ Sıfırla (Default)</button>
   <button class="moclose" onclick="closeMo('mo-style')">Bağla</button>
 </div></div>
 
@@ -643,20 +601,19 @@ const PCOL=['#2E75B6','#C55A11','#375623','#7030A0'];
 let ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
 let curSid=null,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
 
-// ── AZƏRBAYCAN MİLLİ BAYRAMLARI — DEFAULT siyahısı ──────────────────────────
-// Admin yalnız tarixlərini dəyişir. 2026-cı il tarixi əlavə edilib (Ramazan,Qurban İslam təqvimi ilə dəyişir)
+// ── AZƏRBAYCAN MİLLİ BAYRAMLARI ───────────────────────────────────────────────
 const PRESET_HOLS=[
-  {id:'novruz',   name:'Novruz Bayramı',      emoji:'🌸', from:'2026-03-20',to:'2026-03-26', color:'#16a34a', msg:'Novruz mübarək! Yeni il uğurlar gətirsin!'},
-  {id:'ramazan',  name:'Ramazan Bayramı',      emoji:'🌙', from:'2026-03-30',to:'2026-04-01', color:'#1d4ed8', msg:'Ramazan bayramınız mübarək olsun!'},
-  {id:'qurban',   name:'Qurban Bayramı',       emoji:'⭐', from:'2026-06-06',to:'2026-06-09', color:'#92400e', msg:'Qurban bayramınız mübarək olsun!'},
-  {id:'zafer',    name:'Zəfər Günü',           emoji:'🏆', from:'2026-11-08',to:'2026-11-08', color:'#1e3a6e', msg:'Zəfər Günümüz mübarək!'},
-  {id:'respublika',name:'Respublika Günü',     emoji:'🇦🇿', from:'2026-05-28',to:'2026-05-28', color:'#3b82f6', msg:'Respublika Günümüz mübarək!'},
-  {id:'istiqlal', name:'İstiqlal Günü',        emoji:'🇦🇿', from:'2026-10-18',to:'2026-10-18', color:'#2563eb', msg:'İstiqlal Günümüz mübarək!'},
-  {id:'milli',    name:'Milli Birlik Günü',    emoji:'🤝', from:'2026-06-15',to:'2026-06-15', color:'#7c3aed', msg:'Milli Birlik Günümüz mübarək!'},
-  {id:'yasgin',   name:'Yaş Günü (Heydər)',    emoji:'💐', from:'2026-05-10',to:'2026-05-10', color:'#0891b2', msg:'Ulu öndərimizi ehtiramla yad edirik'},
-  {id:'konstitusiya',name:'Konstitusiya Günü', emoji:'📜', from:'2026-11-12',to:'2026-11-12', color:'#0369a1', msg:'Konstitusiya Günümüz mübarək!'},
-  {id:'yasil',    name:'Beynəlxalq Qadınlar Günü',emoji:'💐',from:'2026-03-08',to:'2026-03-08',color:'#db2777',msg:'8 Mart mübarək!'},
-  {id:'yeniyil',  name:'Yeni İl',              emoji:'🎆', from:'2025-12-31',to:'2026-01-02', color:'#c9963a', msg:'Yeni iliniz mübarək!'},
+  {id:'novruz',   name:'Novruz Bayramı',           emoji:'🌸',from:'2026-03-20',to:'2026-03-26',color:'#16a34a',msg:'Novruz mübarək! Yeni il uğurlar gətirsin!'},
+  {id:'ramazan',  name:'Ramazan Bayramı',           emoji:'🌙',from:'2026-03-30',to:'2026-04-01',color:'#1d4ed8',msg:'Ramazan bayramınız mübarək olsun!'},
+  {id:'qurban',   name:'Qurban Bayramı',            emoji:'⭐',from:'2026-06-06',to:'2026-06-09',color:'#92400e',msg:'Qurban bayramınız mübarək olsun!'},
+  {id:'zafer',    name:'Zəfər Günü',                emoji:'🏆',from:'2026-11-08',to:'2026-11-08',color:'#1e3a6e',msg:'8 Noyabr — Zəfər Günümüz mübarək!'},
+  {id:'respublika',name:'Respublika Günü',          emoji:'🇦🇿',from:'2026-05-28',to:'2026-05-28',color:'#3b82f6',msg:'28 May — Respublika Günümüz mübarək!'},
+  {id:'istiqlal', name:'İstiqlal Günü',             emoji:'🇦🇿',from:'2026-10-18',to:'2026-10-18',color:'#2563eb',msg:'18 Oktyabr — İstiqlal Günümüz mübarək!'},
+  {id:'milli',    name:'Milli Birlik Günü',         emoji:'🤝',from:'2026-06-15',to:'2026-06-15',color:'#7c3aed',msg:'15 İyun — Milli Birlik Günümüz mübarək!'},
+  {id:'konstitusiya',name:'Konstitusiya Günü',      emoji:'📜',from:'2026-11-12',to:'2026-11-12',color:'#0369a1',msg:'12 Noyabr — Konstitusiya Günümüz mübarək!'},
+  {id:'qadin',    name:'Beynəlxalq Qadınlar Günü', emoji:'💐',from:'2026-03-08',to:'2026-03-08',color:'#db2777',msg:'8 Mart mübarək!'},
+  {id:'yeniyil',  name:'Yeni İl',                  emoji:'🎆',from:'2025-12-31',to:'2026-01-02',color:'#c9963a',msg:'Yeni iliniz mübarək! 🎊'},
+  {id:'silah',    name:'Silahlı Qüvvələr Günü',    emoji:'🎖️',from:'2026-06-26',to:'2026-06-26',color:'#1e3a6e',msg:'Silahlı Qüvvələr Günü mübarək!'},
 ];
 
 // ── BAYRAM SİSTEMİ ─────────────────────────────────────────────────────────────
@@ -668,27 +625,32 @@ function isLight(hex){if(!hex||hex.length<7)return false;const r=parseInt(hex.sl
 
 function checkHol(){
   const today=todayStr();
-  // Əvvəl özel bayramları yoxla, sonra presetlərə bax
   const customActive=getCustomHols().find(h=>h.from<=today&&today<=h.to);
-  const presetActive=getHols().find(h=>h.active&&h.from<=today&&today<=h.to);
+  const savedPresets=getHols();
+  const presetActive=PRESET_HOLS.find(ph=>{
+    const sv=savedPresets.find(s=>s.id===ph.id);
+    const h=sv?{...ph,...sv}:ph;
+    return h.active!==false&&h.from<=today&&today<=h.to;
+  });
   const active=customActive||presetActive;
   const ban=document.getElementById('hol-banner');
   if(!active){ban.classList.remove('show');return;}
-  ban.style.background=active.color||'#c9963a';
-  ban.style.color=isLight(active.color||'#c9963a')?'#0a1628':'#fff';
-  document.getElementById('hb-e1').textContent=active.emoji||'🎉';
-  document.getElementById('hb-e2').textContent=active.emoji||'🎉';
-  document.getElementById('hb-txt').textContent=`${active.name} — ${active.msg||'Mübarək olsun!'}`;
+  const savedH=savedPresets.find(s=>s.id===active.id);
+  const hData=savedH?{...active,...savedH}:active;
+  ban.style.background=hData.color||'#c9963a';
+  ban.style.color=isLight(hData.color||'#c9963a')?'#0a1628':'#fff';
+  document.getElementById('hb-e1').textContent=hData.emoji||'🎉';
+  document.getElementById('hb-e2').textContent=hData.emoji||'🎉';
+  document.getElementById('hb-txt').textContent=`${hData.name} — ${hData.msg||'Mübarək olsun!'}`;
   ban.classList.add('show');
-  const shownKey=`pk_hd_${active.id}_${today}`;
-  if(!localStorage.getItem(shownKey)){localStorage.setItem(shownKey,'1');setTimeout(()=>showHolPopup(active),900);}
+  const shownKey=`pk_hd_${hData.id}_${today}`;
+  if(!localStorage.getItem(shownKey)){localStorage.setItem(shownKey,'1');setTimeout(()=>showHolPopup(hData),900);}
 }
-
 function showHolPopup(h){
   document.getElementById('hp-emoji').textContent=h.emoji||'🎉';
   document.getElementById('hp-title').textContent=h.name;
   document.getElementById('hp-msg').textContent=h.msg||'Mübarək olsun!';
-  const box=document.getElementById('hol-popup-box');box.style.borderColor=(h.color||'#c9963a')+'55';
+  document.getElementById('hol-popup-box').style.borderColor=(h.color||'#c9963a')+'55';
   document.getElementById('hol-popup').classList.add('show');startConfetti(h.color||'#c9963a');
 }
 function closeHolPopup(){document.getElementById('hol-popup').classList.remove('show');stopConfetti();}
@@ -703,34 +665,26 @@ function startConfetti(mc){
 }
 function stopConfetti(){if(_confAnim)cancelAnimationFrame(_confAnim);const cv=document.getElementById('confetti-canvas');cv.getContext('2d').clearRect(0,0,cv.width,cv.height);}
 
-function openHolMo(){
-  renderPresetList();renderCustomList();document.getElementById('mo-hol').classList.add('show');
-}
-
+function openHolMo(){renderPresetList();renderCustomList();document.getElementById('mo-hol').classList.add('show');}
 function renderPresetList(){
-  // Preset bayramları göstər — CFG.holidays-dan mövcud olanları tap, yoxdursa default istifadə et
-  const saved=getHols();
-  const today=todayStr();
+  const saved=getHols();const today=todayStr();
   let h='';
   PRESET_HOLS.forEach(ph=>{
-    const saved_h=saved.find(s=>s.id===ph.id)||{...ph,active:true};
-    const isActive=saved_h.active!==false&&saved_h.from<=today&&today<=saved_h.to;
+    const sv=saved.find(s=>s.id===ph.id);const hd=sv?{...ph,...sv}:ph;
+    const isActive=hd.active!==false&&hd.from<=today&&today<=hd.to;
     h+=`<div class="hday-item ${isActive?'hday-active':''}">
-      <div class="hday-emoji">${saved_h.emoji}</div>
+      <div class="hday-emoji">${hd.emoji}</div>
       <div class="hday-info">
-        <div class="hday-name">${saved_h.name}${isActive?' <span style="color:#10b981;font-size:9px">● Aktiv</span>':''}</div>
-        <div class="hday-date">${saved_h.from} → ${saved_h.to}</div>
+        <div class="hday-name">${hd.name}${isActive?' <span style="color:#10b981;font-size:9px">● Aktiv</span>':''}</div>
+        <div class="hday-date">${hd.from} → ${hd.to}</div>
       </div>
-      <div class="hday-swatch" style="background:${saved_h.color}"></div>
-      <button class="delbtn" style="background:rgba(59,130,246,.15);color:#93c5fd" onclick="editPresetHol('${ph.id}')">✏️</button>
-      <div class="cr" style="margin:0;padding:0;background:transparent">
-        <input type="checkbox" ${saved_h.active!==false?'checked':''} onchange="togglePresetHol('${ph.id}',this.checked)" style="cursor:pointer;transform:scale(1.2)">
-      </div>
+      <div class="hday-swatch" style="background:${hd.color}"></div>
+      <button class="delbtn" style="background:rgba(59,130,246,.15);color:#93c5fd;font-size:10px;padding:4px 8px" onclick="editPresetHol('${ph.id}')">✏️ Tarix</button>
+      <input type="checkbox" ${hd.active!==false?'checked':''} onchange="togglePresetHol('${ph.id}',this.checked)" style="cursor:pointer;transform:scale(1.3);flex-shrink:0;accent-color:#c9963a">
     </div>`;
   });
   document.getElementById('hol-preset-list').innerHTML=h;
 }
-
 function renderCustomList(){
   const list=getCustomHols();const today=todayStr();
   if(!list.length){document.getElementById('hday-custom-list').innerHTML='<div style="color:rgba(255,255,255,.3);font-size:12px;padding:8px 0">Xüsusi bayram yoxdur</div>';return;}
@@ -745,24 +699,24 @@ function renderCustomList(){
     </div>`;
   }).join('');
 }
-
-// Preset bayramın tarixlərini redaktə et
 function editPresetHol(id){
-  const ph=PRESET_HOLS.find(p=>p.id===id);const saved=getHols();const sh=saved.find(s=>s.id===id)||{...ph};
-  const newFrom=prompt(`${ph.name}\nBaşlama tarixi (YYYY-MM-DD):`,sh.from);if(!newFrom)return;
-  const newTo=prompt('Bitmə tarixi (YYYY-MM-DD):',sh.to);if(!newTo)return;
-  savePresetHolDates(id,newFrom,newTo);
+  const ph=PRESET_HOLS.find(p=>p.id===id);const saved=getHols();const sh=saved.find(s=>s.id===id)||ph;
+  const nf=prompt(`${ph.name}\nBaşlama tarixi (YYYY-MM-DD):`,sh.from);if(!nf)return;
+  const nt=prompt('Bitmə tarixi (YYYY-MM-DD):',sh.to);if(!nt)return;
+  savePresetDates(id,nf,nt);
 }
-async function savePresetHolDates(id,from,to){
+async function savePresetDates(id,from,to){
   const {records,sf,cfg}=await rBin();if(!cfg.holidays)cfg.holidays=[];
-  const idx=cfg.holidays.findIndex(h=>h.id===id);const ph=PRESET_HOLS.find(p=>p.id===id);
+  const ph=PRESET_HOLS.find(p=>p.id===id);
+  const idx=cfg.holidays.findIndex(h=>h.id===id);
   const entry={...(cfg.holidays[idx]||ph),id,from,to,active:true};
   if(idx>=0)cfg.holidays[idx]=entry;else cfg.holidays.push(entry);
   CFG=cfg;await wBin(records,sf,cfg);renderPresetList();checkHol();
 }
 async function togglePresetHol(id,active){
   const {records,sf,cfg}=await rBin();if(!cfg.holidays)cfg.holidays=[];
-  const idx=cfg.holidays.findIndex(h=>h.id===id);const ph=PRESET_HOLS.find(p=>p.id===id);
+  const ph=PRESET_HOLS.find(p=>p.id===id);
+  const idx=cfg.holidays.findIndex(h=>h.id===id);
   const entry={...(cfg.holidays[idx]||ph),id,active};
   if(idx>=0)cfg.holidays[idx]=entry;else cfg.holidays.push(entry);
   CFG=cfg;await wBin(records,sf,cfg);renderPresetList();checkHol();
@@ -785,12 +739,15 @@ async function delCustomHol(i){
   cfg.customHolidays.splice(i,1);CFG=cfg;await wBin(records,sf,cfg);renderCustomList();checkHol();
 }
 
-// ── GÖRÜNÜŞ STİLİ ─────────────────────────────────────────────────────────────
+// ── GÖRÜNÜŞ STİLİ — INLINE TƏTBİQ ────────────────────────────────────────────
+// Problem həlli: CSS var() bəzən işləmir → bütün stillər birbaşa element.style ilə tətbiq olunur
 const DEF_STYLE={
-  font:"'IBM Plex Mono',monospace",fs:'12px',fw:'800',rh:'27px',totH:'28px',border:'#cdd5e0',
-  nameCol:'#0f1f3d',nameBg:'#f4f8fc',nameFw:'800',
-  numCol:'#0f1f3d',numBg:'#ffffff',pctCol:'#374151',pctBg:'#ffffff',
-  evenBg:'#f7fafc',evenNameBg:'#e8f0f8',
+  font:"'IBM Plex Mono',monospace",fs:'12px',fw:'800',rh:'27px',
+  nameFont:"'Inter',sans-serif",nameFw:'800',
+  nameCol:'#0f1f3d',nameBg:'#f4f8fc',
+  numCol:'#0f1f3d',numBg:'#ffffff',
+  pctCol:'#374151',pctBg:'#ffffff',
+  evenBg:'#f0f7ff',evenNameBg:'#e0edf8',
   ptotBg:'#1e3a6e',ptotNcol:'#bfdbfe',ptotVcol:'#ffffff',ptotPcol:'#93c5fd',
   saxaNcol:'#7c3000',saxaNbg:'#fef3d0',saxaVcol:'#6b3500',saxaBg:'#fffcf0',
   stotBg:'#78350f',stotNcol:'#fde68a',stotVcol:'#fef3c7',stotPcol:'#fde68a',
@@ -798,33 +755,83 @@ const DEF_STYLE={
   nameW:'115px',numW:'90px',pctW:'62px',
   h1bg:'#1d4ed8',h2bg:'#c2410c',h3bg:'#15803d',h4bg:'#6d28d9'
 };
-function gStyle(){try{return{...DEF_STYLE,...(JSON.parse(localStorage.getItem('pk_style')||'null')||{})};}catch{return{...DEF_STYLE};}}
+function gStyle(){
+  try{const s=JSON.parse(localStorage.getItem('pk_style')||'null');return s?{...DEF_STYLE,...s}:{...DEF_STYLE};}
+  catch{return{...DEF_STYLE};}
+}
 function svStyle(v){localStorage.setItem('pk_style',JSON.stringify(v));}
 
-function applyStyleToDOM(st){
-  document.querySelectorAll('table.rt').forEach(el=>{
-    const set=(k,v)=>el.style.setProperty(k,v);
-    set('--rt-font',st.font);set('--rt-fs',st.fs);set('--rt-fw',st.fw);set('--rt-row-h',st.rh);set('--rt-tot-h',st.totH||st.rh);set('--rt-border',st.border);
-    set('--rt-name-col',st.nameCol);set('--rt-name-bg',st.nameBg);set('--rt-name-fw',st.nameFw);
-    set('--rt-num-col',st.numCol);set('--rt-num-bg',st.numBg==='#ffffff'?'transparent':st.numBg);
-    set('--rt-pct-col',st.pctCol);set('--rt-pct-bg',st.pctBg==='#ffffff'?'transparent':st.pctBg);
-    set('--rt-even-bg',st.evenBg);set('--rt-even-name-bg',st.evenNameBg);
-    set('--rt-panda-tot-bg',st.ptotBg);set('--rt-panda-tot-name-col',st.ptotNcol);set('--rt-panda-tot-num-col',st.ptotVcol);set('--rt-panda-tot-pct-col',st.ptotPcol);
-    set('--rt-saxa-name-col',st.saxaNcol);set('--rt-saxa-name-bg',st.saxaNbg);set('--rt-saxa-num-col',st.saxaVcol);set('--rt-saxa-bg',st.saxaBg);
-    set('--rt-saxa-tot-bg',st.stotBg);set('--rt-saxa-tot-name-col',st.stotNcol);set('--rt-saxa-tot-num-col',st.stotVcol);set('--rt-saxa-tot-pct-col',st.stotPcol);
-    set('--rt-name-w',st.nameW);set('--rt-num-w',st.numW);set('--rt-pct-w',st.pctW);
-    set('--rt-h1-bg',st.h1bg);set('--rt-h2-bg',st.h2bg);set('--rt-h3-bg',st.h3bg);set('--rt-h4-bg',st.h4bg);
+// Cədvəl stilini birbaşa hər elementə tətbiq et
+function applyStyleToTable(tbl,st){
+  if(!tbl)return;
+  const fs=st.fs,fw=st.fw,rh=st.rh,font=st.font;
+  const nFont=st.nameFont,nFw=st.nameFw;
+
+  // Başlıq sütunları
+  tbl.querySelectorAll('tr.gh th.hb').forEach(el=>el.style.background=st.h1bg);
+  tbl.querySelectorAll('tr.gh th.ho').forEach(el=>el.style.background=st.h2bg);
+  tbl.querySelectorAll('tr.gh th.hg').forEach(el=>el.style.background=st.h3bg);
+  tbl.querySelectorAll('tr.gh th.hp').forEach(el=>el.style.background=st.h4bg);
+
+  // Sütun eni
+  tbl.querySelectorAll('col.col-name').forEach(el=>el.style.width=st.nameW);
+  tbl.querySelectorAll('col.col-num').forEach(el=>el.style.width=st.numW);
+  tbl.querySelectorAll('col.col-pct').forEach(el=>el.style.width=st.pctW);
+
+  // Adi data sətirləri
+  const drs=tbl.querySelectorAll('tr.dr');
+  drs.forEach((tr,i)=>{
+    tr.style.height=rh;
+    const nm=tr.querySelector('.nm');
+    if(nm){nm.style.color=st.nameCol;nm.style.background=i%2===1?st.evenNameBg:st.nameBg;nm.style.fontFamily=nFont;nm.style.fontWeight=nFw;}
+    tr.querySelectorAll('.nv').forEach(el=>{el.style.color=st.numCol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=i%2===1?st.evenBg:st.numBg;});
+    tr.querySelectorAll('.pv').forEach(el=>{el.style.color=st.pctCol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=i%2===1?st.evenBg:st.pctBg;});
   });
-  document.querySelectorAll('.arr-up').forEach(e=>e.style.color=st.arrUp);
-  document.querySelectorAll('.arr-mid').forEach(e=>e.style.color=st.arrMid);
-  document.querySelectorAll('.arr-dn').forEach(e=>e.style.color=st.arrDn);
+
+  // Saxa sətirləri
+  tbl.querySelectorAll('tr.sr').forEach(tr=>{
+    tr.style.height=rh;
+    const nm=tr.querySelector('.nm');
+    if(nm){nm.style.color=st.saxaNcol;nm.style.background=st.saxaNbg;nm.style.fontFamily=nFont;nm.style.fontWeight=nFw;}
+    tr.querySelectorAll('.nv').forEach(el=>{el.style.color=st.saxaVcol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=st.saxaBg;});
+    tr.querySelectorAll('.pv').forEach(el=>{el.style.color=st.saxaVcol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=st.saxaBg;});
+  });
+
+  // Ümumi Panda sətri
+  tbl.querySelectorAll('tr.tr').forEach(tr=>{
+    tr.style.height=rh;
+    const nm=tr.querySelector('.nm');if(nm){nm.style.color=st.ptotNcol;nm.style.background=st.ptotBg;nm.style.fontFamily=nFont;nm.style.fontWeight=nFw;}
+    tr.querySelectorAll('.nv').forEach(el=>{el.style.color=st.ptotVcol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=st.ptotBg;});
+    tr.querySelectorAll('.pv').forEach(el=>{el.style.color=st.ptotPcol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=st.ptotBg;});
+  });
+
+  // Ümumi Saxa sətri
+  tbl.querySelectorAll('tr.str').forEach(tr=>{
+    tr.style.height=rh;
+    const nm=tr.querySelector('.nm');if(nm){nm.style.color=st.stotNcol;nm.style.background=st.stotBg;nm.style.fontFamily=nFont;nm.style.fontWeight=nFw;}
+    tr.querySelectorAll('.nv').forEach(el=>{el.style.color=st.stotVcol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=st.stotBg;});
+    tr.querySelectorAll('.pv').forEach(el=>{el.style.color=st.stotPcol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=st.stotBg;});
+  });
+
+  // Ox rəngləri
+  tbl.querySelectorAll('.arr-up').forEach(e=>e.style.color=st.arrUp);
+  tbl.querySelectorAll('.arr-mid').forEach(e=>e.style.color=st.arrMid);
+  tbl.querySelectorAll('.arr-dn').forEach(e=>e.style.color=st.arrDn);
+}
+
+function applyStyleToAll(st){
+  // Bütün cədvəllərə tətbiq et
+  document.querySelectorAll('table.rt').forEach(tbl=>applyStyleToTable(tbl,st));
+  // Önizləmə
+  const prev=document.getElementById('style-prev-tbl');if(prev)applyStyleToTable(prev,st);
 }
 
 function readSI(){
   const g=id=>document.getElementById(id)?.value;
   return{
-    font:g('st-font')||DEF_STYLE.font,fs:g('st-fs')||DEF_STYLE.fs,fw:g('st-fw')||DEF_STYLE.fw,rh:g('st-rh')||DEF_STYLE.rh,totH:g('st-tot-h')||DEF_STYLE.totH,border:g('st-border')||DEF_STYLE.border,
-    nameCol:g('st-name-col')||DEF_STYLE.nameCol,nameBg:g('st-name-bg')||DEF_STYLE.nameBg,nameFw:g('st-name-fw')||DEF_STYLE.nameFw,
+    font:g('st-font')||DEF_STYLE.font,fs:g('st-fs')||DEF_STYLE.fs,fw:g('st-fw')||DEF_STYLE.fw,rh:g('st-rh')||DEF_STYLE.rh,
+    nameFont:g('st-name-font')||DEF_STYLE.nameFont,nameFw:g('st-name-fw')||DEF_STYLE.nameFw,
+    nameCol:g('st-name-col')||DEF_STYLE.nameCol,nameBg:g('st-name-bg')||DEF_STYLE.nameBg,
     numCol:g('st-num-col')||DEF_STYLE.numCol,numBg:g('st-num-bg')||DEF_STYLE.numBg,
     pctCol:g('st-pct-col')||DEF_STYLE.pctCol,pctBg:g('st-pct-bg')||DEF_STYLE.pctBg,
     evenBg:g('st-even-bg')||DEF_STYLE.evenBg,evenNameBg:g('st-even-name-bg')||DEF_STYLE.evenNameBg,
@@ -836,16 +843,16 @@ function readSI(){
     h1bg:g('st-h1-bg')||DEF_STYLE.h1bg,h2bg:g('st-h2-bg')||DEF_STYLE.h2bg,h3bg:g('st-h3-bg')||DEF_STYLE.h3bg,h4bg:g('st-h4-bg')||DEF_STYLE.h4bg
   };
 }
-function liveStyle(){applyStyleToDOM(readSI());}
-function saveStyle(){const st=readSI();svStyle(st);applyStyleToDOM(st);closeMo('mo-style');alert('✅ Görünüş saxlanıldı!');}
-function resetStyle(){svStyle({...DEF_STYLE});loadSI(DEF_STYLE);applyStyleToDOM(DEF_STYLE);}
-
+function liveStyle(){applyStyleToAll(readSI());}
+function saveStyle(){const st=readSI();svStyle(st);applyStyleToAll(st);closeMo('mo-style');alert('✅ Görünüş saxlanıldı!');}
+function resetStyle(){svStyle({...DEF_STYLE});loadSI(DEF_STYLE);applyStyleToAll(DEF_STYLE);}
 function loadSI(st){
-  const s=id=>document.getElementById(id);
-  const sv=(id,v)=>{if(s(id))s(id).value=v;};
-  sv('st-font',st.font);sv('st-fs',st.fs);sv('st-fw',st.fw);sv('st-rh',st.rh);sv('st-tot-h',st.totH||st.rh);sv('st-border',st.border);
-  sv('st-name-col',st.nameCol);sv('st-name-bg',st.nameBg);sv('st-name-fw',st.nameFw);
-  sv('st-num-col',st.numCol);sv('st-num-bg',st.numBg);sv('st-pct-col',st.pctCol);sv('st-pct-bg',st.pctBg);
+  const sv=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v;};
+  sv('st-font',st.font);sv('st-fs',st.fs);sv('st-fw',st.fw);sv('st-rh',st.rh);
+  sv('st-name-font',st.nameFont);sv('st-name-fw',st.nameFw);
+  sv('st-name-col',st.nameCol);sv('st-name-bg',st.nameBg);
+  sv('st-num-col',st.numCol);sv('st-num-bg',st.numBg);
+  sv('st-pct-col',st.pctCol);sv('st-pct-bg',st.pctBg);
   sv('st-even-bg',st.evenBg);sv('st-even-name-bg',st.evenNameBg);
   sv('st-ptot-bg',st.ptotBg);sv('st-ptot-ncol',st.ptotNcol);sv('st-ptot-vcol',st.ptotVcol);sv('st-ptot-pcol',st.ptotPcol);
   sv('st-saxa-ncol',st.saxaNcol);sv('st-saxa-nbg',st.saxaNbg);sv('st-saxa-vcol',st.saxaVcol);sv('st-saxa-bg',st.saxaBg);
@@ -854,9 +861,31 @@ function loadSI(st){
   sv('st-namew',st.nameW);sv('st-numw',st.numW);sv('st-pctw',st.pctW);
   sv('st-h1-bg',st.h1bg);sv('st-h2-bg',st.h2bg);sv('st-h3-bg',st.h3bg);sv('st-h4-bg',st.h4bg);
 }
-function openStyleMo(){const st=gStyle();loadSI(st);applyStyleToDOM(st);document.getElementById('mo-style').classList.add('show');}
-(()=>applyStyleToDOM(gStyle()))();
+function openStyleMo(){
+  const st=gStyle();loadSI(st);
+  buildPrevTbl();
+  setTimeout(()=>applyStyleToAll(st),50);
+  document.getElementById('mo-style').classList.add('show');
+}
+// Önizləmə cədvəlini qur
+function buildPrevTbl(){
+  const st=gStyle();
+  const tbl=document.getElementById('style-prev-tbl');
+  const nw=st.nameW,vw=st.numW,pw=st.pctW;
+  tbl.innerHTML=`<colgroup><col class="col-name" style="width:${nw}"><col class="col-num" style="width:${vw}"><col class="col-num" style="width:${vw}"><col class="col-pct" style="width:${pw}"><col class="col-num" style="width:${vw}"><col class="col-num" style="width:${vw}"><col class="col-pct" style="width:${pw}"></colgroup>
+  <tr class="gh"><th class="lb col-name" rowspan="2" style="vertical-align:middle;background:#dce6f2;color:#1e3a6e;border:1px solid #cdd5e0;font-weight:800;font-size:11px;padding:4px 8px">Şöbələr</th><th colspan="3" class="hb" style="background:${st.h1bg};color:#fff;font-weight:800;font-size:11px;padding:4px 8px;border:1px solid #cdd5e0;text-align:center">8 aprel 2026</th><th colspan="3" class="ho" style="background:${st.h2bg};color:#fff;font-weight:800;font-size:11px;padding:4px 8px;border:1px solid #cdd5e0;text-align:center">1-8 aprel 2026</th></tr>
+  <tr class="sh"><th style="background:#dce6f2;color:#1d4ed8;font-size:10px;font-weight:700;text-align:center;padding:3px 8px;border:1px solid #cdd5e0">Satış</th><th style="background:#dce6f2;color:#1d4ed8;font-size:10px;font-weight:700;text-align:center;padding:3px 8px;border:1px solid #cdd5e0">Mənfəət</th><th style="background:#dce6f2;color:#1d4ed8;font-size:10px;font-weight:700;text-align:center;padding:3px 8px;border:1px solid #cdd5e0">Faiz</th><th style="background:#dce6f2;color:#b45309;font-size:10px;font-weight:700;text-align:center;padding:3px 8px;border:1px solid #cdd5e0">Satış</th><th style="background:#dce6f2;color:#b45309;font-size:10px;font-weight:700;text-align:center;padding:3px 8px;border:1px solid #cdd5e0">Mənfəət</th><th style="background:#dce6f2;color:#b45309;font-size:10px;font-weight:700;text-align:center;padding:3px 8px;border:1px solid #cdd5e0">Faiz</th></tr>
+  <tr class="dr"><td class="nm" style="border:1px solid #cdd5e0;padding:4px 8px">Panda 2</td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px"><div class="nv-inner"><span class="arr-up">↑</span><span class="nv-val">38.259</span></div></td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">15.420</td><td class="pv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">66%</td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px"><div class="nv-inner"><span class="arr-mid">→</span><span class="nv-val">54.500</span></div></td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">22.000</td><td class="pv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">67.3%</td></tr>
+  <tr class="dr"><td class="nm" style="border:1px solid #cdd5e0;padding:4px 8px">Panda 3</td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px"><div class="nv-inner"><span class="arr-dn">↓</span><span class="nv-val">42.100</span></div></td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">18.200</td><td class="pv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">72%</td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px"><div class="nv-inner"><span class="arr-up">↑</span><span class="nv-val">61.800</span></div></td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">26.100</td><td class="pv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">69.1%</td></tr>
+  <tr class="tr"><td class="nm" style="border:1px solid #162d58;padding:4px 8px">Ümumi Panda</td><td class="nv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">80.359</td><td class="nv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">33.620</td><td class="pv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">68.2%</td><td class="nv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">116.300</td><td class="nv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">48.100</td><td class="pv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">68.2%</td></tr>
+  <tr class="saxagap"><td colspan="7" style="height:8px;background:#fff3cd;border-top:2px solid #f59e0b;padding:0"></td></tr>
+  <tr class="sr"><td class="nm" style="border:1px solid #fde68a;padding:4px 8px">Saxa 1 (Əcəmi)</td><td class="nv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">12.400</td><td class="nv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">4.800</td><td class="pv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">58%</td><td class="nv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">18.500</td><td class="nv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">7.200</td><td class="pv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">60%</td></tr>
+  <tr class="str"><td class="nm" style="border:1px solid #92400e;padding:4px 8px">Ümumi Saxa</td><td class="nv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">12.400</td><td class="nv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">4.800</td><td class="pv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">58%</td><td class="nv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">18.500</td><td class="nv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">7.200</td><td class="pv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">60%</td></tr>`;
+  applyStyleToTable(tbl,st);
+}
+(()=>applyStyleToAll(gStyle()))();
 
+// ── ANA DEĞİŞKƏNLƏR ───────────────────────────────────────────────────────────
 const DEF_USERS=[
   {id:'p2',name:'Panda 2',pw:'p2-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
   {id:'p3',name:'Panda 3',pw:'p3-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
@@ -929,13 +958,15 @@ function planColor(ms,tgt,dl){if(!ms||!tgt)return 'red';if(ms>=tgt)return 'green
 function planBg(ms,tgt,dl){const c=planColor(ms,tgt,dl);return c==='green'?'#10b981':c==='orange'?'#f59e0b':'#ef4444';}
 function calcDaily(ms,tgt,dl){if(!tgt||ms>=tgt||dl<=0)return 0;return Math.ceil((tgt-ms)/dl);}
 
+// Ox hücrəsi — ox HTML + rəng
 function nvCell(arrType,val,st){
   const up=st?.arrUp||'#16a34a',mid=st?.arrMid||'#f59e0b',dn=st?.arrDn||'#dc2626';
+  const fw=st?.fw||'800',font=st?.font||"'IBM Plex Mono',monospace",fs=st?.fs||'12px';
   let aHtml='';
-  if(arrType==='up')aHtml=`<span class="arr-up" style="color:${up}">↑</span>`;
-  else if(arrType==='mid')aHtml=`<span class="arr-mid" style="color:${mid}">→</span>`;
-  else if(arrType==='dn')aHtml=`<span class="arr-dn" style="color:${dn}">↓</span>`;
-  return `<td class="nv"><div class="nv-inner">${aHtml}<span class="nv-val">${val}</span></div></td>`;
+  if(arrType==='up')aHtml=`<span class="arr-up" style="color:${up};font-weight:900;font-size:14px;min-width:14px;display:inline-block">↑</span>`;
+  else if(arrType==='mid')aHtml=`<span class="arr-mid" style="color:${mid};font-weight:900;font-size:14px;min-width:14px;display:inline-block">→</span>`;
+  else if(arrType==='dn')aHtml=`<span class="arr-dn" style="color:${dn};font-weight:900;font-size:14px;min-width:14px;display:inline-block">↓</span>`;
+  return `<td class="nv" style="text-align:right;padding:4px 8px;border:1px solid #cdd5e0"><div class="nv-inner"><span class="nv-val" style="font-family:${font};font-weight:${fw};font-size:${fs}">${val}</span>${aHtml}</div></td>`;
 }
 function getArrType(ds,ms,minT,dl){if(!ds)return '';const rm=Math.max(0,minT-ms);if(rm<=0)return 'up';const dn=calcDaily(ms,minT,dl);if(!dn)return '';const p=ds/dn*100;return p>=100?'up':p>=70?'mid':'dn';}
 function getArrTypeMonth(ms,minT,dl){if(!ms)return '';if(ms>=minT)return 'up';const avg=ms/daysPassed();return ms+avg*dl>=minT?'mid':'dn';}
@@ -1142,45 +1173,110 @@ async function deleteToday(sid){
   }catch{await progDone();alert('Silinmə xətası.');}
 }
 
+// ── HESABAT CƏDVƏLİ — INLINE STİL ────────────────────────────────────────────
 function buildTable(records,sf,tblId,ldId){
   const users=gU().filter(u=>u.type==='store');const targets=gT(),dl=dLeft();const allP=getAllPeriods();const st=gStyle();
   const D={};users.forEach(u=>{const uP=getUserPeriods(u.id);D[u.name]={};allP.forEach(p=>{const up=uP.find(x=>x.id===p.id);D[u.name][p.id]=up?findRec(records,u.name,up.sk):null;});});
-  let h='<colgroup>';allP.forEach(()=>h+='<col class="col-name"><col class="col-num"><col class="col-num"><col class="col-pct">');h+='</colgroup>';
-  h+='<tr class="gh">';allP.forEach((p,i)=>{h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th><th colspan="3" class="${HC[i]}" style="font-size:13px;font-weight:800">${p.label}</th>`;});
-  h+='</tr><tr class="sh">';allP.forEach((p,i)=>{h+=`<th class="${SC[i]} col-num">Satış</th><th class="${SC[i]} col-num">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;});h+='</tr>';
+
+  const nw=st.nameW,vw=st.numW,pw=st.pctW;
+  const font=st.font,fw=st.fw,fs=st.fs,rh=st.rh;
+  const nFont=st.nameFont,nFw=st.nameFw;
+  const hColors=[st.h1bg,st.h2bg,st.h3bg,st.h4bg];
+
+  let h=`<colgroup>`;
+  allP.forEach(()=>h+=`<col class="col-name" style="width:${nw}"><col class="col-num" style="width:${vw}"><col class="col-num" style="width:${vw}"><col class="col-pct" style="width:${pw}">`);
+  h+='</colgroup>';
+
+  // Başlıq
+  h+='<tr class="gh">';
+  allP.forEach((p,i)=>{
+    h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle;background:#dce6f2;color:#1e3a6e;border:1px solid #b0c4de;border-right:2px solid #b0c4de;font-weight:800;font-size:12px;padding:4px 8px;text-align:left">Şöbələr</th>`;
+    h+=`<th colspan="3" class="${['hb','ho','hg','hp'][i]}" style="background:${hColors[i]};color:#fff;font-weight:800;font-size:13px;padding:4px 8px;text-align:center;border:1px solid rgba(255,255,255,.2)">${p.label}</th>`;
+  });
+  h+='</tr><tr class="sh">';
+  const subCols=['#1d4ed8','#b45309','#15803d','#6d28d9'];
+  allP.forEach((p,i)=>{
+    const c=subCols[i];
+    h+=`<th style="background:#edf2f9;color:${c};text-align:center;font-size:10px;font-weight:700;padding:3px 8px;border:1px solid #cdd5e0">Satış</th>`;
+    h+=`<th style="background:#edf2f9;color:${c};text-align:center;font-size:10px;font-weight:700;padding:3px 8px;border:1px solid #cdd5e0">Mənfəət</th>`;
+    h+=`<th style="background:#edf2f9;color:${c};text-align:center;font-size:10px;font-weight:700;padding:3px 8px;border:1px solid #cdd5e0">Faiz</th>`;
+  });
+  h+='</tr>';
+
   const pTots=allP.map(()=>({s:0,m:0,fl:[]})),sTots=allP.map(()=>({s:0,m:0,fl:[]}));
   const panda=users.filter(u=>u.inTotal),saxa=users.filter(u=>!u.inTotal);
-  panda.forEach(u=>{
-    const t=targets[u.id];h+=`<tr class="dr">`;
+
+  panda.forEach((u,ui)=>{
+    const t=targets[u.id];
+    const isEven=ui%2===1;
+    const rowBg=isEven?st.evenBg:st.numBg;
+    const nmBg=isEven?st.evenNameBg:st.nameBg;
+    h+=`<tr class="dr" style="height:${rh}">`;
     allP.forEach((p,pi)=>{
       const e=D[u.name][p.id];const ay0val=D[u.name]['ay0']?.satis||0;const isGun=p.id==='gun';
-      h+=`<td class="nm">${u.name}</td>`;
+      h+=`<td class="nm" style="font-family:${nFont};font-weight:${nFw};color:${st.nameCol};background:${nmBg};border:1px solid #dce4ee;border-right:2px solid #dce4ee;padding:4px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${u.name}</td>`;
       if(e&&(e.satis>0||e.menfeet>0)){
         let atype='';if(isGun&&t)atype=getArrType(e.satis,ay0val,t.min,dl);else if(p.id==='ay0'&&t)atype=getArrTypeMonth(e.satis,t.min,dl);
-        h+=nvCell(atype,fmt(e.satis),st);
-        h+=`<td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fmtFaizStore(e.faiz)}</td>`;
+        // nv cell — ox sağda, rəqəm solda (şəkilə uyğun)
+        const up=st.arrUp,mid=st.arrMid,dn=st.arrDn;
+        let aHtml='';
+        if(atype==='up')aHtml=`<span style="color:${up};font-weight:900;font-size:14px;margin-left:4px;flex-shrink:0">↑</span>`;
+        else if(atype==='mid')aHtml=`<span style="color:${mid};font-weight:900;font-size:14px;margin-left:4px;flex-shrink:0">→</span>`;
+        else if(atype==='dn')aHtml=`<span style="color:${dn};font-weight:900;font-size:14px;margin-left:4px;flex-shrink:0">↓</span>`;
+        h+=`<td class="nv" style="color:${st.numCol};font-family:${font};font-weight:${fw};font-size:${fs};background:${rowBg};border:1px solid #dce4ee;padding:4px 8px;text-align:right"><div class="nv-inner" style="display:flex;align-items:center;justify-content:flex-end"><span style="font-family:${font};font-weight:${fw};font-size:${fs}">${fmt(e.satis)}</span>${aHtml}</div></td>`;
+        h+=`<td class="nv" style="color:${st.numCol};font-family:${font};font-weight:${fw};font-size:${fs};background:${rowBg};border:1px solid #dce4ee;padding:4px 8px;text-align:right">${fmt(e.menfeet)}</td>`;
+        h+=`<td class="pv" style="color:${st.pctCol};font-family:${font};font-weight:${fw};font-size:${fs};background:${rowBg};border:1px solid #dce4ee;padding:4px 8px;text-align:right">${fmtFaizStore(e.faiz)}</td>`;
         pTots[pi].s+=e.satis;pTots[pi].m+=e.menfeet;if(e.faiz>0)pTots[pi].fl.push(e.faiz);
-      }else{h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;}
+      }else{
+        h+=`<td style="text-align:center;color:#b0bec5;background:${rowBg};border:1px solid #dce4ee;padding:4px 8px">—</td>`;
+        h+=`<td style="text-align:center;color:#b0bec5;background:${rowBg};border:1px solid #dce4ee;padding:4px 8px">—</td>`;
+        h+=`<td style="text-align:center;color:#b0bec5;background:${rowBg};border:1px solid #dce4ee;padding:4px 8px">—</td>`;
+      }
     });
     h+='</tr>';
   });
-  h+='<tr class="tr">';pTots.forEach(t=>{h+=`<td class="nm">Ümumi Panda</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fmtFaizAvg(avgF(t.fl))}</td>`;});h+='</tr>';
+
+  // Ümumi Panda
+  h+=`<tr class="tr" style="height:${rh}">`;
+  pTots.forEach(t=>{
+    h+=`<td class="nm" style="color:${st.ptotNcol};background:${st.ptotBg};font-family:${nFont};font-weight:${nFw};border:1px solid #162d58;padding:4px 8px">Ümumi Panda</td>`;
+    h+=`<td class="nv" style="color:${st.ptotVcol};background:${st.ptotBg};font-family:${font};font-weight:${fw};font-size:${fs};border:1px solid #162d58;padding:4px 8px;text-align:right">${t.s>0?fmt(t.s):'—'}</td>`;
+    h+=`<td class="nv" style="color:${st.ptotVcol};background:${st.ptotBg};font-family:${font};font-weight:${fw};font-size:${fs};border:1px solid #162d58;padding:4px 8px;text-align:right">${t.m>0?fmt(t.m):'—'}</td>`;
+    h+=`<td class="pv" style="color:${st.ptotPcol};background:${st.ptotBg};font-family:${font};font-weight:${fw};font-size:${fs};border:1px solid #162d58;padding:4px 8px;text-align:right">${fmtFaizAvg(avgF(t.fl))}</td>`;
+  });
+  h+='</tr>';
+
   if(saxa.length){
-    h+=`<tr class="saxagap"><td colspan="${allP.length*4}"></td></tr>`;
+    h+=`<tr class="saxagap"><td colspan="${allP.length*4}" style="height:10px;background:#fff3cd;border-top:3px solid #f59e0b;padding:0"></td></tr>`;
     saxa.forEach(u=>{
-      h+=`<tr class="sr">`;
+      h+=`<tr class="sr" style="height:${rh}">`;
       allP.forEach((p,pi)=>{
-        h+=`<td class="nm">${u.name}</td>`;const e=D[u.name][p.id];
+        h+=`<td class="nm" style="color:${st.saxaNcol};background:${st.saxaNbg};font-family:${nFont};font-weight:${nFw};border:1px solid #fde68a;border-left:3px solid #f59e0b;font-style:italic;padding:4px 8px">${u.name}</td>`;
+        const e=D[u.name][p.id];
         if(e&&(e.satis>0||e.menfeet>0)){
-          h+=`<td class="nv"><div class="nv-inner"><span class="nv-val">${fmt(e.satis)}</span></div></td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fmtFaizStore(e.faiz)}</td>`;
+          h+=`<td class="nv" style="color:${st.saxaVcol};background:${st.saxaBg};font-family:${font};font-weight:${fw};font-size:${fs};border:1px solid #fde68a;padding:4px 8px;text-align:right">${fmt(e.satis)}</td>`;
+          h+=`<td class="nv" style="color:${st.saxaVcol};background:${st.saxaBg};font-family:${font};font-weight:${fw};font-size:${fs};border:1px solid #fde68a;padding:4px 8px;text-align:right">${fmt(e.menfeet)}</td>`;
+          h+=`<td class="pv" style="color:${st.saxaVcol};background:${st.saxaBg};font-family:${font};font-weight:${fw};font-size:${fs};border:1px solid #fde68a;padding:4px 8px;text-align:right">${fmtFaizStore(e.faiz)}</td>`;
           sTots[pi].s+=e.satis;sTots[pi].m+=e.menfeet;if(e.faiz>0)sTots[pi].fl.push(e.faiz);
-        }else{h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;}
+        }else{
+          h+=`<td style="text-align:center;color:#f0b429;background:${st.saxaBg};border:1px solid #fde68a;padding:4px 8px">—</td>`;
+          h+=`<td style="text-align:center;color:#f0b429;background:${st.saxaBg};border:1px solid #fde68a;padding:4px 8px">—</td>`;
+          h+=`<td style="text-align:center;color:#f0b429;background:${st.saxaBg};border:1px solid #fde68a;padding:4px 8px">—</td>`;
+        }
       });
       h+='</tr>';
     });
-    h+='<tr class="str">';sTots.forEach(t=>{h+=`<td class="nm">Ümumi Saxa</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fmtFaizAvg(avgF(t.fl))}</td>`;});h+='</tr>';
+    h+=`<tr class="str" style="height:${rh}">`;
+    sTots.forEach(t=>{
+      h+=`<td class="nm" style="color:${st.stotNcol};background:${st.stotBg};font-family:${nFont};font-weight:${nFw};border:1px solid #92400e;padding:4px 8px">Ümumi Saxa</td>`;
+      h+=`<td class="nv" style="color:${st.stotVcol};background:${st.stotBg};font-family:${font};font-weight:${fw};font-size:${fs};border:1px solid #92400e;padding:4px 8px;text-align:right">${t.s>0?fmt(t.s):'—'}</td>`;
+      h+=`<td class="nv" style="color:${st.stotVcol};background:${st.stotBg};font-family:${font};font-weight:${fw};font-size:${fs};border:1px solid #92400e;padding:4px 8px;text-align:right">${t.m>0?fmt(t.m):'—'}</td>`;
+      h+=`<td class="pv" style="color:${st.stotPcol};background:${st.stotBg};font-family:${font};font-weight:${fw};font-size:${fs};border:1px solid #92400e;padding:4px 8px;text-align:right">${fmtFaizAvg(avgF(t.fl))}</td>`;
+    });
+    h+='</tr>';
   }
-  const tbl=document.getElementById(tblId);tbl.innerHTML=h;applyStyleToDOM(st);document.getElementById(ldId).style.display='none';tbl.style.display='table';
+
+  const tbl=document.getElementById(tblId);tbl.innerHTML=h;document.getElementById(ldId).style.display='none';tbl.style.display='table';
 }
 
 function buildSFReport(sf,cid){
