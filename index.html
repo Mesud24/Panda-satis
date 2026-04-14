@@ -127,7 +127,6 @@ select.ginp option{color:#000;background:#fff;}
 .rday{color:#fff;font-size:26px;font-weight:800;font-family:'IBM Plex Mono',monospace;line-height:1;}
 .rmo{color:rgba(255,255,255,.6);font-size:10px;margin-top:2px;font-weight:600;}
 .rctw{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;}
-/* Hesabat cədvəli — bütün stillər inline JS ilə tətbiq olunur */
 table.rt{border-collapse:collapse;white-space:nowrap;table-layout:fixed;}
 table.rt th,table.rt td{padding:4px 8px;}
 .rt .gh th{font-weight:800;color:#fff;vertical-align:middle;text-align:center;}
@@ -139,7 +138,6 @@ table.rt th,table.rt td{padding:4px 8px;}
 .rt .dr .pv,.rt .sr .pv,.rt .tr .pv,.rt .str .pv{text-align:right;}
 .rt .dr .dsh,.rt .sr .dsh{text-align:center;color:#b0bec5;}
 .rt .saxagap td{height:10px;padding:0;}
-/* Nv inner — ox solda rəqəm sağda */
 .nv-inner{display:flex;align-items:center;justify-content:flex-end;gap:3px;width:100%;}
 .nv-val{text-align:right;}
 .rcftr{padding:7px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
@@ -230,7 +228,6 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .period-sel label.on{background:rgba(201,150,58,.2);border-color:rgba(201,150,58,.4);color:#f0c060;}
 .saveallbtn{width:100%;padding:14px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);border:none;border-radius:12px;color:#fff;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;margin-top:10px;}
 .saveallbtn:disabled{opacity:.45;cursor:not-allowed;}
-/* Görünüş redaktoru */
 .xl-wrap{overflow-x:auto;border-radius:8px;margin-top:8px;}
 .xl-sec{background:rgba(255,255,255,.04);border-radius:10px;padding:11px;margin-bottom:8px;border:1px solid rgba(255,255,255,.07);}
 .xl-sec-title{color:#c9963a;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;margin-bottom:9px;}
@@ -245,7 +242,6 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .xl-ctrl select{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.15);border-radius:6px;padding:5px 7px;font-size:11px;font-weight:600;color:#fff;outline:none;cursor:pointer;font-family:inherit;}
 .xl-ctrl select:focus{border-color:#c9963a;}
 .xl-ctrl select option{background:#0f1f3d;color:#fff;}
-/* Bayram */
 .hday-item{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border-radius:9px;padding:9px 11px;margin-bottom:7px;border:1px solid rgba(255,255,255,.06);}
 .hday-emoji{font-size:20px;flex-shrink:0;}
 .hday-info{flex:1;min-width:0;}
@@ -258,50 +254,30 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 <canvas id="confetti-canvas"></canvas>
 <div class="hol-banner" id="hol-banner"><div class="hol-banner-inner"><span id="hb-e1"></span><span class="hol-banner-text" id="hb-txt"></span><span id="hb-e2"></span></div></div>
 <div class="hol-popup" id="hol-popup"><div class="hol-popup-box" id="hol-popup-box"><span class="hol-emoji" id="hp-emoji"></span><div class="hol-title" id="hp-title"></div><div class="hol-msg" id="hp-msg"></div><button class="hol-btn" onclick="closeHolPopup()">Təşəkkür edirik! 🙏</button></div></div>
+<div class="prog-overlay" id="prog-overlay"><img class="prog-logo" src="IMG_0510.png" alt=""><div class="prog-title">Panda Kids</div><div class="prog-pct" id="prog-pct">0%</div><div class="prog-bar-wrap"><div class="prog-bar" id="prog-bar"></div></div><div class="prog-msg" id="prog-msg">Yüklənir...</div></div>
 
-<div class="prog-overlay" id="prog-overlay">
-  <img class="prog-logo" src="IMG_0510.png" alt="">
-  <div class="prog-title">Panda Kids</div>
-  <div class="prog-pct" id="prog-pct">0%</div>
-  <div class="prog-bar-wrap"><div class="prog-bar" id="prog-bar"></div></div>
-  <div class="prog-msg" id="prog-msg">Yüklənir...</div>
-</div>
-
-<div class="screen active" id="gate">
-  <div class="gw">
-    <img class="glogo" src="IMG_0510.png" alt="Panda Kids">
-    <div class="gtitle">Panda Kids</div>
-    <div class="gsub">Satış İdarəetmə Sistemi</div>
-    <div class="glbl">İstifadəçi</div>
-    <select class="ginp" id="gsel"><option value="">Yüklənir...</option></select>
-    <div class="glbl">Şifrə</div>
-    <input class="ginp" type="password" id="gpw" placeholder="Şifrəni daxil edin" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
-    <div class="remrow"><input type="checkbox" id="rem"><label for="rem">Məni xatırla</label></div>
-    <button class="gbtn" onclick="doLogin()">Daxil ol →</button>
-    <div class="gerr" id="gerr">Şifrə yanlışdır</div>
-    <div class="gdiv"></div>
-    <button class="glink" onclick="showAdminGate()">Admin →</button>
-  </div>
-</div>
+<div class="screen active" id="gate"><div class="gw">
+  <img class="glogo" src="IMG_0510.png" alt="Panda Kids">
+  <div class="gtitle">Panda Kids</div><div class="gsub">Satış İdarəetmə Sistemi</div>
+  <div class="glbl">İstifadəçi</div>
+  <select class="ginp" id="gsel"><option value="">Yüklənir...</option></select>
+  <div class="glbl">Şifrə</div>
+  <input class="ginp" type="password" id="gpw" placeholder="Şifrəni daxil edin" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+  <div class="remrow"><input type="checkbox" id="rem"><label for="rem">Məni xatırla</label></div>
+  <button class="gbtn" onclick="doLogin()">Daxil ol →</button>
+  <div class="gerr" id="gerr">Şifrə yanlışdır</div>
+  <div class="gdiv"></div>
+  <button class="glink" onclick="showAdminGate()">Admin →</button>
+</div></div>
 
 <div class="screen" id="store-form">
-  <div class="sfhdr"><div class="sfhi">
-    <img class="sflogo" src="IMG_0510.png" alt="">
-    <div class="sftxt">
-      <button class="backbtn" onclick="logout()">← Çıxış</button>
-      <div class="sftitle" id="sftitle"></div>
-      <div class="sfdate" id="sfdate"></div>
-    </div>
-  </div></div>
+  <div class="sfhdr"><div class="sfhi"><img class="sflogo" src="IMG_0510.png" alt=""><div class="sftxt"><button class="backbtn" onclick="logout()">← Çıxış</button><div class="sftitle" id="sftitle"></div><div class="sfdate" id="sfdate"></div></div></div></div>
   <div class="sfbody" id="sfbody"></div>
 </div>
 
 <div class="screen" id="admin">
   <div class="admhdr"><div class="admhdri">
-    <div class="admlogow">
-      <img class="admlogo" src="IMG_0510.png" alt="">
-      <div class="admtitle"><h2>Panda Kids — Admin</h2><p id="admdate"></p></div>
-    </div>
+    <div class="admlogow"><img class="admlogo" src="IMG_0510.png" alt=""><div class="admtitle"><h2>Panda Kids — Admin</h2><p id="admdate"></p></div></div>
     <div class="admacts">
       <button class="ab" onclick="openUsersMo()">👥 İstifadəçilər</button>
       <button class="ab" onclick="openTargetsMo()">🎯 Hədəflər</button>
@@ -320,71 +296,30 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 
 <div class="screen" id="viewer">
   <div class="admhdr"><div class="admhdri">
-    <div class="admlogow">
-      <img class="admlogo" src="IMG_0510.png" alt="">
-      <div class="admtitle"><h2 id="viewtitle">Panda Kids — Baxış</h2><p id="viewdate"></p></div>
-    </div>
-    <div class="admacts">
-      <div class="ab view">👁 Baxış</div>
-      <button class="ab gold" onclick="loadViewer()">↻ Yenilə</button>
-      <button class="ab" onclick="logout()">← Çıx</button>
-    </div>
+    <div class="admlogow"><img class="admlogo" src="IMG_0510.png" alt=""><div class="admtitle"><h2 id="viewtitle">Panda Kids — Baxış</h2><p id="viewdate"></p></div></div>
+    <div class="admacts"><div class="ab view">👁 Baxış</div><button class="ab gold" onclick="loadViewer()">↻ Yenilə</button><button class="ab" onclick="logout()">← Çıx</button></div>
   </div></div>
   <div class="admbody" id="viewbody"></div>
 </div>
 
-<div class="imgov" id="imgov"><img id="previmg" src="" alt="">
-  <div class="imgbtns"><button class="imgsave" onclick="saveImg()">⬇️ Saxla</button><button class="imgcls" onclick="document.getElementById('imgov').classList.remove('show')">Bağla</button></div>
-  <div class="imghint">iPhone: Şəkilə uzun basın → "Fotoya saxla"</div>
-</div>
-<div class="imgov" id="sf-imgov"><img id="sf-previmg" src="" alt="">
-  <div class="imgbtns"><button class="imgsave" onclick="saveSfImg()">⬇️ Saxla</button><button class="imgcls" onclick="document.getElementById('sf-imgov').classList.remove('show')">Bağla</button></div>
-  <div class="imghint">iPhone: Şəkilə uzun basın → "Fotoya saxla"</div>
-</div>
+<div class="imgov" id="imgov"><img id="previmg" src="" alt=""><div class="imgbtns"><button class="imgsave" onclick="saveImg()">⬇️ Saxla</button><button class="imgcls" onclick="document.getElementById('imgov').classList.remove('show')">Bağla</button></div><div class="imghint">iPhone: Şəkilə uzun basın → "Fotoya saxla"</div></div>
+<div class="imgov" id="sf-imgov"><img id="sf-previmg" src="" alt=""><div class="imgbtns"><button class="imgsave" onclick="saveSfImg()">⬇️ Saxla</button><button class="imgcls" onclick="document.getElementById('sf-imgov').classList.remove('show')">Bağla</button></div><div class="imghint">iPhone: Şəkilə uzun basın → "Fotoya saxla"</div></div>
 
 <div class="mo" id="mo-t"><div class="mobox"><h3>🎯 Aylıq Hədəflər</h3><div id="mot-body"></div><button class="mosave" onclick="saveTargets()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-t')">Bağla</button></div></div>
 <div class="mo" id="mo-u"><div class="mobox"><h3>👥 İstifadəçilər</h3><div id="mou-body"></div><button class="addbtn" onclick="addStore()">+ Yeni Şöbə</button><button class="mosave" onclick="saveUsers()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-u')">Bağla</button></div></div>
-<div class="mo" id="mo-set"><div class="mobox">
-  <h3>⚙️ Parametrlər</h3>
-  <div class="mosect">Admin Parolu</div>
-  <div class="mor2" style="margin-bottom:9px">
-    <div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••" autocomplete="current-password"></div>
-    <div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••" autocomplete="new-password"></div>
-  </div>
-  <button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button>
-  <div class="mosect">Jurnal</div>
-  <div class="cr"><input type="checkbox" id="param-admin-jurnal" onchange="saveJP()"><label for="param-admin-jurnal">Admin girişini jurnalda göstər</label></div>
-  <button class="moclose" onclick="closeMo('mo-set')" style="margin-top:12px">Bağla</button>
-</div></div>
-<div class="mo" id="mo-fill"><div class="mobox">
-  <h3>✏️ Admin Doldurma</h3>
-  <div class="mof" style="margin-bottom:10px"><label>Şöbə seç</label><select id="fill-sel" onchange="renderFillForm()"><option value="">— Seçin —</option></select></div>
-  <div id="fill-body"></div>
-  <button class="mosave" id="fill-btn" onclick="doAdminFill()" style="display:none">✓ Saxla</button>
-  <div class="ldbox" id="fill-ld">⏳ Göndərilir...</div>
-  <div class="okbox" id="fill-ok">✅ Saxlandı!</div>
-  <div class="erbox" id="fill-er">❌ Xəta.</div>
-  <button class="moclose" onclick="closeMo('mo-fill')">Bağla</button>
-</div></div>
+<div class="mo" id="mo-set"><div class="mobox"><h3>⚙️ Parametrlər</h3><div class="mosect">Admin Parolu</div><div class="mor2" style="margin-bottom:9px"><div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••" autocomplete="current-password"></div><div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••" autocomplete="new-password"></div></div><button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button><div class="mosect">Jurnal</div><div class="cr"><input type="checkbox" id="param-admin-jurnal" onchange="saveJP()"><label for="param-admin-jurnal">Admin girişini jurnalda göstər</label></div><button class="moclose" onclick="closeMo('mo-set')" style="margin-top:12px">Bağla</button></div></div>
+<div class="mo" id="mo-fill"><div class="mobox"><h3>✏️ Admin Doldurma</h3><div class="mof" style="margin-bottom:10px"><label>Şöbə seç</label><select id="fill-sel" onchange="renderFillForm()"><option value="">— Seçin —</option></select></div><div id="fill-body"></div><button class="mosave" id="fill-btn" onclick="doAdminFill()" style="display:none">✓ Saxla</button><div class="ldbox" id="fill-ld">⏳ Göndərilir...</div><div class="okbox" id="fill-ok">✅ Saxlandı!</div><div class="erbox" id="fill-er">❌ Xəta.</div><button class="moclose" onclick="closeMo('mo-fill')">Bağla</button></div></div>
 <div class="mo" id="mo-saxa-admin"><div class="mobox"><h3>Saxa Firma</h3><div id="saxa-admin-body"></div><button class="mosave" onclick="saveSaxaSettings()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-saxa-admin')">Bağla</button></div></div>
 <div class="mo" id="mo-jurnal"><div class="mobox"><h3>🔐 Giriş Jurnalı</h3><div class="jurnal-filter" id="jurnal-filter"></div><div class="jurnal-list" id="jurnal-modal-list"></div><button class="moclose" onclick="closeMo('mo-jurnal')">Bağla</button></div></div>
 
-<!-- Bayram Modal -->
 <div class="mo" id="mo-hol"><div class="mobox">
   <h3>🎉 Bayram İdarəetməsi</h3>
   <div class="mosect">Azərbaycan Milli Bayramları — ✏️ tarix dəyiş · checkbox aç/bağla</div>
   <div id="hol-preset-list"></div>
   <div class="mosect">Xüsusi Bayram Əlavə Et</div>
   <div class="mos">
-    <div class="mor2" style="margin-bottom:8px">
-      <div class="mof"><label>Bayram adı</label><input type="text" id="hd-name" placeholder="Şirkət ili" style="font-family:inherit"></div>
-      <div class="mof"><label>Emoji</label><input type="text" id="hd-emoji" placeholder="🎊" style="font-family:inherit;font-size:20px;text-align:center"></div>
-    </div>
-    <div class="mor3" style="margin-bottom:8px">
-      <div class="mof"><label>Başlama tarixi</label><input type="date" id="hd-from"></div>
-      <div class="mof"><label>Bitmə tarixi</label><input type="date" id="hd-to"></div>
-      <div class="mof"><label>Banner rəngi</label><input type="color" id="hd-color" value="#c9963a"></div>
-    </div>
+    <div class="mor2" style="margin-bottom:8px"><div class="mof"><label>Bayram adı</label><input type="text" id="hd-name" placeholder="Şirkət ili" style="font-family:inherit"></div><div class="mof"><label>Emoji</label><input type="text" id="hd-emoji" placeholder="🎊" style="font-family:inherit;font-size:20px;text-align:center"></div></div>
+    <div class="mor3" style="margin-bottom:8px"><div class="mof"><label>Başlama tarixi</label><input type="date" id="hd-from"></div><div class="mof"><label>Bitmə tarixi</label><input type="date" id="hd-to"></div><div class="mof"><label>Banner rəngi</label><input type="color" id="hd-color" value="#c9963a"></div></div>
     <div class="mof" style="margin-bottom:8px"><label>Təbrik mesajı</label><input type="text" id="hd-msg" placeholder="Mübarək olsun!" style="font-family:inherit"></div>
     <button class="mosave" onclick="addHol()" style="margin-top:4px">+ Xüsusi Bayram Əlavə Et</button>
   </div>
@@ -393,199 +328,50 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
   <button class="moclose" onclick="closeMo('mo-hol')">Bağla</button>
 </div></div>
 
-<!-- Görünüş Redaktoru -->
 <div class="mo" id="mo-style"><div class="mobox">
   <h3>🎨 Cədvəl Görünüşü</h3>
-
-  <div class="xl-sec">
-    <div class="xl-sec-title">Şrift və Ölçü</div>
-    <div class="xl-row">
-      <div class="xl-lbl">Rəqəm şrifti</div>
-      <div class="xl-controls">
-        <div class="xl-ctrl"><label>Şrift</label>
-          <select id="st-font" onchange="liveStyle()">
-            <option value="'IBM Plex Mono',monospace">IBM Plex Mono</option>
-            <option value="'Roboto Mono',monospace">Roboto Mono</option>
-            <option value="'JetBrains Mono',monospace">JetBrains Mono</option>
-            <option value="'Fira Code',monospace">Fira Code</option>
-            <option value="'Source Code Pro',monospace">Source Code Pro</option>
-            <option value="'Space Mono',monospace">Space Mono</option>
-            <option value="'Inconsolata',monospace">Inconsolata</option>
-            <option value="'Courier New',monospace">Courier New</option>
-            <option value="'Inter',sans-serif">Inter</option>
-            <option value="Arial,sans-serif">Arial</option>
-            <option value="'Times New Roman',serif">Times New Roman</option>
-            <option value="Georgia,serif">Georgia</option>
-          </select>
-        </div>
-        <div class="xl-ctrl"><label>Ölçü</label>
-          <select id="st-fs" onchange="liveStyle()">
-            <option value="9px">9px</option><option value="10px">10px</option><option value="11px">11px</option>
-            <option value="12px" selected>12px</option><option value="13px">13px</option><option value="14px">14px</option><option value="15px">15px</option>
-          </select>
-        </div>
-        <div class="xl-ctrl"><label>Qalınlıq</label>
-          <select id="st-fw" onchange="liveStyle()">
-            <option value="400">400 — nazik</option><option value="500">500</option><option value="600">600</option>
-            <option value="700">700 — qalın</option><option value="800" selected>800</option><option value="900">900 — ən qalın</option>
-          </select>
-        </div>
-        <div class="xl-ctrl"><label>Sətir hünd.</label>
-          <select id="st-rh" onchange="liveStyle()">
-            <option value="22px">22px</option><option value="24px">24px</option><option value="27px" selected>27px</option>
-            <option value="30px">30px</option><option value="34px">34px</option><option value="38px">38px</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div class="xl-row">
-      <div class="xl-lbl">Şöbə adı şrifti</div>
-      <div class="xl-controls">
-        <div class="xl-ctrl"><label>Şrift</label>
-          <select id="st-name-font" onchange="liveStyle()">
-            <option value="'Inter',sans-serif" selected>Inter</option>
-            <option value="Arial,sans-serif">Arial</option>
-            <option value="'IBM Plex Mono',monospace">IBM Plex Mono</option>
-            <option value="'Roboto Mono',monospace">Roboto Mono</option>
-            <option value="'Fira Code',monospace">Fira Code</option>
-            <option value="Georgia,serif">Georgia</option>
-          </select>
-        </div>
-        <div class="xl-ctrl"><label>Qalınlıq</label>
-          <select id="st-name-fw" onchange="liveStyle()">
-            <option value="600">600</option><option value="700">700</option><option value="800" selected>800</option><option value="900">900</option>
-          </select>
-        </div>
-      </div>
-    </div>
+  <div class="xl-sec"><div class="xl-sec-title">Şrift və Ölçü</div>
+    <div class="xl-row"><div class="xl-lbl">Rəqəm şrifti</div><div class="xl-controls">
+      <div class="xl-ctrl"><label>Şrift</label><select id="st-font" onchange="liveStyle()"><option value="'IBM Plex Mono',monospace">IBM Plex Mono</option><option value="'Roboto Mono',monospace">Roboto Mono</option><option value="'JetBrains Mono',monospace">JetBrains Mono</option><option value="'Fira Code',monospace">Fira Code</option><option value="'Source Code Pro',monospace">Source Code Pro</option><option value="'Space Mono',monospace">Space Mono</option><option value="'Inconsolata',monospace">Inconsolata</option><option value="'Courier New',monospace">Courier New</option><option value="'Inter',sans-serif">Inter</option><option value="Arial,sans-serif">Arial</option><option value="'Times New Roman',serif">Times New Roman</option><option value="Georgia,serif">Georgia</option></select></div>
+      <div class="xl-ctrl"><label>Ölçü</label><select id="st-fs" onchange="liveStyle()"><option value="9px">9px</option><option value="10px">10px</option><option value="11px">11px</option><option value="12px" selected>12px</option><option value="13px">13px</option><option value="14px">14px</option><option value="15px">15px</option></select></div>
+      <div class="xl-ctrl"><label>Qalınlıq</label><select id="st-fw" onchange="liveStyle()"><option value="400">400 — nazik</option><option value="500">500</option><option value="600">600</option><option value="700">700 — qalın</option><option value="800" selected>800</option><option value="900">900 — ən qalın</option></select></div>
+      <div class="xl-ctrl"><label>Sətir hünd.</label><select id="st-rh" onchange="liveStyle()"><option value="22px">22px</option><option value="24px">24px</option><option value="27px" selected>27px</option><option value="30px">30px</option><option value="34px">34px</option><option value="38px">38px</option></select></div>
+    </div></div>
+    <div class="xl-row"><div class="xl-lbl">Şöbə adı şrifti</div><div class="xl-controls">
+      <div class="xl-ctrl"><label>Şrift</label><select id="st-name-font" onchange="liveStyle()"><option value="'Inter',sans-serif" selected>Inter</option><option value="Arial,sans-serif">Arial</option><option value="'IBM Plex Mono',monospace">IBM Plex Mono</option><option value="'Roboto Mono',monospace">Roboto Mono</option><option value="'Fira Code',monospace">Fira Code</option><option value="Georgia,serif">Georgia</option></select></div>
+      <div class="xl-ctrl"><label>Qalınlıq</label><select id="st-name-fw" onchange="liveStyle()"><option value="600">600</option><option value="700">700</option><option value="800" selected>800</option><option value="900">900</option></select></div>
+    </div></div>
   </div>
-
-  <div class="xl-sec">
-    <div class="xl-sec-title">Başlıq Rəngləri</div>
-    <div class="xl-row">
-      <div class="xl-lbl">Günlük (1-ci)</div>
-      <div class="xl-controls"><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h1-bg" value="#1d4ed8" onchange="liveStyle()"></div></div>
-    </div>
-    <div class="xl-row">
-      <div class="xl-lbl">Cari ay (2-ci)</div>
-      <div class="xl-controls"><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h2-bg" value="#c2410c" onchange="liveStyle()"></div></div>
-    </div>
-    <div class="xl-row">
-      <div class="xl-lbl">Keçən il (3-cü)</div>
-      <div class="xl-controls"><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h3-bg" value="#15803d" onchange="liveStyle()"></div></div>
-    </div>
-    <div class="xl-row">
-      <div class="xl-lbl">2 il əvvəl (4-cü)</div>
-      <div class="xl-controls"><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h4-bg" value="#6d28d9" onchange="liveStyle()"></div></div>
-    </div>
+  <div class="xl-sec"><div class="xl-sec-title">Başlıq Rəngləri</div>
+    <div class="xl-row"><div class="xl-lbl">Günlük (1-ci)</div><div class="xl-controls"><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h1-bg" value="#1d4ed8" onchange="liveStyle()"></div></div></div>
+    <div class="xl-row"><div class="xl-lbl">Cari ay (2-ci)</div><div class="xl-controls"><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h2-bg" value="#c2410c" onchange="liveStyle()"></div></div></div>
+    <div class="xl-row"><div class="xl-lbl">Keçən il (3-cü)</div><div class="xl-controls"><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h3-bg" value="#15803d" onchange="liveStyle()"></div></div></div>
+    <div class="xl-row"><div class="xl-lbl">2 il əvvəl (4-cü)</div><div class="xl-controls"><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-h4-bg" value="#6d28d9" onchange="liveStyle()"></div></div></div>
   </div>
-
-  <div class="xl-sec">
-    <div class="xl-sec-title">Panda Sətirləri</div>
-    <div class="xl-row">
-      <div class="xl-lbl">Şöbə adı</div>
-      <div class="xl-controls">
-        <div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-name-col" value="#0f1f3d" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-name-bg" value="#f4f8fc" onchange="liveStyle()"></div>
-      </div>
-    </div>
-    <div class="xl-row">
-      <div class="xl-lbl">Satış/Mənfəət</div>
-      <div class="xl-controls">
-        <div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-num-col" value="#0f1f3d" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-num-bg" value="#ffffff" onchange="liveStyle()"></div>
-      </div>
-    </div>
-    <div class="xl-row">
-      <div class="xl-lbl">Faiz sütunu</div>
-      <div class="xl-controls">
-        <div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-pct-col" value="#374151" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-pct-bg" value="#ffffff" onchange="liveStyle()"></div>
-      </div>
-    </div>
-    <div class="xl-row">
-      <div class="xl-lbl">Cüt cərgə</div>
-      <div class="xl-controls">
-        <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-even-bg" value="#f0f7ff" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Ad fonu</label><input type="color" id="st-even-name-bg" value="#e0edf8" onchange="liveStyle()"></div>
-      </div>
-    </div>
-    <div class="xl-row">
-      <div class="xl-lbl">Ümumi Panda</div>
-      <div class="xl-controls">
-        <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-ptot-bg" value="#1e3a6e" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Ad</label><input type="color" id="st-ptot-ncol" value="#bfdbfe" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Rəqəm</label><input type="color" id="st-ptot-vcol" value="#ffffff" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Faiz</label><input type="color" id="st-ptot-pcol" value="#93c5fd" onchange="liveStyle()"></div>
-      </div>
-    </div>
+  <div class="xl-sec"><div class="xl-sec-title">Panda Sətirləri</div>
+    <div class="xl-row"><div class="xl-lbl">Şöbə adı</div><div class="xl-controls"><div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-name-col" value="#0f1f3d" onchange="liveStyle()"></div><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-name-bg" value="#f4f8fc" onchange="liveStyle()"></div></div></div>
+    <div class="xl-row"><div class="xl-lbl">Satış/Mənfəət</div><div class="xl-controls"><div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-num-col" value="#0f1f3d" onchange="liveStyle()"></div><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-num-bg" value="#ffffff" onchange="liveStyle()"></div></div></div>
+    <div class="xl-row"><div class="xl-lbl">Faiz sütunu</div><div class="xl-controls"><div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-pct-col" value="#374151" onchange="liveStyle()"></div><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-pct-bg" value="#ffffff" onchange="liveStyle()"></div></div></div>
+    <div class="xl-row"><div class="xl-lbl">Cüt cərgə</div><div class="xl-controls"><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-even-bg" value="#f0f7ff" onchange="liveStyle()"></div><div class="xl-ctrl"><label>Ad fonu</label><input type="color" id="st-even-name-bg" value="#e0edf8" onchange="liveStyle()"></div></div></div>
+    <div class="xl-row"><div class="xl-lbl">Ümumi Panda</div><div class="xl-controls"><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-ptot-bg" value="#1e3a6e" onchange="liveStyle()"></div><div class="xl-ctrl"><label>Ad</label><input type="color" id="st-ptot-ncol" value="#bfdbfe" onchange="liveStyle()"></div><div class="xl-ctrl"><label>Rəqəm</label><input type="color" id="st-ptot-vcol" value="#ffffff" onchange="liveStyle()"></div><div class="xl-ctrl"><label>Faiz</label><input type="color" id="st-ptot-pcol" value="#93c5fd" onchange="liveStyle()"></div></div></div>
   </div>
-
-  <div class="xl-sec">
-    <div class="xl-sec-title">Saxa Sətirləri</div>
-    <div class="xl-row">
-      <div class="xl-lbl">Saxa şöbə adı</div>
-      <div class="xl-controls">
-        <div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-saxa-ncol" value="#7c3000" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-saxa-nbg" value="#fef3d0" onchange="liveStyle()"></div>
-      </div>
-    </div>
-    <div class="xl-row">
-      <div class="xl-lbl">Saxa rəqəmlər</div>
-      <div class="xl-controls">
-        <div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-saxa-vcol" value="#6b3500" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Sətir fonu</label><input type="color" id="st-saxa-bg" value="#fffcf0" onchange="liveStyle()"></div>
-      </div>
-    </div>
-    <div class="xl-row">
-      <div class="xl-lbl">Ümumi Saxa</div>
-      <div class="xl-controls">
-        <div class="xl-ctrl"><label>Fon</label><input type="color" id="st-stot-bg" value="#78350f" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Ad</label><input type="color" id="st-stot-ncol" value="#fde68a" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Rəqəm</label><input type="color" id="st-stot-vcol" value="#fef3c7" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>Faiz</label><input type="color" id="st-stot-pcol" value="#fde68a" onchange="liveStyle()"></div>
-      </div>
-    </div>
+  <div class="xl-sec"><div class="xl-sec-title">Saxa Sətirləri</div>
+    <div class="xl-row"><div class="xl-lbl">Saxa şöbə adı</div><div class="xl-controls"><div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-saxa-ncol" value="#7c3000" onchange="liveStyle()"></div><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-saxa-nbg" value="#fef3d0" onchange="liveStyle()"></div></div></div>
+    <div class="xl-row"><div class="xl-lbl">Saxa rəqəmlər</div><div class="xl-controls"><div class="xl-ctrl"><label>Mətn</label><input type="color" id="st-saxa-vcol" value="#6b3500" onchange="liveStyle()"></div><div class="xl-ctrl"><label>Sətir fonu</label><input type="color" id="st-saxa-bg" value="#fffcf0" onchange="liveStyle()"></div></div></div>
+    <div class="xl-row"><div class="xl-lbl">Ümumi Saxa</div><div class="xl-controls"><div class="xl-ctrl"><label>Fon</label><input type="color" id="st-stot-bg" value="#78350f" onchange="liveStyle()"></div><div class="xl-ctrl"><label>Ad</label><input type="color" id="st-stot-ncol" value="#fde68a" onchange="liveStyle()"></div><div class="xl-ctrl"><label>Rəqəm</label><input type="color" id="st-stot-vcol" value="#fef3c7" onchange="liveStyle()"></div><div class="xl-ctrl"><label>Faiz</label><input type="color" id="st-stot-pcol" value="#fde68a" onchange="liveStyle()"></div></div></div>
   </div>
-
-  <div class="xl-sec">
-    <div class="xl-sec-title">Oxlar və Sütun Eni</div>
-    <div class="xl-row">
-      <div class="xl-lbl">Ox rəngləri</div>
-      <div class="xl-controls">
-        <div class="xl-ctrl"><label>↑ Yuxarı</label><input type="color" id="st-arr-up" value="#16a34a" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>→ Orta</label><input type="color" id="st-arr-mid" value="#f59e0b" onchange="liveStyle()"></div>
-        <div class="xl-ctrl"><label>↓ Aşağı</label><input type="color" id="st-arr-dn" value="#dc2626" onchange="liveStyle()"></div>
-      </div>
-    </div>
-    <div class="xl-row">
-      <div class="xl-lbl">Sütun eni</div>
-      <div class="xl-controls">
-        <div class="xl-ctrl"><label>Şöbə adı</label>
-          <select id="st-namew" onchange="liveStyle()">
-            <option value="90px">90px</option><option value="100px">100px</option><option value="115px" selected>115px</option><option value="130px">130px</option><option value="145px">145px</option>
-          </select>
-        </div>
-        <div class="xl-ctrl"><label>Rəqəm</label>
-          <select id="st-numw" onchange="liveStyle()">
-            <option value="70px">70px</option><option value="80px">80px</option><option value="90px" selected>90px</option><option value="100px">100px</option><option value="115px">115px</option>
-          </select>
-        </div>
-        <div class="xl-ctrl"><label>Faiz</label>
-          <select id="st-pctw" onchange="liveStyle()">
-            <option value="50px">50px</option><option value="62px" selected>62px</option><option value="72px">72px</option><option value="82px">82px</option>
-          </select>
-        </div>
-      </div>
-    </div>
+  <div class="xl-sec"><div class="xl-sec-title">Oxlar və Sütun Eni</div>
+    <div class="xl-row"><div class="xl-lbl">Ox rəngləri</div><div class="xl-controls"><div class="xl-ctrl"><label>↑ Yuxarı</label><input type="color" id="st-arr-up" value="#16a34a" onchange="liveStyle()"></div><div class="xl-ctrl"><label>→ Orta</label><input type="color" id="st-arr-mid" value="#f59e0b" onchange="liveStyle()"></div><div class="xl-ctrl"><label>↓ Aşağı</label><input type="color" id="st-arr-dn" value="#dc2626" onchange="liveStyle()"></div></div></div>
+    <div class="xl-row"><div class="xl-lbl">Sütun eni</div><div class="xl-controls">
+      <div class="xl-ctrl"><label>Şöbə adı</label><select id="st-namew" onchange="liveStyle()"><option value="90px">90px</option><option value="100px">100px</option><option value="115px" selected>115px</option><option value="130px">130px</option><option value="145px">145px</option></select></div>
+      <div class="xl-ctrl"><label>Rəqəm</label><select id="st-numw" onchange="liveStyle()"><option value="70px">70px</option><option value="80px">80px</option><option value="90px" selected>90px</option><option value="100px">100px</option><option value="115px">115px</option></select></div>
+      <div class="xl-ctrl"><label>Faiz</label><select id="st-pctw" onchange="liveStyle()"><option value="50px">50px</option><option value="62px" selected>62px</option><option value="72px">72px</option><option value="82px">82px</option></select></div>
+    </div></div>
   </div>
-
   <div class="xl-sec-title" style="margin-bottom:8px">Canlı Önizləmə</div>
-  <div class="xl-wrap">
-    <table id="style-prev-tbl" style="border-collapse:collapse;white-space:nowrap;table-layout:fixed;"></table>
-  </div>
+  <div class="xl-wrap"><table id="style-prev-tbl" style="border-collapse:collapse;white-space:nowrap;table-layout:fixed;"></table></div>
   <button class="mosave" style="margin-top:12px" onclick="saveStyle()">✓ Görünüşü Saxla</button>
-  <button class="moclose" style="margin-top:4px;background:rgba(239,68,68,.15);color:#fca5a5" onclick="resetStyle()">↺ Sıfırla (Default)</button>
+  <button class="moclose" style="margin-top:4px;background:rgba(239,68,68,.15);color:#fca5a5" onclick="resetStyle()">↺ Sıfırla</button>
   <button class="moclose" onclick="closeMo('mo-style')">Bağla</button>
 </div></div>
 
@@ -601,22 +387,20 @@ const PCOL=['#2E75B6','#C55A11','#375623','#7030A0'];
 let ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
 let curSid=null,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
 
-// ── AZƏRBAYCAN MİLLİ BAYRAMLARI ───────────────────────────────────────────────
 const PRESET_HOLS=[
-  {id:'novruz',   name:'Novruz Bayramı',           emoji:'🌸',from:'2026-03-20',to:'2026-03-26',color:'#16a34a',msg:'Novruz mübarək! Yeni il uğurlar gətirsin!'},
-  {id:'ramazan',  name:'Ramazan Bayramı',           emoji:'🌙',from:'2026-03-30',to:'2026-04-01',color:'#1d4ed8',msg:'Ramazan bayramınız mübarək olsun!'},
-  {id:'qurban',   name:'Qurban Bayramı',            emoji:'⭐',from:'2026-06-06',to:'2026-06-09',color:'#92400e',msg:'Qurban bayramınız mübarək olsun!'},
-  {id:'zafer',    name:'Zəfər Günü',                emoji:'🏆',from:'2026-11-08',to:'2026-11-08',color:'#1e3a6e',msg:'8 Noyabr — Zəfər Günümüz mübarək!'},
-  {id:'respublika',name:'Respublika Günü',          emoji:'🇦🇿',from:'2026-05-28',to:'2026-05-28',color:'#3b82f6',msg:'28 May — Respublika Günümüz mübarək!'},
-  {id:'istiqlal', name:'İstiqlal Günü',             emoji:'🇦🇿',from:'2026-10-18',to:'2026-10-18',color:'#2563eb',msg:'18 Oktyabr — İstiqlal Günümüz mübarək!'},
-  {id:'milli',    name:'Milli Birlik Günü',         emoji:'🤝',from:'2026-06-15',to:'2026-06-15',color:'#7c3aed',msg:'15 İyun — Milli Birlik Günümüz mübarək!'},
-  {id:'konstitusiya',name:'Konstitusiya Günü',      emoji:'📜',from:'2026-11-12',to:'2026-11-12',color:'#0369a1',msg:'12 Noyabr — Konstitusiya Günümüz mübarək!'},
-  {id:'qadin',    name:'Beynəlxalq Qadınlar Günü', emoji:'💐',from:'2026-03-08',to:'2026-03-08',color:'#db2777',msg:'8 Mart mübarək!'},
-  {id:'yeniyil',  name:'Yeni İl',                  emoji:'🎆',from:'2025-12-31',to:'2026-01-02',color:'#c9963a',msg:'Yeni iliniz mübarək! 🎊'},
-  {id:'silah',    name:'Silahlı Qüvvələr Günü',    emoji:'🎖️',from:'2026-06-26',to:'2026-06-26',color:'#1e3a6e',msg:'Silahlı Qüvvələr Günü mübarək!'},
+  {id:'novruz',name:'Novruz Bayramı',emoji:'🌸',from:'2026-03-20',to:'2026-03-26',color:'#16a34a',msg:'Novruz mübarək! Yeni il uğurlar gətirsin!'},
+  {id:'ramazan',name:'Ramazan Bayramı',emoji:'🌙',from:'2026-03-30',to:'2026-04-01',color:'#1d4ed8',msg:'Ramazan bayramınız mübarək olsun!'},
+  {id:'qurban',name:'Qurban Bayramı',emoji:'⭐',from:'2026-06-06',to:'2026-06-09',color:'#92400e',msg:'Qurban bayramınız mübarək olsun!'},
+  {id:'zafer',name:'Zəfər Günü',emoji:'🏆',from:'2026-11-08',to:'2026-11-08',color:'#1e3a6e',msg:'8 Noyabr — Zəfər Günümüz mübarək!'},
+  {id:'respublika',name:'Respublika Günü',emoji:'🇦🇿',from:'2026-05-28',to:'2026-05-28',color:'#3b82f6',msg:'28 May — Respublika Günümüz mübarək!'},
+  {id:'istiqlal',name:'İstiqlal Günü',emoji:'🇦🇿',from:'2026-10-18',to:'2026-10-18',color:'#2563eb',msg:'18 Oktyabr — İstiqlal Günümüz mübarək!'},
+  {id:'milli',name:'Milli Birlik Günü',emoji:'🤝',from:'2026-06-15',to:'2026-06-15',color:'#7c3aed',msg:'15 İyun — Milli Birlik Günümüz mübarək!'},
+  {id:'konstitusiya',name:'Konstitusiya Günü',emoji:'📜',from:'2026-11-12',to:'2026-11-12',color:'#0369a1',msg:'12 Noyabr — Konstitusiya Günümüz mübarək!'},
+  {id:'qadin',name:'Beynəlxalq Qadınlar Günü',emoji:'💐',from:'2026-03-08',to:'2026-03-08',color:'#db2777',msg:'8 Mart mübarək!'},
+  {id:'yeniyil',name:'Yeni İl',emoji:'🎆',from:'2025-12-31',to:'2026-01-02',color:'#c9963a',msg:'Yeni iliniz mübarək! 🎊'},
+  {id:'silah',name:'Silahlı Qüvvələr Günü',emoji:'🎖️',from:'2026-06-26',to:'2026-06-26',color:'#1e3a6e',msg:'Silahlı Qüvvələr Günü mübarək!'},
 ];
 
-// ── BAYRAM SİSTEMİ ─────────────────────────────────────────────────────────────
 let _confAnim=null;
 function todayStr(){const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
 function getHols(){return CFG?.holidays||[];}
@@ -627,11 +411,7 @@ function checkHol(){
   const today=todayStr();
   const customActive=getCustomHols().find(h=>h.from<=today&&today<=h.to);
   const savedPresets=getHols();
-  const presetActive=PRESET_HOLS.find(ph=>{
-    const sv=savedPresets.find(s=>s.id===ph.id);
-    const h=sv?{...ph,...sv}:ph;
-    return h.active!==false&&h.from<=today&&today<=h.to;
-  });
+  const presetActive=PRESET_HOLS.find(ph=>{const sv=savedPresets.find(s=>s.id===ph.id);const h=sv?{...ph,...sv}:ph;return h.active!==false&&h.from<=today&&today<=h.to;});
   const active=customActive||presetActive;
   const ban=document.getElementById('hol-banner');
   if(!active){ban.classList.remove('show');return;}
@@ -667,17 +447,13 @@ function stopConfetti(){if(_confAnim)cancelAnimationFrame(_confAnim);const cv=do
 
 function openHolMo(){renderPresetList();renderCustomList();document.getElementById('mo-hol').classList.add('show');}
 function renderPresetList(){
-  const saved=getHols();const today=todayStr();
-  let h='';
+  const saved=getHols();const today=todayStr();let h='';
   PRESET_HOLS.forEach(ph=>{
     const sv=saved.find(s=>s.id===ph.id);const hd=sv?{...ph,...sv}:ph;
     const isActive=hd.active!==false&&hd.from<=today&&today<=hd.to;
     h+=`<div class="hday-item ${isActive?'hday-active':''}">
       <div class="hday-emoji">${hd.emoji}</div>
-      <div class="hday-info">
-        <div class="hday-name">${hd.name}${isActive?' <span style="color:#10b981;font-size:9px">● Aktiv</span>':''}</div>
-        <div class="hday-date">${hd.from} → ${hd.to}</div>
-      </div>
+      <div class="hday-info"><div class="hday-name">${hd.name}${isActive?' <span style="color:#10b981;font-size:9px">● Aktiv</span>':''}</div><div class="hday-date">${hd.from} → ${hd.to}</div></div>
       <div class="hday-swatch" style="background:${hd.color}"></div>
       <button class="delbtn" style="background:rgba(59,130,246,.15);color:#93c5fd;font-size:10px;padding:4px 8px" onclick="editPresetHol('${ph.id}')">✏️ Tarix</button>
       <input type="checkbox" ${hd.active!==false?'checked':''} onchange="togglePresetHol('${ph.id}',this.checked)" style="cursor:pointer;transform:scale(1.3);flex-shrink:0;accent-color:#c9963a">
@@ -692,8 +468,7 @@ function renderCustomList(){
     const isActive=h.from<=today&&today<=h.to;
     return `<div class="hday-item ${isActive?'hday-active':''}">
       <div class="hday-emoji">${h.emoji||'🎉'}</div>
-      <div class="hday-info"><div class="hday-name">${h.name}${isActive?' <span style="color:#10b981;font-size:9px">● Aktiv</span>':''}</div>
-      <div class="hday-date">${h.from} → ${h.to} · ${h.msg||''}</div></div>
+      <div class="hday-info"><div class="hday-name">${h.name}${isActive?' <span style="color:#10b981;font-size:9px">● Aktiv</span>':''}</div><div class="hday-date">${h.from} → ${h.to} · ${h.msg||''}</div></div>
       <div class="hday-swatch" style="background:${h.color||'#c9963a'}"></div>
       <button class="delbtn" onclick="delCustomHol(${i})">🗑</button>
     </div>`;
@@ -707,16 +482,14 @@ function editPresetHol(id){
 }
 async function savePresetDates(id,from,to){
   const {records,sf,cfg}=await rBin();if(!cfg.holidays)cfg.holidays=[];
-  const ph=PRESET_HOLS.find(p=>p.id===id);
-  const idx=cfg.holidays.findIndex(h=>h.id===id);
+  const ph=PRESET_HOLS.find(p=>p.id===id);const idx=cfg.holidays.findIndex(h=>h.id===id);
   const entry={...(cfg.holidays[idx]||ph),id,from,to,active:true};
   if(idx>=0)cfg.holidays[idx]=entry;else cfg.holidays.push(entry);
   CFG=cfg;await wBin(records,sf,cfg);renderPresetList();checkHol();
 }
 async function togglePresetHol(id,active){
   const {records,sf,cfg}=await rBin();if(!cfg.holidays)cfg.holidays=[];
-  const ph=PRESET_HOLS.find(p=>p.id===id);
-  const idx=cfg.holidays.findIndex(h=>h.id===id);
+  const ph=PRESET_HOLS.find(p=>p.id===id);const idx=cfg.holidays.findIndex(h=>h.id===id);
   const entry={...(cfg.holidays[idx]||ph),id,active};
   if(idx>=0)cfg.holidays[idx]=entry;else cfg.holidays.push(entry);
   CFG=cfg;await wBin(records,sf,cfg);renderPresetList();checkHol();
@@ -739,8 +512,7 @@ async function delCustomHol(i){
   cfg.customHolidays.splice(i,1);CFG=cfg;await wBin(records,sf,cfg);renderCustomList();checkHol();
 }
 
-// ── GÖRÜNÜŞ STİLİ — INLINE TƏTBİQ ────────────────────────────────────────────
-// Problem həlli: CSS var() bəzən işləmir → bütün stillər birbaşa element.style ilə tətbiq olunur
+// ── GÖRÜNÜŞ STİLİ ─────────────────────────────────────────────────────────────
 const DEF_STYLE={
   font:"'IBM Plex Mono',monospace",fs:'12px',fw:'800',rh:'27px',
   nameFont:"'Inter',sans-serif",nameFw:'800',
@@ -755,30 +527,19 @@ const DEF_STYLE={
   nameW:'115px',numW:'90px',pctW:'62px',
   h1bg:'#1d4ed8',h2bg:'#c2410c',h3bg:'#15803d',h4bg:'#6d28d9'
 };
-function gStyle(){
-  try{const s=JSON.parse(localStorage.getItem('pk_style')||'null');return s?{...DEF_STYLE,...s}:{...DEF_STYLE};}
-  catch{return{...DEF_STYLE};}
-}
+function gStyle(){try{const s=JSON.parse(localStorage.getItem('pk_style')||'null');return s?{...DEF_STYLE,...s}:{...DEF_STYLE};}catch{return{...DEF_STYLE};}}
 function svStyle(v){localStorage.setItem('pk_style',JSON.stringify(v));}
 
-// Cədvəl stilini birbaşa hər elementə tətbiq et
 function applyStyleToTable(tbl,st){
   if(!tbl)return;
-  const fs=st.fs,fw=st.fw,rh=st.rh,font=st.font;
-  const nFont=st.nameFont,nFw=st.nameFw;
-
-  // Başlıq sütunları
+  const fs=st.fs,fw=st.fw,rh=st.rh,font=st.font,nFont=st.nameFont,nFw=st.nameFw;
   tbl.querySelectorAll('tr.gh th.hb').forEach(el=>el.style.background=st.h1bg);
   tbl.querySelectorAll('tr.gh th.ho').forEach(el=>el.style.background=st.h2bg);
   tbl.querySelectorAll('tr.gh th.hg').forEach(el=>el.style.background=st.h3bg);
   tbl.querySelectorAll('tr.gh th.hp').forEach(el=>el.style.background=st.h4bg);
-
-  // Sütun eni
   tbl.querySelectorAll('col.col-name').forEach(el=>el.style.width=st.nameW);
   tbl.querySelectorAll('col.col-num').forEach(el=>el.style.width=st.numW);
   tbl.querySelectorAll('col.col-pct').forEach(el=>el.style.width=st.pctW);
-
-  // Adi data sətirləri
   const drs=tbl.querySelectorAll('tr.dr');
   drs.forEach((tr,i)=>{
     tr.style.height=rh;
@@ -787,8 +548,6 @@ function applyStyleToTable(tbl,st){
     tr.querySelectorAll('.nv').forEach(el=>{el.style.color=st.numCol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=i%2===1?st.evenBg:st.numBg;});
     tr.querySelectorAll('.pv').forEach(el=>{el.style.color=st.pctCol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=i%2===1?st.evenBg:st.pctBg;});
   });
-
-  // Saxa sətirləri
   tbl.querySelectorAll('tr.sr').forEach(tr=>{
     tr.style.height=rh;
     const nm=tr.querySelector('.nm');
@@ -796,96 +555,51 @@ function applyStyleToTable(tbl,st){
     tr.querySelectorAll('.nv').forEach(el=>{el.style.color=st.saxaVcol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=st.saxaBg;});
     tr.querySelectorAll('.pv').forEach(el=>{el.style.color=st.saxaVcol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=st.saxaBg;});
   });
-
-  // Ümumi Panda sətri
   tbl.querySelectorAll('tr.tr').forEach(tr=>{
     tr.style.height=rh;
     const nm=tr.querySelector('.nm');if(nm){nm.style.color=st.ptotNcol;nm.style.background=st.ptotBg;nm.style.fontFamily=nFont;nm.style.fontWeight=nFw;}
     tr.querySelectorAll('.nv').forEach(el=>{el.style.color=st.ptotVcol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=st.ptotBg;});
     tr.querySelectorAll('.pv').forEach(el=>{el.style.color=st.ptotPcol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=st.ptotBg;});
   });
-
-  // Ümumi Saxa sətri
   tbl.querySelectorAll('tr.str').forEach(tr=>{
     tr.style.height=rh;
     const nm=tr.querySelector('.nm');if(nm){nm.style.color=st.stotNcol;nm.style.background=st.stotBg;nm.style.fontFamily=nFont;nm.style.fontWeight=nFw;}
     tr.querySelectorAll('.nv').forEach(el=>{el.style.color=st.stotVcol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=st.stotBg;});
     tr.querySelectorAll('.pv').forEach(el=>{el.style.color=st.stotPcol;el.style.fontFamily=font;el.style.fontWeight=fw;el.style.fontSize=fs;el.style.background=st.stotBg;});
   });
-
-  // Ox rəngləri
   tbl.querySelectorAll('.arr-up').forEach(e=>e.style.color=st.arrUp);
   tbl.querySelectorAll('.arr-mid').forEach(e=>e.style.color=st.arrMid);
   tbl.querySelectorAll('.arr-dn').forEach(e=>e.style.color=st.arrDn);
 }
-
-function applyStyleToAll(st){
-  // Bütün cədvəllərə tətbiq et
-  document.querySelectorAll('table.rt').forEach(tbl=>applyStyleToTable(tbl,st));
-  // Önizləmə
-  const prev=document.getElementById('style-prev-tbl');if(prev)applyStyleToTable(prev,st);
-}
-
+function applyStyleToAll(st){document.querySelectorAll('table.rt').forEach(tbl=>applyStyleToTable(tbl,st));const prev=document.getElementById('style-prev-tbl');if(prev)applyStyleToTable(prev,st);}
 function readSI(){
   const g=id=>document.getElementById(id)?.value;
-  return{
-    font:g('st-font')||DEF_STYLE.font,fs:g('st-fs')||DEF_STYLE.fs,fw:g('st-fw')||DEF_STYLE.fw,rh:g('st-rh')||DEF_STYLE.rh,
-    nameFont:g('st-name-font')||DEF_STYLE.nameFont,nameFw:g('st-name-fw')||DEF_STYLE.nameFw,
-    nameCol:g('st-name-col')||DEF_STYLE.nameCol,nameBg:g('st-name-bg')||DEF_STYLE.nameBg,
-    numCol:g('st-num-col')||DEF_STYLE.numCol,numBg:g('st-num-bg')||DEF_STYLE.numBg,
-    pctCol:g('st-pct-col')||DEF_STYLE.pctCol,pctBg:g('st-pct-bg')||DEF_STYLE.pctBg,
-    evenBg:g('st-even-bg')||DEF_STYLE.evenBg,evenNameBg:g('st-even-name-bg')||DEF_STYLE.evenNameBg,
-    ptotBg:g('st-ptot-bg')||DEF_STYLE.ptotBg,ptotNcol:g('st-ptot-ncol')||DEF_STYLE.ptotNcol,ptotVcol:g('st-ptot-vcol')||DEF_STYLE.ptotVcol,ptotPcol:g('st-ptot-pcol')||DEF_STYLE.ptotPcol,
-    saxaNcol:g('st-saxa-ncol')||DEF_STYLE.saxaNcol,saxaNbg:g('st-saxa-nbg')||DEF_STYLE.saxaNbg,saxaVcol:g('st-saxa-vcol')||DEF_STYLE.saxaVcol,saxaBg:g('st-saxa-bg')||DEF_STYLE.saxaBg,
-    stotBg:g('st-stot-bg')||DEF_STYLE.stotBg,stotNcol:g('st-stot-ncol')||DEF_STYLE.stotNcol,stotVcol:g('st-stot-vcol')||DEF_STYLE.stotVcol,stotPcol:g('st-stot-pcol')||DEF_STYLE.stotPcol,
-    arrUp:g('st-arr-up')||DEF_STYLE.arrUp,arrMid:g('st-arr-mid')||DEF_STYLE.arrMid,arrDn:g('st-arr-dn')||DEF_STYLE.arrDn,
-    nameW:g('st-namew')||DEF_STYLE.nameW,numW:g('st-numw')||DEF_STYLE.numW,pctW:g('st-pctw')||DEF_STYLE.pctW,
-    h1bg:g('st-h1-bg')||DEF_STYLE.h1bg,h2bg:g('st-h2-bg')||DEF_STYLE.h2bg,h3bg:g('st-h3-bg')||DEF_STYLE.h3bg,h4bg:g('st-h4-bg')||DEF_STYLE.h4bg
-  };
+  return{font:g('st-font')||DEF_STYLE.font,fs:g('st-fs')||DEF_STYLE.fs,fw:g('st-fw')||DEF_STYLE.fw,rh:g('st-rh')||DEF_STYLE.rh,nameFont:g('st-name-font')||DEF_STYLE.nameFont,nameFw:g('st-name-fw')||DEF_STYLE.nameFw,nameCol:g('st-name-col')||DEF_STYLE.nameCol,nameBg:g('st-name-bg')||DEF_STYLE.nameBg,numCol:g('st-num-col')||DEF_STYLE.numCol,numBg:g('st-num-bg')||DEF_STYLE.numBg,pctCol:g('st-pct-col')||DEF_STYLE.pctCol,pctBg:g('st-pct-bg')||DEF_STYLE.pctBg,evenBg:g('st-even-bg')||DEF_STYLE.evenBg,evenNameBg:g('st-even-name-bg')||DEF_STYLE.evenNameBg,ptotBg:g('st-ptot-bg')||DEF_STYLE.ptotBg,ptotNcol:g('st-ptot-ncol')||DEF_STYLE.ptotNcol,ptotVcol:g('st-ptot-vcol')||DEF_STYLE.ptotVcol,ptotPcol:g('st-ptot-pcol')||DEF_STYLE.ptotPcol,saxaNcol:g('st-saxa-ncol')||DEF_STYLE.saxaNcol,saxaNbg:g('st-saxa-nbg')||DEF_STYLE.saxaNbg,saxaVcol:g('st-saxa-vcol')||DEF_STYLE.saxaVcol,saxaBg:g('st-saxa-bg')||DEF_STYLE.saxaBg,stotBg:g('st-stot-bg')||DEF_STYLE.stotBg,stotNcol:g('st-stot-ncol')||DEF_STYLE.stotNcol,stotVcol:g('st-stot-vcol')||DEF_STYLE.stotVcol,stotPcol:g('st-stot-pcol')||DEF_STYLE.stotPcol,arrUp:g('st-arr-up')||DEF_STYLE.arrUp,arrMid:g('st-arr-mid')||DEF_STYLE.arrMid,arrDn:g('st-arr-dn')||DEF_STYLE.arrDn,nameW:g('st-namew')||DEF_STYLE.nameW,numW:g('st-numw')||DEF_STYLE.numW,pctW:g('st-pctw')||DEF_STYLE.pctW,h1bg:g('st-h1-bg')||DEF_STYLE.h1bg,h2bg:g('st-h2-bg')||DEF_STYLE.h2bg,h3bg:g('st-h3-bg')||DEF_STYLE.h3bg,h4bg:g('st-h4-bg')||DEF_STYLE.h4bg};
 }
 function liveStyle(){applyStyleToAll(readSI());}
 function saveStyle(){const st=readSI();svStyle(st);applyStyleToAll(st);closeMo('mo-style');alert('✅ Görünüş saxlanıldı!');}
 function resetStyle(){svStyle({...DEF_STYLE});loadSI(DEF_STYLE);applyStyleToAll(DEF_STYLE);}
 function loadSI(st){
   const sv=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v;};
-  sv('st-font',st.font);sv('st-fs',st.fs);sv('st-fw',st.fw);sv('st-rh',st.rh);
-  sv('st-name-font',st.nameFont);sv('st-name-fw',st.nameFw);
-  sv('st-name-col',st.nameCol);sv('st-name-bg',st.nameBg);
-  sv('st-num-col',st.numCol);sv('st-num-bg',st.numBg);
-  sv('st-pct-col',st.pctCol);sv('st-pct-bg',st.pctBg);
-  sv('st-even-bg',st.evenBg);sv('st-even-name-bg',st.evenNameBg);
-  sv('st-ptot-bg',st.ptotBg);sv('st-ptot-ncol',st.ptotNcol);sv('st-ptot-vcol',st.ptotVcol);sv('st-ptot-pcol',st.ptotPcol);
-  sv('st-saxa-ncol',st.saxaNcol);sv('st-saxa-nbg',st.saxaNbg);sv('st-saxa-vcol',st.saxaVcol);sv('st-saxa-bg',st.saxaBg);
-  sv('st-stot-bg',st.stotBg);sv('st-stot-ncol',st.stotNcol);sv('st-stot-vcol',st.stotVcol);sv('st-stot-pcol',st.stotPcol);
-  sv('st-arr-up',st.arrUp);sv('st-arr-mid',st.arrMid);sv('st-arr-dn',st.arrDn);
-  sv('st-namew',st.nameW);sv('st-numw',st.numW);sv('st-pctw',st.pctW);
-  sv('st-h1-bg',st.h1bg);sv('st-h2-bg',st.h2bg);sv('st-h3-bg',st.h3bg);sv('st-h4-bg',st.h4bg);
+  sv('st-font',st.font);sv('st-fs',st.fs);sv('st-fw',st.fw);sv('st-rh',st.rh);sv('st-name-font',st.nameFont);sv('st-name-fw',st.nameFw);sv('st-name-col',st.nameCol);sv('st-name-bg',st.nameBg);sv('st-num-col',st.numCol);sv('st-num-bg',st.numBg);sv('st-pct-col',st.pctCol);sv('st-pct-bg',st.pctBg);sv('st-even-bg',st.evenBg);sv('st-even-name-bg',st.evenNameBg);sv('st-ptot-bg',st.ptotBg);sv('st-ptot-ncol',st.ptotNcol);sv('st-ptot-vcol',st.ptotVcol);sv('st-ptot-pcol',st.ptotPcol);sv('st-saxa-ncol',st.saxaNcol);sv('st-saxa-nbg',st.saxaNbg);sv('st-saxa-vcol',st.saxaVcol);sv('st-saxa-bg',st.saxaBg);sv('st-stot-bg',st.stotBg);sv('st-stot-ncol',st.stotNcol);sv('st-stot-vcol',st.stotVcol);sv('st-stot-pcol',st.stotPcol);sv('st-arr-up',st.arrUp);sv('st-arr-mid',st.arrMid);sv('st-arr-dn',st.arrDn);sv('st-namew',st.nameW);sv('st-numw',st.numW);sv('st-pctw',st.pctW);sv('st-h1-bg',st.h1bg);sv('st-h2-bg',st.h2bg);sv('st-h3-bg',st.h3bg);sv('st-h4-bg',st.h4bg);
 }
-function openStyleMo(){
-  const st=gStyle();loadSI(st);
-  buildPrevTbl();
-  setTimeout(()=>applyStyleToAll(st),50);
-  document.getElementById('mo-style').classList.add('show');
-}
-// Önizləmə cədvəlini qur
+function openStyleMo(){const st=gStyle();loadSI(st);buildPrevTbl();setTimeout(()=>applyStyleToAll(st),50);document.getElementById('mo-style').classList.add('show');}
 function buildPrevTbl(){
-  const st=gStyle();
-  const tbl=document.getElementById('style-prev-tbl');
+  const st=gStyle();const tbl=document.getElementById('style-prev-tbl');
   const nw=st.nameW,vw=st.numW,pw=st.pctW;
   tbl.innerHTML=`<colgroup><col class="col-name" style="width:${nw}"><col class="col-num" style="width:${vw}"><col class="col-num" style="width:${vw}"><col class="col-pct" style="width:${pw}"><col class="col-num" style="width:${vw}"><col class="col-num" style="width:${vw}"><col class="col-pct" style="width:${pw}"></colgroup>
-  <tr class="gh"><th class="lb col-name" rowspan="2" style="vertical-align:middle;background:#dce6f2;color:#1e3a6e;border:1px solid #cdd5e0;font-weight:800;font-size:11px;padding:4px 8px">Şöbələr</th><th colspan="3" class="hb" style="background:${st.h1bg};color:#fff;font-weight:800;font-size:11px;padding:4px 8px;border:1px solid #cdd5e0;text-align:center">8 aprel 2026</th><th colspan="3" class="ho" style="background:${st.h2bg};color:#fff;font-weight:800;font-size:11px;padding:4px 8px;border:1px solid #cdd5e0;text-align:center">1-8 aprel 2026</th></tr>
+  <tr class="gh"><th class="lb col-name" rowspan="2" style="vertical-align:middle;background:#dce6f2;color:#1e3a6e;border:1px solid #cdd5e0;font-weight:800;font-size:11px;padding:4px 8px">Şöbələr</th><th colspan="3" class="hb" style="background:${st.h1bg};color:#fff;font-weight:800;font-size:11px;padding:4px 8px;border:1px solid #cdd5e0;text-align:center">8 aprel</th><th colspan="3" class="ho" style="background:${st.h2bg};color:#fff;font-weight:800;font-size:11px;padding:4px 8px;border:1px solid #cdd5e0;text-align:center">1-8 aprel</th></tr>
   <tr class="sh"><th style="background:#dce6f2;color:#1d4ed8;font-size:10px;font-weight:700;text-align:center;padding:3px 8px;border:1px solid #cdd5e0">Satış</th><th style="background:#dce6f2;color:#1d4ed8;font-size:10px;font-weight:700;text-align:center;padding:3px 8px;border:1px solid #cdd5e0">Mənfəət</th><th style="background:#dce6f2;color:#1d4ed8;font-size:10px;font-weight:700;text-align:center;padding:3px 8px;border:1px solid #cdd5e0">Faiz</th><th style="background:#dce6f2;color:#b45309;font-size:10px;font-weight:700;text-align:center;padding:3px 8px;border:1px solid #cdd5e0">Satış</th><th style="background:#dce6f2;color:#b45309;font-size:10px;font-weight:700;text-align:center;padding:3px 8px;border:1px solid #cdd5e0">Mənfəət</th><th style="background:#dce6f2;color:#b45309;font-size:10px;font-weight:700;text-align:center;padding:3px 8px;border:1px solid #cdd5e0">Faiz</th></tr>
-  <tr class="dr"><td class="nm" style="border:1px solid #cdd5e0;padding:4px 8px">Panda 2</td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px"><div class="nv-inner"><span class="arr-up">↑</span><span class="nv-val">38.259</span></div></td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">15.420</td><td class="pv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">66%</td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px"><div class="nv-inner"><span class="arr-mid">→</span><span class="nv-val">54.500</span></div></td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">22.000</td><td class="pv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">67.3%</td></tr>
-  <tr class="dr"><td class="nm" style="border:1px solid #cdd5e0;padding:4px 8px">Panda 3</td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px"><div class="nv-inner"><span class="arr-dn">↓</span><span class="nv-val">42.100</span></div></td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">18.200</td><td class="pv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">72%</td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px"><div class="nv-inner"><span class="arr-up">↑</span><span class="nv-val">61.800</span></div></td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">26.100</td><td class="pv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">69.1%</td></tr>
-  <tr class="tr"><td class="nm" style="border:1px solid #162d58;padding:4px 8px">Ümumi Panda</td><td class="nv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">80.359</td><td class="nv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">33.620</td><td class="pv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">68.2%</td><td class="nv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">116.300</td><td class="nv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">48.100</td><td class="pv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">68.2%</td></tr>
+  <tr class="dr"><td class="nm" style="border:1px solid #cdd5e0;padding:4px 8px">Panda 2</td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px"><div class="nv-inner"><span style="font-size:14px;font-weight:900;margin-left:4px;flex-shrink:0;color:${st.arrUp}" class="arr-up">↑</span><span>38259</span></div></td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">15420</td><td class="pv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">66%</td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px"><div class="nv-inner"><span style="font-size:14px;font-weight:900;margin-left:4px;flex-shrink:0;color:${st.arrMid}" class="arr-mid">→</span><span>54500</span></div></td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">22000</td><td class="pv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">67%</td></tr>
+  <tr class="dr"><td class="nm" style="border:1px solid #cdd5e0;padding:4px 8px">Panda 3</td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px"><div class="nv-inner"><span style="font-size:14px;font-weight:900;margin-left:4px;flex-shrink:0;color:${st.arrDn}" class="arr-dn">↓</span><span>42100</span></div></td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">18200</td><td class="pv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">72%</td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px"><div class="nv-inner"><span style="font-size:14px;font-weight:900;margin-left:4px;flex-shrink:0;color:${st.arrUp}" class="arr-up">↑</span><span>61800</span></div></td><td class="nv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">26100</td><td class="pv" style="border:1px solid #cdd5e0;padding:4px 8px;text-align:right">69%</td></tr>
+  <tr class="tr"><td class="nm" style="border:1px solid #162d58;padding:4px 8px">Ümumi Panda</td><td class="nv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">80359</td><td class="nv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">33620</td><td class="pv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">68%</td><td class="nv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">116300</td><td class="nv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">48100</td><td class="pv" style="border:1px solid #162d58;padding:4px 8px;text-align:right">68%</td></tr>
   <tr class="saxagap"><td colspan="7" style="height:8px;background:#fff3cd;border-top:2px solid #f59e0b;padding:0"></td></tr>
-  <tr class="sr"><td class="nm" style="border:1px solid #fde68a;padding:4px 8px">Saxa 1 (Əcəmi)</td><td class="nv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">12.400</td><td class="nv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">4.800</td><td class="pv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">58%</td><td class="nv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">18.500</td><td class="nv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">7.200</td><td class="pv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">60%</td></tr>
-  <tr class="str"><td class="nm" style="border:1px solid #92400e;padding:4px 8px">Ümumi Saxa</td><td class="nv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">12.400</td><td class="nv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">4.800</td><td class="pv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">58%</td><td class="nv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">18.500</td><td class="nv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">7.200</td><td class="pv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">60%</td></tr>`;
+  <tr class="sr"><td class="nm" style="border:1px solid #fde68a;padding:4px 8px">Saxa 1</td><td class="nv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">12400</td><td class="nv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">4800</td><td class="pv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">58%</td><td class="nv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">18500</td><td class="nv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">7200</td><td class="pv" style="border:1px solid #fde68a;padding:4px 8px;text-align:right">60%</td></tr>
+  <tr class="str"><td class="nm" style="border:1px solid #92400e;padding:4px 8px">Ümumi Saxa</td><td class="nv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">12400</td><td class="nv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">4800</td><td class="pv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">58%</td><td class="nv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">18500</td><td class="nv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">7200</td><td class="pv" style="border:1px solid #92400e;padding:4px 8px;text-align:right">60%</td></tr>`;
   applyStyleToTable(tbl,st);
 }
 (()=>applyStyleToAll(gStyle()))();
 
-// ── ANA DEĞİŞKƏNLƏR ───────────────────────────────────────────────────────────
 const DEF_USERS=[
   {id:'p2',name:'Panda 2',pw:'p2-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
   {id:'p3',name:'Panda 3',pw:'p3-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
@@ -902,7 +616,6 @@ function progShow(msg='Yüklənir...'){document.getElementById('prog-overlay').c
 function setProg(pct,msg){document.getElementById('prog-bar').style.width=pct+'%';document.getElementById('prog-pct').textContent=pct+'%';if(msg)document.getElementById('prog-msg').textContent=msg;}
 function progAnimate(from,to,msg,ms){return new Promise(res=>{const step=(to-from)/20;let cur=from;const t=setInterval(()=>{cur=Math.min(cur+step,to);setProg(Math.round(cur),msg);if(cur>=to){clearInterval(t);res();}},ms/20);});}
 async function progDone(){await progAnimate(parseInt(document.getElementById('prog-bar').style.width)||90,100,'Hazır!',300);await new Promise(r=>setTimeout(r,200));document.getElementById('prog-overlay').classList.remove('show');setProg(0,'');}
-
 function saveProgShow(sid){const w=document.getElementById('sp-wrap-'+sid),b=document.getElementById('sp-bar-'+sid),p=document.getElementById('sp-pct-'+sid);if(w)w.classList.add('show');if(b)b.style.width='5%';if(p)p.textContent='5%';}
 function saveProgSet(sid,pct,msg){const b=document.getElementById('sp-bar-'+sid),p=document.getElementById('sp-pct-'+sid);if(b)b.style.width=pct+'%';if(p)p.textContent=pct+'%'+(msg?' — '+msg:'');}
 function saveProgAnimate(sid,from,to,msg,ms){return new Promise(res=>{const step=(to-from)/15;let cur=from;const t=setInterval(()=>{cur=Math.min(cur+step,to);saveProgSet(sid,Math.round(cur),msg);if(cur>=to){clearInterval(t);res();}},ms/15);});}
@@ -929,13 +642,11 @@ function gU(){return CFG?.users||DEF_USERS;}
 function gT(){return CFG?.targets||DEF_TGTS;}
 function gSS(){return CFG?.saxa||DEF_SAXA;}
 function findRec(records,name,sk){return records.find(r=>r.sobe===name&&r.period===sk)||null;}
-
 function getRD(){return new Date();}
 function getFD(){const n=new Date(),d=new Date(n);if(n.getHours()<17)d.setDate(d.getDate()-1);return d;}
 function dLeft(){const d=getRD();return Math.max(0,new Date(d.getFullYear(),d.getMonth()+1,0).getDate()-d.getDate());}
 function daysPassed(){return Math.max(1,getRD().getDate());}
 function fmtRealDate(){const d=getRD();return `${GUNS[d.getDay()]}, ${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;}
-
 function getAllPeriods(){
   const d=getFD(),yr=d.getFullYear(),mo=d.getMonth(),day=d.getDate();
   const mp=String(mo+1).padStart(2,'0'),dp=String(day).padStart(2,'0');
@@ -944,11 +655,14 @@ function getAllPeriods(){
 function getUserPeriods(uid){const u=gU().find(u=>u.id===uid);return getAllPeriods().filter((_,i)=>(u?.periods||[1,1,1,1])[i]===1);}
 function getSFKey(){const d=getFD();return `SF_${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;}
 function getSFDate(){const d=getFD();return `${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;}
-
 function parseNum(s){return parseFloat(String(s||'').replace(',','.'))||0;}
-function fmt(n){if(!n||Number(n)===0)return '—';return Math.round(Number(n)).toLocaleString('de-DE');}
-function fmtFull(n){if(!n||Number(n)===0)return '';const num=Number(n),s=String(n);if(s.includes('.')||s.includes(','))return num.toLocaleString('de-DE',{minimumFractionDigits:0,maximumFractionDigits:2});return Math.round(num).toLocaleString('de-DE');}
-function fmtSF(n){if(!n||Number(n)===0)return '—';return Number(n).toLocaleString('de-DE',{minimumFractionDigits:0,maximumFractionDigits:2});}
+
+// ── DƏYİŞƏN 3 FUNKSİYA — nöqtəsiz sadə rəqəm ────────────────────────────────
+function fmt(n){if(!n||Number(n)===0)return '—';return Math.round(Number(n)).toString();}
+function fmtFull(n){if(!n||Number(n)===0)return '';const num=Number(n),s=String(n);if(s.includes('.')||s.includes(','))return num.toFixed(2).replace(/\.?0+$/,'');return Math.round(num).toString();}
+function fmtSF(n){if(!n||Number(n)===0)return '—';const num=Number(n);return Number.isInteger(num)?num.toString():num.toFixed(2).replace(/\.?0+$/,'');}
+// ─────────────────────────────────────────────────────────────────────────────
+
 function fmtFaizStore(f){if(!f||f===0)return '—';const n=Number(f);if(Number.isInteger(n))return n+'%';const s=n.toFixed(1);return s.endsWith('.0')?Math.round(n)+'%':s+'%';}
 function fmtFaizAvg(f){if(!f||f===null)return '—';return Number(f).toFixed(1)+'%';}
 function xPct(v,t){if(!v||!t)return null;const r=v/t*100;return r>=100?100:Math.floor(r*10)/10;}
@@ -957,17 +671,6 @@ function avgF(arr){const v=arr.filter(x=>x>0);return v.length?v.reduce((a,b)=>a+
 function planColor(ms,tgt,dl){if(!ms||!tgt)return 'red';if(ms>=tgt)return 'green';const avg=ms/daysPassed(),proj=ms+avg*dl,pct=proj/tgt*100;if(pct>=100)return 'green';if(pct>=70)return 'orange';return 'red';}
 function planBg(ms,tgt,dl){const c=planColor(ms,tgt,dl);return c==='green'?'#10b981':c==='orange'?'#f59e0b':'#ef4444';}
 function calcDaily(ms,tgt,dl){if(!tgt||ms>=tgt||dl<=0)return 0;return Math.ceil((tgt-ms)/dl);}
-
-// Ox hücrəsi — ox HTML + rəng
-function nvCell(arrType,val,st){
-  const up=st?.arrUp||'#16a34a',mid=st?.arrMid||'#f59e0b',dn=st?.arrDn||'#dc2626';
-  const fw=st?.fw||'800',font=st?.font||"'IBM Plex Mono',monospace",fs=st?.fs||'12px';
-  let aHtml='';
-  if(arrType==='up')aHtml=`<span class="arr-up" style="color:${up};font-weight:900;font-size:14px;min-width:14px;display:inline-block">↑</span>`;
-  else if(arrType==='mid')aHtml=`<span class="arr-mid" style="color:${mid};font-weight:900;font-size:14px;min-width:14px;display:inline-block">→</span>`;
-  else if(arrType==='dn')aHtml=`<span class="arr-dn" style="color:${dn};font-weight:900;font-size:14px;min-width:14px;display:inline-block">↓</span>`;
-  return `<td class="nv" style="text-align:right;padding:4px 8px;border:1px solid #cdd5e0"><div class="nv-inner"><span class="nv-val" style="font-family:${font};font-weight:${fw};font-size:${fs}">${val}</span>${aHtml}</div></td>`;
-}
 function getArrType(ds,ms,minT,dl){if(!ds)return '';const rm=Math.max(0,minT-ms);if(rm<=0)return 'up';const dn=calcDaily(ms,minT,dl);if(!dn)return '';const p=ds/dn*100;return p>=100?'up':p>=70?'mid':'dn';}
 function getArrTypeMonth(ms,minT,dl){if(!ms)return '';if(ms>=minT)return 'up';const avg=ms/daysPassed();return ms+avg*dl>=minT?'mid':'dn';}
 
@@ -995,7 +698,6 @@ function openJurnalMo(){
   document.getElementById('jurnal-filter').innerHTML=fb;document.getElementById('jurnal-modal-list').innerHTML=renderJList('all');document.getElementById('mo-jurnal').classList.add('show');
 }
 function setJF(name,btn){document.querySelectorAll('.jf-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('jurnal-modal-list').innerHTML=renderJList(name);}
-
 function goTo(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
 function closeMo(id){document.getElementById(id).classList.remove('show');}
 function logout(){curSid=null;_bc=null;document.getElementById('gpw').value='';document.getElementById('gerr').classList.remove('show');document.getElementById('gsel').value='';goTo('gate');}
@@ -1026,7 +728,6 @@ async function doLogin(){
   await progAnimate(50,100,'Hazır!',300);await progDone();
   if(u.type==='viewer')openViewer(u);else{curSid=sid;openStoreForm(sid);}
 }
-
 async function showAdminGate(){
   if(window.PublicKeyCredential){
     try{
@@ -1086,7 +787,6 @@ async function openStoreForm(sid){
   const {records,sf,cfg}=await rBin(true);CFG=cfg;window._cr=records;window._csf=sf;
   await progAnimate(60,95,'Hazırlanır...',200);renderFormData(sid,records,sf);await progDone();
 }
-
 function renderFormData(sid,records,sf){
   const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
   const ay0=periods.find(p=>p.id==='ay0');const ms=ay0?findRec(records,u.name,ay0.sk)?.satis||0:0;
@@ -1097,9 +797,7 @@ function renderFormData(sid,records,sf){
     const isAy=period.id==='ay0';
     h+=`<div class="perblock" id="pb-${period.id}">
       <div class="perhdr" style="background:${PCOL[pi]}">${period.label}</div>
-      <table class="pt"><thead><tr>
-        <th style="text-align:left">Göstərici</th><th>Satış (₼)</th><th>Mənfəət (₼)</th><th>Faiz (%)</th>
-      </tr></thead><tbody><tr>
+      <table class="pt"><thead><tr><th style="text-align:left">Göstərici</th><th>Satış (₼)</th><th>Mənfəət (₼)</th><th>Faiz (%)</th></tr></thead><tbody><tr>
         <td class="pn">Ümumi satış</td>
         <td><div class="inp-wrap"><input class="ni" type="text" inputmode="decimal" id="s-${period.id}" value="${sv}" placeholder="0" ${hasSaved?'disabled':''} ${isAy?`oninput="upPlanLive();updNid('s-ay0')"`:''} oninput="updNid('s-${period.id}')"><div class="nid" id="nid_s-${period.id}">${sv&&Number(sv)>0?fmtFull(sv):''}</div></div></td>
         <td><div class="inp-wrap"><input class="ni" type="text" inputmode="decimal" id="m-${period.id}" value="${mv}" placeholder="0" ${hasSaved?'disabled':''} oninput="updNid('m-${period.id}')"><div class="nid" id="nid_m-${period.id}">${mv&&Number(mv)>0?fmtFull(mv):''}</div></div></td>
@@ -1113,23 +811,18 @@ function renderFormData(sid,records,sf){
     const sfKey=getSFKey(),sfRec=sf[sfKey+'_'+sid]||null;
     h+=`<div class="saxa-firma-block" id="pb-sf">
       <div class="saxa-firma-hdr">${ss.firmName} — ${getSFDate()}</div>
-      <div style="padding:10px 12px">
-        <div style="font-size:10px;color:rgba(255,255,255,.45);margin-bottom:6px;font-weight:600">Maya Məbləği (₼)</div>
-        <input class="saxa-firma-inp" type="text" inputmode="decimal" id="sf-inp" value="${sfRec?.satis||''}" placeholder="0" ${sfRec?'disabled':''}>
-        <div class="nid" style="text-align:right;margin-top:4px" id="nid_sf">${sfRec?.satis&&Number(sfRec.satis)>0?fmtFull(sfRec.satis):''}</div>
-      </div>
+      <div style="padding:10px 12px"><div style="font-size:10px;color:rgba(255,255,255,.45);margin-bottom:6px;font-weight:600">Maya Məbləği (₼)</div>
+      <input class="saxa-firma-inp" type="text" inputmode="decimal" id="sf-inp" value="${sfRec?.satis||''}" placeholder="0" ${sfRec?'disabled':''}>
+      <div class="nid" style="text-align:right;margin-top:4px" id="nid_sf">${sfRec?.satis&&Number(sfRec.satis)>0?fmtFull(sfRec.satis):''}</div></div>
       ${sfRec?`<div style="padding:0 10px 8px"><button class="editbtn" style="margin-top:0;padding:8px" onclick="editSF()">✏️ Düzəliş</button></div>`:''}
     </div>`;
   }
   h+=`<button class="saveallbtn" id="saveallbtn" onclick="saveAll('${sid}')">💾 Hamısını Yadda Saxla</button>
   <div class="save-prog-wrap" id="sp-wrap-${sid}"><div class="save-prog-bar" id="sp-bar-${sid}"></div><div class="save-prog-pct" id="sp-pct-${sid}"></div></div>
-  <div class="ldbox" id="ldb">⏳ Göndərilir...</div>
-  <div class="okbox" id="okb"></div>
-  <div class="erbox" id="erb">❌ Xəta baş verdi.</div>
+  <div class="ldbox" id="ldb">⏳ Göndərilir...</div><div class="okbox" id="okb"></div><div class="erbox" id="erb">❌ Xəta baş verdi.</div>
   <button class="delbtn2" onclick="deleteToday('${sid}')">🗑 Bütün Məlumatı Sil</button>`;
   document.getElementById('sfbody').innerHTML=h;
 }
-
 function editPeriod(pid){['s-','m-','f-'].forEach(p=>{const el=document.getElementById(p+pid);if(el){el.disabled=false;el.style.border='1.5px solid #c9963a';}});const ebt=document.getElementById('ebt-'+pid);if(ebt)ebt.style.display='none';}
 function editSF(){const inp=document.getElementById('sf-inp');if(inp){inp.disabled=false;inp.style.border='1.5px solid #c9963a';}const e=document.querySelector('#pb-sf .editbtn');if(e)e.style.display='none';}
 
@@ -1161,7 +854,6 @@ async function saveAll(sid){
     saveProgHide(sid);if(sab){sab.disabled=false;sab.textContent='💾 Hamısını Yadda Saxla';}
   }
 }
-
 async function deleteToday(sid){
   if(!confirm('Bütün məlumatlar silinsin?'))return;
   const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
@@ -1173,21 +865,15 @@ async function deleteToday(sid){
   }catch{await progDone();alert('Silinmə xətası.');}
 }
 
-// ── HESABAT CƏDVƏLİ — INLINE STİL ────────────────────────────────────────────
 function buildTable(records,sf,tblId,ldId){
   const users=gU().filter(u=>u.type==='store');const targets=gT(),dl=dLeft();const allP=getAllPeriods();const st=gStyle();
   const D={};users.forEach(u=>{const uP=getUserPeriods(u.id);D[u.name]={};allP.forEach(p=>{const up=uP.find(x=>x.id===p.id);D[u.name][p.id]=up?findRec(records,u.name,up.sk):null;});});
-
   const nw=st.nameW,vw=st.numW,pw=st.pctW;
-  const font=st.font,fw=st.fw,fs=st.fs,rh=st.rh;
-  const nFont=st.nameFont,nFw=st.nameFw;
+  const font=st.font,fw=st.fw,fs=st.fs,rh=st.rh,nFont=st.nameFont,nFw=st.nameFw;
   const hColors=[st.h1bg,st.h2bg,st.h3bg,st.h4bg];
-
   let h=`<colgroup>`;
   allP.forEach(()=>h+=`<col class="col-name" style="width:${nw}"><col class="col-num" style="width:${vw}"><col class="col-num" style="width:${vw}"><col class="col-pct" style="width:${pw}">`);
   h+='</colgroup>';
-
-  // Başlıq
   h+='<tr class="gh">';
   allP.forEach((p,i)=>{
     h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle;background:#dce6f2;color:#1e3a6e;border:1px solid #b0c4de;border-right:2px solid #b0c4de;font-weight:800;font-size:12px;padding:4px 8px;text-align:left">Şöbələr</th>`;
@@ -1202,22 +888,17 @@ function buildTable(records,sf,tblId,ldId){
     h+=`<th style="background:#edf2f9;color:${c};text-align:center;font-size:10px;font-weight:700;padding:3px 8px;border:1px solid #cdd5e0">Faiz</th>`;
   });
   h+='</tr>';
-
   const pTots=allP.map(()=>({s:0,m:0,fl:[]})),sTots=allP.map(()=>({s:0,m:0,fl:[]}));
   const panda=users.filter(u=>u.inTotal),saxa=users.filter(u=>!u.inTotal);
-
   panda.forEach((u,ui)=>{
-    const t=targets[u.id];
-    const isEven=ui%2===1;
-    const rowBg=isEven?st.evenBg:st.numBg;
-    const nmBg=isEven?st.evenNameBg:st.nameBg;
+    const t=targets[u.id];const isEven=ui%2===1;
+    const rowBg=isEven?st.evenBg:st.numBg;const nmBg=isEven?st.evenNameBg:st.nameBg;
     h+=`<tr class="dr" style="height:${rh}">`;
     allP.forEach((p,pi)=>{
       const e=D[u.name][p.id];const ay0val=D[u.name]['ay0']?.satis||0;const isGun=p.id==='gun';
       h+=`<td class="nm" style="font-family:${nFont};font-weight:${nFw};color:${st.nameCol};background:${nmBg};border:1px solid #dce4ee;border-right:2px solid #dce4ee;padding:4px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${u.name}</td>`;
       if(e&&(e.satis>0||e.menfeet>0)){
         let atype='';if(isGun&&t)atype=getArrType(e.satis,ay0val,t.min,dl);else if(p.id==='ay0'&&t)atype=getArrTypeMonth(e.satis,t.min,dl);
-        // nv cell — ox sağda, rəqəm solda (şəkilə uyğun)
         const up=st.arrUp,mid=st.arrMid,dn=st.arrDn;
         let aHtml='';
         if(atype==='up')aHtml=`<span style="color:${up};font-weight:900;font-size:14px;margin-left:4px;flex-shrink:0">↑</span>`;
@@ -1235,8 +916,6 @@ function buildTable(records,sf,tblId,ldId){
     });
     h+='</tr>';
   });
-
-  // Ümumi Panda
   h+=`<tr class="tr" style="height:${rh}">`;
   pTots.forEach(t=>{
     h+=`<td class="nm" style="color:${st.ptotNcol};background:${st.ptotBg};font-family:${nFont};font-weight:${nFw};border:1px solid #162d58;padding:4px 8px">Ümumi Panda</td>`;
@@ -1245,7 +924,6 @@ function buildTable(records,sf,tblId,ldId){
     h+=`<td class="pv" style="color:${st.ptotPcol};background:${st.ptotBg};font-family:${font};font-weight:${fw};font-size:${fs};border:1px solid #162d58;padding:4px 8px;text-align:right">${fmtFaizAvg(avgF(t.fl))}</td>`;
   });
   h+='</tr>';
-
   if(saxa.length){
     h+=`<tr class="saxagap"><td colspan="${allP.length*4}" style="height:10px;background:#fff3cd;border-top:3px solid #f59e0b;padding:0"></td></tr>`;
     saxa.forEach(u=>{
@@ -1275,7 +953,6 @@ function buildTable(records,sf,tblId,ldId){
     });
     h+='</tr>';
   }
-
   const tbl=document.getElementById(tblId);tbl.innerHTML=h;document.getElementById(ldId).style.display='none';tbl.style.display='table';
 }
 
@@ -1326,10 +1003,7 @@ function planPanelHtml(records,forSaxa){
 function mkPanel(id){
   const d=getRD();
   return `<div class="rc" id="rc-${id}">
-    <div class="rchdr"><img class="rclogo" src="IMG_0510.png" alt="">
-      <div class="rct"><h2>Panda Kids — Yekun Satış Hesabatı</h2><p>Günlük &amp; Aylıq Müqayisəli</p></div>
-      <div class="rcd"><div class="rday">${d.getDate()}</div><div class="rmo">${AY[d.getMonth()].toUpperCase()} ${d.getFullYear()}</div></div>
-    </div>
+    <div class="rchdr"><img class="rclogo" src="IMG_0510.png" alt=""><div class="rct"><h2>Panda Kids — Yekun Satış Hesabatı</h2><p>Günlük &amp; Aylıq Müqayisəli</p></div><div class="rcd"><div class="rday">${d.getDate()}</div><div class="rmo">${AY[d.getMonth()].toUpperCase()} ${d.getFullYear()}</div></div></div>
     <div class="rctw"><div class="admld" id="ld-${id}">Yüklənir...</div><table class="rt" id="tbl-${id}" style="display:none"></table></div>
     <div class="rcftr"><span>Panda Kids © ${d.getFullYear()}</span></div>
   </div>`;
@@ -1350,7 +1024,6 @@ async function loadAdmin(){
     document.getElementById('adm-sp').innerHTML=planPanelHtml(records,true);
   }catch{document.getElementById('ld-adm').textContent='❌ Yüklənmədi.';}
 }
-
 function openViewer(u){document.getElementById('viewdate').textContent=fmtRealDate();if(u)document.getElementById('viewtitle').textContent=`Panda Kids — ${u.name}`;goTo('viewer');loadViewer();}
 async function loadViewer(){
   document.getElementById('viewbody').innerHTML=mkPanel('view')+
@@ -1445,7 +1118,6 @@ function togglePeriod(ri,pi,cb){if(!tmpUsers[ri].periods)tmpUsers[ri].periods=[1
 function addStore(){const vi=tmpUsers.findIndex(u=>u.type==='viewer');const ns={id:'s'+Date.now(),name:'Yeni Şöbə',pw:'sifre123',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]};if(vi>=0)tmpUsers.splice(vi,0,ns);else tmpUsers.push(ns);renderUsersMo();}
 function delUser(i){if(confirm('Silinsin?')){tmpUsers.splice(i,1);renderUsersMo();}}
 async function saveUsers(){const {records,sf,cfg}=await rBin();cfg.users=tmpUsers;CFG=cfg;await wBin(records,sf,cfg);await buildSel();closeMo('mo-u');alert('✅ Saxlanıldı!');}
-
 async function openTargetsMo(){
   const {cfg}=await rBin();CFG=cfg;const tgts=gT();let h='';
   gU().filter(u=>u.type==='store').forEach(u=>{const t=tgts[u.id]||{min:0,mid:0,max:0};h+=`<div class="mos"><div class="mosn">${u.name}</div><div class="mor3"><div class="mof"><label>🥉 Min</label><input type="number" inputmode="numeric" id="tm-${u.id}" value="${t.min}"></div><div class="mof"><label>🥈 Orta</label><input type="number" inputmode="numeric" id="td-${u.id}" value="${t.mid}"></div><div class="mof"><label>🥇 Maks</label><input type="number" inputmode="numeric" id="tx-${u.id}" value="${t.max}"></div></div></div>`;});
@@ -1455,7 +1127,6 @@ async function saveTargets(){
   const tgts={};gU().filter(u=>u.type==='store').forEach(u=>{tgts[u.id]={min:parseFloat(document.getElementById(`tm-${u.id}`)?.value)||0,mid:parseFloat(document.getElementById(`td-${u.id}`)?.value)||0,max:parseFloat(document.getElementById(`tx-${u.id}`)?.value)||0};});
   const {records,sf,cfg}=await rBin();cfg.targets=tgts;CFG=cfg;await wBin(records,sf,cfg);closeMo('mo-t');alert('✅ Hədəflər saxlanıldı!');
 }
-
 async function openSaxaAdminMo(){
   const {cfg}=await rBin();CFG=cfg;const ss=gSS(),users=gU().filter(u=>u.type==='store');
   let h=`<div class="mos"><div class="mosn">Firma Adı</div><div class="mof"><input type="text" id="sf-name" value="${ss.firmName||'Saxa Outlet'}"></div></div><div class="mosect">Hansı şöbələr doldurur</div>`;
@@ -1468,7 +1139,6 @@ async function saveSaxaSettings(){
   const {records,sf,cfg}=await rBin();cfg.saxa={fillers,firmName:document.getElementById('sf-name')?.value||'Saxa Outlet',showInAdmin:document.getElementById('sf-show')?.checked||false};
   CFG=cfg;await wBin(records,sf,cfg);closeMo('mo-saxa-admin');alert('✅ Saxlandı!');
 }
-
 async function openSettingsMo(){const {cfg}=await rBin();CFG=cfg;const cb=document.getElementById('param-admin-jurnal');if(cb)cb.checked=cfg.jp?.showAdmin||false;document.getElementById('mo-set').classList.add('show');}
 async function saveJP(){const showAdmin=document.getElementById('param-admin-jurnal')?.checked||false;const {records,sf,cfg}=await rBin();cfg.jp={showAdmin};CFG=cfg;await wBin(records,sf,cfg);}
 function changeAdminPw(){
@@ -1476,7 +1146,6 @@ function changeAdminPw(){
   if(o!==ADMIN_PW){alert('Köhnə parol yanlışdır.');return;}if(!n||n.length<4){alert('Yeni parol ən azı 4 simvol.');return;}
   ADMIN_PW=n;localStorage.setItem('pk_apw',n);document.getElementById('oldpw').value='';document.getElementById('newpw').value='';alert('✅ Admin parolu dəyişdirildi!');
 }
-
 async function takeScr(id){
   const card=document.getElementById(id),tbl=card.querySelector('.rt');const tblW=tbl?tbl.scrollWidth+2:card.scrollWidth;
   const tw=card.querySelector('.rctw');const of_=tw.style.overflow,ow_=tw.style.width,oh_=tw.style.maxHeight;
