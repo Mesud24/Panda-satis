@@ -1,12 +1,88 @@
 <!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Panda Kids</title><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=Roboto+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inconsolata:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{width:100%;overflow-x:hidden;}
-body{font-family:'Plus Jakarta Sans',sans-serif;color:#fff;min-height:100vh;background-color:#060918;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(99,60,180,.55) 0%,transparent 60%),radial-gradient(ellipse 70% 50% at 80% 5%,rgba(30,80,180,.5) 0%,transparent 55%),radial-gradient(ellipse 60% 70% at 5% 70%,rgba(20,60,140,.45) 0%,transparent 55%),radial-gradient(ellipse 75% 60% at 90% 80%,rgba(80,40,160,.45) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 50% 50%,rgba(15,25,60,.8) 0%,transparent 70%);background-attachment:fixed;}
+
+/* ── RƏNGLƏR: gecə/gündüz ── */
+body{font-family:'Plus Jakarta Sans',sans-serif;color:#fff;min-height:100vh;transition:background .3s;}
+body.dark{background-color:#060918;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(99,60,180,.55) 0%,transparent 60%),radial-gradient(ellipse 70% 50% at 80% 5%,rgba(30,80,180,.5) 0%,transparent 55%),radial-gradient(ellipse 60% 70% at 5% 70%,rgba(20,60,140,.45) 0%,transparent 55%),radial-gradient(ellipse 75% 60% at 90% 80%,rgba(80,40,160,.45) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 50% 50%,rgba(15,25,60,.8) 0%,transparent 70%);background-attachment:fixed;}
+body.light{background-color:#f0f4f8;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(200,210,255,.5) 0%,transparent 60%),radial-gradient(ellipse 70% 50% at 80% 5%,rgba(180,200,255,.4) 0%,transparent 55%);background-attachment:fixed;color:#0f1f3d;}
+
+/* Gündüz rejimində mətn rəngləri */
+body.light .sftitle,body.light .sfdate,body.light .psl,body.light .pil,body.light .plancard,body.light .perblock,body.light .saxa-firma-block{color:#0f1f3d;}
+body.light .plancard{background:rgba(0,0,0,.06);border-color:rgba(201,150,58,.4);}
+body.light .perblock{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.1);}
+body.light .perhdr{color:#fff;}
+body.light .pt thead th{color:rgba(0,0,30,.55);}
+body.light .pt tbody td.pn{color:#0f1f3d;}
+body.light .ni{background:rgba(0,0,0,.06);border-color:rgba(0,0,0,.15);color:#0f1f3d;}
+body.light .ni:focus{background:rgba(0,0,0,.09);border-color:#c9963a;}
+body.light .ni:disabled{color:rgba(0,0,60,.35);background:rgba(0,0,0,.03);}
+body.light .ni::placeholder{color:rgba(0,0,0,.3);}
+body.light .ni-f{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.12);color:#c2760a;}
+body.light .ni-f:disabled{color:rgba(0,0,0,.3);}
+body.light .ps{background:rgba(0,0,0,.05);}
+body.light .psv{color:#b45309;}
+body.light .piv{color:#0f1f3d;}
+body.light .pip.cur{color:#b45309;}
+body.light .ppl span{color:rgba(0,0,60,.55);}
+body.light .editbtn{border-color:rgba(0,0,0,.2);color:rgba(0,0,60,.7);}
+body.light .delbtn2{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.25);}
+body.light .sfhdr{background:rgba(240,244,248,.85);}
+body.light .sftitle{color:#0f1f3d;}
+body.light .admhdr{background:rgba(240,244,248,.85);}
+body.light .admtitle h2{color:#0f1f3d;}
+body.light .ab{background:rgba(0,0,0,.07);border-color:rgba(0,0,0,.12);color:#1e3a6e;}
+body.light .ab.gold{background:rgba(201,150,58,.15);}
+body.light .admbody .rc{box-shadow:0 4px 24px rgba(0,0,0,.12);}
+body.light .planpanel{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.1);}
+body.light .ppin{color:#0f1f3d;}
+body.light .ppist{color:rgba(0,0,60,.5);}
+body.light .ppist span{color:#b45309;}
+body.light .ppi{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.08);}
+body.light .ppibw{background:rgba(0,0,0,.1);}
+body.light .saxa-firma-hdr{color:#7c3000;}
+body.light .saxa-firma-inp{background:rgba(0,0,0,.05);border-color:rgba(245,158,11,.4);color:#0f1f3d;}
+body.light #store-form,body.light #admin,body.light #viewer{background:transparent;}
+body.light .okbox{background:rgba(16,185,129,.1);}
+body.light .ldbox{background:rgba(59,130,246,.1);}
+body.light .erbox{background:rgba(239,68,68,.1);}
+body.light .mobox{background:rgba(230,235,245,.97);border-color:rgba(201,150,58,.3);}
+body.light .mobox h3{color:#0f1f3d;}
+body.light .mos{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.08);}
+body.light .mosn{color:#b45309;}
+body.light .mof label{color:rgba(0,0,60,.5);}
+body.light .mof input,.mof select{background:rgba(0,0,0,.06);border-color:rgba(0,0,0,.15);color:#0f1f3d;}
+body.light .mof select option{background:#e8edf5;color:#0f1f3d;}
+body.light .moclose{background:rgba(0,0,0,.08);color:rgba(0,0,60,.6);}
+body.light .addbtn{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.15);color:rgba(0,0,60,.5);}
+body.light .cr label{color:rgba(0,0,60,.65);}
+body.light .cr{background:rgba(0,0,0,.03);}
+body.light .mosect{color:rgba(0,0,60,.4);border-color:rgba(0,0,0,.1);}
+body.light .fillperiod{background:rgba(0,0,0,.04);}
+body.light .afrow input,.af1inp{background:rgba(0,0,0,.06);border-color:rgba(0,0,0,.12);color:#0f1f3d;}
+body.light .period-sel label{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.1);color:rgba(0,0,60,.7);}
+body.light .jurnal-item{background:rgba(0,0,0,.04);}
+body.light .jurnal-name{color:#0f1f3d;}
+body.light .jurnal-device{color:rgba(0,0,60,.4);}
+body.light .jf-btn{background:rgba(0,0,0,.06);border-color:rgba(0,0,0,.1);color:rgba(0,0,60,.65);}
+body.light .g-spin-box{background:rgba(230,235,245,.97);border-color:rgba(201,150,58,.3);}
+body.light .g-spin-txt{color:rgba(0,0,60,.6);}
+body.light .gw .gsub{color:rgba(0,0,60,.45);}
+body.light .ginp{background:rgba(0,0,0,.07);border-color:rgba(0,0,0,.12);color:#0f1f3d;}
+body.light .ginp:focus{border-color:#c9963a;}
+body.light select.ginp option{background:#e8edf5;color:#0f1f3d;}
+body.light .remrow label{color:rgba(0,0,60,.6);}
+body.light .glink{color:rgba(0,0,60,.35);}
+body.light .gdiv{background:rgba(0,0,0,.1);}
+body.light .ppaneltitle{color:#b45309;}
+body.light .plantitle{color:#b45309;}
+body.light .ppl strong{color:#b45309;}
+
 .screen{display:none;min-height:100vh;flex-direction:column;}.screen.active{display:flex;}
 #gate{align-items:center;justify-content:center;}
 .gw{width:100%;max-width:340px;padding:32px 20px;display:flex;flex-direction:column;gap:14px;align-items:center;}
 .glogo{width:90px;height:90px;object-fit:contain;border-radius:22px;background:rgba(255,255,255,.95);padding:7px;box-shadow:0 8px 32px rgba(0,0,0,.5);}
-.gtitle{font-size:24px;font-weight:800;color:#fff;text-align:center;letter-spacing:-.3px;}
+.gtitle{font-size:24px;font-weight:800;text-align:center;letter-spacing:-.3px;}
 .gsub{font-size:12px;color:rgba(255,255,255,.4);text-align:center;margin-top:-8px;}
 .glbl{width:100%;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.35);margin-bottom:-8px;}
 .ginp{width:100%;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.12);border-radius:14px;padding:13px 16px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:500;color:#fff;outline:none;}
@@ -42,7 +118,8 @@ select.ginp option{color:#000;background:#fff;}
 .sflogo{width:36px;height:36px;object-fit:contain;background:#fff;border-radius:10px;padding:2px;flex-shrink:0;}
 .sftxt{flex:1;min-width:0;}
 .backbtn{background:none;border:none;color:rgba(255,255,255,.4);font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;padding:0;margin-bottom:3px;}
-.sftitle{font-size:16px;font-weight:800;color:#fff;}
+body.light .backbtn{color:rgba(0,0,60,.4);}
+.sftitle{font-size:16px;font-weight:800;}
 .sfdate{font-size:12px;color:#c9963a;margin-top:2px;font-weight:600;}
 .sfbody{max-width:560px;margin:0 auto;padding:14px 14px 28px;flex:1;width:100%;}
 .plancard{background:rgba(255,255,255,.06);border-radius:16px;padding:14px;margin-bottom:14px;border:1px solid rgba(201,150,58,.2);}
@@ -52,7 +129,7 @@ select.ginp option{color:#000;background:#fff;}
 .planitem.done{border-color:#10b981;background:rgba(16,185,129,.12);}
 .planitem.active{border-color:#f59e0b;background:rgba(245,158,11,.1);}
 .pil{font-size:9px;color:rgba(255,255,255,.45);margin-bottom:3px;font-weight:600;}
-.piv{font-size:12px;font-weight:800;color:#fff;}
+.piv{font-size:12px;font-weight:800;}
 .pip{font-size:11px;font-weight:700;margin-top:3px;}
 .pip.done{color:#10b981;}.pip.cur{color:#f59e0b;}
 .ppl{display:flex;justify-content:space-between;margin-bottom:5px;}
@@ -75,6 +152,7 @@ select.ginp option{color:#000;background:#fff;}
 .pt tbody tr{border-top:1px solid rgba(255,255,255,.06);}
 .pt tbody td{padding:6px 7px;vertical-align:top;}
 .pt tbody td.pn{font-weight:700;font-size:13px;color:#fff;vertical-align:middle;padding-top:14px;}
+body.light .pt tbody td.pn{color:#0f1f3d;}
 .inp-wrap{position:relative;}
 .ni{width:100%;text-align:right;border:1.5px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 7px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:600;color:#fff;background:rgba(255,255,255,.07);outline:none;display:block;}
 .ni:focus{border-color:#c9963a;background:rgba(255,255,255,.12);}
@@ -101,77 +179,71 @@ select.ginp option{color:#000;background:#fff;}
 .admhdri{max-width:1600px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
 .admlogow{display:flex;align-items:center;gap:10px;}
 .admlogo{width:38px;height:38px;object-fit:contain;background:#fff;border-radius:10px;padding:3px;}
-.admtitle h2{font-size:15px;font-weight:800;color:#fff;}
+.admtitle h2{font-size:15px;font-weight:800;}
 .admtitle p{font-size:11px;color:#c9963a;margin-top:2px;font-weight:600;}
-.admacts{display:flex;gap:6px;flex-wrap:wrap;}
+.admacts{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
 .ab{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.8);border-radius:10px;padding:7px 11px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;}
 .ab.gold{background:rgba(201,150,58,.2);border-color:rgba(201,150,58,.4);color:#c9963a;}
 .ab.view{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.3);color:#6ee7b7;cursor:default;}
+/* Tema düyməsi */
+.theme-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:6px 12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .2s;}
+body.dark .theme-btn{color:#f0c060;}
+body.light .theme-btn{background:rgba(0,0,0,.08);border-color:rgba(0,0,0,.15);color:#1e3a6e;}
 .admbody{max-width:1600px;margin:0 auto;padding:14px 16px 32px;width:100%;}
-
-/* ── HESABAT KARTI ── */
-.rc{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,.35);margin-bottom:0;}
-.rchdr{padding:11px 14px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;align-items:center;gap:8px;}
-.rclogo{width:28px;height:28px;object-fit:contain;background:#fff;border-radius:7px;padding:2px;flex-shrink:0;}
+/* ── HESABAT KARTI (tək sütun, scroll) ── */
+.rc{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,.2);margin-bottom:14px;}
+.rchdr{padding:15px 20px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;align-items:center;gap:12px;}
+.rclogo{width:40px;height:40px;object-fit:contain;background:#fff;border-radius:10px;padding:3px;flex-shrink:0;}
 .rct{flex:1;min-width:0;}
-.rct h2{color:#fff;font-size:12px;font-weight:800;}
-.rct p{color:rgba(255,255,255,.7);font-size:10px;margin-top:1px;}
+.rct h2{color:#fff;font-size:14px;font-weight:800;}
+.rct p{color:rgba(255,255,255,.65);font-size:11px;margin-top:2px;}
 .rcd{text-align:right;flex-shrink:0;}
-.rday{color:#fff;font-size:20px;font-weight:800;line-height:1;}
-.rmo{color:rgba(255,255,255,.6);font-size:9px;margin-top:1px;font-weight:600;}
+.rday{color:#fff;font-size:26px;font-weight:800;line-height:1;}
+.rmo{color:rgba(255,255,255,.6);font-size:10px;margin-top:2px;font-weight:600;}
 .rctw{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;}
-table.rt{border-collapse:collapse;white-space:nowrap;width:100%;}
-table.rt th,table.rt td{border:1px solid #cdd5e0;padding:3px 6px;}
-table.rt .col-name{width:var(--rt-name-w,105px);}
-table.rt .col-num{width:var(--rt-num-w,82px);}
-table.rt .col-pct{width:var(--rt-pct-w,55px);}
-.rt .gh th{font-weight:800;color:#fff;vertical-align:middle;height:26px;font-size:11px;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;}
+table.rt{border-collapse:collapse;white-space:nowrap;}
+table.rt th,table.rt td{border:1px solid #cdd5e0;padding:4px 8px;}
+table.rt .col-name{width:var(--rt-name-w,115px);}
+table.rt .col-num{width:var(--rt-num-w,90px);}
+table.rt .col-pct{width:var(--rt-pct-w,62px);}
+.rt .gh th{font-weight:800;color:#fff;vertical-align:middle;height:30px;font-size:13px;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;}
 .rt .gh .lb{background:#dce6f2;color:#1e3a6e;text-align:left;border-right:2px solid #b0c4de;font-weight:800;}
 .rt .gh .hb{background:#1d4ed8;}.rt .gh .ho{background:#c2410c;}.rt .gh .hg{background:#15803d;}.rt .gh .hp{background:#6d28d9;}
-.rt .sh th{background:#edf2f9;color:#2d3748;text-align:center;height:18px;font-size:9px;font-weight:700;padding:2px 6px;font-family:'Plus Jakarta Sans',sans-serif;}
+.rt .sh th{background:#edf2f9;color:#2d3748;text-align:center;height:20px;font-size:10px;font-weight:700;padding:3px 8px;font-family:'Plus Jakarta Sans',sans-serif;}
 .rt .sh .lb{background:#dce6f2;border-right:2px solid #b0c4de;text-align:left;color:#1e3a6e;font-weight:800;}
 .rt .sh .sb{color:#1d4ed8;}.rt .sh .so{color:#b45309;}.rt .sh .sg{color:#15803d;}.rt .sh .sp{color:#6d28d9;}
-.rt .dr td{height:var(--rt-row-h,25px);padding:2px 6px;vertical-align:middle;border-bottom:1px solid #edf2f7;font-size:var(--rt-fs,11px);}
+.rt .dr td{height:var(--rt-row-h,27px);padding:3px 8px;vertical-align:middle;border-bottom:1px solid #edf2f7;font-size:var(--rt-fs,12px);}
 .rt .dr .nm{font-weight:700;color:#0f1f3d;background:#f4f8fc;border-right:2px solid #dce4ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .dr .nv{text-align:right;color:var(--rt-num-col,#0f1f3d);font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,11px);}
-.rt .dr .pv{text-align:right;color:#374151;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,11px);}
+.rt .dr .nv{text-align:right;color:var(--rt-num-col,#0f1f3d);font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);}
+.rt .dr .pv{text-align:right;color:#374151;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,12px);}
 .rt .dr .dsh{text-align:center;color:#b0bec5;}
 .rt .dr:nth-child(even) td{background:#f7fafc;}
 .rt .dr:nth-child(even) .nm{background:#e8f0f8;}
-.rt .sr td{height:var(--rt-row-h,25px);padding:2px 6px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;font-size:var(--rt-fs,11px);}
+.rt .sr td{height:var(--rt-row-h,27px);padding:3px 8px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;font-size:var(--rt-fs,12px);}
 .rt .sr .nm{font-weight:700;color:#7c3000;background:#fef3d0!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .sr .nv{text-align:right;color:#6b3500;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,11px);}
-.rt .sr .pv{text-align:right;color:#92580a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,11px);}
+.rt .sr .nv{text-align:right;color:#6b3500;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);}
+.rt .sr .pv{text-align:right;color:#92580a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,12px);}
 .rt .sr .dsh{text-align:center;color:#f0b429;}
-.rt .saxagap td{height:7px;background:#fff3cd!important;border-top:3px solid #f59e0b;padding:0;}
-.rt .tr td{height:var(--rt-tot-h,25px);padding:2px 6px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;font-size:var(--rt-fs,11px);}
+.rt .saxagap td{height:10px;background:#fff3cd!important;border-top:3px solid #f59e0b;padding:0;}
+.rt .tr td{height:var(--rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;font-size:var(--rt-fs,12px);}
 .rt .tr .nm{color:#bfdbfe;font-weight:800;border-right:2px solid #2d5aa0;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .tr .nv{text-align:right;color:#fff;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,11px);}
-.rt .tr .pv{text-align:right;color:#93c5fd;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,11px);}
-.rt .str td{height:var(--rt-tot-h,25px);padding:2px 6px;vertical-align:middle;background:#78350f!important;border-top:2px solid #92400e;font-size:var(--rt-fs,11px);}
+.rt .tr .nv{text-align:right;color:#fff;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);}
+.rt .tr .pv{text-align:right;color:#93c5fd;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,12px);}
+.rt .str td{height:var(--rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:#78350f!important;border-top:2px solid #92400e;font-size:var(--rt-fs,12px);}
 .rt .str .nm{color:#fde68a;font-weight:800;border-right:2px solid #92400e;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .str .nv{text-align:right;color:#fef3c7;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,11px);}
-.rt .str .pv{text-align:right;color:#fde68a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,11px);}
-.arr-up,.arr-mid,.arr-dn{display:inline-block;width:13px;font-size:12px;font-weight:900;vertical-align:middle;flex-shrink:0;line-height:1;}
+.rt .str .nv{text-align:right;color:#fef3c7;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);}
+.rt .str .pv{text-align:right;color:#fde68a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,12px);}
+.arr-up,.arr-mid,.arr-dn{display:inline-block;width:16px;font-size:15px;font-weight:900;vertical-align:middle;flex-shrink:0;line-height:1;}
 .arr-up{color:#16a34a;}.arr-mid{color:#f59e0b;}.arr-dn{color:#dc2626;}
-.nv-inner{display:flex;align-items:center;justify-content:flex-end;gap:1px;width:100%;}
+.nv-inner{display:flex;align-items:center;justify-content:flex-end;gap:2px;width:100%;}
 .nv-val{flex:1;text-align:right;}
-.rcftr{padding:4px 12px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
-.rcftr span{color:#94a3b8;font-size:8px;font-weight:600;}
-.scrbtn{width:100%;padding:12px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:12px;color:#060918;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:800;cursor:pointer;}
+.rcftr{padding:7px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
+.rcftr span{color:#94a3b8;font-size:9px;font-weight:600;}
+.scrbtn{width:100%;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:14px;color:#060918;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:800;cursor:pointer;margin-top:4px;}
 .admld{text-align:center;padding:32px;color:#94a3b8;font-size:13px;font-weight:600;}
-
-/* ── 2x2 DESKTOP GRID — HƏMİŞƏ 2 SÜTUN ── */
-.dt-outer{width:100%;}
-.dt-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;width:100%;}
-.dt-sf-wrap{display:flex;justify-content:center;margin-bottom:12px;}
-.dt-sf-inner{width:100%;max-width:500px;}
-.dt-scrbtn-wrap{display:flex;justify-content:center;margin-bottom:12px;}
-.dt-scrbtn-wrap .scrbtn{max-width:360px;}
-
 .planpanel{background:rgba(255,255,255,.05);border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,.08);margin-top:14px;}
 .ppaneltitle{color:#c9963a;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px;}
-.ppgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:9px;}
+.ppgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:9px;}
 .ppi{background:rgba(255,255,255,.055);border-radius:12px;padding:11px 13px;border:1px solid rgba(255,255,255,.08);}
 .ppih{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
 .ppin{font-size:12px;font-weight:800;color:#fff;}
@@ -187,21 +259,21 @@ table.rt .col-pct{width:var(--rt-pct-w,55px);}
 .ppis{display:flex;gap:8px;flex-wrap:wrap;}
 .ppist{font-size:10px;color:rgba(255,255,255,.5);}
 .ppist span{color:#f0c060;font-weight:700;}
-.sf-rc{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.25);}
-.sf-rc-hdr{padding:11px 16px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;justify-content:space-between;align-items:center;}
-.sf-rc-title{color:#fff;font-size:13px;font-weight:800;}
-.sf-rc-date{color:rgba(255,255,255,.85);font-size:13px;font-weight:700;}
+.sf-rc{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(0,0,0,.3);margin-top:14px;}
+.sf-rc-hdr{padding:13px 18px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;justify-content:space-between;align-items:center;}
+.sf-rc-title{color:#fff;font-size:14px;font-weight:800;}
+.sf-rc-date{color:rgba(255,255,255,.85);font-size:14px;font-weight:700;}
 table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
-.sf-tbl th{background:#2d5aa0;color:#fff;font-size:11px;font-weight:800;padding:8px 14px;text-align:left;font-family:'Plus Jakarta Sans',sans-serif;}
-.sf-tbl th:last-child{text-align:right;width:130px;}
-.sf-tbl td{padding:8px 14px;font-size:12px;border-bottom:1px solid #e8eef6;color:#1e3a6e;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;}
-.sf-tbl td:last-child{text-align:right;font-weight:700;color:#0f1f3d;width:130px;}
+.sf-tbl th{background:#2d5aa0;color:#fff;font-size:12px;font-weight:800;padding:9px 16px;text-align:left;font-family:'Plus Jakarta Sans',sans-serif;}
+.sf-tbl th:last-child{text-align:right;width:150px;}
+.sf-tbl td{padding:9px 16px;font-size:13px;border-bottom:1px solid #e8eef6;color:#1e3a6e;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;}
+.sf-tbl td:last-child{text-align:right;font-weight:700;color:#0f1f3d;width:150px;}
 .sf-tbl tr:nth-child(even) td{background:#f4f8fc;}
-.sf-tbl .sf-total td{background:#1e3a6e!important;color:#fff!important;font-weight:800;font-size:13px;}
-.sf-tbl .sf-total td:last-child{color:#f0c060!important;font-size:14px;}
-.sf-rc-ftr{padding:6px 14px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
+.sf-tbl .sf-total td{background:#1e3a6e!important;color:#fff!important;font-weight:800;font-size:14px;}
+.sf-tbl .sf-total td:last-child{color:#f0c060!important;font-size:15px;}
+.sf-rc-ftr{padding:7px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
 .sf-rc-ftr span{color:#94a3b8;font-size:9px;font-weight:600;}
-.sf-scrbtn{width:100%;padding:10px;background:rgba(120,53,15,.7);border:none;border-radius:9px;color:#fde68a;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:800;cursor:pointer;margin-top:7px;}
+.sf-scrbtn{width:100%;padding:11px;background:rgba(120,53,15,.7);border:none;border-radius:10px;color:#fde68a;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:800;cursor:pointer;margin-top:8px;}
 .jurnal-filter{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
 .jf-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);border-radius:8px;padding:5px 10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;cursor:pointer;}
 .jf-btn.active{background:rgba(201,150,58,.25);border-color:rgba(201,150,58,.5);color:#f0c060;}
@@ -254,7 +326,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .saveallbtn:disabled{opacity:.45;cursor:not-allowed;}
 .style-preview{background:#fff;border-radius:10px;padding:10px;margin-top:12px;overflow-x:auto;}
 .preview-label{font-size:10px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;}
-</style></head><body>
+</style></head><body class="dark">
 
 <div class="g-spin-overlay" id="g-spin">
   <div class="g-spin-box">
@@ -301,6 +373,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
       <button class="ab" onclick="openStyleMo()">🎨 Görünüş</button>
       <button class="ab" onclick="openSettingsMo()">⚙️ Parametrlər</button>
       <button class="ab gold" onclick="loadAdmin()">↻ Yenilə</button>
+      <button class="theme-btn" onclick="toggleTheme()" id="theme-btn-adm">🌙 Gecə</button>
       <button class="ab" onclick="logout()">← Çıx</button>
     </div>
   </div></div>
@@ -310,7 +383,12 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 <div class="screen" id="viewer">
   <div class="admhdr"><div class="admhdri">
     <div class="admlogow"><img class="admlogo" src="IMG_0510.png" alt=""><div class="admtitle"><h2 id="viewtitle">Panda Kids — Baxış</h2><p id="viewdate"></p></div></div>
-    <div class="admacts"><div class="ab view">👁 Baxış</div><button class="ab gold" onclick="loadViewer()">↻ Yenilə</button><button class="ab" onclick="logout()">← Çıx</button></div>
+    <div class="admacts">
+      <div class="ab view">👁 Baxış</div>
+      <button class="ab gold" onclick="loadViewer()">↻ Yenilə</button>
+      <button class="theme-btn" onclick="toggleTheme()" id="theme-btn-view">🌙 Gecə</button>
+      <button class="ab" onclick="logout()">← Çıx</button>
+    </div>
   </div></div>
   <div class="admbody" id="viewbody"></div>
 </div>
@@ -346,7 +424,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
       </select>
     </div>
     <div class="mof"><label>Ölçü</label>
-      <select id="st-fs" onchange="applyStyle()"><option value="10px">10px</option><option value="11px" selected>11px</option><option value="12px">12px</option><option value="13px">13px</option></select>
+      <select id="st-fs" onchange="applyStyle()"><option value="10px">10px</option><option value="11px">11px</option><option value="12px" selected>12px</option><option value="13px">13px</option></select>
     </div>
   </div>
   <div class="mor2" style="margin-top:8px">
@@ -354,7 +432,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
       <select id="st-fw" onchange="applyStyle()"><option value="600">600</option><option value="700" selected>700</option><option value="800">800</option><option value="900">900</option></select>
     </div>
     <div class="mof"><label>Sətir hünd.</label>
-      <select id="st-rh" onchange="applyStyle()"><option value="22px">22px</option><option value="25px" selected>25px</option><option value="28px">28px</option><option value="32px">32px</option></select>
+      <select id="st-rh" onchange="applyStyle()"><option value="24px">24px</option><option value="27px" selected>27px</option><option value="30px">30px</option><option value="34px">34px</option></select>
     </div>
   </div>
   <div class="mosect">Rənglər</div>
@@ -365,18 +443,18 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
   </div>
   <div class="mosect">Sütun eni</div>
   <div class="mor3">
-    <div class="mof"><label>Şöbə adı</label><select id="st-namew" onchange="applyStyle()"><option value="90px">90px</option><option value="105px" selected>105px</option><option value="120px">120px</option></select></div>
-    <div class="mof"><label>Rəqəm</label><select id="st-numw" onchange="applyStyle()"><option value="70px">70px</option><option value="82px" selected>82px</option><option value="95px">95px</option></select></div>
-    <div class="mof"><label>Faiz</label><select id="st-pctw" onchange="applyStyle()"><option value="48px">48px</option><option value="55px" selected>55px</option><option value="65px">65px</option></select></div>
+    <div class="mof"><label>Şöbə adı</label><select id="st-namew" onchange="applyStyle()"><option value="100px">100px</option><option value="115px" selected>115px</option><option value="130px">130px</option></select></div>
+    <div class="mof"><label>Rəqəm</label><select id="st-numw" onchange="applyStyle()"><option value="75px">75px</option><option value="90px" selected>90px</option><option value="105px">105px</option></select></div>
+    <div class="mof"><label>Faiz</label><select id="st-pctw" onchange="applyStyle()"><option value="54px">54px</option><option value="62px" selected>62px</option><option value="72px">72px</option></select></div>
   </div>
   <div class="preview-label" style="margin-top:10px">Önizləmə</div>
   <div class="style-preview">
     <table class="rt" id="style-prev-tbl" style="table-layout:fixed;white-space:nowrap;border-collapse:collapse;">
-      <colgroup><col class="col-name"><col class="col-num"><col class="col-num"><col class="col-pct"></colgroup>
-      <tr class="gh"><th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th><th colspan="3" class="hb">Günlük</th></tr>
-      <tr class="sh"><th class="sb col-num">Satış</th><th class="sb col-num">Mənfəət</th><th class="sb col-pct">Faiz</th></tr>
-      <tr class="dr"><td class="nm">Panda 2</td><td class="nv"><div class="nv-inner"><span class="arr-up">↑</span><span class="nv-val">38.259</span></div></td><td class="nv">15.420</td><td class="pv">66%</td></tr>
-      <tr class="tr"><td class="nm">Ümumi Panda</td><td class="nv">38.259</td><td class="nv">15.420</td><td class="pv">66%</td></tr>
+      <colgroup><col class="col-name"><col class="col-num"><col class="col-num"><col class="col-pct"><col class="col-num"><col class="col-num"><col class="col-pct"></colgroup>
+      <tr class="gh"><th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th><th colspan="3" class="hb">Günlük</th><th colspan="3" class="ho">Aylıq</th></tr>
+      <tr class="sh"><th class="sb col-num">Satış</th><th class="sb col-num">Mənfəət</th><th class="sb col-pct">Faiz</th><th class="so col-num">Satış</th><th class="so col-num">Mənfəət</th><th class="so col-pct">Faiz</th></tr>
+      <tr class="dr"><td class="nm">Panda 2</td><td class="nv"><div class="nv-inner"><span class="arr-up">↑</span><span class="nv-val">38.259</span></div></td><td class="nv">15.420</td><td class="pv">66%</td><td class="nv"><div class="nv-inner"><span class="arr-mid">→</span><span class="nv-val">54.500</span></div></td><td class="nv">22.000</td><td class="pv">67%</td></tr>
+      <tr class="tr"><td class="nm">Ümumi Panda</td><td class="nv">38.259</td><td class="nv">15.420</td><td class="pv">66%</td><td class="nv">54.500</td><td class="nv">22.000</td><td class="pv">67%</td></tr>
     </table>
   </div>
   <button class="mosave" onclick="saveStyle()">✓ Saxla</button>
@@ -396,6 +474,16 @@ const PCOL=['#2E75B6','#C55A11','#375623','#7030A0'];
 const LS_CACHE='pk_bin_v2';
 let ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
 let curSid=null,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
+
+// ── TEMA ───────────────────────────────────────────────────────────────────────
+function applyTheme(mode){
+  document.body.className=mode;
+  const label=mode==='dark'?'🌙 Gecə':'☀️ Gündüz';
+  ['theme-btn-adm','theme-btn-view'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=label;});
+  localStorage.setItem('pk_theme',mode);
+}
+function toggleTheme(){const cur=document.body.classList.contains('dark')?'dark':'light';applyTheme(cur==='dark'?'light':'dark');}
+(()=>{applyTheme(localStorage.getItem('pk_theme')||'dark');})();
 
 // ── SPINNER ────────────────────────────────────────────────────────────────────
 let _spinTimer=null,_spinPct=0;
@@ -425,7 +513,7 @@ function attachNumInput(inp){
 function attachAllNum(){document.querySelectorAll('.ni,.saxa-firma-inp,.afrow input,.af1inp').forEach(attachNumInput);}
 
 // ── STİL ───────────────────────────────────────────────────────────────────────
-const DEF_STYLE={font:"'Plus Jakarta Sans',sans-serif",fs:'11px',fw:'700',rh:'25px',pandaCol:'#0f1f3d',arrUp:'#16a34a',arrMid:'#f59e0b',nameW:'105px',numW:'82px',pctW:'55px'};
+const DEF_STYLE={font:"'Plus Jakarta Sans',sans-serif",fs:'12px',fw:'700',rh:'27px',pandaCol:'#0f1f3d',arrUp:'#16a34a',arrMid:'#f59e0b',nameW:'115px',numW:'90px',pctW:'62px'};
 function gStyle(){try{return{...DEF_STYLE,...(JSON.parse(localStorage.getItem('pk_style')||'null')||{})};}catch{return{...DEF_STYLE};}}
 function svStyle(v){localStorage.setItem('pk_style',JSON.stringify(v));}
 function applyStyleToDOM(st){
@@ -696,292 +784,21 @@ async function deleteToday(sid){
   }catch{spinHide();alert('Silinmə xətası.');}
 }
 
-// ── TEK PERIOD CƏDVƏLİ ────────────────────────────────────────────────────────
-function buildOnePeriodTable(records,pid,hc,sc,tblId){
-  const users=gU().filter(u=>u.type==='store');const targets=gT(),dl=dLeft();const st=gStyle();
-  const allP=getAllPeriods();const p=allP.find(x=>x.id===pid);
-  const tbl=document.getElementById(tblId);if(!tbl)return;
-  const D={};
-  users.forEach(u=>{const uP=getUserPeriods(u.id);const up=uP.find(x=>x.id===pid);D[u.name]=up?findRec(records,u.name,up.sk):null;});
-  const ay0sk=allP.find(x=>x.id==='ay0')?.sk||'';
-  let h=`<colgroup><col class="col-name"><col class="col-num"><col class="col-num"><col class="col-pct"></colgroup>`;
-  h+=`<tr class="gh"><th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th><th colspan="3" class="${hc}" style="font-size:11px;font-weight:800">${p?p.label:''}</th></tr>`;
-  h+=`<tr class="sh"><th class="${sc} col-num">Satış</th><th class="${sc} col-num">Mənfəət</th><th class="${sc} col-pct">Faiz</th></tr>`;
-  const pTot={s:0,m:0,fl:[]},sTot={s:0,m:0,fl:[]};
+// ── ADMİN/VİEWER — TƏK SÜTUN CƏDVƏLİ (əvvəlki kimi) ─────────────────────────
+function buildTable(records,sf,tblId,ldId){
+  const users=gU().filter(u=>u.type==='store');const targets=gT(),dl=dLeft();const allP=getAllPeriods();const st=gStyle();
+  const D={};users.forEach(u=>{const uP=getUserPeriods(u.id);D[u.name]={};allP.forEach(p=>{const up=uP.find(x=>x.id===p.id);D[u.name][p.id]=up?findRec(records,u.name,up.sk):null;});});
+  let h='<colgroup>';allP.forEach(()=>h+='<col class="col-name"><col class="col-num"><col class="col-num"><col class="col-pct">');h+='</colgroup>';
+  h+='<tr class="gh">';allP.forEach((p,i)=>{h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th><th colspan="3" class="${HC[i]}" style="font-size:13px;font-weight:800">${p.label}</th>`;});
+  h+='</tr><tr class="sh">';allP.forEach((p,i)=>{h+=`<th class="${SC[i]} col-num">Satış</th><th class="${SC[i]} col-num">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;});h+='</tr>';
+  const pTots=allP.map(()=>({s:0,m:0,fl:[]})),sTots=allP.map(()=>({s:0,m:0,fl:[]}));
   const panda=users.filter(u=>u.inTotal),saxa=users.filter(u=>!u.inTotal);
   panda.forEach(u=>{
-    const t=targets[u.id];const e=D[u.name];const ay0val=findRec(records,u.name,ay0sk)?.satis||0;
-    h+=`<tr class="dr"><td class="nm">${u.name}</td>`;
-    if(e&&(e.satis>0||e.menfeet>0)){
-      let atype='';
-      if(pid==='gun'&&t)atype=getArrType(e.satis,ay0val,t.min,dl);
-      else if(pid==='ay0'&&t)atype=getArrTypeMonth(e.satis,t.min,dl);
-      h+=nvCell(atype,fmt(e.satis),st);
-      h+=`<td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fmtFaizStore(e.faiz)}</td>`;
-      pTot.s+=e.satis;pTot.m+=e.menfeet;if(e.faiz>0)pTot.fl.push(e.faiz);
-    }else{h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;}
-    h+='</tr>';
-  });
-  h+=`<tr class="tr"><td class="nm">Ümumi Panda</td><td class="nv">${pTot.s>0?fmt(pTot.s):'—'}</td><td class="nv">${pTot.m>0?fmt(pTot.m):'—'}</td><td class="pv">${fmtFaizAvg(avgF(pTot.fl))}</td></tr>`;
-  if(saxa.length){
-    h+=`<tr class="saxagap"><td colspan="4"></td></tr>`;
-    saxa.forEach(u=>{
-      const e=D[u.name];
-      h+=`<tr class="sr"><td class="nm">${u.name}</td>`;
+    const t=targets[u.id];h+=`<tr class="dr">`;
+    allP.forEach((p,pi)=>{
+      const e=D[u.name][p.id];const ay0val=D[u.name]['ay0']?.satis||0;const isGun=p.id==='gun';
+      h+=`<td class="nm">${u.name}</td>`;
       if(e&&(e.satis>0||e.menfeet>0)){
-        h+=`<td class="nv"><span class="nv-val">${fmt(e.satis)}</span></td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fmtFaizStore(e.faiz)}</td>`;
-        sTot.s+=e.satis;sTot.m+=e.menfeet;if(e.faiz>0)sTot.fl.push(e.faiz);
-      }else{h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;}
-      h+='</tr>';
-    });
-    h+=`<tr class="str"><td class="nm">Ümumi Saxa</td><td class="nv">${sTot.s>0?fmt(sTot.s):'—'}</td><td class="nv">${sTot.m>0?fmt(sTot.m):'—'}</td><td class="pv">${fmtFaizAvg(avgF(sTot.fl))}</td></tr>`;
-  }
-  tbl.innerHTML=h;
-  applyStyleToDOM(st);
-}
-
-// ── HƏMİŞƏ 2x2 GRID LAYOUT ───────────────────────────────────────────────────
-function buildGridLayout(records,sf,bodyEl){
-  const d=getRD();
-  const allP=getAllPeriods();
-  const pDefs=[
-    {id:'gun',hc:'hb',sc:'sb'},{id:'ay0',hc:'ho',sc:'so'},
-    {id:'ay1',hc:'hg',sc:'sg'},{id:'ay2',hc:'hp',sc:'sp'}
-  ];
-  let html=`<div class="dt-outer">`;
-  // 2x2 grid — həmişə 2 sütun
-  html+=`<div class="dt-grid" id="dt-grid-wrap">`;
-  pDefs.forEach(({id})=>{
-    const p=allP.find(x=>x.id===id);
-    html+=`<div class="rc">
-      <div class="rchdr"><img class="rclogo" src="IMG_0510.png" alt=""><div class="rct"><h2>Panda Kids</h2><p style="font-size:10px;color:rgba(255,255,255,.75)">${p?p.label:''}</p></div><div class="rcd"><div class="rday">${d.getDate()}</div><div class="rmo">${AY[d.getMonth()].toUpperCase()}</div></div></div>
-      <div class="rctw" style="overflow-x:auto"><table class="rt" id="dt-tbl-${id}" style="table-layout:fixed;min-width:100%"></table></div>
-      <div class="rcftr"><span>Panda Kids © ${d.getFullYear()}</span></div>
-    </div>`;
-  });
-  html+=`</div>`;
-  html+=`<div class="dt-scrbtn-wrap"><button class="scrbtn" onclick="takeDesktopScr()">📸 Bütün Cədvəlləri Şəkil Kimi Saxla</button></div>`;
-  html+=`<div class="dt-sf-wrap"><div class="dt-sf-inner" id="sf-container"></div></div>`;
-  html+=`<div class="planpanel" style="margin-top:12px"><div class="ppaneltitle">🐼 Panda — Plan Vəziyyəti</div><div id="adm-pp"></div></div>`;
-  html+=`<div class="planpanel"><div class="ppaneltitle">🔶 Saxa — Plan Vəziyyəti</div><div id="adm-sp"></div></div>`;
-  html+=`</div>`;
-  bodyEl.innerHTML=html;
-  // Cədvəlləri doldur
-  pDefs.forEach(({id,hc,sc})=>buildOnePeriodTable(records,id,hc,sc,'dt-tbl-'+id));
-  buildSFReport(sf,'sf-container');
-  document.getElementById('adm-pp').innerHTML=planPanelHtml(records,false);
-  document.getElementById('adm-sp').innerHTML=planPanelHtml(records,true);
-}
-
-function buildSFReport(sf,cid){
-  const ss=gSS();if(!ss.showInAdmin)return;
-  const fillers=gU().filter(u=>ss.fillers.includes(u.id));const sfKey=getSFKey();let total=0,rows='';
-  fillers.forEach(u=>{const v=sf[sfKey+'_'+u.id]?.satis||0;total+=v;rows+=`<tr><td>${u.name}</td><td>${v>0?fmtSF(v)+' ₼':'—'}</td></tr>`;});
-  const c=document.getElementById(cid);if(!c)return;
-  c.innerHTML=`<div class="sf-rc" id="sf-rc" style="margin-top:12px">
-    <div class="sf-rc-hdr"><div class="sf-rc-title">${ss.firmName}</div><div class="sf-rc-date">${getSFDate()}</div></div>
-    <table class="sf-tbl"><tr><th>${ss.firmName}</th><th>Maya Məbləği</th></tr>${rows}<tr class="sf-total"><td>Cəmi</td><td>${total>0?fmtSF(total)+' ₼':'—'}</td></tr></table>
-    <div class="sf-rc-ftr"><span>Panda Kids © ${new Date().getFullYear()}</span></div>
-  </div>
-  <button class="sf-scrbtn" onclick="takeSfScr()">📸 Saxa Firma Hesabatını Saxla</button>`;
-}
-
-function planPanelHtml(records,forSaxa){
-  const users=gU().filter(u=>u.type==='store'&&u.showPlan&&(forSaxa?!u.inTotal:u.inTotal));const targets=gT(),dl=dLeft();
-  if(!users.length)return '<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">Plan yoxdur</div>';
-  let h='<div class="ppgrid">';
-  users.forEach(u=>{
-    const t=targets[u.id];if(!t)return;
-    const periods=getUserPeriods(u.id);const ay0=periods.find(p=>p.id==='ay0');const gunP=periods.find(p=>p.id==='gun');
-    const ms=ay0?findRec(records,u.name,ay0.sk)?.satis||0:0;const tv=gunP?findRec(records,u.name,gunP.sk)?.satis||0:0;
-    let at,rm;if(ms<t.min){at=t.min;rm=t.min-ms;}else if(ms<t.mid){at=t.mid;rm=t.mid-ms;}else if(ms<t.max){at=t.max;rm=t.max-ms;}else{at=t.max;rm=0;}
-    const ap=xPct(ms,at)||0,dn=calcDaily(ms,at,dl),bc=planBg(ms,t.min,dl);
-    function lc(tgt){return ms>=tgt?'green':planColor(ms,tgt,dl);}
-    h+=`<div class="ppi" style="border-color:${bc}33">
-      <div class="ppih"><div class="ppin">${u.name}</div><div class="ppip" style="color:${bc}">${ap===100?'100%':ap.toFixed(1)+'%'}</div></div>
-      <div class="ppibw"><div class="ppib" style="width:${Math.min(100,ap)}%;background:${bc}"></div></div>
-      <div class="ppilevels">
-        <div class="ppilvl ${ms>=t.min?'green':lc(t.min)}">🥉 ${ms>=t.min?'✓':pStr(xPct(ms,t.min))}</div>
-        <div class="ppilvl ${ms>=t.mid?'green':ms>=t.min?lc(t.mid):'grey'}">🥈 ${ms>=t.mid?'✓':ms>=t.min?pStr(xPct(ms,t.mid)):'—'}</div>
-        <div class="ppilvl ${ms>=t.max?'green':ms>=t.mid?lc(t.max):'grey'}">🥇 ${ms>=t.max?'✓':ms>=t.mid?pStr(xPct(ms,t.max)):'—'}</div>
-      </div>
-      <div class="ppis">
-        <div class="ppist">Cari: <span>${fmt(ms)} ₼</span></div><div class="ppist">Hədəf: <span>${fmt(at)} ₼</span></div>
-        <div class="ppist">Qalan gün: <span>${dl}</span></div>
-        ${rm>0?`<div class="ppist">Gündəlik: <span>${fmt(dn)} ₼</span></div>`:'<div class="ppist" style="color:#10b981">✅ Hədəfə çatıldı</div>'}
-        ${gunP?`<div class="ppist">Bu gün: <span>${fmt(tv)} ₼</span></div>`:''}
-      </div>
-    </div>`;
-  });
-  return h+'</div>';
-}
-
-// ── ADMIN / VIEWER — HƏMİŞƏ GRID ─────────────────────────────────────────────
-function openAdmin(){document.getElementById('admdate').textContent=fmtRealDate();goTo('admin');loadAdmin();}
-async function loadAdmin(){
-  document.getElementById('admdate').textContent=fmtRealDate();
-  const body=document.getElementById('admbody');
-  try{const {records,sf,cfg}=await rBin(true);CFG=cfg;buildGridLayout(records,sf,body);}
-  catch(e){body.innerHTML='<div class="admld">❌ Yüklənmədi.</div>';}
-}
-
-function openViewer(u){document.getElementById('viewdate').textContent=fmtRealDate();if(u)document.getElementById('viewtitle').textContent=`Panda Kids — ${u.name}`;goTo('viewer');loadViewer();}
-async function loadViewer(){
-  const body=document.getElementById('viewbody');
-  try{const {records,sf,cfg}=await rBin(true);CFG=cfg;buildGridLayout(records,sf,body);}
-  catch{body.innerHTML='<div class="admld">❌ Yüklənmədi.</div>';}
-}
-
-// ── ŞƏKİL ALMA ────────────────────────────────────────────────────────────────
-async function takeDesktopScr(){
-  const grid=document.getElementById('dt-grid-wrap');
-  if(!grid){alert('Cədvəl yoxdur.');return;}
-  spinShow('Şəkil hazırlanır...');
-  try{
-    const c=await html2canvas(grid,{backgroundColor:'#f0f4f8',scale:2,useCORS:true,logging:false,imageTimeout:0});
-    prevUrl=c.toDataURL('image/png',1.0);document.getElementById('previmg').src=prevUrl;document.getElementById('imgov').classList.add('show');
-  }catch{alert('Şəkil alınmadı.');}
-  finally{spinHide();}
-}
-async function takeScr(id){
-  const card=document.getElementById(id),tbl=card.querySelector('.rt');const tblW=tbl?tbl.scrollWidth+2:card.scrollWidth;
-  const tw=card.querySelector('.rctw');const of_=tw.style.overflow,ow_=tw.style.width;
-  tw.style.overflow='visible';tw.style.width=tblW+'px';const cw_=card.style.width;card.style.width=tblW+'px';
-  spinShow('Şəkil hazırlanır...');
-  try{
-    const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:3,useCORS:true,logging:false,width:tblW,height:card.scrollHeight,windowWidth:tblW,imageTimeout:0,x:0,y:0});
-    prevUrl=c.toDataURL('image/png',1.0);document.getElementById('previmg').src=prevUrl;document.getElementById('imgov').classList.add('show');
-  }catch{alert('Şəkil alınmadı.');}
-  finally{spinHide();tw.style.overflow=of_;tw.style.width=ow_;card.style.width=cw_;}
-}
-function saveImg(){if(!prevUrl)return;const a=document.createElement('a');const d=getFD();a.download=`pandakids-${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}.png`;a.href=prevUrl;document.body.appendChild(a);a.click();document.body.removeChild(a);}
-async function takeSfScr(){
-  const card=document.getElementById('sf-rc');if(!card){alert('Hesabat yoxdur.');return;}
-  spinShow('Şəkil hazırlanır...');
-  try{const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:3,useCORS:true,logging:false,width:card.scrollWidth,height:card.scrollHeight,imageTimeout:0});sfPrevUrl=c.toDataURL('image/png',1.0);document.getElementById('sf-previmg').src=sfPrevUrl;document.getElementById('sf-imgov').classList.add('show');}
-  catch{alert('Şəkil alınmadı.');}
-  finally{spinHide();}
-}
-function saveSfImg(){if(!sfPrevUrl)return;const a=document.createElement('a');const d=getFD();a.download=`saxa-${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}.png`;a.href=sfPrevUrl;document.body.appendChild(a);a.click();document.body.removeChild(a);}
-
-async function openFillMo(){
-  const sel=document.getElementById('fill-sel');sel.innerHTML='<option value="">— Seçin —</option>';
-  gU().filter(u=>u.type==='store').forEach(u=>{const o=document.createElement('option');o.value=u.id;o.textContent=u.name;sel.appendChild(o);});
-  document.getElementById('fill-body').innerHTML='';document.getElementById('fill-btn').style.display='none';
-  ['fill-ld','fill-ok','fill-er'].forEach(id=>document.getElementById(id).classList.remove('show'));
-  document.getElementById('mo-fill').classList.add('show');
-}
-async function renderFillForm(){
-  const sid=document.getElementById('fill-sel').value;if(!sid){document.getElementById('fill-body').innerHTML='';document.getElementById('fill-btn').style.display='none';return;}
-  const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
-  document.getElementById('fill-body').innerHTML='<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">Yüklənir...</div>';
-  const {records,sf}=await rBin();window._fr=records;window._fsf=sf;
-  const inpSt='width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 8px;font-family:\'Plus Jakarta Sans\',sans-serif;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;';
-  let h='';
-  periods.forEach((p,pi)=>{
-    const rec=findRec(records,u.name,p.sk);
-    const sv=rec?.satis?fmtDec(rec.satis):'',mv=rec?.menfeet?fmtDec(rec.menfeet):'';
-    h+=`<div class="fillperiod"><div class="fillplbl" style="background:${PCOL[pi]}">${p.label}</div>
-      <div class="afrow">
-        <div><div class="afrow afl">Satış (₼)</div><input type="text" inputmode="decimal" id="af-s-${p.id}" value="${sv}" placeholder="0" style="${inpSt}" autocomplete="off"></div>
-        <div><div class="afrow afl">Mənfəət (₼)</div><input type="text" inputmode="decimal" id="af-m-${p.id}" value="${mv}" placeholder="0" style="${inpSt}" autocomplete="off"></div>
-        <div><div class="afrow afl">Faiz (%)</div><input type="text" inputmode="decimal" id="af-f-${p.id}" value="${rec?.faiz||''}" placeholder="0" style="${inpSt}" autocomplete="off"></div>
-      </div></div>`;
-  });
-  const ss=gSS();
-  if(ss.fillers.includes(sid)){
-    const sfv=sf[getSFKey()+'_'+sid]?.satis;const sfFmt=sfv?fmtDec(sfv):'';
-    h+=`<div class="fillperiod" style="background:rgba(120,53,15,.2);border:1px solid rgba(245,158,11,.2)">
-      <div class="fillplbl" style="background:#92400e">${ss.firmName} — ${getSFDate()}</div>
-      <div><div class="aflbl">Maya Məbləği (₼)</div><input type="text" inputmode="decimal" id="af-sf" value="${sfFmt}" placeholder="0" class="af1inp" autocomplete="off"></div>
-    </div>`;
-  }
-  document.getElementById('fill-body').innerHTML=h;document.getElementById('fill-btn').style.display='block';
-  ['fill-ok','fill-er'].forEach(id=>document.getElementById(id).classList.remove('show'));
-  setTimeout(attachAllNum,30);
-}
-async function doAdminFill(){
-  const sid=document.getElementById('fill-sel').value;if(!sid)return;
-  const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
-  document.getElementById('fill-btn').disabled=true;document.getElementById('fill-ld').classList.add('show');
-  spinShow('Saxlanır...');
-  try{
-    const records=window._fr||[],sf=window._fsf||{};let any=false;
-    for(const p of periods){
-      const s=parseNum(document.getElementById(`af-s-${p.id}`)?.value);const m=parseNum(document.getElementById(`af-m-${p.id}`)?.value);const f=parseNum(document.getElementById(`af-f-${p.id}`)?.value);
-      if(s>0||m>0||f>0){any=true;const idx=records.findIndex(r=>r.sobe===u.name&&r.period===p.sk);const e={sobe:u.name,period:p.sk,satis:s,menfeet:m,faiz:f};if(idx>=0)records[idx]=e;else records.push(e);}
-    }
-    const ss=gSS();if(ss.fillers.includes(sid)){const sfv=parseNum(document.getElementById('af-sf')?.value);if(sfv>0){any=true;sf[getSFKey()+'_'+sid]={satis:sfv};}}
-    if(!any){spinHide();alert('Ən azı bir sahəni doldurun.');document.getElementById('fill-btn').disabled=false;document.getElementById('fill-ld').classList.remove('show');return;}
-    const {cfg}=await rBin();await wBin(records,sf,cfg);
-    spinHide();document.getElementById('fill-ld').classList.remove('show');document.getElementById('fill-ok').classList.add('show');
-  }catch{spinHide();document.getElementById('fill-ld').classList.remove('show');document.getElementById('fill-er').classList.add('show');}
-  document.getElementById('fill-btn').disabled=false;
-}
-
-async function openUsersMo(){
-  spinShow('Yüklənir...');const {cfg}=await rBin();CFG=cfg;spinHide();
-  tmpUsers=JSON.parse(JSON.stringify(gU()));renderUsersMo();document.getElementById('mo-u').classList.add('show');
-}
-function renderUsersMo(){
-  const allP=getAllPeriods();const pLbls=['Günlük','Cari ay','Keçən il','2 il əvvəl'];
-  let h='<div class="mosect">Şöbələr</div>';
-  tmpUsers.filter(u=>u.type==='store').forEach(u=>{
-    const ri=tmpUsers.indexOf(u);const pFlags=u.periods||[1,1,1,1];
-    let pSel='<div style="margin-top:7px"><div style="font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:5px">Aktiv Periodlar</div><div class="period-sel">';
-    allP.forEach((p,i)=>{const on=pFlags[i]===1;pSel+=`<label class="${on?'on':''}"><input type="checkbox" ${on?'checked':''} onchange="togglePeriod(${ri},${i},this)">${pLbls[i]}</label>`;});
-    pSel+='</div></div>';
-    h+=`<div class="mos"><div class="mosn"><span>${u.name}</span><button class="delbtn" onclick="delUser(${ri})">🗑</button></div>
-      <div class="mor2"><div class="mof"><label>Ad</label><input type="text" id="un-${ri}" value="${u.name}" oninput="tmpUsers[${ri}].name=this.value"></div><div class="mof"><label>Şifrə</label><input type="text" id="up-${ri}" value="${u.pw}" oninput="tmpUsers[${ri}].pw=this.value"></div></div>
-      ${pSel}
-      <div class="cr"><input type="checkbox" id="ut-${ri}" ${u.inTotal?'checked':''} onchange="tmpUsers[${ri}].inTotal=this.checked"><label for="ut-${ri}">Ümumi hesabata daxil</label></div>
-      <div class="cr"><input type="checkbox" id="upl-${ri}" ${u.showPlan!==false?'checked':''} onchange="tmpUsers[${ri}].showPlan=this.checked"><label for="upl-${ri}">Plan panelində göstər</label></div>
-    </div>`;
-  });
-  h+='<div class="mosect">Baxış İstifadəçiləri</div>';
-  tmpUsers.filter(u=>u.type==='viewer').forEach(u=>{
-    const ri=tmpUsers.indexOf(u);
-    h+=`<div class="mos" style="border-color:rgba(16,185,129,.2)"><div class="mosn" style="color:#6ee7b7"><span>${u.name}</span><button class="delbtn" onclick="delUser(${ri})">🗑</button></div>
-      <div class="mor2"><div class="mof"><label>Ad</label><input type="text" id="un-${ri}" value="${u.name}" oninput="tmpUsers[${ri}].name=this.value"></div><div class="mof"><label>Şifrə</label><input type="text" id="up-${ri}" value="${u.pw}" oninput="tmpUsers[${ri}].pw=this.value"></div></div>
-    </div>`;
-  });
-  document.getElementById('mou-body').innerHTML=h;
-}
-function togglePeriod(ri,pi,cb){if(!tmpUsers[ri].periods)tmpUsers[ri].periods=[1,1,1,1];tmpUsers[ri].periods[pi]=cb.checked?1:0;cb.parentElement.className=cb.checked?'on':'';}
-function addStore(){const vi=tmpUsers.findIndex(u=>u.type==='viewer');const ns={id:'s'+Date.now(),name:'Yeni Şöbə',pw:'sifre123',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]};if(vi>=0)tmpUsers.splice(vi,0,ns);else tmpUsers.push(ns);renderUsersMo();}
-function delUser(i){if(confirm('Silinsin?')){tmpUsers.splice(i,1);renderUsersMo();}}
-async function saveUsers(){
-  spinShow('Saxlanır...');const {records,sf,cfg}=await rBin();cfg.users=tmpUsers;CFG=cfg;await wBin(records,sf,cfg);spinHide();fillSel();closeMo('mo-u');alert('✅ Saxlanıldı!');
-}
-
-async function openTargetsMo(){
-  spinShow('Yüklənir...');const {cfg}=await rBin();CFG=cfg;spinHide();const tgts=gT();let h='';
-  gU().filter(u=>u.type==='store').forEach(u=>{const t=tgts[u.id]||{min:0,mid:0,max:0};h+=`<div class="mos"><div class="mosn">${u.name}</div><div class="mor3"><div class="mof"><label>🥉 Min</label><input type="number" inputmode="numeric" id="tm-${u.id}" value="${t.min}"></div><div class="mof"><label>🥈 Orta</label><input type="number" inputmode="numeric" id="td-${u.id}" value="${t.mid}"></div><div class="mof"><label>🥇 Maks</label><input type="number" inputmode="numeric" id="tx-${u.id}" value="${t.max}"></div></div></div>`;});
-  document.getElementById('mot-body').innerHTML=h;document.getElementById('mo-t').classList.add('show');
-}
-async function saveTargets(){
-  spinShow('Saxlanır...');const tgts={};gU().filter(u=>u.type==='store').forEach(u=>{tgts[u.id]={min:parseFloat(document.getElementById(`tm-${u.id}`)?.value)||0,mid:parseFloat(document.getElementById(`td-${u.id}`)?.value)||0,max:parseFloat(document.getElementById(`tx-${u.id}`)?.value)||0};});
-  const {records,sf,cfg}=await rBin();cfg.targets=tgts;CFG=cfg;await wBin(records,sf,cfg);spinHide();closeMo('mo-t');alert('✅ Hədəflər saxlanıldı!');
-}
-
-async function openSaxaAdminMo(){
-  spinShow('Yüklənir...');const {cfg}=await rBin();CFG=cfg;spinHide();const ss=gSS(),users=gU().filter(u=>u.type==='store');
-  let h=`<div class="mos"><div class="mosn">Firma Adı</div><div class="mof"><input type="text" id="sf-name" value="${ss.firmName||'Saxa Outlet'}"></div></div><div class="mosect">Hansı şöbələr doldurur</div>`;
-  users.forEach(u=>{h+=`<div class="cr"><input type="checkbox" id="sff-${u.id}" ${(ss.fillers||[]).includes(u.id)?'checked':''}><label for="sff-${u.id}">${u.name}</label></div>`;});
-  h+=`<div class="mosect">Göstər</div><div class="cr"><input type="checkbox" id="sf-show" ${ss.showInAdmin?'checked':''}><label for="sf-show">Admin paneldə göstərilsin</label></div>`;
-  document.getElementById('saxa-admin-body').innerHTML=h;document.getElementById('mo-saxa-admin').classList.add('show');
-}
-async function saveSaxaSettings(){
-  spinShow('Saxlanır...');const users=gU().filter(u=>u.type==='store');const fillers=users.filter(u=>document.getElementById(`sff-${u.id}`)?.checked).map(u=>u.id);
-  const {records,sf,cfg}=await rBin();cfg.saxa={fillers,firmName:document.getElementById('sf-name')?.value||'Saxa Outlet',showInAdmin:document.getElementById('sf-show')?.checked||false};
-  CFG=cfg;await wBin(records,sf,cfg);spinHide();closeMo('mo-saxa-admin');alert('✅ Saxlandı!');
-}
-
-async function openSettingsMo(){const {cfg}=await rBin();CFG=cfg;const cb=document.getElementById('param-admin-jurnal');if(cb)cb.checked=cfg.jp?.showAdmin||false;document.getElementById('mo-set').classList.add('show');}
-async function saveJP(){const showAdmin=document.getElementById('param-admin-jurnal')?.checked||false;const {records,sf,cfg}=await rBin();cfg.jp={showAdmin};CFG=cfg;await wBin(records,sf,cfg);}
-function changeAdminPw(){
-  const o=document.getElementById('oldpw').value,n=document.getElementById('newpw').value;
-  if(o!==ADMIN_PW){alert('Köhnə parol yanlışdır.');return;}if(!n||n.length<4){alert('Yeni parol ən azı 4 simvol.');return;}
-  ADMIN_PW=n;localStorage.setItem('pk_apw',n);document.getElementById('oldpw').value='';document.getElementById('newpw').value='';alert('✅ Admin parolu dəyişdirildi!');
-}
-</script></body></html>
+        let atype='';if(isGun&&t)atype=getArrType(e.satis,ay0val,t.min,dl);else if(p.id==='ay0'&&t)atype=getArrTypeMonth(e.satis,t.min,dl);
+        h+=nvCell(atype,fmt(e.satis),st);h+=`<td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fmtFaizStore(e.faiz)}</td>`;
+        pTots[pi].s+=e.satis;pTots[pi].m+=e.menfeet;if(e.faiz>0)pTots[pi].fl.push(e​​​​​​​​​​​​​​​​
