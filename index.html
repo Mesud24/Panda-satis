@@ -2,14 +2,10 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{width:100%;overflow-x:hidden;}
 body{font-family:'Plus Jakarta Sans',sans-serif;color:#fff;min-height:100vh;transition:background .3s,color .3s;}
-
-/* ══ DARK TEMA ══ */
 body.dark{background-color:#060918;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(99,60,180,.55) 0%,transparent 60%),radial-gradient(ellipse 70% 50% at 80% 5%,rgba(30,80,180,.5) 0%,transparent 55%),radial-gradient(ellipse 60% 70% at 5% 70%,rgba(20,60,140,.45) 0%,transparent 55%),radial-gradient(ellipse 75% 60% at 90% 80%,rgba(80,40,160,.45) 0%,transparent 55%);background-attachment:fixed;}
+body.light{background-color:#eef2f7;background-image:radial-gradient(ellipse 70% 50% at 15% 10%,rgba(30,58,110,.06) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 85% 90%,rgba(30,64,175,.05) 0%,transparent 50%);background-attachment:fixed;color:#1e293b;}
 
-/* ══ LIGHT TEMA — Corporate Navy (#14) ══ */
-body.light{background-color:#f1f5f9;background-image:radial-gradient(ellipse 70% 50% at 15% 10%,rgba(30,58,110,.06) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 85% 90%,rgba(30,64,175,.05) 0%,transparent 50%);background-attachment:fixed;color:#1e293b;}
-
-/* Light — gate */
+/* ══ LIGHT — gate ══ */
 body.light #gate{background:linear-gradient(135deg,#1e3a6e 0%,#2d5aa0 50%,#1d4ed8 100%);}
 body.light .gsub{color:rgba(255,255,255,.7);}
 body.light .glbl{color:rgba(255,255,255,.55);}
@@ -22,54 +18,54 @@ body.light .gdiv{background:rgba(255,255,255,.2);}
 body.light .glink{color:rgba(255,255,255,.55);}
 body.light .gtitle{color:#fff;}
 
-/* Light — header */
+/* ══ LIGHT — admin/viewer header ══ */
 body.light .admhdr{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:2px solid #e2e8f0;}
 body.light .admtitle h2{color:#0f172a;}
 body.light .admtitle p{color:#1d4ed8;}
 body.light .ab{background:#fff;border:1.5px solid #e2e8f0;color:#374151;box-shadow:0 1px 3px rgba(0,0,0,.06);}
-body.light .ab:hover{border-color:#94a3b8;}
 body.light .ab.gold{background:linear-gradient(135deg,#fef9c3,#fde68a);border-color:#f59e0b;color:#78350f;}
 body.light .ab.view{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-color:#10b981;color:#065f46;}
-body.light .theme-btn{background:linear-gradient(135deg,#f1f5f9,#e2e8f0);border:1.5px solid #cbd5e1;color:#475569;}
+body.light .theme-btn{background:#f1f5f9;border:1.5px solid #cbd5e1;color:#475569;}
 
-/* Light — store form */
+/* ══ LIGHT — store form header ══ */
 body.light .sfhdr{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:2px solid #e2e8f0;}
 body.light .sftitle{color:#0f172a;}
 body.light .sfdate{color:#1d4ed8;}
 body.light .backbtn{color:#64748b;}
 
-/* Light — plan kartı */
-body.light .plancard{background:#fff;border:1.5px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+/* ══ LIGHT — plan kartı (fərqli rəng, aydın sərhəd) ══ */
+body.light .plancard{background:#dbeafe;border:2px solid #93c5fd;box-shadow:0 2px 12px rgba(29,78,216,.12);}
 body.light .plantitle{color:#1d4ed8;}
-body.light .pil{color:#64748b;}
+body.light .planitem{background:#eff6ff;border-color:#bfdbfe;}
+body.light .planitem.done{background:#d1fae5;border-color:#6ee7b7;}
+body.light .planitem.active{background:#fef3c7;border-color:#fcd34d;}
+body.light .pil{color:#475569;}
 body.light .piv{color:#0f172a;}
-body.light .pip.cur{color:#f59e0b;}
-body.light .ppl span{color:#64748b;}
+body.light .pip.cur{color:#b45309;}
+body.light .ppl span{color:#475569;}
 body.light .ppl strong{color:#1d4ed8;}
-body.light .pbw{background:#e2e8f0;}
-body.light .ps{background:#f8fafc;border:1px solid #e2e8f0;}
-body.light .psl{color:#94a3b8;}
+body.light .pbw{background:#bfdbfe;}
+body.light .ps{background:#eff6ff;border:1.5px solid #bfdbfe;}
+body.light .psl{color:#64748b;}
 body.light .psv{color:#1d4ed8;}
 
-/* Light — period blok */
-body.light .perblock{background:#fff;border:1.5px solid #e2e8f0;box-shadow:0 2px 8px rgba(0,0,0,.05);}
-body.light .pt thead th{color:#64748b;background:#f8fafc;border-bottom:2px solid #e2e8f0;}
-body.light .pt tbody tr{border-color:rgba(0,0,0,.04);}
+/* ══ LIGHT — period blokları (fərqli, aydın) ══ */
+body.light .perblock{background:#fff;border:2px solid #93c5fd;box-shadow:0 2px 10px rgba(29,78,216,.1);}
+body.light .pt thead th{color:#374151;background:#dbeafe;border-bottom:2px solid #93c5fd;font-weight:800;}
 body.light .pt tbody td.pn{color:#0f172a;font-weight:700;}
-body.light .ni{background:#f8fafc;border:1.5px solid #e2e8f0;color:#0f172a;}
-body.light .ni:focus{border-color:#1d4ed8;background:#eff6ff;}
-body.light .ni:disabled{color:#94a3b8;background:#f1f5f9;border-color:#e2e8f0;}
-body.light .ni::placeholder{color:#cbd5e1;}
-body.light .ni-f{background:#fffbeb;border:1.5px solid #fcd34d;color:#78350f;}
-body.light .ni-f:disabled{color:#94a3b8;background:#fef9c3;border-color:#fde68a;}
-body.light .editbtn{border:1.5px solid #e2e8f0;color:#475569;background:#f8fafc;}
-body.light .editbtn:hover{border-color:#94a3b8;color:#0f172a;}
+body.light .ni{background:#eff6ff;border:1.5px solid #93c5fd;color:#0f172a;}
+body.light .ni:focus{border-color:#1d4ed8;background:#dbeafe;}
+body.light .ni:disabled{color:#64748b;background:#e0f2fe;border-color:#bae6fd;}
+body.light .ni::placeholder{color:#94a3b8;}
+body.light .ni-f{background:#fef9c3;border:1.5px solid #fcd34d;color:#78350f;}
+body.light .ni-f:disabled{color:#92400e;background:#fef3c7;border-color:#fde68a;}
+body.light .editbtn{border:1.5px solid #93c5fd;color:#1d4ed8;background:#eff6ff;}
 body.light .delbtn2{background:#fef2f2;border:1.5px solid #fca5a5;color:#dc2626;}
-body.light .saxa-firma-block{background:#fffbeb;border:1.5px solid #fcd34d;}
-body.light .saxa-firma-hdr{color:#78350f;background:rgba(245,158,11,.12);}
-body.light .saxa-firma-inp{background:#fff;border:1.5px solid #fcd34d;color:#78350f;}
+body.light .saxa-firma-block{background:#fef3c7;border:2px solid #fcd34d;}
+body.light .saxa-firma-hdr{color:#78350f;background:rgba(245,158,11,.2);}
+body.light .saxa-firma-inp{background:#fff;border:1.5px solid #f59e0b;color:#78350f;}
 
-/* Light — admin body genel */
+/* ══ LIGHT — admin paneli (admin kartı ağ — dəyişMİR) ══ */
 body.light .admld{color:#94a3b8;}
 body.light .planpanel{background:#fff;border:1.5px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,.05);}
 body.light .ppaneltitle{color:#1d4ed8;}
@@ -79,12 +75,10 @@ body.light .ppi{background:#f8fafc;border:1.5px solid #e2e8f0;}
 body.light .ppist{color:#64748b;}
 body.light .ppist span{color:#1d4ed8;}
 body.light .ppilvl.grey{background:#f1f5f9;color:#94a3b8;border-color:#e2e8f0;}
-
-/* Light — hesabat kartı */
 body.light .rc{box-shadow:0 4px 24px rgba(0,0,0,.1);}
 body.light .sf-rc{box-shadow:0 4px 20px rgba(0,0,0,.08);}
 
-/* Light — modal */
+/* ══ LIGHT — modal ══ */
 body.light .mobox{background:#fff;border:1.5px solid #e2e8f0;box-shadow:0 8px 40px rgba(0,0,0,.12);}
 body.light .mobox h3{color:#0f172a;}
 body.light .mos{background:#f8fafc;border:1.5px solid #e2e8f0;}
@@ -97,7 +91,7 @@ body.light .addbtn{background:#f8fafc;border:1.5px dashed #cbd5e1;color:#64748b;
 body.light .cr{background:#f8fafc;}
 body.light .cr label{color:#374151;}
 body.light .mosect{color:#94a3b8;border-color:#e2e8f0;}
-body.light .fillperiod{background:#f8fafc;}
+body.light .fillperiod{background:#f1f5f9;}
 body.light .afrow input{background:#fff;border-color:#e2e8f0;color:#0f172a;}
 body.light .af1inp{background:#fff;border-color:#e2e8f0;color:#0f172a;}
 body.light .period-sel label{background:#fff;border-color:#e2e8f0;color:#475569;}
@@ -113,32 +107,10 @@ body.light .g-spin-txt{color:#475569;}
 body.light .g-spin-ring{border-top-color:#1d4ed8;}
 body.light .g-spin-pct{color:#1d4ed8;}
 
-/* ══ OX STİLLƏRİ — sabit eni, alt-alta düzülür ══ */
-.nv-inner{
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:0;
-  width:100%;
-}
-/* Ox: sabit 20px, sağa yapışır, rəqəm soluna yapışır */
-.nv-arrow{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:20px;
-  min-width:20px;
-  flex-shrink:0;
-}
-.nv-val{
-  flex:1;
-  text-align:right;
-  font-weight:700;
-  min-width:0;
-}
-/* Cədvəl hücrəsi: sabit eni olan sütunlar = ox hər zaman alt-alta */
-table.rt .col-num{width:var(--rt-num-w,90px);}
-table.rt td.nv{padding:3px 6px 3px 0;}
+/* ══ OX STİLLƏRİ — sabit eni ══ */
+.nv-inner{display:flex;align-items:center;justify-content:flex-end;gap:0;width:100%;}
+.nv-arrow{display:inline-flex;align-items:center;justify-content:center;width:18px;min-width:18px;flex-shrink:0;}
+.nv-val{flex:1;text-align:right;font-weight:700;min-width:0;}
 
 .screen{display:none;min-height:100vh;flex-direction:column;}.screen.active{display:flex;}
 #gate{align-items:center;justify-content:center;}
@@ -185,8 +157,6 @@ select.ginp option{color:#000;background:#fff;}
 .backbtn{background:none;border:none;color:rgba(255,255,255,.4);font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;padding:0;margin-bottom:2px;display:block;}
 .sftitle{font-size:15px;font-weight:800;color:#fff;}
 .sfdate{font-size:11px;color:#c9963a;margin-top:1px;font-weight:600;}
-
-/* Kassir formu: telefon vs kompüter */
 .sfbody{width:100%;padding:14px 14px 28px;flex:1;}
 @media(max-width:859px){
   .sfbody{max-width:560px;margin:0 auto;}
@@ -200,7 +170,6 @@ select.ginp option{color:#000;background:#fff;}
   .sf-saxa-row>*{max-width:460px;width:100%;}
   .sf-btns-wrap{max-width:460px;margin:0 auto;}
 }
-
 .plancard{background:rgba(255,255,255,.06);border-radius:16px;padding:14px;margin-bottom:14px;border:1px solid rgba(201,150,58,.2);}
 .plantitle{color:#c9963a;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;}
 .plangrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px;}
@@ -231,7 +200,6 @@ select.ginp option{color:#000;background:#fff;}
 .pt tbody tr{border-top:1px solid rgba(255,255,255,.06);}
 .pt tbody td{padding:5px 7px;vertical-align:top;}
 .pt tbody td.pn{font-weight:700;font-size:12px;color:#fff;vertical-align:middle;padding-top:12px;}
-.inp-wrap{position:relative;}
 .ni{width:100%;text-align:right;border:1.5px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 7px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;color:#fff;background:rgba(255,255,255,.07);outline:none;display:block;}
 .ni:focus{border-color:#c9963a;background:rgba(255,255,255,.12);}
 .ni:disabled{color:rgba(255,255,255,.3);cursor:not-allowed;background:rgba(255,255,255,.03);}
@@ -270,69 +238,50 @@ select.ginp option{color:#000;background:#fff;}
 .theme-btn{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:20px;padding:6px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;color:#f0c060;white-space:nowrap;}
 .admbody{max-width:1600px;margin:0 auto;padding:14px 16px 32px;width:100%;}
 
-/* ══ HESABAT KARTI ══ */
+/* ══ HESABAT KARTI — köhnə kimi ağ ══ */
 .rc{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,.35);margin-bottom:14px;}
-.rchdr{padding:15px 20px;background:linear-gradient(90deg,#0f172a,#1e293b);display:flex;align-items:center;gap:12px;}
+.rchdr{padding:15px 20px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;align-items:center;gap:12px;}
 .rclogo{width:40px;height:40px;object-fit:contain;background:#fff;border-radius:10px;padding:3px;flex-shrink:0;}
 .rct{flex:1;min-width:0;}
 .rct h2{color:#fff;font-size:14px;font-weight:800;}
-.rct p{color:rgba(255,255,255,.55);font-size:11px;margin-top:2px;}
+.rct p{color:rgba(255,255,255,.65);font-size:11px;margin-top:2px;}
 .rcd{text-align:right;flex-shrink:0;}
 .rday{color:#fff;font-size:26px;font-weight:800;line-height:1;}
-.rmo{color:rgba(255,255,255,.5);font-size:10px;margin-top:2px;font-weight:600;}
+.rmo{color:rgba(255,255,255,.6);font-size:10px;margin-top:2px;font-weight:600;}
 .rctw{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;}
-
-/* ══ HESABAT CƏDVƏLİ — LIGHT & DARK ══ */
 table.rt{border-collapse:collapse;white-space:nowrap;}
-table.rt th,table.rt td{border:1px solid #cdd5e0;padding:4px 6px;}
+table.rt th,table.rt td{border:1px solid #cdd5e0;padding:4px 8px;}
 table.rt .col-name{width:var(--rt-name-w,115px);}
 table.rt .col-num{width:var(--rt-num-w,94px);}
 table.rt .col-pct{width:var(--rt-pct-w,62px);}
-
-/* Header satırları */
 .rt .gh th{font-weight:800;color:#fff;vertical-align:middle;height:30px;font-size:13px;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .gh .lb{background:#1e293b;color:#e2e8f0;text-align:left;border-right:2px solid #334155;font-weight:800;}
-.rt .gh .hb{background:#1d4ed8;}
-.rt .gh .ho{background:#c2410c;}
-.rt .gh .hg{background:#15803d;}
-.rt .gh .hp{background:#6d28d9;}
-.rt .sh th{background:#f1f5f9;color:#374151;text-align:center;height:20px;font-size:10px;font-weight:700;padding:3px 6px;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .sh .lb{background:#e2e8f0;border-right:2px solid #cbd5e1;text-align:left;color:#1e293b;font-weight:800;}
-.rt .sh .sb{color:#1d4ed8;}
-.rt .sh .so{color:#c2410c;}
-.rt .sh .sg{color:#15803d;}
-.rt .sh .sp{color:#6d28d9;}
-
-/* Data satırları */
-.rt .dr td{height:var(--rt-row-h,27px);padding:3px 6px;vertical-align:middle;border-bottom:1px solid #e2e8f0;font-size:var(--rt-fs,12px);}
-.rt .dr .nm{font-weight:700;color:#0f172a;background:#f8fafc;border-right:2px solid #e2e8f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .dr .nv{text-align:right;color:var(--rt-num-col,#0f172a);font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);padding-right:4px;}
-.rt .dr .pv{text-align:right;color:#475569;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,12px);}
-.rt .dr .dsh{text-align:center;color:#94a3b8;}
-.rt .dr:nth-child(even) td{background:#f8fafc;}
-.rt .dr:nth-child(even) .nm{background:#f1f5f9;}
-
-/* Saxa satırları */
-.rt .sr td{height:var(--rt-row-h,27px);padding:3px 6px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffdf0!important;font-size:var(--rt-fs,12px);}
-.rt .sr .nm{font-weight:700;color:#78350f;background:#fef9ee!important;border-right:2px solid #fcd34d;font-style:italic;border-left:3px solid #f59e0b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .sr .nv{text-align:right;color:#78350f;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);padding-right:4px;}
+.rt .gh .lb{background:#dce6f2;color:#1e3a6e;text-align:left;border-right:2px solid #b0c4de;font-weight:800;}
+.rt .gh .hb{background:#1d4ed8;}.rt .gh .ho{background:#c2410c;}.rt .gh .hg{background:#15803d;}.rt .gh .hp{background:#6d28d9;}
+.rt .sh th{background:#edf2f9;color:#2d3748;text-align:center;height:20px;font-size:10px;font-weight:700;padding:3px 8px;font-family:'Plus Jakarta Sans',sans-serif;}
+.rt .sh .lb{background:#dce6f2;border-right:2px solid #b0c4de;text-align:left;color:#1e3a6e;font-weight:800;}
+.rt .sh .sb{color:#1d4ed8;}.rt .sh .so{color:#b45309;}.rt .sh .sg{color:#15803d;}.rt .sh .sp{color:#6d28d9;}
+.rt .dr td{height:var(--rt-row-h,27px);padding:3px 8px;vertical-align:middle;border-bottom:1px solid #edf2f7;font-size:var(--rt-fs,12px);}
+.rt .dr .nm{font-weight:700;color:#0f1f3d;background:#f4f8fc;border-right:2px solid #dce4ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Plus Jakarta Sans',sans-serif;}
+.rt .dr .nv{text-align:right;color:var(--rt-num-col,#0f1f3d);font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);}
+.rt .dr .pv{text-align:right;color:#374151;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,12px);}
+.rt .dr .dsh{text-align:center;color:#b0bec5;}
+.rt .dr:nth-child(even) td{background:#f7fafc;}
+.rt .dr:nth-child(even) .nm{background:#e8f0f8;}
+.rt .sr td{height:var(--rt-row-h,27px);padding:3px 8px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;font-size:var(--rt-fs,12px);}
+.rt .sr .nm{font-weight:700;color:#7c3000;background:#fef3d0!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Plus Jakarta Sans',sans-serif;}
+.rt .sr .nv{text-align:right;color:#6b3500;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);}
 .rt .sr .pv{text-align:right;color:#92580a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,12px);}
 .rt .sr .dsh{text-align:center;color:#f0b429;}
-.rt .saxagap td{height:8px;background:#fef3c7!important;border-top:2px solid #fcd34d;padding:0;}
-
-/* Ümumi Panda sətri */
-.rt .tr td{height:var(--rt-tot-h,28px);padding:3px 6px;vertical-align:middle;background:#0f172a!important;border-top:2px solid #1e293b;font-size:var(--rt-fs,12px);}
-.rt .tr .nm{color:#94a3b8;font-weight:800;border-right:2px solid #1e293b;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .tr .nv{text-align:right;color:#f0c060;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);padding-right:4px;}
-.rt .tr .pv{text-align:right;color:#64748b;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,12px);}
-
-/* Ümumi Saxa sətri */
-.rt .str td{height:var(--rt-tot-h,28px);padding:3px 6px;vertical-align:middle;background:#78350f!important;border-top:2px solid #92400e;font-size:var(--rt-fs,12px);}
+.rt .saxagap td{height:10px;background:#fff3cd!important;border-top:3px solid #f59e0b;padding:0;}
+.rt .tr td{height:var(--rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;font-size:var(--rt-fs,12px);}
+.rt .tr .nm{color:#bfdbfe;font-weight:800;border-right:2px solid #2d5aa0;font-family:'Plus Jakarta Sans',sans-serif;}
+.rt .tr .nv{text-align:right;color:#fff;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);}
+.rt .tr .pv{text-align:right;color:#93c5fd;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,12px);}
+.rt .str td{height:var(--rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:#78350f!important;border-top:2px solid #92400e;font-size:var(--rt-fs,12px);}
 .rt .str .nm{color:#fde68a;font-weight:800;border-right:2px solid #92400e;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .str .nv{text-align:right;color:#fef3c7;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);padding-right:4px;}
+.rt .str .nv{text-align:right;color:#fef3c7;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);}
 .rt .str .pv{text-align:right;color:#fde68a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,12px);}
-
-.rcftr{padding:7px 18px;background:#f1f5f9;border-top:1px solid #e2e8f0;display:flex;justify-content:flex-end;}
+.rcftr{padding:7px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
 .rcftr span{color:#94a3b8;font-size:9px;font-weight:600;}
 .scrbtn{width:100%;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:14px;color:#060918;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:800;cursor:pointer;margin-top:4px;}
 .admld{text-align:center;padding:32px;color:#94a3b8;font-size:13px;font-weight:600;}
@@ -355,18 +304,18 @@ table.rt .col-pct{width:var(--rt-pct-w,62px);}
 .ppist{font-size:10px;color:rgba(255,255,255,.5);}
 .ppist span{color:#f0c060;font-weight:700;}
 .sf-rc{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(0,0,0,.3);margin-top:14px;}
-.sf-rc-hdr{padding:13px 18px;background:linear-gradient(90deg,#0f172a,#1e293b);display:flex;justify-content:space-between;align-items:center;}
+.sf-rc-hdr{padding:13px 18px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;justify-content:space-between;align-items:center;}
 .sf-rc-title{color:#fff;font-size:14px;font-weight:800;}
-.sf-rc-date{color:rgba(255,255,255,.7);font-size:14px;font-weight:700;}
+.sf-rc-date{color:rgba(255,255,255,.85);font-size:14px;font-weight:700;}
 table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
-.sf-tbl th{background:#1e293b;color:#fff;font-size:12px;font-weight:800;padding:9px 16px;text-align:left;font-family:'Plus Jakarta Sans',sans-serif;}
+.sf-tbl th{background:#2d5aa0;color:#fff;font-size:12px;font-weight:800;padding:9px 16px;text-align:left;font-family:'Plus Jakarta Sans',sans-serif;}
 .sf-tbl th:last-child{text-align:right;width:150px;}
-.sf-tbl td{padding:9px 16px;font-size:13px;border-bottom:1px solid #e2e8f0;color:#1e293b;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;}
-.sf-tbl td:last-child{text-align:right;font-weight:700;color:#0f172a;width:150px;}
-.sf-tbl tr:nth-child(even) td{background:#f8fafc;}
-.sf-tbl .sf-total td{background:#0f172a!important;color:#fff!important;font-weight:800;font-size:14px;}
+.sf-tbl td{padding:9px 16px;font-size:13px;border-bottom:1px solid #e8eef6;color:#1e3a6e;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;}
+.sf-tbl td:last-child{text-align:right;font-weight:700;color:#0f1f3d;width:150px;}
+.sf-tbl tr:nth-child(even) td{background:#f4f8fc;}
+.sf-tbl .sf-total td{background:#1e3a6e!important;color:#fff!important;font-weight:800;font-size:14px;}
 .sf-tbl .sf-total td:last-child{color:#f0c060!important;font-size:15px;}
-.sf-rc-ftr{padding:7px 18px;background:#f1f5f9;border-top:1px solid #e2e8f0;display:flex;justify-content:flex-end;}
+.sf-rc-ftr{padding:7px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
 .sf-rc-ftr span{color:#94a3b8;font-size:9px;font-weight:600;}
 .sf-scrbtn{width:100%;padding:11px;background:rgba(120,53,15,.7);border:none;border-radius:10px;color:#fde68a;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:800;cursor:pointer;margin-top:8px;}
 .jurnal-filter{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
@@ -422,15 +371,11 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 </style></head><body class="dark">
 
 <div class="g-spin-overlay" id="g-spin">
-  <div class="g-spin-box">
-    <div class="g-spin-ring-wrap"><div class="g-spin-ring"></div><div class="g-spin-pct" id="g-spin-pct">0%</div></div>
-    <div class="g-spin-txt" id="g-spin-txt">Yüklənir...</div>
-  </div>
+  <div class="g-spin-box"><div class="g-spin-ring-wrap"><div class="g-spin-ring"></div><div class="g-spin-pct" id="g-spin-pct">0%</div></div><div class="g-spin-txt" id="g-spin-txt">Yüklənir...</div></div>
 </div>
 <div class="prog-overlay" id="prog-overlay">
   <img class="prog-logo" src="IMG_0510.png" alt="">
-  <div class="prog-title">Panda Kids</div>
-  <div class="prog-pct" id="prog-pct">0%</div>
+  <div class="prog-title">Panda Kids</div><div class="prog-pct" id="prog-pct">0%</div>
   <div class="prog-bar-wrap"><div class="prog-bar" id="prog-bar"></div></div>
   <div class="prog-msg" id="prog-msg">Yüklənir...</div>
 </div>
@@ -452,11 +397,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 <div class="screen" id="store-form">
   <div class="sfhdr"><div class="sfhi">
     <img class="sflogo" src="IMG_0510.png" alt="">
-    <div class="sftxt">
-      <button class="backbtn" onclick="logout()">← Çıxış</button>
-      <div class="sftitle" id="sftitle"></div>
-      <div class="sfdate" id="sfdate"></div>
-    </div>
+    <div class="sftxt"><button class="backbtn" onclick="logout()">← Çıxış</button><div class="sftitle" id="sftitle"></div><div class="sfdate" id="sfdate"></div></div>
     <div class="sfhdr-right"><button class="theme-btn" id="tbtn-store" onclick="toggleTheme()">🌙</button></div>
   </div></div>
   <div class="sfbody" id="sfbody"></div>
@@ -473,7 +414,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
       <button class="ab" onclick="openJurnalMo()">🔐 Jurnal</button>
       <button class="ab" onclick="openStyleMo()">🎨 Görünüş</button>
       <button class="ab" onclick="openSettingsMo()">⚙️ Parametrlər</button>
-      <button class="ab gold" onclick="loadAdmin()">↻ Yenilə</button>
+      <button class="ab gold" id="refreshBtn" onclick="loadAdmin()">↻ Yenilə</button>
       <button class="theme-btn" id="tbtn-adm" onclick="toggleTheme()">🌙 Gecə</button>
       <button class="ab" onclick="logout()">← Çıx</button>
     </div>
@@ -538,7 +479,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
   </div>
   <div class="mosect">Rənglər</div>
   <div class="mor3">
-    <div class="mof"><label>Panda rəqəm</label><input type="color" id="st-panda-col" value="#0f172a" onchange="applyStyle()"></div>
+    <div class="mof"><label>Panda rəqəm</label><input type="color" id="st-panda-col" value="#0f1f3d" onchange="applyStyle()"></div>
     <div class="mof"><label>↑ Yaşıl ox</label><input type="color" id="st-arr-up" value="#22c55e" onchange="applyStyle()"></div>
     <div class="mof"><label>→ Narıncı ox</label><input type="color" id="st-arr-mid" value="#f59e0b" onchange="applyStyle()"></div>
   </div>
@@ -576,33 +517,26 @@ const LS_CACHE='pk_bin_v2';
 let ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
 let curSid=null,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
 
-// ── TEMA (hər istifadəçi öz açarı) ───────────────────────────────────────────
+// ── TEMA ──────────────────────────────────────────────────────────────────────
 let _curUid='guest';
 function themeKey(uid){return `pk_theme_${uid||'guest'}`;}
 function applyTheme(m){
   document.body.className=m;
   const isDark=m==='dark';
-  const lbl=isDark?'🌙 Gecə':'☀️ Gündüz';
-  const slbl=isDark?'🌙':'☀️';
-  ['tbtn-adm','tbtn-view'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=lbl;});
-  const st=document.getElementById('tbtn-store');if(st)st.textContent=slbl;
+  ['tbtn-adm','tbtn-view'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=isDark?'🌙 Gecə':'☀️ Gündüz';});
+  const st=document.getElementById('tbtn-store');if(st)st.textContent=isDark?'🌙':'☀️';
   localStorage.setItem(themeKey(_curUid),m);
 }
-function loadTheme(uid){
-  _curUid=uid||'guest';
-  const saved=localStorage.getItem(themeKey(_curUid))||'dark';
-  applyTheme(saved);
-}
+function loadTheme(uid){_curUid=uid||'guest';applyTheme(localStorage.getItem(themeKey(_curUid))||'dark');}
 function toggleTheme(){applyTheme(document.body.classList.contains('dark')?'light':'dark');}
 loadTheme('guest');
 
 // ── SVG OXLAR ─────────────────────────────────────────────────────────────────
-// Sabit 18×18 SVG — hər zaman alt-alta düzülür çünki sütun eni sabitdir
-function svgUp(c){return`<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 10.5V2.5M6.5 2.5L3 6M6.5 2.5L10 6" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
-function svgMid(c){return`<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 6.5H10.5M10.5 6.5L7 3M10.5 6.5L7 10" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
-function svgDn(c){return`<svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 2.5V10.5M6.5 10.5L10 7M6.5 10.5L3 7" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
+function svgUp(c){return`<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 10.5V2.5M6.5 2.5L3 6M6.5 2.5L10 6" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
+function svgMid(c){return`<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5H10.5M10.5 6.5L7 3M10.5 6.5L7 10" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
+function svgDn(c){return`<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 2.5V10.5M6.5 10.5L10 7M6.5 10.5L3 7" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
 
-// ── SPINNER ────────────────────────────────────────────────────────────────────
+// ── SPINNER ───────────────────────────────────────────────────────────────────
 let _spinTimer=null,_spinPct=0;
 function spinShow(txt='Yüklənir...'){
   _spinPct=0;clearInterval(_spinTimer);
@@ -613,7 +547,7 @@ function spinShow(txt='Yüklənir...'){
 }
 function spinHide(){clearInterval(_spinTimer);document.getElementById('g-spin-pct').textContent='100%';setTimeout(()=>{document.getElementById('g-spin').classList.remove('show');_spinPct=0;},180);}
 
-// ── RƏQƏM INPUT ────────────────────────────────────────────────────────────────
+// ── RƏQƏM INPUT ──────────────────────────────────────────────────────────────
 function parseNum(s){
   if(!s)return 0;let v=String(s).trim();
   if(v.includes('.')&&v.includes(',')){const lD=v.lastIndexOf('.');const lC=v.lastIndexOf(',');if(lC>lD){v=v.replace(/\./g,'').replace(',','.');}else{v=v.replace(/,/g,'');}}
@@ -629,8 +563,8 @@ function attachNumInput(inp){
 }
 function attachAllNum(){document.querySelectorAll('.ni,.saxa-firma-inp,.afrow input,.af1inp').forEach(attachNumInput);}
 
-// ── STİL ───────────────────────────────────────────────────────────────────────
-const DEF_STYLE={font:"'Plus Jakarta Sans',sans-serif",fs:'12px',fw:'700',rh:'27px',pandaCol:'#0f172a',arrUp:'#22c55e',arrMid:'#f59e0b',nameW:'115px',numW:'94px',pctW:'62px'};
+// ── STİL ─────────────────────────────────────────────────────────────────────
+const DEF_STYLE={font:"'Plus Jakarta Sans',sans-serif",fs:'12px',fw:'700',rh:'27px',pandaCol:'#0f1f3d',arrUp:'#22c55e',arrMid:'#f59e0b',nameW:'115px',numW:'94px',pctW:'62px'};
 function gStyle(){try{return{...DEF_STYLE,...(JSON.parse(localStorage.getItem('pk_style')||'null')||{})};}catch{return{...DEF_STYLE};}}
 function svStyle(v){localStorage.setItem('pk_style',JSON.stringify(v));}
 function applyStyleToDOM(st){
@@ -639,7 +573,6 @@ function applyStyleToDOM(st){
     el.style.setProperty('--rt-row-h',st.rh);el.style.setProperty('--rt-tot-h',st.rh);el.style.setProperty('--rt-num-col',st.pandaCol);
     el.style.setProperty('--rt-name-w',st.nameW);el.style.setProperty('--rt-num-w',st.numW);el.style.setProperty('--rt-pct-w',st.pctW);
   });
-  // Önizləmə güncellə
   const p1=document.getElementById('prev-nv1');if(p1)p1.innerHTML=`<div class="nv-inner"><span class="nv-arrow">${svgUp(st.arrUp)}</span><span class="nv-val">38.259</span></div>`;
   const p2=document.getElementById('prev-nv2');if(p2)p2.innerHTML=`<div class="nv-inner"><span class="nv-arrow">${svgMid(st.arrMid)}</span><span class="nv-val">54.500</span></div>`;
 }
@@ -660,7 +593,7 @@ function loadSI(st){
 function openStyleMo(){const st=gStyle();loadSI(st);applyStyleToDOM(st);document.getElementById('mo-style').classList.add('show');}
 applyStyleToDOM(gStyle());
 
-// ── BIN ────────────────────────────────────────────────────────────────────────
+// ── BIN ──────────────────────────────────────────────────────────────────────
 const DEF_USERS=[
   {id:'p2',name:'Panda 2',pw:'p2-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
   {id:'p3',name:'Panda 3',pw:'p3-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
@@ -681,12 +614,16 @@ function progAnimate(from,to,msg,ms){return new Promise(res=>{const step=(to-fro
 function _parseBin(d){const users=(d.cfg?.users||DEF_USERS).map(u=>({...u,periods:u.periods||[1,1,1,1]}));return{records:d.records||[],sf:d.sf||{},cfg:{users,targets:d.cfg?.targets||DEF_TGTS,saxa:d.cfg?.saxa||DEF_SAXA,jurnal:d.cfg?.jurnal||[],jp:d.cfg?.jp||{showAdmin:true}}};}
 function _lsGet(){try{const p=JSON.parse(localStorage.getItem(LS_CACHE)||'null');if(p&&p.data&&(Date.now()-p.ts)<LS_TTL)return p.data;}catch{}return null;}
 function _lsSet(data){try{localStorage.setItem(LS_CACHE,JSON.stringify({data,ts:Date.now()}));}catch{}}
+
 async function rBin(force=false){
   const now=Date.now();
   if(!force&&_bc&&(now-_bcts)<MEM_TTL)return _bc;
   if(!force&&!_bc){const ls=_lsGet();if(ls){_bc=ls;_bcts=now-MEM_TTL+5000;return _bc;}}
-  try{const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'}});if(!r.ok)return _bc||defBin();const j=await r.json();_bc=_parseBin(j.data||{});_bcts=now;_lsSet(_bc);return _bc;}
-  catch{return _bc||_lsGet()||defBin();}
+  try{
+    const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},cache:'no-store'});
+    if(!r.ok)return _bc||defBin();
+    const j=await r.json();_bc=_parseBin(j.data||{});_bcts=now;_lsSet(_bc);return _bc;
+  }catch{return _bc||_lsGet()||defBin();}
 }
 function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true}}};}
 async function wBin(records,sf,cfg){
@@ -713,8 +650,35 @@ function getSFDate(){const d=getFD();return `${d.getDate()} ${AY[d.getMonth()]} 
 function fmt(n){if(!n||Number(n)===0)return '—';return Math.round(Number(n)).toLocaleString('de-DE');}
 function fmtDec(n){if(!n||Number(n)===0)return '—';const num=Number(n);return num%1===0?Math.round(num).toLocaleString('de-DE'):num.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fmtSF(n){return fmtDec(n);}
-function fmtFaizStore(f){if(!f||f===0)return '—';const n=Number(f);if(Number.isInteger(n))return n+'%';const s=n.toFixed(1);return s.endsWith('.0')?Math.round(n)+'%':s+'%';}
-function fmtFaizAvg(f){if(!f||f===null)return '—';return Number(f).toFixed(1)+'%';}
+
+// Mağaza saxlayanda giriş edilmiş faizi düz saxla (59.7 kimi)
+function fmtFaizStore(f){
+  if(!f||f===0)return '—';
+  const n=Number(f);
+  // Tam ədəd isə tam göstər: 66 → 66%
+  if(Number.isInteger(n))return n+'%';
+  // 1 kəsr: 59.7 → 59.7%
+  const s=n.toFixed(1);
+  return s.endsWith('.0')?Math.round(n)+'%':s+'%';
+}
+
+// Admin cədvəlindəki faiz (1 kəsr, net rəqəm)
+function fmtFaizAdm(f){
+  if(!f||f===null)return '—';
+  const n=Number(f);
+  if(Number.isInteger(n))return n+'%';
+  const s=n.toFixed(1);
+  return s.endsWith('.0')?Math.round(n)+'%':s+'%';
+}
+
+// Ortalama faiz
+function fmtFaizAvg(f){
+  if(!f||f===null)return '—';
+  const n=Number(f);
+  const s=n.toFixed(1);
+  return s.endsWith('.0')?Math.round(n)+'%':s+'%';
+}
+
 function xPct(v,t){if(!v||!t)return null;const r=v/t*100;return r>=100?100:Math.floor(r*10)/10;}
 function pStr(p){if(p===null)return '—';return p===100?'100%':p.toFixed(1)+'%';}
 function avgF(arr){const v=arr.filter(x=>x>0);return v.length?v.reduce((a,b)=>a+b)/v.length:null;}
@@ -722,7 +686,6 @@ function planColor(ms,tgt,dl){if(!ms||!tgt)return 'red';if(ms>=tgt)return 'green
 function planBg(ms,tgt,dl){const c=planColor(ms,tgt,dl);return c==='green'?'#10b981':c==='orange'?'#f59e0b':'#ef4444';}
 function calcDaily(ms,tgt,dl){if(!tgt||ms>=tgt||dl<=0)return 0;return Math.ceil((tgt-ms)/dl);}
 
-// ── OX HÜCEYRƏSİ — sütun eni sabit olduğu üçün alt-alta düzülür ──────────────
 function nvCell(arrType,val,st){
   const upC=st?.arrUp||'#22c55e',midC=st?.arrMid||'#f59e0b',dnC='#ef4444';
   let arrow='';
@@ -781,7 +744,6 @@ async function showAdminGate(){
   else if(pw!==null)alert('Şifrə yanlışdır.');
 }
 
-// ── PLAN KARTI ────────────────────────────────────────────────────────────────
 function planCard(sid,ms,records){
   const t=gT()[sid];if(!t)return '';
   const dl=dLeft(),u=gU().find(u=>u.id===sid);
@@ -815,7 +777,6 @@ function upPlanLive(){
   if(el){const t=document.createElement('div');t.innerHTML=h;el.replaceWith(t.firstElementChild);}
 }
 
-// ── MAĞAZA FORMU ─────────────────────────────────────────────────────────────
 async function openStoreForm(sid){
   const u=gU().find(u=>u.id===sid);
   document.getElementById('sftitle').textContent=u.name;
@@ -908,7 +869,7 @@ async function deleteToday(sid){
   catch{spinHide();alert('Silinmə xətası.');}
 }
 
-// ── HESABAT CƏDVƏLİ ──────────────────────────────────────────────────────────
+// ── ADMİN CƏDVƏLİ — faiz: fmtFaizAdm() ─────────────────────────────────────
 function buildTable(records,sf,tblId,ldId){
   const users=gU().filter(u=>u.type==='store');const targets=gT(),dl=dLeft();const allP=getAllPeriods();const st=gStyle();
   const D={};users.forEach(u=>{const uP=getUserPeriods(u.id);D[u.name]={};allP.forEach(p=>{const up=uP.find(x=>x.id===p.id);D[u.name][p.id]=up?findRec(records,u.name,up.sk):null;});});
@@ -924,7 +885,8 @@ function buildTable(records,sf,tblId,ldId){
       h+=`<td class="nm">${u.name}</td>`;
       if(e&&(e.satis>0||e.menfeet>0)){
         let atype='';if(p.id==='gun'&&t)atype=getArrType(e.satis,ay0val,t.min,dl);else if(p.id==='ay0'&&t)atype=getArrTypeMonth(e.satis,t.min,dl);
-        h+=nvCell(atype,fmt(e.satis),st);h+=`<td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fmtFaizStore(e.faiz)}</td>`;
+        h+=nvCell(atype,fmt(e.satis),st);
+        h+=`<td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fmtFaizAdm(e.faiz)}</td>`;
         pTots[pi].s+=e.satis;pTots[pi].m+=e.menfeet;if(e.faiz>0)pTots[pi].fl.push(e.faiz);
       }else h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;
     });h+='</tr>';
@@ -932,7 +894,7 @@ function buildTable(records,sf,tblId,ldId){
   h+='<tr class="tr">';pTots.forEach(t=>{h+=`<td class="nm">Ümumi Panda</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fmtFaizAvg(avgF(t.fl))}</td>`;});h+='</tr>';
   if(saxa.length){
     h+=`<tr class="saxagap"><td colspan="${allP.length*4}"></td></tr>`;
-    saxa.forEach(u=>{h+=`<tr class="sr">`;allP.forEach((p,pi)=>{h+=`<td class="nm">${u.name}</td>`;const e=D[u.name][p.id];if(e&&(e.satis>0||e.menfeet>0)){h+=`<td class="nv"><span class="nv-val">${fmt(e.satis)}</span></td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fmtFaizStore(e.faiz)}</td>`;sTots[pi].s+=e.satis;sTots[pi].m+=e.menfeet;if(e.faiz>0)sTots[pi].fl.push(e.faiz);}else h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;});h+='</tr>';});
+    saxa.forEach(u=>{h+=`<tr class="sr">`;allP.forEach((p,pi)=>{h+=`<td class="nm">${u.name}</td>`;const e=D[u.name][p.id];if(e&&(e.satis>0||e.menfeet>0)){h+=`<td class="nv"><span class="nv-val">${fmt(e.satis)}</span></td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fmtFaizAdm(e.faiz)}</td>`;sTots[pi].s+=e.satis;sTots[pi].m+=e.menfeet;if(e.faiz>0)sTots[pi].fl.push(e.faiz);}else h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;});h+='</tr>';});
     h+='<tr class="str">';sTots.forEach(t=>{h+=`<td class="nm">Ümumi Saxa</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fmtFaizAvg(avgF(t.fl))}</td>`;});h+='</tr>';
   }
   const tbl=document.getElementById(tblId);tbl.innerHTML=h;applyStyleToDOM(st);
@@ -991,11 +953,17 @@ function mkPanel(id){
   </div>`;
 }
 
+// ── YENİLƏ DÜYMƏSİ — cache sıfırlayıb yükləyir ─────────────────────────────
 function openAdmin(){document.getElementById('admdate').textContent=fmtRealDate();goTo('admin');loadAdmin();}
 async function loadAdmin(){
   document.getElementById('admdate').textContent=fmtRealDate();
   const body=document.getElementById('admbody');
+  const btn=document.getElementById('refreshBtn');
+  if(btn){btn.disabled=true;btn.textContent='⏳ ...';}
   try{
+    // cache sıfırla — həm yaddaş həm localStorage
+    _bc=null;_bcts=0;
+    localStorage.removeItem(LS_CACHE);
     const {records,sf,cfg}=await rBin(true);CFG=cfg;
     body.innerHTML=mkPanel('adm')+
       `<button class="scrbtn" onclick="takeScr('rc-adm')" style="margin-bottom:14px">📸 Hesabatı Şəkil Kimi Saxla</button>
@@ -1007,12 +975,14 @@ async function loadAdmin(){
     document.getElementById('adm-pp').innerHTML=planPanelHtml(records,false);
     document.getElementById('adm-sp').innerHTML=planPanelHtml(records,true);
   }catch(e){body.innerHTML='<div class="admld">❌ Yüklənmədi.</div>';}
+  finally{if(btn){btn.disabled=false;btn.textContent='↻ Yenilə';}}
 }
 
 function openViewer(u){document.getElementById('viewdate').textContent=fmtRealDate();if(u)document.getElementById('viewtitle').textContent=`Panda Kids — ${u.name}`;goTo('viewer');loadViewer();}
 async function loadViewer(){
   const body=document.getElementById('viewbody');
   try{
+    _bc=null;_bcts=0;
     const {records,sf,cfg}=await rBin(true);CFG=cfg;
     body.innerHTML=mkPanel('view')+
       `<div class="planpanel" style="margin-top:14px"><div class="ppaneltitle">🐼 Panda — Plan Vəziyyəti</div><div id="view-pp"></div></div>
@@ -1106,7 +1076,7 @@ function renderUsersMo(){
   tmpUsers.filter(u=>u.type==='store').forEach(u=>{
     const ri=tmpUsers.indexOf(u);const pFlags=u.periods||[1,1,1,1];
     let pSel='<div style="margin-top:7px"><div style="font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:5px">Aktiv Periodlar</div><div class="period-sel">';
-    allP.forEach((p,i)=>{const on=pFlags[i]===1;pSel+=`<label class="${on?'on':''}"><input type="checkbox" ${on?'checked':''} onchange="togglePeriod(${ri},${i},this)">${['Günlük','Cari ay','Keçən il','2 il əvvəl'][i]}</label>`;});
+    allP.forEach((p,i)=>{const on=pFlags[i]===1;pSel+=`<label class="${on?'on':''}"><input type="checkbox" ${on?'checked':''} onchange="togglePeriod(${ri},${i},this)">${pLbls[i]}</label>`;});
     pSel+='</div></div>';
     h+=`<div class="mos"><div class="mosn"><span>${u.name}</span><button class="delbtn" onclick="delUser(${ri})">🗑</button></div>
       <div class="mor2"><div class="mof"><label>Ad</label><input type="text" id="un-${ri}" value="${u.name}" oninput="tmpUsers[${ri}].name=this.value"></div><div class="mof"><label>Şifrə</label><input type="text" id="up-${ri}" value="${u.pw}" oninput="tmpUsers[${ri}].pw=this.value"></div></div>
