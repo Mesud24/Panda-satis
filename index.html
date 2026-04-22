@@ -1,7 +1,8 @@
 <!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Panda Kids</title><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=Roboto+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inconsolata:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{width:100%;overflow-x:hidden;}
-body{font-family:'Plus Jakarta Sans',sans-serif;color:#fff;min-height:100vh;transition:background .3s,color .3s;}
+body{font-family:‘Plus Jakarta Sans’,sans-serif;color:#fff;min-height:100vh;transition:background .3s,color .3s;}
 body.dark{background-color:#060918;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(99,60,180,.55) 0%,transparent 60%),radial-gradient(ellipse 70% 50% at 80% 5%,rgba(30,80,180,.5) 0%,transparent 55%),radial-gradient(ellipse 60% 70% at 5% 70%,rgba(20,60,140,.45) 0%,transparent 55%),radial-gradient(ellipse 75% 60% at 90% 80%,rgba(80,40,160,.45) 0%,transparent 55%);background-attachment:fixed;}
 body.light{background-color:#eef2f7;background-image:radial-gradient(ellipse 70% 50% at 15% 10%,rgba(30,58,110,.06) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 85% 90%,rgba(30,64,175,.05) 0%,transparent 50%);background-attachment:fixed;color:#1e293b;}
 body.light #gate{background:linear-gradient(135deg,#1e3a6e 0%,#2d5aa0 50%,#1d4ed8 100%);}
@@ -112,13 +113,13 @@ body.light .g-spin-pct{color:#1d4ed8;}
 .holiday-overlay{display:none;position:fixed;inset:0;z-index:9990;background:rgba(0,0,0,.65);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:20px;}
 .holiday-overlay.show{display:flex;}
 .holiday-box{background:linear-gradient(135deg,#1a0a3e 0%,#2d0a6e 50%,#1a0a3e 100%);border-radius:24px;padding:32px 24px;text-align:center;max-width:360px;width:100%;border:2px solid rgba(255,215,0,.4);box-shadow:0 0 60px rgba(255,215,0,.2),0 8px 40px rgba(0,0,0,.6);position:relative;overflow:hidden;}
-.holiday-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,215,0,.15) 0%,transparent 70%);pointer-events:none;}
+.holiday-box::before{content:’’;position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,215,0,.15) 0%,transparent 70%);pointer-events:none;}
 .holiday-emoji{font-size:64px;margin-bottom:12px;display:block;animation:bounceEmoji .6s ease infinite alternate;}
 @keyframes bounceEmoji{0%{transform:scale(1);}100%{transform:scale(1.15);}}
 .holiday-title{font-size:22px;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.2;}
 .holiday-subtitle{font-size:14px;color:rgba(255,215,0,.9);font-weight:600;margin-bottom:6px;}
 .holiday-msg{font-size:13px;color:rgba(255,255,255,.75);margin-bottom:20px;line-height:1.5;}
-.holiday-btn{padding:13px 32px;background:linear-gradient(135deg,#f0c060,#c9963a);border:none;border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;color:#060918;cursor:pointer;box-shadow:0 4px 20px rgba(201,150,58,.4);}
+.holiday-btn{padding:13px 32px;background:linear-gradient(135deg,#f0c060,#c9963a);border:none;border-radius:14px;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:15px;font-weight:800;color:#060918;cursor:pointer;box-shadow:0 4px 20px rgba(201,150,58,.4);}
 .holiday-btn:active{transform:scale(.97);}
 /* Bayram paneli banner */
 .holiday-banner{display:none;border-radius:16px;padding:14px 18px;margin-bottom:14px;position:relative;overflow:hidden;cursor:default;}
@@ -140,14 +141,14 @@ body.light .g-spin-pct{color:#1d4ed8;}
 .gtitle{font-size:24px;font-weight:800;color:#fff;text-align:center;letter-spacing:-.3px;}
 .gsub{font-size:12px;color:rgba(255,255,255,.4);text-align:center;margin-top:-8px;}
 .glbl{width:100%;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.35);margin-bottom:-8px;}
-.ginp{width:100%;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.12);border-radius:14px;padding:13px 16px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:500;color:#fff;outline:none;}
+.ginp{width:100%;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.12);border-radius:14px;padding:13px 16px;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:15px;font-weight:500;color:#fff;outline:none;}
 .ginp:focus{border-color:#c9963a;}
 select.ginp{appearance:none;cursor:pointer;}
 select.ginp option{color:#000;background:#fff;}
-.gbtn{width:100%;padding:14px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;color:#060918;cursor:pointer;}
+.gbtn{width:100%;padding:14px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:14px;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:15px;font-weight:800;color:#060918;cursor:pointer;}
 .gerr{color:#fca5a5;font-size:12px;display:none;text-align:center;font-weight:600;}.gerr.show{display:block;}
 .gdiv{width:100%;height:1px;background:rgba(255,255,255,.08);}
-.glink{color:rgba(255,255,255,.3);font-size:12px;cursor:pointer;background:none;border:none;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;}
+.glink{color:rgba(255,255,255,.3);font-size:12px;cursor:pointer;background:none;border:none;font-family:‘Plus Jakarta Sans’,sans-serif;font-weight:600;}
 .remrow{display:flex;align-items:center;gap:8px;width:100%;}
 .remrow label{color:rgba(255,255,255,.55);font-size:12px;cursor:pointer;font-weight:500;}
 .remrow input[type=checkbox]{cursor:pointer;transform:scale(1.2);}
@@ -173,21 +174,21 @@ select.ginp option{color:#000;background:#fff;}
 .sflogo{width:34px;height:34px;object-fit:contain;background:#fff;border-radius:9px;padding:2px;flex-shrink:0;}
 .sftxt{flex:1;min-width:0;}
 .sfhdr-right{flex-shrink:0;}
-.backbtn{background:none;border:none;color:rgba(255,255,255,.4);font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;padding:0;margin-bottom:2px;display:block;}
+.backbtn{background:none;border:none;color:rgba(255,255,255,.4);font-family:‘Plus Jakarta Sans’,sans-serif;font-size:11px;font-weight:600;cursor:pointer;padding:0;margin-bottom:2px;display:block;}
 .sftitle{font-size:15px;font-weight:800;color:#fff;}
 .sfdate{font-size:11px;color:#c9963a;margin-top:1px;font-weight:600;}
 .sfbody{width:100%;padding:14px 14px 28px;flex:1;}
 @media(max-width:859px){
-  .sfbody{max-width:560px;margin:0 auto;}
-  .sf-periods-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:10px;}
-  .sf-saxa-row,.sf-btns-wrap{display:block;}
+.sfbody{max-width:560px;margin:0 auto;}
+.sf-periods-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:10px;}
+.sf-saxa-row,.sf-btns-wrap{display:block;}
 }
 @media(min-width:860px){
-  .sfbody{max-width:1100px;margin:0 auto;padding:20px 32px 36px;}
-  .sf-periods-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
-  .sf-saxa-row{display:flex;justify-content:center;margin-bottom:16px;}
-  .sf-saxa-row>*{max-width:460px;width:100%;}
-  .sf-btns-wrap{max-width:460px;margin:0 auto;}
+.sfbody{max-width:1100px;margin:0 auto;padding:20px 32px 36px;}
+.sf-periods-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.sf-saxa-row{display:flex;justify-content:center;margin-bottom:16px;}
+.sf-saxa-row>*{max-width:460px;width:100%;}
+.sf-btns-wrap{max-width:460px;margin:0 auto;}
 }
 .plancard{background:rgba(255,255,255,.06);border-radius:16px;padding:14px;margin-bottom:14px;border:1px solid rgba(201,150,58,.2);}
 .plantitle{color:#c9963a;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;}
@@ -219,16 +220,16 @@ select.ginp option{color:#000;background:#fff;}
 .pt tbody tr{border-top:1px solid rgba(255,255,255,.06);}
 .pt tbody td{padding:5px 7px;vertical-align:top;}
 .pt tbody td.pn{font-weight:700;font-size:12px;color:#fff;vertical-align:middle;padding-top:12px;}
-.ni{width:100%;text-align:right;border:1.5px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 7px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;color:#fff;background:rgba(255,255,255,.07);outline:none;display:block;}
+.ni{width:100%;text-align:right;border:1.5px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 7px;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:14px;font-weight:600;color:#fff;background:rgba(255,255,255,.07);outline:none;display:block;}
 .ni:focus{border-color:#c9963a;background:rgba(255,255,255,.12);}
 .ni:disabled{color:rgba(255,255,255,.3);cursor:not-allowed;background:rgba(255,255,255,.03);}
 .ni::placeholder{color:rgba(255,255,255,.2);font-size:12px;}
-.ni-f{width:100%;text-align:right;border:1.5px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 5px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;color:#f0c060;background:rgba(255,255,255,.05);outline:none;display:block;}
+.ni-f{width:100%;text-align:right;border:1.5px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 5px;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:14px;font-weight:600;color:#f0c060;background:rgba(255,255,255,.05);outline:none;display:block;}
 .ni-f:focus{border-color:#c9963a;}
 .ni-f:disabled{color:rgba(255,255,255,.25);cursor:not-allowed;}
 .ni-f::placeholder{color:rgba(255,255,255,.18);}
-.editbtn{width:100%;padding:8px;background:transparent;border:1.5px solid rgba(255,255,255,.15);border-radius:9px;color:rgba(255,255,255,.7);font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-top:5px;display:block;}
-.delbtn2{width:100%;padding:10px;background:rgba(239,68,68,.1);border:1.5px solid rgba(239,68,68,.22);border-radius:10px;color:#fca5a5;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-top:8px;display:block;}
+.editbtn{width:100%;padding:8px;background:transparent;border:1.5px solid rgba(255,255,255,.15);border-radius:9px;color:rgba(255,255,255,.7);font-family:‘Plus Jakarta Sans’,sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-top:5px;display:block;}
+.delbtn2{width:100%;padding:10px;background:rgba(239,68,68,.1);border:1.5px solid rgba(239,68,68,.22);border-radius:10px;color:#fca5a5;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-top:8px;display:block;}
 .okbox,.ldbox,.erbox{display:none;border-radius:12px;padding:11px 14px;font-size:13px;font-weight:600;margin-top:8px;}
 .okbox{background:rgba(16,185,129,.13);border:1.5px solid rgba(16,185,129,.4);color:#6ee7b7;}
 .ldbox{background:rgba(59,130,246,.13);border:1.5px solid rgba(59,130,246,.3);color:#93c5fd;}
@@ -236,10 +237,10 @@ select.ginp option{color:#000;background:#fff;}
 .okbox.show,.ldbox.show,.erbox.show{display:block;}
 .saxa-firma-block{background:rgba(245,158,11,.07);border-radius:14px;overflow:hidden;margin-bottom:10px;border:1px solid rgba(245,158,11,.2);}
 .saxa-firma-hdr{padding:9px 13px;font-size:13px;font-weight:800;color:#fde68a;background:rgba(120,53,15,.4);}
-.saxa-firma-inp{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(245,158,11,.25);border-radius:10px;padding:10px 12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:600;color:#fff;outline:none;text-align:right;}
+.saxa-firma-inp{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(245,158,11,.25);border-radius:10px;padding:10px 12px;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:16px;font-weight:600;color:#fff;outline:none;text-align:right;}
 .saxa-firma-inp:focus{border-color:#f59e0b;}
 .saxa-firma-inp:disabled{color:rgba(255,255,255,.3);cursor:not-allowed;}
-.saveallbtn{width:100%;padding:14px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);border:none;border-radius:14px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;cursor:pointer;margin-top:10px;box-shadow:0 4px 16px rgba(29,78,216,.3);}
+.saveallbtn{width:100%;padding:14px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);border:none;border-radius:14px;color:#fff;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:15px;font-weight:800;cursor:pointer;margin-top:10px;box-shadow:0 4px 16px rgba(29,78,216,.3);}
 .saveallbtn:disabled{opacity:.45;cursor:not-allowed;}
 #admin,#viewer{background:transparent;}
 .admhdr{background:rgba(6,9,24,.6);padding:12px 16px;border-bottom:1px solid rgba(201,150,58,.12);position:sticky;top:0;z-index:10;backdrop-filter:blur(16px);}
@@ -249,10 +250,10 @@ select.ginp option{color:#000;background:#fff;}
 .admtitle h2{font-size:15px;font-weight:800;color:#fff;}
 .admtitle p{font-size:11px;color:#c9963a;margin-top:2px;font-weight:600;}
 .admacts{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
-.ab{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.8);border-radius:10px;padding:7px 11px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;}
+.ab{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.8);border-radius:10px;padding:7px 11px;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;}
 .ab.gold{background:rgba(201,150,58,.2);border-color:rgba(201,150,58,.4);color:#c9963a;}
 .ab.view{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.3);color:#6ee7b7;cursor:default;}
-.theme-btn{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:20px;padding:6px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;color:#f0c060;white-space:nowrap;}
+.theme-btn{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:20px;padding:6px 14px;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:12px;font-weight:700;cursor:pointer;color:#f0c060;white-space:nowrap;}
 .admbody{max-width:1600px;margin:0 auto;padding:14px 16px 32px;width:100%;}
 .rc{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,.35);margin-bottom:14px;}
 .rchdr{padding:15px 20px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;align-items:center;gap:12px;}
@@ -266,39 +267,39 @@ select.ginp option{color:#000;background:#fff;}
 .rctw{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;}
 table.rt{border-collapse:collapse;white-space:nowrap;}
 table.rt th,table.rt td{border:1px solid #cdd5e0;padding:4px 8px;}
-table.rt .col-name{width:var(--rt-name-w,115px);}
-table.rt .col-num{width:var(--rt-num-w,94px);}
-table.rt .col-pct{width:var(--rt-pct-w,62px);}
-.rt .gh th{font-weight:800;color:#fff;vertical-align:middle;height:30px;font-size:13px;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;}
+table.rt .col-name{width:var(–rt-name-w,115px);}
+table.rt .col-num{width:var(–rt-num-w,94px);}
+table.rt .col-pct{width:var(–rt-pct-w,62px);}
+.rt .gh th{font-weight:800;color:#fff;vertical-align:middle;height:30px;font-size:13px;text-align:center;font-family:‘Plus Jakarta Sans’,sans-serif;}
 .rt .gh .lb{background:#dce6f2;color:#1e3a6e;text-align:left;border-right:2px solid #b0c4de;font-weight:800;}
 .rt .gh .hb{background:#1d4ed8;}.rt .gh .ho{background:#c2410c;}.rt .gh .hg{background:#15803d;}.rt .gh .hp{background:#6d28d9;}
-.rt .sh th{background:#edf2f9;color:#2d3748;text-align:center;height:20px;font-size:10px;font-weight:700;padding:3px 8px;font-family:'Plus Jakarta Sans',sans-serif;}
+.rt .sh th{background:#edf2f9;color:#2d3748;text-align:center;height:20px;font-size:10px;font-weight:700;padding:3px 8px;font-family:‘Plus Jakarta Sans’,sans-serif;}
 .rt .sh .lb{background:#dce6f2;border-right:2px solid #b0c4de;text-align:left;color:#1e3a6e;font-weight:800;}
 .rt .sh .sb{color:#1d4ed8;}.rt .sh .so{color:#b45309;}.rt .sh .sg{color:#15803d;}.rt .sh .sp{color:#6d28d9;}
-.rt .dr td{height:var(--rt-row-h,27px);padding:3px 8px;vertical-align:middle;border-bottom:1px solid #edf2f7;font-size:var(--rt-fs,12px);}
-.rt .dr .nm{font-weight:700;color:#0f1f3d;background:#f4f8fc;border-right:2px solid #dce4ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .dr .nv{text-align:center;color:var(--rt-num-col,#0f1f3d);font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);}
-.rt .dr .pv{text-align:center;color:#374151;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,12px);}
+.rt .dr td{height:var(–rt-row-h,27px);padding:3px 8px;vertical-align:middle;border-bottom:1px solid #edf2f7;font-size:var(–rt-fs,12px);}
+.rt .dr .nm{font-weight:700;color:#0f1f3d;background:#f4f8fc;border-right:2px solid #dce4ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:‘Plus Jakarta Sans’,sans-serif;}
+.rt .dr .nv{text-align:center;color:var(–rt-num-col,#0f1f3d);font-family:var(–rt-font,‘Plus Jakarta Sans’,sans-serif);font-weight:var(–rt-fw,700);font-size:var(–rt-fs,12px);}
+.rt .dr .pv{text-align:center;color:#374151;font-family:var(–rt-font,‘Plus Jakarta Sans’,sans-serif);font-weight:600;font-size:var(–rt-fs,12px);}
 .rt .dr .dsh{text-align:center;color:#b0bec5;}
 .rt .dr:nth-child(even) td{background:#f7fafc;}
 .rt .dr:nth-child(even) .nm{background:#e8f0f8;}
-.rt .sr td{height:var(--rt-row-h,27px);padding:3px 8px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;font-size:var(--rt-fs,12px);}
-.rt .sr .nm{font-weight:700;color:#7c3000;background:#fef3d0!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .sr .nv{text-align:center;color:#6b3500;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);}
-.rt .sr .pv{text-align:center;color:#92580a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,12px);}
+.rt .sr td{height:var(–rt-row-h,27px);padding:3px 8px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;font-size:var(–rt-fs,12px);}
+.rt .sr .nm{font-weight:700;color:#7c3000;background:#fef3d0!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:‘Plus Jakarta Sans’,sans-serif;}
+.rt .sr .nv{text-align:center;color:#6b3500;font-family:var(–rt-font,‘Plus Jakarta Sans’,sans-serif);font-weight:var(–rt-fw,700);font-size:var(–rt-fs,12px);}
+.rt .sr .pv{text-align:center;color:#92580a;font-family:var(–rt-font,‘Plus Jakarta Sans’,sans-serif);font-weight:600;font-size:var(–rt-fs,12px);}
 .rt .sr .dsh{text-align:center;color:#f0b429;}
 .rt .saxagap td{height:10px;background:#fff3cd!important;border-top:3px solid #f59e0b;padding:0;}
-.rt .tr td{height:var(--rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;font-size:var(--rt-fs,12px);}
-.rt .tr .nm{color:#bfdbfe;font-weight:800;border-right:2px solid #2d5aa0;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .tr .nv{text-align:center;color:#fff;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);}
-.rt .tr .pv{text-align:center;color:#93c5fd;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,12px);}
-.rt .str td{height:var(--rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:#78350f!important;border-top:2px solid #92400e;font-size:var(--rt-fs,12px);}
-.rt .str .nm{color:#fde68a;font-weight:800;border-right:2px solid #92400e;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .str .nv{text-align:center;color:#fef3c7;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);}
-.rt .str .pv{text-align:center;color:#fde68a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,12px);}
+.rt .tr td{height:var(–rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;font-size:var(–rt-fs,12px);}
+.rt .tr .nm{color:#bfdbfe;font-weight:800;border-right:2px solid #2d5aa0;font-family:‘Plus Jakarta Sans’,sans-serif;}
+.rt .tr .nv{text-align:center;color:#fff;font-family:var(–rt-font,‘Plus Jakarta Sans’,sans-serif);font-weight:800;font-size:var(–rt-fs,12px);}
+.rt .tr .pv{text-align:center;color:#93c5fd;font-family:var(–rt-font,‘Plus Jakarta Sans’,sans-serif);font-weight:700;font-size:var(–rt-fs,12px);}
+.rt .str td{height:var(–rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:#78350f!important;border-top:2px solid #92400e;font-size:var(–rt-fs,12px);}
+.rt .str .nm{color:#fde68a;font-weight:800;border-right:2px solid #92400e;font-family:‘Plus Jakarta Sans’,sans-serif;}
+.rt .str .nv{text-align:center;color:#fef3c7;font-family:var(–rt-font,‘Plus Jakarta Sans’,sans-serif);font-weight:800;font-size:var(–rt-fs,12px);}
+.rt .str .pv{text-align:center;color:#fde68a;font-family:var(–rt-font,‘Plus Jakarta Sans’,sans-serif);font-weight:700;font-size:var(–rt-fs,12px);}
 .rcftr{padding:7px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
 .rcftr span{color:#94a3b8;font-size:9px;font-weight:600;}
-.scrbtn{width:100%;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:14px;color:#060918;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:800;cursor:pointer;margin-top:4px;}
+.scrbtn{width:100%;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:14px;color:#060918;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:14px;font-weight:800;cursor:pointer;margin-top:4px;}
 .admld{text-align:center;padding:32px;color:#94a3b8;font-size:13px;font-weight:600;}
 .planpanel{background:rgba(255,255,255,.05);border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,.08);margin-top:14px;}
 .ppaneltitle{color:#c9963a;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px;}
@@ -323,18 +324,18 @@ table.rt .col-pct{width:var(--rt-pct-w,62px);}
 .sf-rc-title{color:#fff;font-size:14px;font-weight:800;}
 .sf-rc-date{color:rgba(255,255,255,.85);font-size:14px;font-weight:700;}
 table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
-.sf-tbl th{background:#2d5aa0;color:#fff;font-size:12px;font-weight:800;padding:9px 16px;text-align:left;font-family:'Plus Jakarta Sans',sans-serif;}
+.sf-tbl th{background:#2d5aa0;color:#fff;font-size:12px;font-weight:800;padding:9px 16px;text-align:left;font-family:‘Plus Jakarta Sans’,sans-serif;}
 .sf-tbl th:last-child{text-align:right;width:150px;}
-.sf-tbl td{padding:9px 16px;font-size:13px;border-bottom:1px solid #e8eef6;color:#1e3a6e;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;}
+.sf-tbl td{padding:9px 16px;font-size:13px;border-bottom:1px solid #e8eef6;color:#1e3a6e;font-weight:600;font-family:‘Plus Jakarta Sans’,sans-serif;}
 .sf-tbl td:last-child{text-align:right;font-weight:700;color:#0f1f3d;width:150px;}
 .sf-tbl tr:nth-child(even) td{background:#f4f8fc;}
 .sf-tbl .sf-total td{background:#1e3a6e!important;color:#fff!important;font-weight:800;font-size:14px;}
 .sf-tbl .sf-total td:last-child{color:#f0c060!important;font-size:15px;}
 .sf-rc-ftr{padding:7px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
 .sf-rc-ftr span{color:#94a3b8;font-size:9px;font-weight:600;}
-.sf-scrbtn{width:100%;padding:11px;background:rgba(120,53,15,.7);border:none;border-radius:10px;color:#fde68a;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:800;cursor:pointer;margin-top:8px;}
+.sf-scrbtn{width:100%;padding:11px;background:rgba(120,53,15,.7);border:none;border-radius:10px;color:#fde68a;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:13px;font-weight:800;cursor:pointer;margin-top:8px;}
 .jurnal-filter{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
-.jf-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);border-radius:8px;padding:5px 10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;cursor:pointer;}
+.jf-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);border-radius:8px;padding:5px 10px;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:11px;font-weight:700;cursor:pointer;}
 .jf-btn.active{background:rgba(201,150,58,.25);border-color:rgba(201,150,58,.5);color:#f0c060;}
 .jurnal-list{display:flex;flex-direction:column;gap:5px;max-height:340px;overflow-y:auto;}
 .jurnal-item{display:flex;justify-content:space-between;align-items:flex-start;background:rgba(255,255,255,.04);border-radius:9px;padding:8px 11px;gap:8px;}
@@ -346,8 +347,8 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .imgov.show{display:flex;}
 .imgov img{max-width:100%;max-height:65vh;border-radius:8px;}
 .imgbtns{display:flex;gap:10px;margin-top:14px;width:100%;max-width:380px;}
-.imgsave{flex:1;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:12px;color:#060918;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:800;cursor:pointer;}
-.imgcls{padding:13px 20px;background:rgba(255,255,255,.1);border:none;border-radius:12px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;cursor:pointer;}
+.imgsave{flex:1;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:12px;color:#060918;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:14px;font-weight:800;cursor:pointer;}
+.imgcls{padding:13px 20px;background:rgba(255,255,255,.1);border:none;border-radius:12px;color:#fff;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:14px;cursor:pointer;}
 .imghint{color:rgba(255,255,255,.35);font-size:10px;margin-top:8px;text-align:center;}
 .mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:100;align-items:center;justify-content:center;padding:14px;backdrop-filter:blur(8px);}
 .mo.show{display:flex;}
@@ -358,13 +359,13 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .mor2{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
 .mor3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
 .mof label{color:rgba(255,255,255,.4);font-size:9px;text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:3px;font-weight:700;}
-.mof input,.mof select{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 9px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:600;color:#fff;outline:none;}
+.mof input,.mof select{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 9px;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:12px;font-weight:600;color:#fff;outline:none;}
 .mof input:focus,.mof select:focus{border-color:#c9963a;}
 .mof select option{background:#0c1432;}
-.mosave{width:100%;padding:12px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:10px;color:#060918;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:800;cursor:pointer;margin-top:8px;}
-.moclose{background:rgba(255,255,255,.07);border:none;color:rgba(255,255,255,.55);border-radius:8px;padding:8px 16px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;margin-top:6px;width:100%;}
-.addbtn{width:100%;padding:11px;background:rgba(255,255,255,.06);border:1.5px dashed rgba(255,255,255,.18);border-radius:10px;color:rgba(255,255,255,.5);font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-bottom:9px;}
-.delbtn{background:rgba(239,68,68,.15);border:none;color:#fca5a5;border-radius:6px;padding:3px 8px;font-size:9px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;}
+.mosave{width:100%;padding:12px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:10px;color:#060918;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:13px;font-weight:800;cursor:pointer;margin-top:8px;}
+.moclose{background:rgba(255,255,255,.07);border:none;color:rgba(255,255,255,.55);border-radius:8px;padding:8px 16px;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:12px;font-weight:600;cursor:pointer;margin-top:6px;width:100%;}
+.addbtn{width:100%;padding:11px;background:rgba(255,255,255,.06);border:1.5px dashed rgba(255,255,255,.18);border-radius:10px;color:rgba(255,255,255,.5);font-family:‘Plus Jakarta Sans’,sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-bottom:9px;}
+.delbtn{background:rgba(239,68,68,.15);border:none;color:#fca5a5;border-radius:6px;padding:3px 8px;font-size:9px;cursor:pointer;font-family:‘Plus Jakarta Sans’,sans-serif;font-weight:700;}
 .cr{display:flex;align-items:center;gap:8px;margin-top:6px;padding:6px 9px;background:rgba(255,255,255,.04);border-radius:8px;}
 .cr label{color:rgba(255,255,255,.6);font-size:10px;cursor:pointer;flex:1;font-weight:600;}
 .cr input[type=checkbox]{cursor:pointer;transform:scale(1.15);}
@@ -373,9 +374,9 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .fillplbl{display:inline-block;font-size:12px;font-weight:800;color:#fff;padding:4px 10px;border-radius:6px;margin-bottom:8px;}
 .afrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}
 .afrow .afl{font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px;}
-.afrow input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 8px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
+.afrow input{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 8px;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
 .afrow input:focus{border-color:#c9963a;}
-.af1inp{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 8px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
+.af1inp{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 8px;font-family:‘Plus Jakarta Sans’,sans-serif;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;}
 .af1inp:focus{border-color:#c9963a;}
 .aflbl{font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:3px;}
 .period-sel{display:flex;gap:8px;flex-wrap:wrap;margin-top:7px;}
@@ -391,6 +392,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 </style></head><body class="dark">
 
 <!-- Bayram bildiriş ekranı -->
+
 <div class="holiday-overlay" id="hol-overlay">
   <div class="holiday-box">
     <div class="hb-stars" id="hb-stars-box"></div>
@@ -473,12 +475,13 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 
 <div class="mo" id="mo-t"><div class="mobox"><h3>🎯 Aylıq Hədəflər</h3><div id="mot-body"></div><button class="mosave" onclick="saveTargets()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-t')">Bağla</button></div></div>
 <div class="mo" id="mo-u"><div class="mobox"><h3>👥 İstifadəçilər</h3><div id="mou-body"></div><button class="addbtn" onclick="addStore()">+ Yeni Şöbə</button><button class="mosave" onclick="saveUsers()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-u')">Bağla</button></div></div>
-<div class="mo" id="mo-set"><div class="mobox"><h3>⚙️ Parametrlər</h3><div class="mosect">Admin Parolu</div><div class="mor2" style="margin-bottom:9px"><div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••" autocomplete="current-password"></div><div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••" autocomplete="new-password"></div></div><button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button><div class="mosect">Jurnal</div><div class="cr"><input type="checkbox" id="param-admin-jurnal" onchange="saveJP()"><label for="param-admin-jurnal">Admin girişini jurnalda göstər</label></div><button class="moclose" onclick="closeMo('mo-set')" style="margin-top:12px">Bağla</button></div></div>
+<div class="mo" id="mo-set"><div class="mobox"><h3>⚙️ Parametrlər</h3><div class="mosect">Admin Parolu</div><div class="mor2" style="margin-bottom:9px"><div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••" autocomplete="current-password"></div><div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••" autocomplete="new-password"></div></div><button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button><div class="mosect">Face ID / Touch ID</div><div style="font-size:11px;color:rgba(255,255,255,.45);margin-bottom:8px;line-height:1.5;">Əgər Face ID ilə giriş işləmirsə və ya yeni cihazda qeydiyyat etmək istəyirsinizsə sıfırlayın.</div><button class="mosave" style="background:rgba(99,102,241,.25);border:1px solid rgba(99,102,241,.4);margin-bottom:6px" onclick="resetPasskey()">🔐 Face ID Sıfırla</button><div class="mosect">Jurnal</div><div class="cr"><input type="checkbox" id="param-admin-jurnal" onchange="saveJP()"><label for="param-admin-jurnal">Admin girişini jurnalda göstər</label></div><button class="moclose" onclick="closeMo('mo-set')" style="margin-top:12px">Bağla</button></div></div>
 <div class="mo" id="mo-fill"><div class="mobox"><h3>✏️ Admin Doldurma</h3><div class="mof" style="margin-bottom:10px"><label>Şöbə seç</label><select id="fill-sel" onchange="renderFillForm()"><option value="">— Seçin —</option></select></div><div id="fill-body"></div><button class="mosave" id="fill-btn" onclick="doAdminFill()" style="display:none">✓ Saxla</button><div class="ldbox" id="fill-ld">⏳ Göndərilir...</div><div class="okbox" id="fill-ok">✅ Saxlandı!</div><div class="erbox" id="fill-er">❌ Xəta.</div><button class="moclose" onclick="closeMo('mo-fill')">Bağla</button></div></div>
 <div class="mo" id="mo-saxa-admin"><div class="mobox"><h3>Saxa Firma</h3><div id="saxa-admin-body"></div><button class="mosave" onclick="saveSaxaSettings()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-saxa-admin')">Bağla</button></div></div>
 <div class="mo" id="mo-jurnal"><div class="mobox"><h3>🔐 Giriş Jurnalı</h3><div class="jurnal-filter" id="jurnal-filter"></div><div class="jurnal-list" id="jurnal-modal-list"></div><button class="moclose" onclick="closeMo('mo-jurnal')">Bağla</button></div></div>
 
 <!-- Bayram Modalı -->
+
 <div class="mo" id="mo-holiday"><div class="mobox">
   <h3>🎉 Bayram İdarəetməsi</h3>
   <div style="font-size:11px;color:rgba(255,255,255,.45);margin-bottom:12px;line-height:1.5;">Bayramın başlama tarixini dövlət təqvimi əsasında daxil edin. Davam müddətini (neçə gün) siz təyin edin. İstifadəçilər həmin gün(lər)də daxil olanda bayram bildirişi görəcəklər.</div>
@@ -547,6 +550,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 </div></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 <script>
 const BIN_ID="69c115d4b7ec241ddc949a2c";
 const API_KEY="$2a$10$FKtiGhR30Uu6WoutSaNJne5SvTJFLM8mr2ZdCj50f1RLbD6tWAX7K";
@@ -880,11 +884,102 @@ async function doLogin(){
   await logLogin(u.name,false,bin.records,bin.sf,bin.cfg);spinHide();
   if(u.type==='viewer')openViewer(u);else{curSid=sid;openStoreForm(sid);}
 }
+// ── PASSKEY (Face ID / Touch ID) ─────────────────────────────────────────────
+// Passkey saxlanıb-saxlanmadığını yoxla
+function hasPasskey(){return !!localStorage.getItem('pk_passkey_id');}
+
+// Passkey qeydiyyatı (şifrə ilə girdikdən sonra Face ID qeydiyyatı)
+async function registerPasskey(){
+  if(!window.PublicKeyCredential)return false;
+  try{
+    const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+    if(!avail)return false;
+    const challenge=crypto.getRandomValues(new Uint8Array(32));
+    const userId=crypto.getRandomValues(new Uint8Array(16));
+    const cred=await navigator.credentials.create({publicKey:{
+      challenge,
+      rp:{name:'Panda Kids Admin',id:window.location.hostname||'localhost'},
+      user:{id:userId,name:'admin',displayName:'Panda Kids Admin'},
+      pubKeyCredParams:[{alg:-7,type:'public-key'},{alg:-257,type:'public-key'}],
+      authenticatorSelection:{authenticatorAttachment:'platform',userVerification:'required',residentKey:'required'},
+      timeout:60000,
+    }});
+    if(cred){
+      // Credential ID-ni saxla
+      const idArr=new Uint8Array(cred.rawId);
+      const idB64=btoa(String.fromCharCode(...idArr));
+      localStorage.setItem('pk_passkey_id',idB64);
+      return true;
+    }
+  }catch(e){console.log('Passkey register error:',e);}
+  return false;
+}
+
+// Passkey ilə giriş
+async function loginWithPasskey(){
+  if(!window.PublicKeyCredential||!hasPasskey())return false;
+  try{
+    const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+    if(!avail)return false;
+    const challenge=crypto.getRandomValues(new Uint8Array(32));
+    const cred=await navigator.credentials.get({publicKey:{
+      challenge,
+      timeout:30000,
+      userVerification:'required',
+      rpId:window.location.hostname||'localhost',
+    }});
+    return !!cred;
+  }catch(e){return false;}
+}
+
 async function showAdminGate(){
-  if(window.PublicKeyCredential){try{const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();if(avail&&localStorage.getItem('pk_apw')){const cred=await navigator.credentials.get({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),timeout:30000,userVerification:'required',rpId:window.location.hostname||'localhost'}}).catch(()=>null);if(cred){spinShow('Admin...');const bin=await rBin();CFG=bin.cfg;checkAndShowHoliday(gH());await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);spinHide();loadTheme('admin');openAdmin();return;}}}catch(e){}}
+  // Əvvəlcə passkey ilə cəhd et
+  if(hasPasskey()){
+    const ok=await loginWithPasskey();
+    if(ok){
+      spinShow('Admin...');
+      const bin=await rBin();CFG=bin.cfg;
+      checkAndShowHoliday(gH());
+      await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
+      spinHide();loadTheme('admin');openAdmin();
+      return;
+    }
+  }
+
+  // Passkey yoxdur və ya uğursuz — şifrə ilə giriş
   const pw=prompt('Admin şifrəsi:');
-  if(pw===ADMIN_PW){spinShow('Admin...');const bin=await rBin();CFG=bin.cfg;checkAndShowHoliday(gH());await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);spinHide();loadTheme('admin');openAdmin();}
-  else if(pw!==null)alert('Şifrə yanlışdır.');
+  if(pw===null)return;
+  if(pw!==ADMIN_PW){alert('Şifrə yanlışdır.');return;}
+
+  spinShow('Admin...');
+  const bin=await rBin();CFG=bin.cfg;
+  checkAndShowHoliday(gH());
+  await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
+  spinHide();loadTheme('admin');openAdmin();
+
+  // Şifrə ilə uğurlu giriş → Face ID qeydiyyatı teklif et
+  if(window.PublicKeyCredential&&!hasPasskey()){
+    try{
+      const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+      if(avail){
+        // Qısa gecikmə — panel açıldıqdan sonra soruş
+        setTimeout(async()=>{
+          const ask=confirm('Face ID / Touch ID ilə admin girişini aktivləşdirək?\n\n(Növbəti dəfə şifrəsiz, barmaq/üz ilə açılacaq)');
+          if(ask){
+            const registered=await registerPasskey();
+            if(registered)alert('✅ Face ID qeydiyyatı uğurlu!\nNövbəti dəfə şifrəsiz daxil ola bilərsiniz.');
+            else alert('⚠️ Face ID qeydiyyatı uğursuz oldu. Sonra yenidən cəhd edin.');
+          }
+        },800);
+      }
+    }catch(e){}
+  }
+}
+
+// Admin panelindən passkey sıfırla (parametrlərdə)
+function resetPasskey(){
+  localStorage.removeItem('pk_passkey_id');
+  alert('✅ Face ID sıfırlandı. Növbəti girişdə şifrə tələb olunacaq.');
 }
 
 function planCard(sid,ms,records){
