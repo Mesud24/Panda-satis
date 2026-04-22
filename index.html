@@ -4,8 +4,6 @@ html,body{width:100%;overflow-x:hidden;}
 body{font-family:'Plus Jakarta Sans',sans-serif;color:#fff;min-height:100vh;transition:background .3s,color .3s;}
 body.dark{background-color:#060918;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(99,60,180,.55) 0%,transparent 60%),radial-gradient(ellipse 70% 50% at 80% 5%,rgba(30,80,180,.5) 0%,transparent 55%),radial-gradient(ellipse 60% 70% at 5% 70%,rgba(20,60,140,.45) 0%,transparent 55%),radial-gradient(ellipse 75% 60% at 90% 80%,rgba(80,40,160,.45) 0%,transparent 55%);background-attachment:fixed;}
 body.light{background-color:#eef2f7;background-image:radial-gradient(ellipse 70% 50% at 15% 10%,rgba(30,58,110,.06) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 85% 90%,rgba(30,64,175,.05) 0%,transparent 50%);background-attachment:fixed;color:#1e293b;}
-
-/* ══ LIGHT — gate ══ */
 body.light #gate{background:linear-gradient(135deg,#1e3a6e 0%,#2d5aa0 50%,#1d4ed8 100%);}
 body.light .gsub{color:rgba(255,255,255,.7);}
 body.light .glbl{color:rgba(255,255,255,.55);}
@@ -17,8 +15,6 @@ body.light .remrow label{color:rgba(255,255,255,.75);}
 body.light .gdiv{background:rgba(255,255,255,.2);}
 body.light .glink{color:rgba(255,255,255,.55);}
 body.light .gtitle{color:#fff;}
-
-/* ══ LIGHT — admin/viewer header ══ */
 body.light .admhdr{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:2px solid #e2e8f0;}
 body.light .admtitle h2{color:#0f172a;}
 body.light .admtitle p{color:#1d4ed8;}
@@ -26,14 +22,10 @@ body.light .ab{background:#fff;border:1.5px solid #e2e8f0;color:#374151;box-shad
 body.light .ab.gold{background:linear-gradient(135deg,#fef9c3,#fde68a);border-color:#f59e0b;color:#78350f;}
 body.light .ab.view{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-color:#10b981;color:#065f46;}
 body.light .theme-btn{background:#f1f5f9;border:1.5px solid #cbd5e1;color:#475569;}
-
-/* ══ LIGHT — store form header ══ */
 body.light .sfhdr{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:2px solid #e2e8f0;}
 body.light .sftitle{color:#0f172a;}
 body.light .sfdate{color:#1d4ed8;}
 body.light .backbtn{color:#64748b;}
-
-/* ══ LIGHT — plan kartı (fərqli rəng, aydın sərhəd) ══ */
 body.light .plancard{background:#dbeafe;border:2px solid #93c5fd;box-shadow:0 2px 12px rgba(29,78,216,.12);}
 body.light .plantitle{color:#1d4ed8;}
 body.light .planitem{background:#eff6ff;border-color:#bfdbfe;}
@@ -48,8 +40,6 @@ body.light .pbw{background:#bfdbfe;}
 body.light .ps{background:#eff6ff;border:1.5px solid #bfdbfe;}
 body.light .psl{color:#64748b;}
 body.light .psv{color:#1d4ed8;}
-
-/* ══ LIGHT — period blokları (fərqli, aydın) ══ */
 body.light .perblock{background:#fff;border:2px solid #93c5fd;box-shadow:0 2px 10px rgba(29,78,216,.1);}
 body.light .pt thead th{color:#374151;background:#dbeafe;border-bottom:2px solid #93c5fd;font-weight:800;}
 body.light .pt tbody td.pn{color:#0f172a;font-weight:700;}
@@ -64,8 +54,6 @@ body.light .delbtn2{background:#fef2f2;border:1.5px solid #fca5a5;color:#dc2626;
 body.light .saxa-firma-block{background:#fef3c7;border:2px solid #fcd34d;}
 body.light .saxa-firma-hdr{color:#78350f;background:rgba(245,158,11,.2);}
 body.light .saxa-firma-inp{background:#fff;border:1.5px solid #f59e0b;color:#78350f;}
-
-/* ══ LIGHT — admin paneli (admin kartı ağ — dəyişMİR) ══ */
 body.light .admld{color:#94a3b8;}
 body.light .planpanel{background:#fff;border:1.5px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,.05);}
 body.light .ppaneltitle{color:#1d4ed8;}
@@ -77,8 +65,6 @@ body.light .ppist span{color:#1d4ed8;}
 body.light .ppilvl.grey{background:#f1f5f9;color:#94a3b8;border-color:#e2e8f0;}
 body.light .rc{box-shadow:0 4px 24px rgba(0,0,0,.1);}
 body.light .sf-rc{box-shadow:0 4px 20px rgba(0,0,0,.08);}
-
-/* ══ LIGHT — modal ══ */
 body.light .mobox{background:#fff;border:1.5px solid #e2e8f0;box-shadow:0 8px 40px rgba(0,0,0,.12);}
 body.light .mobox h3{color:#0f172a;}
 body.light .mos{background:#f8fafc;border:1.5px solid #e2e8f0;}
@@ -107,10 +93,45 @@ body.light .g-spin-txt{color:#475569;}
 body.light .g-spin-ring{border-top-color:#1d4ed8;}
 body.light .g-spin-pct{color:#1d4ed8;}
 
-/* ══ OX STİLLƏRİ — sabit eni ══ */
-.nv-inner{display:flex;align-items:center;justify-content:flex-end;gap:0;width:100%;}
-.nv-arrow{display:inline-flex;align-items:center;justify-content:center;width:18px;min-width:18px;flex-shrink:0;}
-.nv-val{flex:1;text-align:right;font-weight:700;min-width:0;}
+/* ══ OX + MƏRKƏZ ══ */
+.nv-inner{display:flex;align-items:center;justify-content:center;gap:3px;width:100%;}
+.nv-arrow{display:inline-flex;align-items:center;justify-content:center;width:16px;min-width:16px;flex-shrink:0;}
+.nv-val{text-align:left;font-weight:700;}
+.rt td.nv,.rt td.pv{text-align:center !important;}
+.rt td.dsh{text-align:center;}
+.rt .sr .nv{text-align:center !important;}
+.rt .sr .pv{text-align:center !important;}
+.rt .tr .nv,.rt .tr .pv{text-align:center !important;}
+.rt .str .nv,.rt .str .pv{text-align:center !important;}
+
+/* ══ BAYRAM SİSTEMİ ══ */
+/* Konfetti */
+@keyframes confettiFall{0%{transform:translateY(-100px) rotate(0deg);opacity:1;}100%{transform:translateY(110vh) rotate(720deg);opacity:0;}}
+.confetti-piece{position:fixed;width:10px;height:10px;pointer-events:none;z-index:9999;animation:confettiFall linear forwards;}
+/* Bayram bildirişi */
+.holiday-overlay{display:none;position:fixed;inset:0;z-index:9990;background:rgba(0,0,0,.65);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:20px;}
+.holiday-overlay.show{display:flex;}
+.holiday-box{background:linear-gradient(135deg,#1a0a3e 0%,#2d0a6e 50%,#1a0a3e 100%);border-radius:24px;padding:32px 24px;text-align:center;max-width:360px;width:100%;border:2px solid rgba(255,215,0,.4);box-shadow:0 0 60px rgba(255,215,0,.2),0 8px 40px rgba(0,0,0,.6);position:relative;overflow:hidden;}
+.holiday-box::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,215,0,.15) 0%,transparent 70%);pointer-events:none;}
+.holiday-emoji{font-size:64px;margin-bottom:12px;display:block;animation:bounceEmoji .6s ease infinite alternate;}
+@keyframes bounceEmoji{0%{transform:scale(1);}100%{transform:scale(1.15);}}
+.holiday-title{font-size:22px;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.2;}
+.holiday-subtitle{font-size:14px;color:rgba(255,215,0,.9);font-weight:600;margin-bottom:6px;}
+.holiday-msg{font-size:13px;color:rgba(255,255,255,.75);margin-bottom:20px;line-height:1.5;}
+.holiday-btn{padding:13px 32px;background:linear-gradient(135deg,#f0c060,#c9963a);border:none;border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;color:#060918;cursor:pointer;box-shadow:0 4px 20px rgba(201,150,58,.4);}
+.holiday-btn:active{transform:scale(.97);}
+/* Bayram paneli banner */
+.holiday-banner{display:none;border-radius:16px;padding:14px 18px;margin-bottom:14px;position:relative;overflow:hidden;cursor:default;}
+.holiday-banner.show{display:flex;align-items:center;gap:14px;}
+.hb-emoji{font-size:36px;flex-shrink:0;}
+.hb-text{flex:1;}
+.hb-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:2px;}
+.hb-sub{font-size:12px;color:rgba(255,255,255,.75);font-weight:600;}
+.hb-days{font-size:11px;color:rgba(255,255,255,.55);margin-top:3px;font-weight:600;}
+/* Bayram twinkling stars */
+.hb-stars{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.hb-star{position:absolute;width:4px;height:4px;background:#fff;border-radius:50%;animation:twinkle 1.5s ease-in-out infinite;}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(1);}50%{opacity:1;transform:scale(1.5);}}
 
 .screen{display:none;min-height:100vh;flex-direction:column;}.screen.active{display:flex;}
 #gate{align-items:center;justify-content:center;}
@@ -146,8 +167,6 @@ select.ginp option{color:#000;background:#fff;}
 .prog-bar-wrap{width:260px;background:rgba(255,255,255,.12);border-radius:20px;height:10px;overflow:hidden;}
 .prog-bar{height:10px;border-radius:20px;background:linear-gradient(90deg,#c9963a,#f0c060);transition:width .15s ease;width:0%;}
 .prog-msg{font-size:12px;color:rgba(255,255,255,.5);font-weight:600;}
-
-/* ══ MAĞAZA FORMU ══ */
 #store-form{background:transparent;}
 .sfhdr{background:rgba(6,9,24,.6);padding:11px 16px;border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;z-index:10;backdrop-filter:blur(16px);}
 .sfhi{width:100%;display:flex;align-items:center;gap:10px;}
@@ -192,7 +211,7 @@ select.ginp option{color:#000;background:#fff;}
 .perblock{background:rgba(255,255,255,.05);border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08);}
 .perhdr{padding:9px 13px;font-size:13px;font-weight:800;color:#fff;}
 .pt{width:100%;border-collapse:collapse;table-layout:fixed;}
-.pt thead th{padding:6px 7px;font-size:10px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.45);background:rgba(0,0,0,.2);text-align:right;white-space:nowrap;}
+.pt thead th{padding:6px 7px;font-size:10px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.45);background:rgba(0,0,0,.2);text-align:center;white-space:nowrap;}
 .pt thead th:first-child{text-align:left;width:80px;}
 .pt thead th:nth-child(2){width:28%;}
 .pt thead th:nth-child(3){width:28%;}
@@ -222,8 +241,6 @@ select.ginp option{color:#000;background:#fff;}
 .saxa-firma-inp:disabled{color:rgba(255,255,255,.3);cursor:not-allowed;}
 .saveallbtn{width:100%;padding:14px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);border:none;border-radius:14px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;cursor:pointer;margin-top:10px;box-shadow:0 4px 16px rgba(29,78,216,.3);}
 .saveallbtn:disabled{opacity:.45;cursor:not-allowed;}
-
-/* ══ ADMİN/VİEWER ══ */
 #admin,#viewer{background:transparent;}
 .admhdr{background:rgba(6,9,24,.6);padding:12px 16px;border-bottom:1px solid rgba(201,150,58,.12);position:sticky;top:0;z-index:10;backdrop-filter:blur(16px);}
 .admhdri{max-width:1600px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
@@ -237,8 +254,6 @@ select.ginp option{color:#000;background:#fff;}
 .ab.view{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.3);color:#6ee7b7;cursor:default;}
 .theme-btn{background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:20px;padding:6px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;color:#f0c060;white-space:nowrap;}
 .admbody{max-width:1600px;margin:0 auto;padding:14px 16px 32px;width:100%;}
-
-/* ══ HESABAT KARTI — köhnə kimi ağ ══ */
 .rc{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,.35);margin-bottom:14px;}
 .rchdr{padding:15px 20px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;align-items:center;gap:12px;}
 .rclogo{width:40px;height:40px;object-fit:contain;background:#fff;border-radius:10px;padding:3px;flex-shrink:0;}
@@ -262,25 +277,25 @@ table.rt .col-pct{width:var(--rt-pct-w,62px);}
 .rt .sh .sb{color:#1d4ed8;}.rt .sh .so{color:#b45309;}.rt .sh .sg{color:#15803d;}.rt .sh .sp{color:#6d28d9;}
 .rt .dr td{height:var(--rt-row-h,27px);padding:3px 8px;vertical-align:middle;border-bottom:1px solid #edf2f7;font-size:var(--rt-fs,12px);}
 .rt .dr .nm{font-weight:700;color:#0f1f3d;background:#f4f8fc;border-right:2px solid #dce4ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .dr .nv{text-align:right;color:var(--rt-num-col,#0f1f3d);font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);}
-.rt .dr .pv{text-align:right;color:#374151;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,12px);}
+.rt .dr .nv{text-align:center;color:var(--rt-num-col,#0f1f3d);font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);}
+.rt .dr .pv{text-align:center;color:#374151;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,12px);}
 .rt .dr .dsh{text-align:center;color:#b0bec5;}
 .rt .dr:nth-child(even) td{background:#f7fafc;}
 .rt .dr:nth-child(even) .nm{background:#e8f0f8;}
 .rt .sr td{height:var(--rt-row-h,27px);padding:3px 8px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;font-size:var(--rt-fs,12px);}
 .rt .sr .nm{font-weight:700;color:#7c3000;background:#fef3d0!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .sr .nv{text-align:right;color:#6b3500;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);}
-.rt .sr .pv{text-align:right;color:#92580a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,12px);}
+.rt .sr .nv{text-align:center;color:#6b3500;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);}
+.rt .sr .pv{text-align:center;color:#92580a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,12px);}
 .rt .sr .dsh{text-align:center;color:#f0b429;}
 .rt .saxagap td{height:10px;background:#fff3cd!important;border-top:3px solid #f59e0b;padding:0;}
 .rt .tr td{height:var(--rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;font-size:var(--rt-fs,12px);}
 .rt .tr .nm{color:#bfdbfe;font-weight:800;border-right:2px solid #2d5aa0;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .tr .nv{text-align:right;color:#fff;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);}
-.rt .tr .pv{text-align:right;color:#93c5fd;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,12px);}
+.rt .tr .nv{text-align:center;color:#fff;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);}
+.rt .tr .pv{text-align:center;color:#93c5fd;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,12px);}
 .rt .str td{height:var(--rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:#78350f!important;border-top:2px solid #92400e;font-size:var(--rt-fs,12px);}
 .rt .str .nm{color:#fde68a;font-weight:800;border-right:2px solid #92400e;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .str .nv{text-align:right;color:#fef3c7;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);}
-.rt .str .pv{text-align:right;color:#fde68a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,12px);}
+.rt .str .nv{text-align:center;color:#fef3c7;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);}
+.rt .str .pv{text-align:center;color:#fde68a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,12px);}
 .rcftr{padding:7px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
 .rcftr span{color:#94a3b8;font-size:9px;font-weight:600;}
 .scrbtn{width:100%;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:14px;color:#060918;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:800;cursor:pointer;margin-top:4px;}
@@ -368,7 +383,24 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .period-sel label.on{background:rgba(201,150,58,.2);border-color:rgba(201,150,58,.4);color:#f0c060;}
 .style-preview{background:#fff;border-radius:10px;padding:10px;margin-top:12px;overflow-x:auto;}
 .preview-label{font-size:10px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;}
+/* Bayram modal iç stil */
+.hol-item{background:rgba(255,255,255,.05);border-radius:12px;padding:12px;margin-bottom:8px;border:1px solid rgba(255,255,255,.08);}
+.hol-row{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:6px;}
+.hol-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:6px;}
+.hol-name{color:#f0c060;font-weight:800;font-size:13px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
 </style></head><body class="dark">
+
+<!-- Bayram bildiriş ekranı -->
+<div class="holiday-overlay" id="hol-overlay">
+  <div class="holiday-box">
+    <div class="hb-stars" id="hb-stars-box"></div>
+    <span class="holiday-emoji" id="hol-emoji">🎉</span>
+    <div class="holiday-title" id="hol-title">Bayramınız mübarək!</div>
+    <div class="holiday-subtitle" id="hol-subtitle"></div>
+    <div class="holiday-msg" id="hol-msg">Panda Kids ailəsi olaraq sizə ən xoş arzularımızı çatdırırıq!</div>
+    <button class="holiday-btn" onclick="closeHolidayOverlay()">🙏 Təşəkkür edirik!</button>
+  </div>
+</div>
 
 <div class="g-spin-overlay" id="g-spin">
   <div class="g-spin-box"><div class="g-spin-ring-wrap"><div class="g-spin-ring"></div><div class="g-spin-pct" id="g-spin-pct">0%</div></div><div class="g-spin-txt" id="g-spin-txt">Yüklənir...</div></div>
@@ -413,6 +445,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
       <button class="ab" onclick="openSaxaAdminMo()">🏪 Saxa Firma</button>
       <button class="ab" onclick="openJurnalMo()">🔐 Jurnal</button>
       <button class="ab" onclick="openStyleMo()">🎨 Görünüş</button>
+      <button class="ab" onclick="openHolidayMo()">🎉 Bayramlar</button>
       <button class="ab" onclick="openSettingsMo()">⚙️ Parametrlər</button>
       <button class="ab gold" id="refreshBtn" onclick="loadAdmin()">↻ Yenilə</button>
       <button class="theme-btn" id="tbtn-adm" onclick="toggleTheme()">🌙 Gecə</button>
@@ -444,6 +477,15 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 <div class="mo" id="mo-fill"><div class="mobox"><h3>✏️ Admin Doldurma</h3><div class="mof" style="margin-bottom:10px"><label>Şöbə seç</label><select id="fill-sel" onchange="renderFillForm()"><option value="">— Seçin —</option></select></div><div id="fill-body"></div><button class="mosave" id="fill-btn" onclick="doAdminFill()" style="display:none">✓ Saxla</button><div class="ldbox" id="fill-ld">⏳ Göndərilir...</div><div class="okbox" id="fill-ok">✅ Saxlandı!</div><div class="erbox" id="fill-er">❌ Xəta.</div><button class="moclose" onclick="closeMo('mo-fill')">Bağla</button></div></div>
 <div class="mo" id="mo-saxa-admin"><div class="mobox"><h3>Saxa Firma</h3><div id="saxa-admin-body"></div><button class="mosave" onclick="saveSaxaSettings()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-saxa-admin')">Bağla</button></div></div>
 <div class="mo" id="mo-jurnal"><div class="mobox"><h3>🔐 Giriş Jurnalı</h3><div class="jurnal-filter" id="jurnal-filter"></div><div class="jurnal-list" id="jurnal-modal-list"></div><button class="moclose" onclick="closeMo('mo-jurnal')">Bağla</button></div></div>
+
+<!-- Bayram Modalı -->
+<div class="mo" id="mo-holiday"><div class="mobox">
+  <h3>🎉 Bayram İdarəetməsi</h3>
+  <div style="font-size:11px;color:rgba(255,255,255,.45);margin-bottom:12px;line-height:1.5;">Bayramın başlama tarixini dövlət təqvimi əsasında daxil edin. Davam müddətini (neçə gün) siz təyin edin. İstifadəçilər həmin gün(lər)də daxil olanda bayram bildirişi görəcəklər.</div>
+  <div id="hol-body"></div>
+  <button class="mosave" onclick="saveHolidays()">✓ Saxla</button>
+  <button class="moclose" onclick="closeMo('mo-holiday')">Bağla</button>
+</div></div>
 
 <div class="mo" id="mo-style"><div class="mobox">
   <h3>🎨 Cədvəl Görünüşü</h3>
@@ -496,7 +538,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
       <tr class="gh"><th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th><th colspan="3" class="hb">Günlük</th><th colspan="3" class="ho">Aylıq</th></tr>
       <tr class="sh"><th class="sb col-num">Satış</th><th class="sb col-num">Mənfəət</th><th class="sb col-pct">Faiz</th><th class="so col-num">Satış</th><th class="so col-num">Mənfəət</th><th class="so col-pct">Faiz</th></tr>
       <tr class="dr"><td class="nm">Panda 2</td><td class="nv" id="prev-nv1"></td><td class="nv">15.420</td><td class="pv">66%</td><td class="nv" id="prev-nv2"></td><td class="nv">22.000</td><td class="pv">67%</td></tr>
-      <tr class="tr"><td class="nm">Ümumi Panda</td><td class="nv">38.259</td><td class="nv">15.420</td><td class="pv">66%</td><td class="nv">54.500</td><td class="nv">22.000</td><td class="pv">67%</td></tr>
+      <tr class="tr"><td class="nm">Ümumi Panda</td><td class="nv">38.259</td><td class="nv">15.420</td><td class="pv">66.3%</td><td class="nv">54.500</td><td class="nv">22.000</td><td class="pv">67.1%</td></tr>
     </table>
   </div>
   <button class="mosave" onclick="saveStyle()">✓ Saxla</button>
@@ -517,7 +559,124 @@ const LS_CACHE='pk_bin_v2';
 let ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
 let curSid=null,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
 
-// ── TEMA ──────────────────────────────────────────────────────────────────────
+// ══ BAYRAM SİSTEMİ ══════════════════════════════════════════════════════════
+// Default bayramlar (Azərbaycan dövlət bayramları, tarixlər düzəldilə bilər)
+const DEF_HOLIDAYS=[
+  {id:'yeni_il',name:'Yeni İl',emoji:'🎆',color:'#1e3a8a',gradient:'linear-gradient(135deg,#1e1a4a,#312e6e)',startDate:'01-01',days:2,active:true,msg:'Yeni il uğurlu olsun! Hər gün yeni imkanlar gətirir.'},
+  {id:'novruz',name:'Novruz Bayramı',emoji:'🌸',color:'#065f46',gradient:'linear-gradient(135deg,#052e16,#14532d)',startDate:'03-20',days:5,active:true,msg:'Novruz bayramınız mübarək! Xoşbəxtlik, sağlıq və bolluq arzulayırıq.'},
+  {id:'8mart',name:'Qadınlar Günü',emoji:'💐',color:'#831843',gradient:'linear-gradient(135deg,#4a0520,#831843)',startDate:'03-08',days:1,active:true,msg:'Bütün qadınları 8 Mart — Dünya Qadınlar Günü münasibətilə təbrik edirik!'},
+  {id:'qalebe',name:'Qalib Günü',emoji:'🕊️',color:'#7c2d12',gradient:'linear-gradient(135deg,#3b0f05,#7c2d12)',startDate:'05-09',days:1,active:true,msg:'Qaliblik Günümüz mübarək! Şəhidlərimiz daim qəlbimizlədədir.'},
+  {id:'qurban',name:'Qurban Bayramı',emoji:'🌙',color:'#3b0764',gradient:'linear-gradient(135deg,#1e0033,#4c0099)',startDate:'06-06',days:3,active:true,msg:'Qurban Bayramınız mübarək! Allah qəbul eləsin.'},
+];
+
+function todayStr(){const d=new Date();return `${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
+function getActiveHoliday(holidays){
+  if(!holidays||!holidays.length)return null;
+  const today=todayStr();
+  for(const h of holidays){
+    if(!h.active)continue;
+    const[sm,sd]=h.startDate.split('-').map(Number);
+    const[tm,td]=today.split('-').map(Number);
+    const startT=sm*100+sd;const todayT=tm*100+td;
+    // Dövrə hesabı — bayram days günü əhatə edir
+    for(let i=0;i<(h.days||1);i++){
+      let m=sm,d_=sd+i;
+      const dim=[31,29,31,30,31,30,31,31,30,31,30,31];
+      while(d_>dim[m-1]){d_-=dim[m-1];m++;if(m>12)m=1;}
+      const chk=m*100+d_;
+      if(chk===todayT)return h;
+    }
+  }
+  return null;
+}
+function holidaySeenKey(hid){return `pk_hol_seen_${hid}_${todayStr()}`;}
+function launchConfetti(colors){
+  const cnt=60;const cols=colors||['#f0c060','#c9963a','#fff','#fde68a','#93c5fd'];
+  for(let i=0;i<cnt;i++){
+    const el=document.createElement('div');
+    el.className='confetti-piece';
+    el.style.cssText=`left:${Math.random()*100}vw;top:-20px;background:${cols[Math.floor(Math.random()*cols.length)]};border-radius:${Math.random()>.5?'50%':'2px'};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;animation-duration:${2+Math.random()*2}s;animation-delay:${Math.random()*1}s;`;
+    document.body.appendChild(el);
+    el.addEventListener('animationend',()=>el.remove());
+  }
+}
+function showHolidayOverlay(h){
+  document.getElementById('hol-emoji').textContent=h.emoji||'🎉';
+  document.getElementById('hol-title').textContent=h.name+' mübarək!';
+  document.getElementById('hol-subtitle').textContent='Panda Kids ailəsindən';
+  document.getElementById('hol-msg').textContent=h.msg||'Bayramınız mübarək!';
+  const box=document.querySelector('.holiday-box');
+  if(box)box.style.background=h.gradient||'linear-gradient(135deg,#1a0a3e,#2d0a6e)';
+  // Stars
+  const sb=document.getElementById('hb-stars-box');
+  if(sb){sb.innerHTML='';for(let i=0;i<18;i++){const s=document.createElement('div');s.className='hb-star';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*1.5}s;`;sb.appendChild(s);}}
+  document.getElementById('hol-overlay').classList.add('show');
+  setTimeout(()=>launchConfetti(),300);
+  localStorage.setItem(holidaySeenKey(h.id),'1');
+}
+function closeHolidayOverlay(){document.getElementById('hol-overlay').classList.remove('show');}
+function checkAndShowHoliday(holidays){
+  const h=getActiveHoliday(holidays);
+  if(!h)return;
+  const seen=localStorage.getItem(holidaySeenKey(h.id));
+  if(!seen)showHolidayOverlay(h);
+}
+function buildHolidayBanner(holidays){
+  // Paneldə bayram banneri üçün HTML
+  const h=getActiveHoliday(holidays);
+  if(!h)return '';
+  const[sm,sd]=h.startDate.split('-').map(Number);
+  const endD=new Date();endD.setMonth(sm-1);endD.setDate(sd+h.days-1);
+  const today=new Date();const diff=Math.ceil((endD-today)/(86400000))+1;
+  const daysLeft=Math.max(0,diff);
+  return `<div class="holiday-banner show" style="background:${h.gradient||'linear-gradient(135deg,#1a0a3e,#2d0a6e)'};border:1.5px solid rgba(255,215,0,.3);box-shadow:0 4px 24px rgba(0,0,0,.3);">
+    <div class="hb-stars">${Array.from({length:12},(_,i)=>`<div class="hb-star" style="left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*1.5}s"></div>`).join('')}</div>
+    <div class="hb-emoji">${h.emoji}</div>
+    <div class="hb-text">
+      <div class="hb-title">${h.name} mübarək! 🎉</div>
+      <div class="hb-sub">Panda Kids ailəsi olaraq sizi təbrik edirik!</div>
+      ${daysLeft>1?`<div class="hb-days">Bayram ${daysLeft} gün davam edir</div>`:'<div class="hb-days">Bayramın son günü</div>'}
+    </div>
+  </div>`;
+}
+// Bayram modalı
+function openHolidayMo(){
+  const hols=(CFG?.holidays)||DEF_HOLIDAYS;
+  let h='';
+  hols.forEach((hol,i)=>{
+    h+=`<div class="hol-item">
+      <div class="hol-name"><span>${hol.emoji} ${hol.name}</span>
+        <label style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:rgba(255,255,255,.6);cursor:pointer;">
+          <input type="checkbox" id="ha-${i}" ${hol.active?'checked':''} style="cursor:pointer"> Aktiv
+        </label>
+      </div>
+      <div class="hol-row">
+        <div class="mof"><label>Başlama tarixi (AA-GG)</label><input type="text" id="hd-${i}" value="${hol.startDate}" placeholder="03-20" maxlength="5"></div>
+        <div class="mof"><label>Neçə gün davam edir</label><input type="number" id="hdays-${i}" value="${hol.days||1}" min="1" max="30" style="text-align:center"></div>
+      </div>
+      <div class="mof" style="margin-top:6px"><label>Təbrik mesajı</label><input type="text" id="hmsg-${i}" value="${hol.msg||''}"></div>
+    </div>`;
+  });
+  document.getElementById('hol-body').innerHTML=h;
+  document.getElementById('mo-holiday').classList.add('show');
+}
+async function saveHolidays(){
+  const hols=(CFG?.holidays)||DEF_HOLIDAYS;
+  hols.forEach((hol,i)=>{
+    hol.active=document.getElementById(`ha-${i}`)?.checked||false;
+    const sd=document.getElementById(`hd-${i}`)?.value||hol.startDate;
+    hol.startDate=sd.trim();
+    hol.days=parseInt(document.getElementById(`hdays-${i}`)?.value)||1;
+    hol.msg=document.getElementById(`hmsg-${i}`)?.value||hol.msg;
+  });
+  spinShow('Saxlanır...');
+  const {records,sf,cfg}=await rBin();
+  cfg.holidays=hols;CFG=cfg;
+  await wBin(records,sf,cfg);
+  spinHide();closeMo('mo-holiday');
+  alert('✅ Bayramlar saxlanıldı!');
+}
+// ══ TEMA ════════════════════════════════════════════════════════════════════
 let _curUid='guest';
 function themeKey(uid){return `pk_theme_${uid||'guest'}`;}
 function applyTheme(m){
@@ -531,12 +690,12 @@ function loadTheme(uid){_curUid=uid||'guest';applyTheme(localStorage.getItem(the
 function toggleTheme(){applyTheme(document.body.classList.contains('dark')?'light':'dark');}
 loadTheme('guest');
 
-// ── SVG OXLAR ─────────────────────────────────────────────────────────────────
+// ══ SVG OXLAR ═══════════════════════════════════════════════════════════════
 function svgUp(c){return`<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 10.5V2.5M6.5 2.5L3 6M6.5 2.5L10 6" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
 function svgMid(c){return`<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5H10.5M10.5 6.5L7 3M10.5 6.5L7 10" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
 function svgDn(c){return`<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 2.5V10.5M6.5 10.5L10 7M6.5 10.5L3 7" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
 
-// ── SPINNER ───────────────────────────────────────────────────────────────────
+// ══ SPINNER ═════════════════════════════════════════════════════════════════
 let _spinTimer=null,_spinPct=0;
 function spinShow(txt='Yüklənir...'){
   _spinPct=0;clearInterval(_spinTimer);
@@ -547,7 +706,7 @@ function spinShow(txt='Yüklənir...'){
 }
 function spinHide(){clearInterval(_spinTimer);document.getElementById('g-spin-pct').textContent='100%';setTimeout(()=>{document.getElementById('g-spin').classList.remove('show');_spinPct=0;},180);}
 
-// ── RƏQƏM INPUT ──────────────────────────────────────────────────────────────
+// ══ RƏQƏM INPUT ═════════════════════════════════════════════════════════════
 function parseNum(s){
   if(!s)return 0;let v=String(s).trim();
   if(v.includes('.')&&v.includes(',')){const lD=v.lastIndexOf('.');const lC=v.lastIndexOf(',');if(lC>lD){v=v.replace(/\./g,'').replace(',','.');}else{v=v.replace(/,/g,'');}}
@@ -563,7 +722,7 @@ function attachNumInput(inp){
 }
 function attachAllNum(){document.querySelectorAll('.ni,.saxa-firma-inp,.afrow input,.af1inp').forEach(attachNumInput);}
 
-// ── STİL ─────────────────────────────────────────────────────────────────────
+// ══ STİL ════════════════════════════════════════════════════════════════════
 const DEF_STYLE={font:"'Plus Jakarta Sans',sans-serif",fs:'12px',fw:'700',rh:'27px',pandaCol:'#0f1f3d',arrUp:'#22c55e',arrMid:'#f59e0b',nameW:'115px',numW:'94px',pctW:'62px'};
 function gStyle(){try{return{...DEF_STYLE,...(JSON.parse(localStorage.getItem('pk_style')||'null')||{})};}catch{return{...DEF_STYLE};}}
 function svStyle(v){localStorage.setItem('pk_style',JSON.stringify(v));}
@@ -573,8 +732,8 @@ function applyStyleToDOM(st){
     el.style.setProperty('--rt-row-h',st.rh);el.style.setProperty('--rt-tot-h',st.rh);el.style.setProperty('--rt-num-col',st.pandaCol);
     el.style.setProperty('--rt-name-w',st.nameW);el.style.setProperty('--rt-num-w',st.numW);el.style.setProperty('--rt-pct-w',st.pctW);
   });
-  const p1=document.getElementById('prev-nv1');if(p1)p1.innerHTML=`<div class="nv-inner"><span class="nv-arrow">${svgUp(st.arrUp)}</span><span class="nv-val">38.259</span></div>`;
-  const p2=document.getElementById('prev-nv2');if(p2)p2.innerHTML=`<div class="nv-inner"><span class="nv-arrow">${svgMid(st.arrMid)}</span><span class="nv-val">54.500</span></div>`;
+  const p1=document.getElementById('prev-nv1');if(p1)p1.innerHTML=nvInner('up',st,'38.259');
+  const p2=document.getElementById('prev-nv2');if(p2)p2.innerHTML=nvInner('mid',st,'54.500');
 }
 function applyStyle(){
   const g=id=>document.getElementById(id)?.value;
@@ -593,7 +752,7 @@ function loadSI(st){
 function openStyleMo(){const st=gStyle();loadSI(st);applyStyleToDOM(st);document.getElementById('mo-style').classList.add('show');}
 applyStyleToDOM(gStyle());
 
-// ── BIN ──────────────────────────────────────────────────────────────────────
+// ══ BIN ═════════════════════════════════════════════════════════════════════
 const DEF_USERS=[
   {id:'p2',name:'Panda 2',pw:'p2-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
   {id:'p3',name:'Panda 3',pw:'p3-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
@@ -611,21 +770,21 @@ function progShow(msg='Yüklənir...'){document.getElementById('prog-overlay').c
 function setProg(pct,msg){document.getElementById('prog-bar').style.width=pct+'%';document.getElementById('prog-pct').textContent=pct+'%';if(msg)document.getElementById('prog-msg').textContent=msg;}
 function progAnimate(from,to,msg,ms){return new Promise(res=>{const step=(to-from)/20;let cur=from;const t=setInterval(()=>{cur=Math.min(cur+step,to);setProg(Math.round(cur),msg);if(cur>=to){clearInterval(t);res();}},ms/20);});}
 
-function _parseBin(d){const users=(d.cfg?.users||DEF_USERS).map(u=>({...u,periods:u.periods||[1,1,1,1]}));return{records:d.records||[],sf:d.sf||{},cfg:{users,targets:d.cfg?.targets||DEF_TGTS,saxa:d.cfg?.saxa||DEF_SAXA,jurnal:d.cfg?.jurnal||[],jp:d.cfg?.jp||{showAdmin:true}}};}
+function _parseBin(d){
+  const users=(d.cfg?.users||DEF_USERS).map(u=>({...u,periods:u.periods||[1,1,1,1]}));
+  const holidays=d.cfg?.holidays||DEF_HOLIDAYS;
+  return{records:d.records||[],sf:d.sf||{},cfg:{users,targets:d.cfg?.targets||DEF_TGTS,saxa:d.cfg?.saxa||DEF_SAXA,jurnal:d.cfg?.jurnal||[],jp:d.cfg?.jp||{showAdmin:true},holidays}};
+}
 function _lsGet(){try{const p=JSON.parse(localStorage.getItem(LS_CACHE)||'null');if(p&&p.data&&(Date.now()-p.ts)<LS_TTL)return p.data;}catch{}return null;}
 function _lsSet(data){try{localStorage.setItem(LS_CACHE,JSON.stringify({data,ts:Date.now()}));}catch{}}
-
 async function rBin(force=false){
   const now=Date.now();
   if(!force&&_bc&&(now-_bcts)<MEM_TTL)return _bc;
   if(!force&&!_bc){const ls=_lsGet();if(ls){_bc=ls;_bcts=now-MEM_TTL+5000;return _bc;}}
-  try{
-    const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},cache:'no-store'});
-    if(!r.ok)return _bc||defBin();
-    const j=await r.json();_bc=_parseBin(j.data||{});_bcts=now;_lsSet(_bc);return _bc;
-  }catch{return _bc||_lsGet()||defBin();}
+  try{const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},cache:'no-store'});if(!r.ok)return _bc||defBin();const j=await r.json();_bc=_parseBin(j.data||{});_bcts=now;_lsSet(_bc);return _bc;}
+  catch{return _bc||_lsGet()||defBin();}
 }
-function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true}}};}
+function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true},holidays:DEF_HOLIDAYS}};}
 async function wBin(records,sf,cfg){
   _bc={records,sf,cfg};_bcts=Date.now();_lsSet(_bc);
   try{await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data:{records,sf,cfg}})});}catch(e){console.error(e);}
@@ -633,6 +792,7 @@ async function wBin(records,sf,cfg){
 function gU(){return CFG?.users||DEF_USERS;}
 function gT(){return CFG?.targets||DEF_TGTS;}
 function gSS(){return CFG?.saxa||DEF_SAXA;}
+function gH(){return CFG?.holidays||DEF_HOLIDAYS;}
 function findRec(records,name,sk){return records.find(r=>r.sobe===name&&r.period===sk)||null;}
 function getRD(){return new Date();}
 function getFD(){const n=new Date(),d=new Date(n);if(n.getHours()<17)d.setDate(d.getDate()-1);return d;}
@@ -651,33 +811,10 @@ function fmt(n){if(!n||Number(n)===0)return '—';return Math.round(Number(n)).t
 function fmtDec(n){if(!n||Number(n)===0)return '—';const num=Number(n);return num%1===0?Math.round(num).toLocaleString('de-DE'):num.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fmtSF(n){return fmtDec(n);}
 
-// Mağaza saxlayanda giriş edilmiş faizi düz saxla (59.7 kimi)
-function fmtFaizStore(f){
-  if(!f||f===0)return '—';
-  const n=Number(f);
-  // Tam ədəd isə tam göstər: 66 → 66%
-  if(Number.isInteger(n))return n+'%';
-  // 1 kəsr: 59.7 → 59.7%
-  const s=n.toFixed(1);
-  return s.endsWith('.0')?Math.round(n)+'%':s+'%';
-}
-
-// Admin cədvəlindəki faiz (1 kəsr, net rəqəm)
-function fmtFaizAdm(f){
-  if(!f||f===null)return '—';
-  const n=Number(f);
-  if(Number.isInteger(n))return n+'%';
-  const s=n.toFixed(1);
-  return s.endsWith('.0')?Math.round(n)+'%':s+'%';
-}
-
-// Ortalama faiz
-function fmtFaizAvg(f){
-  if(!f||f===null)return '—';
-  const n=Number(f);
-  const s=n.toFixed(1);
-  return s.endsWith('.0')?Math.round(n)+'%':s+'%';
-}
+// FAİZ — mağaza: tam ədəd (76%), yekun: 1 kəsr (75.6%)
+function fmtFaizStore(f){if(!f||f===0)return '—';return Math.round(Number(f))+'%';}
+function fmtFaizAdmTotal(f){if(!f||f===null)return '—';const n=Number(f);const s=n.toFixed(1);return s.endsWith('.0')?Math.round(n)+'%':s+'%';}
+function fmtFaizAvg(f){if(!f||f===null)return '—';const n=Number(f);const s=n.toFixed(1);return s.endsWith('.0')?Math.round(n)+'%':s+'%';}
 
 function xPct(v,t){if(!v||!t)return null;const r=v/t*100;return r>=100?100:Math.floor(r*10)/10;}
 function pStr(p){if(p===null)return '—';return p===100?'100%':p.toFixed(1)+'%';}
@@ -686,14 +823,17 @@ function planColor(ms,tgt,dl){if(!ms||!tgt)return 'red';if(ms>=tgt)return 'green
 function planBg(ms,tgt,dl){const c=planColor(ms,tgt,dl);return c==='green'?'#10b981':c==='orange'?'#f59e0b':'#ef4444';}
 function calcDaily(ms,tgt,dl){if(!tgt||ms>=tgt||dl<=0)return 0;return Math.ceil((tgt-ms)/dl);}
 
-function nvCell(arrType,val,st){
+// OX + RƏQƏM mərkəzdə
+function nvInner(arrType,st,val){
   const upC=st?.arrUp||'#22c55e',midC=st?.arrMid||'#f59e0b',dnC='#ef4444';
   let arrow='';
   if(arrType==='up')arrow=`<span class="nv-arrow">${svgUp(upC)}</span>`;
   else if(arrType==='mid')arrow=`<span class="nv-arrow">${svgMid(midC)}</span>`;
   else if(arrType==='dn')arrow=`<span class="nv-arrow">${svgDn(dnC)}</span>`;
-  return `<td class="nv"><div class="nv-inner">${arrow}<span class="nv-val">${val}</span></div></td>`;
+  return `<div class="nv-inner">${arrow}<span class="nv-val">${val}</span></div>`;
 }
+function nvCell(arrType,val,st){return `<td class="nv">${nvInner(arrType,st,val)}</td>`;}
+function nvCellPlain(val){return `<td class="nv"><div class="nv-inner"><span class="nv-val">${val}</span></div></td>`;}
 function getArrType(ds,ms,minT,dl){if(!ds)return '';const rm=Math.max(0,minT-ms);if(rm<=0)return 'up';const dn=calcDaily(ms,minT,dl);if(!dn)return '';const p=ds/dn*100;return p>=100?'up':p>=70?'mid':'dn';}
 function getArrTypeMonth(ms,minT,dl){if(!ms)return '';if(ms>=minT)return 'up';const avg=ms/daysPassed();return ms+avg*dl>=minT?'mid':'dn';}
 
@@ -734,13 +874,16 @@ async function doLogin(){
   document.getElementById('gerr').classList.remove('show');
   if(rem)localStorage.setItem('pk_rem',JSON.stringify({sid,pw}));else localStorage.removeItem('pk_rem');
   loadTheme(sid);
-  spinShow('Giriş edilir...');const bin=await rBin();CFG=bin.cfg;await logLogin(u.name,false,bin.records,bin.sf,bin.cfg);spinHide();
+  spinShow('Giriş edilir...');const bin=await rBin();CFG=bin.cfg;
+  // Bayram yoxla — giriş zamanı
+  checkAndShowHoliday(gH());
+  await logLogin(u.name,false,bin.records,bin.sf,bin.cfg);spinHide();
   if(u.type==='viewer')openViewer(u);else{curSid=sid;openStoreForm(sid);}
 }
 async function showAdminGate(){
-  if(window.PublicKeyCredential){try{const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();if(avail&&localStorage.getItem('pk_apw')){const cred=await navigator.credentials.get({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),timeout:30000,userVerification:'required',rpId:window.location.hostname||'localhost'}}).catch(()=>null);if(cred){spinShow('Admin...');const bin=await rBin();CFG=bin.cfg;await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);spinHide();loadTheme('admin');openAdmin();return;}}}catch(e){}}
+  if(window.PublicKeyCredential){try{const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();if(avail&&localStorage.getItem('pk_apw')){const cred=await navigator.credentials.get({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),timeout:30000,userVerification:'required',rpId:window.location.hostname||'localhost'}}).catch(()=>null);if(cred){spinShow('Admin...');const bin=await rBin();CFG=bin.cfg;checkAndShowHoliday(gH());await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);spinHide();loadTheme('admin');openAdmin();return;}}}catch(e){}}
   const pw=prompt('Admin şifrəsi:');
-  if(pw===ADMIN_PW){spinShow('Admin...');const bin=await rBin();CFG=bin.cfg;await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);spinHide();loadTheme('admin');openAdmin();}
+  if(pw===ADMIN_PW){spinShow('Admin...');const bin=await rBin();CFG=bin.cfg;checkAndShowHoliday(gH());await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);spinHide();loadTheme('admin');openAdmin();}
   else if(pw!==null)alert('Şifrə yanlışdır.');
 }
 
@@ -787,12 +930,11 @@ async function openStoreForm(sid){
   spinHide();renderFormData(sid,records,sf);
 }
 function renderFormData(sid,records,sf){
-  const u=gU().find(u=>u.id===sid);
-  const periods=getUserPeriods(sid);
-  const ay0=periods.find(p=>p.id==='ay0');
-  const ms=ay0?findRec(records,u.name,ay0.sk)?.satis||0:0;
-  const t_=gT()[sid];
-  let planH=t_?planCard(sid,ms,records):'';
+  const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
+  const ay0=periods.find(p=>p.id==='ay0');const ms=ay0?findRec(records,u.name,ay0.sk)?.satis||0:0;
+  const t_=gT()[sid];let planH=t_?planCard(sid,ms,records):'';
+  // Bayram banneri mağaza formunda
+  const holBanner=buildHolidayBanner(gH());
   let periodsH='';
   periods.forEach((period,pi)=>{
     const rec=findRec(records,u.name,period.sk);const hasSaved=rec!==null;
@@ -813,26 +955,20 @@ function renderFormData(sid,records,sf){
   });
   const ss=gSS();let saxaH='';
   if(ss.fillers.includes(sid)){
-    const sfKey=getSFKey(),sfRec=sf[sfKey+'_'+sid]||null;
-    const sfVal=sfRec?.satis?fmtDec(sfRec.satis):'';
+    const sfKey=getSFKey(),sfRec=sf[sfKey+'_'+sid]||null;const sfVal=sfRec?.satis?fmtDec(sfRec.satis):'';
     saxaH=`<div class="saxa-firma-block" id="pb-sf">
       <div class="saxa-firma-hdr">${ss.firmName} — ${getSFDate()}</div>
-      <div style="padding:10px 12px">
-        <div style="font-size:10px;color:rgba(255,255,255,.45);margin-bottom:6px;font-weight:600">Maya Məbləği (₼)</div>
-        <input class="saxa-firma-inp" type="text" inputmode="decimal" id="sf-inp" value="${sfVal}" placeholder="0" ${sfRec?'disabled':''} autocomplete="off">
-      </div>
+      <div style="padding:10px 12px"><div style="font-size:10px;color:rgba(255,255,255,.45);margin-bottom:6px;font-weight:600">Maya Məbləği (₼)</div>
+      <input class="saxa-firma-inp" type="text" inputmode="decimal" id="sf-inp" value="${sfVal}" placeholder="0" ${sfRec?'disabled':''} autocomplete="off"></div>
       ${sfRec?`<div style="padding:0 10px 8px"><button class="editbtn" onclick="editSF()">✏️ Düzəliş</button></div>`:''}
     </div>`;
   }
-  document.getElementById('sfbody').innerHTML=`
-    ${planH}
+  document.getElementById('sfbody').innerHTML=`${holBanner}${planH}
     <div class="sf-periods-grid">${periodsH}</div>
     <div class="sf-saxa-row">${saxaH}</div>
     <div class="sf-btns-wrap">
       <button class="saveallbtn" id="saveallbtn" onclick="saveAll('${sid}')">💾 Hamısını Yadda Saxla</button>
-      <div class="ldbox" id="ldb">⏳ Göndərilir...</div>
-      <div class="okbox" id="okb"></div>
-      <div class="erbox" id="erb">❌ Xəta baş verdi.</div>
+      <div class="ldbox" id="ldb">⏳ Göndərilir...</div><div class="okbox" id="okb"></div><div class="erbox" id="erb">❌ Xəta baş verdi.</div>
       <button class="delbtn2" onclick="deleteToday('${sid}')">🗑 Bütün Məlumatı Sil</button>
     </div>`;
   setTimeout(attachAllNum,30);
@@ -869,7 +1005,7 @@ async function deleteToday(sid){
   catch{spinHide();alert('Silinmə xətası.');}
 }
 
-// ── ADMİN CƏDVƏLİ — faiz: fmtFaizAdm() ─────────────────────────────────────
+// ══ HESABAT CƏDVƏLİ ═════════════════════════════════════════════════════════
 function buildTable(records,sf,tblId,ldId){
   const users=gU().filter(u=>u.type==='store');const targets=gT(),dl=dLeft();const allP=getAllPeriods();const st=gStyle();
   const D={};users.forEach(u=>{const uP=getUserPeriods(u.id);D[u.name]={};allP.forEach(p=>{const up=uP.find(x=>x.id===p.id);D[u.name][p.id]=up?findRec(records,u.name,up.sk):null;});});
@@ -886,16 +1022,21 @@ function buildTable(records,sf,tblId,ldId){
       if(e&&(e.satis>0||e.menfeet>0)){
         let atype='';if(p.id==='gun'&&t)atype=getArrType(e.satis,ay0val,t.min,dl);else if(p.id==='ay0'&&t)atype=getArrTypeMonth(e.satis,t.min,dl);
         h+=nvCell(atype,fmt(e.satis),st);
-        h+=`<td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fmtFaizAdm(e.faiz)}</td>`;
+        h+=nvCellPlain(fmt(e.menfeet));
+        h+=`<td class="pv">${fmtFaizStore(e.faiz)}</td>`;
         pTots[pi].s+=e.satis;pTots[pi].m+=e.menfeet;if(e.faiz>0)pTots[pi].fl.push(e.faiz);
       }else h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;
     });h+='</tr>';
   });
-  h+='<tr class="tr">';pTots.forEach(t=>{h+=`<td class="nm">Ümumi Panda</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fmtFaizAvg(avgF(t.fl))}</td>`;});h+='</tr>';
+  h+='<tr class="tr">';
+  pTots.forEach(t=>{h+=`<td class="nm">Ümumi Panda</td>`;h+=nvCellPlain(t.s>0?fmt(t.s):'—');h+=nvCellPlain(t.m>0?fmt(t.m):'—');h+=`<td class="pv">${fmtFaizAdmTotal(avgF(t.fl))}</td>`;});
+  h+='</tr>';
   if(saxa.length){
     h+=`<tr class="saxagap"><td colspan="${allP.length*4}"></td></tr>`;
-    saxa.forEach(u=>{h+=`<tr class="sr">`;allP.forEach((p,pi)=>{h+=`<td class="nm">${u.name}</td>`;const e=D[u.name][p.id];if(e&&(e.satis>0||e.menfeet>0)){h+=`<td class="nv"><span class="nv-val">${fmt(e.satis)}</span></td><td class="nv">${fmt(e.menfeet)}</td><td class="pv">${fmtFaizAdm(e.faiz)}</td>`;sTots[pi].s+=e.satis;sTots[pi].m+=e.menfeet;if(e.faiz>0)sTots[pi].fl.push(e.faiz);}else h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;});h+='</tr>';});
-    h+='<tr class="str">';sTots.forEach(t=>{h+=`<td class="nm">Ümumi Saxa</td><td class="nv">${t.s>0?fmt(t.s):'—'}</td><td class="nv">${t.m>0?fmt(t.m):'—'}</td><td class="pv">${fmtFaizAvg(avgF(t.fl))}</td>`;});h+='</tr>';
+    saxa.forEach(u=>{h+=`<tr class="sr">`;allP.forEach((p,pi)=>{h+=`<td class="nm">${u.name}</td>`;const e=D[u.name][p.id];if(e&&(e.satis>0||e.menfeet>0)){h+=nvCellPlain(fmt(e.satis));h+=nvCellPlain(fmt(e.menfeet));h+=`<td class="pv">${fmtFaizStore(e.faiz)}</td>`;sTots[pi].s+=e.satis;sTots[pi].m+=e.menfeet;if(e.faiz>0)sTots[pi].fl.push(e.faiz);}else h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;});h+='</tr>';});
+    h+='<tr class="str">';
+    sTots.forEach(t=>{h+=`<td class="nm">Ümumi Saxa</td>`;h+=nvCellPlain(t.s>0?fmt(t.s):'—');h+=nvCellPlain(t.m>0?fmt(t.m):'—');h+=`<td class="pv">${fmtFaizAdmTotal(avgF(t.fl))}</td>`;});
+    h+='</tr>';
   }
   const tbl=document.getElementById(tblId);tbl.innerHTML=h;applyStyleToDOM(st);
   document.getElementById(ldId).style.display='none';tbl.style.display='table';
@@ -953,7 +1094,6 @@ function mkPanel(id){
   </div>`;
 }
 
-// ── YENİLƏ DÜYMƏSİ — cache sıfırlayıb yükləyir ─────────────────────────────
 function openAdmin(){document.getElementById('admdate').textContent=fmtRealDate();goTo('admin');loadAdmin();}
 async function loadAdmin(){
   document.getElementById('admdate').textContent=fmtRealDate();
@@ -961,11 +1101,10 @@ async function loadAdmin(){
   const btn=document.getElementById('refreshBtn');
   if(btn){btn.disabled=true;btn.textContent='⏳ ...';}
   try{
-    // cache sıfırla — həm yaddaş həm localStorage
-    _bc=null;_bcts=0;
-    localStorage.removeItem(LS_CACHE);
+    _bc=null;_bcts=0;localStorage.removeItem(LS_CACHE);
     const {records,sf,cfg}=await rBin(true);CFG=cfg;
-    body.innerHTML=mkPanel('adm')+
+    const holBanner=buildHolidayBanner(gH());
+    body.innerHTML=holBanner+mkPanel('adm')+
       `<button class="scrbtn" onclick="takeScr('rc-adm')" style="margin-bottom:14px">📸 Hesabatı Şəkil Kimi Saxla</button>
       <div id="sf-container"></div>
       <div class="planpanel" style="margin-top:14px"><div class="ppaneltitle">🐼 Panda — Plan Vəziyyəti</div><div id="adm-pp"></div></div>
@@ -984,7 +1123,8 @@ async function loadViewer(){
   try{
     _bc=null;_bcts=0;
     const {records,sf,cfg}=await rBin(true);CFG=cfg;
-    body.innerHTML=mkPanel('view')+
+    const holBanner=buildHolidayBanner(gH());
+    body.innerHTML=holBanner+mkPanel('view')+
       `<div class="planpanel" style="margin-top:14px"><div class="ppaneltitle">🐼 Panda — Plan Vəziyyəti</div><div id="view-pp"></div></div>
       <div class="planpanel"><div class="ppaneltitle">🔶 Saxa — Plan Vəziyyəti</div><div id="view-sp"></div></div>`;
     buildTable(records,sf,'tbl-view','ld-view');
@@ -993,12 +1133,13 @@ async function loadViewer(){
   }catch{body.innerHTML='<div class="admld">❌ Yüklənmədi.</div>';}
 }
 
+// ŞƏKİL 4K
 async function takeScr(id){
   const card=document.getElementById(id),tbl=card.querySelector('.rt');const tblW=tbl?tbl.scrollWidth+2:card.scrollWidth;
   const tw=card.querySelector('.rctw');const of_=tw.style.overflow,ow_=tw.style.width,oh_=tw.style.maxHeight;
   tw.style.overflow='visible';tw.style.width=tblW+'px';tw.style.maxHeight='none';const cw_=card.style.width;card.style.width=tblW+'px';
   spinShow('Şəkil hazırlanır...');
-  try{const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:3,useCORS:true,logging:false,width:tblW,height:card.scrollHeight,windowWidth:tblW,imageTimeout:0,x:0,y:0});prevUrl=c.toDataURL('image/png',1.0);document.getElementById('previmg').src=prevUrl;document.getElementById('imgov').classList.add('show');}
+  try{const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:4,useCORS:true,logging:false,width:tblW,height:card.scrollHeight,windowWidth:tblW,imageTimeout:0,x:0,y:0});prevUrl=c.toDataURL('image/png',1.0);document.getElementById('previmg').src=prevUrl;document.getElementById('imgov').classList.add('show');}
   catch{alert('Şəkil alınmadı.');}
   finally{spinHide();tw.style.overflow=of_;tw.style.width=ow_;tw.style.maxHeight=oh_;card.style.width=cw_;}
 }
@@ -1006,7 +1147,7 @@ function saveImg(){if(!prevUrl)return;const a=document.createElement('a');const 
 async function takeSfScr(){
   const card=document.getElementById('sf-rc');if(!card){alert('Hesabat yoxdur.');return;}
   spinShow('Şəkil hazırlanır...');
-  try{const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:3,useCORS:true,logging:false,width:card.scrollWidth,height:card.scrollHeight,imageTimeout:0});sfPrevUrl=c.toDataURL('image/png',1.0);document.getElementById('sf-previmg').src=sfPrevUrl;document.getElementById('sf-imgov').classList.add('show');}
+  try{const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:4,useCORS:true,logging:false,width:card.scrollWidth,height:card.scrollHeight,imageTimeout:0});sfPrevUrl=c.toDataURL('image/png',1.0);document.getElementById('sf-previmg').src=sfPrevUrl;document.getElementById('sf-imgov').classList.add('show');}
   catch{alert('Şəkil alınmadı.');}
   finally{spinHide();}
 }
