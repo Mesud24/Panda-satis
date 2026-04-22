@@ -95,15 +95,16 @@ body.light .g-spin-ring{border-top-color:#1d4ed8;}
 body.light .g-spin-pct{color:#1d4ed8;}
 
 /* ══ OX + MƏRKƏZ ══ */
-.nv-inner{display:flex;align-items:center;justify-content:center;gap:3px;width:100%;}
+.nv-inner{display:flex;align-items:center;justify-content:flex-end;gap:3px;width:100%;}
 .nv-arrow{display:inline-flex;align-items:center;justify-content:center;width:16px;min-width:16px;flex-shrink:0;}
-.nv-val{text-align:left;font-weight:700;}
-.rt td.nv,.rt td.pv{text-align:center !important;}
+.nv-val{text-align:right;font-weight:700;}
+.rt td.nv{text-align:right !important;}
+.rt td.pv{text-align:right !important;}
 .rt td.dsh{text-align:center;}
-.rt .sr .nv{text-align:center !important;}
-.rt .sr .pv{text-align:center !important;}
-.rt .tr .nv,.rt .tr .pv{text-align:center !important;}
-.rt .str .nv,.rt .str .pv{text-align:center !important;}
+.rt .sr .nv{text-align:right !important;}
+.rt .sr .pv{text-align:right !important;}
+.rt .tr .nv,.rt .tr .pv{text-align:right !important;}
+.rt .str .nv,.rt .str .pv{text-align:right !important;}
 
 /* ══ BAYRAM SİSTEMİ ══ */
 /* Konfetti */
@@ -619,9 +620,16 @@ function showHolidayOverlay(h){
   localStorage.setItem(holidaySeenKey(h.id),'1');
 }
 function closeHolidayOverlay(){document.getElementById('hol-overlay').classList.remove('show');}
+function isFirstDayOfHoliday(h){
+  // Yalnız bayramın BİRİNCİ günündə true qaytar
+  const today=todayStr();
+  return today===h.startDate;
+}
 function checkAndShowHoliday(holidays){
   const h=getActiveHoliday(holidays);
   if(!h)return;
+  // Yalnız birinci gündə bildiriş çıxsın
+  if(!isFirstDayOfHoliday(h))return;
   const seen=localStorage.getItem(holidaySeenKey(h.id));
   if(!seen)showHolidayOverlay(h);
 }
@@ -647,7 +655,10 @@ function buildHolidayBanner(holidays){
 function openHolidayMo(){
   const hols=(CFG?.holidays)||DEF_HOLIDAYS;
   let h='';
+  const yr=new Date().getFullYear();
   hols.forEach((hol,i)=>{
+    // MM-DD → YYYY-MM-DD for date input
+    const dateVal=`${yr}-${hol.startDate}`;
     h+=`<div class="hol-item">
       <div class="hol-name"><span>${hol.emoji} ${hol.name}</span>
         <label style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:rgba(255,255,255,.6);cursor:pointer;">
@@ -655,7 +666,7 @@ function openHolidayMo(){
         </label>
       </div>
       <div class="hol-row">
-        <div class="mof"><label>Başlama tarixi (AA-GG)</label><input type="text" id="hd-${i}" value="${hol.startDate}" placeholder="03-20" maxlength="5"></div>
+        <div class="mof"><label>Başlama tarixi</label><input type="date" id="hd-${i}" value="${dateVal}" style="color:#fff;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 9px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:600;outline:none;width:100%;-webkit-appearance:none;"></div>
         <div class="mof"><label>Neçə gün davam edir</label><input type="number" id="hdays-${i}" value="${hol.days||1}" min="1" max="30" style="text-align:center"></div>
       </div>
       <div class="mof" style="margin-top:6px"><label>Təbrik mesajı</label><input type="text" id="hmsg-${i}" value="${hol.msg||''}"></div>
@@ -668,8 +679,10 @@ async function saveHolidays(){
   const hols=(CFG?.holidays)||DEF_HOLIDAYS;
   hols.forEach((hol,i)=>{
     hol.active=document.getElementById(`ha-${i}`)?.checked||false;
-    const sd=document.getElementById(`hd-${i}`)?.value||hol.startDate;
-    hol.startDate=sd.trim();
+    const raw=document.getElementById(`hd-${i}`)?.value||'';
+    // type=date YYYY-MM-DD verir, biz MM-DD saxlayırıq
+    if(raw.includes('-')&&raw.length===10){hol.startDate=raw.slice(5);}// YYYY-MM-DD → MM-DD
+    else if(raw.length===5){hol.startDate=raw.trim();}// artıq MM-DD formatı
     hol.days=parseInt(document.getElementById(`hdays-${i}`)?.value)||1;
     hol.msg=document.getElementById(`hmsg-${i}`)?.value||hol.msg;
   });
@@ -1182,8 +1195,12 @@ function planPanelHtml(records,forSaxa){
 
 function mkPanel(id){
   const d=getRD();
+  // Bayram qeydi şəkil üçün
+  const activeHol=getActiveHoliday(gH());
+  const holRow=activeHol?`<div style="background:${activeHol.gradient||'linear-gradient(90deg,#3b0764,#6d28d9)'};padding:8px 20px;display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">${activeHol.emoji}</span><span style="font-size:12px;font-weight:700;color:#fde68a;">${activeHol.name} münasibətilə bütün əməkdaşlarımızı təbrik edirik! 🎉</span></div>`:'';
   return `<div class="rc" id="rc-${id}">
     <div class="rchdr"><img class="rclogo" src="IMG_0510.png" alt=""><div class="rct"><h2>Panda Kids — Yekun Satış Hesabatı</h2><p>Günlük &amp; Aylıq Müqayisəli</p></div><div class="rcd"><div class="rday">${d.getDate()}</div><div class="rmo">${AY[d.getMonth()].toUpperCase()} ${d.getFullYear()}</div></div></div>
+    ${holRow}
     <div class="rctw"><div class="admld" id="ld-${id}">Yüklənir...</div><table class="rt" id="tbl-${id}" style="display:none"></table></div>
     <div class="rcftr"><span>Panda Kids © ${d.getFullYear()}</span></div>
   </div>`;
