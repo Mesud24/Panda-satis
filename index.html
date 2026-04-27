@@ -1334,3 +1334,112 @@ function changeAdminPw(){
   ADMIN_PW=n;localStorage.setItem('pk_apw',n);document.getElementById('oldpw').value='';document.getElementById('newpw').value='';alert('✅ Admin parolu dəyişdirildi!');
 }
 </script></body></html>
+<!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ay Sonu Bildiriş — Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#060918;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:24px;padding:24px;}
+h2{color:#f0c060;font-size:14px;font-weight:700;text-align:center;letter-spacing:.5px;text-transform:uppercase;opacity:.7;}
+
+/* ── Bildiriş qutusu ── */
+.me-box{border-radius:24px;padding:32px 28px;text-align:center;max-width:340px;width:100%;position:relative;overflow:hidden;}
+
+/* Plan vurmadı — qırmızı */
+.me-box.fail{
+  background:linear-gradient(135deg,#3b0f05 0%,#7c2d12 60%,#3b0f05 100%);
+  border:2px solid rgba(239,68,68,.45);
+  box-shadow:0 0 50px rgba(239,68,68,.15),0 8px 40px rgba(0,0,0,.6);
+}
+.me-box.fail::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(239,68,68,.12) 0%,transparent 65%);pointer-events:none;}
+
+/* Plan vurdu — yaşıl (müqayisə üçün) */
+.me-box.win{
+  background:linear-gradient(135deg,#052e16 0%,#14532d 60%,#052e16 100%);
+  border:2px solid rgba(16,185,129,.45);
+  box-shadow:0 0 50px rgba(16,185,129,.12),0 8px 40px rgba(0,0,0,.6);
+}
+.me-box.win::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(16,185,129,.1) 0%,transparent 65%);pointer-events:none;}
+
+.me-emoji{font-size:64px;display:block;margin-bottom:14px;position:relative;}
+.me-title{font-size:20px;font-weight:800;color:#fff;margin-bottom:10px;line-height:1.2;position:relative;}
+.me-divider{width:48px;height:3px;border-radius:3px;margin:0 auto 14px;position:relative;}
+.fail .me-divider{background:rgba(239,68,68,.5);}
+.win .me-divider{background:rgba(16,185,129,.5);}
+.me-msg{font-size:13px;color:rgba(255,255,255,.78);line-height:1.7;margin-bottom:20px;position:relative;white-space:pre-line;}
+.me-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;position:relative;}
+.me-stat{border-radius:12px;padding:10px 8px;text-align:center;}
+.fail .me-stat{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.2);}
+.win .me-stat{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.2);}
+.me-stat-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;opacity:.6;color:#fff;margin-bottom:4px;}
+.me-stat-val{font-size:16px;font-weight:800;color:#fff;}
+.fail .me-stat-val.red{color:#fca5a5;}
+.fail .me-stat-val.orange{color:#fcd34d;}
+.win .me-stat-val.green{color:#6ee7b7;}
+.me-btn{width:100%;padding:13px;border:none;border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:800;cursor:pointer;position:relative;}
+.fail .me-btn{background:rgba(255,255,255,.12);color:#fff;}
+.win .me-btn{background:linear-gradient(135deg,#10b981,#059669);color:#fff;}
+
+.label{font-size:11px;color:rgba(255,255,255,.4);font-weight:600;text-align:center;}
+</style>
+</head><body>
+
+<h2>Ay Sonu Bildiriş — Numunə</h2>
+
+<!-- PLAN VURULMADI -->
+<div class="label">❌ Plan yerinə yetirilmədi (Panda 2)</div>
+<div class="me-box fail">
+  <span class="me-emoji">📊</span>
+  <div class="me-title">Plan yerinə yetirilmədi</div>
+  <div class="me-divider"></div>
+  <div class="me-msg">Təəssüf ki, bu ay minimum plan tam yerinə yetirilmədi. Növbəti ay daha yaxşı nəticə üçün birlikdə çalışacağıq! 💪</div>
+  <div class="me-stats">
+    <div class="me-stat">
+      <div class="me-stat-lbl">Bu ay satış</div>
+      <div class="me-stat-val red">82.500 ₼</div>
+    </div>
+    <div class="me-stat">
+      <div class="me-stat-lbl">Min. plan</div>
+      <div class="me-stat-val">100.000 ₼</div>
+    </div>
+    <div class="me-stat">
+      <div class="me-stat-lbl">Plan faizi</div>
+      <div class="me-stat-val orange">82%</div>
+    </div>
+    <div class="me-stat">
+      <div class="me-stat-lbl">Çatmayan məbləğ</div>
+      <div class="me-stat-val red">17.500 ₼</div>
+    </div>
+  </div>
+  <button class="me-btn">Bağla</button>
+</div>
+
+<!-- PLAN VURULDU — müqayisə üçün -->
+<div class="label" style="margin-top:8px">✅ Plan yerinə yetirildi (müqayisə üçün)</div>
+<div class="me-box win">
+  <span class="me-emoji">🏆</span>
+  <div class="me-title">Planı yerinə yetirdiniz!</div>
+  <div class="me-divider"></div>
+  <div class="me-msg">Əla! Bu ay orta hədəfi keçdiniz. Panda Kids ailəsi olaraq sizi təbrik edirik! 🎉</div>
+  <div class="me-stats">
+    <div class="me-stat">
+      <div class="me-stat-lbl">Bu ay satış</div>
+      <div class="me-stat-val green">112.400 ₼</div>
+    </div>
+    <div class="me-stat">
+      <div class="me-stat-lbl">Orta plan</div>
+      <div class="me-stat-val">110.000 ₼</div>
+    </div>
+    <div class="me-stat">
+      <div class="me-stat-lbl">Plan faizi</div>
+      <div class="me-stat-val green">102%</div>
+    </div>
+    <div class="me-stat">
+      <div class="me-stat-lbl">Artıq nəticə</div>
+      <div class="me-stat-val green">+2.400 ₼</div>
+    </div>
+  </div>
+  <button class="me-btn">Təşəkkür edirik! 🎉</button>
+</div>
+
+</body></html>
