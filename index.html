@@ -1,4 +1,5 @@
 <!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Panda Kids</title><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=Roboto+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inconsolata:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{width:100%;overflow-x:hidden;}
 body{font-family:‘Plus Jakarta Sans’,sans-serif;color:#fff;min-height:100vh;transition:background .3s,color .3s;}
@@ -93,17 +94,16 @@ body.light .g-spin-txt{color:#475569;}
 body.light .g-spin-ring{border-top-color:#1d4ed8;}
 body.light .g-spin-pct{color:#1d4ed8;}
 
-/* ══ OX + MƏRKƏZ ══ */
-.nv-inner{display:flex;align-items:center;justify-content:flex-end;gap:3px;width:100%;}
-.nv-arrow{display:inline-flex;align-items:center;justify-content:center;width:16px;min-width:16px;flex-shrink:0;}
-.nv-val{text-align:right;font-weight:700;}
-.rt td.nv{text-align:right !important;}
-.rt td.pv{text-align:right !important;}
+/* ══ OX + RƏQƏM ══ */
+.rt td.nv{text-align:right;padding-right:6px;}
+.rt td.pv{text-align:right;padding-right:6px;}
 .rt td.dsh{text-align:center;}
-.rt .sr .nv{text-align:right !important;}
-.rt .sr .pv{text-align:right !important;}
-.rt .tr .nv,.rt .tr .pv{text-align:right !important;}
-.rt .str .nv,.rt .str .pv{text-align:right !important;}
+.rt .sr .nv,.rt .sr .pv{text-align:right;}
+.rt .tr .nv,.rt .tr .pv{text-align:right;}
+.rt .str .nv,.rt .str .pv{text-align:right;}
+.nv-inner{display:inline-flex;align-items:center;justify-content:flex-end;gap:3px;}
+.nv-arrow{display:inline-flex;align-items:center;width:14px;flex-shrink:0;}
+.nv-val{font-weight:700;}
 
 /* ══ BAYRAM SİSTEMİ ══ */
 /* Konfetti */
@@ -922,16 +922,25 @@ function planBg(ms,tgt,dl){const c=planColor(ms,tgt,dl);return c==='green'?'#10b
 function calcDaily(ms,tgt,dl){if(!tgt||ms>=tgt||dl<=0)return 0;return Math.ceil((tgt-ms)/dl);}
 
 // OX + RƏQƏM mərkəzdə
+function nvCell(arrType,val,st){
+  const upC=st?.arrUp||'#22c55e',midC=st?.arrMid||'#f59e0b',dnC='#ef4444';
+  let svg='';
+  if(arrType==='up')svg=svgUp(upC);
+  else if(arrType==='mid')svg=svgMid(midC);
+  else if(arrType==='dn')svg=svgDn(dnC);
+  if(svg) return `<td class="nv" style="text-align:right;padding-right:6px"><span style="display:inline-flex;align-items:center;gap:3px">${svg}<span style="font-weight:700">${val}</span></span></td>`;
+  return `<td class="nv" style="text-align:right;padding-right:6px;font-weight:700">${val}</td>`;
+}
+function nvCellPlain(val){return `<td class="nv" style="text-align:right;padding-right:6px;font-weight:700">${val}</td>`;}
 function nvInner(arrType,st,val){
   const upC=st?.arrUp||'#22c55e',midC=st?.arrMid||'#f59e0b',dnC='#ef4444';
-  let arrow='';
-  if(arrType==='up')arrow=`<span class="nv-arrow">${svgUp(upC)}</span>`;
-  else if(arrType==='mid')arrow=`<span class="nv-arrow">${svgMid(midC)}</span>`;
-  else if(arrType==='dn')arrow=`<span class="nv-arrow">${svgDn(dnC)}</span>`;
-  return `<div class="nv-inner">${arrow}<span class="nv-val">${val}</span></div>`;
+  let svg='';
+  if(arrType==='up')svg=svgUp(upC);
+  else if(arrType==='mid')svg=svgMid(midC);
+  else if(arrType==='dn')svg=svgDn(dnC);
+  if(svg) return `<span style="display:inline-flex;align-items:center;gap:3px">${svg}<span style="font-weight:700">${val}</span></span>`;
+  return `<span style="font-weight:700">${val}</span>`;
 }
-function nvCell(arrType,val,st){return `<td class="nv">${nvInner(arrType,st,val)}</td>`;}
-function nvCellPlain(val){return `<td class="nv"><div class="nv-inner"><span class="nv-val">${val}</span></div></td>`;}
 function getArrType(ds,ms,minT,dl){if(!ds)return '';const rm=Math.max(0,minT-ms);if(rm<=0)return 'up';const dn=calcDaily(ms,minT,dl);if(!dn)return '';const p=ds/dn*100;return p>=100?'up':p>=70?'mid':'dn';}
 function getArrTypeMonth(ms,minT,dl){if(!ms)return '';if(ms>=minT)return 'up';const avg=ms/daysPassed();return ms+avg*dl>=minT?'mid':'dn';}
 
