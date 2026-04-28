@@ -918,7 +918,7 @@ function nvCell(arrType,val,st){
   if(arrType==='up')svg=svgUp(upC);
   else if(arrType==='mid')svg=svgMid(midC);
   else if(arrType==='dn')svg=svgDn(dnC);
-  if(svg) return '<td class="nv"><div style="display:flex;align-items:center;width:100%"><span style="flex-shrink:0;display:flex;align-items:center">'+svg+'</span><span style="flex:1;text-align:center">'+val+'</span></div></td>';
+  if(svg) return '<td class="nv"><div style="display:flex;align-items:center;width:100%"><span style="flex-shrink:0;display:flex;align-items:center;margin-left:4px">'+svg+'</span><span style="flex:1;text-align:center">'+val+'</span></div></td>';
   return '<td class="nv" style="text-align:center">'+val+'</td>';
 }
 function nvCellPlain(val){return '<td class="nv" style="text-align:center">'+val+'</td>';}
