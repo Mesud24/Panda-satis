@@ -258,7 +258,7 @@ select.ginp option{color:#000;background:#fff;}
 .rday{color:#fff;font-size:26px;font-weight:800;line-height:1;}
 .rmo{color:rgba(255,255,255,.6);font-size:10px;margin-top:2px;font-weight:600;}
 .rctw{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;}
-table.rt{border-collapse:collapse;white-space:nowrap;}
+table.rt{border-collapse:collapse;table-layout:fixed;white-space:nowrap;}
 table.rt th,table.rt td{border:1px solid #cdd5e0;padding:4px 8px;}
 table.rt .col-name{width:var(--rt-name-w,115px);}
 table.rt .col-num{width:var(--rt-num-w,94px);}
@@ -918,10 +918,11 @@ function nvCell(arrType,val,st){
   if(arrType==='up')svg=svgUp(upC);
   else if(arrType==='mid')svg=svgMid(midC);
   else if(arrType==='dn')svg=svgDn(dnC);
-  if(svg) return '<td class="nv" style="padding:0"><div style="display:grid;grid-template-columns:20px 1fr 20px;align-items:center;width:100%;height:100%;padding:3px 4px"><span style="display:flex;align-items:center;justify-content:center">'+svg+'</span><span style="text-align:center">'+val+'</span><span></span></div></td>';
-  return '<td class="nv" style="text-align:center">'+val+'</td>';
+  // ox solda 16px sabit, məbləğ ortada, sağda 16px balans
+  if(svg) return '<td class="nv" style="padding:0 4px"><table style="width:100%;border:none;border-collapse:collapse"><tr><td style="width:16px;padding:0;border:none;vertical-align:middle">'+svg+'</td><td style="padding:0;border:none;text-align:center;vertical-align:middle">'+val+'</td><td style="width:16px;padding:0;border:none"></td></tr></table></td>';
+  return '<td class="nv">'+val+'</td>';
 }
-function nvCellPlain(val){return '<td class="nv" style="text-align:center">'+val+'</td>';}
+function nvCellPlain(val){return '<td class="nv">'+val+'</td>';}
 function nvInner(arrType,st,val){
   const upC=st?.arrUp||'#22c55e',midC=st?.arrMid||'#f59e0b',dnC='#ef4444';
   let svg='';
