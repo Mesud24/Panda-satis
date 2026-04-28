@@ -95,14 +95,11 @@ body.light .g-spin-ring{border-top-color:#1d4ed8;}
 body.light .g-spin-pct{color:#1d4ed8;}
 
 /* ══ OX + RƏQƏM ══ */
-.rt td.nv{text-align:right;padding-right:6px;}
-.rt td.pv{text-align:right;padding-right:6px;}
+.rt td.nv{text-align:right;}
+.rt td.pv{text-align:right;}
 .rt td.dsh{text-align:center;}
-.rt .sr .nv,.rt .sr .pv{text-align:right;}
-.rt .tr .nv,.rt .tr .pv{text-align:right;}
-.rt .str .nv,.rt .str .pv{text-align:right;}
-.nv-wrap{display:inline-flex;align-items:center;justify-content:flex-end;gap:3px;width:100%;}
-.nv-num{font-weight:inherit;}
+.nv-wrap{display:inline-flex;align-items:center;justify-content:flex-end;gap:2px;width:100%;}
+.nv-wrap svg{flex-shrink:0;}
 
 /* ══ BAYRAM SİSTEMİ ══ */
 /* Konfetti */
@@ -923,22 +920,17 @@ function calcDaily(ms,tgt,dl){if(!tgt||ms>=tgt||dl<=0)return 0;return Math.ceil(
 // OX + RƏQƏM mərkəzdə
 function nvCell(arrType,val,st){
   const upC=st?.arrUp||'#22c55e',midC=st?.arrMid||'#f59e0b',dnC='#ef4444';
-  let svg='';
-  if(arrType==='up')svg=svgUp(upC);
-  else if(arrType==='mid')svg=svgMid(midC);
-  else if(arrType==='dn')svg=svgDn(dnC);
-  // CSS class-dan rəng/font alır, inline yalnız flex layout
-  if(svg) return `<td class="nv"><div class="nv-wrap">${svg}<span class="nv-num">${val}</span></div></td>`;
+  if(arrType==='up')return `<td class="nv"><div class="nv-wrap">${svgUp(upC)}${val}</div></td>`;
+  if(arrType==='mid')return `<td class="nv"><div class="nv-wrap">${svgMid(midC)}${val}</div></td>`;
+  if(arrType==='dn')return `<td class="nv"><div class="nv-wrap">${svgDn(dnC)}${val}</div></td>`;
   return `<td class="nv">${val}</td>`;
 }
 function nvCellPlain(val){return `<td class="nv">${val}</td>`;}
 function nvInner(arrType,st,val){
   const upC=st?.arrUp||'#22c55e',midC=st?.arrMid||'#f59e0b',dnC='#ef4444';
-  let svg='';
-  if(arrType==='up')svg=svgUp(upC);
-  else if(arrType==='mid')svg=svgMid(midC);
-  else if(arrType==='dn')svg=svgDn(dnC);
-  if(svg) return `<div class="nv-wrap">${svg}<span class="nv-num">${val}</span></div>`;
+  if(arrType==='up')return `<div class="nv-wrap">${svgUp(upC)}${val}</div>`;
+  if(arrType==='mid')return `<div class="nv-wrap">${svgMid(midC)}${val}</div>`;
+  if(arrType==='dn')return `<div class="nv-wrap">${svgDn(dnC)}${val}</div>`;
   return val;
 }
 function getArrType(ds,ms,minT,dl){if(!ds)return '';const rm=Math.max(0,minT-ms);if(rm<=0)return 'up';const dn=calcDaily(ms,minT,dl);if(!dn)return '';const p=ds/dn*100;return p>=100?'up':p>=70?'mid':'dn';}
