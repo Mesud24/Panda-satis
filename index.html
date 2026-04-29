@@ -469,7 +469,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 
 <div class="mo" id="mo-t"><div class="mobox"><h3>🎯 Aylıq Hədəflər</h3><div id="mot-body"></div><button class="mosave" onclick="saveTargets()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-t')">Bağla</button></div></div>
 <div class="mo" id="mo-u"><div class="mobox"><h3>👥 İstifadəçilər</h3><div id="mou-body"></div><button class="addbtn" onclick="addStore()">+ Yeni Şöbə</button><button class="mosave" onclick="saveUsers()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-u')">Bağla</button></div></div>
-<div class="mo" id="mo-set"><div class="mobox"><h3>⚙️ Parametrlər</h3><div class="mosect">Admin Parolu</div><div class="mor2" style="margin-bottom:9px"><div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••" autocomplete="current-password"></div><div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••" autocomplete="new-password"></div></div><button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button><div class="mosect">Face ID / Touch ID</div><div style="font-size:11px;color:rgba(255,255,255,.45);margin-bottom:8px;line-height:1.5;">Əgər Face ID ilə giriş işləmirsə və ya yeni cihazda qeydiyyat etmək istəyirsinizsə sıfırlayın.</div><button class="mosave" style="background:rgba(99,102,241,.25);border:1px solid rgba(99,102,241,.4);margin-bottom:6px" onclick="resetPasskey()">🔐 Face ID Sıfırla</button><div class="mosect">Jurnal</div><div class="cr"><input type="checkbox" id="param-admin-jurnal" onchange="saveJP()"><label for="param-admin-jurnal">Admin girişini jurnalda göstər</label></div><button class="moclose" onclick="closeMo('mo-set')" style="margin-top:12px">Bağla</button></div></div>
+<div class="mo" id="mo-set"><div class="mobox"><h3>⚙️ Parametrlər</h3><div class="mosect">Admin Parolu</div><div class="mor2" style="margin-bottom:9px"><div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••" autocomplete="current-password"></div><div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••" autocomplete="new-password"></div></div><button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button><div class="mosect">Jurnal</div><div class="cr"><input type="checkbox" id="param-admin-jurnal" onchange="saveJP()"><label for="param-admin-jurnal">Admin girişini jurnalda göstər</label></div><button class="moclose" onclick="closeMo('mo-set')" style="margin-top:12px">Bağla</button></div></div>
 <div class="mo" id="mo-fill"><div class="mobox"><h3>✏️ Admin Doldurma</h3><div class="mof" style="margin-bottom:10px"><label>Şöbə seç</label><select id="fill-sel" onchange="renderFillForm()"><option value="">— Seçin —</option></select></div><div id="fill-body"></div><button class="mosave" id="fill-btn" onclick="doAdminFill()" style="display:none">✓ Saxla</button><div class="ldbox" id="fill-ld">⏳ Göndərilir...</div><div class="okbox" id="fill-ok">✅ Saxlandı!</div><div class="erbox" id="fill-er">❌ Xəta.</div><button class="moclose" onclick="closeMo('mo-fill')">Bağla</button></div></div>
 <div class="mo" id="mo-saxa-admin"><div class="mobox"><h3>Saxa Firma</h3><div id="saxa-admin-body"></div><button class="mosave" onclick="saveSaxaSettings()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-saxa-admin')">Bağla</button></div></div>
 <div class="mo" id="mo-jurnal"><div class="mobox"><h3>🔐 Giriş Jurnalı</h3><div class="jurnal-filter" id="jurnal-filter"></div><div class="jurnal-list" id="jurnal-modal-list"></div><button class="moclose" onclick="closeMo('mo-jurnal')">Bağla</button></div></div>
@@ -981,11 +981,9 @@ async function doLogin(){
   await logLogin(u.name,false,bin.records,bin.sf,bin.cfg);spinHide();
   if(u.type==='viewer')openViewer(u);else{curSid=sid;openStoreForm(sid);}
 }
-// ── PASSKEY (Face ID / Touch ID) ─────────────────────────────────────────────
-// Passkey saxlanıb-saxlanmadığını yoxla
-function hasPasskey(){return !!localStorage.getItem('pk_passkey_id');}
 
-// Passkey qeydiyyatı (şifrə ilə girdikdən sonra Face ID qeydiyyatı)
+// ── PASSKEY (Face ID / Touch ID) ──────────────────────────────
+function hasPasskey(){return !!localStorage.getItem('pk_passkey_id');}
 async function registerPasskey(){
   if(!window.PublicKeyCredential)return false;
   try{
@@ -1002,7 +1000,6 @@ async function registerPasskey(){
       timeout:60000,
     }});
     if(cred){
-      // Credential ID-ni saxla
       const idArr=new Uint8Array(cred.rawId);
       const idB64=btoa(String.fromCharCode(...idArr));
       localStorage.setItem('pk_passkey_id',idB64);
@@ -1011,8 +1008,6 @@ async function registerPasskey(){
   }catch(e){console.log('Passkey register error:',e);}
   return false;
 }
-
-// Passkey ilə giriş
 async function loginWithPasskey(){
   if(!window.PublicKeyCredential||!hasPasskey())return false;
   try{
@@ -1020,52 +1015,51 @@ async function loginWithPasskey(){
     if(!avail)return false;
     const challenge=crypto.getRandomValues(new Uint8Array(32));
     const cred=await navigator.credentials.get({publicKey:{
-      challenge,
-      timeout:30000,
-      userVerification:'required',
+      challenge,timeout:30000,userVerification:'required',
       rpId:window.location.hostname||'localhost',
     }});
     return !!cred;
   }catch(e){return false;}
 }
+function resetPasskey(){
+  localStorage.removeItem('pk_passkey_id');
+  alert('✅ Face ID sıfırlandı. Növbəti girişdə şifrə tələb olunacaq.');
+}
 
 async function showAdminGate(){
-  // Əvvəlcə passkey ilə cəhd et
+  // Face ID ilə cəhd et
   if(hasPasskey()){
     const ok=await loginWithPasskey();
     if(ok){
       spinShow('Admin...');
-      const bin=await rBin();CFG=bin.cfg;
+      const bin=await rBin(true);CFG=bin.cfg;
       checkAndShowHoliday(gH(),true);
       await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
       spinHide();loadTheme('admin');openAdmin();
       return;
     }
   }
-
-  // Passkey yoxdur və ya uğursuz — şifrə ilə giriş
+  // Şifrə ilə giriş
   const pw=prompt('Admin şifrəsi:');
   if(pw===null)return;
   if(pw!==ADMIN_PW){alert('Şifrə yanlışdır.');return;}
-
   spinShow('Admin...');
-  const bin=await rBin();CFG=bin.cfg;
+  const bin=await rBin(true);CFG=bin.cfg;
   checkAndShowHoliday(gH(),true);
   await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
   spinHide();loadTheme('admin');openAdmin();
-
-  // Şifrə ilə uğurlu giriş → Face ID qeydiyyatı teklif et
+  // Face ID qeydiyyatı teklif et
   if(window.PublicKeyCredential&&!hasPasskey()){
     try{
       const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
       if(avail){
-        // Qısa gecikmə — panel açıldıqdan sonra soruş
         setTimeout(async()=>{
-          const ask=confirm('Face ID / Touch ID ilə admin girişini aktivləşdirək?\n\n(Növbəti dəfə şifrəsiz, barmaq/üz ilə açılacaq)');
+          const ask=confirm('Face ID / Touch ID ilə admin girişini aktivləşdirək?
+(Növbəti dəfə şifrəsiz açılacaq)');
           if(ask){
-            const registered=await registerPasskey();
-            if(registered)alert('✅ Face ID qeydiyyatı uğurlu!\nNövbəti dəfə şifrəsiz daxil ola bilərsiniz.');
-            else alert('⚠️ Face ID qeydiyyatı uğursuz oldu. Sonra yenidən cəhd edin.');
+            const ok=await registerPasskey();
+            if(ok)alert('✅ Face ID qeydiyyatı uğurlu!');
+            else alert('⚠️ Face ID qeydiyyatı uğursuz.');
           }
         },800);
       }
@@ -1073,11 +1067,6 @@ async function showAdminGate(){
   }
 }
 
-// Admin panelindən passkey sıfırla (parametrlərdə)
-function resetPasskey(){
-  localStorage.removeItem('pk_passkey_id');
-  alert('✅ Face ID sıfırlandı. Növbəti girişdə şifrə tələb olunacaq.');
-}
 
 function planCard(sid,ms,records){
   const t=gT()[sid];if(!t)return '';
@@ -1209,7 +1198,7 @@ function buildTable(records,sf,tblId,ldId){
     h+='<col class="col-name"><col class="'+numCls+'"><col class="'+numCls+'"><col class="col-pct">';
   });h+='</colgroup>';
   h+='<tr class="gh">';allP.forEach((p,i)=>{h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th><th colspan="3" class="${HC[i]}" style="font-size:13px;font-weight:800">${p.label}</th>`;});
-  h+='</tr><tr class="sh">';allP.forEach((p,i)=>{h+=`<th class="${SC[i]} col-num">Satış</th><th class="${SC[i]} col-num">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;});h+='</tr>';
+  h+='</tr><tr class="sh">';allP.forEach((p,i)=>{const nc=i<2?'col-num-wide':'col-num-narrow';h+=`<th class="${SC[i]} ${nc}">Satış</th><th class="${SC[i]} ${nc}">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;});h+='</tr>';
   const pTots=allP.map(()=>({s:0,m:0,fl:[]})),sTots=allP.map(()=>({s:0,m:0,fl:[]}));
   const panda=users.filter(u=>u.inTotal),saxa=users.filter(u=>!u.inTotal);
   panda.forEach(u=>{
