@@ -1027,43 +1027,16 @@ function resetPasskey(){
 }
 
 async function showAdminGate(){
-  // Face ID ilə cəhd et
-  if(hasPasskey()){
-    const ok=await loginWithPasskey();
-    if(ok){
-      spinShow('Admin...');
-      const bin=await rBin(true);CFG=bin.cfg;
-      checkAndShowHoliday(gH(),true);
-      await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
-      spinHide();loadTheme('admin');openAdmin();
-      return;
-    }
-  }
-  // Şifrə ilə giriş
   const pw=prompt('Admin şifrəsi:');
   if(pw===null)return;
-  if(pw!==ADMIN_PW){alert('Şifrə yanlışdır.');return;}
-  spinShow('Admin...');
-  const bin=await rBin(true);CFG=bin.cfg;
-  checkAndShowHoliday(gH(),true);
-  await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
-  spinHide();loadTheme('admin');openAdmin();
-  // Face ID qeydiyyatı teklif et
-  if(window.PublicKeyCredential&&!hasPasskey()){
-    try{
-      const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
-      if(avail){
-        setTimeout(async()=>{
-          const ask=confirm('Face ID / Touch ID ilə admin girişini aktivləşdirək?
-(Növbəti dəfə şifrəsiz açılacaq)');
-          if(ask){
-            const ok=await registerPasskey();
-            if(ok)alert('✅ Face ID qeydiyyatı uğurlu!');
-            else alert('⚠️ Face ID qeydiyyatı uğursuz.');
-          }
-        },800);
-      }
-    }catch(e){}
+  if(pw===ADMIN_PW){
+    spinShow('Admin...');
+    const bin=await rBin(true);CFG=bin.cfg;
+    checkAndShowHoliday(gH(),true);
+    await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
+    spinHide();loadTheme('admin');openAdmin();
+  }else{
+    alert('Şifrə yanlışdır.');
   }
 }
 
