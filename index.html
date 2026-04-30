@@ -1,3 +1,4 @@
+cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
 <!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Panda Kids</title><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=Roboto+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inconsolata:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{width:100%;overflow-x:hidden;}
@@ -5,41 +6,25 @@ body{font-family:'Plus Jakarta Sans',sans-serif;color:#fff;min-height:100vh;tran
 body.dark{background-color:#060918;background-image:radial-gradient(ellipse 80% 60% at 20% 10%,rgba(99,60,180,.55) 0%,transparent 60%),radial-gradient(ellipse 70% 50% at 80% 5%,rgba(30,80,180,.5) 0%,transparent 55%),radial-gradient(ellipse 60% 70% at 5% 70%,rgba(20,60,140,.45) 0%,transparent 55%),radial-gradient(ellipse 75% 60% at 90% 80%,rgba(80,40,160,.45) 0%,transparent 55%);background-attachment:fixed;}
 body.light{background-color:#eef2f7;background-image:radial-gradient(ellipse 70% 50% at 15% 10%,rgba(30,58,110,.06) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 85% 90%,rgba(30,64,175,.05) 0%,transparent 50%);background-attachment:fixed;color:#1e293b;}
 body.light #gate{background:linear-gradient(135deg,#1e3a6e 0%,#2d5aa0 50%,#1d4ed8 100%);}
-body.light .gsub{color:rgba(255,255,255,.7);}
-body.light .glbl{color:rgba(255,255,255,.55);}
+body.light .gsub{color:rgba(255,255,255,.7);}body.light .glbl{color:rgba(255,255,255,.55);}
 body.light .ginp{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff;}
-body.light .ginp::placeholder{color:rgba(255,255,255,.5);}
-body.light .ginp:focus{border-color:#fbbf24;}
-body.light select.ginp option{background:#1e3a6e;color:#fff;}
-body.light .remrow label{color:rgba(255,255,255,.75);}
-body.light .gdiv{background:rgba(255,255,255,.2);}
-body.light .glink{color:rgba(255,255,255,.55);}
-body.light .gtitle{color:#fff;}
+body.light .ginp::placeholder{color:rgba(255,255,255,.5);}body.light .ginp:focus{border-color:#fbbf24;}
+body.light select.ginp option{background:#1e3a6e;color:#fff;}body.light .remrow label{color:rgba(255,255,255,.75);}
+body.light .gdiv{background:rgba(255,255,255,.2);}body.light .glink{color:rgba(255,255,255,.55);}body.light .gtitle{color:#fff;}
 body.light .admhdr{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:2px solid #e2e8f0;}
-body.light .admtitle h2{color:#0f172a;}
-body.light .admtitle p{color:#1d4ed8;}
+body.light .admtitle h2{color:#0f172a;}body.light .admtitle p{color:#1d4ed8;}
 body.light .ab{background:#fff;border:1.5px solid #e2e8f0;color:#374151;box-shadow:0 1px 3px rgba(0,0,0,.06);}
 body.light .ab.gold{background:linear-gradient(135deg,#fef9c3,#fde68a);border-color:#f59e0b;color:#78350f;}
 body.light .ab.view{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-color:#10b981;color:#065f46;}
 body.light .theme-btn{background:#f1f5f9;border:1.5px solid #cbd5e1;color:#475569;}
 body.light .sfhdr{background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:2px solid #e2e8f0;}
-body.light .sftitle{color:#0f172a;}
-body.light .sfdate{color:#1d4ed8;}
-body.light .backbtn{color:#64748b;}
+body.light .sftitle{color:#0f172a;}body.light .sfdate{color:#1d4ed8;}body.light .backbtn{color:#64748b;}
 body.light .plancard{background:#dbeafe;border:2px solid #93c5fd;box-shadow:0 2px 12px rgba(29,78,216,.12);}
-body.light .plantitle{color:#1d4ed8;}
-body.light .planitem{background:#eff6ff;border-color:#bfdbfe;}
-body.light .planitem.done{background:#d1fae5;border-color:#6ee7b7;}
-body.light .planitem.active{background:#fef3c7;border-color:#fcd34d;}
-body.light .pil{color:#475569;}
-body.light .piv{color:#0f172a;}
-body.light .pip.cur{color:#b45309;}
-body.light .ppl span{color:#475569;}
-body.light .ppl strong{color:#1d4ed8;}
-body.light .pbw{background:#bfdbfe;}
-body.light .ps{background:#eff6ff;border:1.5px solid #bfdbfe;}
-body.light .psl{color:#64748b;}
-body.light .psv{color:#1d4ed8;}
+body.light .plantitle{color:#1d4ed8;}body.light .planitem{background:#eff6ff;border-color:#bfdbfe;}
+body.light .planitem.done{background:#d1fae5;border-color:#6ee7b7;}body.light .planitem.active{background:#fef3c7;border-color:#fcd34d;}
+body.light .pil{color:#475569;}body.light .piv{color:#0f172a;}body.light .pip.cur{color:#b45309;}
+body.light .ppl span{color:#475569;}body.light .ppl strong{color:#1d4ed8;}body.light .pbw{background:#bfdbfe;}
+body.light .ps{background:#eff6ff;border:1.5px solid #bfdbfe;}body.light .psl{color:#64748b;}body.light .psv{color:#1d4ed8;}
 body.light .perblock{background:#fff;border:2px solid #93c5fd;box-shadow:0 2px 10px rgba(29,78,216,.1);}
 body.light .pt thead th{color:#374151;background:#dbeafe;border-bottom:2px solid #93c5fd;font-weight:800;}
 body.light .pt tbody td.pn{color:#0f172a;font-weight:700;}
@@ -56,53 +41,40 @@ body.light .saxa-firma-hdr{color:#78350f;background:rgba(245,158,11,.2);}
 body.light .saxa-firma-inp{background:#fff;border:1.5px solid #f59e0b;color:#78350f;}
 body.light .admld{color:#94a3b8;}
 body.light .planpanel{background:#fff;border:1.5px solid #e2e8f0;box-shadow:0 2px 12px rgba(0,0,0,.05);}
-body.light .ppaneltitle{color:#1d4ed8;}
-body.light .ppin{color:#0f172a;}
-body.light .ppibw{background:#e2e8f0;}
-body.light .ppi{background:#f8fafc;border:1.5px solid #e2e8f0;}
-body.light .ppist{color:#64748b;}
-body.light .ppist span{color:#1d4ed8;}
+body.light .ppaneltitle{color:#1d4ed8;}body.light .ppin{color:#0f172a;}body.light .ppibw{background:#e2e8f0;}
+body.light .ppi{background:#f8fafc;border:1.5px solid #e2e8f0;}body.light .ppist{color:#64748b;}body.light .ppist span{color:#1d4ed8;}
 body.light .ppilvl.grey{background:#f1f5f9;color:#94a3b8;border-color:#e2e8f0;}
-body.light .rc{box-shadow:0 4px 24px rgba(0,0,0,.1);}
-body.light .sf-rc{box-shadow:0 4px 20px rgba(0,0,0,.08);}
+body.light .rc{box-shadow:0 4px 24px rgba(0,0,0,.1);}body.light .sf-rc{box-shadow:0 4px 20px rgba(0,0,0,.08);}
 body.light .mobox{background:#fff;border:1.5px solid #e2e8f0;box-shadow:0 8px 40px rgba(0,0,0,.12);}
-body.light .mobox h3{color:#0f172a;}
-body.light .mos{background:#f8fafc;border:1.5px solid #e2e8f0;}
-body.light .mosn{color:#1d4ed8;}
-body.light .mof label{color:#64748b;}
+body.light .mobox h3{color:#0f172a;}body.light .mos{background:#f8fafc;border:1.5px solid #e2e8f0;}
+body.light .mosn{color:#1d4ed8;}body.light .mof label{color:#64748b;}
 body.light .mof input,.mof select{background:#fff;border:1.5px solid #e2e8f0;color:#0f172a;}
 body.light .mof select option{background:#fff;color:#0f172a;}
 body.light .moclose{background:#f1f5f9;color:#475569;border:1.5px solid #e2e8f0;}
 body.light .addbtn{background:#f8fafc;border:1.5px dashed #cbd5e1;color:#64748b;}
-body.light .cr{background:#f8fafc;}
-body.light .cr label{color:#374151;}
-body.light .mosect{color:#94a3b8;border-color:#e2e8f0;}
-body.light .fillperiod{background:#f1f5f9;}
-body.light .afrow input{background:#fff;border-color:#e2e8f0;color:#0f172a;}
+body.light .cr{background:#f8fafc;}body.light .cr label{color:#374151;}body.light .mosect{color:#94a3b8;border-color:#e2e8f0;}
+body.light .fillperiod{background:#f1f5f9;}body.light .afrow input{background:#fff;border-color:#e2e8f0;color:#0f172a;}
 body.light .af1inp{background:#fff;border-color:#e2e8f0;color:#0f172a;}
 body.light .period-sel label{background:#fff;border-color:#e2e8f0;color:#475569;}
 body.light .period-sel label.on{background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-color:#3b82f6;color:#1d4ed8;}
 body.light .jf-btn{background:#fff;border-color:#e2e8f0;color:#475569;}
 body.light .jf-btn.active{background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-color:#3b82f6;color:#1d4ed8;}
 body.light .jurnal-item{background:#f8fafc;border:1px solid #e2e8f0;}
-body.light .jurnal-name{color:#0f172a;}
-body.light .jurnal-device{color:#94a3b8;}
-body.light .jurnal-time{color:#1d4ed8;}
+body.light .jurnal-name{color:#0f172a;}body.light .jurnal-device{color:#94a3b8;}body.light .jurnal-time{color:#1d4ed8;}
 body.light .g-spin-box{background:rgba(255,255,255,.98);border-color:#e2e8f0;}
-body.light .g-spin-txt{color:#475569;}
-body.light .g-spin-ring{border-top-color:#1d4ed8;}
-body.light .g-spin-pct{color:#1d4ed8;}
+body.light .g-spin-txt{color:#475569;}body.light .g-spin-ring{border-top-color:#1d4ed8;}body.light .g-spin-pct{color:#1d4ed8;}
 
 /* ══ OX + RƏQƏM ══ */
-.rt td.nv{text-align:center;}
-.rt td.pv{text-align:center;}
+.nv-inner{display:flex;align-items:center;justify-content:flex-end;gap:3px;width:100%;}
+.nv-arrow{display:inline-flex;align-items:center;justify-content:center;width:16px;min-width:16px;flex-shrink:0;}
+.nv-val{text-align:right;font-weight:700;}
+.rt td.nv{text-align:right;}
+.rt td.pv{text-align:right;}
 .rt td.dsh{text-align:center;}
 
-/* ══ BAYRAM SİSTEMİ ══ */
-/* Konfetti */
+/* ══ BAYRAM ══ */
 @keyframes confettiFall{0%{transform:translateY(-100px) rotate(0deg);opacity:1;}100%{transform:translateY(110vh) rotate(720deg);opacity:0;}}
 .confetti-piece{position:fixed;width:10px;height:10px;pointer-events:none;z-index:9999;animation:confettiFall linear forwards;}
-/* Bayram bildirişi */
 .holiday-overlay{display:none;position:fixed;inset:0;z-index:9990;background:rgba(0,0,0,.65);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:20px;}
 .holiday-overlay.show{display:flex;}
 .holiday-box{background:linear-gradient(135deg,#1a0a3e 0%,#2d0a6e 50%,#1a0a3e 100%);border-radius:24px;padding:32px 24px;text-align:center;max-width:360px;width:100%;border:2px solid rgba(255,215,0,.4);box-shadow:0 0 60px rgba(255,215,0,.2),0 8px 40px rgba(0,0,0,.6);position:relative;overflow:hidden;}
@@ -114,18 +86,23 @@ body.light .g-spin-pct{color:#1d4ed8;}
 .holiday-msg{font-size:13px;color:rgba(255,255,255,.75);margin-bottom:20px;line-height:1.5;}
 .holiday-btn{padding:13px 32px;background:linear-gradient(135deg,#f0c060,#c9963a);border:none;border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;color:#060918;cursor:pointer;box-shadow:0 4px 20px rgba(201,150,58,.4);}
 .holiday-btn:active{transform:scale(.97);}
-/* Bayram paneli banner */
 .holiday-banner{display:none;border-radius:16px;padding:14px 18px;margin-bottom:14px;position:relative;overflow:hidden;cursor:default;}
 .holiday-banner.show{display:flex;align-items:center;gap:14px;}
-.hb-emoji{font-size:36px;flex-shrink:0;}
-.hb-text{flex:1;}
+.hb-emoji{font-size:36px;flex-shrink:0;}.hb-text{flex:1;}
 .hb-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:2px;}
 .hb-sub{font-size:12px;color:rgba(255,255,255,.75);font-weight:600;}
-.hb-days{font-size:11px;color:rgba(255,255,255,.55);margin-top:3px;font-weight:600;}
-/* Bayram twinkling stars */
 .hb-stars{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
 .hb-star{position:absolute;width:4px;height:4px;background:#fff;border-radius:50%;animation:twinkle 1.5s ease-in-out infinite;}
 @keyframes twinkle{0%,100%{opacity:.2;transform:scale(1);}50%{opacity:1;transform:scale(1.5);}}
+
+/* ══ AY SONU BİLDİRİŞ ══ */
+.monthend-overlay{display:none;position:fixed;inset:0;z-index:9991;background:rgba(0,0,0,.7);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:20px;}
+.monthend-overlay.show{display:flex;}
+.monthend-box{border-radius:24px;padding:28px 24px;text-align:center;max-width:360px;width:100%;}
+.monthend-emoji{font-size:64px;display:block;margin-bottom:12px;}
+.monthend-title{font-size:20px;font-weight:800;color:#fff;margin-bottom:8px;}
+.monthend-msg{font-size:13px;color:rgba(255,255,255,.8);margin-bottom:20px;line-height:1.6;white-space:pre-line;}
+.monthend-btn{padding:13px 32px;border:none;border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;cursor:pointer;}
 
 .screen{display:none;min-height:100vh;flex-direction:column;}.screen.active{display:flex;}
 #gate{align-items:center;justify-content:center;}
@@ -135,9 +112,7 @@ body.light .g-spin-pct{color:#1d4ed8;}
 .gsub{font-size:12px;color:rgba(255,255,255,.4);text-align:center;margin-top:-8px;}
 .glbl{width:100%;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.35);margin-bottom:-8px;}
 .ginp{width:100%;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.12);border-radius:14px;padding:13px 16px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:500;color:#fff;outline:none;}
-.ginp:focus{border-color:#c9963a;}
-select.ginp{appearance:none;cursor:pointer;}
-select.ginp option{color:#000;background:#fff;}
+.ginp:focus{border-color:#c9963a;}select.ginp{appearance:none;cursor:pointer;}select.ginp option{color:#000;background:#fff;}
 .gbtn{width:100%;padding:14px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;color:#060918;cursor:pointer;}
 .gerr{color:#fca5a5;font-size:12px;display:none;text-align:center;font-weight:600;}.gerr.show{display:block;}
 .gdiv{width:100%;height:1px;background:rgba(255,255,255,.08);}
@@ -165,24 +140,13 @@ select.ginp option{color:#000;background:#fff;}
 .sfhdr{background:rgba(6,9,24,.6);padding:11px 16px;border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;z-index:10;backdrop-filter:blur(16px);}
 .sfhi{width:100%;display:flex;align-items:center;gap:10px;}
 .sflogo{width:34px;height:34px;object-fit:contain;background:#fff;border-radius:9px;padding:2px;flex-shrink:0;}
-.sftxt{flex:1;min-width:0;}
-.sfhdr-right{flex-shrink:0;}
+.sftxt{flex:1;min-width:0;}.sfhdr-right{flex-shrink:0;}
 .backbtn{background:none;border:none;color:rgba(255,255,255,.4);font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;padding:0;margin-bottom:2px;display:block;}
 .sftitle{font-size:15px;font-weight:800;color:#fff;}
 .sfdate{font-size:11px;color:#c9963a;margin-top:1px;font-weight:600;}
 .sfbody{width:100%;padding:14px 14px 28px;flex:1;}
-@media(max-width:859px){
-  .sfbody{max-width:560px;margin:0 auto;}
-  .sf-periods-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:10px;}
-  .sf-saxa-row,.sf-btns-wrap{display:block;}
-}
-@media(min-width:860px){
-  .sfbody{max-width:1100px;margin:0 auto;padding:20px 32px 36px;}
-  .sf-periods-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
-  .sf-saxa-row{display:flex;justify-content:center;margin-bottom:16px;}
-  .sf-saxa-row>*{max-width:460px;width:100%;}
-  .sf-btns-wrap{max-width:460px;margin:0 auto;}
-}
+@media(max-width:859px){.sfbody{max-width:560px;margin:0 auto;}.sf-periods-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:10px;}.sf-saxa-row,.sf-btns-wrap{display:block;}}
+@media(min-width:860px){.sfbody{max-width:1100px;margin:0 auto;padding:20px 32px 36px;}.sf-periods-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}.sf-saxa-row{display:flex;justify-content:center;margin-bottom:16px;}.sf-saxa-row>*{max-width:460px;width:100%;}.sf-btns-wrap{max-width:460px;margin:0 auto;}}
 .plancard{background:rgba(255,255,255,.06);border-radius:16px;padding:14px;margin-bottom:14px;border:1px solid rgba(201,150,58,.2);}
 .plantitle{color:#c9963a;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;}
 .plangrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px;}
@@ -191,11 +155,9 @@ select.ginp option{color:#000;background:#fff;}
 .planitem.active{border-color:#f59e0b;background:rgba(245,158,11,.1);}
 .pil{font-size:9px;color:rgba(255,255,255,.45);margin-bottom:3px;font-weight:600;}
 .piv{font-size:12px;font-weight:800;color:#fff;}
-.pip{font-size:11px;font-weight:700;margin-top:3px;}
-.pip.done{color:#10b981;}.pip.cur{color:#f59e0b;}
+.pip{font-size:11px;font-weight:700;margin-top:3px;}.pip.done{color:#10b981;}.pip.cur{color:#f59e0b;}
 .ppl{display:flex;justify-content:space-between;margin-bottom:5px;}
-.ppl span{font-size:10px;color:rgba(255,255,255,.45);}
-.ppl strong{font-size:10px;color:#f0c060;font-weight:700;}
+.ppl span{font-size:10px;color:rgba(255,255,255,.45);}.ppl strong{font-size:10px;color:#f0c060;font-weight:700;}
 .pbw{background:rgba(255,255,255,.1);border-radius:20px;height:8px;overflow:hidden;}
 .pb{height:8px;border-radius:20px;transition:width .35s;}
 .psg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px;}
@@ -207,9 +169,7 @@ select.ginp option{color:#000;background:#fff;}
 .pt{width:100%;border-collapse:collapse;table-layout:fixed;}
 .pt thead th{padding:6px 7px;font-size:10px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.45);background:rgba(0,0,0,.2);text-align:center;white-space:nowrap;}
 .pt thead th:first-child{text-align:left;width:80px;}
-.pt thead th:nth-child(2){width:28%;}
-.pt thead th:nth-child(3){width:28%;}
-.pt thead th:nth-child(4){width:20%;}
+.pt thead th:nth-child(2){width:28%;}.pt thead th:nth-child(3){width:28%;}.pt thead th:nth-child(4){width:20%;}
 .pt tbody tr{border-top:1px solid rgba(255,255,255,.06);}
 .pt tbody td{padding:5px 7px;vertical-align:top;}
 .pt tbody td.pn{font-weight:700;font-size:12px;color:#fff;vertical-align:middle;padding-top:12px;}
@@ -218,8 +178,7 @@ select.ginp option{color:#000;background:#fff;}
 .ni:disabled{color:rgba(255,255,255,.3);cursor:not-allowed;background:rgba(255,255,255,.03);}
 .ni::placeholder{color:rgba(255,255,255,.2);font-size:12px;}
 .ni-f{width:100%;text-align:right;border:1.5px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 5px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:600;color:#f0c060;background:rgba(255,255,255,.05);outline:none;display:block;}
-.ni-f:focus{border-color:#c9963a;}
-.ni-f:disabled{color:rgba(255,255,255,.25);cursor:not-allowed;}
+.ni-f:focus{border-color:#c9963a;}.ni-f:disabled{color:rgba(255,255,255,.25);cursor:not-allowed;}
 .ni-f::placeholder{color:rgba(255,255,255,.18);}
 .editbtn{width:100%;padding:8px;background:transparent;border:1.5px solid rgba(255,255,255,.15);border-radius:9px;color:rgba(255,255,255,.7);font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-top:5px;display:block;}
 .delbtn2{width:100%;padding:10px;background:rgba(239,68,68,.1);border:1.5px solid rgba(239,68,68,.22);border-radius:10px;color:#fca5a5;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-top:8px;display:block;}
@@ -231,8 +190,7 @@ select.ginp option{color:#000;background:#fff;}
 .saxa-firma-block{background:rgba(245,158,11,.07);border-radius:14px;overflow:hidden;margin-bottom:10px;border:1px solid rgba(245,158,11,.2);}
 .saxa-firma-hdr{padding:9px 13px;font-size:13px;font-weight:800;color:#fde68a;background:rgba(120,53,15,.4);}
 .saxa-firma-inp{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(245,158,11,.25);border-radius:10px;padding:10px 12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:600;color:#fff;outline:none;text-align:right;}
-.saxa-firma-inp:focus{border-color:#f59e0b;}
-.saxa-firma-inp:disabled{color:rgba(255,255,255,.3);cursor:not-allowed;}
+.saxa-firma-inp:focus{border-color:#f59e0b;}.saxa-firma-inp:disabled{color:rgba(255,255,255,.3);cursor:not-allowed;}
 .saveallbtn{width:100%;padding:14px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);border:none;border-radius:14px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;cursor:pointer;margin-top:10px;box-shadow:0 4px 16px rgba(29,78,216,.3);}
 .saveallbtn:disabled{opacity:.45;cursor:not-allowed;}
 #admin,#viewer{background:transparent;}
@@ -240,8 +198,7 @@ select.ginp option{color:#000;background:#fff;}
 .admhdri{max-width:1600px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
 .admlogow{display:flex;align-items:center;gap:10px;}
 .admlogo{width:38px;height:38px;object-fit:contain;background:#fff;border-radius:10px;padding:3px;}
-.admtitle h2{font-size:15px;font-weight:800;color:#fff;}
-.admtitle p{font-size:11px;color:#c9963a;margin-top:2px;font-weight:600;}
+.admtitle h2{font-size:15px;font-weight:800;color:#fff;}.admtitle p{font-size:11px;color:#c9963a;margin-top:2px;font-weight:600;}
 .admacts{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
 .ab{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.8);border-radius:10px;padding:7px 11px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;}
 .ab.gold{background:rgba(201,150,58,.2);border-color:rgba(201,150,58,.4);color:#c9963a;}
@@ -251,20 +208,16 @@ select.ginp option{color:#000;background:#fff;}
 .rc{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,.35);margin-bottom:14px;}
 .rchdr{padding:15px 20px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;align-items:center;gap:12px;}
 .rclogo{width:40px;height:40px;object-fit:contain;background:#fff;border-radius:10px;padding:3px;flex-shrink:0;}
-.rct{flex:1;min-width:0;}
-.rct h2{color:#fff;font-size:14px;font-weight:800;}
-.rct p{color:rgba(255,255,255,.65);font-size:11px;margin-top:2px;}
-.rcd{text-align:right;flex-shrink:0;}
-.rday{color:#fff;font-size:26px;font-weight:800;line-height:1;}
-.rmo{color:rgba(255,255,255,.6);font-size:10px;margin-top:2px;font-weight:600;}
+.rct{flex:1;min-width:0;}.rct h2{color:#fff;font-size:14px;font-weight:800;}.rct p{color:rgba(255,255,255,.65);font-size:11px;margin-top:2px;}
+.rcd{text-align:right;flex-shrink:0;}.rday{color:#fff;font-size:26px;font-weight:800;line-height:1;}.rmo{color:rgba(255,255,255,.6);font-size:10px;margin-top:2px;font-weight:600;}
 .rctw{overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;}
-table.rt{border-collapse:collapse;table-layout:fixed;white-space:nowrap;}
+table.rt{border-collapse:collapse;white-space:nowrap;}
 table.rt th,table.rt td{border:1px solid #cdd5e0;padding:4px 8px;}
-table.rt .col-name{width:115px;}
-table.rt .col-num{width:94px;}
+table.rt .col-name{width:var(--rt-name-w,115px);}
+table.rt .col-num{width:var(--rt-num-w,94px);}
 table.rt .col-num-wide{width:120px;}
-table.rt .col-num-narrow{width:100px;}
-table.rt .col-pct{width:55px;}
+table.rt .col-num-narrow{width:96px;}
+table.rt .col-pct{width:var(--rt-pct-w,55px);}
 .rt .gh th{font-weight:800;color:#fff;vertical-align:middle;height:30px;font-size:13px;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;}
 .rt .gh .lb{background:#dce6f2;color:#1e3a6e;text-align:left;border-right:2px solid #b0c4de;font-weight:800;}
 .rt .gh .hb{background:#1d4ed8;}.rt .gh .ho{background:#c2410c;}.rt .gh .hg{background:#15803d;}.rt .gh .hp{background:#6d28d9;}
@@ -273,25 +226,24 @@ table.rt .col-pct{width:55px;}
 .rt .sh .sb{color:#1d4ed8;}.rt .sh .so{color:#b45309;}.rt .sh .sg{color:#15803d;}.rt .sh .sp{color:#6d28d9;}
 .rt .dr td{height:var(--rt-row-h,27px);padding:3px 8px;vertical-align:middle;border-bottom:1px solid #edf2f7;font-size:var(--rt-fs,12px);}
 .rt .dr .nm{font-weight:700;color:#0f1f3d;background:#f4f8fc;border-right:2px solid #dce4ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .dr .nv{text-align:center;color:var(--rt-num-col,#0f1f3d);font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);}
-.rt .dr .pv{text-align:center;color:#374151;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,12px);}
+.rt .dr .nv{text-align:right;color:var(--rt-num-col,#0f1f3d);font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);}
+.rt .dr .pv{text-align:right;color:#374151;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,12px);}
 .rt .dr .dsh{text-align:center;color:#b0bec5;}
-.rt .dr:nth-child(even) td{background:#f7fafc;}
-.rt .dr:nth-child(even) .nm{background:#e8f0f8;}
+.rt .dr:nth-child(even) td{background:#f7fafc;}.rt .dr:nth-child(even) .nm{background:#e8f0f8;}
 .rt .sr td{height:var(--rt-row-h,27px);padding:3px 8px;vertical-align:middle;border-bottom:1px solid #fde68a;background:#fffcf0!important;font-size:var(--rt-fs,12px);}
 .rt .sr .nm{font-weight:700;color:#7c3000;background:#fef3d0!important;border-right:2px solid #fde68a;font-style:italic;border-left:3px solid #f59e0b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .sr .nv{text-align:center;color:#6b3500;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);}
-.rt .sr .pv{text-align:center;color:#92580a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,12px);}
+.rt .sr .nv{text-align:right;color:#6b3500;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:var(--rt-fw,700);font-size:var(--rt-fs,12px);}
+.rt .sr .pv{text-align:right;color:#92580a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:600;font-size:var(--rt-fs,12px);}
 .rt .sr .dsh{text-align:center;color:#f0b429;}
 .rt .saxagap td{height:10px;background:#fff3cd!important;border-top:3px solid #f59e0b;padding:0;}
 .rt .tr td{height:var(--rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:#1e3a6e!important;border-top:2px solid #162d58;font-size:var(--rt-fs,12px);}
 .rt .tr .nm{color:#bfdbfe;font-weight:800;border-right:2px solid #2d5aa0;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .tr .nv{text-align:center;color:#fff;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);}
-.rt .tr .pv{text-align:center;color:#93c5fd;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,12px);}
+.rt .tr .nv{text-align:right;color:#fff;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);}
+.rt .tr .pv{text-align:right;color:#93c5fd;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,12px);}
 .rt .str td{height:var(--rt-tot-h,28px);padding:3px 8px;vertical-align:middle;background:#78350f!important;border-top:2px solid #92400e;font-size:var(--rt-fs,12px);}
 .rt .str .nm{color:#fde68a;font-weight:800;border-right:2px solid #92400e;font-family:'Plus Jakarta Sans',sans-serif;}
-.rt .str .nv{text-align:center;color:#fef3c7;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);}
-.rt .str .pv{text-align:center;color:#fde68a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,12px);}
+.rt .str .nv{text-align:right;color:#fef3c7;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:800;font-size:var(--rt-fs,12px);}
+.rt .str .pv{text-align:right;color:#fde68a;font-family:var(--rt-font,'Plus Jakarta Sans',sans-serif);font-weight:700;font-size:var(--rt-fs,12px);}
 .rcftr{padding:7px 18px;background:#edf2f9;border-top:1px solid #dce4ee;display:flex;justify-content:flex-end;}
 .rcftr span{color:#94a3b8;font-size:9px;font-weight:600;}
 .scrbtn{width:100%;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:14px;color:#060918;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:800;cursor:pointer;margin-top:4px;}
@@ -301,8 +253,7 @@ table.rt .col-pct{width:55px;}
 .ppgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:9px;}
 .ppi{background:rgba(255,255,255,.055);border-radius:12px;padding:11px 13px;border:1px solid rgba(255,255,255,.08);}
 .ppih{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
-.ppin{font-size:12px;font-weight:800;color:#fff;}
-.ppip{font-size:13px;font-weight:700;}
+.ppin{font-size:12px;font-weight:800;color:#fff;}.ppip{font-size:13px;font-weight:700;}
 .ppibw{background:rgba(255,255,255,.09);border-radius:20px;height:6px;overflow:hidden;margin-bottom:6px;}
 .ppib{height:6px;border-radius:20px;}
 .ppilevels{display:flex;gap:5px;margin-bottom:6px;}
@@ -311,13 +262,10 @@ table.rt .col-pct{width:55px;}
 .ppilvl.orange{background:rgba(245,158,11,.2);color:#f59e0b;border:1px solid rgba(245,158,11,.3);}
 .ppilvl.red{background:rgba(239,68,68,.15);color:#ef4444;border:1px solid rgba(239,68,68,.25);}
 .ppilvl.grey{background:rgba(255,255,255,.05);color:rgba(255,255,255,.3);border:1px solid rgba(255,255,255,.08);}
-.ppis{display:flex;gap:8px;flex-wrap:wrap;}
-.ppist{font-size:10px;color:rgba(255,255,255,.5);}
-.ppist span{color:#f0c060;font-weight:700;}
+.ppis{display:flex;gap:8px;flex-wrap:wrap;}.ppist{font-size:10px;color:rgba(255,255,255,.5);}.ppist span{color:#f0c060;font-weight:700;}
 .sf-rc{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 28px rgba(0,0,0,.3);margin-top:14px;}
 .sf-rc-hdr{padding:13px 18px;background:linear-gradient(90deg,#1e3a6e,#2d5aa0);display:flex;justify-content:space-between;align-items:center;}
-.sf-rc-title{color:#fff;font-size:14px;font-weight:800;}
-.sf-rc-date{color:rgba(255,255,255,.85);font-size:14px;font-weight:700;}
+.sf-rc-title{color:#fff;font-size:14px;font-weight:800;}.sf-rc-date{color:rgba(255,255,255,.85);font-size:14px;font-weight:700;}
 table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .sf-tbl th{background:#2d5aa0;color:#fff;font-size:12px;font-weight:800;padding:9px 16px;text-align:left;font-family:'Plus Jakarta Sans',sans-serif;}
 .sf-tbl th:last-child{text-align:right;width:150px;}
@@ -339,8 +287,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .jurnal-time{font-size:11px;color:#c9963a;font-weight:600;text-align:right;white-space:nowrap;}
 .jurnal-empty{font-size:12px;color:rgba(255,255,255,.3);padding:8px 0;}
 .imgov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;flex-direction:column;align-items:center;justify-content:center;padding:16px;}
-.imgov.show{display:flex;}
-.imgov img{max-width:100%;max-height:65vh;border-radius:8px;}
+.imgov.show{display:flex;}.imgov img{max-width:100%;max-height:65vh;border-radius:8px;}
 .imgbtns{display:flex;gap:10px;margin-top:14px;width:100%;max-width:380px;}
 .imgsave{flex:1;padding:13px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:12px;color:#060918;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:800;cursor:pointer;}
 .imgcls{padding:13px 20px;background:rgba(255,255,255,.1);border:none;border-radius:12px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;cursor:pointer;}
@@ -351,12 +298,10 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .mobox h3{color:#fff;font-size:15px;font-weight:800;margin-bottom:13px;}
 .mos{background:rgba(255,255,255,.05);border-radius:12px;padding:12px;margin-bottom:9px;border:1px solid rgba(255,255,255,.07);}
 .mosn{color:#c9963a;font-weight:800;font-size:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
-.mor2{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
-.mor3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
+.mor2{display:grid;grid-template-columns:1fr 1fr;gap:7px;}.mor3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;}
 .mof label{color:rgba(255,255,255,.4);font-size:9px;text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:3px;font-weight:700;}
 .mof input,.mof select{width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 9px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:600;color:#fff;outline:none;}
-.mof input:focus,.mof select:focus{border-color:#c9963a;}
-.mof select option{background:#0c1432;}
+.mof input:focus,.mof select:focus{border-color:#c9963a;}.mof select option{background:#0c1432;}
 .mosave{width:100%;padding:12px;background:linear-gradient(135deg,#c9963a,#f0c060);border:none;border-radius:10px;color:#060918;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:800;cursor:pointer;margin-top:8px;}
 .moclose{background:rgba(255,255,255,.07);border:none;color:rgba(255,255,255,.55);border-radius:8px;padding:8px 16px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;margin-top:6px;width:100%;}
 .addbtn{width:100%;padding:11px;background:rgba(255,255,255,.06);border:1.5px dashed rgba(255,255,255,.18);border-radius:10px;color:rgba(255,255,255,.5);font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;margin-bottom:9px;}
@@ -379,23 +324,24 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .period-sel label.on{background:rgba(201,150,58,.2);border-color:rgba(201,150,58,.4);color:#f0c060;}
 .style-preview{background:#fff;border-radius:10px;padding:10px;margin-top:12px;overflow-x:auto;}
 .preview-label{font-size:10px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;}
-/* Bayram modal iç stil */
 .hol-item{background:rgba(255,255,255,.05);border-radius:12px;padding:12px;margin-bottom:8px;border:1px solid rgba(255,255,255,.08);}
 .hol-row{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:6px;}
-.hol-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:6px;}
 .hol-name{color:#f0c060;font-weight:800;font-size:13px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
 </style></head><body class="dark">
 
-<!-- Bayram bildiriş ekranı -->
 <div class="holiday-overlay" id="hol-overlay">
   <div class="holiday-box">
     <div class="hb-stars" id="hb-stars-box"></div>
     <span class="holiday-emoji" id="hol-emoji">🎉</span>
     <div class="holiday-title" id="hol-title">Bayramınız mübarək!</div>
-    <div class="holiday-subtitle" id="hol-subtitle"></div>
+    <div class="holiday-subtitle" id="hol-subtitle">Panda Kids ailəsindən</div>
     <div class="holiday-msg" id="hol-msg">Panda Kids ailəsi olaraq sizə ən xoş arzularımızı çatdırırıq!</div>
     <button class="holiday-btn" onclick="closeHolidayOverlay()">🙏 Təşəkkür edirik!</button>
   </div>
+</div>
+
+<div class="monthend-overlay" id="me-overlay">
+  <div class="monthend-box" id="me-box"></div>
 </div>
 
 <div class="g-spin-overlay" id="g-spin">
@@ -469,15 +415,26 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 
 <div class="mo" id="mo-t"><div class="mobox"><h3>🎯 Aylıq Hədəflər</h3><div id="mot-body"></div><button class="mosave" onclick="saveTargets()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-t')">Bağla</button></div></div>
 <div class="mo" id="mo-u"><div class="mobox"><h3>👥 İstifadəçilər</h3><div id="mou-body"></div><button class="addbtn" onclick="addStore()">+ Yeni Şöbə</button><button class="mosave" onclick="saveUsers()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-u')">Bağla</button></div></div>
-<div class="mo" id="mo-set"><div class="mobox"><h3>⚙️ Parametrlər</h3><div class="mosect">Admin Parolu</div><div class="mor2" style="margin-bottom:9px"><div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••" autocomplete="current-password"></div><div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••" autocomplete="new-password"></div></div><button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button><div class="mosect">Jurnal</div><div class="cr"><input type="checkbox" id="param-admin-jurnal" onchange="saveJP()"><label for="param-admin-jurnal">Admin girişini jurnalda göstər</label></div><button class="moclose" onclick="closeMo('mo-set')" style="margin-top:12px">Bağla</button></div></div>
+<div class="mo" id="mo-set"><div class="mobox"><h3>⚙️ Parametrlər</h3>
+  <div class="mosect">Admin Parolu</div>
+  <div class="mor2" style="margin-bottom:9px">
+    <div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••" autocomplete="current-password"></div>
+    <div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••" autocomplete="new-password"></div>
+  </div>
+  <button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button>
+  <div class="mosect">Face ID / Touch ID</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.45);margin-bottom:8px;line-height:1.5;">Face ID ilə giriş işləmirsə sıfırlayın.</div>
+  <button class="mosave" style="background:rgba(99,102,241,.25);border:1px solid rgba(99,102,241,.4);margin-bottom:6px" onclick="resetPasskey()">🔐 Face ID Sıfırla</button>
+  <div class="mosect">Jurnal</div>
+  <div class="cr"><input type="checkbox" id="param-admin-jurnal" onchange="saveJP()"><label for="param-admin-jurnal">Admin girişini jurnalda göstər</label></div>
+  <button class="moclose" onclick="closeMo('mo-set')" style="margin-top:12px">Bağla</button>
+</div></div>
 <div class="mo" id="mo-fill"><div class="mobox"><h3>✏️ Admin Doldurma</h3><div class="mof" style="margin-bottom:10px"><label>Şöbə seç</label><select id="fill-sel" onchange="renderFillForm()"><option value="">— Seçin —</option></select></div><div id="fill-body"></div><button class="mosave" id="fill-btn" onclick="doAdminFill()" style="display:none">✓ Saxla</button><div class="ldbox" id="fill-ld">⏳ Göndərilir...</div><div class="okbox" id="fill-ok">✅ Saxlandı!</div><div class="erbox" id="fill-er">❌ Xəta.</div><button class="moclose" onclick="closeMo('mo-fill')">Bağla</button></div></div>
 <div class="mo" id="mo-saxa-admin"><div class="mobox"><h3>Saxa Firma</h3><div id="saxa-admin-body"></div><button class="mosave" onclick="saveSaxaSettings()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-saxa-admin')">Bağla</button></div></div>
 <div class="mo" id="mo-jurnal"><div class="mobox"><h3>🔐 Giriş Jurnalı</h3><div class="jurnal-filter" id="jurnal-filter"></div><div class="jurnal-list" id="jurnal-modal-list"></div><button class="moclose" onclick="closeMo('mo-jurnal')">Bağla</button></div></div>
-
-<!-- Bayram Modalı -->
 <div class="mo" id="mo-holiday"><div class="mobox">
   <h3>🎉 Bayram İdarəetməsi</h3>
-  <div style="font-size:11px;color:rgba(255,255,255,.45);margin-bottom:12px;line-height:1.5;">Bayramın başlama tarixini dövlət təqvimi əsasında daxil edin. Davam müddətini (neçə gün) siz təyin edin. İstifadəçilər həmin gün(lər)də daxil olanda bayram bildirişi görəcəklər.</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.45);margin-bottom:12px;line-height:1.5;">Başlama tarixini daxil edin (MM-GG, məs: 03-20). Davam günlərini siz təyin edin.</div>
   <div id="hol-body"></div>
   <button class="mosave" onclick="saveHolidays()">✓ Saxla</button>
   <button class="moclose" onclick="closeMo('mo-holiday')">Bağla</button>
@@ -555,14 +512,13 @@ const LS_CACHE='pk_bin_v2';
 let ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
 let curSid=null,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
 
-// ══ BAYRAM SİSTEMİ ══════════════════════════════════════════════════════════
-// Default bayramlar (Azərbaycan dövlət bayramları, tarixlər düzəldilə bilər)
+// ══ BAYRAM ══
 const DEF_HOLIDAYS=[
-  {id:'yeni_il',name:'Yeni İl',emoji:'🎆',color:'#1e3a8a',gradient:'linear-gradient(135deg,#1e1a4a,#312e6e)',startDate:'01-01',days:2,active:true,msg:'Yeni il uğurlu olsun! Hər gün yeni imkanlar gətirir.'},
-  {id:'novruz',name:'Novruz Bayramı',emoji:'🌸',color:'#065f46',gradient:'linear-gradient(135deg,#052e16,#14532d)',startDate:'03-20',days:5,active:true,msg:'Novruz bayramınız mübarək! Xoşbəxtlik, sağlıq və bolluq arzulayırıq.'},
-  {id:'8mart',name:'Qadınlar Günü',emoji:'💐',color:'#831843',gradient:'linear-gradient(135deg,#4a0520,#831843)',startDate:'03-08',days:1,active:true,msg:'Bütün qadınları 8 Mart — Dünya Qadınlar Günü münasibətilə təbrik edirik!'},
-  {id:'qalebe',name:'Qalib Günü',emoji:'🕊️',color:'#7c2d12',gradient:'linear-gradient(135deg,#3b0f05,#7c2d12)',startDate:'05-09',days:1,active:true,msg:'Qaliblik Günümüz mübarək! Şəhidlərimiz daim qəlbimizlədədir.'},
-  {id:'qurban',name:'Qurban Bayramı',emoji:'🌙',color:'#3b0764',gradient:'linear-gradient(135deg,#1e0033,#4c0099)',startDate:'06-06',days:3,active:true,msg:'Qurban Bayramınız mübarək! Allah qəbul eləsin.'},
+  {id:'yeni_il',name:'Yeni İl',emoji:'🎆',gradient:'linear-gradient(135deg,#1e1a4a,#312e6e)',startDate:'01-01',days:2,active:true,msg:'Yeni il uğurlu olsun!'},
+  {id:'novruz',name:'Novruz Bayramı',emoji:'🌸',gradient:'linear-gradient(135deg,#052e16,#14532d)',startDate:'03-20',days:5,active:true,msg:'Novruz bayramınız mübarək!'},
+  {id:'8mart',name:'Qadınlar Günü',emoji:'💐',gradient:'linear-gradient(135deg,#4a0520,#831843)',startDate:'03-08',days:1,active:true,msg:'8 Mart Dünya Qadınlar Günü mübarək!'},
+  {id:'qalebe',name:'Qalib Günü',emoji:'🕊️',gradient:'linear-gradient(135deg,#3b0f05,#7c2d12)',startDate:'05-09',days:1,active:true,msg:'Qaliblik Günümüz mübarək!'},
+  {id:'qurban',name:'Qurban Bayramı',emoji:'🌙',gradient:'linear-gradient(135deg,#1e0033,#4c0099)',startDate:'06-06',days:3,active:true,msg:'Qurban Bayramınız mübarək! Allah qəbul eləsin.'},
 ];
 
 function todayStr(){const d=new Date();return `${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
@@ -573,27 +529,24 @@ function getActiveHoliday(holidays){
     if(!h.active)continue;
     const[sm,sd]=h.startDate.split('-').map(Number);
     const[tm,td]=today.split('-').map(Number);
-    const startT=sm*100+sd;const todayT=tm*100+td;
-    // Dövrə hesabı — bayram days günü əhatə edir
+    const todayT=tm*100+td;
+    const dim=[31,29,31,30,31,30,31,31,30,31,30,31];
     for(let i=0;i<(h.days||1);i++){
       let m=sm,d_=sd+i;
-      const dim=[31,29,31,30,31,30,31,31,30,31,30,31];
       while(d_>dim[m-1]){d_-=dim[m-1];m++;if(m>12)m=1;}
-      const chk=m*100+d_;
-      if(chk===todayT)return h;
+      if(m*100+d_===todayT)return h;
     }
   }
   return null;
 }
-function holidaySeenKey(hid){return `pk_hol_seen_${hid}_${todayStr()}`;}
-function launchConfetti(colors){
-  const cnt=60;const cols=colors||['#f0c060','#c9963a','#fff','#fde68a','#93c5fd'];
-  for(let i=0;i<cnt;i++){
-    const el=document.createElement('div');
-    el.className='confetti-piece';
-    el.style.cssText=`left:${Math.random()*100}vw;top:-20px;background:${cols[Math.floor(Math.random()*cols.length)]};border-radius:${Math.random()>.5?'50%':'2px'};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;animation-duration:${2+Math.random()*2}s;animation-delay:${Math.random()*1}s;`;
-    document.body.appendChild(el);
-    el.addEventListener('animationend',()=>el.remove());
+function holSeenCount(hid){return parseInt(localStorage.getItem(`pk_hol_cnt_${hid}_${todayStr()}`)||'0');}
+function holIncrCount(hid){localStorage.setItem(`pk_hol_cnt_${hid}_${todayStr()}`,String(holSeenCount(hid)+1));}
+function launchConfetti(){
+  const cols=['#f0c060','#c9963a','#fff','#fde68a','#93c5fd','#a78bfa'];
+  for(let i=0;i<60;i++){
+    const el=document.createElement('div');el.className='confetti-piece';
+    el.style.cssText=`left:${Math.random()*100}vw;top:-20px;background:${cols[Math.floor(Math.random()*cols.length)]};border-radius:${Math.random()>.5?'50%':'2px'};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;animation-duration:${2+Math.random()*2}s;animation-delay:${Math.random()}s;`;
+    document.body.appendChild(el);el.addEventListener('animationend',()=>el.remove());
   }
 }
 function showHolidayOverlay(h){
@@ -603,71 +556,35 @@ function showHolidayOverlay(h){
   document.getElementById('hol-msg').textContent=h.msg||'Bayramınız mübarək!';
   const box=document.querySelector('.holiday-box');
   if(box)box.style.background=h.gradient||'linear-gradient(135deg,#1a0a3e,#2d0a6e)';
-  // Stars
   const sb=document.getElementById('hb-stars-box');
-  if(sb){sb.innerHTML='';for(let i=0;i<18;i++){const s=document.createElement('div');s.className='hb-star';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*1.5}s;`;sb.appendChild(s);}}
+  if(sb){sb.innerHTML='';for(let i=0;i<18;i++){const s=document.createElement('div');s.className='hb-star';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*1.5}s`;sb.appendChild(s);}}
   document.getElementById('hol-overlay').classList.add('show');
-  setTimeout(()=>launchConfetti(),300);
-  localStorage.setItem(holidaySeenKey(h.id),'1');
+  setTimeout(launchConfetti,300);
 }
 function closeHolidayOverlay(){document.getElementById('hol-overlay').classList.remove('show');}
-function isFirstDayOfHoliday(h){
-  // Yalnız bayramın BİRİNCİ günündə true qaytar
-  const today=todayStr();
-  return today===h.startDate;
-}
-// Neçə dəfə göstərilib - günlük say
-function holSeenCount(hid){
-  return parseInt(localStorage.getItem(`pk_hol_cnt_${hid}_${todayStr()}`)||'0');
-}
-function holIncrCount(hid){
-  const k=`pk_hol_cnt_${hid}_${todayStr()}`;
-  localStorage.setItem(k,String(holSeenCount(hid)+1));
-}
 // isAdmin=true → max 1 dəfə; isAdmin=false → max 2 dəfə
 function checkAndShowHoliday(holidays,isAdmin=false){
-  const h=getActiveHoliday(holidays);
-  if(!h)return;
+  const h=getActiveHoliday(holidays);if(!h)return;
   const maxCnt=isAdmin?1:2;
-  if(holSeenCount(h.id)<maxCnt){
-    showHolidayOverlay(h);
-    holIncrCount(h.id);
-  }
+  if(holSeenCount(h.id)<maxCnt){showHolidayOverlay(h);holIncrCount(h.id);}
 }
 function buildHolidayBanner(holidays){
-  // Paneldə bayram banneri üçün HTML
-  const h=getActiveHoliday(holidays);
-  if(!h)return '';
-  const[sm,sd]=h.startDate.split('-').map(Number);
-  const endD=new Date();endD.setMonth(sm-1);endD.setDate(sd+h.days-1);
-  const today=new Date();const diff=Math.ceil((endD-today)/(86400000))+1;
-  const daysLeft=Math.max(0,diff);
+  const h=getActiveHoliday(holidays);if(!h)return '';
   return `<div class="holiday-banner show" style="background:${h.gradient||'linear-gradient(135deg,#1a0a3e,#2d0a6e)'};border:1.5px solid rgba(255,215,0,.3);box-shadow:0 4px 24px rgba(0,0,0,.3);">
-    <div class="hb-stars">${Array.from({length:12},(_,i)=>`<div class="hb-star" style="left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*1.5}s"></div>`).join('')}</div>
+    <div class="hb-stars">${Array.from({length:12},()=>`<div class="hb-star" style="left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*1.5}s"></div>`).join('')}</div>
     <div class="hb-emoji">${h.emoji}</div>
-    <div class="hb-text">
-      <div class="hb-title">${h.name} mübarək! 🎉</div>
-      <div class="hb-sub">Panda Kids ailəsi olaraq sizi təbrik edirik!</div>
-      ${daysLeft>1?`<div class="hb-days">Bayram ${daysLeft} gün davam edir</div>`:'<div class="hb-days">Bayramın son günü</div>'}
-    </div>
+    <div class="hb-text"><div class="hb-title">${h.name} mübarək! 🎉</div><div class="hb-sub">Panda Kids ailəsi olaraq sizi təbrik edirik!</div></div>
   </div>`;
 }
-// Bayram modalı
 function openHolidayMo(){
-  const hols=(CFG?.holidays)||DEF_HOLIDAYS;
-  let h='';
-  const yr=new Date().getFullYear();
+  const hols=(CFG?.holidays)||DEF_HOLIDAYS;let h='';
   hols.forEach((hol,i)=>{
-    // MM-DD → YYYY-MM-DD for date input
-    const dateVal=`${yr}-${hol.startDate}`;
     h+=`<div class="hol-item">
       <div class="hol-name"><span>${hol.emoji} ${hol.name}</span>
-        <label style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:rgba(255,255,255,.6);cursor:pointer;">
-          <input type="checkbox" id="ha-${i}" ${hol.active?'checked':''} style="cursor:pointer"> Aktiv
-        </label>
+        <label style="display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:rgba(255,255,255,.6);cursor:pointer;"><input type="checkbox" id="ha-${i}" ${hol.active?'checked':''} style="cursor:pointer"> Aktiv</label>
       </div>
       <div class="hol-row">
-        <div class="mof"><label>Başlama tarixi</label><input type="date" id="hd-${i}" value="${dateVal}" style="color:#fff;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:9px;padding:8px 9px;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:600;outline:none;width:100%;-webkit-appearance:none;"></div>
+        <div class="mof"><label>Başlama tarixi (AA-GG)</label><input type="text" id="hd-${i}" value="${hol.startDate}" placeholder="03-20" maxlength="5"></div>
         <div class="mof"><label>Neçə gün davam edir</label><input type="number" id="hdays-${i}" value="${hol.days||1}" min="1" max="30" style="text-align:center"></div>
       </div>
       <div class="mof" style="margin-top:6px"><label>Təbrik mesajı</label><input type="text" id="hmsg-${i}" value="${hol.msg||''}"></div>
@@ -680,83 +597,48 @@ async function saveHolidays(){
   const hols=(CFG?.holidays)||DEF_HOLIDAYS;
   hols.forEach((hol,i)=>{
     hol.active=document.getElementById(`ha-${i}`)?.checked||false;
-    const raw=document.getElementById(`hd-${i}`)?.value||'';
-    // type=date YYYY-MM-DD verir, biz MM-DD saxlayırıq
-    if(raw.includes('-')&&raw.length===10){hol.startDate=raw.slice(5);}// YYYY-MM-DD → MM-DD
-    else if(raw.length===5){hol.startDate=raw.trim();}// artıq MM-DD formatı
+    hol.startDate=(document.getElementById(`hd-${i}`)?.value||hol.startDate).trim();
     hol.days=parseInt(document.getElementById(`hdays-${i}`)?.value)||1;
     hol.msg=document.getElementById(`hmsg-${i}`)?.value||hol.msg;
   });
   spinShow('Saxlanır...');
-  const {records,sf,cfg}=await rBin();
-  cfg.holidays=hols;CFG=cfg;
-  await wBin(records,sf,cfg);
-  spinHide();closeMo('mo-holiday');
-  alert('✅ Bayramlar saxlanıldı!');
+  const {records,sf,cfg}=await rBin();cfg.holidays=hols;CFG=cfg;
+  await wBin(records,sf,cfg);spinHide();closeMo('mo-holiday');alert('✅ Bayramlar saxlanıldı!');
 }
-// ══════════════════════════════════════════════════════════════
-// AY SONU NƏTİCƏ BİLDİRİŞİ
-// ══════════════════════════════════════════════════════════════
+
+// ══ AY SONU BİLDİRİŞ ══
 function isLastDayOfMonth(){const d=new Date();return d.getDate()===new Date(d.getFullYear(),d.getMonth()+1,0).getDate();}
 function checkMonthEndResult(sid,records){
   if(!isLastDayOfMonth())return;
-  const u=gU().find(u=>u.id===sid);
-  const t=gT()[sid];
-  if(!u||!t)return;
-  const periods=getUserPeriods(sid);
-  const ay0=periods.find(p=>p.id==='ay0');
-  if(!ay0)return;
-  const rec=findRec(records,u.name,ay0.sk);
-  if(!rec||!rec.satis)return;
+  const u=gU().find(u=>u.id===sid);const t=gT()[sid];if(!u||!t)return;
+  const periods=getUserPeriods(sid);const ay0=periods.find(p=>p.id==='ay0');if(!ay0)return;
+  const rec=findRec(records,u.name,ay0.sk);if(!rec||!rec.satis)return;
   const ms=rec.satis;
-  const box=document.getElementById('me-box');
-  const ov=document.getElementById('me-overlay');
+  const box=document.getElementById('me-box');const ov=document.getElementById('me-overlay');
   if(ms>=t.min){
     const pct=Math.round(ms/t.min*100);
-    let lvlTxt='';
-    if(ms>=t.max)lvlTxt='maksimum hədəfi';
-    else if(ms>=t.mid)lvlTxt='orta hədəfi';
-    else lvlTxt='minimum planı';
+    let lvlTxt=ms>=t.max?'maksimum hədəfi':ms>=t.mid?'orta hədəfi':'minimum planı';
     box.innerHTML=`<span class="monthend-emoji">🏆</span>
       <div class="monthend-title">Planı yerinə yetirdiniz!</div>
       <div style="width:48px;height:3px;border-radius:3px;background:rgba(16,185,129,.6);margin:0 auto 14px;"></div>
-      <div class="monthend-msg">${u.name} bu ay <strong style="color:#6ee7b7">${lvlTxt}</strong> yerinə yetirdi! Panda Kids ailəsi olaraq sizi təbrik edirik! 🎉</div>
+      <div class="monthend-msg">${u.name} bu ay <strong style="color:#6ee7b7">${lvlTxt}</strong> yerinə yetirdi! 🎉</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
-        <div style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:12px;padding:10px 8px;text-align:center;">
-          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Bu ay satış</div>
-          <div style="font-size:15px;font-weight:800;color:#6ee7b7;">${fmt(ms)} ₼</div>
-        </div>
-        <div style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:12px;padding:10px 8px;text-align:center;">
-          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Plan faizi</div>
-          <div style="font-size:15px;font-weight:800;color:#6ee7b7;">${pct}%</div>
-        </div>
+        <div style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:12px;padding:10px 8px;text-align:center;"><div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Bu ay satış</div><div style="font-size:15px;font-weight:800;color:#6ee7b7;">${fmt(ms)} ₼</div></div>
+        <div style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:12px;padding:10px 8px;text-align:center;"><div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Plan faizi</div><div style="font-size:15px;font-weight:800;color:#6ee7b7;">${pct}%</div></div>
       </div>
       <button class="monthend-btn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;width:100%;" onclick="document.getElementById('me-overlay').classList.remove('show')">Təşəkkür edirik! 🎉</button>`;
     box.style.cssText='background:linear-gradient(135deg,#052e16,#14532d);border:2px solid rgba(16,185,129,.5);border-radius:24px;padding:28px 24px;text-align:center;max-width:360px;width:100%;';
   }else{
-    const pct=Math.round(ms/t.min*100);
-    const qalan=fmt(t.min-ms);
+    const pct=Math.round(ms/t.min*100);const qalan=fmt(t.min-ms);
     box.innerHTML=`<span class="monthend-emoji">📊</span>
       <div class="monthend-title">Təəssüf, plan vurulmadı</div>
       <div style="width:48px;height:3px;border-radius:3px;background:rgba(239,68,68,.5);margin:0 auto 14px;"></div>
       <div class="monthend-msg">${u.name} bu ay minimum plana <strong style="color:#fca5a5">${qalan} ₼</strong> çatmadı. Növbəti ay daha yaxşı nəticə üçün birlikdə çalışacağıq! 💪</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
-        <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:10px 8px;text-align:center;">
-          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Bu ay satış</div>
-          <div style="font-size:15px;font-weight:800;color:#fca5a5;">${fmt(ms)} ₼</div>
-        </div>
-        <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:10px 8px;text-align:center;">
-          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Min. plan</div>
-          <div style="font-size:15px;font-weight:800;color:#fff;">${fmt(t.min)} ₼</div>
-        </div>
-        <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:10px 8px;text-align:center;">
-          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Plan faizi</div>
-          <div style="font-size:15px;font-weight:800;color:#fcd34d;">${pct}%</div>
-        </div>
-        <div style="background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:12px;padding:10px 8px;text-align:center;">
-          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Çatmayan məbləğ</div>
-          <div style="font-size:15px;font-weight:800;color:#fca5a5;">${qalan} ₼</div>
-        </div>
+        <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:10px 8px;text-align:center;"><div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Bu ay satış</div><div style="font-size:15px;font-weight:800;color:#fca5a5;">${fmt(ms)} ₼</div></div>
+        <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:10px 8px;text-align:center;"><div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Min. plan</div><div style="font-size:15px;font-weight:800;color:#fff;">${fmt(t.min)} ₼</div></div>
+        <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:10px 8px;text-align:center;"><div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Plan faizi</div><div style="font-size:15px;font-weight:800;color:#fcd34d;">${pct}%</div></div>
+        <div style="background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:12px;padding:10px 8px;text-align:center;"><div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Çatmayan məbləğ</div><div style="font-size:15px;font-weight:800;color:#fca5a5;">${qalan} ₼</div></div>
       </div>
       <button class="monthend-btn" style="background:rgba(255,255,255,.12);color:#fff;width:100%;" onclick="document.getElementById('me-overlay').classList.remove('show')">Bağla</button>`;
     box.style.cssText='background:linear-gradient(135deg,#3b0f05,#7c2d12);border:2px solid rgba(239,68,68,.4);border-radius:24px;padding:28px 24px;text-align:center;max-width:360px;width:100%;';
@@ -764,12 +646,11 @@ function checkMonthEndResult(sid,records){
   ov.classList.add('show');
 }
 
-// ══ TEMA ════════════════════════════════════════════════════════════════════
+// ══ TEMA ══
 let _curUid='guest';
 function themeKey(uid){return `pk_theme_${uid||'guest'}`;}
 function applyTheme(m){
-  document.body.className=m;
-  const isDark=m==='dark';
+  document.body.className=m;const isDark=m==='dark';
   ['tbtn-adm','tbtn-view'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=isDark?'🌙 Gecə':'☀️ Gündüz';});
   const st=document.getElementById('tbtn-store');if(st)st.textContent=isDark?'🌙':'☀️';
   localStorage.setItem(themeKey(_curUid),m);
@@ -778,12 +659,12 @@ function loadTheme(uid){_curUid=uid||'guest';applyTheme(localStorage.getItem(the
 function toggleTheme(){applyTheme(document.body.classList.contains('dark')?'light':'dark');}
 loadTheme('guest');
 
-// ══ SVG OXLAR ═══════════════════════════════════════════════════════════════
+// ══ SVG OXLAR ══
 function svgUp(c){return`<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 10.5V2.5M6.5 2.5L3 6M6.5 2.5L10 6" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
 function svgMid(c){return`<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5H10.5M10.5 6.5L7 3M10.5 6.5L7 10" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
 function svgDn(c){return`<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 2.5V10.5M6.5 10.5L10 7M6.5 10.5L3 7" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
 
-// ══ SPINNER ═════════════════════════════════════════════════════════════════
+// ══ SPINNER ══
 let _spinTimer=null,_spinPct=0;
 function spinShow(txt='Yüklənir...'){
   _spinPct=0;clearInterval(_spinTimer);
@@ -794,7 +675,7 @@ function spinShow(txt='Yüklənir...'){
 }
 function spinHide(){clearInterval(_spinTimer);document.getElementById('g-spin-pct').textContent='100%';setTimeout(()=>{document.getElementById('g-spin').classList.remove('show');_spinPct=0;},180);}
 
-// ══ RƏQƏM INPUT ═════════════════════════════════════════════════════════════
+// ══ RƏQƏM INPUT ══
 function parseNum(s){
   if(!s)return 0;let v=String(s).trim();
   if(v.includes('.')&&v.includes(',')){const lD=v.lastIndexOf('.');const lC=v.lastIndexOf(',');if(lC>lD){v=v.replace(/\./g,'').replace(',','.');}else{v=v.replace(/,/g,'');}}
@@ -810,7 +691,7 @@ function attachNumInput(inp){
 }
 function attachAllNum(){document.querySelectorAll('.ni,.saxa-firma-inp,.afrow input,.af1inp').forEach(attachNumInput);}
 
-// ══ STİL ════════════════════════════════════════════════════════════════════
+// ══ STİL ══
 const DEF_STYLE={font:"'Plus Jakarta Sans',sans-serif",fs:'12px',fw:'700',rh:'27px',pandaCol:'#0f1f3d',arrUp:'#22c55e',arrMid:'#f59e0b',nameW:'115px',numW:'94px',pctW:'62px'};
 function gStyle(){try{return{...DEF_STYLE,...(JSON.parse(localStorage.getItem('pk_style')||'null')||{})};}catch{return{...DEF_STYLE};}}
 function svStyle(v){localStorage.setItem('pk_style',JSON.stringify(v));}
@@ -840,7 +721,7 @@ function loadSI(st){
 function openStyleMo(){const st=gStyle();loadSI(st);applyStyleToDOM(st);document.getElementById('mo-style').classList.add('show');}
 applyStyleToDOM(gStyle());
 
-// ══ BIN ═════════════════════════════════════════════════════════════════════
+// ══ BIN ══
 const DEF_USERS=[
   {id:'p2',name:'Panda 2',pw:'p2-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
   {id:'p3',name:'Panda 3',pw:'p3-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
@@ -852,11 +733,11 @@ const DEF_USERS=[
 const DEF_TGTS={p2:{min:70000,mid:85000,max:100000},p3:{min:80000,mid:95000,max:110000},pe:{min:40000,mid:55000,max:70000},s1:{min:20000,mid:28000,max:35000},s2:{min:15000,mid:22000,max:30000}};
 const DEF_SAXA={fillers:['p2','p3','pe'],showInAdmin:true,firmName:'Saxa Outlet'};
 let CFG=null,_bc=null,_bcts=0;
-const MEM_TTL=60000,LS_TTL=300000;
+const MEM_TTL=15000,LS_TTL=300000;
 
 function progShow(msg='Yüklənir...'){document.getElementById('prog-overlay').classList.add('show');setProg(5,msg);}
 function setProg(pct,msg){document.getElementById('prog-bar').style.width=pct+'%';document.getElementById('prog-pct').textContent=pct+'%';if(msg)document.getElementById('prog-msg').textContent=msg;}
-function progAnimate(from,to,msg,ms){return new Promise(res=>{const step=(to-from)/20;let cur=from;const t=setInterval(()=>{cur=Math.min(cur+step,to);setProg(Math.round(cur),msg);if(cur>=to){clearInterval(t);res();}},ms/20);});}
+function progHide(){document.getElementById('prog-overlay').classList.remove('show');setProg(0,'');}
 
 function _parseBin(d){
   const users=(d.cfg?.users||DEF_USERS).map(u=>({...u,periods:u.periods||[1,1,1,1]}));
@@ -868,13 +749,14 @@ function _lsSet(data){try{localStorage.setItem(LS_CACHE,JSON.stringify({data,ts:
 async function rBin(force=false){
   const now=Date.now();
   if(!force&&_bc&&(now-_bcts)<MEM_TTL)return _bc;
-  if(!force&&!_bc){const ls=_lsGet();if(ls){_bc=ls;_bcts=now-MEM_TTL+5000;return _bc;}}
+  if(!force){const ls=_lsGet();if(ls){_bc=ls;_bcts=now-(MEM_TTL/2);return _bc;}}
   try{const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},cache:'no-store'});if(!r.ok)return _bc||defBin();const j=await r.json();_bc=_parseBin(j.data||{});_bcts=now;_lsSet(_bc);return _bc;}
   catch{return _bc||_lsGet()||defBin();}
 }
 function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true},holidays:DEF_HOLIDAYS}};}
 async function wBin(records,sf,cfg){
-  _bc={records,sf,cfg};_bcts=Date.now();_lsSet(_bc);
+  _bc={records,sf,cfg};_bcts=Date.now();
+  try{localStorage.removeItem(LS_CACHE);}catch{}
   try{await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data:{records,sf,cfg}})});}catch(e){console.error(e);}
 }
 function gU(){return CFG?.users||DEF_USERS;}
@@ -883,9 +765,7 @@ function gSS(){return CFG?.saxa||DEF_SAXA;}
 function gH(){return CFG?.holidays||DEF_HOLIDAYS;}
 function findRec(records,name,sk){return records.find(r=>r.sobe===name&&r.period===sk)||null;}
 function getRD(){return new Date();}
-function getResetHour(){return parseInt(localStorage.getItem('pk_reset_hour')||'17');}
-function saveResetTime(){const v=document.getElementById('param-reset-time')?.value||'17:00';const h=parseInt(v.split(':')[0]);localStorage.setItem('pk_reset_hour',String(h));alert('✅ Sıfırlanma vaxtı '+v+' olaraq saxlanıldı.');}
-function getFD(){const n=new Date(),d=new Date(n);if(n.getHours()<getResetHour())d.setDate(d.getDate()-1);return d;}
+function getFD(){const n=new Date(),d=new Date(n);if(n.getHours()<17)d.setDate(d.getDate()-1);return d;}
 function dLeft(){const d=getRD();const last=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();return d.getDate()===last?1:Math.max(0,last-d.getDate());}
 function daysPassed(){return Math.max(1,getRD().getDate());}
 function fmtRealDate(){const d=getRD();return `${GUNS[d.getDay()]}, ${d.getDate()} ${AY[d.getMonth()]} ${d.getFullYear()}`;}
@@ -900,12 +780,8 @@ function getSFDate(){const d=getFD();return `${d.getDate()} ${AY[d.getMonth()]} 
 function fmt(n){if(!n||Number(n)===0)return '—';return Math.round(Number(n)).toLocaleString('de-DE');}
 function fmtDec(n){if(!n||Number(n)===0)return '—';const num=Number(n);return num%1===0?Math.round(num).toLocaleString('de-DE'):num.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fmtSF(n){return fmtDec(n);}
-
-// FAİZ — mağaza: tam ədəd (76%), yekun: 1 kəsr (75.6%)
 function fmtFaizStore(f){if(!f||f===0)return '—';return Math.round(Number(f))+'%';}
 function fmtFaizAdmTotal(f){if(!f||f===null)return '—';const n=Number(f);const s=n.toFixed(1);return s.endsWith('.0')?Math.round(n)+'%':s+'%';}
-function fmtFaizAvg(f){if(!f||f===null)return '—';const n=Number(f);const s=n.toFixed(1);return s.endsWith('.0')?Math.round(n)+'%':s+'%';}
-
 function xPct(v,t){if(!v||!t)return null;const r=v/t*100;return r>=100?100:Math.floor(r*10)/10;}
 function pStr(p){if(p===null)return '—';return p===100?'100%':p.toFixed(1)+'%';}
 function avgF(arr){const v=arr.filter(x=>x>0);return v.length?v.reduce((a,b)=>a+b)/v.length:null;}
@@ -913,28 +789,17 @@ function planColor(ms,tgt,dl){if(!ms||!tgt)return 'red';if(ms>=tgt)return 'green
 function planBg(ms,tgt,dl){const c=planColor(ms,tgt,dl);return c==='green'?'#10b981':c==='orange'?'#f59e0b':'#ef4444';}
 function calcDaily(ms,tgt,dl){if(!tgt||ms>=tgt||dl<=0)return 0;return Math.ceil((tgt-ms)/dl);}
 
-// OX + RƏQƏM mərkəzdə
-function nvCell(arrType,val,st){
-  const upC=st?.arrUp||'#22c55e',midC=st?.arrMid||'#f59e0b',dnC='#ef4444';
-  let svg='';
-  if(arrType==='up')svg=svgUp(upC);
-  else if(arrType==='mid')svg=svgMid(midC);
-  else if(arrType==='dn')svg=svgDn(dnC);
-  // ox solda 16px sabit, məbləğ ortada, sağda 16px balans
-  if(svg) return '<td class="nv" style="padding:0 4px"><table style="width:100%;border:none;border-collapse:collapse"><tr><td style="width:16px;padding:0;border:none;vertical-align:middle">'+svg+'</td><td style="padding:0;border:none;text-align:center;vertical-align:middle">'+val+'</td><td style="width:16px;padding:0;border:none"></td></tr></table></td>';
-  return '<td class="nv">'+val+'</td>';
-}
-function nvCellPlain(val){return '<td class="nv" style="text-align:center">'+val+'</td>';}
+// ══ OX + RƏQƏM (köhnə işləyən versiya) ══
 function nvInner(arrType,st,val){
   const upC=st?.arrUp||'#22c55e',midC=st?.arrMid||'#f59e0b',dnC='#ef4444';
-  let svg='';
-  if(arrType==='up')svg=svgUp(upC);
-  else if(arrType==='mid')svg=svgMid(midC);
-  else if(arrType==='dn')svg=svgDn(dnC);
-  if(svg) return '<span style="display:inline-flex;align-items:center;gap:3px">'+svg+val+'</span>';
-  return val;
+  let arrow='';
+  if(arrType==='up')arrow=`<span class="nv-arrow">${svgUp(upC)}</span>`;
+  else if(arrType==='mid')arrow=`<span class="nv-arrow">${svgMid(midC)}</span>`;
+  else if(arrType==='dn')arrow=`<span class="nv-arrow">${svgDn(dnC)}</span>`;
+  return `<div class="nv-inner">${arrow}<span class="nv-val">${val}</span></div>`;
 }
-
+function nvCell(arrType,val,st){return `<td class="nv">${nvInner(arrType,st,val)}</td>`;}
+function nvCellPlain(val){return `<td class="nv"><div class="nv-inner"><span class="nv-val">${val}</span></div></td>`;}
 function getArrType(ds,ms,minT,dl){if(!ds)return '';const rm=Math.max(0,minT-ms);if(rm<=0)return 'up';const dn=calcDaily(ms,minT,dl);if(!dn)return '';const p=ds/dn*100;return p>=100?'up':p>=70?'mid':'dn';}
 function getArrTypeMonth(ms,minT,dl){if(!ms)return '';if(ms>=minT)return 'up';const avg=ms/daysPassed();return ms+avg*dl>=minT?'mid':'dn';}
 
@@ -952,11 +817,12 @@ function closeMo(id){document.getElementById(id).classList.remove('show');}
 function logout(){curSid=null;document.getElementById('gpw').value='';document.getElementById('gerr').classList.remove('show');document.getElementById('gsel').value='';loadTheme('guest');goTo('gate');}
 
 async function buildSel(){
+  ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
   const ls=_lsGet();
-  if(ls){CFG=ls.cfg;_bc=ls;_bcts=Date.now()-MEM_TTL+10000;fillSel();rBin(true).then(bin=>{CFG=bin.cfg;fillSel();}).catch(()=>{});return;}
-  progShow('Yüklənir...');await progAnimate(5,60,'Məlumatlar...',400);
-  const bin=await rBin(true);CFG=bin.cfg;await progAnimate(60,100,'Hazır!',150);
-  document.getElementById('prog-overlay').classList.remove('show');setProg(0,'');fillSel();
+  if(ls){CFG=ls.cfg;_bc=ls;_bcts=Date.now()-(MEM_TTL/2);fillSel();rBin(true).then(bin=>{CFG=bin.cfg;fillSel();}).catch(()=>{});return;}
+  progShow('Yüklənir...');
+  let pct=5;const timer=setInterval(()=>{pct=Math.min(pct+8,85);setProg(Math.round(pct),'Məlumatlar...');},80);
+  try{const bin=await rBin(true);CFG=bin.cfg;}finally{clearInterval(timer);setProg(100,'Hazır!');setTimeout(()=>{progHide();fillSel();},150);}
 }
 function fillSel(){
   ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
@@ -975,37 +841,31 @@ async function doLogin(){
   document.getElementById('gerr').classList.remove('show');
   if(rem)localStorage.setItem('pk_rem',JSON.stringify({sid,pw}));else localStorage.removeItem('pk_rem');
   loadTheme(sid);
-  spinShow('Giriş edilir...');const bin=await rBin();CFG=bin.cfg;
-  // Bayram yoxla — giriş zamanı
-  checkAndShowHoliday(gH());
-  await logLogin(u.name,false,bin.records,bin.sf,bin.cfg);spinHide();
+  let bin=_bc;
+  if(!bin){spinShow('Giriş edilir...');bin=await rBin();spinHide();}
+  CFG=bin.cfg;
+  checkAndShowHoliday(gH(),false);
+  logLogin(u.name,false,bin.records,bin.sf,bin.cfg);
   if(u.type==='viewer')openViewer(u);else{curSid=sid;openStoreForm(sid);}
 }
 
-// ── PASSKEY (Face ID / Touch ID) ──────────────────────────────
+// ══ PASSKEY / FACE ID ══
 function hasPasskey(){return !!localStorage.getItem('pk_passkey_id');}
 async function registerPasskey(){
   if(!window.PublicKeyCredential)return false;
   try{
     const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
     if(!avail)return false;
-    const challenge=crypto.getRandomValues(new Uint8Array(32));
-    const userId=crypto.getRandomValues(new Uint8Array(16));
     const cred=await navigator.credentials.create({publicKey:{
-      challenge,
+      challenge:crypto.getRandomValues(new Uint8Array(32)),
       rp:{name:'Panda Kids Admin',id:window.location.hostname||'localhost'},
-      user:{id:userId,name:'admin',displayName:'Panda Kids Admin'},
+      user:{id:crypto.getRandomValues(new Uint8Array(16)),name:'admin',displayName:'Panda Kids Admin'},
       pubKeyCredParams:[{alg:-7,type:'public-key'},{alg:-257,type:'public-key'}],
       authenticatorSelection:{authenticatorAttachment:'platform',userVerification:'required',residentKey:'required'},
       timeout:60000,
     }});
-    if(cred){
-      const idArr=new Uint8Array(cred.rawId);
-      const idB64=btoa(String.fromCharCode(...idArr));
-      localStorage.setItem('pk_passkey_id',idB64);
-      return true;
-    }
-  }catch(e){console.log('Passkey register error:',e);}
+    if(cred){localStorage.setItem('pk_passkey_id',btoa(String.fromCharCode(...new Uint8Array(cred.rawId))));return true;}
+  }catch(e){console.log('Passkey register:',e);}
   return false;
 }
 async function loginWithPasskey(){
@@ -1013,38 +873,26 @@ async function loginWithPasskey(){
   try{
     const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
     if(!avail)return false;
-    const challenge=crypto.getRandomValues(new Uint8Array(32));
-    const cred=await navigator.credentials.get({publicKey:{
-      challenge,timeout:30000,userVerification:'required',
-      rpId:window.location.hostname||'localhost',
-    }});
+    const cred=await navigator.credentials.get({publicKey:{challenge:crypto.getRandomValues(new Uint8Array(32)),timeout:30000,userVerification:'required',rpId:window.location.hostname||'localhost'}});
     return !!cred;
   }catch(e){return false;}
 }
-function resetPasskey(){
-  localStorage.removeItem('pk_passkey_id');
-  alert('✅ Face ID sıfırlandı. Növbəti girişdə şifrə tələb olunacaq.');
-}
+function resetPasskey(){localStorage.removeItem('pk_passkey_id');alert('✅ Face ID sıfırlandı.');}
 
 async function showAdminGate(){
   if(hasPasskey()){
     const ok=await loginWithPasskey();
     if(ok){
-      spinShow('Admin...');
-      const bin=await rBin(true);CFG=bin.cfg;
-      checkAndShowHoliday(gH(),true);
-      await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
-      spinHide();loadTheme('admin');openAdmin();
-      return;
+      spinShow('Admin...');const bin=await rBin(true);CFG=bin.cfg;
+      checkAndShowHoliday(gH(),true);await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
+      spinHide();loadTheme('admin');openAdmin();return;
     }
   }
   const pw=prompt('Admin şifrəsi:');
   if(pw===null)return;
   if(pw!==ADMIN_PW){alert('Şifrə yanlışdır.');return;}
-  spinShow('Admin...');
-  const bin=await rBin(true);CFG=bin.cfg;
-  checkAndShowHoliday(gH(),true);
-  await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
+  spinShow('Admin...');const bin=await rBin(true);CFG=bin.cfg;
+  checkAndShowHoliday(gH(),true);await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
   spinHide();loadTheme('admin');openAdmin();
   if(window.PublicKeyCredential&&!hasPasskey()){
     try{
@@ -1052,13 +900,12 @@ async function showAdminGate(){
       if(avail){
         setTimeout(async()=>{
           const ask=confirm('Face ID / Touch ID ilə admin girişini aktivləşdirək?\n(Növbəti dəfə şifrəsiz açılacaq)');
-          if(ask){const ok=await registerPasskey();if(ok)alert('✅ Face ID qeydiyyatı uğurlu!');else alert('⚠️ Uğursuz, yenidən cəhd edin.');}
+          if(ask){const ok=await registerPasskey();alert(ok?'✅ Face ID qeydiyyatı uğurlu!':'⚠️ Uğursuz, yenidən cəhd edin.');}
         },800);
       }
     }catch(e){}
   }
 }
-
 
 function planCard(sid,ms,records){
   const t=gT()[sid];if(!t)return '';
@@ -1098,15 +945,16 @@ async function openStoreForm(sid){
   document.getElementById('sftitle').textContent=u.name;
   document.getElementById('sfdate').textContent=fmtRealDate();
   document.getElementById('sfbody').innerHTML='<div class="admld">Yüklənir...</div>';
-  goTo('store-form');spinShow('Məlumatlar yüklənir...');
-  const {records,sf,cfg}=await rBin(true);CFG=cfg;window._cr=records;window._csf=sf;
-  spinHide();renderFormData(sid,records,sf);
+  goTo('store-form');
+  let bin=_bc;
+  if(!bin||(Date.now()-_bcts)>MEM_TTL){spinShow('Məlumatlar yüklənir...');bin=await rBin(true);spinHide();}
+  CFG=bin.cfg;window._cr=bin.records;window._csf=bin.sf;
+  renderFormData(sid,bin.records,bin.sf);
 }
 function renderFormData(sid,records,sf){
   const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
   const ay0=periods.find(p=>p.id==='ay0');const ms=ay0?findRec(records,u.name,ay0.sk)?.satis||0:0;
   const t_=gT()[sid];let planH=t_?planCard(sid,ms,records):'';
-  // Bayram banneri mağaza formunda
   const holBanner=buildHolidayBanner(gH());
   let periodsH='';
   periods.forEach((period,pi)=>{
@@ -1162,13 +1010,12 @@ async function saveAll(sid){
     }
     const ss=gSS();if(ss.fillers.includes(sid)){const sfv=parseNum(document.getElementById('sf-inp')?.value);if(sfv>0){any=true;sf[getSFKey()+'_'+sid]={satis:sfv};}}
     if(!any){spinHide();document.getElementById('ldb').classList.remove('show');if(sab)sab.disabled=false;alert('Ən azı bir sahəni doldurun.');return;}
-    await wBin(records,sf,cfg);window._cr=records;window._csf=sf;
+    await wBin(records,sf,cfg);_bcts=0;window._cr=records;window._csf=sf;
     spinHide();document.getElementById('ldb').classList.remove('show');document.getElementById('okb').classList.add('show');document.getElementById('okb').textContent='✅ Məlumatlar yadda saxlandı!';
     if(sab)sab.textContent='✅ Saxlanıldı';
     periods.forEach(p=>{['s-','m-','f-'].forEach(pref=>{const el=document.getElementById(pref+p.id);if(el){el.disabled=true;el.style.border='';}});});
     const sfInp=document.getElementById('sf-inp');if(sfInp){sfInp.disabled=true;sfInp.style.border='';}
-    // AY SONU NƏTİCƏ BİLDİRİŞİ
-    checkMonthEndResult(sid,records);
+    setTimeout(()=>checkMonthEndResult(sid,records),600);
     setTimeout(()=>renderFormData(sid,records,sf),1200);
   }catch(e){spinHide();document.getElementById('ldb').classList.remove('show');document.getElementById('erb').classList.add('show');if(sab){sab.disabled=false;sab.textContent='💾 Hamısını Yadda Saxla';}}
 }
@@ -1176,21 +1023,28 @@ async function deleteToday(sid){
   if(!confirm('Bütün məlumatlar silinsin?'))return;
   const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
   spinShow('Silinir...');
-  try{const {records,sf,cfg}=await rBin(true);periods.forEach(p=>{const i=records.findIndex(r=>r.sobe===u.name&&r.period===p.sk);if(i>=0)records.splice(i,1);});delete sf[getSFKey()+'_'+sid];await wBin(records,sf,cfg);spinHide();await openStoreForm(sid);}
+  try{const {records,sf,cfg}=await rBin(true);periods.forEach(p=>{const i=records.findIndex(r=>r.sobe===u.name&&r.period===p.sk);if(i>=0)records.splice(i,1);});delete sf[getSFKey()+'_'+sid];await wBin(records,sf,cfg);_bcts=0;spinHide();await openStoreForm(sid);}
   catch{spinHide();alert('Silinmə xətası.');}
 }
 
-// ══ HESABAT CƏDVƏLİ ═════════════════════════════════════════════════════════
+// ══ CƏDVƏLİ QURMA ══
 function buildTable(records,sf,tblId,ldId){
   const users=gU().filter(u=>u.type==='store');const targets=gT(),dl=dLeft();const allP=getAllPeriods();const st=gStyle();
   const D={};users.forEach(u=>{const uP=getUserPeriods(u.id);D[u.name]={};allP.forEach(p=>{const up=uP.find(x=>x.id===p.id);D[u.name][p.id]=up?findRec(records,u.name,up.sk):null;});});
-  // Günlük(0) və aylıq(1) geniş col-num-wide, keçən il(2) və 2il(3) dar col-num-narrow
-  let h='<colgroup>';allP.forEach((p,pi)=>{
-    const numCls=pi<2?'col-num-wide':'col-num-narrow';
-    h+='<col class="col-name"><col class="'+numCls+'"><col class="'+numCls+'"><col class="col-pct">';
-  });h+='</colgroup>';
+  // Colgroup: günlük(0)+aylıq(1) geniş, keçən il(2)+2il(3) dar
+  let h='<colgroup>';
+  allP.forEach((p,pi)=>{
+    const nc=pi<2?'col-num-wide':'col-num-narrow';
+    h+=`<col class="col-name"><col class="${nc}"><col class="${nc}"><col class="col-pct">`;
+  });
+  h+='</colgroup>';
   h+='<tr class="gh">';allP.forEach((p,i)=>{h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th><th colspan="3" class="${HC[i]}" style="font-size:13px;font-weight:800">${p.label}</th>`;});
-  h+='</tr><tr class="sh">';allP.forEach((p,i)=>{const nc=i<2?'col-num-wide':'col-num-narrow';h+=`<th class="${SC[i]} ${nc}">Satış</th><th class="${SC[i]} ${nc}">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;});h+='</tr>';
+  h+='</tr><tr class="sh">';
+  allP.forEach((p,i)=>{
+    const nc=i<2?'col-num-wide':'col-num-narrow';
+    h+=`<th class="${SC[i]} ${nc}">Satış</th><th class="${SC[i]} ${nc}">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;
+  });
+  h+='</tr>';
   const pTots=allP.map(()=>({s:0,m:0,fl:[]})),sTots=allP.map(()=>({s:0,m:0,fl:[]}));
   const panda=users.filter(u=>u.inTotal),saxa=users.filter(u=>!u.inTotal);
   panda.forEach(u=>{
@@ -1266,7 +1120,6 @@ function planPanelHtml(records,forSaxa){
 
 function mkPanel(id){
   const d=getRD();
-  // Bayram qeydi şəkil üçün
   const activeHol=getActiveHoliday(gH());
   const holRow=activeHol?`<div style="background:${activeHol.gradient||'linear-gradient(90deg,#3b0764,#6d28d9)'};padding:8px 20px;display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">${activeHol.emoji}</span><span style="font-size:12px;font-weight:700;color:#fde68a;">${activeHol.name} münasibətilə bütün əməkdaşlarımızı təbrik edirik! 🎉</span></div>`:'';
   return `<div class="rc" id="rc-${id}">
@@ -1316,7 +1169,6 @@ async function loadViewer(){
   }catch{body.innerHTML='<div class="admld">❌ Yüklənmədi.</div>';}
 }
 
-// ŞƏKİL 4K
 async function takeScr(id){
   const card=document.getElementById(id),tbl=card.querySelector('.rt');const tblW=tbl?tbl.scrollWidth+2:card.scrollWidth;
   const tw=card.querySelector('.rctw');const of_=tw.style.overflow,ow_=tw.style.width,oh_=tw.style.maxHeight;
@@ -1347,7 +1199,7 @@ async function renderFillForm(){
   const sid=document.getElementById('fill-sel').value;if(!sid){document.getElementById('fill-body').innerHTML='';document.getElementById('fill-btn').style.display='none';return;}
   const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
   document.getElementById('fill-body').innerHTML='<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">Yüklənir...</div>';
-  const {records,sf}=await rBin();window._fr=records;window._fsf=sf;
+  const {records,sf}=await rBin(true);window._fr=records;window._fsf=sf;
   const inpSt='width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 8px;font-family:\'Plus Jakarta Sans\',sans-serif;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;';
   let h='';
   periods.forEach((p,pi)=>{
@@ -1384,7 +1236,7 @@ async function doAdminFill(){
     }
     const ss=gSS();if(ss.fillers.includes(sid)){const sfv=parseNum(document.getElementById('af-sf')?.value);if(sfv>0){any=true;sf[getSFKey()+'_'+sid]={satis:sfv};}}
     if(!any){spinHide();alert('Ən azı bir sahəni doldurun.');document.getElementById('fill-btn').disabled=false;document.getElementById('fill-ld').classList.remove('show');return;}
-    const {cfg}=await rBin();await wBin(records,sf,cfg);
+    const {cfg}=await rBin();await wBin(records,sf,cfg);_bcts=0;
     spinHide();document.getElementById('fill-ld').classList.remove('show');document.getElementById('fill-ok').classList.add('show');
   }catch{spinHide();document.getElementById('fill-ld').classList.remove('show');document.getElementById('fill-er').classList.add('show');}
   document.getElementById('fill-btn').disabled=false;
@@ -1445,7 +1297,11 @@ async function saveSaxaSettings(){
   const {records,sf,cfg}=await rBin();cfg.saxa={fillers,firmName:document.getElementById('sf-name')?.value||'Saxa Outlet',showInAdmin:document.getElementById('sf-show')?.checked||false};
   CFG=cfg;await wBin(records,sf,cfg);spinHide();closeMo('mo-saxa-admin');alert('✅ Saxlandı!');
 }
-async function openSettingsMo(){const {cfg}=await rBin();CFG=cfg;const cb=document.getElementById('param-admin-jurnal');if(cb)cb.checked=cfg.jp?.showAdmin||false;document.getElementById('mo-set').classList.add('show');}
+async function openSettingsMo(){
+  const {cfg}=await rBin();CFG=cfg;
+  const cb=document.getElementById('param-admin-jurnal');if(cb)cb.checked=cfg.jp?.showAdmin||false;
+  document.getElementById('mo-set').classList.add('show');
+}
 async function saveJP(){const showAdmin=document.getElementById('param-admin-jurnal')?.checked||false;const {records,sf,cfg}=await rBin();cfg.jp={showAdmin};CFG=cfg;await wBin(records,sf,cfg);}
 function changeAdminPw(){
   const o=document.getElementById('oldpw').value,n=document.getElementById('newpw').value;
@@ -1453,3 +1309,5 @@ function changeAdminPw(){
   ADMIN_PW=n;localStorage.setItem('pk_apw',n);document.getElementById('oldpw').value='';document.getElementById('newpw').value='';alert('✅ Admin parolu dəyişdirildi!');
 }
 </script></body></html>
+HTMLEOF
+echo "Done: $(wc -c < /mnt/user-data/outputs/index.html) bytes"</script></body></html>
