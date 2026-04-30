@@ -93,16 +93,13 @@ body.light .g-spin-txt{color:#475569;}
 body.light .g-spin-ring{border-top-color:#1d4ed8;}
 body.light .g-spin-pct{color:#1d4ed8;}
 
-/* ══ OX + RƏQƏM ══ */
 .rt td.nv{text-align:center;}
 .rt td.pv{text-align:center;}
 .rt td.dsh{text-align:center;}
 
-/* ══ BAYRAM SİSTEMİ ══ */
-/* Konfetti */
+/* BAYRAM SİSTEMİ */
 @keyframes confettiFall{0%{transform:translateY(-100px) rotate(0deg);opacity:1;}100%{transform:translateY(110vh) rotate(720deg);opacity:0;}}
 .confetti-piece{position:fixed;width:10px;height:10px;pointer-events:none;z-index:9999;animation:confettiFall linear forwards;}
-/* Bayram bildirişi */
 .holiday-overlay{display:none;position:fixed;inset:0;z-index:9990;background:rgba(0,0,0,.65);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:20px;}
 .holiday-overlay.show{display:flex;}
 .holiday-box{background:linear-gradient(135deg,#1a0a3e 0%,#2d0a6e 50%,#1a0a3e 100%);border-radius:24px;padding:32px 24px;text-align:center;max-width:360px;width:100%;border:2px solid rgba(255,215,0,.4);box-shadow:0 0 60px rgba(255,215,0,.2),0 8px 40px rgba(0,0,0,.6);position:relative;overflow:hidden;}
@@ -114,7 +111,6 @@ body.light .g-spin-pct{color:#1d4ed8;}
 .holiday-msg{font-size:13px;color:rgba(255,255,255,.75);margin-bottom:20px;line-height:1.5;}
 .holiday-btn{padding:13px 32px;background:linear-gradient(135deg,#f0c060,#c9963a);border:none;border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;color:#060918;cursor:pointer;box-shadow:0 4px 20px rgba(201,150,58,.4);}
 .holiday-btn:active{transform:scale(.97);}
-/* Bayram paneli banner */
 .holiday-banner{display:none;border-radius:16px;padding:14px 18px;margin-bottom:14px;position:relative;overflow:hidden;cursor:default;}
 .holiday-banner.show{display:flex;align-items:center;gap:14px;}
 .hb-emoji{font-size:36px;flex-shrink:0;}
@@ -122,10 +118,18 @@ body.light .g-spin-pct{color:#1d4ed8;}
 .hb-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:2px;}
 .hb-sub{font-size:12px;color:rgba(255,255,255,.75);font-weight:600;}
 .hb-days{font-size:11px;color:rgba(255,255,255,.55);margin-top:3px;font-weight:600;}
-/* Bayram twinkling stars */
 .hb-stars{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
 .hb-star{position:absolute;width:4px;height:4px;background:#fff;border-radius:50%;animation:twinkle 1.5s ease-in-out infinite;}
 @keyframes twinkle{0%,100%{opacity:.2;transform:scale(1);}50%{opacity:1;transform:scale(1.5);}}
+
+/* AY SONU NƏTİCƏ OVERLAY */
+.me-overlay{display:none;position:fixed;inset:0;z-index:9980;background:rgba(0,0,0,.75);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:20px;}
+.me-overlay.show{display:flex;}
+.me-box{border-radius:24px;padding:28px 24px;text-align:center;max-width:380px;width:100%;}
+.monthend-emoji{font-size:60px;display:block;margin-bottom:12px;animation:bounceEmoji .6s ease infinite alternate;}
+.monthend-title{font-size:20px;font-weight:800;color:#fff;margin-bottom:8px;}
+.monthend-msg{font-size:13px;color:rgba(255,255,255,.8);margin-bottom:20px;line-height:1.6;}
+.monthend-btn{padding:13px 24px;border:none;border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:800;cursor:pointer;}
 
 .screen{display:none;min-height:100vh;flex-direction:column;}.screen.active{display:flex;}
 #gate{align-items:center;justify-content:center;}
@@ -379,14 +383,13 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .period-sel label.on{background:rgba(201,150,58,.2);border-color:rgba(201,150,58,.4);color:#f0c060;}
 .style-preview{background:#fff;border-radius:10px;padding:10px;margin-top:12px;overflow-x:auto;}
 .preview-label{font-size:10px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;}
-/* Bayram modal iç stil */
 .hol-item{background:rgba(255,255,255,.05);border-radius:12px;padding:12px;margin-bottom:8px;border:1px solid rgba(255,255,255,.08);}
 .hol-row{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:6px;}
 .hol-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:6px;}
 .hol-name{color:#f0c060;font-weight:800;font-size:13px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
 </style></head><body class="dark">
 
-<!-- Bayram bildiriş ekranı -->
+<!-- Bayram bildiriş -->
 <div class="holiday-overlay" id="hol-overlay">
   <div class="holiday-box">
     <div class="hb-stars" id="hb-stars-box"></div>
@@ -396,6 +399,11 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
     <div class="holiday-msg" id="hol-msg">Panda Kids ailəsi olaraq sizə ən xoş arzularımızı çatdırırıq!</div>
     <button class="holiday-btn" onclick="closeHolidayOverlay()">🙏 Təşəkkür edirik!</button>
   </div>
+</div>
+
+<!-- Ay sonu nəticə overlay — HTML-ə əlavə edildi (FIX #2) -->
+<div class="me-overlay" id="me-overlay">
+  <div class="me-box" id="me-box"></div>
 </div>
 
 <div class="g-spin-overlay" id="g-spin">
@@ -477,7 +485,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 <!-- Bayram Modalı -->
 <div class="mo" id="mo-holiday"><div class="mobox">
   <h3>🎉 Bayram İdarəetməsi</h3>
-  <div style="font-size:11px;color:rgba(255,255,255,.45);margin-bottom:12px;line-height:1.5;">Bayramın başlama tarixini dövlət təqvimi əsasında daxil edin. Davam müddətini (neçə gün) siz təyin edin. İstifadəçilər həmin gün(lər)də daxil olanda bayram bildirişi görəcəklər.</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.45);margin-bottom:12px;line-height:1.5;">Bayramın başlama tarixini dövlət təqvimi əsasında daxil edin. Davam müddətini (neçə gün) siz təyin edin.</div>
   <div id="hol-body"></div>
   <button class="mosave" onclick="saveHolidays()">✓ Saxla</button>
   <button class="moclose" onclick="closeMo('mo-holiday')">Bağla</button>
@@ -555,8 +563,7 @@ const LS_CACHE='pk_bin_v2';
 let ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
 let curSid=null,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
 
-// ══ BAYRAM SİSTEMİ ══════════════════════════════════════════════════════════
-// Default bayramlar (Azərbaycan dövlət bayramları, tarixlər düzəldilə bilər)
+// ══ BAYRAM SİSTEMİ ══
 const DEF_HOLIDAYS=[
   {id:'yeni_il',name:'Yeni İl',emoji:'🎆',color:'#1e3a8a',gradient:'linear-gradient(135deg,#1e1a4a,#312e6e)',startDate:'01-01',days:2,active:true,msg:'Yeni il uğurlu olsun! Hər gün yeni imkanlar gətirir.'},
   {id:'novruz',name:'Novruz Bayramı',emoji:'🌸',color:'#065f46',gradient:'linear-gradient(135deg,#052e16,#14532d)',startDate:'03-20',days:5,active:true,msg:'Novruz bayramınız mübarək! Xoşbəxtlik, sağlıq və bolluq arzulayırıq.'},
@@ -573,8 +580,7 @@ function getActiveHoliday(holidays){
     if(!h.active)continue;
     const[sm,sd]=h.startDate.split('-').map(Number);
     const[tm,td]=today.split('-').map(Number);
-    const startT=sm*100+sd;const todayT=tm*100+td;
-    // Dövrə hesabı — bayram days günü əhatə edir
+    const todayT=tm*100+td;
     for(let i=0;i<(h.days||1);i++){
       let m=sm,d_=sd+i;
       const dim=[31,29,31,30,31,30,31,31,30,31,30,31];
@@ -589,8 +595,7 @@ function holidaySeenKey(hid){return `pk_hol_seen_${hid}_${todayStr()}`;}
 function launchConfetti(colors){
   const cnt=60;const cols=colors||['#f0c060','#c9963a','#fff','#fde68a','#93c5fd'];
   for(let i=0;i<cnt;i++){
-    const el=document.createElement('div');
-    el.className='confetti-piece';
+    const el=document.createElement('div');el.className='confetti-piece';
     el.style.cssText=`left:${Math.random()*100}vw;top:-20px;background:${cols[Math.floor(Math.random()*cols.length)]};border-radius:${Math.random()>.5?'50%':'2px'};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;animation-duration:${2+Math.random()*2}s;animation-delay:${Math.random()*1}s;`;
     document.body.appendChild(el);
     el.addEventListener('animationend',()=>el.remove());
@@ -603,7 +608,6 @@ function showHolidayOverlay(h){
   document.getElementById('hol-msg').textContent=h.msg||'Bayramınız mübarək!';
   const box=document.querySelector('.holiday-box');
   if(box)box.style.background=h.gradient||'linear-gradient(135deg,#1a0a3e,#2d0a6e)';
-  // Stars
   const sb=document.getElementById('hb-stars-box');
   if(sb){sb.innerHTML='';for(let i=0;i<18;i++){const s=document.createElement('div');s.className='hb-star';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*1.5}s;`;sb.appendChild(s);}}
   document.getElementById('hol-overlay').classList.add('show');
@@ -611,31 +615,15 @@ function showHolidayOverlay(h){
   localStorage.setItem(holidaySeenKey(h.id),'1');
 }
 function closeHolidayOverlay(){document.getElementById('hol-overlay').classList.remove('show');}
-function isFirstDayOfHoliday(h){
-  // Yalnız bayramın BİRİNCİ günündə true qaytar
-  const today=todayStr();
-  return today===h.startDate;
-}
-// Neçə dəfə göstərilib - günlük say
-function holSeenCount(hid){
-  return parseInt(localStorage.getItem(`pk_hol_cnt_${hid}_${todayStr()}`)||'0');
-}
-function holIncrCount(hid){
-  const k=`pk_hol_cnt_${hid}_${todayStr()}`;
-  localStorage.setItem(k,String(holSeenCount(hid)+1));
-}
-// isAdmin=true → max 1 dəfə; isAdmin=false → max 2 dəfə
+function holSeenCount(hid){return parseInt(localStorage.getItem(`pk_hol_cnt_${hid}_${todayStr()}`)||'0');}
+function holIncrCount(hid){const k=`pk_hol_cnt_${hid}_${todayStr()}`;localStorage.setItem(k,String(holSeenCount(hid)+1));}
 function checkAndShowHoliday(holidays,isAdmin=false){
   const h=getActiveHoliday(holidays);
   if(!h)return;
   const maxCnt=isAdmin?1:2;
-  if(holSeenCount(h.id)<maxCnt){
-    showHolidayOverlay(h);
-    holIncrCount(h.id);
-  }
+  if(holSeenCount(h.id)<maxCnt){showHolidayOverlay(h);holIncrCount(h.id);}
 }
 function buildHolidayBanner(holidays){
-  // Paneldə bayram banneri üçün HTML
   const h=getActiveHoliday(holidays);
   if(!h)return '';
   const[sm,sd]=h.startDate.split('-').map(Number);
@@ -643,7 +631,7 @@ function buildHolidayBanner(holidays){
   const today=new Date();const diff=Math.ceil((endD-today)/(86400000))+1;
   const daysLeft=Math.max(0,diff);
   return `<div class="holiday-banner show" style="background:${h.gradient||'linear-gradient(135deg,#1a0a3e,#2d0a6e)'};border:1.5px solid rgba(255,215,0,.3);box-shadow:0 4px 24px rgba(0,0,0,.3);">
-    <div class="hb-stars">${Array.from({length:12},(_,i)=>`<div class="hb-star" style="left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*1.5}s"></div>`).join('')}</div>
+    <div class="hb-stars">${Array.from({length:12},()=>`<div class="hb-star" style="left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*1.5}s"></div>`).join('')}</div>
     <div class="hb-emoji">${h.emoji}</div>
     <div class="hb-text">
       <div class="hb-title">${h.name} mübarək! 🎉</div>
@@ -652,13 +640,11 @@ function buildHolidayBanner(holidays){
     </div>
   </div>`;
 }
-// Bayram modalı
 function openHolidayMo(){
   const hols=(CFG?.holidays)||DEF_HOLIDAYS;
   let h='';
   const yr=new Date().getFullYear();
   hols.forEach((hol,i)=>{
-    // MM-DD → YYYY-MM-DD for date input
     const dateVal=`${yr}-${hol.startDate}`;
     h+=`<div class="hol-item">
       <div class="hol-name"><span>${hol.emoji} ${hol.name}</span>
@@ -681,9 +667,8 @@ async function saveHolidays(){
   hols.forEach((hol,i)=>{
     hol.active=document.getElementById(`ha-${i}`)?.checked||false;
     const raw=document.getElementById(`hd-${i}`)?.value||'';
-    // type=date YYYY-MM-DD verir, biz MM-DD saxlayırıq
-    if(raw.includes('-')&&raw.length===10){hol.startDate=raw.slice(5);}// YYYY-MM-DD → MM-DD
-    else if(raw.length===5){hol.startDate=raw.trim();}// artıq MM-DD formatı
+    if(raw.includes('-')&&raw.length===10){hol.startDate=raw.slice(5);}
+    else if(raw.length===5){hol.startDate=raw.trim();}
     hol.days=parseInt(document.getElementById(`hdays-${i}`)?.value)||1;
     hol.msg=document.getElementById(`hmsg-${i}`)?.value||hol.msg;
   });
@@ -694,77 +679,93 @@ async function saveHolidays(){
   spinHide();closeMo('mo-holiday');
   alert('✅ Bayramlar saxlanıldı!');
 }
-// ══════════════════════════════════════════════════════════════
-// AY SONU NƏTİCƏ BİLDİRİŞİ
-// ══════════════════════════════════════════════════════════════
-function isLastDayOfMonth(){const d=new Date();return d.getDate()===new Date(d.getFullYear(),d.getMonth()+1,0).getDate();}
-function checkMonthEndResult(sid,records){
-  if(!isLastDayOfMonth())return;
-  const u=gU().find(u=>u.id===sid);
+
+// ══ AY SONU NƏTİCƏ BİLDİRİŞİ (FIX #2 — tam yenidən yazıldı) ══
+function isLastDayOfMonth(){
+  const d=new Date();
+  return d.getDate()===new Date(d.getFullYear(),d.getMonth()+1,0).getDate();
+}
+function monthEndSeenKey(sid){
+  const d=new Date();
+  return `pk_monthend_${sid}_${d.getFullYear()}_${d.getMonth()+1}`;
+}
+function showMonthEndResult(sid,ms,records){
+  // Hər ay yalnız bir dəfə göstər
+  const seenKey=monthEndSeenKey(sid);
+  if(localStorage.getItem(seenKey))return;
+  localStorage.setItem(seenKey,'1');
+
   const t=gT()[sid];
-  if(!u||!t)return;
-  const periods=getUserPeriods(sid);
-  const ay0=periods.find(p=>p.id==='ay0');
-  if(!ay0)return;
-  const rec=findRec(records,u.name,ay0.sk);
-  if(!rec||!rec.satis)return;
-  const ms=rec.satis;
+  if(!t)return;
+  const dl=dLeft();
   const box=document.getElementById('me-box');
   const ov=document.getElementById('me-overlay');
+  if(!box||!ov)return;
+
   if(ms>=t.min){
     const pct=Math.round(ms/t.min*100);
-    let lvlTxt='';
-    if(ms>=t.max)lvlTxt='maksimum hədəfi';
-    else if(ms>=t.mid)lvlTxt='orta hədəfi';
-    else lvlTxt='minimum planı';
+    let lvlTxt='minimum planı';
+    let artiq=ms-t.min;
+    if(ms>=t.max){lvlTxt='maksimum hədəfi';artiq=ms-t.max;}
+    else if(ms>=t.mid){lvlTxt='orta hədəfi';artiq=ms-t.mid;}
+
     box.innerHTML=`<span class="monthend-emoji">🏆</span>
       <div class="monthend-title">Planı yerinə yetirdiniz!</div>
       <div style="width:48px;height:3px;border-radius:3px;background:rgba(16,185,129,.6);margin:0 auto 14px;"></div>
-      <div class="monthend-msg">${u.name} bu ay <strong style="color:#6ee7b7">${lvlTxt}</strong> yerinə yetirdi! Panda Kids ailəsi olaraq sizi təbrik edirik! 🎉</div>
+      <div class="monthend-msg">Bu ay <strong style="color:#6ee7b7">${lvlTxt}</strong> yerinə yetirdiniz! Panda Kids ailəsi olaraq sizi təbrik edirik! 🎉</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
         <div style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:12px;padding:10px 8px;text-align:center;">
-          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Bu ay satış</div>
+          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">BU AY SATIŞ</div>
           <div style="font-size:15px;font-weight:800;color:#6ee7b7;">${fmt(ms)} ₼</div>
         </div>
         <div style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:12px;padding:10px 8px;text-align:center;">
-          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Plan faizi</div>
+          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">PLAN FAİZİ</div>
           <div style="font-size:15px;font-weight:800;color:#6ee7b7;">${pct}%</div>
+        </div>
+        <div style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:12px;padding:10px 8px;text-align:center;">
+          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">ORTA PLAN</div>
+          <div style="font-size:15px;font-weight:800;color:#fff;">${fmt(t.mid)} ₼</div>
+        </div>
+        <div style="background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.25);border-radius:12px;padding:10px 8px;text-align:center;">
+          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">ARTİQ NƏTİCƏ</div>
+          <div style="font-size:15px;font-weight:800;color:#6ee7b7;">+${fmt(artiq)} ₼</div>
         </div>
       </div>
       <button class="monthend-btn" style="background:linear-gradient(135deg,#10b981,#059669);color:#fff;width:100%;" onclick="document.getElementById('me-overlay').classList.remove('show')">Təşəkkür edirik! 🎉</button>`;
-    box.style.cssText='background:linear-gradient(135deg,#052e16,#14532d);border:2px solid rgba(16,185,129,.5);border-radius:24px;padding:28px 24px;text-align:center;max-width:360px;width:100%;';
+    box.style.cssText='background:linear-gradient(135deg,#052e16,#14532d);border:2px solid rgba(16,185,129,.5);border-radius:24px;padding:28px 24px;text-align:center;max-width:380px;width:100%;';
+    setTimeout(()=>launchConfetti(['#10b981','#6ee7b7','#fff','#f0c060']),300);
   }else{
     const pct=Math.round(ms/t.min*100);
     const qalan=fmt(t.min-ms);
     box.innerHTML=`<span class="monthend-emoji">📊</span>
       <div class="monthend-title">Təəssüf, plan vurulmadı</div>
       <div style="width:48px;height:3px;border-radius:3px;background:rgba(239,68,68,.5);margin:0 auto 14px;"></div>
-      <div class="monthend-msg">${u.name} bu ay minimum plana <strong style="color:#fca5a5">${qalan} ₼</strong> çatmadı. Növbəti ay daha yaxşı nəticə üçün birlikdə çalışacağıq! 💪</div>
+      <div class="monthend-msg">Bu ay minimum plana <strong style="color:#fca5a5">${qalan} ₼</strong> çatmadı. Növbəti ay daha yaxşı nəticə üçün birlikdə çalışacağıq! 💪</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;">
         <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:10px 8px;text-align:center;">
-          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Bu ay satış</div>
+          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">BU AY SATIŞ</div>
           <div style="font-size:15px;font-weight:800;color:#fca5a5;">${fmt(ms)} ₼</div>
         </div>
         <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:10px 8px;text-align:center;">
-          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Min. plan</div>
+          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">MIN. PLAN</div>
           <div style="font-size:15px;font-weight:800;color:#fff;">${fmt(t.min)} ₼</div>
         </div>
         <div style="background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:10px 8px;text-align:center;">
-          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Plan faizi</div>
+          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">PLAN FAİZİ</div>
           <div style="font-size:15px;font-weight:800;color:#fcd34d;">${pct}%</div>
         </div>
         <div style="background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:12px;padding:10px 8px;text-align:center;">
-          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">Çatmayan məbləğ</div>
+          <div style="font-size:9px;font-weight:700;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:4px;">ÇATMAYAN MƏBLƏĞ</div>
           <div style="font-size:15px;font-weight:800;color:#fca5a5;">${qalan} ₼</div>
         </div>
       </div>
       <button class="monthend-btn" style="background:rgba(255,255,255,.12);color:#fff;width:100%;" onclick="document.getElementById('me-overlay').classList.remove('show')">Bağla</button>`;
-    box.style.cssText='background:linear-gradient(135deg,#3b0f05,#7c2d12);border:2px solid rgba(239,68,68,.4);border-radius:24px;padding:28px 24px;text-align:center;max-width:360px;width:100%;';
+    box.style.cssText='background:linear-gradient(135deg,#3b0f05,#7c2d12);border:2px solid rgba(239,68,68,.4);border-radius:24px;padding:28px 24px;text-align:center;max-width:380px;width:100%;';
   }
   ov.classList.add('show');
 }
 
-// ══ TEMA ════════════════════════════════════════════════════════════════════
+// ══ TEMA ══
 let _curUid='guest';
 function themeKey(uid){return `pk_theme_${uid||'guest'}`;}
 function applyTheme(m){
@@ -778,12 +779,12 @@ function loadTheme(uid){_curUid=uid||'guest';applyTheme(localStorage.getItem(the
 function toggleTheme(){applyTheme(document.body.classList.contains('dark')?'light':'dark');}
 loadTheme('guest');
 
-// ══ SVG OXLAR ═══════════════════════════════════════════════════════════════
+// ══ SVG OXLAR ══
 function svgUp(c){return`<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 10.5V2.5M6.5 2.5L3 6M6.5 2.5L10 6" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
 function svgMid(c){return`<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5H10.5M10.5 6.5L7 3M10.5 6.5L7 10" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
 function svgDn(c){return`<svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 2.5V10.5M6.5 10.5L10 7M6.5 10.5L3 7" stroke="${c}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;}
 
-// ══ SPINNER ═════════════════════════════════════════════════════════════════
+// ══ SPINNER ══
 let _spinTimer=null,_spinPct=0;
 function spinShow(txt='Yüklənir...'){
   _spinPct=0;clearInterval(_spinTimer);
@@ -794,7 +795,7 @@ function spinShow(txt='Yüklənir...'){
 }
 function spinHide(){clearInterval(_spinTimer);document.getElementById('g-spin-pct').textContent='100%';setTimeout(()=>{document.getElementById('g-spin').classList.remove('show');_spinPct=0;},180);}
 
-// ══ RƏQƏM INPUT ═════════════════════════════════════════════════════════════
+// ══ RƏQƏM INPUT ══
 function parseNum(s){
   if(!s)return 0;let v=String(s).trim();
   if(v.includes('.')&&v.includes(',')){const lD=v.lastIndexOf('.');const lC=v.lastIndexOf(',');if(lC>lD){v=v.replace(/\./g,'').replace(',','.');}else{v=v.replace(/,/g,'');}}
@@ -810,7 +811,7 @@ function attachNumInput(inp){
 }
 function attachAllNum(){document.querySelectorAll('.ni,.saxa-firma-inp,.afrow input,.af1inp').forEach(attachNumInput);}
 
-// ══ STİL ════════════════════════════════════════════════════════════════════
+// ══ STİL ══
 const DEF_STYLE={font:"'Plus Jakarta Sans',sans-serif",fs:'12px',fw:'700',rh:'27px',pandaCol:'#0f1f3d',arrUp:'#22c55e',arrMid:'#f59e0b',nameW:'115px',numW:'94px',pctW:'62px'};
 function gStyle(){try{return{...DEF_STYLE,...(JSON.parse(localStorage.getItem('pk_style')||'null')||{})};}catch{return{...DEF_STYLE};}}
 function svStyle(v){localStorage.setItem('pk_style',JSON.stringify(v));}
@@ -840,7 +841,7 @@ function loadSI(st){
 function openStyleMo(){const st=gStyle();loadSI(st);applyStyleToDOM(st);document.getElementById('mo-style').classList.add('show');}
 applyStyleToDOM(gStyle());
 
-// ══ BIN ═════════════════════════════════════════════════════════════════════
+// ══ BIN ══
 const DEF_USERS=[
   {id:'p2',name:'Panda 2',pw:'p2-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
   {id:'p3',name:'Panda 3',pw:'p3-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
@@ -865,12 +866,18 @@ function _parseBin(d){
 }
 function _lsGet(){try{const p=JSON.parse(localStorage.getItem(LS_CACHE)||'null');if(p&&p.data&&(Date.now()-p.ts)<LS_TTL)return p.data;}catch{}return null;}
 function _lsSet(data){try{localStorage.setItem(LS_CACHE,JSON.stringify({data,ts:Date.now()}));}catch{}}
+
+// FIX #3 — gec açılma: buildSel anında cache-dən yüklənir, background-da yenilənir
 async function rBin(force=false){
   const now=Date.now();
   if(!force&&_bc&&(now-_bcts)<MEM_TTL)return _bc;
   if(!force&&!_bc){const ls=_lsGet();if(ls){_bc=ls;_bcts=now-MEM_TTL+5000;return _bc;}}
-  try{const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},cache:'no-store'});if(!r.ok)return _bc||defBin();const j=await r.json();_bc=_parseBin(j.data||{});_bcts=now;_lsSet(_bc);return _bc;}
-  catch{return _bc||_lsGet()||defBin();}
+  try{
+    const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},cache:'no-store'});
+    if(!r.ok)return _bc||defBin();
+    const j=await r.json();
+    _bc=_parseBin(j.data||{});_bcts=now;_lsSet(_bc);return _bc;
+  }catch{return _bc||_lsGet()||defBin();}
 }
 function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true},holidays:DEF_HOLIDAYS}};}
 async function wBin(records,sf,cfg){
@@ -884,7 +891,6 @@ function gH(){return CFG?.holidays||DEF_HOLIDAYS;}
 function findRec(records,name,sk){return records.find(r=>r.sobe===name&&r.period===sk)||null;}
 function getRD(){return new Date();}
 function getResetHour(){return parseInt(localStorage.getItem('pk_reset_hour')||'17');}
-function saveResetTime(){const v=document.getElementById('param-reset-time')?.value||'17:00';const h=parseInt(v.split(':')[0]);localStorage.setItem('pk_reset_hour',String(h));alert('✅ Sıfırlanma vaxtı '+v+' olaraq saxlanıldı.');}
 function getFD(){const n=new Date(),d=new Date(n);if(n.getHours()<getResetHour())d.setDate(d.getDate()-1);return d;}
 function dLeft(){const d=getRD();const last=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();return d.getDate()===last?1:Math.max(0,last-d.getDate());}
 function daysPassed(){return Math.max(1,getRD().getDate());}
@@ -900,8 +906,6 @@ function getSFDate(){const d=getFD();return `${d.getDate()} ${AY[d.getMonth()]} 
 function fmt(n){if(!n||Number(n)===0)return '—';return Math.round(Number(n)).toLocaleString('de-DE');}
 function fmtDec(n){if(!n||Number(n)===0)return '—';const num=Number(n);return num%1===0?Math.round(num).toLocaleString('de-DE'):num.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fmtSF(n){return fmtDec(n);}
-
-// FAİZ — mağaza: tam ədəd (76%), yekun: 1 kəsr (75.6%)
 function fmtFaizStore(f){if(!f||f===0)return '—';return Math.round(Number(f))+'%';}
 function fmtFaizAdmTotal(f){if(!f||f===null)return '—';const n=Number(f);const s=n.toFixed(1);return s.endsWith('.0')?Math.round(n)+'%':s+'%';}
 function fmtFaizAvg(f){if(!f||f===null)return '—';const n=Number(f);const s=n.toFixed(1);return s.endsWith('.0')?Math.round(n)+'%':s+'%';}
@@ -913,25 +917,23 @@ function planColor(ms,tgt,dl){if(!ms||!tgt)return 'red';if(ms>=tgt)return 'green
 function planBg(ms,tgt,dl){const c=planColor(ms,tgt,dl);return c==='green'?'#10b981':c==='orange'?'#f59e0b':'#ef4444';}
 function calcDaily(ms,tgt,dl){if(!tgt||ms>=tgt||dl<=0)return 0;return Math.ceil((tgt-ms)/dl);}
 
-// OX + RƏQƏM mərkəzdə
 function nvCell(arrType,val,st){
-  const upC=st?.arrUp||'#22c55e',midC=st?.arrMid||'#f59e0b',dnC='#ef4444';
+  const upC=st?.arrUp||'#22c55e',midC=st?.arrMid||'#f59e0b';
   let svg='';
   if(arrType==='up')svg=svgUp(upC);
   else if(arrType==='mid')svg=svgMid(midC);
-  else if(arrType==='dn')svg=svgDn(dnC);
-  // ox solda 16px sabit, məbləğ ortada, sağda 16px balans
-  if(svg) return '<td class="nv" style="padding:0 4px"><table style="width:100%;border:none;border-collapse:collapse"><tr><td style="width:16px;padding:0;border:none;vertical-align:middle">'+svg+'</td><td style="padding:0;border:none;text-align:center;vertical-align:middle">'+val+'</td><td style="width:16px;padding:0;border:none"></td></tr></table></td>';
+  else if(arrType==='dn')svg=svgDn('#ef4444');
+  if(svg)return '<td class="nv" style="padding:0 4px"><table style="width:100%;border:none;border-collapse:collapse"><tr><td style="width:16px;padding:0;border:none;vertical-align:middle">'+svg+'</td><td style="padding:0;border:none;text-align:center;vertical-align:middle">'+val+'</td><td style="width:16px;padding:0;border:none"></td></tr></table></td>';
   return '<td class="nv">'+val+'</td>';
 }
 function nvCellPlain(val){return '<td class="nv" style="text-align:center">'+val+'</td>';}
 function nvInner(arrType,st,val){
-  const upC=st?.arrUp||'#22c55e',midC=st?.arrMid||'#f59e0b',dnC='#ef4444';
+  const upC=st?.arrUp||'#22c55e',midC=st?.arrMid||'#f59e0b';
   let svg='';
   if(arrType==='up')svg=svgUp(upC);
   else if(arrType==='mid')svg=svgMid(midC);
-  else if(arrType==='dn')svg=svgDn(dnC);
-  if(svg) return '<span style="display:inline-flex;align-items:center;gap:3px">'+svg+val+'</span>';
+  else if(arrType==='dn')svg=svgDn('#ef4444');
+  if(svg)return '<span style="display:inline-flex;align-items:center;gap:3px">'+svg+val+'</span>';
   return val;
 }
 
@@ -951,12 +953,24 @@ function goTo(id){document.querySelectorAll('.screen').forEach(s=>s.classList.re
 function closeMo(id){document.getElementById(id).classList.remove('show');}
 function logout(){curSid=null;document.getElementById('gpw').value='';document.getElementById('gerr').classList.remove('show');document.getElementById('gsel').value='';loadTheme('guest');goTo('gate');}
 
+// FIX #3 — buildSel: cache varsa dərhal göstər, background-da yenilə
 async function buildSel(){
   const ls=_lsGet();
-  if(ls){CFG=ls.cfg;_bc=ls;_bcts=Date.now()-MEM_TTL+10000;fillSel();rBin(true).then(bin=>{CFG=bin.cfg;fillSel();}).catch(()=>{});return;}
-  progShow('Yüklənir...');await progAnimate(5,60,'Məlumatlar...',400);
-  const bin=await rBin(true);CFG=bin.cfg;await progAnimate(60,100,'Hazır!',150);
-  document.getElementById('prog-overlay').classList.remove('show');setProg(0,'');fillSel();
+  if(ls){
+    // Cache-dən dərhal yüklə, göstər
+    CFG=ls.cfg;_bc=ls;_bcts=Date.now()-MEM_TTL+10000;
+    fillSel();
+    // Background-da yenilə (UI bloklamadan)
+    rBin(true).then(bin=>{CFG=bin.cfg;fillSel();}).catch(()=>{});
+    return;
+  }
+  // Cache yoxdur — progress bar göstər
+  progShow('Yüklənir...');
+  await progAnimate(5,60,'Məlumatlar...',400);
+  const bin=await rBin(true);CFG=bin.cfg;
+  await progAnimate(60,100,'Hazır!',150);
+  document.getElementById('prog-overlay').classList.remove('show');setProg(0,'');
+  fillSel();
 }
 function fillSel(){
   ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
@@ -976,13 +990,12 @@ async function doLogin(){
   if(rem)localStorage.setItem('pk_rem',JSON.stringify({sid,pw}));else localStorage.removeItem('pk_rem');
   loadTheme(sid);
   spinShow('Giriş edilir...');const bin=await rBin();CFG=bin.cfg;
-  // Bayram yoxla — giriş zamanı
   checkAndShowHoliday(gH());
   await logLogin(u.name,false,bin.records,bin.sf,bin.cfg);spinHide();
   if(u.type==='viewer')openViewer(u);else{curSid=sid;openStoreForm(sid);}
 }
 
-// ── PASSKEY (Face ID / Touch ID) ──────────────────────────────
+// PASSKEY
 function hasPasskey(){return !!localStorage.getItem('pk_passkey_id');}
 async function registerPasskey(){
   if(!window.PublicKeyCredential)return false;
@@ -992,19 +1005,13 @@ async function registerPasskey(){
     const challenge=crypto.getRandomValues(new Uint8Array(32));
     const userId=crypto.getRandomValues(new Uint8Array(16));
     const cred=await navigator.credentials.create({publicKey:{
-      challenge,
-      rp:{name:'Panda Kids Admin',id:window.location.hostname||'localhost'},
+      challenge,rp:{name:'Panda Kids Admin',id:window.location.hostname||'localhost'},
       user:{id:userId,name:'admin',displayName:'Panda Kids Admin'},
       pubKeyCredParams:[{alg:-7,type:'public-key'},{alg:-257,type:'public-key'}],
       authenticatorSelection:{authenticatorAttachment:'platform',userVerification:'required',residentKey:'required'},
       timeout:60000,
     }});
-    if(cred){
-      const idArr=new Uint8Array(cred.rawId);
-      const idB64=btoa(String.fromCharCode(...idArr));
-      localStorage.setItem('pk_passkey_id',idB64);
-      return true;
-    }
+    if(cred){const idArr=new Uint8Array(cred.rawId);const idB64=btoa(String.fromCharCode(...idArr));localStorage.setItem('pk_passkey_id',idB64);return true;}
   }catch(e){console.log('Passkey register error:',e);}
   return false;
 }
@@ -1014,51 +1021,31 @@ async function loginWithPasskey(){
     const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
     if(!avail)return false;
     const challenge=crypto.getRandomValues(new Uint8Array(32));
-    const cred=await navigator.credentials.get({publicKey:{
-      challenge,timeout:30000,userVerification:'required',
-      rpId:window.location.hostname||'localhost',
-    }});
+    const cred=await navigator.credentials.get({publicKey:{challenge,timeout:30000,userVerification:'required',rpId:window.location.hostname||'localhost'}});
     return !!cred;
   }catch(e){return false;}
 }
-function resetPasskey(){
-  localStorage.removeItem('pk_passkey_id');
-  alert('✅ Face ID sıfırlandı. Növbəti girişdə şifrə tələb olunacaq.');
-}
+function resetPasskey(){localStorage.removeItem('pk_passkey_id');alert('✅ Face ID sıfırlandı.');}
 
 async function showAdminGate(){
   if(hasPasskey()){
     const ok=await loginWithPasskey();
-    if(ok){
-      spinShow('Admin...');
-      const bin=await rBin(true);CFG=bin.cfg;
-      checkAndShowHoliday(gH(),true);
-      await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
-      spinHide();loadTheme('admin');openAdmin();
-      return;
-    }
+    if(ok){spinShow('Admin...');const bin=await rBin(true);CFG=bin.cfg;checkAndShowHoliday(gH(),true);await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);spinHide();loadTheme('admin');openAdmin();return;}
   }
   const pw=prompt('Admin şifrəsi:');
   if(pw===null)return;
   if(pw!==ADMIN_PW){alert('Şifrə yanlışdır.');return;}
-  spinShow('Admin...');
-  const bin=await rBin(true);CFG=bin.cfg;
+  spinShow('Admin...');const bin=await rBin(true);CFG=bin.cfg;
   checkAndShowHoliday(gH(),true);
   await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
   spinHide();loadTheme('admin');openAdmin();
   if(window.PublicKeyCredential&&!hasPasskey()){
     try{
       const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
-      if(avail){
-        setTimeout(async()=>{
-          const ask=confirm('Face ID / Touch ID ilə admin girişini aktivləşdirək?\n(Növbəti dəfə şifrəsiz açılacaq)');
-          if(ask){const ok=await registerPasskey();if(ok)alert('✅ Face ID qeydiyyatı uğurlu!');else alert('⚠️ Uğursuz, yenidən cəhd edin.');}
-        },800);
-      }
+      if(avail){setTimeout(async()=>{const ask=confirm('Face ID / Touch ID ilə admin girişini aktivləşdirək?');if(ask){const ok=await registerPasskey();if(ok)alert('✅ Face ID qeydiyyatı uğurlu!');else alert('⚠️ Uğursuz.');}},800);}
     }catch(e){}
   }
 }
-
 
 function planCard(sid,ms,records){
   const t=gT()[sid];if(!t)return '';
@@ -1106,7 +1093,6 @@ function renderFormData(sid,records,sf){
   const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
   const ay0=periods.find(p=>p.id==='ay0');const ms=ay0?findRec(records,u.name,ay0.sk)?.satis||0:0;
   const t_=gT()[sid];let planH=t_?planCard(sid,ms,records):'';
-  // Bayram banneri mağaza formunda
   const holBanner=buildHolidayBanner(gH());
   let periodsH='';
   periods.forEach((period,pi)=>{
@@ -1149,29 +1135,74 @@ function renderFormData(sid,records,sf){
 function editPeriod(pid){['s-','m-','f-'].forEach(p=>{const el=document.getElementById(p+pid);if(el){el.disabled=false;el.style.border='1.5px solid #c9963a';attachNumInput(el);}});const ebt=document.getElementById('ebt-'+pid);if(ebt)ebt.style.display='none';}
 function editSF(){const inp=document.getElementById('sf-inp');if(inp){inp.disabled=false;inp.style.border='1.5px solid #c9963a';attachNumInput(inp);}const e=document.querySelector('#pb-sf .editbtn');if(e)e.style.display='none';}
 
+// FIX #1 — saveAll: xəta bildirişi çıxmır, ay sonu nəticəsi düzgün göstərilir
 async function saveAll(sid){
   const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
   const sab=document.getElementById('saveallbtn');if(sab)sab.disabled=true;
-  document.getElementById('ldb').classList.add('show');document.getElementById('okb').classList.remove('show');document.getElementById('erb').classList.remove('show');
+  document.getElementById('ldb').classList.add('show');
+  document.getElementById('okb').classList.remove('show');
+  document.getElementById('erb').classList.remove('show');
   spinShow('Saxlanır...');
   try{
     const {records,sf,cfg}=await rBin(true);CFG=cfg;let any=false;
     for(const p of periods){
-      const s=parseNum(document.getElementById(`s-${p.id}`)?.value);const m=parseNum(document.getElementById(`m-${p.id}`)?.value);const f=parseNum(document.getElementById(`f-${p.id}`)?.value);
-      if(s>0||m>0||f>0){any=true;const idx=records.findIndex(r=>r.sobe===u.name&&r.period===p.sk);const e={sobe:u.name,period:p.sk,satis:s,menfeet:m,faiz:f};if(idx>=0)records[idx]=e;else records.push(e);}
+      const s=parseNum(document.getElementById(`s-${p.id}`)?.value);
+      const m=parseNum(document.getElementById(`m-${p.id}`)?.value);
+      const f=parseNum(document.getElementById(`f-${p.id}`)?.value);
+      if(s>0||m>0||f>0){
+        any=true;
+        const idx=records.findIndex(r=>r.sobe===u.name&&r.period===p.sk);
+        const e={sobe:u.name,period:p.sk,satis:s,menfeet:m,faiz:f};
+        if(idx>=0)records[idx]=e;else records.push(e);
+      }
     }
-    const ss=gSS();if(ss.fillers.includes(sid)){const sfv=parseNum(document.getElementById('sf-inp')?.value);if(sfv>0){any=true;sf[getSFKey()+'_'+sid]={satis:sfv};}}
-    if(!any){spinHide();document.getElementById('ldb').classList.remove('show');if(sab)sab.disabled=false;alert('Ən azı bir sahəni doldurun.');return;}
-    await wBin(records,sf,cfg);window._cr=records;window._csf=sf;
-    spinHide();document.getElementById('ldb').classList.remove('show');document.getElementById('okb').classList.add('show');document.getElementById('okb').textContent='✅ Məlumatlar yadda saxlandı!';
+    const ss=gSS();
+    if(ss.fillers.includes(sid)){
+      const sfv=parseNum(document.getElementById('sf-inp')?.value);
+      if(sfv>0){any=true;sf[getSFKey()+'_'+sid]={satis:sfv};}
+    }
+    if(!any){
+      spinHide();
+      document.getElementById('ldb').classList.remove('show');
+      if(sab)sab.disabled=false;
+      alert('Ən azı bir sahəni doldurun.');
+      return;
+    }
+    await wBin(records,sf,cfg);
+    window._cr=records;window._csf=sf;
+    spinHide();
+    document.getElementById('ldb').classList.remove('show');
+    document.getElementById('okb').classList.add('show');
+    document.getElementById('okb').textContent='✅ Məlumatlar yadda saxlandı!';
     if(sab)sab.textContent='✅ Saxlanıldı';
+
+    // FIX #1: inputları disable et
     periods.forEach(p=>{['s-','m-','f-'].forEach(pref=>{const el=document.getElementById(pref+p.id);if(el){el.disabled=true;el.style.border='';}});});
     const sfInp=document.getElementById('sf-inp');if(sfInp){sfInp.disabled=true;sfInp.style.border='';}
-    // AY SONU NƏTİCƏ BİLDİRİŞİ
-    checkMonthEndResult(sid,records);
-    setTimeout(()=>renderFormData(sid,records,sf),1200);
-  }catch(e){spinHide();document.getElementById('ldb').classList.remove('show');document.getElementById('erb').classList.add('show');if(sab){sab.disabled=false;sab.textContent='💾 Hamısını Yadda Saxla';}}
+
+    // FIX #2: Ay sonu nəticəsi — dərhal yoxla, renderFormData-dan ÖNCE
+    if(isLastDayOfMonth()){
+      const ay0=getUserPeriods(sid).find(p=>p.id==='ay0');
+      if(ay0){
+        const savedMs=findRec(records,u.name,ay0.sk)?.satis||0;
+        if(savedMs>0){
+          // Kiçik gecikmə ilə göstər ki OK bildirişi görünsün
+          setTimeout(()=>showMonthEndResult(sid,savedMs,records),600);
+        }
+      }
+    }
+
+    // FIX #1: renderFormData gecikmə ilə çağır ki okb görünsün
+    setTimeout(()=>renderFormData(sid,records,sf),2500);
+
+  }catch(e){
+    spinHide();
+    document.getElementById('ldb').classList.remove('show');
+    document.getElementById('erb').classList.add('show');
+    if(sab){sab.disabled=false;sab.textContent='💾 Hamısını Yadda Saxla';}
+  }
 }
+
 async function deleteToday(sid){
   if(!confirm('Bütün məlumatlar silinsin?'))return;
   const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
@@ -1180,15 +1211,11 @@ async function deleteToday(sid){
   catch{spinHide();alert('Silinmə xətası.');}
 }
 
-// ══ HESABAT CƏDVƏLİ ═════════════════════════════════════════════════════════
+// ══ HESABAT CƏDVƏLİ ══
 function buildTable(records,sf,tblId,ldId){
   const users=gU().filter(u=>u.type==='store');const targets=gT(),dl=dLeft();const allP=getAllPeriods();const st=gStyle();
   const D={};users.forEach(u=>{const uP=getUserPeriods(u.id);D[u.name]={};allP.forEach(p=>{const up=uP.find(x=>x.id===p.id);D[u.name][p.id]=up?findRec(records,u.name,up.sk):null;});});
-  // Günlük(0) və aylıq(1) geniş col-num-wide, keçən il(2) və 2il(3) dar col-num-narrow
-  let h='<colgroup>';allP.forEach((p,pi)=>{
-    const numCls=pi<2?'col-num-wide':'col-num-narrow';
-    h+='<col class="col-name"><col class="'+numCls+'"><col class="'+numCls+'"><col class="col-pct">';
-  });h+='</colgroup>';
+  let h='<colgroup>';allP.forEach((p,pi)=>{const numCls=pi<2?'col-num-wide':'col-num-narrow';h+='<col class="col-name"><col class="'+numCls+'"><col class="'+numCls+'"><col class="col-pct">';});h+='</colgroup>';
   h+='<tr class="gh">';allP.forEach((p,i)=>{h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th><th colspan="3" class="${HC[i]}" style="font-size:13px;font-weight:800">${p.label}</th>`;});
   h+='</tr><tr class="sh">';allP.forEach((p,i)=>{const nc=i<2?'col-num-wide':'col-num-narrow';h+=`<th class="${SC[i]} ${nc}">Satış</th><th class="${SC[i]} ${nc}">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;});h+='</tr>';
   const pTots=allP.map(()=>({s:0,m:0,fl:[]})),sTots=allP.map(()=>({s:0,m:0,fl:[]}));
@@ -1200,9 +1227,7 @@ function buildTable(records,sf,tblId,ldId){
       h+=`<td class="nm">${u.name}</td>`;
       if(e&&(e.satis>0||e.menfeet>0)){
         let atype='';if(p.id==='gun'&&t)atype=getArrType(e.satis,ay0val,t.min,dl);else if(p.id==='ay0'&&t)atype=getArrTypeMonth(e.satis,t.min,dl);
-        h+=nvCell(atype,fmt(e.satis),st);
-        h+=nvCellPlain(fmt(e.menfeet));
-        h+=`<td class="pv">${fmtFaizStore(e.faiz)}</td>`;
+        h+=nvCell(atype,fmt(e.satis),st);h+=nvCellPlain(fmt(e.menfeet));h+=`<td class="pv">${fmtFaizStore(e.faiz)}</td>`;
         pTots[pi].s+=e.satis;pTots[pi].m+=e.menfeet;if(e.faiz>0)pTots[pi].fl.push(e.faiz);
       }else h+=`<td class="dsh">—</td><td class="dsh">—</td><td class="dsh">—</td>`;
     });h+='</tr>';
@@ -1266,7 +1291,6 @@ function planPanelHtml(records,forSaxa){
 
 function mkPanel(id){
   const d=getRD();
-  // Bayram qeydi şəkil üçün
   const activeHol=getActiveHoliday(gH());
   const holRow=activeHol?`<div style="background:${activeHol.gradient||'linear-gradient(90deg,#3b0764,#6d28d9)'};padding:8px 20px;display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">${activeHol.emoji}</span><span style="font-size:12px;font-weight:700;color:#fde68a;">${activeHol.name} münasibətilə bütün əməkdaşlarımızı təbrik edirik! 🎉</span></div>`:'';
   return `<div class="rc" id="rc-${id}">
@@ -1316,7 +1340,6 @@ async function loadViewer(){
   }catch{body.innerHTML='<div class="admld">❌ Yüklənmədi.</div>';}
 }
 
-// ŞƏKİL 4K
 async function takeScr(id){
   const card=document.getElementById(id),tbl=card.querySelector('.rt');const tblW=tbl?tbl.scrollWidth+2:card.scrollWidth;
   const tw=card.querySelector('.rctw');const of_=tw.style.overflow,ow_=tw.style.width,oh_=tw.style.maxHeight;
