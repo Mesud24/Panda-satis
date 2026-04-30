@@ -99,10 +99,8 @@ body.light .g-spin-pct{color:#1d4ed8;}
 .rt td.dsh{text-align:center;}
 
 /* ══ BAYRAM SİSTEMİ ══ */
-/* Konfetti */
 @keyframes confettiFall{0%{transform:translateY(-100px) rotate(0deg);opacity:1;}100%{transform:translateY(110vh) rotate(720deg);opacity:0;}}
 .confetti-piece{position:fixed;width:10px;height:10px;pointer-events:none;z-index:9999;animation:confettiFall linear forwards;}
-/* Bayram bildirişi */
 .holiday-overlay{display:none;position:fixed;inset:0;z-index:9990;background:rgba(0,0,0,.65);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:20px;}
 .holiday-overlay.show{display:flex;}
 .holiday-box{background:linear-gradient(135deg,#1a0a3e 0%,#2d0a6e 50%,#1a0a3e 100%);border-radius:24px;padding:32px 24px;text-align:center;max-width:360px;width:100%;border:2px solid rgba(255,215,0,.4);box-shadow:0 0 60px rgba(255,215,0,.2),0 8px 40px rgba(0,0,0,.6);position:relative;overflow:hidden;}
@@ -114,7 +112,6 @@ body.light .g-spin-pct{color:#1d4ed8;}
 .holiday-msg{font-size:13px;color:rgba(255,255,255,.75);margin-bottom:20px;line-height:1.5;}
 .holiday-btn{padding:13px 32px;background:linear-gradient(135deg,#f0c060,#c9963a);border:none;border-radius:14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;color:#060918;cursor:pointer;box-shadow:0 4px 20px rgba(201,150,58,.4);}
 .holiday-btn:active{transform:scale(.97);}
-/* Bayram paneli banner */
 .holiday-banner{display:none;border-radius:16px;padding:14px 18px;margin-bottom:14px;position:relative;overflow:hidden;cursor:default;}
 .holiday-banner.show{display:flex;align-items:center;gap:14px;}
 .hb-emoji{font-size:36px;flex-shrink:0;}
@@ -122,7 +119,6 @@ body.light .g-spin-pct{color:#1d4ed8;}
 .hb-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:2px;}
 .hb-sub{font-size:12px;color:rgba(255,255,255,.75);font-weight:600;}
 .hb-days{font-size:11px;color:rgba(255,255,255,.55);margin-top:3px;font-weight:600;}
-/* Bayram twinkling stars */
 .hb-stars{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
 .hb-star{position:absolute;width:4px;height:4px;background:#fff;border-radius:50%;animation:twinkle 1.5s ease-in-out infinite;}
 @keyframes twinkle{0%,100%{opacity:.2;transform:scale(1);}50%{opacity:1;transform:scale(1.5);}}
@@ -261,9 +257,11 @@ select.ginp option{color:#000;background:#fff;}
 table.rt{border-collapse:collapse;table-layout:fixed;white-space:nowrap;}
 table.rt th,table.rt td{border:1px solid #cdd5e0;padding:4px 8px;}
 table.rt .col-name{width:115px;}
+/* ═══ DƏYİŞİKLİK 1: Günlük/aylıq sütunlar — ox üçün daha geniş ═══ */
 table.rt .col-num{width:94px;}
-table.rt .col-num-wide{width:120px;}
-table.rt .col-num-narrow{width:100px;}
+table.rt .col-num-wide{width:148px;}
+/* ═══ DƏYİŞİKLİK 2: Keçən il/2 il sütunlar — 7 rəqəm üçün ═══ */
+table.rt .col-num-narrow{width:118px;}
 table.rt .col-pct{width:55px;}
 .rt .gh th{font-weight:800;color:#fff;vertical-align:middle;height:30px;font-size:13px;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;}
 .rt .gh .lb{background:#dce6f2;color:#1e3a6e;text-align:left;border-right:2px solid #b0c4de;font-weight:800;}
@@ -379,7 +377,6 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .period-sel label.on{background:rgba(201,150,58,.2);border-color:rgba(201,150,58,.4);color:#f0c060;}
 .style-preview{background:#fff;border-radius:10px;padding:10px;margin-top:12px;overflow-x:auto;}
 .preview-label{font-size:10px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;}
-/* Bayram modal iç stil */
 .hol-item{background:rgba(255,255,255,.05);border-radius:12px;padding:12px;margin-bottom:8px;border:1px solid rgba(255,255,255,.08);}
 .hol-row{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:6px;}
 .hol-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:6px;}
@@ -556,7 +553,6 @@ let ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
 let curSid=null,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
 
 // ══ BAYRAM SİSTEMİ ══════════════════════════════════════════════════════════
-// Default bayramlar (Azərbaycan dövlət bayramları, tarixlər düzəldilə bilər)
 const DEF_HOLIDAYS=[
   {id:'yeni_il',name:'Yeni İl',emoji:'🎆',color:'#1e3a8a',gradient:'linear-gradient(135deg,#1e1a4a,#312e6e)',startDate:'01-01',days:2,active:true,msg:'Yeni il uğurlu olsun! Hər gün yeni imkanlar gətirir.'},
   {id:'novruz',name:'Novruz Bayramı',emoji:'🌸',color:'#065f46',gradient:'linear-gradient(135deg,#052e16,#14532d)',startDate:'03-20',days:5,active:true,msg:'Novruz bayramınız mübarək! Xoşbəxtlik, sağlıq və bolluq arzulayırıq.'},
@@ -574,7 +570,6 @@ function getActiveHoliday(holidays){
     const[sm,sd]=h.startDate.split('-').map(Number);
     const[tm,td]=today.split('-').map(Number);
     const startT=sm*100+sd;const todayT=tm*100+td;
-    // Dövrə hesabı — bayram days günü əhatə edir
     for(let i=0;i<(h.days||1);i++){
       let m=sm,d_=sd+i;
       const dim=[31,29,31,30,31,30,31,31,30,31,30,31];
@@ -603,7 +598,6 @@ function showHolidayOverlay(h){
   document.getElementById('hol-msg').textContent=h.msg||'Bayramınız mübarək!';
   const box=document.querySelector('.holiday-box');
   if(box)box.style.background=h.gradient||'linear-gradient(135deg,#1a0a3e,#2d0a6e)';
-  // Stars
   const sb=document.getElementById('hb-stars-box');
   if(sb){sb.innerHTML='';for(let i=0;i<18;i++){const s=document.createElement('div');s.className='hb-star';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*1.5}s;`;sb.appendChild(s);}}
   document.getElementById('hol-overlay').classList.add('show');
@@ -611,31 +605,15 @@ function showHolidayOverlay(h){
   localStorage.setItem(holidaySeenKey(h.id),'1');
 }
 function closeHolidayOverlay(){document.getElementById('hol-overlay').classList.remove('show');}
-function isFirstDayOfHoliday(h){
-  // Yalnız bayramın BİRİNCİ günündə true qaytar
-  const today=todayStr();
-  return today===h.startDate;
-}
-// Neçə dəfə göstərilib - günlük say
-function holSeenCount(hid){
-  return parseInt(localStorage.getItem(`pk_hol_cnt_${hid}_${todayStr()}`)||'0');
-}
-function holIncrCount(hid){
-  const k=`pk_hol_cnt_${hid}_${todayStr()}`;
-  localStorage.setItem(k,String(holSeenCount(hid)+1));
-}
-// isAdmin=true → max 1 dəfə; isAdmin=false → max 2 dəfə
+function holSeenCount(hid){return parseInt(localStorage.getItem(`pk_hol_cnt_${hid}_${todayStr()}`)||'0');}
+function holIncrCount(hid){const k=`pk_hol_cnt_${hid}_${todayStr()}`;localStorage.setItem(k,String(holSeenCount(hid)+1));}
 function checkAndShowHoliday(holidays,isAdmin=false){
   const h=getActiveHoliday(holidays);
   if(!h)return;
   const maxCnt=isAdmin?1:2;
-  if(holSeenCount(h.id)<maxCnt){
-    showHolidayOverlay(h);
-    holIncrCount(h.id);
-  }
+  if(holSeenCount(h.id)<maxCnt){showHolidayOverlay(h);holIncrCount(h.id);}
 }
 function buildHolidayBanner(holidays){
-  // Paneldə bayram banneri üçün HTML
   const h=getActiveHoliday(holidays);
   if(!h)return '';
   const[sm,sd]=h.startDate.split('-').map(Number);
@@ -652,13 +630,11 @@ function buildHolidayBanner(holidays){
     </div>
   </div>`;
 }
-// Bayram modalı
 function openHolidayMo(){
   const hols=(CFG?.holidays)||DEF_HOLIDAYS;
   let h='';
   const yr=new Date().getFullYear();
   hols.forEach((hol,i)=>{
-    // MM-DD → YYYY-MM-DD for date input
     const dateVal=`${yr}-${hol.startDate}`;
     h+=`<div class="hol-item">
       <div class="hol-name"><span>${hol.emoji} ${hol.name}</span>
@@ -681,9 +657,8 @@ async function saveHolidays(){
   hols.forEach((hol,i)=>{
     hol.active=document.getElementById(`ha-${i}`)?.checked||false;
     const raw=document.getElementById(`hd-${i}`)?.value||'';
-    // type=date YYYY-MM-DD verir, biz MM-DD saxlayırıq
-    if(raw.includes('-')&&raw.length===10){hol.startDate=raw.slice(5);}// YYYY-MM-DD → MM-DD
-    else if(raw.length===5){hol.startDate=raw.trim();}// artıq MM-DD formatı
+    if(raw.includes('-')&&raw.length===10){hol.startDate=raw.slice(5);}
+    else if(raw.length===5){hol.startDate=raw.trim();}
     hol.days=parseInt(document.getElementById(`hdays-${i}`)?.value)||1;
     hol.msg=document.getElementById(`hmsg-${i}`)?.value||hol.msg;
   });
@@ -694,9 +669,8 @@ async function saveHolidays(){
   spinHide();closeMo('mo-holiday');
   alert('✅ Bayramlar saxlanıldı!');
 }
-// ══════════════════════════════════════════════════════════════
-// AY SONU NƏTİCƏ BİLDİRİŞİ
-// ══════════════════════════════════════════════════════════════
+
+// ══ AY SONU NƏTİCƏ BİLDİRİŞİ ══
 function isLastDayOfMonth(){const d=new Date();return d.getDate()===new Date(d.getFullYear(),d.getMonth()+1,0).getDate();}
 function checkMonthEndResult(sid,records){
   if(!isLastDayOfMonth())return;
@@ -901,7 +875,6 @@ function fmt(n){if(!n||Number(n)===0)return '—';return Math.round(Number(n)).t
 function fmtDec(n){if(!n||Number(n)===0)return '—';const num=Number(n);return num%1===0?Math.round(num).toLocaleString('de-DE'):num.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fmtSF(n){return fmtDec(n);}
 
-// FAİZ — mağaza: tam ədəd (76%), yekun: 1 kəsr (75.6%)
 function fmtFaizStore(f){if(!f||f===0)return '—';return Math.round(Number(f))+'%';}
 function fmtFaizAdmTotal(f){if(!f||f===null)return '—';const n=Number(f);const s=n.toFixed(1);return s.endsWith('.0')?Math.round(n)+'%':s+'%';}
 function fmtFaizAvg(f){if(!f||f===null)return '—';const n=Number(f);const s=n.toFixed(1);return s.endsWith('.0')?Math.round(n)+'%':s+'%';}
@@ -913,15 +886,21 @@ function planColor(ms,tgt,dl){if(!ms||!tgt)return 'red';if(ms>=tgt)return 'green
 function planBg(ms,tgt,dl){const c=planColor(ms,tgt,dl);return c==='green'?'#10b981':c==='orange'?'#f59e0b':'#ef4444';}
 function calcDaily(ms,tgt,dl){if(!tgt||ms>=tgt||dl<=0)return 0;return Math.ceil((tgt-ms)/dl);}
 
-// OX + RƏQƏM mərkəzdə
+// ═══ DƏYİŞİKLİK 3: nvCell — ox sol sabit genişlik, rəqəm tam ortada ═══
 function nvCell(arrType,val,st){
   const upC=st?.arrUp||'#22c55e',midC=st?.arrMid||'#f59e0b',dnC='#ef4444';
   let svg='';
   if(arrType==='up')svg=svgUp(upC);
   else if(arrType==='mid')svg=svgMid(midC);
   else if(arrType==='dn')svg=svgDn(dnC);
-  // ox solda 16px sabit, məbləğ ortada, sağda 16px balans
-  if(svg) return '<td class="nv" style="padding:0 4px"><table style="width:100%;border:none;border-collapse:collapse"><tr><td style="width:16px;padding:0;border:none;vertical-align:middle">'+svg+'</td><td style="padding:0;border:none;text-align:center;vertical-align:middle">'+val+'</td><td style="width:16px;padding:0;border:none"></td></tr></table></td>';
+  if(svg){
+    // Ox solda 16px sabit, rəqəm tam ortada (flex ilə)
+    return '<td class="nv" style="padding:0 6px"><div style="display:flex;align-items:center;justify-content:center;gap:0;width:100%">'
+      +'<span style="width:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center">'+svg+'</span>'
+      +'<span style="flex:1;text-align:center">'+val+'</span>'
+      +'<span style="width:16px;flex-shrink:0"></span>'
+      +'</div></td>';
+  }
   return '<td class="nv">'+val+'</td>';
 }
 function nvCellPlain(val){return '<td class="nv" style="text-align:center">'+val+'</td>';}
@@ -976,13 +955,11 @@ async function doLogin(){
   if(rem)localStorage.setItem('pk_rem',JSON.stringify({sid,pw}));else localStorage.removeItem('pk_rem');
   loadTheme(sid);
   spinShow('Giriş edilir...');const bin=await rBin();CFG=bin.cfg;
-  // Bayram yoxla — giriş zamanı
   checkAndShowHoliday(gH());
   await logLogin(u.name,false,bin.records,bin.sf,bin.cfg);spinHide();
   if(u.type==='viewer')openViewer(u);else{curSid=sid;openStoreForm(sid);}
 }
 
-// ── PASSKEY (Face ID / Touch ID) ──────────────────────────────
 function hasPasskey(){return !!localStorage.getItem('pk_passkey_id');}
 async function registerPasskey(){
   if(!window.PublicKeyCredential)return false;
@@ -992,19 +969,13 @@ async function registerPasskey(){
     const challenge=crypto.getRandomValues(new Uint8Array(32));
     const userId=crypto.getRandomValues(new Uint8Array(16));
     const cred=await navigator.credentials.create({publicKey:{
-      challenge,
-      rp:{name:'Panda Kids Admin',id:window.location.hostname||'localhost'},
+      challenge,rp:{name:'Panda Kids Admin',id:window.location.hostname||'localhost'},
       user:{id:userId,name:'admin',displayName:'Panda Kids Admin'},
       pubKeyCredParams:[{alg:-7,type:'public-key'},{alg:-257,type:'public-key'}],
       authenticatorSelection:{authenticatorAttachment:'platform',userVerification:'required',residentKey:'required'},
       timeout:60000,
     }});
-    if(cred){
-      const idArr=new Uint8Array(cred.rawId);
-      const idB64=btoa(String.fromCharCode(...idArr));
-      localStorage.setItem('pk_passkey_id',idB64);
-      return true;
-    }
+    if(cred){const idArr=new Uint8Array(cred.rawId);const idB64=btoa(String.fromCharCode(...idArr));localStorage.setItem('pk_passkey_id',idB64);return true;}
   }catch(e){console.log('Passkey register error:',e);}
   return false;
 }
@@ -1014,29 +985,16 @@ async function loginWithPasskey(){
     const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
     if(!avail)return false;
     const challenge=crypto.getRandomValues(new Uint8Array(32));
-    const cred=await navigator.credentials.get({publicKey:{
-      challenge,timeout:30000,userVerification:'required',
-      rpId:window.location.hostname||'localhost',
-    }});
+    const cred=await navigator.credentials.get({publicKey:{challenge,timeout:30000,userVerification:'required',rpId:window.location.hostname||'localhost',}});
     return !!cred;
   }catch(e){return false;}
 }
-function resetPasskey(){
-  localStorage.removeItem('pk_passkey_id');
-  alert('✅ Face ID sıfırlandı. Növbəti girişdə şifrə tələb olunacaq.');
-}
+function resetPasskey(){localStorage.removeItem('pk_passkey_id');alert('✅ Face ID sıfırlandı. Növbəti girişdə şifrə tələb olunacaq.');}
 
 async function showAdminGate(){
   if(hasPasskey()){
     const ok=await loginWithPasskey();
-    if(ok){
-      spinShow('Admin...');
-      const bin=await rBin(true);CFG=bin.cfg;
-      checkAndShowHoliday(gH(),true);
-      await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
-      spinHide();loadTheme('admin');openAdmin();
-      return;
-    }
+    if(ok){spinShow('Admin...');const bin=await rBin(true);CFG=bin.cfg;checkAndShowHoliday(gH(),true);await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);spinHide();loadTheme('admin');openAdmin();return;}
   }
   const pw=prompt('Admin şifrəsi:');
   if(pw===null)return;
@@ -1049,16 +1007,10 @@ async function showAdminGate(){
   if(window.PublicKeyCredential&&!hasPasskey()){
     try{
       const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
-      if(avail){
-        setTimeout(async()=>{
-          const ask=confirm('Face ID / Touch ID ilə admin girişini aktivləşdirək?\n(Növbəti dəfə şifrəsiz açılacaq)');
-          if(ask){const ok=await registerPasskey();if(ok)alert('✅ Face ID qeydiyyatı uğurlu!');else alert('⚠️ Uğursuz, yenidən cəhd edin.');}
-        },800);
-      }
+      if(avail){setTimeout(async()=>{const ask=confirm('Face ID / Touch ID ilə admin girişini aktivləşdirək?\n(Növbəti dəfə şifrəsiz açılacaq)');if(ask){const ok=await registerPasskey();if(ok)alert('✅ Face ID qeydiyyatı uğurlu!');else alert('⚠️ Uğursuz, yenidən cəhd edin.');}},800);}
     }catch(e){}
   }
 }
-
 
 function planCard(sid,ms,records){
   const t=gT()[sid];if(!t)return '';
@@ -1106,7 +1058,6 @@ function renderFormData(sid,records,sf){
   const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
   const ay0=periods.find(p=>p.id==='ay0');const ms=ay0?findRec(records,u.name,ay0.sk)?.satis||0:0;
   const t_=gT()[sid];let planH=t_?planCard(sid,ms,records):'';
-  // Bayram banneri mağaza formunda
   const holBanner=buildHolidayBanner(gH());
   let periodsH='';
   periods.forEach((period,pi)=>{
@@ -1167,7 +1118,6 @@ async function saveAll(sid){
     if(sab)sab.textContent='✅ Saxlanıldı';
     periods.forEach(p=>{['s-','m-','f-'].forEach(pref=>{const el=document.getElementById(pref+p.id);if(el){el.disabled=true;el.style.border='';}});});
     const sfInp=document.getElementById('sf-inp');if(sfInp){sfInp.disabled=true;sfInp.style.border='';}
-    // AY SONU NƏTİCƏ BİLDİRİŞİ
     checkMonthEndResult(sid,records);
     setTimeout(()=>renderFormData(sid,records,sf),1200);
   }catch(e){spinHide();document.getElementById('ldb').classList.remove('show');document.getElementById('erb').classList.add('show');if(sab){sab.disabled=false;sab.textContent='💾 Hamısını Yadda Saxla';}}
@@ -1184,11 +1134,13 @@ async function deleteToday(sid){
 function buildTable(records,sf,tblId,ldId){
   const users=gU().filter(u=>u.type==='store');const targets=gT(),dl=dLeft();const allP=getAllPeriods();const st=gStyle();
   const D={};users.forEach(u=>{const uP=getUserPeriods(u.id);D[u.name]={};allP.forEach(p=>{const up=uP.find(x=>x.id===p.id);D[u.name][p.id]=up?findRec(records,u.name,up.sk):null;});});
-  // Günlük(0) və aylıq(1) geniş col-num-wide, keçən il(2) və 2il(3) dar col-num-narrow
+
+  // ═══ DƏYİŞİKLİK 1+2: col-num-wide günlük/aylıq, col-num-narrow keçən il/2il ═══
   let h='<colgroup>';allP.forEach((p,pi)=>{
     const numCls=pi<2?'col-num-wide':'col-num-narrow';
     h+='<col class="col-name"><col class="'+numCls+'"><col class="'+numCls+'"><col class="col-pct">';
   });h+='</colgroup>';
+
   h+='<tr class="gh">';allP.forEach((p,i)=>{h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th><th colspan="3" class="${HC[i]}" style="font-size:13px;font-weight:800">${p.label}</th>`;});
   h+='</tr><tr class="sh">';allP.forEach((p,i)=>{const nc=i<2?'col-num-wide':'col-num-narrow';h+=`<th class="${SC[i]} ${nc}">Satış</th><th class="${SC[i]} ${nc}">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;});h+='</tr>';
   const pTots=allP.map(()=>({s:0,m:0,fl:[]})),sTots=allP.map(()=>({s:0,m:0,fl:[]}));
@@ -1266,7 +1218,6 @@ function planPanelHtml(records,forSaxa){
 
 function mkPanel(id){
   const d=getRD();
-  // Bayram qeydi şəkil üçün
   const activeHol=getActiveHoliday(gH());
   const holRow=activeHol?`<div style="background:${activeHol.gradient||'linear-gradient(90deg,#3b0764,#6d28d9)'};padding:8px 20px;display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">${activeHol.emoji}</span><span style="font-size:12px;font-weight:700;color:#fde68a;">${activeHol.name} münasibətilə bütün əməkdaşlarımızı təbrik edirik! 🎉</span></div>`:'';
   return `<div class="rc" id="rc-${id}">
@@ -1316,7 +1267,6 @@ async function loadViewer(){
   }catch{body.innerHTML='<div class="admld">❌ Yüklənmədi.</div>';}
 }
 
-// ŞƏKİL 4K
 async function takeScr(id){
   const card=document.getElementById(id),tbl=card.querySelector('.rt');const tblW=tbl?tbl.scrollWidth+2:card.scrollWidth;
   const tw=card.querySelector('.rctw');const of_=tw.style.overflow,ow_=tw.style.width,oh_=tw.style.maxHeight;
@@ -1452,4 +1402,5 @@ function changeAdminPw(){
   if(o!==ADMIN_PW){alert('Köhnə parol yanlışdır.');return;}if(!n||n.length<4){alert('Yeni parol ən azı 4 simvol.');return;}
   ADMIN_PW=n;localStorage.setItem('pk_apw',n);document.getElementById('oldpw').value='';document.getElementById('newpw').value='';alert('✅ Admin parolu dəyişdirildi!');
 }
-</script></body></html>
+</script>
+</body></html>
