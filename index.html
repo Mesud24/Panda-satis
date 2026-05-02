@@ -265,7 +265,10 @@ table.rt .col-num{width:94px;min-width:94px;}
 table.rt .col-num-wide{width:105px;min-width:105px;}
 table.rt .col-num-narrow{width:85px;min-width:85px;}
 table.rt .col-pct{width:55px;min-width:55px;}
-table.rt .col-num-daily{width:90px;min-width:90px;}
+table.rt .col-num-daily-s{width:90px;min-width:90px;}
+table.rt .col-num-daily-m{width:85px;min-width:85px;}
+table.rt .col-num-wide-s{width:100px;min-width:100px;}
+table.rt .col-num-wide-m{width:95px;min-width:95px;}
 .rt .gh th{font-weight:800;color:#fff;vertical-align:middle;height:30px;font-size:13px;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;}
 .rt .gh .lb{background:#dce6f2;color:#1e3a6e;text-align:left;border-right:2px solid #b0c4de;font-weight:800;}
 .rt .gh .hb{background:#1d4ed8;}.rt .gh .ho{background:#c2410c;}.rt .gh .hg{background:#15803d;}.rt .gh .hp{background:#6d28d9;}
@@ -1219,11 +1222,20 @@ function buildTable(records,sf,tblId,ldId){
   const D={};users.forEach(u=>{const uP=getUserPeriods(u.id);D[u.name]={};allP.forEach(p=>{const up=uP.find(x=>x.id===p.id);D[u.name][p.id]=up?findRec(records,u.name,up.sk):null;});});
   // Günlük(0) və aylıq(1) geniş col-num-wide, keçən il(2) və 2il(3) dar col-num-narrow
   let h='<colgroup>';allP.forEach((p,pi)=>{
-    const numCls=pi===0?'col-num-daily':pi===1?'col-num-wide':'col-num-narrow';
-    h+='<col class="col-name"><col class="'+numCls+'"><col class="'+numCls+'"><col class="col-pct">';
+    let sCls,mCls;
+    if(pi===0){sCls='col-num-daily-s';mCls='col-num-daily-m';}
+    else if(pi===1){sCls='col-num-wide-s';mCls='col-num-wide-m';}
+    else{sCls='col-num-narrow';mCls='col-num-narrow';}
+    h+='<col class="col-name"><col class="'+sCls+'"><col class="'+mCls+'"><col class="col-pct">';
   });h+='</colgroup>';
   h+='<tr class="gh">';allP.forEach((p,i)=>{h+=`<th class="lb col-name" rowspan="2" style="vertical-align:middle">Şöbələr</th><th colspan="3" class="${HC[i]}" style="font-size:13px;font-weight:800">${p.label}</th>`;});
-  h+='</tr><tr class="sh">';allP.forEach((p,i)=>{const nc=i===0?'col-num-daily':i===1?'col-num-wide':'col-num-narrow';h+=`<th class="${SC[i]} ${nc}">Satış</th><th class="${SC[i]} ${nc}">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;});h+='</tr>';
+  h+='</tr><tr class="sh">';allP.forEach((p,i)=>{
+    let sc,mc;
+    if(i===0){sc='col-num-daily-s';mc='col-num-daily-m';}
+    else if(i===1){sc='col-num-wide-s';mc='col-num-wide-m';}
+    else{sc='col-num-narrow';mc='col-num-narrow';}
+    h+=`<th class="${SC[i]} ${sc}">Satış</th><th class="${SC[i]} ${mc}">Mənfəət</th><th class="${SC[i]} col-pct">Faiz</th>`;
+  });h+='</tr>';
   const pTots=allP.map(()=>({s:0,m:0,fl:[]})),sTots=allP.map(()=>({s:0,m:0,fl:[]}));
   const panda=users.filter(u=>u.inTotal),saxa=users.filter(u=>!u.inTotal);
   panda.forEach(u=>{
