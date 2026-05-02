@@ -526,10 +526,24 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
     <div class="mof"><label>→ Narıncı ox</label><input type="color" id="st-arr-mid" value="#f59e0b" onchange="applyStyle()"></div>
   </div>
   <div class="mosect">Sütun eni</div>
-  <div class="mor3">
+  <div class="mor2" style="margin-bottom:6px">
     <div class="mof"><label>Şöbə adı</label><select id="st-namew" onchange="applyStyle()"><option value="100px">100px</option><option value="115px" selected>115px</option><option value="130px">130px</option></select></div>
-    <div class="mof"><label>Rəqəm</label><select id="st-numw" onchange="applyStyle()"><option value="80px">80px</option><option value="94px" selected>94px</option><option value="108px">108px</option></select></div>
-    <div class="mof"><label>Faiz</label><select id="st-pctw" onchange="applyStyle()"><option value="54px">54px</option><option value="62px" selected>62px</option><option value="72px">72px</option></select></div>
+    <div class="mof"><label>Faiz</label><select id="st-pctw" onchange="applyStyle()"><option value="50px">50px</option><option value="55px" selected>55px</option><option value="62px">62px</option><option value="72px">72px</option></select></div>
+  </div>
+  <div style="font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:5px">Günlük sütunlar</div>
+  <div class="mor2" style="margin-bottom:6px">
+    <div class="mof"><label>Günlük Satış</label><select id="st-daily-s" onchange="applyStyle()"><option value="75px">75px</option><option value="80px">80px</option><option value="85px">85px</option><option value="90px" selected>90px</option><option value="95px">95px</option><option value="100px">100px</option><option value="110px">110px</option></select></div>
+    <div class="mof"><label>Günlük Mənfəət</label><select id="st-daily-m" onchange="applyStyle()"><option value="75px">75px</option><option value="80px">80px</option><option value="85px" selected>85px</option><option value="90px">90px</option><option value="95px">95px</option><option value="100px">100px</option></select></div>
+  </div>
+  <div style="font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:5px">Aylıq sütunlar</div>
+  <div class="mor2" style="margin-bottom:6px">
+    <div class="mof"><label>Aylıq Satış</label><select id="st-wide-s" onchange="applyStyle()"><option value="85px">85px</option><option value="90px">90px</option><option value="95px">95px</option><option value="100px" selected>100px</option><option value="105px">105px</option><option value="115px">115px</option><option value="125px">125px</option></select></div>
+    <div class="mof"><label>Aylıq Mənfəət</label><select id="st-wide-m" onchange="applyStyle()"><option value="85px">85px</option><option value="90px">90px</option><option value="95px" selected>95px</option><option value="100px">100px</option><option value="105px">105px</option><option value="115px">115px</option></select></div>
+  </div>
+  <div style="font-size:9px;color:rgba(255,255,255,.4);font-weight:700;text-transform:uppercase;margin-bottom:5px">Keçən il / 2 il əvvəl</div>
+  <div class="mor2">
+    <div class="mof"><label>Satış / Mənfəət</label><select id="st-narrow" onchange="applyStyle()"><option value="75px">75px</option><option value="80px">80px</option><option value="85px" selected>85px</option><option value="90px">90px</option><option value="95px">95px</option><option value="100px">100px</option></select></div>
+    <div class="mof"><label>Rəqəm (köhnə)</label><select id="st-numw" onchange="applyStyle()"><option value="80px">80px</option><option value="94px" selected>94px</option><option value="108px">108px</option></select></div>
   </div>
   <div class="preview-label" style="margin-top:10px">Önizləmə</div>
   <div class="style-preview">
@@ -815,7 +829,7 @@ function attachNumInput(inp){
 function attachAllNum(){document.querySelectorAll('.ni,.saxa-firma-inp,.afrow input,.af1inp').forEach(attachNumInput);}
 
 // ══ STİL ════════════════════════════════════════════════════════════════════
-const DEF_STYLE={font:"'Plus Jakarta Sans',sans-serif",fs:'12px',fw:'700',rh:'27px',pandaCol:'#0f1f3d',arrUp:'#22c55e',arrMid:'#f59e0b',nameW:'115px',numW:'94px',pctW:'62px'};
+const DEF_STYLE={font:"'Plus Jakarta Sans',sans-serif",fs:'12px',fw:'700',rh:'27px',pandaCol:'#0f1f3d',arrUp:'#22c55e',arrMid:'#f59e0b',nameW:'115px',numW:'94px',pctW:'55px',dailyS:'90px',dailyM:'85px',wideS:'100px',wideM:'95px',narrowW:'85px'};
 function gStyle(){try{return{...DEF_STYLE,...(JSON.parse(localStorage.getItem('pk_style')||'null')||{})};}catch{return{...DEF_STYLE};}}
 function svStyle(v){localStorage.setItem('pk_style',JSON.stringify(v));}
 function applyStyleToDOM(st){
@@ -823,23 +837,33 @@ function applyStyleToDOM(st){
     el.style.setProperty('--rt-font',st.font);el.style.setProperty('--rt-fs',st.fs);el.style.setProperty('--rt-fw',st.fw);
     el.style.setProperty('--rt-row-h',st.rh);el.style.setProperty('--rt-tot-h',st.rh);el.style.setProperty('--rt-num-col',st.pandaCol);
     el.style.setProperty('--rt-name-w',st.nameW);el.style.setProperty('--rt-num-w',st.numW);el.style.setProperty('--rt-pct-w',st.pctW);
+    el.style.setProperty('--rt-daily-s',st.dailyS||'90px');el.style.setProperty('--rt-daily-m',st.dailyM||'85px');
+    el.style.setProperty('--rt-wide-s',st.wideS||'100px');el.style.setProperty('--rt-wide-m',st.wideM||'95px');
+    el.style.setProperty('--rt-narrow-w',st.narrowW||'85px');
   });
+  // CSS class-larını da yenilə
+  const styleId='pk-col-style';let stEl=document.getElementById(styleId);
+  if(!stEl){stEl=document.createElement('style');stEl.id=styleId;document.head.appendChild(stEl);}
+  stEl.textContent=`table.rt .col-num-daily-s{width:${st.dailyS||'90px'};min-width:${st.dailyS||'90px'}}table.rt .col-num-daily-m{width:${st.dailyM||'85px'};min-width:${st.dailyM||'85px'}}table.rt .col-num-wide-s{width:${st.wideS||'100px'};min-width:${st.wideS||'100px'}}table.rt .col-num-wide-m{width:${st.wideM||'95px'};min-width:${st.wideM||'95px'}}table.rt .col-num-narrow{width:${st.narrowW||'85px'};min-width:${st.narrowW||'85px'}}table.rt .col-name{width:${st.nameW||'115px'};min-width:${st.nameW||'115px'}}table.rt .col-pct{width:${st.pctW||'55px'};min-width:${st.pctW||'55px'}}`;
   const p1=document.getElementById('prev-nv1');if(p1)p1.innerHTML=nvInner('up',st,'38.259');
   const p2=document.getElementById('prev-nv2');if(p2)p2.innerHTML=nvInner('mid',st,'54.500');
 }
 function applyStyle(){
   const g=id=>document.getElementById(id)?.value;
-  applyStyleToDOM({font:g('st-font')||DEF_STYLE.font,fs:g('st-fs')||DEF_STYLE.fs,fw:g('st-fw')||DEF_STYLE.fw,rh:g('st-rh')||DEF_STYLE.rh,pandaCol:g('st-panda-col')||DEF_STYLE.pandaCol,arrUp:g('st-arr-up')||DEF_STYLE.arrUp,arrMid:g('st-arr-mid')||DEF_STYLE.arrMid,nameW:g('st-namew')||DEF_STYLE.nameW,numW:g('st-numw')||DEF_STYLE.numW,pctW:g('st-pctw')||DEF_STYLE.pctW});
+  applyStyleToDOM({font:g('st-font')||DEF_STYLE.font,fs:g('st-fs')||DEF_STYLE.fs,fw:g('st-fw')||DEF_STYLE.fw,rh:g('st-rh')||DEF_STYLE.rh,pandaCol:g('st-panda-col')||DEF_STYLE.pandaCol,arrUp:g('st-arr-up')||DEF_STYLE.arrUp,arrMid:g('st-arr-mid')||DEF_STYLE.arrMid,nameW:g('st-namew')||DEF_STYLE.nameW,numW:g('st-numw')||DEF_STYLE.numW,pctW:g('st-pctw')||DEF_STYLE.pctW,dailyS:g('st-daily-s')||DEF_STYLE.dailyS,dailyM:g('st-daily-m')||DEF_STYLE.dailyM,wideS:g('st-wide-s')||DEF_STYLE.wideS,wideM:g('st-wide-m')||DEF_STYLE.wideM,narrowW:g('st-narrow')||DEF_STYLE.narrowW});
 }
 function saveStyle(){
   const g=id=>document.getElementById(id)?.value;
-  const st={font:g('st-font')||DEF_STYLE.font,fs:g('st-fs')||DEF_STYLE.fs,fw:g('st-fw')||DEF_STYLE.fw,rh:g('st-rh')||DEF_STYLE.rh,pandaCol:g('st-panda-col')||DEF_STYLE.pandaCol,arrUp:g('st-arr-up')||DEF_STYLE.arrUp,arrMid:g('st-arr-mid')||DEF_STYLE.arrMid,nameW:g('st-namew')||DEF_STYLE.nameW,numW:g('st-numw')||DEF_STYLE.numW,pctW:g('st-pctw')||DEF_STYLE.pctW};
+  const st={font:g('st-font')||DEF_STYLE.font,fs:g('st-fs')||DEF_STYLE.fs,fw:g('st-fw')||DEF_STYLE.fw,rh:g('st-rh')||DEF_STYLE.rh,pandaCol:g('st-panda-col')||DEF_STYLE.pandaCol,arrUp:g('st-arr-up')||DEF_STYLE.arrUp,arrMid:g('st-arr-mid')||DEF_STYLE.arrMid,nameW:g('st-namew')||DEF_STYLE.nameW,numW:g('st-numw')||DEF_STYLE.numW,pctW:g('st-pctw')||DEF_STYLE.pctW,dailyS:g('st-daily-s')||DEF_STYLE.dailyS,dailyM:g('st-daily-m')||DEF_STYLE.dailyM,wideS:g('st-wide-s')||DEF_STYLE.wideS,wideM:g('st-wide-m')||DEF_STYLE.wideM,narrowW:g('st-narrow')||DEF_STYLE.narrowW};
   svStyle(st);applyStyleToDOM(st);closeMo('mo-style');alert('✅ Görünüş saxlanıldı!');
 }
 function resetStyle(){svStyle({...DEF_STYLE});loadSI(DEF_STYLE);applyStyleToDOM(DEF_STYLE);}
 function loadSI(st){
   const sv=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v;};
   sv('st-font',st.font);sv('st-fs',st.fs);sv('st-fw',st.fw);sv('st-rh',st.rh);sv('st-panda-col',st.pandaCol);sv('st-arr-up',st.arrUp);sv('st-arr-mid',st.arrMid);sv('st-namew',st.nameW);sv('st-numw',st.numW);sv('st-pctw',st.pctW);
+  sv('st-daily-s',st.dailyS||DEF_STYLE.dailyS);sv('st-daily-m',st.dailyM||DEF_STYLE.dailyM);
+  sv('st-wide-s',st.wideS||DEF_STYLE.wideS);sv('st-wide-m',st.wideM||DEF_STYLE.wideM);
+  sv('st-narrow',st.narrowW||DEF_STYLE.narrowW);
 }
 function openStyleMo(){const st=gStyle();loadSI(st);applyStyleToDOM(st);document.getElementById('mo-style').classList.add('show');}
 applyStyleToDOM(gStyle());
