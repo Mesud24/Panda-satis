@@ -626,7 +626,6 @@ function showHolidayOverlay(h){
   if(sb){sb.innerHTML='';for(let i=0;i<18;i++){const s=document.createElement('div');s.className='hb-star';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*1.5}s;`;sb.appendChild(s);}}
   document.getElementById('hol-overlay').classList.add('show');
   setTimeout(()=>launchConfetti(),300);
-  localStorage.setItem(holidaySeenKey(h.id),'1');
 }
 function closeHolidayOverlay(){document.getElementById('hol-overlay').classList.remove('show');}
 function isFirstDayOfHoliday(h){
@@ -666,7 +665,7 @@ function buildHolidayBanner(holidays){
     <div class="hb-text">
       <div class="hb-title">${h.name} mübarək! 🎉</div>
       <div class="hb-sub">Panda Kids ailəsi olaraq sizi təbrik edirik!</div>
-      ${daysLeft>1?`<div class="hb-days">Bayram ${daysLeft} gün davam edir</div>`:'<div class="hb-days">Bayramın son günü</div>'}
+
     </div>
   </div>`;
 }
@@ -896,9 +895,15 @@ function _lsSet(data){try{localStorage.setItem(LS_CACHE,JSON.stringify({data,ts:
 async function rBin(force=false){
   const now=Date.now();
   if(!force&&_bc&&(now-_bcts)<MEM_TTL)return _bc;
-  if(!force&&!_bc){const ls=_lsGet();if(ls){_bc=ls;_bcts=now-MEM_TTL+5000;return _bc;}}
-  try{const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},cache:'no-store'});if(!r.ok)return _bc||defBin();const j=await r.json();_bc=_parseBin(j.data||{});_bcts=now;_lsSet(_bc);return _bc;}
-  catch{return _bc||_lsGet()||defBin();}
+  if(!force){const ls=_lsGet();if(ls){_bc=ls;_bcts=now;return _bc;}}
+  try{
+    const ctrl=new AbortController();
+    const tid=setTimeout(()=>ctrl.abort(),8000);
+    const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},cache:'no-store',signal:ctrl.signal});
+    clearTimeout(tid);
+    if(!r.ok)return _bc||defBin();
+    const j=await r.json();_bc=_parseBin(j.data||{});_bcts=now;_lsSet(_bc);return _bc;
+  }catch{return _bc||_lsGet()||defBin();}
 }
 function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true},holidays:DEF_HOLIDAYS}};}
 async function wBin(records,sf,cfg){
@@ -989,11 +994,16 @@ function closeMo(id){document.getElementById(id).classList.remove('show');}
 function logout(){curSid=null;document.getElementById('gpw').value='';document.getElementById('gerr').classList.remove('show');document.getElementById('gsel').value='';loadTheme('guest');goTo('gate');}
 
 async function buildSel(){
+  ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
   const ls=_lsGet();
-  if(ls){CFG=ls.cfg;_bc=ls;_bcts=Date.now()-MEM_TTL+10000;fillSel();rBin(true).then(bin=>{CFG=bin.cfg;fillSel();}).catch(()=>{});return;}
-  progShow('Yüklənir...');await progAnimate(5,60,'Məlumatlar...',400);
-  const bin=await rBin(true);CFG=bin.cfg;await progAnimate(60,100,'Hazır!',150);
-  document.getElementById('prog-overlay').classList.remove('show');setProg(0,'');fillSel();
+  if(ls){
+    CFG=ls.cfg;_bc=ls;_bcts=Date.now();fillSel();
+    setTimeout(()=>rBin(true).then(bin=>{CFG=bin.cfg;_bc=bin;fillSel();}).catch(()=>{}),200);
+    return;
+  }
+  progShow('Yüklənir...');
+  let pct=5;const t=setInterval(()=>{pct=Math.min(pct+15,90);setProg(Math.round(pct),'Məlumatlar...');},50);
+  try{const bin=await rBin(true);CFG=bin.cfg;}finally{clearInterval(t);setProg(100,'Hazır!');setTimeout(()=>{document.getElementById('prog-overlay').classList.remove('show');setProg(0,'');fillSel();},80);}
 }
 function fillSel(){
   ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
@@ -1351,7 +1361,7 @@ function mkPanel(id){
   const d=getRD();
   // Bayram qeydi şəkil üçün
   const activeHol=getActiveHoliday(gH());
-  const holRow=activeHol?`<div style="background:${activeHol.gradient||'linear-gradient(90deg,#3b0764,#6d28d9)'};padding:8px 20px;display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">${activeHol.emoji}</span><span style="font-size:12px;font-weight:700;color:#fde68a;">${activeHol.name} münasibətilə bütün əməkdaşlarımızı təbrik edirik! 🎉</span></div>`:'';
+  const holRow=activeHol?`<div style="background:${activeHol.gradient||'linear-gradient(90deg,#3b0764,#6d28d9)'};padding:8px 20px;display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">${activeHol.emoji}</span><span style="font-size:12px;font-weight:700;color:#fde68a;">${activeHol.name} münasibəti ilə sizi ürəkdən təbrik edirik! ${activeHol.emoji}</span></div>`:'';
   return `<div class="rc" id="rc-${id}">
     <div class="rchdr"><img class="rclogo" src="IMG_0510.png" alt=""><div class="rct"><h2>Panda Kids — Yekun Satış Hesabatı</h2><p>Günlük &amp; Aylıq Müqayisəli</p></div><div class="rcd"><div class="rday">${d.getDate()}</div><div class="rmo">${AY[d.getMonth()].toUpperCase()} ${d.getFullYear()}</div></div></div>
     ${holRow}
@@ -1367,7 +1377,6 @@ async function loadAdmin(){
   const btn=document.getElementById('refreshBtn');
   if(btn){btn.disabled=true;btn.textContent='⏳ ...';}
   try{
-    _bc=null;_bcts=0;localStorage.removeItem(LS_CACHE);
     const {records,sf,cfg}=await rBin(true);CFG=cfg;
     const holBanner=buildHolidayBanner(gH());
     body.innerHTML=holBanner+mkPanel('adm')+
@@ -1387,7 +1396,6 @@ function openViewer(u){document.getElementById('viewdate').textContent=fmtRealDa
 async function loadViewer(){
   const body=document.getElementById('viewbody');
   try{
-    _bc=null;_bcts=0;
     const {records,sf,cfg}=await rBin(true);CFG=cfg;
     const holBanner=buildHolidayBanner(gH());
     body.innerHTML=holBanner+mkPanel('view')+
@@ -1405,7 +1413,7 @@ async function takeScr(id){
   const tw=card.querySelector('.rctw');const of_=tw.style.overflow,ow_=tw.style.width,oh_=tw.style.maxHeight;
   tw.style.overflow='visible';tw.style.width=tblW+'px';tw.style.maxHeight='none';const cw_=card.style.width;card.style.width=tblW+'px';
   spinShow('Şəkil hazırlanır...');
-  try{const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:4,useCORS:true,logging:false,width:tblW,height:card.scrollHeight,windowWidth:tblW,imageTimeout:0,x:0,y:0});prevUrl=c.toDataURL('image/png',1.0);document.getElementById('previmg').src=prevUrl;document.getElementById('imgov').classList.add('show');}
+  try{const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:5,useCORS:true,logging:false,width:tblW,height:card.scrollHeight,windowWidth:tblW,imageTimeout:0,x:0,y:0});prevUrl=c.toDataURL('image/png',1.0);document.getElementById('previmg').src=prevUrl;document.getElementById('imgov').classList.add('show');}
   catch{alert('Şəkil alınmadı.');}
   finally{spinHide();tw.style.overflow=of_;tw.style.width=ow_;tw.style.maxHeight=oh_;card.style.width=cw_;}
 }
@@ -1413,7 +1421,7 @@ function saveImg(){if(!prevUrl)return;const a=document.createElement('a');const 
 async function takeSfScr(){
   const card=document.getElementById('sf-rc');if(!card){alert('Hesabat yoxdur.');return;}
   spinShow('Şəkil hazırlanır...');
-  try{const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:4,useCORS:true,logging:false,width:card.scrollWidth,height:card.scrollHeight,imageTimeout:0});sfPrevUrl=c.toDataURL('image/png',1.0);document.getElementById('sf-previmg').src=sfPrevUrl;document.getElementById('sf-imgov').classList.add('show');}
+  try{const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:5,useCORS:true,logging:false,width:card.scrollWidth,height:card.scrollHeight,imageTimeout:0});sfPrevUrl=c.toDataURL('image/png',1.0);document.getElementById('sf-previmg').src=sfPrevUrl;document.getElementById('sf-imgov').classList.add('show');}
   catch{alert('Şəkil alınmadı.');}
   finally{spinHide();}
 }
@@ -1430,7 +1438,7 @@ async function renderFillForm(){
   const sid=document.getElementById('fill-sel').value;if(!sid){document.getElementById('fill-body').innerHTML='';document.getElementById('fill-btn').style.display='none';return;}
   const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
   document.getElementById('fill-body').innerHTML='<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">Yüklənir...</div>';
-  const {records,sf}=await rBin();window._fr=records;window._fsf=sf;
+  const {records,sf}=await rBin(false);window._fr=records;window._fsf=sf;
   const inpSt='width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 8px;font-family:\'Plus Jakarta Sans\',sans-serif;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;';
   let h='';
   periods.forEach((p,pi)=>{
@@ -1474,7 +1482,7 @@ async function doAdminFill(){
 }
 
 async function openUsersMo(){
-  spinShow('Yüklənir...');const {cfg}=await rBin();CFG=cfg;spinHide();
+  const {cfg}=await rBin(false);CFG=cfg;
   tmpUsers=JSON.parse(JSON.stringify(gU()));renderUsersMo();document.getElementById('mo-u').classList.add('show');
 }
 function renderUsersMo(){
@@ -1505,19 +1513,19 @@ function togglePeriod(ri,pi,cb){if(!tmpUsers[ri].periods)tmpUsers[ri].periods=[1
 function addStore(){const vi=tmpUsers.findIndex(u=>u.type==='viewer');const ns={id:'s'+Date.now(),name:'Yeni Şöbə',pw:'sifre123',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]};if(vi>=0)tmpUsers.splice(vi,0,ns);else tmpUsers.push(ns);renderUsersMo();}
 function delUser(i){if(confirm('Silinsin?')){tmpUsers.splice(i,1);renderUsersMo();}}
 async function saveUsers(){
-  spinShow('Saxlanır...');const {records,sf,cfg}=await rBin();cfg.users=tmpUsers;CFG=cfg;await wBin(records,sf,cfg);spinHide();fillSel();closeMo('mo-u');alert('✅ Saxlanıldı!');
+  spinShow('Saxlanır...');const {records,sf,cfg}=await rBin(false);cfg.users=tmpUsers;CFG=cfg;await wBin(records,sf,cfg);spinHide();fillSel();closeMo('mo-u');alert('✅ Saxlanıldı!');
 }
 async function openTargetsMo(){
-  spinShow('Yüklənir...');const {cfg}=await rBin();CFG=cfg;spinHide();const tgts=gT();let h='';
+  const {cfg}=await rBin(false);CFG=cfg;const tgts=gT();let h='';
   gU().filter(u=>u.type==='store').forEach(u=>{const t=tgts[u.id]||{min:0,mid:0,max:0};h+=`<div class="mos"><div class="mosn">${u.name}</div><div class="mor3"><div class="mof"><label>🥉 Min</label><input type="number" inputmode="numeric" id="tm-${u.id}" value="${t.min}"></div><div class="mof"><label>🥈 Orta</label><input type="number" inputmode="numeric" id="td-${u.id}" value="${t.mid}"></div><div class="mof"><label>🥇 Maks</label><input type="number" inputmode="numeric" id="tx-${u.id}" value="${t.max}"></div></div></div>`;});
   document.getElementById('mot-body').innerHTML=h;document.getElementById('mo-t').classList.add('show');
 }
 async function saveTargets(){
   spinShow('Saxlanır...');const tgts={};gU().filter(u=>u.type==='store').forEach(u=>{tgts[u.id]={min:parseFloat(document.getElementById(`tm-${u.id}`)?.value)||0,mid:parseFloat(document.getElementById(`td-${u.id}`)?.value)||0,max:parseFloat(document.getElementById(`tx-${u.id}`)?.value)||0};});
-  const {records,sf,cfg}=await rBin();cfg.targets=tgts;CFG=cfg;await wBin(records,sf,cfg);spinHide();closeMo('mo-t');alert('✅ Hədəflər saxlanıldı!');
+  const {records,sf,cfg}=await rBin(false);cfg.targets=tgts;CFG=cfg;await wBin(records,sf,cfg);spinHide();closeMo('mo-t');alert('✅ Hədəflər saxlanıldı!');
 }
 async function openSaxaAdminMo(){
-  spinShow('Yüklənir...');const {cfg}=await rBin();CFG=cfg;spinHide();const ss=gSS(),users=gU().filter(u=>u.type==='store');
+  const {cfg}=await rBin(false);CFG=cfg;const ss=gSS(),users=gU().filter(u=>u.type==='store');
   let h=`<div class="mos"><div class="mosn">Firma Adı</div><div class="mof"><input type="text" id="sf-name" value="${ss.firmName||'Saxa Outlet'}"></div></div><div class="mosect">Hansı şöbələr doldurur</div>`;
   users.forEach(u=>{h+=`<div class="cr"><input type="checkbox" id="sff-${u.id}" ${(ss.fillers||[]).includes(u.id)?'checked':''}><label for="sff-${u.id}">${u.name}</label></div>`;});
   h+=`<div class="mosect">Göstər</div><div class="cr"><input type="checkbox" id="sf-show" ${ss.showInAdmin?'checked':''}><label for="sf-show">Admin paneldə göstərilsin</label></div>`;
@@ -1525,11 +1533,11 @@ async function openSaxaAdminMo(){
 }
 async function saveSaxaSettings(){
   spinShow('Saxlanır...');const users=gU().filter(u=>u.type==='store');const fillers=users.filter(u=>document.getElementById(`sff-${u.id}`)?.checked).map(u=>u.id);
-  const {records,sf,cfg}=await rBin();cfg.saxa={fillers,firmName:document.getElementById('sf-name')?.value||'Saxa Outlet',showInAdmin:document.getElementById('sf-show')?.checked||false};
+  const {records,sf,cfg}=await rBin(false);cfg.saxa={fillers,firmName:document.getElementById('sf-name')?.value||'Saxa Outlet',showInAdmin:document.getElementById('sf-show')?.checked||false};
   CFG=cfg;await wBin(records,sf,cfg);spinHide();closeMo('mo-saxa-admin');alert('✅ Saxlandı!');
 }
 async function openSettingsMo(){const {cfg}=await rBin();CFG=cfg;const cb=document.getElementById('param-admin-jurnal');if(cb)cb.checked=cfg.jp?.showAdmin||false;document.getElementById('mo-set').classList.add('show');}
-async function saveJP(){const showAdmin=document.getElementById('param-admin-jurnal')?.checked||false;const {records,sf,cfg}=await rBin();cfg.jp={showAdmin};CFG=cfg;await wBin(records,sf,cfg);}
+async function saveJP(){const showAdmin=document.getElementById('param-admin-jurnal')?.checked||false;const {records,sf,cfg}=await rBin(false);cfg.jp={showAdmin};CFG=cfg;await wBin(records,sf,cfg);}
 function changeAdminPw(){
   const o=document.getElementById('oldpw').value,n=document.getElementById('newpw').value;
   if(o!==ADMIN_PW){alert('Köhnə parol yanlışdır.');return;}if(!n||n.length<4){alert('Yeni parol ən azı 4 simvol.');return;}
