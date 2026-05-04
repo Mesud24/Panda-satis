@@ -473,14 +473,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 
 <div class="mo" id="mo-t"><div class="mobox"><h3>🎯 Aylıq Hədəflər</h3><div id="mot-body"></div><button class="mosave" onclick="saveTargets()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-t')">Bağla</button></div></div>
 <div class="mo" id="mo-u"><div class="mobox"><h3>👥 İstifadəçilər</h3><div id="mou-body"></div><button class="addbtn" onclick="addStore()">+ Yeni Şöbə</button><button class="mosave" onclick="saveUsers()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-u')">Bağla</button></div></div>
-<div class="mo" id="mo-set"><div class="mobox"><h3>⚙️ Parametrlər</h3>
-  <div class="mosect">Gündəlik Sıfırlanma Saati</div>
-  <div class="mor2" style="margin-bottom:6px">
-    <div class="mof"><label>Saat (0-23)</label><input type="number" id="param-reset-hour" min="0" max="23" placeholder="17" style="text-align:center"></div>
-    <div style="display:flex;align-items:flex-end"><button class="mosave" style="background:rgba(99,102,241,.3);border:1px solid rgba(99,102,241,.5);margin-top:0;padding:9px 12px;font-size:12px" onclick="saveResetHour()">✓ Tətbiq et</button></div>
-  </div>
-  <div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:10px;line-height:1.5;">Hazırkı: <span id="cur-reset-hour" style="color:#f0c060;font-weight:700">17</span>:00 — Dəyişdikdə dərhal qüvvəyə minir</div>
-  <div class="mosect">Admin Parolu</div><div class="mor2" style="margin-bottom:9px"><div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••" autocomplete="current-password"></div><div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••" autocomplete="new-password"></div></div><button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button><div class="mosect">Jurnal</div><div class="cr"><input type="checkbox" id="param-admin-jurnal" onchange="saveJP()"><label for="param-admin-jurnal">Admin girişini jurnalda göstər</label></div><button class="moclose" onclick="closeMo('mo-set')" style="margin-top:12px">Bağla</button></div></div>
+<div class="mo" id="mo-set"><div class="mobox"><h3>⚙️ Parametrlər</h3><div class="mosect">Admin Parolu</div><div class="mor2" style="margin-bottom:9px"><div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••" autocomplete="current-password"></div><div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••" autocomplete="new-password"></div></div><button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button><div class="mosect">Jurnal</div><div class="cr"><input type="checkbox" id="param-admin-jurnal" onchange="saveJP()"><label for="param-admin-jurnal">Admin girişini jurnalda göstər</label></div><button class="moclose" onclick="closeMo('mo-set')" style="margin-top:12px">Bağla</button></div></div>
 <div class="mo" id="mo-fill"><div class="mobox"><h3>✏️ Admin Doldurma</h3><div class="mof" style="margin-bottom:10px"><label>Şöbə seç</label><select id="fill-sel" onchange="renderFillForm()"><option value="">— Seçin —</option></select></div><div id="fill-body"></div><button class="mosave" id="fill-btn" onclick="doAdminFill()" style="display:none">✓ Saxla</button><div class="ldbox" id="fill-ld">⏳ Göndərilir...</div><div class="okbox" id="fill-ok">✅ Saxlandı!</div><div class="erbox" id="fill-er">❌ Xəta.</div><button class="moclose" onclick="closeMo('mo-fill')">Bağla</button></div></div>
 <div class="mo" id="mo-saxa-admin"><div class="mobox"><h3>Saxa Firma</h3><div id="saxa-admin-body"></div><button class="mosave" onclick="saveSaxaSettings()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-saxa-admin')">Bağla</button></div></div>
 <div class="mo" id="mo-jurnal"><div class="mobox"><h3>🔐 Giriş Jurnalı</h3><div class="jurnal-filter" id="jurnal-filter"></div><div class="jurnal-list" id="jurnal-modal-list"></div><button class="moclose" onclick="closeMo('mo-jurnal')">Bağla</button></div></div>
@@ -633,6 +626,7 @@ function showHolidayOverlay(h){
   if(sb){sb.innerHTML='';for(let i=0;i<18;i++){const s=document.createElement('div');s.className='hb-star';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*1.5}s;`;sb.appendChild(s);}}
   document.getElementById('hol-overlay').classList.add('show');
   setTimeout(()=>launchConfetti(),300);
+  localStorage.setItem(holidaySeenKey(h.id),'1');
 }
 function closeHolidayOverlay(){document.getElementById('hol-overlay').classList.remove('show');}
 function isFirstDayOfHoliday(h){
@@ -641,23 +635,21 @@ function isFirstDayOfHoliday(h){
   return today===h.startDate;
 }
 // Neçə dəfə göstərilib - günlük say
-function holSeenCount(hid,uid){
-  const k=`pk_hol_cnt_${hid}_${uid||'guest'}_${todayStr()}`;
-  return parseInt(localStorage.getItem(k)||'0');
+function holSeenCount(hid){
+  return parseInt(localStorage.getItem(`pk_hol_cnt_${hid}_${todayStr()}`)||'0');
 }
-function holIncrCount(hid,uid){
-  const k=`pk_hol_cnt_${hid}_${uid||'guest'}_${todayStr()}`;
-  localStorage.setItem(k,String(holSeenCount(hid,uid)+1));
+function holIncrCount(hid){
+  const k=`pk_hol_cnt_${hid}_${todayStr()}`;
+  localStorage.setItem(k,String(holSeenCount(hid)+1));
 }
 // isAdmin=true → max 1 dəfə; isAdmin=false → max 2 dəfə
-function checkAndShowHoliday(holidays,isAdmin=false,uid=null){
+function checkAndShowHoliday(holidays,isAdmin=false){
   const h=getActiveHoliday(holidays);
   if(!h)return;
   const maxCnt=isAdmin?1:2;
-  const eff=uid||_curUid||'guest';
-  if(holSeenCount(h.id,eff)<maxCnt){
+  if(holSeenCount(h.id)<maxCnt){
     showHolidayOverlay(h);
-    holIncrCount(h.id,eff);
+    holIncrCount(h.id);
   }
 }
 function buildHolidayBanner(holidays){
@@ -674,7 +666,7 @@ function buildHolidayBanner(holidays){
     <div class="hb-text">
       <div class="hb-title">${h.name} mübarək! 🎉</div>
       <div class="hb-sub">Panda Kids ailəsi olaraq sizi təbrik edirik!</div>
-
+      ${daysLeft>1?`<div class="hb-days">Bayram ${daysLeft} gün davam edir</div>`:'<div class="hb-days">Bayramın son günü</div>'}
     </div>
   </div>`;
 }
@@ -883,22 +875,19 @@ const DEF_USERS=[
   {id:'pe',name:'Panda Express',pw:'pe-2026',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]},
   {id:'s1',name:'Saxa 1 (Əcəmi)',pw:'s1-2026',inTotal:false,showPlan:true,type:'store',periods:[1,1,0,0]},
   {id:'s2',name:'Saxa 2 (Xırdalan)',pw:'s2-2026',inTotal:false,showPlan:true,type:'store',periods:[1,1,0,0]},
-  {id:'s3',name:'Saxa 3 (Həzi Aslanov)',pw:'s3-2026',inTotal:false,showPlan:true,type:'store',periods:[1,1,0,0]},
   {id:'v1',name:'Baxış',pw:'view2026',inTotal:false,showPlan:false,type:'viewer',periods:[1,1,1,1]}
 ];
-const DEF_TGTS={p2:{min:70000,mid:85000,max:100000},p3:{min:80000,mid:95000,max:110000},pe:{min:40000,mid:55000,max:70000},s1:{min:20000,mid:28000,max:35000},s2:{min:15000,mid:22000,max:30000},s3:{min:15000,mid:22000,max:30000}};
+const DEF_TGTS={p2:{min:70000,mid:85000,max:100000},p3:{min:80000,mid:95000,max:110000},pe:{min:40000,mid:55000,max:70000},s1:{min:20000,mid:28000,max:35000},s2:{min:15000,mid:22000,max:30000}};
 const DEF_SAXA={fillers:['p2','p3','pe'],showInAdmin:true,firmName:'Saxa Outlet'};
 let CFG=null,_bc=null,_bcts=0;
-const MEM_TTL=30000,LS_TTL=120000;
+const MEM_TTL=60000,LS_TTL=600000;
 
 function progShow(msg='Yüklənir...'){document.getElementById('prog-overlay').classList.add('show');setProg(5,msg);}
 function setProg(pct,msg){document.getElementById('prog-bar').style.width=pct+'%';document.getElementById('prog-pct').textContent=pct+'%';if(msg)document.getElementById('prog-msg').textContent=msg;}
 function progAnimate(from,to,msg,ms){return new Promise(res=>{const step=(to-from)/20;let cur=from;const t=setInterval(()=>{cur=Math.min(cur+step,to);setProg(Math.round(cur),msg);if(cur>=to){clearInterval(t);res();}},ms/20);});}
 
 function _parseBin(d){
-  // Server-dən gələn users var isə onu işlət, yoxsa DEF_USERS
-  const serverUsers=d.cfg?.users;
-  const users=(serverUsers&&serverUsers.length>0?serverUsers:DEF_USERS).map(u=>({...u,periods:u.periods||[1,1,1,1]}));
+  const users=(d.cfg?.users||DEF_USERS).map(u=>({...u,periods:u.periods||[1,1,1,1]}));
   const holidays=d.cfg?.holidays||DEF_HOLIDAYS;
   return{records:d.records||[],sf:d.sf||{},cfg:{users,targets:d.cfg?.targets||DEF_TGTS,saxa:d.cfg?.saxa||DEF_SAXA,jurnal:d.cfg?.jurnal||[],jp:d.cfg?.jp||{showAdmin:true},holidays}};
 }
@@ -907,25 +896,14 @@ function _lsSet(data){try{localStorage.setItem(LS_CACHE,JSON.stringify({data,ts:
 async function rBin(force=false){
   const now=Date.now();
   if(!force&&_bc&&(now-_bcts)<MEM_TTL)return _bc;
-  if(!force){const ls=_lsGet();if(ls){_bc=ls;_bcts=now;return _bc;}}
-  try{
-    const ctrl=new AbortController();
-    const tid=setTimeout(()=>ctrl.abort(),8000);
-    const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},cache:'no-store',signal:ctrl.signal});
-    clearTimeout(tid);
-    if(!r.ok)return _bc||defBin();
-    const j=await r.json();_bc=_parseBin(j.data||{});_bcts=now;_lsSet(_bc);return _bc;
-  }catch{return _bc||_lsGet()||defBin();}
+  if(!force&&!_bc){const ls=_lsGet();if(ls){_bc=ls;_bcts=now-MEM_TTL+5000;return _bc;}}
+  try{const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},cache:'no-store'});if(!r.ok)return _bc||defBin();const j=await r.json();_bc=_parseBin(j.data||{});_bcts=now;_lsSet(_bc);return _bc;}
+  catch{return _bc||_lsGet()||defBin();}
 }
 function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true},holidays:DEF_HOLIDAYS}};}
 async function wBin(records,sf,cfg){
-  // Cache-i sil ki digər cihazlar köhnə data görməsin
-  try{localStorage.removeItem(LS_CACHE);}catch{}
-  _bc={records,sf,cfg};_bcts=Date.now();
-  try{
-    await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data:{records,sf,cfg}})});
-    _lsSet(_bc);
-  }catch(e){console.error(e);}
+  _bc={records,sf,cfg};_bcts=Date.now();_lsSet(_bc);
+  try{await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data:{records,sf,cfg}})});}catch(e){console.error(e);}
 }
 function gU(){return CFG?.users||DEF_USERS;}
 function gT(){return CFG?.targets||DEF_TGTS;}
@@ -1011,23 +989,11 @@ function closeMo(id){document.getElementById(id).classList.remove('show');}
 function logout(){curSid=null;document.getElementById('gpw').value='';document.getElementById('gerr').classList.remove('show');document.getElementById('gsel').value='';loadTheme('guest');goTo('gate');}
 
 async function buildSel(){
-  ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
-  // Əvvəlcə cache varsa dərhal göstər (sürətli giriş üçün)
   const ls=_lsGet();
-  if(ls){CFG=ls.cfg;_bc=ls;fillSel();}
-  // Həmişə serverdən fresh data al (parollar, istifadəçilər yenilənsin)
-  try{
-    const bin=await rBin(true);
-    CFG=bin.cfg;_bc=bin;
-    fillSel();// Yenilənmiş istifadəçiləri göstər
-  }catch(e){
-    if(!ls){// Cache yoxdursa progress göstər
-      progShow('Yüklənir...');
-      let pct=5;const t=setInterval(()=>{pct=Math.min(pct+15,90);setProg(Math.round(pct),'Məlumatlar...');},50);
-      clearInterval(t);setProg(100,'Hazır!');
-      setTimeout(()=>{document.getElementById('prog-overlay').classList.remove('show');setProg(0,'');},80);
-    }
-  }
+  if(ls){CFG=ls.cfg;_bc=ls;_bcts=Date.now()-MEM_TTL+10000;fillSel();rBin(true).then(bin=>{CFG=bin.cfg;fillSel();}).catch(()=>{});return;}
+  progShow('Yüklənir...');await progAnimate(5,60,'Məlumatlar...',400);
+  const bin=await rBin(true);CFG=bin.cfg;await progAnimate(60,100,'Hazır!',150);
+  document.getElementById('prog-overlay').classList.remove('show');setProg(0,'');fillSel();
 }
 function fillSel(){
   ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
@@ -1046,8 +1012,8 @@ async function doLogin(){
   document.getElementById('gerr').classList.remove('show');
   if(rem)localStorage.setItem('pk_rem',JSON.stringify({sid,pw}));else localStorage.removeItem('pk_rem');
   loadTheme(sid);
-  spinShow('Giriş edilir...');const bin=await rBin(true);CFG=bin.cfg;spinHide();
-  checkAndShowHoliday(gH(),false,sid);
+  const bin=await rBin(false);CFG=bin.cfg;
+  checkAndShowHoliday(gH());
   logLogin(u.name,false,bin.records,bin.sf,bin.cfg);
   if(u.type==='viewer')openViewer(u);else{curSid=sid;openStoreForm(sid);}
 }
@@ -1172,10 +1138,8 @@ async function openStoreForm(sid){
   document.getElementById('sfdate').textContent=fmtRealDate();
   document.getElementById('sfbody').innerHTML='<div class="admld">Yüklənir...</div>';
   goTo('store-form');
-  spinShow('Yüklənir...');
-  const bin=await rBin(true);
+  const bin=await rBin(false);
   CFG=bin.cfg;window._cr=bin.records;window._csf=bin.sf;
-  spinHide();
   renderFormData(sid,bin.records,bin.sf);
 }
 function renderFormData(sid,records,sf){
@@ -1387,7 +1351,7 @@ function mkPanel(id){
   const d=getRD();
   // Bayram qeydi şəkil üçün
   const activeHol=getActiveHoliday(gH());
-  const holRow=activeHol?`<div style="background:${activeHol.gradient||'linear-gradient(90deg,#3b0764,#6d28d9)'};padding:8px 20px;display:flex;align-items:center;gap:8px;"><span style="font-size:20px;">${activeHol.emoji}</span><span style="font-size:14px;font-weight:700;color:#fde68a;">${activeHol.name} münasibəti ilə sizi təbrik edirik! ${activeHol.emoji}</span></div>`:'';
+  const holRow=activeHol?`<div style="background:${activeHol.gradient||'linear-gradient(90deg,#3b0764,#6d28d9)'};padding:8px 20px;display:flex;align-items:center;gap:8px;"><span style="font-size:18px;">${activeHol.emoji}</span><span style="font-size:12px;font-weight:700;color:#fde68a;">${activeHol.name} münasibətilə bütün əməkdaşlarımızı təbrik edirik! 🎉</span></div>`:'';
   return `<div class="rc" id="rc-${id}">
     <div class="rchdr"><img class="rclogo" src="IMG_0510.png" alt=""><div class="rct"><h2>Panda Kids — Yekun Satış Hesabatı</h2><p>Günlük &amp; Aylıq Müqayisəli</p></div><div class="rcd"><div class="rday">${d.getDate()}</div><div class="rmo">${AY[d.getMonth()].toUpperCase()} ${d.getFullYear()}</div></div></div>
     ${holRow}
@@ -1403,6 +1367,7 @@ async function loadAdmin(){
   const btn=document.getElementById('refreshBtn');
   if(btn){btn.disabled=true;btn.textContent='⏳ ...';}
   try{
+    _bc=null;_bcts=0;localStorage.removeItem(LS_CACHE);
     const {records,sf,cfg}=await rBin(true);CFG=cfg;
     const holBanner=buildHolidayBanner(gH());
     body.innerHTML=holBanner+mkPanel('adm')+
@@ -1422,6 +1387,7 @@ function openViewer(u){document.getElementById('viewdate').textContent=fmtRealDa
 async function loadViewer(){
   const body=document.getElementById('viewbody');
   try{
+    _bc=null;_bcts=0;
     const {records,sf,cfg}=await rBin(true);CFG=cfg;
     const holBanner=buildHolidayBanner(gH());
     body.innerHTML=holBanner+mkPanel('view')+
@@ -1439,7 +1405,7 @@ async function takeScr(id){
   const tw=card.querySelector('.rctw');const of_=tw.style.overflow,ow_=tw.style.width,oh_=tw.style.maxHeight;
   tw.style.overflow='visible';tw.style.width=tblW+'px';tw.style.maxHeight='none';const cw_=card.style.width;card.style.width=tblW+'px';
   spinShow('Şəkil hazırlanır...');
-  try{const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:5,useCORS:true,logging:false,width:tblW,height:card.scrollHeight,windowWidth:tblW,imageTimeout:0,x:0,y:0});prevUrl=c.toDataURL('image/png',1.0);document.getElementById('previmg').src=prevUrl;document.getElementById('imgov').classList.add('show');}
+  try{const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:4,useCORS:true,logging:false,width:tblW,height:card.scrollHeight,windowWidth:tblW,imageTimeout:0,x:0,y:0});prevUrl=c.toDataURL('image/png',1.0);document.getElementById('previmg').src=prevUrl;document.getElementById('imgov').classList.add('show');}
   catch{alert('Şəkil alınmadı.');}
   finally{spinHide();tw.style.overflow=of_;tw.style.width=ow_;tw.style.maxHeight=oh_;card.style.width=cw_;}
 }
@@ -1447,7 +1413,7 @@ function saveImg(){if(!prevUrl)return;const a=document.createElement('a');const 
 async function takeSfScr(){
   const card=document.getElementById('sf-rc');if(!card){alert('Hesabat yoxdur.');return;}
   spinShow('Şəkil hazırlanır...');
-  try{const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:5,useCORS:true,logging:false,width:card.scrollWidth,height:card.scrollHeight,imageTimeout:0});sfPrevUrl=c.toDataURL('image/png',1.0);document.getElementById('sf-previmg').src=sfPrevUrl;document.getElementById('sf-imgov').classList.add('show');}
+  try{const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:4,useCORS:true,logging:false,width:card.scrollWidth,height:card.scrollHeight,imageTimeout:0});sfPrevUrl=c.toDataURL('image/png',1.0);document.getElementById('sf-previmg').src=sfPrevUrl;document.getElementById('sf-imgov').classList.add('show');}
   catch{alert('Şəkil alınmadı.');}
   finally{spinHide();}
 }
@@ -1464,7 +1430,7 @@ async function renderFillForm(){
   const sid=document.getElementById('fill-sel').value;if(!sid){document.getElementById('fill-body').innerHTML='';document.getElementById('fill-btn').style.display='none';return;}
   const u=gU().find(u=>u.id===sid);const periods=getUserPeriods(sid);
   document.getElementById('fill-body').innerHTML='<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">Yüklənir...</div>';
-  const {records,sf}=await rBin(false);window._fr=records;window._fsf=sf;
+  const {records,sf}=await rBin();window._fr=records;window._fsf=sf;
   const inpSt='width:100%;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 8px;font-family:\'Plus Jakarta Sans\',sans-serif;font-size:13px;font-weight:600;color:#fff;outline:none;text-align:right;';
   let h='';
   periods.forEach((p,pi)=>{
@@ -1508,7 +1474,7 @@ async function doAdminFill(){
 }
 
 async function openUsersMo(){
-  const {cfg}=await rBin(false);CFG=cfg;
+  spinShow('Yüklənir...');const {cfg}=await rBin();CFG=cfg;spinHide();
   tmpUsers=JSON.parse(JSON.stringify(gU()));renderUsersMo();document.getElementById('mo-u').classList.add('show');
 }
 function renderUsersMo(){
@@ -1539,19 +1505,19 @@ function togglePeriod(ri,pi,cb){if(!tmpUsers[ri].periods)tmpUsers[ri].periods=[1
 function addStore(){const vi=tmpUsers.findIndex(u=>u.type==='viewer');const ns={id:'s'+Date.now(),name:'Yeni Şöbə',pw:'sifre123',inTotal:true,showPlan:true,type:'store',periods:[1,1,1,1]};if(vi>=0)tmpUsers.splice(vi,0,ns);else tmpUsers.push(ns);renderUsersMo();}
 function delUser(i){if(confirm('Silinsin?')){tmpUsers.splice(i,1);renderUsersMo();}}
 async function saveUsers(){
-  spinShow('Saxlanır...');const {records,sf,cfg}=await rBin(false);cfg.users=tmpUsers;CFG=cfg;await wBin(records,sf,cfg);spinHide();fillSel();closeMo('mo-u');alert('✅ Saxlanıldı!');
+  spinShow('Saxlanır...');const {records,sf,cfg}=await rBin();cfg.users=tmpUsers;CFG=cfg;await wBin(records,sf,cfg);spinHide();fillSel();closeMo('mo-u');alert('✅ Saxlanıldı!');
 }
 async function openTargetsMo(){
-  const {cfg}=await rBin(false);CFG=cfg;const tgts=gT();let h='';
+  spinShow('Yüklənir...');const {cfg}=await rBin();CFG=cfg;spinHide();const tgts=gT();let h='';
   gU().filter(u=>u.type==='store').forEach(u=>{const t=tgts[u.id]||{min:0,mid:0,max:0};h+=`<div class="mos"><div class="mosn">${u.name}</div><div class="mor3"><div class="mof"><label>🥉 Min</label><input type="number" inputmode="numeric" id="tm-${u.id}" value="${t.min}"></div><div class="mof"><label>🥈 Orta</label><input type="number" inputmode="numeric" id="td-${u.id}" value="${t.mid}"></div><div class="mof"><label>🥇 Maks</label><input type="number" inputmode="numeric" id="tx-${u.id}" value="${t.max}"></div></div></div>`;});
   document.getElementById('mot-body').innerHTML=h;document.getElementById('mo-t').classList.add('show');
 }
 async function saveTargets(){
   spinShow('Saxlanır...');const tgts={};gU().filter(u=>u.type==='store').forEach(u=>{tgts[u.id]={min:parseFloat(document.getElementById(`tm-${u.id}`)?.value)||0,mid:parseFloat(document.getElementById(`td-${u.id}`)?.value)||0,max:parseFloat(document.getElementById(`tx-${u.id}`)?.value)||0};});
-  const {records,sf,cfg}=await rBin(false);cfg.targets=tgts;CFG=cfg;await wBin(records,sf,cfg);spinHide();closeMo('mo-t');alert('✅ Hədəflər saxlanıldı!');
+  const {records,sf,cfg}=await rBin();cfg.targets=tgts;CFG=cfg;await wBin(records,sf,cfg);spinHide();closeMo('mo-t');alert('✅ Hədəflər saxlanıldı!');
 }
 async function openSaxaAdminMo(){
-  const {cfg}=await rBin(false);CFG=cfg;const ss=gSS(),users=gU().filter(u=>u.type==='store');
+  spinShow('Yüklənir...');const {cfg}=await rBin();CFG=cfg;spinHide();const ss=gSS(),users=gU().filter(u=>u.type==='store');
   let h=`<div class="mos"><div class="mosn">Firma Adı</div><div class="mof"><input type="text" id="sf-name" value="${ss.firmName||'Saxa Outlet'}"></div></div><div class="mosect">Hansı şöbələr doldurur</div>`;
   users.forEach(u=>{h+=`<div class="cr"><input type="checkbox" id="sff-${u.id}" ${(ss.fillers||[]).includes(u.id)?'checked':''}><label for="sff-${u.id}">${u.name}</label></div>`;});
   h+=`<div class="mosect">Göstər</div><div class="cr"><input type="checkbox" id="sf-show" ${ss.showInAdmin?'checked':''}><label for="sf-show">Admin paneldə göstərilsin</label></div>`;
@@ -1559,16 +1525,11 @@ async function openSaxaAdminMo(){
 }
 async function saveSaxaSettings(){
   spinShow('Saxlanır...');const users=gU().filter(u=>u.type==='store');const fillers=users.filter(u=>document.getElementById(`sff-${u.id}`)?.checked).map(u=>u.id);
-  const {records,sf,cfg}=await rBin(false);cfg.saxa={fillers,firmName:document.getElementById('sf-name')?.value||'Saxa Outlet',showInAdmin:document.getElementById('sf-show')?.checked||false};
+  const {records,sf,cfg}=await rBin();cfg.saxa={fillers,firmName:document.getElementById('sf-name')?.value||'Saxa Outlet',showInAdmin:document.getElementById('sf-show')?.checked||false};
   CFG=cfg;await wBin(records,sf,cfg);spinHide();closeMo('mo-saxa-admin');alert('✅ Saxlandı!');
 }
-async function openSettingsMo(){
-  const {cfg}=await rBin(false);CFG=cfg;
-  const cb=document.getElementById('param-admin-jurnal');if(cb)cb.checked=cfg.jp?.showAdmin||false;
-  const rh=document.getElementById('param-reset-hour');if(rh)rh.value=getResetHour();
-  const crh=document.getElementById('cur-reset-hour');if(crh)crh.textContent=getResetHour();
-  document.getElementById('mo-set').classList.add('show');
-}
+async function openSettingsMo(){const {cfg}=await rBin();CFG=cfg;const cb=document.getElementById('param-admin-jurnal');if(cb)cb.checked=cfg.jp?.showAdmin||false;document.getElementById('mo-set').classList.add('show');}
+async function saveJP(){const showAdmin=document.getElementById('param-admin-jurnal')?.checked||false;const {records,sf,cfg}=await rBin();cfg.jp={showAdmin};CFG=cfg;await wBin(records,sf,cfg);}
 function changeAdminPw(){
   const o=document.getElementById('oldpw').value,n=document.getElementById('newpw').value;
   if(o!==ADMIN_PW){alert('Köhnə parol yanlışdır.');return;}if(!n||n.length<4){alert('Yeni parol ən azı 4 simvol.');return;}
