@@ -889,14 +889,16 @@ const DEF_USERS=[
 const DEF_TGTS={p2:{min:70000,mid:85000,max:100000},p3:{min:80000,mid:95000,max:110000},pe:{min:40000,mid:55000,max:70000},s1:{min:20000,mid:28000,max:35000},s2:{min:15000,mid:22000,max:30000},s3:{min:15000,mid:22000,max:30000}};
 const DEF_SAXA={fillers:['p2','p3','pe'],showInAdmin:true,firmName:'Saxa Outlet'};
 let CFG=null,_bc=null,_bcts=0;
-const MEM_TTL=60000,LS_TTL=600000;
+const MEM_TTL=30000,LS_TTL=120000;
 
 function progShow(msg='Yüklənir...'){document.getElementById('prog-overlay').classList.add('show');setProg(5,msg);}
 function setProg(pct,msg){document.getElementById('prog-bar').style.width=pct+'%';document.getElementById('prog-pct').textContent=pct+'%';if(msg)document.getElementById('prog-msg').textContent=msg;}
 function progAnimate(from,to,msg,ms){return new Promise(res=>{const step=(to-from)/20;let cur=from;const t=setInterval(()=>{cur=Math.min(cur+step,to);setProg(Math.round(cur),msg);if(cur>=to){clearInterval(t);res();}},ms/20);});}
 
 function _parseBin(d){
-  const users=(d.cfg?.users||DEF_USERS).map(u=>({...u,periods:u.periods||[1,1,1,1]}));
+  // Server-dən gələn users var isə onu işlət, yoxsa DEF_USERS
+  const serverUsers=d.cfg?.users;
+  const users=(serverUsers&&serverUsers.length>0?serverUsers:DEF_USERS).map(u=>({...u,periods:u.periods||[1,1,1,1]}));
   const holidays=d.cfg?.holidays||DEF_HOLIDAYS;
   return{records:d.records||[],sf:d.sf||{},cfg:{users,targets:d.cfg?.targets||DEF_TGTS,saxa:d.cfg?.saxa||DEF_SAXA,jurnal:d.cfg?.jurnal||[],jp:d.cfg?.jp||{showAdmin:true},holidays}};
 }
@@ -917,8 +919,13 @@ async function rBin(force=false){
 }
 function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true},holidays:DEF_HOLIDAYS}};}
 async function wBin(records,sf,cfg){
-  _bc={records,sf,cfg};_bcts=Date.now();_lsSet(_bc);
-  try{await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data:{records,sf,cfg}})});}catch(e){console.error(e);}
+  // Cache-i sil ki digər cihazlar köhnə data görməsin
+  try{localStorage.removeItem(LS_CACHE);}catch{}
+  _bc={records,sf,cfg};_bcts=Date.now();
+  try{
+    await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data:{records,sf,cfg}})});
+    _lsSet(_bc);
+  }catch(e){console.error(e);}
 }
 function gU(){return CFG?.users||DEF_USERS;}
 function gT(){return CFG?.targets||DEF_TGTS;}
@@ -1005,15 +1012,22 @@ function logout(){curSid=null;document.getElementById('gpw').value='';document.g
 
 async function buildSel(){
   ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
+  // Əvvəlcə cache varsa dərhal göstər (sürətli giriş üçün)
   const ls=_lsGet();
-  if(ls){
-    CFG=ls.cfg;_bc=ls;_bcts=Date.now();fillSel();
-    setTimeout(()=>rBin(true).then(bin=>{CFG=bin.cfg;_bc=bin;fillSel();}).catch(()=>{}),200);
-    return;
+  if(ls){CFG=ls.cfg;_bc=ls;fillSel();}
+  // Həmişə serverdən fresh data al (parollar, istifadəçilər yenilənsin)
+  try{
+    const bin=await rBin(true);
+    CFG=bin.cfg;_bc=bin;
+    fillSel();// Yenilənmiş istifadəçiləri göstər
+  }catch(e){
+    if(!ls){// Cache yoxdursa progress göstər
+      progShow('Yüklənir...');
+      let pct=5;const t=setInterval(()=>{pct=Math.min(pct+15,90);setProg(Math.round(pct),'Məlumatlar...');},50);
+      clearInterval(t);setProg(100,'Hazır!');
+      setTimeout(()=>{document.getElementById('prog-overlay').classList.remove('show');setProg(0,'');},80);
+    }
   }
-  progShow('Yüklənir...');
-  let pct=5;const t=setInterval(()=>{pct=Math.min(pct+15,90);setProg(Math.round(pct),'Məlumatlar...');},50);
-  try{const bin=await rBin(true);CFG=bin.cfg;}finally{clearInterval(t);setProg(100,'Hazır!');setTimeout(()=>{document.getElementById('prog-overlay').classList.remove('show');setProg(0,'');fillSel();},80);}
 }
 function fillSel(){
   ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
@@ -1032,7 +1046,7 @@ async function doLogin(){
   document.getElementById('gerr').classList.remove('show');
   if(rem)localStorage.setItem('pk_rem',JSON.stringify({sid,pw}));else localStorage.removeItem('pk_rem');
   loadTheme(sid);
-  const bin=await rBin(false);CFG=bin.cfg;
+  spinShow('Giriş edilir...');const bin=await rBin(true);CFG=bin.cfg;spinHide();
   checkAndShowHoliday(gH(),false,sid);
   logLogin(u.name,false,bin.records,bin.sf,bin.cfg);
   if(u.type==='viewer')openViewer(u);else{curSid=sid;openStoreForm(sid);}
@@ -1158,8 +1172,10 @@ async function openStoreForm(sid){
   document.getElementById('sfdate').textContent=fmtRealDate();
   document.getElementById('sfbody').innerHTML='<div class="admld">Yüklənir...</div>';
   goTo('store-form');
-  const bin=await rBin(false);
+  spinShow('Yüklənir...');
+  const bin=await rBin(true);
   CFG=bin.cfg;window._cr=bin.records;window._csf=bin.sf;
+  spinHide();
   renderFormData(sid,bin.records,bin.sf);
 }
 function renderFormData(sid,records,sf){
