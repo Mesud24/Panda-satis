@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Panda Kids</title><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=Roboto+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inconsolata:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Panda Kids</title><!-- v1777988702 --><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=Roboto+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inconsolata:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{width:100%;overflow-x:hidden;}
 body{font-family:'Plus Jakarta Sans',sans-serif;color:#fff;min-height:100vh;transition:background .3s,color .3s;}
@@ -1027,13 +1027,17 @@ function logout(){curSid=null;document.getElementById('gpw').value='';document.g
 
 async function buildSel(){
   ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
+  // Cache varsa dərhal göstər
   const ls=_lsGet();
   if(ls){CFG=ls.cfg;_bc=ls;_bcts=Date.now();fillSel();}
-  try{
-    const bin=await rBin(true);CFG=bin.cfg;_bc=bin;fillSel();
-  }catch(e){
-    if(!ls){progShow('Yüklənir...');setTimeout(()=>{document.getElementById('prog-overlay').classList.remove('show');setProg(0,'');},500);}
+  else{progShow('Yüklənir...');let p=5;const t=setInterval(()=>{p=Math.min(p+12,85);setProg(p,'Məlumatlar...');},80);
+    try{const bin=await rBin(true);CFG=bin.cfg;_bc=bin;clearInterval(t);}catch(e){}
+    clearInterval(t);setProg(100,'Hazır!');
+    setTimeout(()=>{const o=document.getElementById('prog-overlay');if(o)o.classList.remove('show');setProg(0,'');fillSel();},150);
+    return;
   }
+  // Background refresh
+  try{const bin=await rBin(true);CFG=bin.cfg;_bc=bin;fillSel();}catch(e){}
 }
 function fillSel(){
   ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
