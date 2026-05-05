@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Panda Kids</title><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=Roboto+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inconsolata:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+DOCTYPE html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>Panda Kids</title><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=Roboto+Mono:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Source+Code+Pro:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inconsolata:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
 *{box-sizing:border-box;margin:0;padding:0;}
 html,body{width:100%;overflow-x:hidden;}
 body{font-family:'Plus Jakarta Sans',sans-serif;color:#fff;min-height:100vh;transition:background .3s,color .3s;}
@@ -471,9 +471,12 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 <div class="imgov" id="imgov"><img id="previmg" src="" alt=""><div class="imgbtns"><button class="imgsave" onclick="saveImg()">⬇️ Saxla</button><button class="imgcls" onclick="document.getElementById('imgov').classList.remove('show')">Bağla</button></div><div class="imghint">iPhone: Şəkilə uzun basın → "Fotoya saxla"</div></div>
 <div class="imgov" id="sf-imgov"><img id="sf-previmg" src="" alt=""><div class="imgbtns"><button class="imgsave" onclick="saveSfImg()">⬇️ Saxla</button><button class="imgcls" onclick="document.getElementById('sf-imgov').classList.remove('show')">Bağla</button></div><div class="imghint">iPhone: Şəkilə uzun basın → "Fotoya saxla"</div></div>
 
-<div class="mo" id="mo-t"><div class="mobox"><h3>🎯 Aylıq Hədəflər</h3><div id="mot-body"></div><button class="mosave" onclick="saveTargets()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-t')">Bağla</button></div></div>
+<div class="mo" id="mo-t"><div class="mobox"><h3>🎯 Aylıq Hədəflər</h3><div id="mot-body"></div><button class="mosave" onclick="saveTargets()">✓ Saxla</button><button class="moclose" style="background:rgba(239,68,68,.15);color:#fca5a5;margin-top:6px" onclick="resetTargets()">🔄 Bütün Hədəfləri Sıfırla</button><button class="moclose" onclick="closeMo('mo-t')">Bağla</button></div></div>
 <div class="mo" id="mo-u"><div class="mobox"><h3>👥 İstifadəçilər</h3><div id="mou-body"></div><button class="addbtn" onclick="addStore()">+ Yeni Şöbə</button><button class="mosave" onclick="saveUsers()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-u')">Bağla</button></div></div>
 <div class="mo" id="mo-set"><div class="mobox"><h3>⚙️ Parametrlər</h3>
+  <div class="mosect">Gündəlik Sıfırlanma Saati</div>
+  <div class="mor2" style="margin-bottom:6px"><div class="mof"><label>Saat (0-23)</label><input type="number" id="param-reset-hour" min="0" max="23" placeholder="17" style="text-align:center"></div><div style="display:flex;align-items:flex-end"><button class="mosave" style="background:rgba(99,102,241,.3);border:1px solid rgba(99,102,241,.5);margin-top:0;padding:9px 12px;font-size:12px" onclick="saveResetHour()">✓ Tətbiq et</button></div></div>
+  <div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:10px">Hazırkı: <span id="cur-reset-hour" style="color:#f0c060;font-weight:700">17</span>:00 — Dəyişdikdə dərhal qüvvəyə minir</div>
   <div class="mosect">Gündəlik Sıfırlanma Saati</div>
   <div class="mor2" style="margin-bottom:6px">
     <div class="mof"><label>Saat (0-23)</label><input type="number" id="param-reset-hour" min="0" max="23" placeholder="17" style="text-align:center"></div>
@@ -651,14 +654,10 @@ function holIncrCount(hid,uid){
 }
 // isAdmin=true → max 1 dəfə; isAdmin=false → max 2 dəfə
 function checkAndShowHoliday(holidays,isAdmin=false,uid=null){
-  const h=getActiveHoliday(holidays);
-  if(!h)return;
-  const maxCnt=isAdmin?1:2;
-  const eff=uid||_curUid||'guest';
-  if(holSeenCount(h.id,eff)<maxCnt){
-    showHolidayOverlay(h);
-    holIncrCount(h.id,eff);
-  }
+  const h=getActiveHoliday(holidays);if(!h)return;
+  const eff=uid||'g';const maxCnt=isAdmin?1:2;
+  if(holSeenCount(h.id,eff)<maxCnt){showHolidayOverlay(h);holIncrCount(h.id,eff);}
+}
 }
 function buildHolidayBanner(holidays){
   // Paneldə bayram banneri üçün HTML
@@ -886,17 +885,21 @@ const DEF_USERS=[
   {id:'s3',name:'Saxa 3 (Həzi Aslanov)',pw:'s3-2026',inTotal:false,showPlan:true,type:'store',periods:[1,1,0,0]},
   {id:'v1',name:'Baxış',pw:'view2026',inTotal:false,showPlan:false,type:'viewer',periods:[1,1,1,1]}
 ];
-const DEF_TGTS={p2:{min:70000,mid:85000,max:100000},p3:{min:80000,mid:95000,max:110000},pe:{min:40000,mid:55000,max:70000},s1:{min:20000,mid:28000,max:35000},s2:{min:15000,mid:22000,max:30000},s3:{min:15000,mid:22000,max:30000}};
+const DEF_TGTS={p2:{min:63180,mid:80000,max:100000},p3:{min:125000,mid:150000,max:180000},pe:{min:54270,mid:70000,max:90000},s1:{min:0,mid:0,max:0},s2:{min:0,mid:0,max:0},s3:{min:0,mid:0,max:0}};
 const DEF_SAXA={fillers:['p2','p3','pe'],showInAdmin:true,firmName:'Saxa Outlet'};
 let CFG=null,_bc=null,_bcts=0;
-const MEM_TTL=60000,LS_TTL=600000;
+const MEM_TTL=30000,LS_TTL=120000;
 
 function progShow(msg='Yüklənir...'){document.getElementById('prog-overlay').classList.add('show');setProg(5,msg);}
 function setProg(pct,msg){document.getElementById('prog-bar').style.width=pct+'%';document.getElementById('prog-pct').textContent=pct+'%';if(msg)document.getElementById('prog-msg').textContent=msg;}
 function progAnimate(from,to,msg,ms){return new Promise(res=>{const step=(to-from)/20;let cur=from;const t=setInterval(()=>{cur=Math.min(cur+step,to);setProg(Math.round(cur),msg);if(cur>=to){clearInterval(t);res();}},ms/20);});}
 
 function _parseBin(d){
-  const users=(d.cfg?.users||DEF_USERS).map(u=>({...u,periods:u.periods||[1,1,1,1]}));
+  const su=d.cfg?.users;
+  const users=(su&&su.length>0?su:DEF_USERS).map(u=>({...u,periods:u.periods||[1,1,1,1]}));
+  const holidays=d.cfg?.holidays||DEF_HOLIDAYS;
+  return{records:d.records||[],sf:d.sf||{},cfg:{users,targets:d.cfg?.targets||DEF_TGTS,saxa:d.cfg?.saxa||DEF_SAXA,jurnal:d.cfg?.jurnal||[],jp:d.cfg?.jp||{showAdmin:true},holidays}};
+}));
   const holidays=d.cfg?.holidays||DEF_HOLIDAYS;
   return{records:d.records||[],sf:d.sf||{},cfg:{users,targets:d.cfg?.targets||DEF_TGTS,saxa:d.cfg?.saxa||DEF_SAXA,jurnal:d.cfg?.jurnal||[],jp:d.cfg?.jp||{showAdmin:true},holidays}};
 }
@@ -908,6 +911,15 @@ async function rBin(force=false){
   if(!force){const ls=_lsGet();if(ls){_bc=ls;_bcts=now;return _bc;}}
   try{
     const ctrl=new AbortController();
+    const tid=setTimeout(()=>ctrl.abort(),10000);
+    const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},cache:'no-store',signal:ctrl.signal});
+    clearTimeout(tid);
+    if(!r.ok)return _bc||_lsGet()||defBin();
+    const j=await r.json();_bc=_parseBin(j.data||{});_bcts=now;_lsSet(_bc);return _bc;
+  }catch(e){return _bc||_lsGet()||defBin();}
+}}
+  try{
+    const ctrl=new AbortController();
     const tid=setTimeout(()=>ctrl.abort(),8000);
     const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},cache:'no-store',signal:ctrl.signal});
     clearTimeout(tid);
@@ -917,8 +929,18 @@ async function rBin(force=false){
 }
 function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true},holidays:DEF_HOLIDAYS}};}
 async function wBin(records,sf,cfg){
-  _bc={records,sf,cfg};_bcts=Date.now();_lsSet(_bc);
-  try{await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data:{records,sf,cfg}})});}catch(e){console.error(e);}
+  try{localStorage.removeItem(LS_CACHE);}catch{}
+  _bc={records,sf,cfg};_bcts=Date.now();
+  try{
+    const r=await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data:{records,sf,cfg}})});
+    if(r.ok){_lsSet(_bc);}
+  }catch(e){console.error('wBin error:',e);}
+}catch{}
+  _bc={records,sf,cfg};_bcts=Date.now();
+  try{
+    await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data:{records,sf,cfg}})});
+    _lsSet(_bc);
+  }catch(e){console.error(e);}
 }
 function gU(){return CFG?.users||DEF_USERS;}
 function gT(){return CFG?.targets||DEF_TGTS;}
@@ -1006,14 +1028,12 @@ function logout(){curSid=null;document.getElementById('gpw').value='';document.g
 async function buildSel(){
   ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
   const ls=_lsGet();
-  if(ls){
-    CFG=ls.cfg;_bc=ls;_bcts=Date.now();fillSel();
-    setTimeout(()=>rBin(true).then(bin=>{CFG=bin.cfg;_bc=bin;fillSel();}).catch(()=>{}),200);
-    return;
+  if(ls){CFG=ls.cfg;_bc=ls;_bcts=Date.now();fillSel();}
+  try{
+    const bin=await rBin(true);CFG=bin.cfg;_bc=bin;fillSel();
+  }catch(e){
+    if(!ls){progShow('Yüklənir...');setTimeout(()=>{document.getElementById('prog-overlay').classList.remove('show');setProg(0,'');},500);}
   }
-  progShow('Yüklənir...');
-  let pct=5;const t=setInterval(()=>{pct=Math.min(pct+15,90);setProg(Math.round(pct),'Məlumatlar...');},50);
-  try{const bin=await rBin(true);CFG=bin.cfg;}finally{clearInterval(t);setProg(100,'Hazır!');setTimeout(()=>{document.getElementById('prog-overlay').classList.remove('show');setProg(0,'');fillSel();},80);}
 }
 function fillSel(){
   ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
@@ -1027,61 +1047,18 @@ buildSel();
 async function doLogin(){
   const sid=document.getElementById('gsel').value,pw=document.getElementById('gpw').value,rem=document.getElementById('rem').checked;
   if(!sid){alert('İstifadəçini seçin.');return;}
+  spinShow('Giriş edilir...');
+  const bin=await rBin(true);CFG=bin.cfg;
   const u=gU().find(u=>u.id===sid);
-  if(!u||pw!==u.pw){document.getElementById('gerr').classList.add('show');document.getElementById('gpw').value='';return;}
+  if(!u||pw!==u.pw){spinHide();document.getElementById('gerr').classList.add('show');document.getElementById('gpw').value='';return;}
   document.getElementById('gerr').classList.remove('show');
   if(rem)localStorage.setItem('pk_rem',JSON.stringify({sid,pw}));else localStorage.removeItem('pk_rem');
   loadTheme(sid);
-  const bin=await rBin(false);CFG=bin.cfg;
   checkAndShowHoliday(gH(),false,sid);
   logLogin(u.name,false,bin.records,bin.sf,bin.cfg);
+  spinHide();
   if(u.type==='viewer')openViewer(u);else{curSid=sid;openStoreForm(sid);}
 }
-
-// ── PASSKEY (Face ID / Touch ID) ──────────────────────────────
-function hasPasskey(){return !!localStorage.getItem('pk_passkey_id');}
-async function registerPasskey(){
-  if(!window.PublicKeyCredential)return false;
-  try{
-    const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
-    if(!avail)return false;
-    const challenge=crypto.getRandomValues(new Uint8Array(32));
-    const userId=crypto.getRandomValues(new Uint8Array(16));
-    const cred=await navigator.credentials.create({publicKey:{
-      challenge,
-      rp:{name:'Panda Kids Admin',id:window.location.hostname||'localhost'},
-      user:{id:userId,name:'admin',displayName:'Panda Kids Admin'},
-      pubKeyCredParams:[{alg:-7,type:'public-key'},{alg:-257,type:'public-key'}],
-      authenticatorSelection:{authenticatorAttachment:'platform',userVerification:'required',residentKey:'required'},
-      timeout:60000,
-    }});
-    if(cred){
-      const idArr=new Uint8Array(cred.rawId);
-      const idB64=btoa(String.fromCharCode(...idArr));
-      localStorage.setItem('pk_passkey_id',idB64);
-      return true;
-    }
-  }catch(e){console.log('Passkey register error:',e);}
-  return false;
-}
-async function loginWithPasskey(){
-  if(!window.PublicKeyCredential||!hasPasskey())return false;
-  try{
-    const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
-    if(!avail)return false;
-    const challenge=crypto.getRandomValues(new Uint8Array(32));
-    const cred=await navigator.credentials.get({publicKey:{
-      challenge,timeout:30000,userVerification:'required',
-      rpId:window.location.hostname||'localhost',
-    }});
-    return !!cred;
-  }catch(e){return false;}
-}
-function resetPasskey(){
-  localStorage.removeItem('pk_passkey_id');
-  alert('✅ Face ID sıfırlandı. Növbəti girişdə şifrə tələb olunacaq.');
-}
-
 async function showAdminGate(){
   if(hasPasskey()){
     const ok=await loginWithPasskey();
@@ -1158,8 +1135,9 @@ async function openStoreForm(sid){
   document.getElementById('sfdate').textContent=fmtRealDate();
   document.getElementById('sfbody').innerHTML='<div class="admld">Yüklənir...</div>';
   goTo('store-form');
-  const bin=await rBin(false);
-  CFG=bin.cfg;window._cr=bin.records;window._csf=bin.sf;
+  spinShow('Məlumatlar yüklənir...');
+  const bin=await rBin(true);CFG=bin.cfg;window._cr=bin.records;window._csf=bin.sf;
+  spinHide();
   renderFormData(sid,bin.records,bin.sf);
 }
 function renderFormData(sid,records,sf){
@@ -1387,6 +1365,7 @@ async function loadAdmin(){
   const btn=document.getElementById('refreshBtn');
   if(btn){btn.disabled=true;btn.textContent='⏳ ...';}
   try{
+    _bc=null;_bcts=0;localStorage.removeItem(LS_CACHE);
     const {records,sf,cfg}=await rBin(true);CFG=cfg;
     const holBanner=buildHolidayBanner(gH());
     body.innerHTML=holBanner+mkPanel('adm')+
@@ -1530,6 +1509,14 @@ async function openTargetsMo(){
   gU().filter(u=>u.type==='store').forEach(u=>{const t=tgts[u.id]||{min:0,mid:0,max:0};h+=`<div class="mos"><div class="mosn">${u.name}</div><div class="mor3"><div class="mof"><label>🥉 Min</label><input type="number" inputmode="numeric" id="tm-${u.id}" value="${t.min}"></div><div class="mof"><label>🥈 Orta</label><input type="number" inputmode="numeric" id="td-${u.id}" value="${t.mid}"></div><div class="mof"><label>🥇 Maks</label><input type="number" inputmode="numeric" id="tx-${u.id}" value="${t.max}"></div></div></div>`;});
   document.getElementById('mot-body').innerHTML=h;document.getElementById('mo-t').classList.add('show');
 }
+async function resetTargets(){
+  if(!confirm('Bütün hədəflər sıfırlansın? (0,0,0 olacaq)'))return;
+  spinShow('Sıfırlanır...');
+  const tgts={};gU().filter(u=>u.type==='store').forEach(u=>{tgts[u.id]={min:0,mid:0,max:0};});
+  const {records,sf,cfg}=await rBin(true);cfg.targets=tgts;CFG=cfg;
+  await wBin(records,sf,cfg);spinHide();
+  closeMo('mo-t');alert('✅ Bütün hədəflər sıfırlandı!');
+}
 async function saveTargets(){
   spinShow('Saxlanır...');const tgts={};gU().filter(u=>u.type==='store').forEach(u=>{tgts[u.id]={min:parseFloat(document.getElementById(`tm-${u.id}`)?.value)||0,mid:parseFloat(document.getElementById(`td-${u.id}`)?.value)||0,max:parseFloat(document.getElementById(`tx-${u.id}`)?.value)||0};});
   const {records,sf,cfg}=await rBin(false);cfg.targets=tgts;CFG=cfg;await wBin(records,sf,cfg);spinHide();closeMo('mo-t');alert('✅ Hədəflər saxlanıldı!');
@@ -1552,6 +1539,13 @@ async function openSettingsMo(){
   const rh=document.getElementById('param-reset-hour');if(rh)rh.value=getResetHour();
   const crh=document.getElementById('cur-reset-hour');if(crh)crh.textContent=getResetHour();
   document.getElementById('mo-set').classList.add('show');
+}
+function saveResetHour(){
+  const inp=document.getElementById('param-reset-hour');if(!inp)return;
+  const h=parseInt(inp.value);if(isNaN(h)||h<0||h>23){alert('0-23 arası saat daxil edin.');return;}
+  localStorage.setItem('pk_reset_hour',String(h));
+  const crh=document.getElementById('cur-reset-hour');if(crh)crh.textContent=h;
+  alert('✅ Sıfırlanma saati '+h+':00 olaraq təyin edildi.');
 }
 function changeAdminPw(){
   const o=document.getElementById('oldpw').value,n=document.getElementById('newpw').value;
