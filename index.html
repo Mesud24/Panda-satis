@@ -376,6 +376,10 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 .hol-item{background:rgba(255,255,255,.05);border-radius:12px;padding:12px;margin-bottom:8px;border:1px solid rgba(255,255,255,.08);}
 .hol-row{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:6px;}
 .hol-name{color:#f0c060;font-weight:800;font-size:13px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;}
+/* Offline/retry indicator */
+.sync-status{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(239,68,68,.9);color:#fff;font-size:11px;font-weight:700;padding:7px 16px;border-radius:20px;z-index:9997;display:none;backdrop-filter:blur(8px);}
+.sync-status.show{display:block;}
+.sync-status.ok{background:rgba(16,185,129,.9);}
 </style></head><body class="dark">
 
 <div class="holiday-overlay" id="hol-overlay">
@@ -388,6 +392,8 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
     <button class="holiday-btn" onclick="closeHolidayOverlay()">🙏 Təşəkkür edirik!</button>
   </div>
 </div>
+
+<div class="sync-status" id="sync-status"></div>
 
 <div class="g-spin-overlay" id="g-spin">
   <div class="g-spin-box"><div class="g-spin-ring-wrap"><div class="g-spin-ring"></div><div class="g-spin-pct" id="g-spin-pct">0%</div></div><div class="g-spin-txt" id="g-spin-txt">Yüklənir...</div></div>
@@ -465,7 +471,7 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
   <div class="mor2" style="margin-bottom:6px"><div class="mof"><label>Saat (0-23)</label><input type="number" id="param-reset-hour" min="0" max="23" placeholder="17" style="text-align:center"></div><div style="display:flex;align-items:flex-end"><button class="mosave" style="background:rgba(99,102,241,.3);border:1px solid rgba(99,102,241,.5);margin-top:0;padding:9px 12px;font-size:12px" onclick="saveResetHour()">✓ Tətbiq et</button></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:10px;line-height:1.5;">Hazırkı: <span id="cur-reset-hour" style="color:#f0c060;font-weight:700">17</span>:00 — Dəyişdikdə dərhal qüvvəyə minir</div>
   <div style="font-size:11px;color:rgba(255,255,255,.3);margin-bottom:10px;line-height:1.6;background:rgba(201,150,58,.08);border:1px solid rgba(201,150,58,.2);border-radius:8px;padding:8px 10px;">
-    ⚠️ <strong style="color:#f0c060">Qeyd:</strong> Bu saat yalnız ekranda göstərilən tarixi dəyişir. Məlumat açarları (verilənlər bazası yazısı) həmişə <strong style="color:#f0c060">real cari günü</strong> istifadə edir — beləliklə məlumatlar heç vaxt yanlış günə yazılmır.
+    ⚠️ <strong style="color:#f0c060">Qeyd:</strong> Bu saat yalnız ekranda göstərilən tarixi dəyişir. Məlumat açarları (verilənlər bazası yazısı) həmişə <strong style="color:#f0c060">real cari günü</strong> istifadə edir.
   </div>
   <div class="mosect">Admin Parolu</div><div class="mor2" style="margin-bottom:9px"><div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••" autocomplete="current-password"></div><div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••" autocomplete="new-password"></div></div><button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button>
   <div class="mosect">Jurnal</div><div class="cr"><input type="checkbox" id="param-admin-jurnal" onchange="saveJP()"><label for="param-admin-jurnal">Admin girişini jurnalda göstər</label></div>
@@ -566,16 +572,23 @@ const AY=['yanvar','fevral','mart','aprel','may','iyun','iyul','avqust','sentyab
 const GUNS=['Bazar','Bazar ertəsi','Çərşənbə axşamı','Çərşənbə','Cümə axşamı','Cümə','Şənbə'];
 const HC=['hb','ho','hg','hp'],SC=['sb','so','sg','sp'];
 const PCOL=['#2E75B6','#C55A11','#375623','#7030A0'];
-const LS_CACHE='pk_bin_v3';
+const LS_CACHE='pk_bin_v4'; // v4 — köhnə cache-i invalidate edir
+const LS_PENDING='pk_pending_write'; // Saxlanmamış yazıları burda saxla
 const LS_PW_KEY='pk_apw';
 
 let ADMIN_PW=localStorage.getItem(LS_PW_KEY)||'admin2026';
 let curSid=null,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
 
-const MEM_TTL=20000;
-const LS_TTL=60000;
+// ══ CACHE AYARLARI ══
+// MEM_TTL: Memory cache ömrü (ms) — oxuma üçün
+// LS_TTL: localStorage cache ömrü (ms) — server əlçatmaz olduqda istifadə olunur
+const MEM_TTL=15000;   // 15 saniyə — tez-tez yenilənsin
+const LS_TTL=300000;   // 5 dəqiqə — network problem olduqda backup kimi
+
 let _cache=null,_cacheTs=0;
 let CFG=null;
+let _writeInProgress=false;
+let _pendingWrite=null; // Son yazma əməliyyatını burada saxla
 
 // ══ DEFAULT DATALAR ══
 const DEF_USERS=[
@@ -597,10 +610,19 @@ const DEF_HOLIDAYS=[
   {id:'qurban',name:'Qurban Bayramı',emoji:'🌙',color:'#3b0764',gradient:'linear-gradient(135deg,#1e0033,#4c0099)',startDate:'06-06',days:3,active:true,msg:'Qurban Bayramınız mübarək! Allah qəbul eləsin.'}
 ];
 
-// ══ DÜZƏLİŞ 1: _parseBin — data strukturu düzgün işlənir ══
+// ══ SYNC STATUS ══
+function showSyncStatus(msg,isOk,dur){
+  const el=document.getElementById('sync-status');
+  if(!el)return;
+  el.textContent=msg;
+  el.className='sync-status show'+(isOk?' ok':'');
+  clearTimeout(el._t);
+  el._t=setTimeout(function(){el.className='sync-status';},dur||3000);
+}
+
+// ══ DATA PARSE ══
 function _parseBin(d){
-  // JSONBin bəzən {record:{...}} formatında qaytara bilər, bunu da idarə et
-  if(d && d.record) d = d.record;
+  if(d&&d.record)d=d.record;
   const su=d.cfg&&d.cfg.users;
   const users=(su&&su.length>0?su:DEF_USERS).map(function(u){return Object.assign({periods:[1,1,1,1]},u);});
   const holidays=(d.cfg&&d.cfg.holidays)?d.cfg.holidays:DEF_HOLIDAYS;
@@ -622,6 +644,7 @@ function defBin(){
   return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true},holidays:DEF_HOLIDAYS}};
 }
 
+// ══ LOCALSTORAGE CACHE ══
 function _lsGet(){
   try{
     const p=JSON.parse(localStorage.getItem(LS_CACHE)||'null');
@@ -636,7 +659,18 @@ function _lsClear(){
   try{localStorage.removeItem(LS_CACHE);}catch(e){}
 }
 
-// ══ DÜZƏLİŞ 2: rBin — X-Bin-Meta:false ilə cavab birbaşa JSON obyektidir, j.data deyil ══
+// ══ PENDING WRITE: Yazma uğursuz olduqda localStorage-də saxla ══
+function _savePending(records,sf,cfg){
+  try{localStorage.setItem(LS_PENDING,JSON.stringify({records:records,sf:sf,cfg:cfg,ts:Date.now()}));}catch(e){}
+}
+function _clearPending(){
+  try{localStorage.removeItem(LS_PENDING);}catch(e){}
+}
+function _getPending(){
+  try{const p=JSON.parse(localStorage.getItem(LS_PENDING)||'null');return p;}catch(e){return null;}
+}
+
+// ══ OXUMA: rBin ══
 async function rBin(force){
   force=!!force;
   const now=Date.now();
@@ -645,53 +679,118 @@ async function rBin(force){
     const ls=_lsGet();
     if(ls){_cache=ls;_cacheTs=now;CFG=ls.cfg;return _cache;}
   }
-  try{
-    const ctrl=new AbortController();
-    const tid=setTimeout(function(){ctrl.abort();},12000);
-    const r=await fetch(BIN_URL+'/latest',{
-      headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},
-      cache:'no-store',
-      signal:ctrl.signal
-    });
-    clearTimeout(tid);
-    if(!r.ok){
-      const fallback=_cache||_lsGet()||defBin();
-      CFG=fallback.cfg;return fallback;
-    }
-    // DÜZƏLİŞ: X-Bin-Meta:false ilə cavab birbaşa data obyektidir
-    // Köhnə kod: const parsed=_parseBin(j.data||{});  ← YANLIŞ
-    // Yeni kod:  const parsed=_parseBin(j||{});        ← DÜZƏLDİLDİ
-    const j=await r.json();
-    const parsed=_parseBin(j||{});
-    _cache=parsed;_cacheTs=now;CFG=parsed.cfg;_lsSet(parsed);
-    return parsed;
-  }catch(e){
-    const fallback=_cache||_lsGet()||defBin();
-    CFG=fallback.cfg;return fallback;
+  // Əgər aktiv yazma var, həmin datanı qaytar
+  if(_pendingWrite){
+    return _pendingWrite;
   }
+  for(let attempt=0;attempt<3;attempt++){
+    try{
+      const ctrl=new AbortController();
+      const tid=setTimeout(function(){ctrl.abort();},15000);
+      const r=await fetch(BIN_URL+'/latest',{
+        headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},
+        cache:'no-store',
+        signal:ctrl.signal
+      });
+      clearTimeout(tid);
+      if(!r.ok){
+        if(attempt<2){await _sleep(1000*(attempt+1));continue;}
+        break;
+      }
+      const j=await r.json();
+      const parsed=_parseBin(j||{});
+      _cache=parsed;_cacheTs=now;CFG=parsed.cfg;
+      _lsSet(parsed);
+      return parsed;
+    }catch(e){
+      if(attempt<2){await _sleep(1000*(attempt+1));continue;}
+    }
+  }
+  // Bütün cəhdlər uğursuz — pending ya ls ya default qaytar
+  const fallback=_pendingWrite||_cache||_lsGet()||defBin();
+  CFG=fallback.cfg;
+  return fallback;
 }
 
-// ══ DÜZƏLİŞ 3: wBin — X-Bin-Meta:false ilə məlumat yazanda da {records,sf,cfg} birbaşa göndər ══
+function _sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
+
+// ══ YAZMA: wBin — retry + pending məntiqli ══
 async function wBin(records,sf,cfg){
   const newData={records:records,sf:sf,cfg:cfg};
-  _cache=newData;_cacheTs=Date.now();CFG=cfg;_lsSet(newData);
+  // 1. Dərhal cache-i yenilə — istifadəçi dərhal yeni datanı görsün
+  _cache=newData;_cacheTs=Date.now();CFG=cfg;
+  _lsSet(newData);
+  _pendingWrite=newData;
+
+  // 2. Serverə göndər (retry ilə)
+  const body=JSON.stringify({records:records,sf:sf,cfg:cfg});
+  let success=false;
+  for(let attempt=0;attempt<4;attempt++){
+    try{
+      if(attempt>0){
+        showSyncStatus('⏳ Yenidən cəhd '+(attempt+1)+'/4...', false, 4000);
+        await _sleep(1500*attempt);
+      }
+      const ctrl=new AbortController();
+      const tid=setTimeout(function(){ctrl.abort();},20000);
+      const r=await fetch(BIN_URL,{
+        method:'PUT',
+        headers:{
+          'Content-Type':'application/json',
+          'X-Master-Key':API_KEY,
+          'X-Bin-Meta':'false'
+        },
+        body:body,
+        signal:ctrl.signal
+      });
+      clearTimeout(tid);
+      if(r.ok){
+        success=true;
+        break;
+      }else{
+        console.warn('wBin server error:',r.status);
+        if(r.status>=400&&r.status<500)break; // 4xx — yenidən cəhd etmə
+      }
+    }catch(e){
+      console.warn('wBin attempt',attempt,'failed:',e.message);
+    }
+  }
+
+  if(success){
+    _clearPending();
+    _pendingWrite=null;
+    showSyncStatus('✅ Məlumatlar saxlandı!', true, 2500);
+  }else{
+    // Pending yazını saxla — növbəti sessiyada yenidən cəhd olunacaq
+    _savePending(records,sf,cfg);
+    showSyncStatus('⚠️ Server cavab vermir. Məlumat lokal saxlandı.', false, 6000);
+    console.error('wBin: bütün cəhdlər uğursuz — pending kimi saxlandı');
+  }
+  return success;
+}
+
+// ══ STARTUP: Pending yazıları tamamla ══
+async function _flushPending(){
+  const p=_getPending();
+  if(!p)return;
+  const age=Date.now()-p.ts;
+  if(age>86400000){_clearPending();return;} // 24 saatdan köhnədirsə sil
+  showSyncStatus('⏳ Əvvəlki məlumatlar göndərilir...', false, 8000);
   try{
     const r=await fetch(BIN_URL,{
       method:'PUT',
-      headers:{
-        'Content-Type':'application/json',
-        'X-Master-Key':API_KEY,
-        'X-Bin-Meta':'false'
-      },
-      // DÜZƏLİŞ: Köhnə kod {data:{records,sf,cfg}} göndərirdi — bu oxuma strukturu ilə uyğun deyildi
-      // Yeni kod: {records,sf,cfg} birbaşa göndərilir
-      body:JSON.stringify({records:records,sf:sf,cfg:cfg})
+      headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},
+      body:JSON.stringify({records:p.records,sf:p.sf,cfg:p.cfg})
     });
-    if(!r.ok){
-      console.error('wBin server error:',r.status);
+    if(r.ok){
+      _clearPending();
+      _cache={records:p.records,sf:p.sf,cfg:p.cfg};
+      _cacheTs=Date.now();CFG=p.cfg;
+      _lsSet(_cache);
+      showSyncStatus('✅ Əvvəlki məlumatlar bərpa edildi!', true, 3000);
     }
   }catch(e){
-    console.error('wBin network error:',e);
+    showSyncStatus('⚠️ Bərpa uğursuz — internet yoxdu?', false, 4000);
   }
 }
 
@@ -708,9 +807,7 @@ function getFD(){
   if(n.getHours()<getResetHour())d.setDate(d.getDate()-1);
   return d;
 }
-function getKeyDate(){
-  return new Date();
-}
+function getKeyDate(){return new Date();}
 
 function dLeft(){const fd=getFD();const last=new Date(fd.getFullYear(),fd.getMonth()+1,0).getDate();if(fd.getDate()===last)return 1;return Math.max(0,last-fd.getDate());}
 function daysPassed(){return Math.max(1,getKeyDate().getDate());}
@@ -730,7 +827,10 @@ function getAllPeriods(){
   ];
 }
 
-function getUserPeriods(uid){const u=gU().find(function(u){return u.id===uid;});return getAllPeriods().filter(function(_,i){return (u&&u.periods?u.periods:[1,1,1,1])[i]===1;});}
+function getUserPeriods(uid){
+  const u=gU().find(function(u){return u.id===uid;});
+  return getAllPeriods().filter(function(_,i){return(u&&u.periods?u.periods:[1,1,1,1])[i]===1;});
+}
 
 function getSFKey(){
   const d=getKeyDate();
@@ -900,11 +1000,11 @@ function applyStyleToDOM(st){
   const p2=document.getElementById('prev-nv2');if(p2)p2.innerHTML=nvInner('mid',st,'54.500');
 }
 function applyStyle(){
-  const g=function(id){return (document.getElementById(id)||{value:''}).value;};
+  const g=function(id){return(document.getElementById(id)||{value:''}).value;};
   applyStyleToDOM({font:g('st-font')||DEF_STYLE.font,fs:g('st-fs')||DEF_STYLE.fs,fw:g('st-fw')||DEF_STYLE.fw,rh:g('st-rh')||DEF_STYLE.rh,pandaCol:g('st-panda-col')||DEF_STYLE.pandaCol,arrUp:g('st-arr-up')||DEF_STYLE.arrUp,arrMid:g('st-arr-mid')||DEF_STYLE.arrMid,nameW:g('st-namew')||DEF_STYLE.nameW,numW:g('st-numw')||DEF_STYLE.numW,pctW:g('st-pctw')||DEF_STYLE.pctW,dailyS:g('st-daily-s')||DEF_STYLE.dailyS,dailyM:g('st-daily-m')||DEF_STYLE.dailyM,wideS:g('st-wide-s')||DEF_STYLE.wideS,wideM:g('st-wide-m')||DEF_STYLE.wideM,narrowW:g('st-narrow')||DEF_STYLE.narrowW});
 }
 function saveStyle(){
-  const g=function(id){return (document.getElementById(id)||{value:''}).value;};
+  const g=function(id){return(document.getElementById(id)||{value:''}).value;};
   const st={font:g('st-font')||DEF_STYLE.font,fs:g('st-fs')||DEF_STYLE.fs,fw:g('st-fw')||DEF_STYLE.fw,rh:g('st-rh')||DEF_STYLE.rh,pandaCol:g('st-panda-col')||DEF_STYLE.pandaCol,arrUp:g('st-arr-up')||DEF_STYLE.arrUp,arrMid:g('st-arr-mid')||DEF_STYLE.arrMid,nameW:g('st-namew')||DEF_STYLE.nameW,numW:g('st-numw')||DEF_STYLE.numW,pctW:g('st-pctw')||DEF_STYLE.pctW,dailyS:g('st-daily-s')||DEF_STYLE.dailyS,dailyM:g('st-daily-m')||DEF_STYLE.dailyM,wideS:g('st-wide-s')||DEF_STYLE.wideS,wideM:g('st-wide-m')||DEF_STYLE.wideM,narrowW:g('st-narrow')||DEF_STYLE.narrowW};
   svStyle(st);applyStyleToDOM(st);closeMo('mo-style');alert('✅ Görünüş saxlanıldı!');
 }
@@ -931,10 +1031,8 @@ async function logLogin(name,isAdmin){
   logs.unshift({name:name,time:t,date:dt,device:getDevice(),ts:now.getTime()});
   if(logs.length>100)logs.length=100;
   const newCfg=Object.assign({},cur.cfg,{jurnal:logs});
-  // DÜZƏLİŞ: _cache-i yenilə ki, sonrakı əməliyyatlar doğru data istifadə etsin
   _cache={records:cur.records,sf:cur.sf,cfg:newCfg};
   _cacheTs=Date.now();CFG=newCfg;_lsSet(_cache);
-  // Asinxron göndər, gözləmə
   wBin(cur.records,cur.sf,newCfg).catch(function(){});
 }
 function renderJList(filter){
@@ -980,16 +1078,16 @@ function setProg(pct,msg){document.getElementById('prog-bar').style.width=pct+'%
 
 async function buildSel(){
   ADMIN_PW=localStorage.getItem(LS_PW_KEY)||'admin2026';
+  // Əvvəl pending yazıları tamamla
+  _flushPending();
   const ls=_lsGet();
   if(ls){
     _cache=ls;_cacheTs=Date.now();CFG=ls.cfg;
     fillSel();
-    rBin(true).then(function(){fillSel();}).catch(function(){});
+    rBin(true).then(function(bin){CFG=bin.cfg;fillSel();}).catch(function(){});
   }else{
     progShow('Yüklənir...');
-    try{
-      const bin=await rBin(true);CFG=bin.cfg;
-    }catch(e){}
+    try{const bin=await rBin(true);CFG=bin.cfg;}catch(e){}
     setProg(100,'Hazır!');
     setTimeout(function(){
       const o=document.getElementById('prog-overlay');if(o)o.classList.remove('show');
@@ -1108,6 +1206,11 @@ async function openStoreForm(sid){
   document.getElementById('sfdate').textContent=fmtRealDate();
   document.getElementById('sfbody').innerHTML='<div class="admld">Yüklənir...</div>';
   goTo('store-form');
+  // Əvvəlcə cached datanı göstər, sonra yenilə
+  const cached=_cache||_lsGet();
+  if(cached){
+    renderFormData(sid,cached.records,cached.sf);
+  }
   spinShow('Məlumatlar yüklənir...');
   const bin=await rBin(true);CFG=bin.cfg;
   spinHide();
@@ -1168,7 +1271,7 @@ function editPeriod(pid){
 }
 function editSF(){const inp=document.getElementById('sf-inp');if(inp){inp.disabled=false;inp.style.border='1.5px solid #c9963a';attachNumInput(inp);}const e=document.querySelector('#pb-sf .editbtn');if(e)e.style.display='none';}
 
-// ══ DÜZƏLİŞ 4: HAMISINI SAXLA — disabled inputlardan mövcud dəyər götürülür ══
+// ══ HAMISINI SAXLA ══
 async function saveAll(sid){
   const u=gU().find(function(u){return u.id===sid;});
   const periods=getUserPeriods(sid);
@@ -1178,6 +1281,7 @@ async function saveAll(sid){
   document.getElementById('erb').classList.remove('show');
   spinShow('Saxlanır...');
   try{
+    // Serverden ən son datanı al
     const bin=await rBin(true);
     CFG=bin.cfg;
     const records=JSON.parse(JSON.stringify(bin.records));
@@ -1192,10 +1296,8 @@ async function saveAll(sid){
       const inpM=document.getElementById('m-'+p.id);
       const inpF=document.getElementById('f-'+p.id);
 
-      // DÜZƏLİŞ: Əgər input disabled-dirsə (artıq saxlanıb), mövcud rekorddan dəyər götür
       let s,m,f;
       if(inpS&&inpS.disabled){
-        // Mövcud rekorddan oxu
         const existRec=findRec(records,u.name,p.sk);
         s=existRec?existRec.satis:0;
         m=existRec?existRec.menfeet:0;
@@ -1215,7 +1317,6 @@ async function saveAll(sid){
       }
     }
 
-    // Ayın 1-i: günlük saxlananda aylıq da avtomatik kopyalan
     if(isFirstDay&&gunSatis>0){
       const ay0P=periods.find(function(p){return p.id==='ay0';});
       if(ay0P){
@@ -1231,7 +1332,6 @@ async function saveAll(sid){
       if(sfInpEl){
         let sfv;
         if(sfInpEl.disabled){
-          // Mövcud SF rekordundan oxu
           const existSF=sf[getSFKey()+'_'+sid];
           sfv=existSF?existSF.satis:0;
         }else{
@@ -1249,12 +1349,19 @@ async function saveAll(sid){
       return;
     }
 
-    await wBin(records,sf,cfg);
+    const ok=await wBin(records,sf,cfg);
     spinHide();
     document.getElementById('ldb').classList.remove('show');
-    document.getElementById('okb').classList.add('show');
-    document.getElementById('okb').textContent='✅ Məlumatlar yadda saxlandı!';
-    if(sab)sab.textContent='✅ Saxlanıldı';
+    if(ok){
+      document.getElementById('okb').classList.add('show');
+      document.getElementById('okb').textContent='✅ Məlumatlar yadda saxlandı!';
+      if(sab)sab.textContent='✅ Saxlanıldı';
+    }else{
+      document.getElementById('okb').classList.add('show');
+      document.getElementById('okb').textContent='💾 Lokal saxlandı (server cavab vermir)';
+      if(sab)sab.textContent='💾 Lokal saxlandı';
+    }
+    // Formu yenilə — həmişə uğurlu say (data lokal saxlandı)
     setTimeout(function(){renderFormData(sid,records,sf);},1200);
   }catch(e){
     console.error('saveAll error:',e);
@@ -1336,8 +1443,8 @@ function buildTable(records,sf,tblId,ldId){
     h+='<th class="'+SC[i]+' '+sc+'">Satış</th><th class="'+SC[i]+' '+mc+'">Mənfəət</th><th class="'+SC[i]+' col-pct">Faiz</th>';
   });
   h+='</tr>';
-  const pTots=allP.map(function(){return {s:0,m:0,fl:[]};});
-  const sTots=allP.map(function(){return {s:0,m:0,fl:[]};});
+  const pTots=allP.map(function(){return{s:0,m:0,fl:[]};});
+  const sTots=allP.map(function(){return{s:0,m:0,fl:[]};});
   const panda=users.filter(function(u){return u.inTotal;});
   const saxa=users.filter(function(u){return !u.inTotal;});
   panda.forEach(function(u){
@@ -1513,9 +1620,7 @@ async function takeScr(id){
     document.getElementById('previmg').src=prevUrl;
     document.getElementById('imgov').classList.add('show');
   }catch(e){alert('Şəkil alınmadı.');}
-  finally{
-    spinHide();tw.style.overflow=of_;tw.style.width=ow_;tw.style.maxHeight=oh_;card.style.width=cw_;
-  }
+  finally{spinHide();tw.style.overflow=of_;tw.style.width=ow_;tw.style.maxHeight=oh_;card.style.width=cw_;}
 }
 function saveImg(){if(!prevUrl)return;const a=document.createElement('a');const d=getFD();a.download='pandakids-'+d.getDate()+'-'+(d.getMonth()+1)+'-'+d.getFullYear()+'.png';a.href=prevUrl;document.body.appendChild(a);a.click();document.body.removeChild(a);}
 async function takeSfScr(){
@@ -1723,7 +1828,7 @@ async function openSaxaAdminMo(){
 async function saveSaxaSettings(){
   spinShow('Saxlanır...');
   const users=gU().filter(function(u){return u.type==='store';});
-  const fillers=users.filter(function(u){return (document.getElementById('sff-'+u.id)||{}).checked;}).map(function(u){return u.id;});
+  const fillers=users.filter(function(u){return(document.getElementById('sff-'+u.id)||{}).checked;}).map(function(u){return u.id;});
   const cur=_cache||defBin();
   const newSaxa={fillers:fillers,firmName:(document.getElementById('sf-name')||{value:'Saxa Outlet'}).value||'Saxa Outlet',showInAdmin:!!(document.getElementById('sf-show')||{}).checked};
   const newCfg=Object.assign({},cur.cfg,{saxa:newSaxa});
@@ -1746,7 +1851,7 @@ function saveResetHour(){
   if(isNaN(hv)||hv<0||hv>23){alert('0-23 arası saat daxil edin.');return;}
   localStorage.setItem('pk_reset_hour',String(hv));
   const crh=document.getElementById('cur-reset-hour');if(crh)crh.textContent=hv;
-  alert('✅ Görünüş saatı '+hv+':00 olaraq təyin edildi. Məlumat açarları həmişə real cari günü istifadə edir.');
+  alert('✅ Görünüş saatı '+hv+':00 olaraq təyin edildi.');
 }
 function changeAdminPw(){
   const o=(document.getElementById('oldpw')||{value:''}).value;
@@ -1761,4 +1866,4 @@ function changeAdminPw(){
   alert('✅ Admin parolu dəyişdirildi!');
 }
 </script>
-</body></html>
+</body></html
