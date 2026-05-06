@@ -464,6 +464,9 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
   <div class="mosect">Gündəlik Sıfırlanma Saati</div>
   <div class="mor2" style="margin-bottom:6px"><div class="mof"><label>Saat (0-23)</label><input type="number" id="param-reset-hour" min="0" max="23" placeholder="17" style="text-align:center"></div><div style="display:flex;align-items:flex-end"><button class="mosave" style="background:rgba(99,102,241,.3);border:1px solid rgba(99,102,241,.5);margin-top:0;padding:9px 12px;font-size:12px" onclick="saveResetHour()">✓ Tətbiq et</button></div></div>
   <div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:10px;line-height:1.5;">Hazırkı: <span id="cur-reset-hour" style="color:#f0c060;font-weight:700">17</span>:00 — Dəyişdikdə dərhal qüvvəyə minir</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.3);margin-bottom:10px;line-height:1.6;background:rgba(201,150,58,.08);border:1px solid rgba(201,150,58,.2);border-radius:8px;padding:8px 10px;">
+    ⚠️ <strong style="color:#f0c060">Qeyd:</strong> Bu saat yalnız ekranda göstərilən tarixi dəyişir. Məlumat açarları (verilənlər bazası yazısı) həmişə <strong style="color:#f0c060">real cari günü</strong> istifadə edir — beləliklə məlumatlar heç vaxt yanlış günə yazılmır.
+  </div>
   <div class="mosect">Admin Parolu</div><div class="mor2" style="margin-bottom:9px"><div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••" autocomplete="current-password"></div><div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••" autocomplete="new-password"></div></div><button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button>
   <div class="mosect">Jurnal</div><div class="cr"><input type="checkbox" id="param-admin-jurnal" onchange="saveJP()"><label for="param-admin-jurnal">Admin girişini jurnalda göstər</label></div>
   <button class="moclose" onclick="closeMo('mo-set')" style="margin-top:12px">Bağla</button>
@@ -563,23 +566,15 @@ const AY=['yanvar','fevral','mart','aprel','may','iyun','iyul','avqust','sentyab
 const GUNS=['Bazar','Bazar ertəsi','Çərşənbə axşamı','Çərşənbə','Cümə axşamı','Cümə','Şənbə'];
 const HC=['hb','ho','hg','hp'],SC=['sb','so','sg','sp'];
 const PCOL=['#2E75B6','#C55A11','#375623','#7030A0'];
-const LS_CACHE='pk_bin_v3'; // v2→v3: köhnə cache-i təmizləmək üçün
-// LS_PW_KEY: admin parolu yalnız localStorage-da saxlanır (bin-ə yazılmır)
+const LS_CACHE='pk_bin_v3';
 const LS_PW_KEY='pk_apw';
 
 let ADMIN_PW=localStorage.getItem(LS_PW_KEY)||'admin2026';
 let curSid=null,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
 
-// ══ CACHE: Sadə, düzgün işləyən sistem ══
-// _cache: yaddaşda saxlanan son data
-// _cacheTs: yazıldığı zaman damğası
-// MEM_TTL: yaddaş cache ömrü (ms) — yalnız oxumaq üçün, yazanda silir
-// LS_TTL: localStorage cache ömrü (ms)
-const MEM_TTL=20000;  // 20 saniyə
-const LS_TTL=60000;   // 60 saniyə (köhnədə 120 idi, azaltdıq)
+const MEM_TTL=20000;
+const LS_TTL=60000;
 let _cache=null,_cacheTs=0;
-
-// CFG: aktiv konfiqurasiyanı saxlayır — hər rBin-dən sonra yenilənir
 let CFG=null;
 
 // ══ DEFAULT DATALAR ══
@@ -602,7 +597,6 @@ const DEF_HOLIDAYS=[
   {id:'qurban',name:'Qurban Bayramı',emoji:'🌙',color:'#3b0764',gradient:'linear-gradient(135deg,#1e0033,#4c0099)',startDate:'06-06',days:3,active:true,msg:'Qurban Bayramınız mübarək! Allah qəbul eləsin.'}
 ];
 
-// ══ _parseBin: server datanı düzgün formata çevirir ══
 function _parseBin(d){
   const su=d.cfg&&d.cfg.users;
   const users=(su&&su.length>0?su:DEF_USERS).map(function(u){return Object.assign({periods:[1,1,1,1]},u);});
@@ -625,7 +619,6 @@ function defBin(){
   return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true},holidays:DEF_HOLIDAYS}};
 }
 
-// ══ localStorage cache köməkçiləri ══
 function _lsGet(){
   try{
     const p=JSON.parse(localStorage.getItem(LS_CACHE)||'null');
@@ -640,29 +633,14 @@ function _lsClear(){
   try{localStorage.removeItem(LS_CACHE);}catch(e){}
 }
 
-// ══ rBin: BİNDƏN OXU ══
-// force=true → həmişə serverdən oxu, cache-i yenilə
-// force=false → əvvəl yaddaşda bax, sonra localStorage, sonra server
 async function rBin(force){
   force=!!force;
   const now=Date.now();
-
-  // 1. Yaddaş cache-i yoxla (force deyilsə)
-  if(!force&&_cache&&(now-_cacheTs)<MEM_TTL){
-    return _cache;
-  }
-
-  // 2. localStorage cache-i yoxla (force deyilsə)
+  if(!force&&_cache&&(now-_cacheTs)<MEM_TTL){return _cache;}
   if(!force){
     const ls=_lsGet();
-    if(ls){
-      _cache=ls;_cacheTs=now;
-      CFG=ls.cfg;
-      return _cache;
-    }
+    if(ls){_cache=ls;_cacheTs=now;CFG=ls.cfg;return _cache;}
   }
-
-  // 3. Serverdən oxu
   try{
     const ctrl=new AbortController();
     const tid=setTimeout(function(){ctrl.abort();},12000);
@@ -673,52 +651,32 @@ async function rBin(force){
     });
     clearTimeout(tid);
     if(!r.ok){
-      // Server xətası — əlinizdə olan en son datanı qaytar
       const fallback=_cache||_lsGet()||defBin();
-      CFG=fallback.cfg;
-      return fallback;
+      CFG=fallback.cfg;return fallback;
     }
     const j=await r.json();
     const parsed=_parseBin(j.data||{});
-    _cache=parsed;_cacheTs=now;
-    CFG=parsed.cfg;
-    _lsSet(parsed);
+    _cache=parsed;_cacheTs=now;CFG=parsed.cfg;_lsSet(parsed);
     return parsed;
   }catch(e){
     const fallback=_cache||_lsGet()||defBin();
-    CFG=fallback.cfg;
-    return fallback;
+    CFG=fallback.cfg;return fallback;
   }
 }
 
-// ══ wBin: BİNƏ YAZ ══
-// ƏSAS DÜZƏLİŞ: yazanda önce cache-i yeniləyir, sonra servərə göndərir
-// Bu sayədə ardıcıl "rBin→wBin→rBin" köhnə datanı qaytarmır
 async function wBin(records,sf,cfg){
-  // Əvvəlcə cache-i yenilə (optimistic update)
   const newData={records:records,sf:sf,cfg:cfg};
-  _cache=newData;
-  _cacheTs=Date.now();
-  CFG=cfg;
-  _lsSet(newData); // localStorage-ə də yaz
-
-  // Sonra servərə göndər
+  _cache=newData;_cacheTs=Date.now();CFG=cfg;_lsSet(newData);
   try{
     const r=await fetch(BIN_URL,{
       method:'PUT',
       headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},
       body:JSON.stringify({data:{records:records,sf:sf,cfg:cfg}})
     });
-    if(!r.ok){
-      console.error('wBin server error:',r.status);
-    }
-  }catch(e){
-    console.error('wBin network error:',e);
-    // Cache-də qalır, server sinxronizasiyası olmadı amma local işləyir
-  }
+    if(!r.ok){console.error('wBin server error:',r.status);}
+  }catch(e){console.error('wBin network error:',e);}
 }
 
-// ══ YARDIMÇI FUNKSIYALAR ══
 function gU(){return(CFG&&CFG.users)?CFG.users:DEF_USERS;}
 function gT(){return(CFG&&CFG.targets)?CFG.targets:DEF_TGTS;}
 function gSS(){return(CFG&&CFG.saxa)?CFG.saxa:DEF_SAXA;}
@@ -726,23 +684,55 @@ function gH(){return(CFG&&CFG.holidays)?CFG.holidays:DEF_HOLIDAYS;}
 function findRec(records,name,sk){return records.find(function(r){return r.sobe===name&&r.period===sk;})||null;}
 function getRD(){return new Date();}
 function getResetHour(){return parseInt(localStorage.getItem('pk_reset_hour')||'17');}
-function getFD(){const n=new Date(),d=new Date(n);if(n.getHours()<getResetHour())d.setDate(d.getDate()-1);return d;}
+
+// ══ DÜZƏLİŞ: İKİ AYRI TARİX FUNKSİYASI ══
+// getFD() — YALNIZ DISPLAY (ekranda göstərmək) üçün
+//   Sıfırlanma saatından əvvəl dünəni göstərir (istifadəçi interfeysi üçün)
+function getFD(){
+  const n=new Date(),d=new Date(n);
+  if(n.getHours()<getResetHour())d.setDate(d.getDate()-1);
+  return d;
+}
+// getKeyDate() — VERİLƏNLƏR BAZASI AÇARLARI üçün
+//   HƏMİŞƏ real cari günü qaytarır — sıfırlanma saatından ASILI DEYİL
+//   Bu sayədə məlumatlar heç vaxt yanlış günə yazılmır
+function getKeyDate(){
+  return new Date();
+}
+
 function dLeft(){const fd=getFD();const last=new Date(fd.getFullYear(),fd.getMonth()+1,0).getDate();if(fd.getDate()===last)return 1;return Math.max(0,last-fd.getDate());}
-function daysPassed(){return Math.max(1,getFD().getDate());}
+
+// daysPassed: real cari gün sayısı istifadə edir
+function daysPassed(){return Math.max(1,getKeyDate().getDate());}
+
 function fmtRealDate(){const d=getRD();return GUNS[d.getDay()]+', '+d.getDate()+' '+AY[d.getMonth()]+' '+d.getFullYear();}
+
+// getAllPeriods: Label üçün getFD() (display), SK açarı üçün getKeyDate()
 function getAllPeriods(){
-  const d=getFD(),yr=d.getFullYear(),mo=d.getMonth(),day=d.getDate();
-  const mp=String(mo+1).padStart(2,'0'),dp=String(day).padStart(2,'0');
+  const disp=getFD();
+  const key=getKeyDate();
+  const dday=disp.getDate(),dmo=disp.getMonth(),dyr=disp.getFullYear();
+  const kyr=key.getFullYear(),kmo=key.getMonth(),kday=key.getDate();
+  const kmp=String(kmo+1).padStart(2,'0'),kdp=String(kday).padStart(2,'0');
   return [
-    {id:'gun',idx:0,label:day+' '+AY[mo]+' '+yr,sk:'G_'+yr+mp+dp},
-    {id:'ay0',idx:1,label:'1-'+day+' '+AY[mo]+' '+yr,sk:'A_'+yr+mp+dp},
-    {id:'ay1',idx:2,label:'1-'+day+' '+AY[mo]+' '+(yr-1),sk:'A_'+(yr-1)+mp+dp},
-    {id:'ay2',idx:3,label:'1-'+day+' '+AY[mo]+' '+(yr-2),sk:'A_'+(yr-2)+mp+dp}
+    {id:'gun',idx:0,label:dday+' '+AY[dmo]+' '+dyr,sk:'G_'+kyr+kmp+kdp},
+    {id:'ay0',idx:1,label:'1-'+dday+' '+AY[dmo]+' '+dyr,sk:'A_'+kyr+kmp+kdp},
+    {id:'ay1',idx:2,label:'1-'+dday+' '+AY[dmo]+' '+(dyr-1),sk:'A_'+(kyr-1)+kmp+kdp},
+    {id:'ay2',idx:3,label:'1-'+dday+' '+AY[dmo]+' '+(dyr-2),sk:'A_'+(kyr-2)+kmp+kdp}
   ];
 }
+
 function getUserPeriods(uid){const u=gU().find(function(u){return u.id===uid;});return getAllPeriods().filter(function(_,i){return (u&&u.periods?u.periods:[1,1,1,1])[i]===1;});}
-function getSFKey(){const d=getFD();return 'SF_'+d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0');}
+
+// getSFKey: HƏMİŞƏ real cari gün
+function getSFKey(){
+  const d=getKeyDate();
+  return 'SF_'+d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0');
+}
+
+// getSFDate: display üçün getFD() (ok)
 function getSFDate(){const d=getFD();return d.getDate()+' '+AY[d.getMonth()]+' '+d.getFullYear();}
+
 function fmt(n){if(!n||Number(n)===0)return '—';return Math.round(Number(n)).toLocaleString('de-DE');}
 function fmtDec(n){if(!n||Number(n)===0)return '—';const num=Number(n);return num%1===0?Math.round(num).toLocaleString('de-DE'):num.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fmtSF(n){return fmtDec(n);}
@@ -832,7 +822,6 @@ async function saveHolidays(){
     const hmsgEl=document.getElementById('hmsg-'+i);if(hmsgEl)hol.msg=hmsgEl.value||hol.msg;
   });
   spinShow('Saxlanır...');
-  // Cache-dəki datadan istifadə et, serverdən yenidən oxuma (race condition olur)
   const records=_cache?_cache.records:[];
   const sf=_cache?_cache.sf:{};
   const cfg=Object.assign({},_cache?_cache.cfg:{},CFG||{});
@@ -934,16 +923,13 @@ async function logLogin(name,isAdmin){
   const now=new Date();
   const t=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0')+':'+String(now.getSeconds()).padStart(2,'0');
   const dt=now.getDate()+' '+AY[now.getMonth()]+' '+now.getFullYear();
-  // Cache-dəki cari datadan istifadə et
   const cur=_cache||defBin();
   const logs=Array.isArray(cur.cfg.jurnal)?cur.cfg.jurnal:[];
   logs.unshift({name:name,time:t,date:dt,device:getDevice(),ts:now.getTime()});
   if(logs.length>100)logs.length=100;
   const newCfg=Object.assign({},cur.cfg,{jurnal:logs});
-  // Jurnal üçün ayrıca wBin çağırma — sadəcə cache-i yenilə, arxa planda yaz
   _cache={records:cur.records,sf:cur.sf,cfg:newCfg};
   _cacheTs=Date.now();CFG=newCfg;_lsSet(_cache);
-  // Arxa planda servərə göndər (gözləmə)
   fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data:{records:cur.records,sf:cur.sf,cfg:newCfg}})}).catch(function(){});
 }
 function renderJList(filter){
@@ -984,24 +970,17 @@ function logout(){
   goTo('gate');
 }
 
-// ══ PROG-OVERLAY ══
 function progShow(msg){msg=msg||'Yüklənir...';document.getElementById('prog-overlay').classList.add('show');setProg(5,msg);}
 function setProg(pct,msg){document.getElementById('prog-bar').style.width=pct+'%';document.getElementById('prog-pct').textContent=pct+'%';if(msg)document.getElementById('prog-msg').textContent=msg;}
 
-// ══ İSTİFADƏÇİ SEÇİMİ ══
 async function buildSel(){
-  // Admin parolu: yalnız localStorage-dən oxu
   ADMIN_PW=localStorage.getItem(LS_PW_KEY)||'admin2026';
-
-  // Əvvəl localStorage-dən yüklə (sürətli)
   const ls=_lsGet();
   if(ls){
     _cache=ls;_cacheTs=Date.now();CFG=ls.cfg;
     fillSel();
-    // Arxa planda yenilə
     rBin(true).then(function(){fillSel();}).catch(function(){});
   }else{
-    // İlk dəfə açılır — progress göstər
     progShow('Yüklənir...');
     try{
       const bin=await rBin(true);CFG=bin.cfg;
@@ -1016,7 +995,6 @@ async function buildSel(){
 }
 
 function fillSel(){
-  // Admin parolu: həmişə localStorage-dən oxu (wBin çağrısından etkilənmir)
   ADMIN_PW=localStorage.getItem(LS_PW_KEY)||'admin2026';
   const sel=document.getElementById('gsel');
   sel.innerHTML='<option value="">— Seçin —</option>';
@@ -1036,18 +1014,14 @@ function fillSel(){
 }
 buildSel();
 
-// ══ GİRİŞ ══
 async function doLogin(){
   const sid=document.getElementById('gsel').value;
   const pw=document.getElementById('gpw').value;
   const rem=document.getElementById('rem').checked;
   if(!sid){alert('İstifadəçini seçin.');return;}
-
   spinShow('Giriş edilir...');
-  // Hər zaman ən son datanı al
   const bin=await rBin(true);CFG=bin.cfg;
   spinHide();
-
   const u=gU().find(function(u){return u.id===sid;});
   if(!u||pw!==u.pw){
     document.getElementById('gerr').classList.add('show');
@@ -1057,11 +1031,9 @@ async function doLogin(){
   document.getElementById('gerr').classList.remove('show');
   if(rem)localStorage.setItem('pk_rem',JSON.stringify({sid:sid,pw:pw}));
   else localStorage.removeItem('pk_rem');
-
   loadTheme(sid);
   checkAndShowHoliday(gH(),false,sid);
-  logLogin(u.name,false); // arxa planda
-
+  logLogin(u.name,false);
   if(u.type==='viewer')openViewer(u);
   else{curSid=sid;openStoreForm(sid);}
 }
@@ -1069,14 +1041,13 @@ async function doLogin(){
 async function showAdminGate(){
   const pw=prompt('Admin şifrəsi:');
   if(pw===null)return;
-  // Admin parolu həmişə localStorage-dən yoxla
   const currentAdminPw=localStorage.getItem(LS_PW_KEY)||'admin2026';
   if(pw!==currentAdminPw){alert('Şifrə yanlışdır.');return;}
   spinShow('Admin paneli yüklənir...');
   const bin=await rBin(true);CFG=bin.cfg;
   spinHide();
   checkAndShowHoliday(gH(),true);
-  logLogin('Admin',true); // arxa planda
+  logLogin('Admin',true);
   loadTheme('admin');
   openAdmin();
 }
@@ -1150,7 +1121,8 @@ function renderFormData(sid,records,sf){
   periods.forEach(function(period,pi){
     const rec=findRec(records,u.name,period.sk);const hasSaved=rec!==null;
     const sv=rec&&rec.satis?fmtDec(rec.satis):'',mv=rec&&rec.menfeet?fmtDec(rec.menfeet):'',fv=rec&&rec.faiz!==undefined?rec.faiz:'';
-    const isFirst1=getRD().getDate()===1&&period.id==='ay0';
+    // isFirstDay: real cari gün (getKeyDate) istifadə et
+    const isFirst1=getKeyDate().getDate()===1&&period.id==='ay0';
     const firstDayNote=isFirst1?'<div style="font-size:10px;color:#f0c060;padding:4px 10px 0;font-weight:600">💡 Ayın 1-i: günlük saxlandıqda aylıq avtomatik kopyalanacaq</div>':'';
     periodsH+='<div class="perblock" id="pb-'+period.id+'">'
       +'<div class="perhdr" style="background:'+PCOL[pi]+'">'+period.label+'</div>'+firstDayNote
@@ -1202,15 +1174,14 @@ async function saveAll(sid){
   document.getElementById('erb').classList.remove('show');
   spinShow('Saxlanır...');
   try{
-    // ÖNEMLİ: Hər zaman serverdən ən son datanı al (başqası eyni vaxtda yazmış ola bilər)
     const bin=await rBin(true);
     CFG=bin.cfg;
-    // Dərin kopyala — orijinalı dəyişmə
     const records=JSON.parse(JSON.stringify(bin.records));
     const sf=JSON.parse(JSON.stringify(bin.sf));
     const cfg=bin.cfg;
     let any=false;
-    const isFirstDay=getRD().getDate()===1;
+    // isFirstDay: real cari gün (getKeyDate) istifadə et
+    const isFirstDay=getKeyDate().getDate()===1;
     let gunSatis=0,gunMenfeet=0,gunFaiz=0;
 
     for(const p of periods){
@@ -1225,7 +1196,6 @@ async function saveAll(sid){
         if(p.id==='gun'){gunSatis=s;gunMenfeet=m;gunFaiz=f;}
       }
     }
-    // Ayın 1-i: günlük daxil ediləndə aylığa da kopyala
     if(isFirstDay&&gunSatis>0){
       const ay0P=periods.find(function(p){return p.id==='ay0';});
       if(ay0P){
@@ -1405,6 +1375,7 @@ function planPanelHtml(records,forSaxa){
   const users=gU().filter(function(u){return u.type==='store'&&u.showPlan&&(forSaxa?!u.inTotal:u.inTotal);});
   const targets=gT(),dl=dLeft();
   if(!users.length)return '<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">Plan yoxdur</div>';
+  // isFirstBeforeReset: real cari saat + sıfırlanma saatı
   const rd=getRD();const isFirstBeforeReset=rd.getDate()===1&&rd.getHours()<getResetHour();
   let h='<div class="ppgrid">';
   users.forEach(function(u){
@@ -1463,7 +1434,6 @@ async function loadAdmin(){
   const btn=document.getElementById('refreshBtn');
   if(btn){btn.disabled=true;btn.textContent='⏳ ...';}
   try{
-    // Admin paneli: həmişə serverdən oxu, cache-i sil
     _lsClear();_cache=null;_cacheTs=0;
     const bin=await rBin(true);CFG=bin.cfg;
     const holBanner=buildHolidayBanner(gH());
@@ -1591,7 +1561,6 @@ async function doAdminFill(){
   document.getElementById('fill-ld').classList.add('show');
   spinShow('Saxlanır...');
   try{
-    // Admin doldurma: serverdən son datanı al
     const bin=await rBin(true);
     const records=JSON.parse(JSON.stringify(bin.records));
     const sf=JSON.parse(JSON.stringify(bin.sf));
@@ -1752,12 +1721,11 @@ function saveResetHour(){
   if(isNaN(hv)||hv<0||hv>23){alert('0-23 arası saat daxil edin.');return;}
   localStorage.setItem('pk_reset_hour',String(hv));
   const crh=document.getElementById('cur-reset-hour');if(crh)crh.textContent=hv;
-  alert('✅ Sıfırlanma saati '+hv+':00 olaraq təyin edildi.');
+  alert('✅ Görünüş saatı '+hv+':00 olaraq təyin edildi. Məlumat açarları həmişə real cari günü istifadə edir.');
 }
 function changeAdminPw(){
   const o=(document.getElementById('oldpw')||{value:''}).value;
   const n=(document.getElementById('newpw')||{value:''}).value;
-  // Həmişə localStorage-dən oxu
   const currentPw=localStorage.getItem(LS_PW_KEY)||'admin2026';
   if(o!==currentPw){alert('Köhnə parol yanlışdır.');return;}
   if(!n||n.length<4){alert('Yeni parol ən azı 4 simvol.');return;}
