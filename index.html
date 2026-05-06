@@ -597,7 +597,10 @@ const DEF_HOLIDAYS=[
   {id:'qurban',name:'Qurban Bayramı',emoji:'🌙',color:'#3b0764',gradient:'linear-gradient(135deg,#1e0033,#4c0099)',startDate:'06-06',days:3,active:true,msg:'Qurban Bayramınız mübarək! Allah qəbul eləsin.'}
 ];
 
+// ══ DÜZƏLİŞ 1: _parseBin — data strukturu düzgün işlənir ══
 function _parseBin(d){
+  // JSONBin bəzən {record:{...}} formatında qaytara bilər, bunu da idarə et
+  if(d && d.record) d = d.record;
   const su=d.cfg&&d.cfg.users;
   const users=(su&&su.length>0?su:DEF_USERS).map(function(u){return Object.assign({periods:[1,1,1,1]},u);});
   const holidays=(d.cfg&&d.cfg.holidays)?d.cfg.holidays:DEF_HOLIDAYS;
@@ -633,6 +636,7 @@ function _lsClear(){
   try{localStorage.removeItem(LS_CACHE);}catch(e){}
 }
 
+// ══ DÜZƏLİŞ 2: rBin — X-Bin-Meta:false ilə cavab birbaşa JSON obyektidir, j.data deyil ══
 async function rBin(force){
   force=!!force;
   const now=Date.now();
@@ -654,8 +658,11 @@ async function rBin(force){
       const fallback=_cache||_lsGet()||defBin();
       CFG=fallback.cfg;return fallback;
     }
+    // DÜZƏLİŞ: X-Bin-Meta:false ilə cavab birbaşa data obyektidir
+    // Köhnə kod: const parsed=_parseBin(j.data||{});  ← YANLIŞ
+    // Yeni kod:  const parsed=_parseBin(j||{});        ← DÜZƏLDİLDİ
     const j=await r.json();
-    const parsed=_parseBin(j.data||{});
+    const parsed=_parseBin(j||{});
     _cache=parsed;_cacheTs=now;CFG=parsed.cfg;_lsSet(parsed);
     return parsed;
   }catch(e){
@@ -664,17 +671,28 @@ async function rBin(force){
   }
 }
 
+// ══ DÜZƏLİŞ 3: wBin — X-Bin-Meta:false ilə məlumat yazanda da {records,sf,cfg} birbaşa göndər ══
 async function wBin(records,sf,cfg){
   const newData={records:records,sf:sf,cfg:cfg};
   _cache=newData;_cacheTs=Date.now();CFG=cfg;_lsSet(newData);
   try{
     const r=await fetch(BIN_URL,{
       method:'PUT',
-      headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},
-      body:JSON.stringify({data:{records:records,sf:sf,cfg:cfg}})
+      headers:{
+        'Content-Type':'application/json',
+        'X-Master-Key':API_KEY,
+        'X-Bin-Meta':'false'
+      },
+      // DÜZƏLİŞ: Köhnə kod {data:{records,sf,cfg}} göndərirdi — bu oxuma strukturu ilə uyğun deyildi
+      // Yeni kod: {records,sf,cfg} birbaşa göndərilir
+      body:JSON.stringify({records:records,sf:sf,cfg:cfg})
     });
-    if(!r.ok){console.error('wBin server error:',r.status);}
-  }catch(e){console.error('wBin network error:',e);}
+    if(!r.ok){
+      console.error('wBin server error:',r.status);
+    }
+  }catch(e){
+    console.error('wBin network error:',e);
+  }
 }
 
 function gU(){return(CFG&&CFG.users)?CFG.users:DEF_USERS;}
@@ -685,29 +703,19 @@ function findRec(records,name,sk){return records.find(function(r){return r.sobe=
 function getRD(){return new Date();}
 function getResetHour(){return parseInt(localStorage.getItem('pk_reset_hour')||'17');}
 
-// ══ DÜZƏLİŞ: İKİ AYRI TARİX FUNKSİYASI ══
-// getFD() — YALNIZ DISPLAY (ekranda göstərmək) üçün
-//   Sıfırlanma saatından əvvəl dünəni göstərir (istifadəçi interfeysi üçün)
 function getFD(){
   const n=new Date(),d=new Date(n);
   if(n.getHours()<getResetHour())d.setDate(d.getDate()-1);
   return d;
 }
-// getKeyDate() — VERİLƏNLƏR BAZASI AÇARLARI üçün
-//   HƏMİŞƏ real cari günü qaytarır — sıfırlanma saatından ASILI DEYİL
-//   Bu sayədə məlumatlar heç vaxt yanlış günə yazılmır
 function getKeyDate(){
   return new Date();
 }
 
 function dLeft(){const fd=getFD();const last=new Date(fd.getFullYear(),fd.getMonth()+1,0).getDate();if(fd.getDate()===last)return 1;return Math.max(0,last-fd.getDate());}
-
-// daysPassed: real cari gün sayısı istifadə edir
 function daysPassed(){return Math.max(1,getKeyDate().getDate());}
-
 function fmtRealDate(){const d=getRD();return GUNS[d.getDay()]+', '+d.getDate()+' '+AY[d.getMonth()]+' '+d.getFullYear();}
 
-// getAllPeriods: Label üçün getFD() (display), SK açarı üçün getKeyDate()
 function getAllPeriods(){
   const disp=getFD();
   const key=getKeyDate();
@@ -724,13 +732,10 @@ function getAllPeriods(){
 
 function getUserPeriods(uid){const u=gU().find(function(u){return u.id===uid;});return getAllPeriods().filter(function(_,i){return (u&&u.periods?u.periods:[1,1,1,1])[i]===1;});}
 
-// getSFKey: HƏMİŞƏ real cari gün
 function getSFKey(){
   const d=getKeyDate();
   return 'SF_'+d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0');
 }
-
-// getSFDate: display üçün getFD() (ok)
 function getSFDate(){const d=getFD();return d.getDate()+' '+AY[d.getMonth()]+' '+d.getFullYear();}
 
 function fmt(n){if(!n||Number(n)===0)return '—';return Math.round(Number(n)).toLocaleString('de-DE');}
@@ -822,11 +827,9 @@ async function saveHolidays(){
     const hmsgEl=document.getElementById('hmsg-'+i);if(hmsgEl)hol.msg=hmsgEl.value||hol.msg;
   });
   spinShow('Saxlanır...');
-  const records=_cache?_cache.records:[];
-  const sf=_cache?_cache.sf:{};
-  const cfg=Object.assign({},_cache?_cache.cfg:{},CFG||{});
-  cfg.holidays=hols;
-  await wBin(records,sf,cfg);
+  const cur=_cache||defBin();
+  const cfg=Object.assign({},cur.cfg,{holidays:hols});
+  await wBin(cur.records,cur.sf,cfg);
   spinHide();closeMo('mo-holiday');alert('✅ Bayramlar saxlanıldı!');
 }
 
@@ -928,9 +931,11 @@ async function logLogin(name,isAdmin){
   logs.unshift({name:name,time:t,date:dt,device:getDevice(),ts:now.getTime()});
   if(logs.length>100)logs.length=100;
   const newCfg=Object.assign({},cur.cfg,{jurnal:logs});
+  // DÜZƏLİŞ: _cache-i yenilə ki, sonrakı əməliyyatlar doğru data istifadə etsin
   _cache={records:cur.records,sf:cur.sf,cfg:newCfg};
   _cacheTs=Date.now();CFG=newCfg;_lsSet(_cache);
-  fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data:{records:cur.records,sf:cur.sf,cfg:newCfg}})}).catch(function(){});
+  // Asinxron göndər, gözləmə
+  wBin(cur.records,cur.sf,newCfg).catch(function(){});
 }
 function renderJList(filter){
   const logs=(CFG&&CFG.jurnal)?CFG.jurnal:[];
@@ -1121,7 +1126,6 @@ function renderFormData(sid,records,sf){
   periods.forEach(function(period,pi){
     const rec=findRec(records,u.name,period.sk);const hasSaved=rec!==null;
     const sv=rec&&rec.satis?fmtDec(rec.satis):'',mv=rec&&rec.menfeet?fmtDec(rec.menfeet):'',fv=rec&&rec.faiz!==undefined?rec.faiz:'';
-    // isFirstDay: real cari gün (getKeyDate) istifadə et
     const isFirst1=getKeyDate().getDate()===1&&period.id==='ay0';
     const firstDayNote=isFirst1?'<div style="font-size:10px;color:#f0c060;padding:4px 10px 0;font-weight:600">💡 Ayın 1-i: günlük saxlandıqda aylıq avtomatik kopyalanacaq</div>':'';
     periodsH+='<div class="perblock" id="pb-'+period.id+'">'
@@ -1164,7 +1168,7 @@ function editPeriod(pid){
 }
 function editSF(){const inp=document.getElementById('sf-inp');if(inp){inp.disabled=false;inp.style.border='1.5px solid #c9963a';attachNumInput(inp);}const e=document.querySelector('#pb-sf .editbtn');if(e)e.style.display='none';}
 
-// ══ HAMISINI SAXLA ══
+// ══ DÜZƏLİŞ 4: HAMISINI SAXLA — disabled inputlardan mövcud dəyər götürülür ══
 async function saveAll(sid){
   const u=gU().find(function(u){return u.id===sid;});
   const periods=getUserPeriods(sid);
@@ -1180,14 +1184,28 @@ async function saveAll(sid){
     const sf=JSON.parse(JSON.stringify(bin.sf));
     const cfg=bin.cfg;
     let any=false;
-    // isFirstDay: real cari gün (getKeyDate) istifadə et
     const isFirstDay=getKeyDate().getDate()===1;
     let gunSatis=0,gunMenfeet=0,gunFaiz=0;
 
     for(const p of periods){
-      const s=parseNum((document.getElementById('s-'+p.id)||{value:''}).value);
-      const m=parseNum((document.getElementById('m-'+p.id)||{value:''}).value);
-      const f=parseNum((document.getElementById('f-'+p.id)||{value:''}).value);
+      const inpS=document.getElementById('s-'+p.id);
+      const inpM=document.getElementById('m-'+p.id);
+      const inpF=document.getElementById('f-'+p.id);
+
+      // DÜZƏLİŞ: Əgər input disabled-dirsə (artıq saxlanıb), mövcud rekorddan dəyər götür
+      let s,m,f;
+      if(inpS&&inpS.disabled){
+        // Mövcud rekorddan oxu
+        const existRec=findRec(records,u.name,p.sk);
+        s=existRec?existRec.satis:0;
+        m=existRec?existRec.menfeet:0;
+        f=existRec?existRec.faiz:0;
+      }else{
+        s=parseNum((inpS||{value:''}).value);
+        m=parseNum((inpM||{value:''}).value);
+        f=parseNum((inpF||{value:''}).value);
+      }
+
       if(s>0||m>0||f>0){
         any=true;
         const idx=records.findIndex(function(r){return r.sobe===u.name&&r.period===p.sk;});
@@ -1196,6 +1214,8 @@ async function saveAll(sid){
         if(p.id==='gun'){gunSatis=s;gunMenfeet=m;gunFaiz=f;}
       }
     }
+
+    // Ayın 1-i: günlük saxlananda aylıq da avtomatik kopyalan
     if(isFirstDay&&gunSatis>0){
       const ay0P=periods.find(function(p){return p.id==='ay0';});
       if(ay0P){
@@ -1204,11 +1224,23 @@ async function saveAll(sid){
         if(idxA>=0)records[idxA]=eA;else records.push(eA);
       }
     }
+
     const ss=gSS();
     if(ss.fillers.includes(sid)){
-      const sfv=parseNum((document.getElementById('sf-inp')||{value:''}).value);
-      if(sfv>0){any=true;sf[getSFKey()+'_'+sid]={satis:sfv};}
+      const sfInpEl=document.getElementById('sf-inp');
+      if(sfInpEl){
+        let sfv;
+        if(sfInpEl.disabled){
+          // Mövcud SF rekordundan oxu
+          const existSF=sf[getSFKey()+'_'+sid];
+          sfv=existSF?existSF.satis:0;
+        }else{
+          sfv=parseNum(sfInpEl.value);
+        }
+        if(sfv>0){any=true;sf[getSFKey()+'_'+sid]={satis:sfv};}
+      }
     }
+
     if(!any){
       spinHide();
       document.getElementById('ldb').classList.remove('show');
@@ -1216,19 +1248,13 @@ async function saveAll(sid){
       alert('Ən azı bir sahəni doldurun.');
       return;
     }
+
     await wBin(records,sf,cfg);
     spinHide();
     document.getElementById('ldb').classList.remove('show');
     document.getElementById('okb').classList.add('show');
     document.getElementById('okb').textContent='✅ Məlumatlar yadda saxlandı!';
     if(sab)sab.textContent='✅ Saxlanıldı';
-    periods.forEach(function(p){
-      ['s-','m-','f-'].forEach(function(pref){
-        const el=document.getElementById(pref+p.id);
-        if(el){el.disabled=true;el.style.border='';}
-      });
-    });
-    const sfInp=document.getElementById('sf-inp');if(sfInp){sfInp.disabled=true;sfInp.style.border='';}
     setTimeout(function(){renderFormData(sid,records,sf);},1200);
   }catch(e){
     console.error('saveAll error:',e);
@@ -1375,7 +1401,6 @@ function planPanelHtml(records,forSaxa){
   const users=gU().filter(function(u){return u.type==='store'&&u.showPlan&&(forSaxa?!u.inTotal:u.inTotal);});
   const targets=gT(),dl=dLeft();
   if(!users.length)return '<div style="color:rgba(255,255,255,.4);font-size:12px;padding:8px">Plan yoxdur</div>';
-  // isFirstBeforeReset: real cari saat + sıfırlanma saatı
   const rd=getRD();const isFirstBeforeReset=rd.getDate()===1&&rd.getHours()<getResetHour();
   let h='<div class="ppgrid">';
   users.forEach(function(u){
