@@ -728,7 +728,6 @@ async function wBin(records,sf,cfg){
   for(let attempt=0;attempt<4;attempt++){
     try{
       if(attempt>0){
-        showSyncStatus('⏳ Yenidən cəhd '+(attempt+1)+'/4...', false, 4000);
         await _sleep(1500*attempt);
       }
       const ctrl=new AbortController();
@@ -759,11 +758,10 @@ async function wBin(records,sf,cfg){
   if(success){
     _clearPending();
     _pendingWrite=null;
-    showSyncStatus('✅ Məlumatlar saxlandı!', true, 2500);
+    // Toast yalnız saveAll-ın okb-si göstərir — burada ayrıca toast lazım deyil
   }else{
     // Pending yazını saxla — növbəti sessiyada yenidən cəhd olunacaq
     _savePending(records,sf,cfg);
-    showSyncStatus('⚠️ Server cavab vermir. Məlumat lokal saxlandı.', false, 6000);
     console.error('wBin: bütün cəhdlər uğursuz — pending kimi saxlandı');
   }
   return success;
@@ -1078,21 +1076,35 @@ function setProg(pct,msg){document.getElementById('prog-bar').style.width=pct+'%
 
 async function buildSel(){
   ADMIN_PW=localStorage.getItem(LS_PW_KEY)||'admin2026';
-  // Əvvəl pending yazıları tamamla
   _flushPending();
   const ls=_lsGet();
   if(ls){
+    // Cache var — dərhal göstər, amma progress bar-ı da göstər/bitir
     _cache=ls;_cacheTs=Date.now();CFG=ls.cfg;
+    progShow('Yüklənir...');
+    setProg(80,'Cache yükləndi...');
     fillSel();
-    rBin(true).then(function(bin){CFG=bin.cfg;fillSel();}).catch(function(){});
+    // Arxa planda serverdən yenilə
+    rBin(true).then(function(bin){
+      CFG=bin.cfg;fillSel();
+    }).catch(function(){}).finally(function(){
+      setProg(100,'Hazır!');
+      setTimeout(function(){
+        const o=document.getElementById('prog-overlay');if(o)o.classList.remove('show');
+        setProg(0,'');
+      },300);
+    });
   }else{
     progShow('Yüklənir...');
-    try{const bin=await rBin(true);CFG=bin.cfg;}catch(e){}
+    setProg(5,'Server ilə əlaqə...');
+    try{
+      const bin=await rBin(true);CFG=bin.cfg;
+    }catch(e){}
     setProg(100,'Hazır!');
     setTimeout(function(){
       const o=document.getElementById('prog-overlay');if(o)o.classList.remove('show');
       setProg(0,'');fillSel();
-    },150);
+    },300);
     return;
   }
 }
@@ -1354,12 +1366,12 @@ async function saveAll(sid){
     document.getElementById('ldb').classList.remove('show');
     if(ok){
       document.getElementById('okb').classList.add('show');
-      document.getElementById('okb').textContent='✅ Məlumatlar yadda saxlandı!';
-      if(sab)sab.textContent='✅ Saxlanıldı';
+      document.getElementById('okb').textContent='✅ Saxlandı!';
+      if(sab)sab.textContent='✅ Saxlandı';
     }else{
       document.getElementById('okb').classList.add('show');
-      document.getElementById('okb').textContent='💾 Lokal saxlandı (server cavab vermir)';
-      if(sab)sab.textContent='💾 Lokal saxlandı';
+      document.getElementById('okb').textContent='💾 Lokal saxlandı (internet yoxdur)';
+      if(sab)sab.textContent='💾 Saxlandı';
     }
     // Formu yenilə — həmişə uğurlu say (data lokal saxlandı)
     setTimeout(function(){renderFormData(sid,records,sf);},1200);
@@ -1615,7 +1627,7 @@ async function takeScr(id){
   const cw_=card.style.width;card.style.width=tblW+'px';
   spinShow('Şəkil hazırlanır...');
   try{
-    const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:5,useCORS:true,logging:false,width:tblW,height:card.scrollHeight,windowWidth:tblW,imageTimeout:0,x:0,y:0});
+    const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:3,useCORS:true,logging:false,width:tblW,height:card.scrollHeight,windowWidth:tblW,imageTimeout:0,x:0,y:0});
     prevUrl=c.toDataURL('image/png',1.0);
     document.getElementById('previmg').src=prevUrl;
     document.getElementById('imgov').classList.add('show');
@@ -1627,7 +1639,7 @@ async function takeSfScr(){
   const card=document.getElementById('sf-rc');if(!card){alert('Hesabat yoxdur.');return;}
   spinShow('Şəkil hazırlanır...');
   try{
-    const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:5,useCORS:true,logging:false,width:card.scrollWidth,height:card.scrollHeight,imageTimeout:0});
+    const c=await html2canvas(card,{backgroundColor:'#ffffff',scale:3,useCORS:true,logging:false,width:card.scrollWidth,height:card.scrollHeight,imageTimeout:0});
     sfPrevUrl=c.toDataURL('image/png',1.0);
     document.getElementById('sf-previmg').src=sfPrevUrl;
     document.getElementById('sf-imgov').classList.add('show');
@@ -1866,4 +1878,4 @@ function changeAdminPw(){
   alert('✅ Admin parolu dəyişdirildi!');
 }
 </script>
-</body></html
+</body></html>
