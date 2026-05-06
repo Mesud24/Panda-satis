@@ -621,8 +621,21 @@ function showSyncStatus(msg,isOk,dur){
 }
 
 // ══ DATA PARSE ══
+// Köhnə format: {data:{records,sf,cfg}} — köhnə kod belə yazırdı
+// Yeni format:  {records,sf,cfg}        — X-Bin-Meta:false ilə
+// Hər iki formatı dəstəkləyir + boş cavabdan qoruyur
 function _parseBin(d){
-  if(d&&d.record)d=d.record;
+  if(!d)return null;
+  if(d.record)d=d.record;
+  // Köhnə kod {data:{...}} yazırdı — bu formatı da oxu
+  if(d.data&&typeof d.data==='object'&&!Array.isArray(d.data)){
+    if(d.data.records||d.data.sf||d.data.cfg)d=d.data;
+  }
+  // Tamamilə tanınmayan format — null qaytar, mövcud datanı qoruyaq
+  if(!Array.isArray(d.records)&&!d.cfg&&!d.sf){
+    console.warn('_parseBin: tanınmayan format',JSON.stringify(d).slice(0,100));
+    return null;
+  }
   const su=d.cfg&&d.cfg.users;
   const users=(su&&su.length>0?su:DEF_USERS).map(function(u){return Object.assign({periods:[1,1,1,1]},u);});
   const holidays=(d.cfg&&d.cfg.holidays)?d.cfg.holidays:DEF_HOLIDAYS;
@@ -699,6 +712,24 @@ async function rBin(force){
       }
       const j=await r.json();
       const parsed=_parseBin(j||{});
+      // _parseBin null qaytararsa — tanınmayan/boş format, mövcud datanı qoruyaq
+      if(!parsed){
+        console.warn('rBin: _parseBin null qaytardı, fallback istifadə edilir');
+        const fb=_cache||_lsGet()||defBin();
+        CFG=fb.cfg;return fb;
+      }
+      // Məlumatlar varsa (records>0) və ya əvvəlki cache-də məlumat yoxdursa — yaz
+      const prevCache=_cache||_lsGet();
+      if(parsed.records.length>0||(prevCache&&prevCache.records.length===0)||!prevCache){
+        _cache=parsed;_cacheTs=now;CFG=parsed.cfg;
+        _lsSet(parsed);
+        return parsed;
+      }
+      // Server boş records qaytardı amma cache-də məlumat var — cache-i qoruyaq
+      if(parsed.records.length===0&&prevCache&&prevCache.records.length>0){
+        console.warn('rBin: server boş records qaytardı, cache qorunur');
+        CFG=prevCache.cfg;return prevCache;
+      }
       _cache=parsed;_cacheTs=now;CFG=parsed.cfg;
       _lsSet(parsed);
       return parsed;
@@ -714,8 +745,14 @@ async function rBin(force){
 
 function _sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
 
-// ══ YAZMA: wBin — retry + pending məntiqli ══
+// ══ YAZMA: wBin — retry + pending + məlumat qoruma məntiqli ══
 async function wBin(records,sf,cfg){
+  // QORUMA: Əgər yazılacaq records boşdursa amma cache-də məlumat varsa — YAZ MA
+  const prevCache=_cache||_lsGet();
+  if(Array.isArray(records)&&records.length===0&&prevCache&&prevCache.records&&prevCache.records.length>0){
+    console.error('wBin BLOKED: boş records yazılmaq istənilib, mövcud '+prevCache.records.length+' record qorunur');
+    return false;
+  }
   const newData={records:records,sf:sf,cfg:cfg};
   // 1. Dərhal cache-i yenilə — istifadəçi dərhal yeni datanı görsün
   _cache=newData;_cacheTs=Date.now();CFG=cfg;
@@ -1578,7 +1615,7 @@ async function loadAdmin(){
   const btn=document.getElementById('refreshBtn');
   if(btn){btn.disabled=true;btn.textContent='⏳ ...';}
   try{
-    _lsClear();_cache=null;_cacheTs=0;
+    // _lsClear edilmir — refresh zamanı cache qorunur, yalnız server datası üstünlük alır
     const bin=await rBin(true);CFG=bin.cfg;
     const holBanner=buildHolidayBanner(gH());
     body.innerHTML=holBanner+mkPanel('adm')
