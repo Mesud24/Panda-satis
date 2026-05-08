@@ -592,6 +592,9 @@ const GUNS=['Bazar','Bazar ertəsi','Çərşənbə axşamı','Çərşənbə','C�
 const HC=['hb','ho','hg','hp'],SC=['sb','so','sg','sp'];
 const PCOL=['#2E75B6','#C55A11','#375623','#7030A0'];
 const LS_CACHE='pk_bin_v4';
+const LS_PENDING='pk_pending_write';
+const LS_PW_KEY='pk_apw';
+let _cache=null,_cacheTs=0;
 let ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
 let curSid=null,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
 
@@ -669,7 +672,6 @@ function checkAndShowHoliday(holidays,isAdmin=false,uid=null){
   const h=getActiveHoliday(holidays);if(!h)return;
   const eff=uid||'g';const maxCnt=isAdmin?1:2;
   if(holSeenCount(h.id,eff)<maxCnt){showHolidayOverlay(h);holIncrCount(h.id,eff);}
-}
 }
 function buildHolidayBanner(holidays){
   // Paneldə bayram banneri üçün HTML
@@ -899,7 +901,7 @@ const DEF_USERS=[
 ];
 const DEF_TGTS={p2:{min:63180,mid:80000,max:100000},p3:{min:125000,mid:150000,max:180000},pe:{min:54270,mid:70000,max:90000},s1:{min:0,mid:0,max:0},s2:{min:0,mid:0,max:0},s3:{min:0,mid:0,max:0}};
 const DEF_SAXA={fillers:['p2','p3','pe'],showInAdmin:true,firmName:'Saxa Outlet'};
-let CFG=null,_bc=null,_bcts=0;
+let CFG=null;
 const MEM_TTL=30000,LS_TTL=120000;
 
 function progShow(msg='Yüklənir...'){document.getElementById('prog-overlay').classList.add('show');setProg(5,msg);}
@@ -923,9 +925,6 @@ function _parseBin(d){
     sf:(d.sf&&typeof d.sf==='object')?d.sf:{},
     cfg:{users:users,targets:(d.cfg&&d.cfg.targets)?d.cfg.targets:DEF_TGTS,saxa:(d.cfg&&d.cfg.saxa)?d.cfg.saxa:DEF_SAXA,jurnal:Array.isArray(d.cfg&&d.cfg.jurnal)?d.cfg.jurnal:[],jp:(d.cfg&&d.cfg.jp)?d.cfg.jp:{showAdmin:true},holidays:holidays}
   };
-}));
-  const holidays=d.cfg?.holidays||DEF_HOLIDAYS;
-  return{records:d.records||[],sf:d.sf||{},cfg:{users,targets:d.cfg?.targets||DEF_TGTS,saxa:d.cfg?.saxa||DEF_SAXA,jurnal:d.cfg?.jurnal||[],jp:d.cfg?.jp||{showAdmin:true},holidays}};
 }
 function _lsGet(){try{const p=JSON.parse(localStorage.getItem(LS_CACHE)||'null');if(p&&p.data&&(Date.now()-p.ts)<LS_TTL)return p.data;}catch{}return null;}
 function _lsSet(data){try{localStorage.setItem(LS_CACHE,JSON.stringify({data,ts:Date.now()}));}catch{}}
@@ -937,80 +936,46 @@ async function rBin(force){
     const ls=_lsGet();
     if(ls){_cache=ls;_cacheTs=now;CFG=ls.cfg;return _cache;}
   }
-  if(_pendingWrite){return _pendingWrite;}
   for(let attempt=0;attempt<3;attempt++){
     try{
       const ctrl=new AbortController();
       const tid=setTimeout(function(){ctrl.abort();},15000);
       const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},cache:'no-store',signal:ctrl.signal});
       clearTimeout(tid);
-      if(!r.ok){if(attempt<2){await new Promise(function(r){setTimeout(r,1000*(attempt+1));});continue;}break;}
+      if(!r.ok){if(attempt<2){await new Promise(function(res){setTimeout(res,1000*(attempt+1));});continue;}break;}
       const j=await r.json();
+      if(!j){break;}
       const parsed=_parseBin(j||{});
       if(!parsed){const fb=_cache||_lsGet()||defBin();CFG=fb.cfg;return fb;}
-      // Boş records cavabından qorun
       const prev=_cache||_lsGet();
       if(parsed.records.length===0&&prev&&prev.records&&prev.records.length>0){
-        console.warn('rBin: server boş records qaytardı, cache qorunur');
         CFG=prev.cfg;return prev;
       }
       _cache=parsed;_cacheTs=now;CFG=parsed.cfg;_lsSet(parsed);
       return parsed;
     }catch(e){
-      if(attempt<2){await new Promise(function(r){setTimeout(r,1000*(attempt+1));});continue;}
+      if(attempt<2){await new Promise(function(res){setTimeout(res,1000*(attempt+1));});continue;}
     }
   }
-  const fallback=_pendingWrite||_cache||_lsGet()||defBin();
+  const fallback=_cache||_lsGet()||defBin();
   CFG=fallback.cfg;return fallback;
-}}
-  try{
-    const ctrl=new AbortController();
-    const tid=setTimeout(()=>ctrl.abort(),8000);
-    const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},cache:'no-store',signal:ctrl.signal});
-    clearTimeout(tid);
-    if(!r.ok)return _bc||defBin();
-    const j=await r.json();_bc=_parseBin(j.data||{});_bcts=now;_lsSet(_bc);return _bc;
-  }catch{return _bc||_lsGet()||defBin();}
 }
 function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true},holidays:DEF_HOLIDAYS}};}
 async function wBin(records,sf,cfg){
-  // QORUMA: boş records yazılmaq istəniləndə
-  const prevCache=_cache||_lsGet();
-  if(Array.isArray(records)&&records.length===0&&prevCache&&prevCache.records&&prevCache.records.length>0){
-    console.error('wBin BLOCKED: boş records, mövcud '+prevCache.records.length+' record qorunur');
-    return false;
+  const prev=_cache||_lsGet();
+  if(Array.isArray(records)&&records.length===0&&prev&&prev.records&&prev.records.length>0){
+    console.warn('wBin blocked: empty records');return false;
   }
   const newData={records:records,sf:sf,cfg:cfg};
-  _cache=newData;_cacheTs=Date.now();CFG=cfg;
-  _lsSet(newData);
-  _pendingWrite=newData;
-  const body=JSON.stringify({records:records,sf:sf,cfg:cfg});
-  let success=false;
-  for(let attempt=0;attempt<3;attempt++){
-    try{
-      if(attempt>0)await new Promise(function(r){setTimeout(r,1500*attempt);});
-      const ctrl=new AbortController();
-      const tid=setTimeout(function(){ctrl.abort();},20000);
-      const r=await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:body,signal:ctrl.signal});
-      clearTimeout(tid);
-      if(r.ok){success=true;break;}
-      if(r.status>=400&&r.status<500)break;
-    }catch(e){console.warn('wBin attempt',attempt,'failed');}
-  }
-  if(success){
-    _pendingWrite=null;
-    try{localStorage.removeItem(LS_PENDING);}catch{}
-  }else{
-    try{localStorage.setItem(LS_PENDING,JSON.stringify({records:records,sf:sf,cfg:cfg,ts:Date.now()}));}catch{}
-    showSyncStatus('⚠️ Server cavab vermədi — lokal saxlandı',false,4000);
-  }
-  return success;
-}catch{}
-  _bc={records,sf,cfg};_bcts=Date.now();
+  _cache=newData;_cacheTs=Date.now();CFG=cfg;_lsSet(newData);
   try{
-    await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({data:{records,sf,cfg}})});
-    _lsSet(_bc);
-  }catch(e){console.error(e);}
+    const r=await fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({records:records,sf:sf,cfg:cfg})});
+    if(r.ok){return true;}
+    return false;
+  }catch(e){
+    console.error('wBin error:',e);
+    return false;
+  }
 }
 async function _flushPending(){
   let p=null;
@@ -1107,10 +1072,19 @@ function getArrType(ds,ms,minT,dl){if(!ds||!minT||minT<=0)return '';const rm=Mat
 function getArrTypeMonth(ms,minT,dl){if(!ms||!minT||minT<=0)return '';if(ms>=minT)return 'up';const avg=ms/daysPassed();return ms+avg*dl>=minT?'mid':'dn';}
 
 function getDevice(){const ua=navigator.userAgent;if(/iPhone/.test(ua))return '📱 iPhone';if(/iPad/.test(ua))return '📟 iPad';if(/Android/.test(ua)&&/Mobile/.test(ua)){if(/SM-[A-Z]/.test(ua))return '📱 Samsung';if(/Redmi|MIUI|Xiaomi/.test(ua))return '📱 Xiaomi';if(/Huawei|HUAWEI/.test(ua))return '📱 Huawei';return '📱 Android';}if(/Android/.test(ua))return '📟 Tablet';if(/Windows/.test(ua))return '💻 Windows';if(/Macintosh|Mac OS/.test(ua))return '💻 Mac';return '💻 Kompüter';}
-async function logLogin(name,isAdmin,records,sf,cfg){
-  if(isAdmin&&!cfg.jp?.showAdmin)return;
-  const now=new Date(),t=`${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`,dt=`${now.getDate()} ${AY[now.getMonth()]} ${now.getFullYear()}`;
-  const logs=cfg.jurnal||[];logs.unshift({name,time:t,date:dt,device:getDevice(),ts:now.getTime()});if(logs.length>100)logs.length=100;cfg.jurnal=logs;CFG=cfg;wBin(records,sf,cfg);
+async function logLogin(name,isAdmin){
+  if(isAdmin&&!(CFG&&CFG.jp&&CFG.jp.showAdmin))return;
+  const now=new Date();
+  const t=String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0')+':'+String(now.getSeconds()).padStart(2,'0');
+  const dt=now.getDate()+' '+AY[now.getMonth()]+' '+now.getFullYear();
+  const cur=_cache||defBin();
+  const logs=Array.isArray(cur.cfg.jurnal)?cur.cfg.jurnal:[];
+  logs.unshift({name:name,time:t,date:dt,device:getDevice(),ts:now.getTime()});
+  if(logs.length>100)logs.length=100;
+  const newCfg=Object.assign({},cur.cfg,{jurnal:logs});
+  _cache={records:cur.records,sf:cur.sf,cfg:newCfg};
+  _cacheTs=Date.now();CFG=newCfg;_lsSet(_cache);
+  fetch(BIN_URL,{method:'PUT',headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},body:JSON.stringify({records:cur.records,sf:cur.sf,cfg:newCfg})}).catch(function(){});
 }
 function renderJList(filter){const logs=CFG?.jurnal||[];const fl=filter==='all'?logs:logs.filter(l=>l.name===filter);if(!fl.length)return '<div class="jurnal-empty">Giriş yoxdur</div>';return fl.slice(0,50).map(l=>`<div class="jurnal-item"><div><div class="jurnal-name">${l.name}</div><div class="jurnal-device">${l.device||'—'}</div></div><div class="jurnal-time">${l.date}<br>${l.time}</div></div>`).join('');}
 function openJurnalMo(){const logs=CFG?.jurnal||[];const names=['all',...new Set(logs.map(l=>l.name))];let fb='<button class="jf-btn active" onclick="setJF(\'all\',this)">Hamısı</button>';names.slice(1).forEach(n=>{fb+=`<button class="jf-btn" onclick="setJF('${n}',this)">${n}</button>`;});document.getElementById('jurnal-filter').innerHTML=fb;document.getElementById('jurnal-modal-list').innerHTML=renderJList('all');document.getElementById('mo-jurnal').classList.add('show');}
@@ -1205,41 +1179,22 @@ async function doLogin(){
   if(rem)localStorage.setItem('pk_rem',JSON.stringify({sid,pw}));else localStorage.removeItem('pk_rem');
   loadTheme(sid);
   checkAndShowHoliday(gH(),false,sid);
-  logLogin(u.name,false,bin.records,bin.sf,bin.cfg);
+  logLogin(u.name,false);
   spinHide();
   if(u.type==='viewer')openViewer(u);else{curSid=sid;openStoreForm(sid);}
 }
 async function showAdminGate(){
-  if(hasPasskey()){
-    const ok=await loginWithPasskey();
-    if(ok){
-      spinShow('Admin...');
-      const bin=await rBin(true);CFG=bin.cfg;
-      checkAndShowHoliday(gH(),true);
-      await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
-      spinHide();loadTheme('admin');openAdmin();
-      return;
-    }
-  }
+  const currentAdminPw=localStorage.getItem(LS_PW_KEY)||'admin2026';
   const pw=prompt('Admin şifrəsi:');
   if(pw===null)return;
-  if(pw!==ADMIN_PW){alert('Şifrə yanlışdır.');return;}
-  spinShow('Admin...');
+  if(pw!==currentAdminPw){alert('Şifrə yanlışdır.');return;}
+  spinShow('Admin paneli yüklənir...');
   const bin=await rBin(true);CFG=bin.cfg;
+  spinHide();
   checkAndShowHoliday(gH(),true);
-  await logLogin('Admin',true,bin.records,bin.sf,bin.cfg);
-  spinHide();loadTheme('admin');openAdmin();
-  if(window.PublicKeyCredential&&!hasPasskey()){
-    try{
-      const avail=await PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
-      if(avail){
-        setTimeout(async()=>{
-          const ask=confirm('Face ID / Touch ID ilə admin girişini aktivləşdirək?\n(Növbəti dəfə şifrəsiz açılacaq)');
-          if(ask){const ok=await registerPasskey();if(ok)alert('✅ Face ID qeydiyyatı uğurlu!');else alert('⚠️ Uğursuz, yenidən cəhd edin.');}
-        },800);
-      }
-    }catch(e){}
-  }
+  logLogin('Admin',true);
+  loadTheme('admin');
+  openAdmin();
 }
 
 
@@ -1515,7 +1470,7 @@ async function loadAdmin(){
   const btn=document.getElementById('refreshBtn');
   if(btn){btn.disabled=true;btn.textContent='⏳ ...';}
   try{
-    _bc=null;_bcts=0;localStorage.removeItem(LS_CACHE);
+    _cache=null;_cacheTs=0;localStorage.removeItem(LS_CACHE);
     const {records,sf,cfg}=await rBin(true);CFG=cfg;
     const holBanner=buildHolidayBanner(gH());
     body.innerHTML=holBanner+mkPanel('adm')+
