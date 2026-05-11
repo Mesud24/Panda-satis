@@ -947,6 +947,7 @@ function _parseBin(d){
   };
 }
 function _lsGet(){try{const p=JSON.parse(localStorage.getItem(LS_CACHE)||'null');if(p&&p.data&&(Date.now()-p.ts)<LS_TTL)return p.data;}catch{}return null;}
+function _lsClear(){try{localStorage.removeItem(LS_CACHE);}catch(e){}}
 function _lsSet(data){try{localStorage.setItem(LS_CACHE,JSON.stringify({data,ts:Date.now()}));}catch{}}
 async function rBin(force){
   force=!!force;
@@ -1218,15 +1219,19 @@ async function showAdminGate(){
         loadTheme('admin');openAdmin();return;
       }
     }catch(e){
-      if(e.name==='NotAllowedError')return; // İstifadəçi ləğv etdi
-      // Başqa xəta — parol sorğusuna keç
+      if(e.name==='NotAllowedError'){
+        // İstifadəçi Face ID-ni ləğv etdi — parol sorğusuna keç
+      } else {
+        console.warn('Face ID error:',e.name,e.message);
+        // Başqa xəta — parol sorğusuna keç
+      }
     }
   }
   // Parol ilə giriş
   const currentAdminPw=localStorage.getItem(LS_PW_KEY)||'admin2026';
   const pw=prompt('Admin şifrəsi:');
   if(pw===null)return;
-  if(pw!==currentAdminPw){alert('Şifrə yanlışdır.');return;}
+  if(pw!==currentAdminPw){alert('Şifrə yanlışdır!\nHazırkı şifrə: admin2026 (dəyişmədinizsə)');return;}
   spinShow('Admin paneli yüklənir...');
   const bin=await rBin(true);CFG=bin.cfg;spinHide();
   checkAndShowHoliday(gH(),true);logLogin('Admin',true);
@@ -1506,19 +1511,23 @@ async function loadAdmin(){
   const btn=document.getElementById('refreshBtn');
   if(btn){btn.disabled=true;btn.textContent='⏳ ...';}
   try{
-    _cache=null;_cacheTs=0;localStorage.removeItem(LS_CACHE);
-    const {records,sf,cfg}=await rBin(true);CFG=cfg;
+    const bin=await rBin(true);CFG=bin.cfg;
+    const records=bin.records,sf=bin.sf;
     const holBanner=buildHolidayBanner(gH());
-    body.innerHTML=holBanner+mkPanel('adm')+
-      `<button class="scrbtn" onclick="takeScr('rc-adm')" style="margin-bottom:14px">📸 Hesabatı Şəkil Kimi Saxla</button>
-      <div id="sf-container"></div>
-      <div class="planpanel" style="margin-top:14px"><div class="ppaneltitle">🐼 Panda — Plan Vəziyyəti</div><div id="adm-pp"></div></div>
-      <div class="planpanel"><div class="ppaneltitle">🔶 Saxa — Plan Vəziyyəti</div><div id="adm-sp"></div></div>`;
+    const _admHtml=holBanner+mkPanel('adm')
+      +'<button class="scrbtn" onclick="takeAdmScr()" style="margin-bottom:14px">📸 Hesabatı Şəkil Kimi Saxla</button>'
+      +'<div id="sf-container"></div>'
+      +'<div class="planpanel" style="margin-top:14px"><div class="ppaneltitle">🐼 Panda — Plan Vəziyyəti</div><div id="adm-pp"></div></div>'
+      +'<div class="planpanel"><div class="ppaneltitle">🔶 Saxa — Plan Vəziyyəti</div><div id="adm-sp"></div></div>';
+    body.innerHTML=_admHtml;
     buildTable(records,sf,'tbl-adm','ld-adm');
     buildSFReport(sf,'sf-container');
     document.getElementById('adm-pp').innerHTML=planPanelHtml(records,false);
     document.getElementById('adm-sp').innerHTML=planPanelHtml(records,true);
-  }catch(e){body.innerHTML='<div class="admld">❌ Yüklənmədi.</div>';}
+  }catch(e){
+    console.error('loadAdmin error:',e);
+    body.innerHTML='<div class="admld">❌ Yüklənmədi. ↻ Yenilə düyməsinə basın.</div>';
+  }
   finally{if(btn){btn.disabled=false;btn.textContent='↻ Yenilə';}}
 }
 
@@ -1538,6 +1547,7 @@ async function loadViewer(){
 }
 
 // ŞƏKİL 4K
+function takeAdmScr(){takeScr('rc-adm');}
 async function takeScr(id){
   const card=document.getElementById(id),tbl=card.querySelector('.rt');const tblW=tbl?tbl.scrollWidth+2:card.scrollWidth;
   const tw=card.querySelector('.rctw');const of_=tw.style.overflow,ow_=tw.style.width,oh_=tw.style.maxHeight;
