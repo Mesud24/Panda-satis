@@ -439,7 +439,6 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
   <div class="gerr" id="gerr">Şifrə yanlışdır</div>
   <div class="gdiv"></div>
   <button class="glink" onclick="showAdminGate()">Admin →</button>
-<button class="gbtn" id="admin-faceid-btn" onclick="adminLoginWithFaceId()" style="display:none;background:linear-gradient(135deg,#3b0764,#6d28d9);margin-top:-4px;font-size:14px">🔑 Admin Face ID</button>
 <button class="gbtn" id="faceid-btn" onclick="loginWithFaceId()" style="display:none;background:linear-gradient(135deg,#4c1d95,#7c3aed);margin-top:-4px">🔑 Face ID ilə Daxil ol</button>
 </div></div>
 
@@ -492,24 +491,23 @@ table.sf-tbl{width:100%;border-collapse:collapse;table-layout:fixed;}
 <div class="mo" id="mo-u"><div class="mobox"><h3>👥 İstifadəçilər</h3><div id="mou-body"></div><button class="addbtn" onclick="addStore()">+ Yeni Şöbə</button><button class="mosave" onclick="saveUsers()">✓ Saxla</button><button class="moclose" onclick="closeMo('mo-u')">Bağla</button></div></div>
 <div class="mo" id="mo-set"><div class="mobox"><h3>⚙️ Parametrlər</h3>
   <div class="mosect">Gündəlik Sıfırlanma Saati</div>
-  <div class="wpicker-wrap">
-    <div>
-      <div class="wpicker" id="hour-picker">
-        <div class="wpicker-sel"></div>
-        <div class="wpicker-inner" id="hour-inner"></div>
-      </div>
-      <div class="wpicker-lbl" style="text-align:center">Saat</div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:0;margin:10px 0 4px">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+      <button id="hour-up" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#f0c060;font-size:20px;width:60px;height:36px;border-radius:10px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;line-height:1">▲</button>
+      <select id="hour-select" onchange="document.getElementById('cur-reset-hour').textContent=this.value" style="background:rgba(255,255,255,.07);border:1.5px solid rgba(201,150,58,.5);color:#f0c060;font-size:28px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;text-align:center;border-radius:12px;padding:8px 4px;width:80px;outline:none;-webkit-appearance:none;cursor:pointer">
+      </select>
+      <button id="hour-dn" style="background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#f0c060;font-size:20px;width:60px;height:36px;border-radius:10px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;line-height:1">▼</button>
+      <div style="font-size:11px;color:rgba(255,255,255,.4);font-weight:600;margin-top:2px">Saat</div>
     </div>
-    <div style="font-size:28px;font-weight:800;color:#f0c060;margin-bottom:18px">:</div>
-    <div>
-      <div class="wpicker" id="min-picker" style="pointer-events:none;opacity:.35">
-        <div class="wpicker-sel"></div>
-        <div class="wpicker-inner" id="min-inner"></div>
-      </div>
-      <div class="wpicker-lbl" style="text-align:center">Dəqiqə</div>
+    <div style="font-size:32px;font-weight:800;color:#f0c060;margin:0 10px;margin-bottom:36px">:</div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+      <div style="width:60px;height:36px"></div>
+      <div style="background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);color:rgba(255,255,255,.3);font-size:28px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;text-align:center;border-radius:12px;padding:8px 4px;width:80px;line-height:1.2">00</div>
+      <div style="width:60px;height:36px"></div>
+      <div style="font-size:11px;color:rgba(255,255,255,.25);font-weight:600;margin-top:2px">Dəqiqə</div>
     </div>
   </div>
-  <div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:4px;text-align:center">Sıfırlanma: <span id="cur-reset-hour" style="color:#f0c060;font-weight:700">17</span>:00 hər gün</div>
+  <div style="font-size:11px;color:rgba(255,255,255,.4);margin-bottom:8px;text-align:center">Sıfırlanma: <span id="cur-reset-hour" style="color:#f0c060;font-weight:700">17</span>:00 hər gün</div>
   <button class="mosave" style="background:linear-gradient(135deg,rgba(99,102,241,.4),rgba(79,70,229,.5));border:1px solid rgba(99,102,241,.5);margin-bottom:10px" onclick="saveResetHour()">✓ Saatı Tətbiq et</button>
   <div class="mosect">Admin Parolu</div><div class="mor2" style="margin-bottom:9px"><div class="mof"><label>Köhnə parol</label><input type="password" id="oldpw" placeholder="••••" autocomplete="current-password"></div><div class="mof"><label>Yeni parol</label><input type="password" id="newpw" placeholder="••••" autocomplete="new-password"></div></div><button class="mosave" style="background:rgba(255,255,255,.12);color:#fff;margin-bottom:9px" onclick="changeAdminPw()">🔒 Parolu Dəyiş</button><div class="mosect">Jurnal</div><div class="cr"><input type="checkbox" id="param-admin-jurnal" onchange="saveJP()"><label for="param-admin-jurnal">Admin girişini jurnalda göstər</label></div>
   <div class="mosect">Face ID / Touch ID</div>
@@ -709,8 +707,7 @@ function buildHolidayBanner(holidays){
     <div class="hb-stars">${Array.from({length:12},(_,i)=>`<div class="hb-star" style="left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*1.5}s"></div>`).join('')}</div>
     <div class="hb-emoji" style="font-size:40px">${h.emoji}</div>
     <div class="hb-text" style="text-align:center;flex:1">
-      <div class="hb-title" style="font-size:17px;font-weight:800;letter-spacing:-.2px">${h.name} münasibəti ilə sizi təbrik edirik!</div>
-      <div class="hb-sub" style="font-size:12px;margin-top:3px;color:rgba(255,255,255,.85)">Panda Kids ailəsindən 🎉</div>
+      <div class="hb-title" style="font-size:18px;font-weight:800;letter-spacing:-.2px">${h.name} münasibəti ilə sizi təbrik edirik! ${h.emoji}</div>
     </div>
   </div>`;
 }
@@ -1207,17 +1204,36 @@ async function doLogin(){
   if(u.type==='viewer')openViewer(u);else{curSid=sid;openStoreForm(sid);}
 }
 async function showAdminGate(){
+  // Əgər Admin Face ID qeydiyyatı varsa — əvvəlcə Face ID ilə cəhd et
+  if(window.PublicKeyCredential&&localStorage.getItem(LS_ADMIN_PASSKEY)){
+    try{
+      const challenge=new Uint8Array(32);crypto.getRandomValues(challenge);
+      const stored=JSON.parse(localStorage.getItem(LS_ADMIN_PASSKEY)||'null');
+      const assertion=await navigator.credentials.get({
+        publicKey:{challenge,rpId:location.hostname||'localhost',
+          allowCredentials:[{id:_b64ToArr(stored.id),type:'public-key'}],
+          userVerification:'required',timeout:60000}
+      });
+      if(assertion){
+        spinShow('Admin paneli yüklənir...');
+        const bin=await rBin(true);CFG=bin.cfg;spinHide();
+        checkAndShowHoliday(gH(),true);logLogin('Admin (Face ID)',true);
+        loadTheme('admin');openAdmin();return;
+      }
+    }catch(e){
+      if(e.name==='NotAllowedError')return; // İstifadəçi ləğv etdi
+      // Başqa xəta — parol sorğusuna keç
+    }
+  }
+  // Parol ilə giriş
   const currentAdminPw=localStorage.getItem(LS_PW_KEY)||'admin2026';
   const pw=prompt('Admin şifrəsi:');
   if(pw===null)return;
   if(pw!==currentAdminPw){alert('Şifrə yanlışdır.');return;}
   spinShow('Admin paneli yüklənir...');
-  const bin=await rBin(true);CFG=bin.cfg;
-  spinHide();
-  checkAndShowHoliday(gH(),true);
-  logLogin('Admin',true);
-  loadTheme('admin');
-  openAdmin();
+  const bin=await rBin(true);CFG=bin.cfg;spinHide();
+  checkAndShowHoliday(gH(),true);logLogin('Admin',true);
+  loadTheme('admin');openAdmin();
 }
 
 
@@ -1668,53 +1684,37 @@ async function openSettingsMo(){
   document.getElementById('mo-set').classList.add('show');
   setTimeout(initWheelPicker,80);
 }
-// ══ WHEEL PICKER ══
-let _pickerHour=17;
-function _buildPicker(innerId,count,initVal,onChange){
-  const inner=document.getElementById(innerId);if(!inner)return null;
-  inner.innerHTML='';
-  for(let i=0;i<3;i++){const d=document.createElement('div');d.className='wpicker-item';d.textContent=' ';inner.appendChild(d);}
-  for(let i=0;i<count;i++){
-    const d=document.createElement('div');d.className='wpicker-item';
-    d.textContent=String(i).padStart(2,'0');d.dataset.val=i;inner.appendChild(d);
-  }
-  for(let i=0;i<3;i++){const d=document.createElement('div');d.className='wpicker-item';d.textContent=' ';inner.appendChild(d);}
-  let current=initVal,startY=0,startOffset=0,isDragging=false;
-  function setVal(v,animate){
-    current=Math.max(0,Math.min(count-1,Math.round(v)));
-    inner.style.transition=animate?'transform .2s cubic-bezier(.4,0,.2,1)':'none';
-    inner.style.transform='translateY('+(-current*40)+'px)';
-    inner.querySelectorAll('.wpicker-item').forEach(function(el,i){el.classList.toggle('sel',i-3===current);});
-    if(onChange)onChange(current);
-  }
-  const wrap=inner.closest('.wpicker');
-  wrap.addEventListener('touchstart',function(e){isDragging=true;startY=e.touches[0].clientY;startOffset=current;inner.style.transition='none';},{passive:true});
-  wrap.addEventListener('touchmove',function(e){
-    if(!isDragging)return;
-    const delta=(startY-e.touches[0].clientY)/40;
-    inner.style.transform='translateY('+(-( startOffset+delta)*40)+'px)';
-    inner.querySelectorAll('.wpicker-item').forEach(function(el,i){el.classList.toggle('sel',i-3===Math.round(startOffset+delta));});
-  },{passive:true});
-  wrap.addEventListener('touchend',function(e){
-    isDragging=false;
-    const delta=(startY-(e.changedTouches[0]||{clientY:startY}).clientY)/40;
-    setVal(startOffset+delta,true);
-  });
-  wrap.addEventListener('wheel',function(e){e.preventDefault();setVal(current+(e.deltaY>0?1:-1),true);},{passive:false});
-  setVal(initVal,false);
-  return {setVal,getVal:function(){return current;}};
-}
-let _hourPicker=null;
+// ══ SAAT SEÇİMİ - Sadə + Düzgün ══
 function initWheelPicker(){
-  const h=getResetHour();_pickerHour=h;
-  _hourPicker=_buildPicker('hour-inner',24,h,function(v){
-    _pickerHour=v;
-    const crh=document.getElementById('cur-reset-hour');if(crh)crh.textContent=v;
-  });
+  const h=getResetHour();
+  const sel=document.getElementById('hour-select');
+  if(sel){
+    if(!sel.options.length){
+      for(let i=0;i<24;i++){const o=document.createElement('option');o.value=i;o.textContent=String(i).padStart(2,'0');sel.appendChild(o);}
+    }
+    sel.value=h;
+  }
   const crh=document.getElementById('cur-reset-hour');if(crh)crh.textContent=h;
+  // Sürüşdürmə düymələri
+  const up=document.getElementById('hour-up');
+  const dn=document.getElementById('hour-dn');
+  if(up)up.onclick=function(){
+    const s=document.getElementById('hour-select');
+    if(!s)return;
+    s.value=Math.max(0,parseInt(s.value||h)-1);
+    const crh=document.getElementById('cur-reset-hour');if(crh)crh.textContent=s.value;
+  };
+  if(dn)dn.onclick=function(){
+    const s=document.getElementById('hour-select');
+    if(!s)return;
+    s.value=Math.min(23,parseInt(s.value||h)+1);
+    const crh=document.getElementById('cur-reset-hour');if(crh)crh.textContent=s.value;
+  };
 }
 function saveResetHour(){
-  const hv=_hourPicker?_hourPicker.getVal():getResetHour();
+  const sel=document.getElementById('hour-select');
+  const hv=sel?parseInt(sel.value):getResetHour();
+  if(isNaN(hv)||hv<0||hv>23){alert('0-23 arası saat seçin.');return;}
   localStorage.setItem('pk_reset_hour',String(hv));
   const crh=document.getElementById('cur-reset-hour');if(crh)crh.textContent=hv;
   alert('✅ Sıfırlanma saati '+hv+':00 olaraq təyin edildi!');
@@ -1872,7 +1872,7 @@ function resetFaceId(){
 }
 
 // Səhifə yükləndikdə Face ID düyməsini yoxla
-setTimeout(function(){_initFaceIdBtn();_initAdminFaceIdBtn();}, 500);
+setTimeout(_initFaceIdBtn, 500);
 
 function changeAdminPw(){
   const o=document.getElementById('oldpw').value,n=document.getElementById('newpw').value;
