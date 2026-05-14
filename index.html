@@ -887,14 +887,17 @@ const MEM_TTL=30000,LS_TTL=60000;
 function progShow(msg){msg=msg||'Yüklənir...';document.getElementById('prog-overlay').classList.add('show');setProg(5,msg);}
 function setProg(pct,msg){document.getElementById('prog-bar').style.width=pct+'%';document.getElementById('prog-pct').textContent=pct+'%';if(msg)document.getElementById('prog-msg').textContent=msg;}
 
-// ══ _parseBin — DÜZƏLDİLDİ ══
+// ══ _parseBin ══
 function _parseBin(d){
   const su=d.cfg&&d.cfg.users;
-  const users=(su&&su.length>0?su:DEF_USERS).map(function(u){return Object.assign({periods:[1,1,1,1]},u);});
+  // VACIB: users varsa DEF_USERS-a fallback etmə, və periods-u overwrite etmə
+  const users=su&&su.length>0
+    ? su.map(function(u){
+        // Yalnız periods yoxdursa default ver, varsa saxla
+        return u.periods ? u : Object.assign({periods:[1,1,1,1]},u);
+      })
+    : DEF_USERS;
   const holidays=(d.cfg&&d.cfg.holidays)?d.cfg.holidays:DEF_HOLIDAYS;
-  const resetHour=(d.cfg&&d.cfg.resetHour!==undefined)?d.cfg.resetHour:0;
-  // Bin-dən gələn resetHour-u dərhal local-a da yaz
-  localStorage.setItem('pk_reset_hour',String(resetHour));
   return {
     records:d.records||[],
     sf:d.sf||{},
@@ -904,8 +907,7 @@ function _parseBin(d){
       saxa:(d.cfg&&d.cfg.saxa)?d.cfg.saxa:DEF_SAXA,
       jurnal:(d.cfg&&d.cfg.jurnal)?d.cfg.jurnal:[],
       jp:(d.cfg&&d.cfg.jp)?d.cfg.jp:{showAdmin:true},
-      holidays:holidays,
-      resetHour:resetHour
+      holidays:holidays
     }
   };
 }
@@ -913,19 +915,12 @@ function _parseBin(d){
 function _lsGet(){
   try{
     const p=JSON.parse(localStorage.getItem(LS_CACHE)||'null');
-    if(p&&p.data&&(Date.now()-p.ts)<LS_TTL){
-      // Cache-dən oxuyanda da resetHour-u sync et
-      if(p.data.cfg&&p.data.cfg.resetHour!==undefined){
-        localStorage.setItem('pk_reset_hour',String(p.data.cfg.resetHour));
-      }
-      return p.data;
-    }
+    if(p&&p.data&&(Date.now()-p.ts)<LS_TTL)return p.data;
   }catch{}
   return null;
 }
 function _lsSet(data){try{localStorage.setItem(LS_CACHE,JSON.stringify({data:data,ts:Date.now()}));}catch{}}
-
-function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true},holidays:DEF_HOLIDAYS,resetHour:0}};}
+function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true},holidays:DEF_HOLIDAYS}};}
 
 // ══ rBin — DÜZƏLDİLDİ ══
 async function rBin(force){
