@@ -596,7 +596,6 @@ const AY=['yanvar','fevral','mart','aprel','may','iyun','iyul','avqust','sentyab
 const GUNS=['Bazar','Bazar ertəsi','Çərşənbə axşamı','Çərşənbə','Cümə axşamı','Cümə','Şənbə'];
 const HC=['hb','ho','hg','hp'],SC=['sb','so','sg','sp'];
 const PCOL=['#2E75B6','#C55A11','#375623','#7030A0'];
-const LS_CACHE='pk_bin_v2';
 let ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
 let curSid=null,prevUrl=null,sfPrevUrl=null,tmpUsers=[];
 
@@ -887,7 +886,8 @@ const DEF_USERS=[
 const DEF_TGTS={p2:{min:63180,mid:80000,max:100000},p3:{min:125000,mid:150000,max:180000},pe:{min:54270,mid:70000,max:90000},s1:{min:0,mid:0,max:0},s2:{min:0,mid:0,max:0},s3:{min:0,mid:0,max:0}};
 const DEF_SAXA={fillers:['p2','p3','pe'],showInAdmin:true,firmName:'Saxa Outlet'};
 let CFG=null,_bc=null,_bcts=0;
-const MEM_TTL=30000,LS_TTL=60000;
+// Memory cache — 30 saniyə (eyni sessiyada server yükünü azaldır)
+const MEM_TTL=30000;
 
 function progShow(msg){msg=msg||'Yüklənir...';document.getElementById('prog-overlay').classList.add('show');setProg(5,msg);}
 function setProg(pct,msg){document.getElementById('prog-bar').style.width=pct+'%';document.getElementById('prog-pct').textContent=pct+'%';if(msg)document.getElementById('prog-msg').textContent=msg;}
@@ -916,49 +916,48 @@ function _parseBin(d){
   };
 }
 
-function _lsGet(){
-  try{
-    const p=JSON.parse(localStorage.getItem(LS_CACHE)||'null');
-    if(p&&p.data&&(Date.now()-p.ts)<LS_TTL)return p.data;
-  }catch{}
-  return null;
-}
-function _lsSet(data){try{localStorage.setItem(LS_CACHE,JSON.stringify({data:data,ts:Date.now()}));}catch{}}
-function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true},holidays:DEF_HOLIDAYS,resetHour:6}};}
+function defBin(){return{records:[],sf:{},cfg:{users:DEF_USERS,targets:DEF_TGTS,saxa:DEF_SAXA,jurnal:[],jp:{showAdmin:true},holidays:DEF_HOLIDAYS,resetHour:17}};}
 
-// ══ rBin — DÜZƏLDİLDİ ══
+// ══ rBin ══
+// force=true → həmişə serverdən oxu (kritik əməliyyatlardan əvvəl)
+// force=false → memory cache varsa (30 san) onu qaytar, yoxsa serverdən
 async function rBin(force){
   force=force||false;
   const now=Date.now();
+  // Memory cache — eyni cihazda 30 saniyə ərzində server yükünü azaldır
   if(!force&&_bc&&(now-_bcts)<MEM_TTL)return _bc;
-  if(!force){const ls=_lsGet();if(ls){_bc=ls;_bcts=now;return _bc;}}
   try{
     const ctrl=new AbortController();
     const tid=setTimeout(function(){ctrl.abort();},10000);
-    const r=await fetch(BIN_URL+'/latest',{headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},cache:'no-store',signal:ctrl.signal});
+    const r=await fetch(BIN_URL+'/latest',{
+      headers:{'X-Master-Key':API_KEY,'X-Bin-Meta':'false'},
+      cache:'no-store',// Brauzer cache-ini bypass et
+      signal:ctrl.signal
+    });
     clearTimeout(tid);
-    if(!r.ok)return _bc||_lsGet()||defBin();
+    if(!r.ok)return _bc||defBin();
     const j=await r.json();
-    _bc=_parseBin(j.data||{});_bcts=now;_lsSet(_bc);
+    _bc=_parseBin(j.data||{});
+    _bcts=now;
     return _bc;
   }catch(e){
-    return _bc||_lsGet()||defBin();
+    // Şəbəkə xətası — memory cache-i qaytar
+    return _bc||defBin();
   }
 }
 
-// ══ wBin — SAFE WRITE ══
+// ══ wBin ══
+// Yazmazdan əvvəl heç vaxt köhnə state-i göndərmirik
+// Yalnız çağıran funksiya fresh rBin(true) aldıqdan sonra wBin çağırır
 async function wBin(records,sf,cfg){
-  // Cache-i təmizlə
-  try{localStorage.removeItem(LS_CACHE);}catch{}
-  _bc={records:records,sf:sf,cfg:cfg};_bcts=Date.now();
+  _bc={records:records,sf:sf,cfg:cfg};
+  _bcts=Date.now();
   try{
-    const r=await fetch(BIN_URL,{
+    await fetch(BIN_URL,{
       method:'PUT',
       headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Meta':'false'},
       body:JSON.stringify({data:{records:records,sf:sf,cfg:cfg}})
     });
-    if(r.ok){_lsSet(_bc);}
-    else{console.error('wBin HTTP error:',r.status);}
   }catch(e){console.error('wBin error:',e);}
 }
 
@@ -1084,25 +1083,16 @@ function logout(){curSid=null;document.getElementById('gpw').value='';document.g
 
 async function buildSel(){
   ADMIN_PW=localStorage.getItem('pk_apw')||'admin2026';
-  const ls=_lsGet();
-  if(ls){CFG=ls.cfg;_bc=ls;_bcts=Date.now();fillSel();}
-  else{
-    progShow('Yüklənir...');
-    try{const bin=await rBin(true);CFG=bin.cfg;_bc=bin;}catch(e){}
-    setProg(100,'Hazır!');
-    setTimeout(function(){
-      const o=document.getElementById('prog-overlay');if(o)o.classList.remove('show');
-      setProg(0,'');fillSel();
-    },150);
-    return;
-  }
-  // Background-da yenilə — resetHour dəqiq olsun
+  progShow('Yüklənir...');
   try{
-    const bin=await rBin(true);
+    const bin=await rBin(true);// Həmişə serverdən
     CFG=bin.cfg;_bc=bin;
-    // resetHour dəyişibsə fillSel-i yenilə
-    fillSel();
   }catch(e){}
+  setProg(100,'Hazır!');
+  setTimeout(function(){
+    const o=document.getElementById('prog-overlay');if(o)o.classList.remove('show');
+    setProg(0,'');fillSel();
+  },200);
 }
 
 function fillSel(){
@@ -1544,7 +1534,7 @@ async function loadAdmin(){
   const btn=document.getElementById('refreshBtn');
   if(btn){btn.disabled=true;btn.textContent='⏳ ...';}
   try{
-    _bc=null;_bcts=0;localStorage.removeItem(LS_CACHE);
+    _bc=null;_bcts=0;// Memory cache sıfırla — serverdən fresh oxu
     const bin=await rBin(true);CFG=bin.cfg;
     const holBanner=buildHolidayBanner(gH());
     body.innerHTML=holBanner+mkPanel('adm')
